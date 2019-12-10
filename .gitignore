@@ -1,0 +1,10 @@
+
+!.gitignore
+*.org
+*.org.html
+/theindex.html
+/sitemap.html
+/worg-git.html
+/org-faq.html
+
+/images/

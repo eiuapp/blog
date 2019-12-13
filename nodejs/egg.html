@@ -6,7 +6,7 @@
 <!-- 2019-12-13 Fri 18:44 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Index</title>
+<title>egg</title>
 <meta name="generator" content="Org mode" />
 <meta name="author" content="yunlong zeng" />
 <link rel="stylesheet" title="Standard" href="/html/style/worg.css" type="text/css" />
@@ -93,72 +93,100 @@ fathom('trackPageview');
 </script>
 </div>
 <div id="content">
-<h1 class="title">Index</h1>
+<h1 class="title">egg</h1>
 <div id="table-of-contents">
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#org1eb54ff">E</a></li>
-<li><a href="#orgf05c8fb">H</a></li>
-<li><a href="#orgca4ffe6">M</a></li>
-<li><a href="#org8e80412">W</a></li>
+<li><a href="#orgad6d8ae">egg start up</a>
+<ul>
+<li><a href="#org72112b0">add NODE_OPTION</a>
+<ul>
+<li><a href="#org7456c6c">env</a></li>
+<li><a href="#orgcd26109">set</a></li>
+<li><a href="#orgb716c96">check</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+<p>
+<a href="../index.html">{Back to site's index}</a>
+</p>
+
+<div id="outline-container-orgad6d8ae" class="outline-2">
+<h2 id="orgad6d8ae">egg start up</h2>
+<div class="outline-text-2" id="text-orgad6d8ae">
+</div>
+<div id="outline-container-org72112b0" class="outline-3">
+<h3 id="org72112b0">add NODE_OPTION</h3>
+<div class="outline-text-3" id="text-org72112b0">
+</div>
+<div id="outline-container-org7456c6c" class="outline-4">
+<h4 id="org7456c6c">env</h4>
+<div class="outline-text-4" id="text-org7456c6c">
+<p>
+有一次,突然间出现下面的错误
+</p>
+<pre class="example">
+2019-12-13 17:21:59,829 WARN 29846 A client (::ffff:192.168.168.165:64682) error [HPE_HEADER_OVERFLOW] occurred: Parse Error
+</pre>
+
+
+<ul class="org-ul">
+<li><a href="https://github.com/eggjs/egg/issues/3807">https://github.com/eggjs/egg/issues/3807</a></li>
+<li><a href="https://stackoverflow.com/questions/35328725/hpe-header-overflow-exception-when-make-http-request">https://stackoverflow.com/questions/35328725/hpe-header-overflow-exception-when-make-http-request</a></li>
+<li><a href="https://nodejs.org/api/cli.html#cli_node_options_options">https://nodejs.org/api/cli.html#cli_node_options_options</a></li>
 </ul>
 </div>
 </div>
 
-<div id="outline-container-org1eb54ff" class="outline-2">
-<h2 id="org1eb54ff">E</h2>
-<div class="outline-text-2" id="text-org1eb54ff">
-<ul class="org-ul">
-<li><a href="nodejs/egg.html">egg</a>
-<ul class="org-ul">
-<li><a href="nodejs/egg.html#orga3e21ae">start up</a></li>
-</ul></li>
-</ul>
+<div id="outline-container-orgcd26109" class="outline-4">
+<h4 id="orgcd26109">set</h4>
+<div class="outline-text-4" id="text-orgcd26109">
+<p>
+First tested in shell
+</p>
+
+<div class="org-src-container">
+<pre class="src src-shell">$ <span style="color: #7590db;">NODE_OPTIONS</span>=<span style="color: #daa520;">'--max-http-header-size=80000'</span> node ./node_modules/egg-bin/bin/egg-bin.js  dev --sticky --port=<span style="color: #a45bad;">7016</span>
+</pre>
+</div>
+
+<div class="org-src-container">
+<pre class="src src-shell"><span style="color: #4f97d7;">export</span> <span style="color: #7590db;">NODE_OPTIONS</span>=<span style="color: #daa520;">'--max-http-header-size=80000'</span>
+npm run dev
+</pre>
+</div>
+
+<p>
+set the arguments to <code>package.json</code>
+</p>
+<div class="org-src-container">
+<pre class="src src-json">{
+  <span style="color: #00bfff; font-weight: bold;">"scripts"</span>: {
+    <span style="color: #00bfff; font-weight: bold;">"dev"</span>: "NODE_OPTIONS='--max-http-header-size=<span style="color: #a45bad;">80000</span>' egg-bin dev --sticky --port=<span style="color: #a45bad;">7016</span>",
+  }
+}
+</pre>
 </div>
 </div>
-<div id="outline-container-orgf05c8fb" class="outline-2">
-<h2 id="orgf05c8fb">H</h2>
-<div class="outline-text-2" id="text-orgf05c8fb">
-<ul class="org-ul">
-<li><a href="tools/hyper.html">hyper</a>
-<ul class="org-ul">
-<li><a href="tools/hyper.html#org6801670">windows</a></li>
-</ul></li>
-</ul>
+</div>
+<div id="outline-container-orgb716c96" class="outline-4">
+<h4 id="orgb716c96">check</h4>
+<div class="outline-text-4" id="text-orgb716c96">
+<p>
+放在程序启动后
+</p>
+
+<div class="org-src-container">
+<pre class="src src-javascript">app.logger.info(<span style="color: #daa520;">'process.env.NODE_OPTIONS is: '</span> + process.env.NODE_OPTIONS);
+</pre>
 </div>
 </div>
-<div id="outline-container-orgca4ffe6" class="outline-2">
-<h2 id="orgca4ffe6">M</h2>
-<div class="outline-text-2" id="text-orgca4ffe6">
-<ul class="org-ul">
-<li>Mysql
-<ul class="org-ul">
-<li><a href="mysql/install-with-docker.html#orgbb9779c">8.0.18</a></li>
-</ul></li>
-</ul>
 </div>
-</div>
-<div id="outline-container-org8e80412" class="outline-2">
-<h2 id="org8e80412">W</h2>
-<div class="outline-text-2" id="text-org8e80412">
-<ul class="org-ul">
-<li><a href="tools/webdav.html">webdav</a>
-<ul class="org-ul">
-<li><a href="tools/webdav.html#orgaad293a">client</a></li>
-<li><a href="tools/webdav.html#orga4b32da">server</a>
-<ul class="org-ul">
-<li><a href="tools/webdav.html#orge1b8027">docker</a></li>
-</ul></li>
-</ul></li>
-<li>Worg
-<ul class="org-ul">
-<li><a href="blog/css-for-org-exported-html.html#orgf6090df">css</a></li>
-<li><a href="blog/worg-css.html">css</a></li>
-<li><a href="blog.bak/css-for-org-exported-html.html#org70efb99">css</a></li>
-<li><a href="blog.bak/worg-css.html">css</a></li>
-</ul></li>
-</ul>
 </div>
 </div>
 </div>

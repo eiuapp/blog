@@ -10,5 +10,13 @@
 /code/
 /worg-git.html
 /org-faq.html
+/theindex.*
+/sitemap.org
+/macros.setupfile
+/style/
+
+# bak 
+/*.bak/
+/*.bak
 
 # else file

@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2019-12-13 Fri 15:02 -->
+<!-- 2019-12-13 Fri 16:45 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>install with docker</title>
@@ -98,28 +98,31 @@ fathom('trackPageview');
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#org4bdfc74">mysql 8.0.18</a>
+<li><a href="#orgb087f3c">mysql 8.0.18</a>
 <ul>
-<li><a href="#orga5f13b1">创建一个新的container</a></li>
-<li><a href="#orgbc26cfe">进入container, 把配置文件copy出来.</a></li>
-<li><a href="#orgb1726f9">创建container</a></li>
-<li><a href="#org3f7311c">修改root密码</a></li>
-<li><a href="#orgc637f13">reference</a></li>
+<li><a href="#org93df530">创建一个新的container</a></li>
+<li><a href="#org436102e">进入container, 把配置文件copy出来.</a></li>
+<li><a href="#org61120a7">创建container</a></li>
+<li><a href="#orgb5037e5">修改root密码</a></li>
+<li><a href="#org3693e0f">reference</a></li>
 </ul>
 </li>
 </ul>
 </div>
 </div>
-<div id="outline-container-org4bdfc74" class="outline-2">
-<h2 id="org4bdfc74">mysql 8.0.18</h2>
-<div class="outline-text-2" id="text-org4bdfc74">
+<p>
+<a href="../index.html">{Back to site's index}</a>
+</p>
+<div id="outline-container-orgb087f3c" class="outline-2">
+<h2 id="orgb087f3c">mysql 8.0.18</h2>
+<div class="outline-text-2" id="text-orgb087f3c">
 <p>
 8.0.18 difference from 5.7, so i do record about the installation process.
 </p>
 </div>
-<div id="outline-container-orga5f13b1" class="outline-3">
-<h3 id="orga5f13b1">创建一个新的container</h3>
-<div class="outline-text-3" id="text-orga5f13b1">
+<div id="outline-container-org93df530" class="outline-3">
+<h3 id="org93df530">创建一个新的container</h3>
+<div class="outline-text-3" id="text-org93df530">
 <p>
 我们只要一个 8.0.18 的配置文件, 所以后面要删除掉这个container
 </p>
@@ -133,9 +136,9 @@ fathom('trackPageview');
 </div>
 </div>
 
-<div id="outline-container-orgbc26cfe" class="outline-3">
-<h3 id="orgbc26cfe">进入container, 把配置文件copy出来.</h3>
-<div class="outline-text-3" id="text-orgbc26cfe">
+<div id="outline-container-org436102e" class="outline-3">
+<h3 id="org436102e">进入container, 把配置文件copy出来.</h3>
+<div class="outline-text-3" id="text-org436102e">
 <div class="org-src-container">
 <pre class="src src-shell">DESKTOP-APB1HCJ% docker exec -it <span style="color: #a45bad;">979</span> bash
 root@<span style="color: #a45bad;">979a592ddabe:/#</span> pwd
@@ -155,9 +158,9 @@ root@<span style="color: #a45bad;">979a592ddabe:~#</span> exit
 </div>
 </div>
 </div>
-<div id="outline-container-orgb1726f9" class="outline-3">
-<h3 id="orgb1726f9">创建container</h3>
-<div class="outline-text-3" id="text-orgb1726f9">
+<div id="outline-container-org61120a7" class="outline-3">
+<h3 id="org61120a7">创建container</h3>
+<div class="outline-text-3" id="text-org61120a7">
 <div class="org-src-container">
 <pre class="src src-shell">sudo docker run  --restart always -p <span style="color: #a45bad;">3307:3306</span> --name mysql-8.0.18-20191212 <span style="color: #daa520;">\</span>
  -v /home/ubuntu/docker/container/mysql8.0.18/mysql-8.0.18-a/root:/root <span style="color: #daa520;">\</span>
@@ -168,9 +171,9 @@ root@<span style="color: #a45bad;">979a592ddabe:~#</span> exit
 </div>
 </div>
 </div>
-<div id="outline-container-org3f7311c" class="outline-3">
-<h3 id="org3f7311c">修改root密码</h3>
-<div class="outline-text-3" id="text-org3f7311c">
+<div id="outline-container-orgb5037e5" class="outline-3">
+<h3 id="orgb5037e5">修改root密码</h3>
+<div class="outline-text-3" id="text-orgb5037e5">
 <div class="org-src-container">
 <pre class="src src-mysql">&gt; alter user 'root'@'%' identified with mysql_native_password by '********';
 &gt; flush privileges;
@@ -217,9 +220,9 @@ flush privileges;
 </div>
 </div>
 </div>
-<div id="outline-container-orgc637f13" class="outline-3">
-<h3 id="orgc637f13">reference</h3>
-<div class="outline-text-3" id="text-orgc637f13">
+<div id="outline-container-org3693e0f" class="outline-3">
+<h3 id="org3693e0f">reference</h3>
+<div class="outline-text-3" id="text-org3693e0f">
 <ul class="org-ul">
 <li><a href="https://www.jianshu.com/p/d297b0be4157">https://www.jianshu.com/p/d297b0be4157</a></li>
 </ul>

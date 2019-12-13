@@ -1,0 +1,231 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<!-- 2019-12-13 Fri 15:02 -->
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>install with docker</title>
+<meta name="generator" content="Org mode" />
+<meta name="author" content="yunlong zeng" />
+<link rel="stylesheet" title="Standard" href="/html/style/worg.css" type="text/css" />
+<link rel="alternate stylesheet" title="Zenburn" href="/html/style/worg-zenburn.css" type="text/css" />
+<link rel="alternate stylesheet" title="Classic" href="/html/style/worg-classic.css" type="text/css" />
+<link rel="SHORTCUT ICON" href="/html/style/org-mode-unicorn.ico" type="image/x-icon" />
+<link rel="icon" href="/html/style/org-mode-unicorn.ico" type="image/ico" />
+<script type="text/javascript">
+/*
+@licstart  The following is the entire license notice for the
+JavaScript code in this tag.
+
+Copyright (C) 2012-2019 Free Software Foundation, Inc.
+
+The JavaScript code in this tag is free software: you can
+redistribute it and/or modify it under the terms of the GNU
+General Public License (GNU GPL) as published by the Free Software
+Foundation, either version 3 of the License, or (at your option)
+any later version.  The code is distributed WITHOUT ANY WARRANTY;
+without even the implied warranty of MERCHANTABILITY or FITNESS
+FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
+
+As additional permission under GNU GPL version 3 section 7, you
+may distribute non-source (e.g., minimized or compacted) forms of
+that code without the copy of the GNU GPL normally required by
+section 4, provided you include this license notice and a URL
+through which recipients can access the Corresponding Source.
+
+
+@licend  The above is the entire license notice
+for the JavaScript code in this tag.
+*/
+<!--/*--><![CDATA[/*><!--*/
+ function CodeHighlightOn(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(null != target) {
+     elem.cacheClassElem = elem.className;
+     elem.cacheClassTarget = target.className;
+     target.className = "code-highlighted";
+     elem.className   = "code-highlighted";
+   }
+ }
+ function CodeHighlightOff(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(elem.cacheClassElem)
+     elem.className = elem.cacheClassElem;
+   if(elem.cacheClassTarget)
+     target.className = elem.cacheClassTarget;
+ }
+/*]]>*///-->
+</script>
+</head>
+<body>
+<div id="preamble" class="status">
+<script type="text/javascript">
+  document.addEventListener('DOMContentLoaded',function() {
+      document.getElementById("table-of-contents").onclick = function() {
+          var elem = document.getElementById("text-table-of-contents");
+          elem.style.display = elem.style.display == "block" ? "none" : "block";
+      }
+  });
+
+  var url = document.location.href;
+  var orgsource = url.substring(0, url.lastIndexOf("."))+".org.html";
+  function show_org_source(){
+      document.location.href = orgsource;
+  }
+</script>
+
+<script>
+(function(f, a, t, h, o, m){
+	a[h]=a[h]||function(){
+		(a[h].q=a[h].q||[]).push(arguments)
+	};
+	o=f.createElement('script'),
+	m=f.getElementsByTagName('script')[0];
+	o.async=1; o.src=t; o.id='fathom-script';
+	m.parentNode.insertBefore(o,m)
+})(document, window, '//stats.orgmode.org/tracker.js', 'fathom');
+fathom('set', 'siteId', 'NWSQJ');
+fathom('trackPageview');
+</script>
+</div>
+<div id="content">
+<h1 class="title">install with docker</h1>
+<div id="table-of-contents">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#org4bdfc74">mysql 8.0.18</a>
+<ul>
+<li><a href="#orga5f13b1">创建一个新的container</a></li>
+<li><a href="#orgbc26cfe">进入container, 把配置文件copy出来.</a></li>
+<li><a href="#orgb1726f9">创建container</a></li>
+<li><a href="#org3f7311c">修改root密码</a></li>
+<li><a href="#orgc637f13">reference</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org4bdfc74" class="outline-2">
+<h2 id="org4bdfc74">mysql 8.0.18</h2>
+<div class="outline-text-2" id="text-org4bdfc74">
+<p>
+8.0.18 difference from 5.7, so i do record about the installation process.
+</p>
+</div>
+<div id="outline-container-orga5f13b1" class="outline-3">
+<h3 id="orga5f13b1">创建一个新的container</h3>
+<div class="outline-text-3" id="text-orga5f13b1">
+<p>
+我们只要一个 8.0.18 的配置文件, 所以后面要删除掉这个container
+</p>
+
+<div class="org-src-container">
+<pre class="src src-shell">sudo docker run -it -p <span style="color: #a45bad;">3307:3306</span> --name mysql-8.0.18-b <span style="color: #daa520;">\</span>
+   -v /home/ubuntu/docker/container/mysql8.0.18/mysql-8.0.18-a/root:/root <span style="color: #daa520;">\</span>
+   -e <span style="color: #7590db;">MYSQL_ROOT_PASSWORD</span>=<span style="color: #a45bad;">123456</span>  mysql:8.0.18
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgbc26cfe" class="outline-3">
+<h3 id="orgbc26cfe">进入container, 把配置文件copy出来.</h3>
+<div class="outline-text-3" id="text-orgbc26cfe">
+<div class="org-src-container">
+<pre class="src src-shell">DESKTOP-APB1HCJ% docker exec -it <span style="color: #a45bad;">979</span> bash
+root@<span style="color: #a45bad;">979a592ddabe:/#</span> pwd
+/
+root@<span style="color: #a45bad;">979a592ddabe:/#</span> cd /root/
+root@<span style="color: #a45bad;">979a592ddabe:~#</span> mkdir -p etc
+root@<span style="color: #a45bad;">979a592ddabe:~#</span> cp -a /etc/mysql/ /root/etc/mysql
+root@<span style="color: #a45bad;">979a592ddabe:~#</span> ls /var/lib/mysql/
+<span style="color: #2aa1ae; background-color: #292e34;">#</span><span style="color: #2aa1ae; background-color: #292e34;">innodb_temp      auto.cnf       binlog.000002  ca-key.pem  client-cert.pem  ib_buffer_pool  ib_logfile1  ibtmp1  mysql.ibd</span>
+     private_key.pem  server-cert.pem   sys       undo_002
+<span style="color: #a45bad;">979a592ddabe.err</span>  binlog.000001  binlog.index   ca.pem      client-key.pem   ib_logfile0     ibdata1
+ mysql   performance_schema  public_key.pem   server-key.pem    undo_001
+root@<span style="color: #a45bad;">979a592ddabe:~#</span> mkdir -p ./var/lib/
+root@<span style="color: #a45bad;">979a592ddabe:~#</span> cp -a /var/lib/mysql/ /root/var/lib/mysql
+root@<span style="color: #a45bad;">979a592ddabe:~#</span> exit
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-orgb1726f9" class="outline-3">
+<h3 id="orgb1726f9">创建container</h3>
+<div class="outline-text-3" id="text-orgb1726f9">
+<div class="org-src-container">
+<pre class="src src-shell">sudo docker run  --restart always -p <span style="color: #a45bad;">3307:3306</span> --name mysql-8.0.18-20191212 <span style="color: #daa520;">\</span>
+ -v /home/ubuntu/docker/container/mysql8.0.18/mysql-8.0.18-a/root:/root <span style="color: #daa520;">\</span>
+ -v /home/ubuntu/docker/container/mysql8.0.18/mysql-8.0.18-a/var/lib/mysql:/var/lib/mysql <span style="color: #daa520;">\</span>
+ -v /home/ubuntu/docker/container/mysql8.0.18/mysql-8.0.18-a/etc/mysql:/etc/mysql <span style="color: #daa520;">\</span>
+ -d mysql:8.0.18
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-org3f7311c" class="outline-3">
+<h3 id="org3f7311c">修改root密码</h3>
+<div class="outline-text-3" id="text-org3f7311c">
+<div class="org-src-container">
+<pre class="src src-mysql">&gt; alter user 'root'@'%' identified with mysql_native_password by '********';
+&gt; flush privileges;
+</pre>
+</div>
+<p>
+Specific steps:
+</p>
+<div class="org-src-container">
+<pre class="src src-shell">root@utuntu:/home/ubuntu/docker/container# docker exec -it mysql-8.0.18-20191212 bash
+root@c104c048b11e:/# ls
+bin  boot  dev  docker-entrypoint-initdb.d  entrypoint.sh  etc  home  lib  lib64  media  mnt  opt  proc  root  run  sbin  srv  sys  tmp  usr  var
+root@c104c048b11e:/# mysql -uroot -p
+Enter password:
+Welcome to the MySQL monitor.  Commands end with ; or \g.
+Your MySQL connection id is <span style="color: #a45bad;">8</span>
+Server version: <span style="color: #a45bad;">8.0.18</span> MySQL Community Server - GPL
+
+<span style="color: #bc6ec5; font-weight: bold;">Copyright</span> (c) <span style="color: #a45bad;">2000,</span> <span style="color: #a45bad;">2019,</span> Oracle and/or its affiliates. All rights reserved.
+
+Oracle is a registered trademark of Oracle Corporation and/or its
+affiliates. Other names may be trademarks of their respective
+owners.
+
+Type <span style="color: #daa520;">'help;'</span> or <span style="color: #daa520;">'\h'</span> for help. Type <span style="color: #daa520;">'\c'</span> to clear the current input statement.
+
+mysql&gt; alter user <span style="color: #daa520;">'root'</span>@<span style="color: #daa520;">'%'</span> identified with mysql_native_password by <span style="color: #daa520;">'********'</span>;
+Query OK, <span style="color: #a45bad;">0</span> rows affected (<span style="color: #a45bad;">0.01</span> sec)
+
+mysql&gt; flush privileges;
+Query OK, <span style="color: #a45bad;">0</span> rows affected (<span style="color: #a45bad;">0.01</span> sec)
+
+</pre>
+</div>
+<p>
+同样的,修改其它用户的密码,也是这样的
+</p>
+<div class="org-src-container">
+<pre class="src src-shell">create user <span style="color: #daa520;">'dev'</span>@<span style="color: #daa520;">'%'</span> IDENTIFIED BY <span style="color: #daa520;">'********'</span>;
+grant all on permission_demo.* to <span style="color: #daa520;">'dev'</span>@<span style="color: #daa520;">'%'</span> identified by <span style="color: #daa520;">'********'</span>;
+alter user <span style="color: #daa520;">'dev'</span>@<span style="color: #daa520;">'%'</span> identified with mysql_native_password by <span style="color: #daa520;">'********'</span>;
+flush privileges;
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-orgc637f13" class="outline-3">
+<h3 id="orgc637f13">reference</h3>
+<div class="outline-text-3" id="text-orgc637f13">
+<ul class="org-ul">
+<li><a href="https://www.jianshu.com/p/d297b0be4157">https://www.jianshu.com/p/d297b0be4157</a></li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+</body>
+</html>

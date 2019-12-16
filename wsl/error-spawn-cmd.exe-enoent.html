@@ -3,10 +3,10 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2019-12-16 Mon 12:12 -->
+<!-- 2019-12-16 Mon 12:13 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Sitemap for project worg-pages</title>
+<title>&lrm;</title>
 <meta name="generator" content="Org mode" />
 <meta name="author" content="yunlong zeng" />
 <link rel="stylesheet" title="Standard" href="/html/style/worg.css" type="text/css" />
@@ -93,66 +93,70 @@ fathom('trackPageview');
 </script>
 </div>
 <div id="content">
-<h1 class="title">Sitemap for project worg-pages</h1>
-<ul class="org-ul">
-<li><a href="theindex.html">Index</a></li>
-<li><a href="index.html">Wiki</a></li>
-<li>blog
-<ul class="org-ul">
-<li><a href="blog/blog-feature.html">blog feature</a></li>
-<li><a href="blog/blog-org.html">blog with org</a></li>
-<li><a href="blog/css-for-org-exported-html.html">css for exported html</a></li>
-<li><a href="blog/worg-css.html">worg css for exported html</a></li>
-</ul></li>
-<li>emacs
-<ul class="org-ul">
-<li><a href="emacs/bad-signature.html">bad-signature</a></li>
-<li><a href="emacs/emacs-install.html">emacs-install</a></li>
-<li><a href="emacs/snippets.html">snippets</a></li>
-<li><a href="emacs/some-emacs-configs.html">some-emacs-configs</a></li>
-</ul></li>
-<li>git
-<ul class="org-ul">
-<li><a href="git/git-ignore.html">git ignore</a></li>
-<li><a href="git/git-submodule.html">git-submodule</a></li>
-</ul></li>
-<li>linux
-<ul class="org-ul">
-<li><a href="linux/segmentation-fault.html">segmentation-fault</a></li>
-<li><a href="linux/tar.html">tar</a></li>
-</ul></li>
-<li>mysql
-<ul class="org-ul">
-<li><a href="mysql/install-with-docker.html">install with docker</a></li>
-</ul></li>
-<li>nginx
-<ul class="org-ul">
-<li><a href="nginx/nginx-allow-apk-download.html">nginx-allow-apk-download</a></li>
-</ul></li>
-<li>nodejs
-<ul class="org-ul">
-<li><a href="nodejs/egg.html">egg</a></li>
-<li><a href="nodejs/object.html">object</a></li>
-</ul></li>
-<li>orgmode
-<ul class="org-ul">
-<li><a href="orgmode/orgmode-worg.html">orgmode-worg</a></li>
-<li><a href="orgmode/org-publish-html-tutorial.html">Publishing Org-mode files to HTML</a></li>
-</ul></li>
-<li>spacemacs
-<ul class="org-ul">
-<li><a href="spacemacs/layout.html">spacemacs layout</a></li>
-</ul></li>
-<li>tools
-<ul class="org-ul">
-<li><a href="tools/hyper.html">hyper</a></li>
-<li><a href="tools/webdav.html">webdav</a></li>
-</ul></li>
-<li>wsl
-<ul class="org-ul">
-<li><a href="wsl/error-spawn-cmd.exe-enoent.html">error-spawn-cmd.exe-enoent</a></li>
-</ul></li>
+<div id="table-of-contents">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#org0d6c966">Error: spawn cmd.exe ENOENT</a></li>
 </ul>
+</div>
+</div>
+<div id="outline-container-org0d6c966" class="outline-2">
+<h2 id="org0d6c966">Error: spawn cmd.exe ENOENT&#xa0;&#xa0;&#xa0;<span class="tag"><span class="wsl">wsl</span></span></h2>
+<div class="outline-text-2" id="text-org0d6c966">
+<p>
+在wsl中,会出现无法 fork child_process的问题.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-shell">$ npm run serve
+Use /* eslint-disable */ to ignore all warnings<span style="color: #00bfff; font-weight: bold;"> in</span> a file.
+
+  App running at:
+  - Local:   http://localhost:7012/
+  - Network: http://192.168.168.165:7012/
+
+  Note that the development build is not optimized.
+  To create a production build, run npm run build.
+
+events.js:170
+      throw er; // Unhandled <span style="color: #daa520;">'error'</span> event
+      ^
+
+Error: spawn cmd.exe ENOENT
+    at Process.ChildProcess._handle.onexit (internal/child_process.js:247:19)
+    at onErrorNT (internal/child_process.js:429:16)
+    at processTicksAndRejections (internal/process/task_queues.js:81:17)
+Emitted <span style="color: #daa520;">'error'</span> event at:
+    at Process.ChildProcess._handle.onexit (internal/child_process.js:253:12)
+    at onErrorNT (internal/child_process.js:429:16)
+    at processTicksAndRejections (internal/process/task_queues.js:81:17)
+npm ERR! code ELIFECYCLE
+npm ERR! errno <span style="color: #a45bad;">1</span>
+npm ERR! fangyuan@<span style="color: #a45bad;">1.0.0</span> serve: <span style="color: #fa8072;">`vue-cli-service serve`</span>
+npm ERR! Exit status <span style="color: #a45bad;">1</span>
+npm ERR!
+npm ERR! Failed at the fangyuan@<span style="color: #a45bad;">1.0.0</span> serve script.
+npm ERR! This is probably not a problem with npm. There is likely additional logging output above.
+
+npm ERR! A complete log of this run can be found<span style="color: #00bfff; font-weight: bold;"> in</span>:
+npm ERR!     /mnt/c/Users/a/.npm/_logs/2019-11-21T10_06_20_613Z-debug.log
+$ export <span style="color: #7590db;">PATH</span>=$<span style="color: #7590db;">PATH</span>:/mnt/c/Windows/System32
+$ npm run serve
+</pre>
+</div>
+
+<p>
+<a href="https://github.com/facebook/create-react-app/issues/7251#issuecomment-505286537">https://github.com/facebook/create-react-app/issues/7251#issuecomment-505286537</a>
+</p>
+
+<div class="org-src-container">
+<pre class="src src-shell">$ export <span style="color: #7590db;">PATH</span>=$<span style="color: #7590db;">PATH</span>:/mnt/c/Windows/System32
+$ npm run serve
+</pre>
+</div>
+</div>
+</div>
 </div>
 </body>
 </html>

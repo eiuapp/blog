@@ -6,7 +6,7 @@
 <!-- 2019-12-16 Mon 12:12 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Sitemap for project worg-pages</title>
+<title>&lrm;</title>
 <meta name="generator" content="Org mode" />
 <meta name="author" content="yunlong zeng" />
 <link rel="stylesheet" title="Standard" href="/html/style/worg.css" type="text/css" />
@@ -93,66 +93,72 @@ fathom('trackPageview');
 </script>
 </div>
 <div id="content">
-<h1 class="title">Sitemap for project worg-pages</h1>
-<ul class="org-ul">
-<li><a href="theindex.html">Index</a></li>
-<li><a href="index.html">Wiki</a></li>
-<li>blog
-<ul class="org-ul">
-<li><a href="blog/blog-feature.html">blog feature</a></li>
-<li><a href="blog/blog-org.html">blog with org</a></li>
-<li><a href="blog/css-for-org-exported-html.html">css for exported html</a></li>
-<li><a href="blog/worg-css.html">worg css for exported html</a></li>
-</ul></li>
-<li>emacs
-<ul class="org-ul">
-<li><a href="emacs/bad-signature.html">bad-signature</a></li>
-<li><a href="emacs/emacs-install.html">emacs-install</a></li>
-<li><a href="emacs/snippets.html">snippets</a></li>
-<li><a href="emacs/some-emacs-configs.html">some-emacs-configs</a></li>
-</ul></li>
-<li>git
-<ul class="org-ul">
-<li><a href="git/git-ignore.html">git ignore</a></li>
-<li><a href="git/git-submodule.html">git-submodule</a></li>
-</ul></li>
-<li>linux
-<ul class="org-ul">
-<li><a href="linux/segmentation-fault.html">segmentation-fault</a></li>
-<li><a href="linux/tar.html">tar</a></li>
-</ul></li>
-<li>mysql
-<ul class="org-ul">
-<li><a href="mysql/install-with-docker.html">install with docker</a></li>
-</ul></li>
-<li>nginx
-<ul class="org-ul">
-<li><a href="nginx/nginx-allow-apk-download.html">nginx-allow-apk-download</a></li>
-</ul></li>
-<li>nodejs
-<ul class="org-ul">
-<li><a href="nodejs/egg.html">egg</a></li>
-<li><a href="nodejs/object.html">object</a></li>
-</ul></li>
-<li>orgmode
-<ul class="org-ul">
-<li><a href="orgmode/orgmode-worg.html">orgmode-worg</a></li>
-<li><a href="orgmode/org-publish-html-tutorial.html">Publishing Org-mode files to HTML</a></li>
-</ul></li>
-<li>spacemacs
-<ul class="org-ul">
-<li><a href="spacemacs/layout.html">spacemacs layout</a></li>
-</ul></li>
-<li>tools
-<ul class="org-ul">
-<li><a href="tools/hyper.html">hyper</a></li>
-<li><a href="tools/webdav.html">webdav</a></li>
-</ul></li>
-<li>wsl
-<ul class="org-ul">
-<li><a href="wsl/error-spawn-cmd.exe-enoent.html">error-spawn-cmd.exe-enoent</a></li>
-</ul></li>
+<div id="table-of-contents">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#org85dd7dc">nginx allow *.apk file download</a>
+<ul>
+<li><a href="#org9e2f313">theory</a></li>
+<li><a href="#orgf6fcfee">重新加载nginx的配置</a></li>
 </ul>
+</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org85dd7dc" class="outline-2">
+<h2 id="org85dd7dc">nginx allow *.apk file download</h2>
+<div class="outline-text-2" id="text-org85dd7dc">
+</div>
+<div id="outline-container-org9e2f313" class="outline-3">
+<h3 id="org9e2f313">theory</h3>
+<div class="outline-text-3" id="text-org9e2f313">
+<p>
+nginx默认不支持这二个后缀的mime类型，我们只要在mime设置文件的地方增加上这二个后缀，nginx便支持正常的下载了。
+</p>
+
+<p>
+首先我们找到mime的配置文件，我的mime文件配置文件为：/usr/local/nginx/conf/mime.types 而另一个同目录下的文件：mime.types.default则是mime类型配置文件的备份，不要怕改错了，要是改错了，直接用备份文件还原就可以。
+</p>
+
+<p>
+`vi /usr/local/nginx/conf/mime.types`, `Shift+g`跳转到文件未尾。
+</p>
+
+<div class="org-src-container">
+<pre class="src src-bash">video/x-ms-asf                                   asx asf;
+video/x-ms-wmv                                   wmv;
+video/x-msvideo                                  avi;
+<span style="color: #2aa1ae; background-color: #292e34;">#</span><span style="color: #2aa1ae; background-color: #292e34;">&#28155;&#21152;&#20197;&#19979;&#20108;&#34892;</span>
+application/vnd.android.package-archive          apk;
+application/iphone                               pxl IP address;
+</pre>
+</div>
+
+<p>
+然后重新加载nginx的配置文件，再次测试，.api和.ipa结尾的文件全支持下载了。
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgf6fcfee" class="outline-3">
+<h3 id="orgf6fcfee">重新加载nginx的配置</h3>
+<div class="outline-text-3" id="text-orgf6fcfee">
+<div class="org-src-container">
+<pre class="src src-bash">[root@localhost nginx]# sbin/nginx -s reload
+</pre>
+</div>
+
+<p>
+注意：我的nginx的安装路径：/usr/local/nginx，而mime文件是在你的安装目录下面的conf目录中。
+</p>
+
+<p>
+<a href="https://blog.qzze.com/1004.html">https://blog.qzze.com/1004.html</a>
+</p>
+</div>
+</div>
+</div>
 </div>
 </body>
 </html>

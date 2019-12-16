@@ -1,0 +1,220 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<!-- 2019-12-16 Mon 12:12 -->
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>&lrm;</title>
+<meta name="generator" content="Org mode" />
+<meta name="author" content="yunlong zeng" />
+<link rel="stylesheet" title="Standard" href="/html/style/worg.css" type="text/css" />
+<link rel="alternate stylesheet" title="Zenburn" href="/html/style/worg-zenburn.css" type="text/css" />
+<link rel="alternate stylesheet" title="Classic" href="/html/style/worg-classic.css" type="text/css" />
+<link rel="SHORTCUT ICON" href="/html/style/org-mode-unicorn.ico" type="image/x-icon" />
+<link rel="icon" href="/html/style/org-mode-unicorn.ico" type="image/ico" />
+<script type="text/javascript">
+/*
+@licstart  The following is the entire license notice for the
+JavaScript code in this tag.
+
+Copyright (C) 2012-2019 Free Software Foundation, Inc.
+
+The JavaScript code in this tag is free software: you can
+redistribute it and/or modify it under the terms of the GNU
+General Public License (GNU GPL) as published by the Free Software
+Foundation, either version 3 of the License, or (at your option)
+any later version.  The code is distributed WITHOUT ANY WARRANTY;
+without even the implied warranty of MERCHANTABILITY or FITNESS
+FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
+
+As additional permission under GNU GPL version 3 section 7, you
+may distribute non-source (e.g., minimized or compacted) forms of
+that code without the copy of the GNU GPL normally required by
+section 4, provided you include this license notice and a URL
+through which recipients can access the Corresponding Source.
+
+
+@licend  The above is the entire license notice
+for the JavaScript code in this tag.
+*/
+<!--/*--><![CDATA[/*><!--*/
+ function CodeHighlightOn(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(null != target) {
+     elem.cacheClassElem = elem.className;
+     elem.cacheClassTarget = target.className;
+     target.className = "code-highlighted";
+     elem.className   = "code-highlighted";
+   }
+ }
+ function CodeHighlightOff(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(elem.cacheClassElem)
+     elem.className = elem.cacheClassElem;
+   if(elem.cacheClassTarget)
+     target.className = elem.cacheClassTarget;
+ }
+/*]]>*///-->
+</script>
+</head>
+<body>
+<div id="preamble" class="status">
+<script type="text/javascript">
+  document.addEventListener('DOMContentLoaded',function() {
+      document.getElementById("table-of-contents").onclick = function() {
+          var elem = document.getElementById("text-table-of-contents");
+          elem.style.display = elem.style.display == "block" ? "none" : "block";
+      }
+  });
+
+  var url = document.location.href;
+  var orgsource = url.substring(0, url.lastIndexOf("."))+".org.html";
+  function show_org_source(){
+      document.location.href = orgsource;
+  }
+</script>
+
+<script>
+(function(f, a, t, h, o, m){
+	a[h]=a[h]||function(){
+		(a[h].q=a[h].q||[]).push(arguments)
+	};
+	o=f.createElement('script'),
+	m=f.getElementsByTagName('script')[0];
+	o.async=1; o.src=t; o.id='fathom-script';
+	m.parentNode.insertBefore(o,m)
+})(document, window, '//stats.orgmode.org/tracker.js', 'fathom');
+fathom('set', 'siteId', 'NWSQJ');
+fathom('trackPageview');
+</script>
+</div>
+<div id="content">
+<div id="table-of-contents">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#org7ae49af">git submodule</a>
+<ul>
+<li><a href="#orgda8e341">在已有 submodule 中，切换 branch</a></li>
+<li><a href="#orgcca2bc7">submodule branch 不是 master 分支</a></li>
+<li><a href="#org1628a4d">(modified content) vs (new commits)</a></li>
+<li><a href="#org8c1eb32">修改 submodule 的 名称</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org7ae49af" class="outline-2">
+<h2 id="org7ae49af">git submodule</h2>
+<div class="outline-text-2" id="text-org7ae49af">
+</div>
+<div id="outline-container-orgda8e341" class="outline-3">
+<h3 id="orgda8e341">在已有 submodule 中，切换 branch</h3>
+<div class="outline-text-3" id="text-orgda8e341">
+<p>
+`git config -f .gitmodules submodule.&lt;name&gt;.branch &lt;branch-name&gt;`
+</p>
+
+<p>
+<a href="https://git-scm.com/book/zh/v2/Git-%E5%B7%A5%E5%85%B7-%E5%AD%90%E6%A8%A1%E5%9D%97">https://git-scm.com/book/zh/v2/Git-%E5%B7%A5%E5%85%B7-%E5%AD%90%E6%A8%A1%E5%9D%97</a>
+</p>
+
+<p>
+此命令默认会假定你想要更新并检出子模块仓库的 master 分支。 不过你也可以设置为想要的其他分支。 例如，你想要 DbConnector 子模块跟踪仓库的 “stable” 分支，那么既可以在 .gitmodules 文件中设置（这样其他人也可以跟踪它），也可以只在本地的 .git/config 文件中设置。 让我们在 .gitmodules 文件中设置它：
+</p>
+
+<div class="org-src-container">
+<pre class="src src-shell">$ git config -f .gitmodules submodule.DbConnector.branch stable
+
+$ git submodule update --remote
+remote: Counting objects: <span style="color: #a45bad;">4,</span> done.
+remote: Compressing objects: <span style="color: #a45bad;">100%</span> (<span style="color: #a45bad;">2/2</span>), done.
+remote: Total <span style="color: #a45bad;">4</span> (delta <span style="color: #a45bad;">2</span>), reused <span style="color: #a45bad;">4</span> (delta <span style="color: #a45bad;">2</span>)
+Unpacking objects: <span style="color: #a45bad;">100%</span> (<span style="color: #a45bad;">4/4</span>), done.
+From https://github.com/chaconinc/DbConnector
+   <span style="color: #a45bad;">27cf5d3..c87d55d</span>  stable -&gt; origin/stable
+Submodule path <span style="color: #daa520;">'DbConnector'</span>: checked out <span style="color: #daa520;">'c87d55d4c6d4b05ee34fbc8cb6f7bf4585ae6687'</span>
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-orgcca2bc7" class="outline-3">
+<h3 id="orgcca2bc7">submodule branch 不是 master 分支</h3>
+<div class="outline-text-3" id="text-orgcca2bc7">
+<p>
+这时，当你 `cd path/to/submodule` 后，`git status`
+</p>
+
+<div class="org-src-container">
+<pre class="src src-shell">$ git branch -a
+ * (HEAD detached at c9e46c3)
+  master
+  remotes/origin/HEAD -&gt; origin/master
+  remotes/origin/add-missing-modes
+  remotes/origin/cleanup-org-mode-snippets
+  remotes/origin/cleanup_html_tags
+  remotes/origin/eiuapp
+  remotes/origin/master
+  remotes/origin/notetiene-master
+  remotes/origin/proper-package
+  remotes/origin/reporting
+$ git status
+HEAD detached at c9e46c3
+nothing to commit, working directory clean
+</pre>
+</div>
+
+<p>
+发现，不会显示 branch 名称 "eiuapp", 而是会显示 eiuapp branch 的 commit hash id.
+</p>
+</div>
+</div>
+
+<div id="outline-container-org1628a4d" class="outline-3">
+<h3 id="org1628a4d">(modified content) vs (new commits)</h3>
+<div class="outline-text-3" id="text-org1628a4d">
+<div class="org-src-container">
+<pre class="src src-shell">$ git submodule update --remote
+$ git status
+Changes not staged for commit:
+  (use <span style="color: #daa520;">"git add &lt;file&gt;..."</span> to update what will be committed)
+  (use <span style="color: #daa520;">"git checkout -- &lt;file&gt;..."</span> to discard changes<span style="color: #00bfff; font-weight: bold;"> in</span> working directory)
+  (commit or discard the untracked or modified content<span style="color: #00bfff; font-weight: bold;"> in</span> submodules)
+
+        modified:   custom.el
+        modified:   layers/tomtsang-org/packages.el
+        modified:   layers/zilongshanren-misc/packages.el
+        modified:   site-lisp/extensions/xah-fly-keys (modified content)
+        modified:   site-lisp/extensions/xah-html-mode.el (new commits)
+        modified:   site-lisp/extensions/xah_emacs_init (new commits)
+        modified:   site-lisp/extensions/yasnippet-snippets (new commits)
+</pre>
+</div>
+
+<p>
+看后面的提示，知道，如果是 `(modified content)`, 就是本地修改了文件（不建议这么
+做，应当把修改放在单独的repo中进行）, 这里就要注意, 不要提交了。
+</p>
+</div>
+</div>
+
+<div id="outline-container-org8c1eb32" class="outline-3">
+<h3 id="org8c1eb32">修改 submodule 的 名称</h3>
+<div class="outline-text-3" id="text-org8c1eb32">
+<p>
+<a href="https://git-scm.com/docs/git-submodule">https://git-scm.com/docs/git-submodule</a>
+</p>
+
+<p>
+没有找到解决方案
+</p>
+</div>
+</div>
+</div>
+</div>
+</body>
+</html>

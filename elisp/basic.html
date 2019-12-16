@@ -1,0 +1,180 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<!-- 2019-12-16 Mon 14:44 -->
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>elisp basic usage</title>
+<meta name="generator" content="Org mode" />
+<meta name="author" content="yunlong zeng" />
+<link rel="stylesheet" title="Standard" href="/html/style/worg.css" type="text/css" />
+<link rel="alternate stylesheet" title="Zenburn" href="/html/style/worg-zenburn.css" type="text/css" />
+<link rel="alternate stylesheet" title="Classic" href="/html/style/worg-classic.css" type="text/css" />
+<link rel="SHORTCUT ICON" href="/html/style/org-mode-unicorn.ico" type="image/x-icon" />
+<link rel="icon" href="/html/style/org-mode-unicorn.ico" type="image/ico" />
+<script type="text/javascript">
+/*
+@licstart  The following is the entire license notice for the
+JavaScript code in this tag.
+
+Copyright (C) 2012-2019 Free Software Foundation, Inc.
+
+The JavaScript code in this tag is free software: you can
+redistribute it and/or modify it under the terms of the GNU
+General Public License (GNU GPL) as published by the Free Software
+Foundation, either version 3 of the License, or (at your option)
+any later version.  The code is distributed WITHOUT ANY WARRANTY;
+without even the implied warranty of MERCHANTABILITY or FITNESS
+FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
+
+As additional permission under GNU GPL version 3 section 7, you
+may distribute non-source (e.g., minimized or compacted) forms of
+that code without the copy of the GNU GPL normally required by
+section 4, provided you include this license notice and a URL
+through which recipients can access the Corresponding Source.
+
+
+@licend  The above is the entire license notice
+for the JavaScript code in this tag.
+*/
+<!--/*--><![CDATA[/*><!--*/
+ function CodeHighlightOn(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(null != target) {
+     elem.cacheClassElem = elem.className;
+     elem.cacheClassTarget = target.className;
+     target.className = "code-highlighted";
+     elem.className   = "code-highlighted";
+   }
+ }
+ function CodeHighlightOff(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(elem.cacheClassElem)
+     elem.className = elem.cacheClassElem;
+   if(elem.cacheClassTarget)
+     target.className = elem.cacheClassTarget;
+ }
+/*]]>*///-->
+</script>
+</head>
+<body>
+<div id="preamble" class="status">
+<script type="text/javascript">
+  document.addEventListener('DOMContentLoaded',function() {
+      document.getElementById("table-of-contents").onclick = function() {
+          var elem = document.getElementById("text-table-of-contents");
+          elem.style.display = elem.style.display == "block" ? "none" : "block";
+      }
+  });
+
+  var url = document.location.href;
+  var orgsource = url.substring(0, url.lastIndexOf("."))+".org.html";
+  function show_org_source(){
+      document.location.href = orgsource;
+  }
+</script>
+
+<script>
+(function(f, a, t, h, o, m){
+	a[h]=a[h]||function(){
+		(a[h].q=a[h].q||[]).push(arguments)
+	};
+	o=f.createElement('script'),
+	m=f.getElementsByTagName('script')[0];
+	o.async=1; o.src=t; o.id='fathom-script';
+	m.parentNode.insertBefore(o,m)
+})(document, window, '//stats.orgmode.org/tracker.js', 'fathom');
+fathom('set', 'siteId', 'NWSQJ');
+fathom('trackPageview');
+</script>
+</div>
+<div id="content">
+<h1 class="title">elisp basic usage</h1>
+<div id="table-of-contents">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#org112bf23">Converting Between Symbols and Strings</a></li>
+<li><a href="#orgad82dc3">Emacs Lisp - 声明具有变量/变量名称的函数</a></li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org112bf23" class="outline-2">
+<h2 id="org112bf23">Converting Between Symbols and Strings</h2>
+<div class="outline-text-2" id="text-org112bf23">
+<p>
+Sometimes you might need to convert a symbol to string (or vice versa) in Emacs Lisp. You start looking for functions like symbol-to-string and string-to-symbol but, alas, they do not seem exist. Do not despair! Such functions do actually exist, although their names are likely to surprise you:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-emacs-lisp">(symbol-name 'some-symbol)
+<span style="color: #2aa1ae; background-color: #292e34;">; </span><span style="color: #2aa1ae; background-color: #292e34;">=&gt; "some-symbol"</span>
+(intern-soft <span style="color: #daa520;">"some-symbol"</span>)
+<span style="color: #2aa1ae; background-color: #292e34;">; </span><span style="color: #2aa1ae; background-color: #292e34;">=&gt; some-symbol</span>
+</pre>
+</div>
+
+<ul class="org-ul">
+<li><a href="https://emacsredux.com/blog/2014/12/05/converting-between-symbols-and-strings/">https://emacsredux.com/blog/2014/12/05/converting-between-symbols-and-strings/</a></li>
+<li><a href="https://stackoverflow.com/questions/4651274/convert-symbol-to-a-string-in-elisp">https://stackoverflow.com/questions/4651274/convert-symbol-to-a-string-in-elisp</a></li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-orgad82dc3" class="outline-2">
+<h2 id="orgad82dc3">Emacs Lisp - 声明具有变量/变量名称的函数</h2>
+<div class="outline-text-2" id="text-orgad82dc3">
+<p>
+转载自 <a href="http://www.uwenku.com/question/p-qqsirkgg-ec.html">http://www.uwenku.com/question/p-qqsirkgg-ec.html</a>
+</p>
+
+<p>
+我正在开发一个Emacs Lisp包，我想添加的一个特定功能是能够在运行中定义函数 - 它们将遵循相同的命名约定，但这将帮助我不必手动声明每一个。Emacs Lisp - 声明具有变量/变量名称的函数
+</p>
+
+<p>
+举个例子，我有一个名为Exec中的基本功能，这需要一个参数是可执行推出名称：
+</p>
+
+<div class="org-src-container">
+<pre class="src src-emacs-lisp">(def exec (cmd)
+    (async-shell-command cmd <span style="color: #daa520;">"buffer"</span>))
+</pre>
+</div>
+<p>
+与此同时，在这种特殊情况下，我知道了我将要使用的可执行文件列表 - 或者更准确地说，我知道如何获取它们的列表，因为它可能随时间而改变。所以我想这样做，因为可执行以下列表的内容：
+</p>
+
+<div class="org-src-container">
+<pre class="src src-emacs-lisp">(<span style="color: #daa520;">"a"</span> <span style="color: #daa520;">"b"</span> <span style="color: #daa520;">"c"</span>)
+</pre>
+</div>
+
+<p>
+是遍历他们和每一个创建函数的名称exec- [执行] - EXEC-A，exec- b，exec-c。
+</p>
+
+<p>
+不幸的是，defun不会评估NAME参数，所以我不能动态地创建函数名。
+</p>
+
+<p>
+PS。 exec命令本身已经足够好了 - 它使用completing-read以及提供的可执行文件列表，
+但我认为上面的内容会很好。
+</p>
+
+<div class="org-src-container">
+<pre class="src src-emacs-lisp">(<span style="color: #00bfff; font-weight: bold;">dolist</span> (name name-list)
+    (<span style="color: #00bfff; font-weight: bold;">defalias</span> (intern (concat <span style="color: #daa520;">"exec-"</span> name))
+    `(<span style="color: #00bfff; font-weight: bold;">lambda</span>() ,(format <span style="color: #daa520;">"Run %s via `</span><span style="color: #a45bad;">exec</span><span style="color: #daa520;">'."</span> name) (<span style="color: #00bfff; font-weight: bold;">interactive</span>) (exec ,name))))
+</pre>
+</div>
+</div>
+</div>
+</div>
+</body>
+</html>

@@ -6,7 +6,7 @@
 <!-- 2019-12-16 Mon 11:39 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Index</title>
+<title>git ignore</title>
 <meta name="generator" content="Org mode" />
 <meta name="author" content="yunlong zeng" />
 <link rel="stylesheet" title="Standard" href="/html/style/worg.css" type="text/css" />
@@ -93,72 +93,74 @@ fathom('trackPageview');
 </script>
 </div>
 <div id="content">
-<h1 class="title">Index</h1>
+<h1 class="title">git ignore</h1>
 <div id="table-of-contents">
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#orgbc44784">E</a></li>
-<li><a href="#orgc3f9274">H</a></li>
-<li><a href="#orge8863f3">M</a></li>
-<li><a href="#org47773e3">W</a></li>
+<li><a href="#org0232903">git ignore keep specify files</a>
+<ul>
+<li><a href="#org51ba400">ref</a></li>
+</ul>
+</li>
 </ul>
 </div>
 </div>
+<div id="outline-container-org0232903" class="outline-2">
+<h2 id="org0232903">git ignore keep specify files</h2>
+<div class="outline-text-2" id="text-org0232903">
+<p>
+gitignore 例子 只包含特定文件
+</p>
+<div class="org-src-container">
+<pre class="src src-example"># 整体编写逻辑
+# 1. 只让指定的文件或文件夹通过(只放行文件夹和html,jpg,png后缀文件)
+# 2. 过滤掉不要的文件(过滤文件夹和)
 
-<div id="outline-container-orgbc44784" class="outline-2">
-<h2 id="orgbc44784">E</h2>
-<div class="outline-text-2" id="text-orgbc44784">
+!.gitignore
+
+## 1. 写.gitignore只包含指定的文件扩展名
+# 首先忽略所有的文件
+*
+# 但是不忽略目录
+!*/
+# 忽略一些指定的目录名
+img/
+# 不忽略下面指定的文件类型
+!*.html
+!*.jpg
+!*.png
+
+## 2. 写.gitignore过滤的文件
+!.gitignore
+
+# directory
+*.bak/
+images/
+code/bcd/
+
+# html
+/git.html
+/a/b/c.html
+
+# png
+/abc/a.png
+a.png
+
+# else file
+</pre>
+</div>
+</div>
+<div id="outline-container-org51ba400" class="outline-3">
+<h3 id="org51ba400">ref</h3>
+<div class="outline-text-3" id="text-org51ba400">
 <ul class="org-ul">
-<li><a href="nodejs/egg.html">egg</a>
-<ul class="org-ul">
-<li><a href="nodejs/egg.html#orga3e21ae">start up</a></li>
-</ul></li>
+<li><a href="https://git-scm.com/docs/gitignore">https://git-scm.com/docs/gitignore</a></li>
+<li><a href="https://blog.csdn.net/da_kao_la/article/details/88554817">https://blog.csdn.net/da_kao_la/article/details/88554817</a></li>
+<li><a href="https://blog.csdn.net/u011467621/article/details/79108980">https://blog.csdn.net/u011467621/article/details/79108980</a></li>
+<li><a href="https://stackoverflow.com/questions/19023550/how-do-i-add-files-without-dots-in-them-all-extension-less-files-to-the-gitign">https://stackoverflow.com/questions/19023550/how-do-i-add-files-without-dots-in-them-all-extension-less-files-to-the-gitign</a></li>
 </ul>
 </div>
-</div>
-<div id="outline-container-orgc3f9274" class="outline-2">
-<h2 id="orgc3f9274">H</h2>
-<div class="outline-text-2" id="text-orgc3f9274">
-<ul class="org-ul">
-<li><a href="tools/hyper.html">hyper</a>
-<ul class="org-ul">
-<li><a href="tools/hyper.html#org6801670">windows</a></li>
-</ul></li>
-</ul>
-</div>
-</div>
-<div id="outline-container-orge8863f3" class="outline-2">
-<h2 id="orge8863f3">M</h2>
-<div class="outline-text-2" id="text-orge8863f3">
-<ul class="org-ul">
-<li>Mysql
-<ul class="org-ul">
-<li><a href="mysql/install-with-docker.html#orgbb9779c">8.0.18</a></li>
-</ul></li>
-</ul>
-</div>
-</div>
-<div id="outline-container-org47773e3" class="outline-2">
-<h2 id="org47773e3">W</h2>
-<div class="outline-text-2" id="text-org47773e3">
-<ul class="org-ul">
-<li><a href="tools/webdav.html">webdav</a>
-<ul class="org-ul">
-<li><a href="tools/webdav.html#orgaad293a">client</a></li>
-<li><a href="tools/webdav.html#orga4b32da">server</a>
-<ul class="org-ul">
-<li><a href="tools/webdav.html#orge1b8027">docker</a></li>
-</ul></li>
-</ul></li>
-<li>Worg
-<ul class="org-ul">
-<li><a href="blog/css-for-org-exported-html.html#orgf6090df">css</a></li>
-<li><a href="blog/worg-css.html">css</a></li>
-<li><a href="blog.bak/css-for-org-exported-html.html#org70efb99">css</a></li>
-<li><a href="blog.bak/worg-css.html">css</a></li>
-</ul></li>
-</ul>
 </div>
 </div>
 </div>

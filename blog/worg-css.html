@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2019-12-13 Fri 15:02 -->
+<!-- 2019-12-16 Mon 11:39 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>worg css for exported html</title>
@@ -98,111 +98,123 @@ fathom('trackPageview');
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#org83de4c1">worg css</a>
+<li><a href="#org7c44e09">worg css</a>
 <ul>
-<li><a href="#org1d4ffed">question</a></li>
+<li><a href="#orgba4ac9d">question</a></li>
 </ul>
 </li>
-<li><a href="#org7b72473">worg-setup.org</a>
+<li><a href="#org1703fdc">worg-setup.org</a>
 <ul>
-<li><a href="#org7167996">env</a></li>
-<li><a href="#org7f1940c">step</a>
+<li><a href="#orgcbace29">env</a></li>
+<li><a href="#org3bd5415">step</a>
 <ul>
-<li><a href="#org129e0b7">download files</a></li>
-<li><a href="#org370b752">fix the emacs.el file, then start up.</a></li>
-<li><a href="#orgb14ec54">org-publish-project</a></li>
-<li><a href="#org48918d2">download *.css</a></li>
-</ul>
-</li>
-</ul>
-</li>
-<li><a href="#org2455837">be part of your emacs configuration</a>
-<ul>
-<li><a href="#orgaf5c77d">fix the `worg/code/elisp/emacs.el`</a>
-<ul>
-<li><a href="#org97bceb5">the diff is</a></li>
-<li><a href="#org00c5b95">my result</a></li>
-</ul>
-</li>
-<li><a href="#orgc686687">(for spacemacs user)let the result into layer</a></li>
-<li><a href="#orge3c5ee9">change the org source directory</a>
-<ul>
-<li><a href="#org04eee70">env</a></li>
-<li><a href="#orgf0212ca">fix `emacs.el`:</a></li>
-<li><a href="#org30ee590">(not necessary) move the blog/org-sources/ to ~/install/git/</a></li>
-<li><a href="#orgcae3d3f">move worg-base to anywhere</a></li>
-<li><a href="#orga362b86">(not necessary) why copy `worg/org-faq.org`</a></li>
-<li><a href="#org65b1ae9">why copy `worg/macro.setupfile`</a></li>
-<li><a href="#org08e5714">following error, illustrates the configuration be wrong</a></li>
+<li><a href="#orgdc6a07c">download files</a></li>
+<li><a href="#orga2fc62f">fix the emacs.el file, then start up.</a></li>
+<li><a href="#orgc0bdf0b">org-publish-project</a></li>
+<li><a href="#orgf84829e">download *.css</a></li>
 </ul>
 </li>
 </ul>
 </li>
-<li><a href="#org6af7750">use the http css</a></li>
-<li><a href="#org0e13658">use the worg-css, copy files</a>
+<li><a href="#org2aac451">be part of your emacs configuration</a>
 <ul>
-<li><a href="#org4ce3ec2">copy files</a></li>
-<li><a href="#org97d2b90">not necessary copy</a></li>
-<li><a href="#org87ed6eb">.gitignore</a></li>
-<li><a href="#org0c4e5b0">make link for local `org-publish-project`</a></li>
+<li><a href="#org4905e97">fix the `worg/code/elisp/emacs.el`</a>
+<ul>
+<li><a href="#org1442b50">the diff is</a></li>
+<li><a href="#org59a3b2f">my result</a></li>
 </ul>
 </li>
-<li><a href="#org12965a7">push to github</a>
+<li><a href="#orga21ca47">(for spacemacs user)let the result into layer</a></li>
+<li><a href="#org6b90d4d">change the org source directory</a>
 <ul>
-<li><a href="#orgf7997de"><span class="todo TODO">TODO</span> how to use github action</a></li>
-<li><a href="#orgb9a3560">ignore *.org files</a></li>
+<li><a href="#org7b23ceb">env</a></li>
+<li><a href="#org946e74e">fix `emacs.el`:</a></li>
+<li><a href="#org004b27b">(not necessary) move the blog/org-sources/ to ~/install/git/</a></li>
+<li><a href="#orga2d8a6e">move worg-base to anywhere</a></li>
+<li><a href="#orga338f8d">(not necessary) why copy `worg/org-faq.org`</a></li>
+<li><a href="#org7805d7a">why copy `worg/macro.setupfile`</a></li>
+<li><a href="#org2a4d4bc">following error, illustrates the configuration be wrong</a></li>
 </ul>
 </li>
-<li><a href="#org1f4b5c3">html-postamble</a>
-<ul>
-<li><a href="#org808fe73">set html-postamble nil</a></li>
 </ul>
 </li>
-<li><a href="#org4e2a726">html-preamble</a>
+<li><a href="#orga42fb5d">use the http css</a></li>
+<li><a href="#org5d78e27">(not last version) use the worg-css, copy files</a>
 <ul>
-<li><a href="#org6550c80">the `worg/preamble.html`</a></li>
-<li><a href="#org638c7f9">set html-postamble nil</a></li>
-<li><a href="#org9f537ba">set html-postamble</a></li>
+<li><a href="#orgfe5d998">copy files</a></li>
+<li><a href="#org2622396">not necessary copy</a></li>
+<li><a href="#orga3b1967">.gitignore</a></li>
+<li><a href="#orgdb7b311">make link for local `org-publish-project`</a></li>
 </ul>
 </li>
-<li><a href="#org2c1b179">icon</a></li>
-<li><a href="#org18c87a6">background image, at lower right corner</a>
+<li><a href="#orgbc5477f">set up worg css again</a>
 <ul>
-<li><a href="#orgb48981e">find the background image</a></li>
-<li><a href="#org718d374">use https://orgmode.org/worg/style/worg.css</a></li>
-<li><a href="#org6298349">use local-fix worg.css</a></li>
+<li><a href="#org2136334">migrate org-sources</a>
+<ul>
+<li><a href="#orgb172288">env</a></li>
+<li><a href="#org787ce3c">(old) download files</a></li>
+<li><a href="#orga788942">now download files</a></li>
 </ul>
 </li>
-<li><a href="#orgc261dda">use local-fix worg.css</a>
-<ul>
-<li><a href="#org2ad23fd">env</a></li>
-<li><a href="#org03ca8fb">files</a></li>
-<li><a href="#orgbdaedf4">fix the `style/worg.css`</a></li>
-<li><a href="#org6c7f1c1">emacs.el</a></li>
 </ul>
 </li>
-<li><a href="#orgdaedf84">worg-org-faq not include org-faq.org</a></li>
-<li><a href="#org605da7e">how to write theindex</a>
+<li><a href="#org344153b">push to github</a>
 <ul>
-<li><a href="#orgdca8dc3">how to write in worg</a></li>
+<li><a href="#org3b5c373"><span class="todo TODO">TODO</span> how to use github action</a></li>
+<li><a href="#orgf04c7ff">ignore *.org files</a></li>
 </ul>
 </li>
-<li><a href="#orgadc8a41"><span class="todo TODO">TODO</span> add some feature</a>
+<li><a href="#org4123ade">html-postamble</a>
 <ul>
-<li><a href="#orge5fca12">comment</a></li>
+<li><a href="#org48654d9">set html-postamble nil</a></li>
 </ul>
 </li>
-<li><a href="#org4fcf7d3"><span class="todo TODO">TODO</span> code frame display code type</a></li>
-<li><a href="#org2633982"><span class="todo TODO">TODO</span> quick change org source directory</a></li>
+<li><a href="#orga5682ce">html-preamble</a>
+<ul>
+<li><a href="#org35404ae">the `worg/preamble.html`</a></li>
+<li><a href="#org7ef3481">set html-postamble nil</a></li>
+<li><a href="#orgf819189">set html-postamble</a></li>
+</ul>
+</li>
+<li><a href="#orgc911c25">icon</a></li>
+<li><a href="#orgc815f42">background image, at lower right corner</a>
+<ul>
+<li><a href="#org0468038">find the background image</a></li>
+<li><a href="#org5b07a91">use https://orgmode.org/worg/style/worg.css</a></li>
+<li><a href="#org42d643b">use local-fix worg.css</a></li>
+</ul>
+</li>
+<li><a href="#org7ac9d84">use local-fix worg.css</a>
+<ul>
+<li><a href="#org58999db">env</a></li>
+<li><a href="#org81fadc7">files</a></li>
+<li><a href="#orge3110f9">fix the `style/worg.css`</a></li>
+<li><a href="#org07ae719">emacs.el</a></li>
+</ul>
+</li>
+<li><a href="#org61754cd">worg-org-faq not include org-faq.org</a></li>
+<li><a href="#org8b69a28">how to write theindex</a>
+<ul>
+<li><a href="#org40dae08">how to write in worg</a></li>
+</ul>
+</li>
+<li><a href="#org7e151e1"><span class="todo TODO">TODO</span> add some feature</a>
+<ul>
+<li><a href="#orgdc484f9">comment</a></li>
+</ul>
+</li>
+<li><a href="#org0d0b6cf"><span class="todo TODO">TODO</span> code frame display code type</a></li>
+<li><a href="#orgc44cb70"><span class="todo TODO">TODO</span> quick change org source directory</a></li>
+<li><a href="#orgca76c48">git submodule</a></li>
 </ul>
 </div>
 </div>
 <p>
 <a href="../index.html">{Back to site's index}</a>
 </p>
-<div id="outline-container-org83de4c1" class="outline-2">
-<h2 id="org83de4c1">worg css</h2>
-<div class="outline-text-2" id="text-org83de4c1">
+<div id="outline-container-org7c44e09" class="outline-2">
+<h2 id="org7c44e09">worg css</h2>
+<div class="outline-text-2" id="text-org7c44e09">
 <p>
 examples:
 </p>
@@ -213,9 +225,9 @@ examples:
 </ul>
 </div>
 
-<div id="outline-container-org1d4ffed" class="outline-3">
-<h3 id="org1d4ffed">question</h3>
-<div class="outline-text-3" id="text-org1d4ffed">
+<div id="outline-container-orgba4ac9d" class="outline-3">
+<h3 id="orgba4ac9d">question</h3>
+<div class="outline-text-3" id="text-orgba4ac9d">
 <p>
 i want the <a href="https://orgmode.org/worg/org-tutorials/">https://orgmode.org/worg/org-tutorials/</a> css, but i do not know
 where/how to use it.
@@ -235,9 +247,9 @@ but i do not know how to set up. who cat help? see the following part.
 </div>
 </div>
 
-<div id="outline-container-org7b72473" class="outline-2">
-<h2 id="org7b72473">worg-setup.org</h2>
-<div class="outline-text-2" id="text-org7b72473">
+<div id="outline-container-org1703fdc" class="outline-2">
+<h2 id="org1703fdc">worg-setup.org</h2>
+<div class="outline-text-2" id="text-org1703fdc">
 <p>
 Next, I would record my configuration process.
 </p>
@@ -247,9 +259,9 @@ see the `/path/to/worg/worg-setup.org`
 </p>
 </div>
 
-<div id="outline-container-org7167996" class="outline-3">
-<h3 id="org7167996">env</h3>
-<div class="outline-text-3" id="text-org7167996">
+<div id="outline-container-orgcbace29" class="outline-3">
+<h3 id="orgcbace29">env</h3>
+<div class="outline-text-3" id="text-orgcbace29">
 <ul class="org-ul">
 <li>os: wsl(host:windows10-home)</li>
 <li>home dir: `/mnt/c/Users/a`</li>
@@ -260,13 +272,13 @@ see the `/path/to/worg/worg-setup.org`
 </div>
 </div>
 
-<div id="outline-container-org7f1940c" class="outline-3">
-<h3 id="org7f1940c">step</h3>
-<div class="outline-text-3" id="text-org7f1940c">
+<div id="outline-container-org3bd5415" class="outline-3">
+<h3 id="org3bd5415">step</h3>
+<div class="outline-text-3" id="text-org3bd5415">
 </div>
-<div id="outline-container-org129e0b7" class="outline-4">
-<h4 id="org129e0b7">download files</h4>
-<div class="outline-text-4" id="text-org129e0b7">
+<div id="outline-container-orgdc6a07c" class="outline-4">
+<h4 id="orgdc6a07c">download files</h4>
+<div class="outline-text-4" id="text-orgdc6a07c">
 <div class="org-src-container">
 <pre class="src src-shell">mkdir ~/install/git/ -p
 git clone https://github.com/hniksic/emacs-htmlize --depth <span style="color: #a45bad;">1</span> ~/install/git/emacs-htmlize/
@@ -274,6 +286,7 @@ git clone https://code.orgmode.org/bzg/org-mode --depth <span style="color: #a45
 git clone https://code.orgmode.org/bzg/worg.git --depth <span style="color: #a45bad;">1</span> ~/install/git/worg/
 mkdir ~/orgmode.org/org-quotes.js -p
 mkdir ~/orgweb_html -p
+mkdir ~/orgweb -p
 mkdir ~/worg_html/org-contrib/bibtex/ -p
 mkdir ~/worg_html/code -p
 mkdir ~/worg_html/sources -p
@@ -291,14 +304,14 @@ cp ~/install/git/worg/preamble.html ~/orgweb/preamble.html <span style="color: #
 </div>
 </div>
 
-<div id="outline-container-org370b752" class="outline-4">
-<h4 id="org370b752">fix the emacs.el file, then start up.</h4>
-<div class="outline-text-4" id="text-org370b752">
+<div id="outline-container-orga2fc62f" class="outline-4">
+<h4 id="orga2fc62f">fix the emacs.el file, then start up.</h4>
+<div class="outline-text-4" id="text-orga2fc62f">
 <div class="org-src-container">
-<pre class="src src-shell">  cp ~/install/git/worg/code/elisp/emacs.el ~/bak/emacs.el
-<span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">1. substitude `/home/git` to `~`</span>
+<pre class="src src-shell">cp ~/install/git/worg/code/elisp/emacs.el ~/bak/emacs.el
+<span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">1. code comment the first 6 lines</span>
 <span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">2. substitude `/home/git` to `~`</span>
-  emacs -q --load ~/bak/emacs.el
+emacs -q --load ~/bak/emacs.el
 </pre>
 </div>
 
@@ -308,18 +321,18 @@ so, if start up ok, then there is no problem.
 </div>
 </div>
 
-<div id="outline-container-orgb14ec54" class="outline-4">
-<h4 id="orgb14ec54">org-publish-project</h4>
-<div class="outline-text-4" id="text-orgb14ec54">
+<div id="outline-container-orgc0bdf0b" class="outline-4">
+<h4 id="orgc0bdf0b">org-publish-project</h4>
+<div class="outline-text-4" id="text-orgc0bdf0b">
 <p>
 `M-x org-publish-project`, then, will generate html files to `~/worg_html/`.
 </p>
 </div>
 </div>
 
-<div id="outline-container-org48918d2" class="outline-4">
-<h4 id="org48918d2">download *.css</h4>
-<div class="outline-text-4" id="text-org48918d2">
+<div id="outline-container-orgf84829e" class="outline-4">
+<h4 id="orgf84829e">download *.css</h4>
+<div class="outline-text-4" id="text-orgf84829e">
 <p>
 now, we have some html files.
 open the `~/worg_html/index.html` or
@@ -393,22 +406,22 @@ now, reflesh the html, bingo, the css is effective. woo!
 </div>
 </div>
 
-<div id="outline-container-org2455837" class="outline-2">
-<h2 id="org2455837">be part of your emacs configuration</h2>
-<div class="outline-text-2" id="text-org2455837">
+<div id="outline-container-org2aac451" class="outline-2">
+<h2 id="org2aac451">be part of your emacs configuration</h2>
+<div class="outline-text-2" id="text-org2aac451">
 <p>
 `worg/worg-setup.org` mention the setup configuration, let the
 `worg/code/elisp/emacs.el` be part of your emacs configuration.
 </p>
 </div>
 
-<div id="outline-container-orgaf5c77d" class="outline-3">
-<h3 id="orgaf5c77d">fix the `worg/code/elisp/emacs.el`</h3>
-<div class="outline-text-3" id="text-orgaf5c77d">
+<div id="outline-container-org4905e97" class="outline-3">
+<h3 id="org4905e97">fix the `worg/code/elisp/emacs.el`</h3>
+<div class="outline-text-3" id="text-org4905e97">
 </div>
-<div id="outline-container-org97bceb5" class="outline-4">
-<h4 id="org97bceb5">the diff is</h4>
-<div class="outline-text-4" id="text-org97bceb5">
+<div id="outline-container-org1442b50" class="outline-4">
+<h4 id="org1442b50">the diff is</h4>
+<div class="outline-text-4" id="text-org1442b50">
 <ul class="org-ul">
 <li>code comment the first 8th lines.</li>
 <li>replace-match `/home/git/` to `~/`.</li>
@@ -484,9 +497,9 @@ DESKTOP-APB1HCJ%
 </div>
 </div>
 
-<div id="outline-container-org00c5b95" class="outline-4">
-<h4 id="org00c5b95">my result</h4>
-<div class="outline-text-4" id="text-org00c5b95">
+<div id="outline-container-org59a3b2f" class="outline-4">
+<h4 id="org59a3b2f">my result</h4>
+<div class="outline-text-4" id="text-org59a3b2f">
 <div class="org-src-container">
 <pre class="src src-emacs-lisp"><span style="color: #2aa1ae; background-color: #292e34;">;; </span><span style="color: #2aa1ae; background-color: #292e34;">(package-initialize)</span>
 
@@ -702,9 +715,9 @@ DESKTOP-APB1HCJ%
 </div>
 </div>
 
-<div id="outline-container-orgc686687" class="outline-3">
-<h3 id="orgc686687">(for spacemacs user)let the result into layer</h3>
-<div class="outline-text-3" id="text-orgc686687">
+<div id="outline-container-orga21ca47" class="outline-3">
+<h3 id="orga21ca47">(for spacemacs user)let the result into layer</h3>
+<div class="outline-text-3" id="text-orga21ca47">
 <div class="org-src-container">
 <pre class="src src-emacs-lisp">(<span style="color: #00bfff; font-weight: bold;">defconst</span> <span style="color: #7590db;">spacemacs-layer-name-packages</span>
   '(
@@ -732,25 +745,25 @@ so, you can make a new layer to set the worg css.
 </div>
 </div>
 
-<div id="outline-container-orge3c5ee9" class="outline-3">
-<h3 id="orge3c5ee9">change the org source directory</h3>
-<div class="outline-text-3" id="text-orge3c5ee9">
+<div id="outline-container-org6b90d4d" class="outline-3">
+<h3 id="org6b90d4d">change the org source directory</h3>
+<div class="outline-text-3" id="text-org6b90d4d">
 <p>
 how to change the org source directory?
 </p>
 </div>
 
-<div id="outline-container-org04eee70" class="outline-4">
-<h4 id="org04eee70">env</h4>
-<div class="outline-text-4" id="text-org04eee70">
+<div id="outline-container-org7b23ceb" class="outline-4">
+<h4 id="org7b23ceb">env</h4>
+<div class="outline-text-4" id="text-org7b23ceb">
 <p>
 let the org source directory is `blog`.
 </p>
 </div>
 </div>
-<div id="outline-container-orgf0212ca" class="outline-4">
-<h4 id="orgf0212ca">fix `emacs.el`:</h4>
-<div class="outline-text-4" id="text-orgf0212ca">
+<div id="outline-container-org946e74e" class="outline-4">
+<h4 id="org946e74e">fix `emacs.el`:</h4>
+<div class="outline-text-4" id="text-org946e74e">
 <ul class="org-ul">
 <li>change `worg-base`</li>
 <li>change `worg-htmlroot`</li>
@@ -770,9 +783,9 @@ copy directory and file to org source directory.
 </div>
 </div>
 
-<div id="outline-container-org30ee590" class="outline-4">
-<h4 id="org30ee590">(not necessary) move the blog/org-sources/ to ~/install/git/</h4>
-<div class="outline-text-4" id="text-org30ee590">
+<div id="outline-container-org004b27b" class="outline-4">
+<h4 id="org004b27b">(not necessary) move the blog/org-sources/ to ~/install/git/</h4>
+<div class="outline-text-4" id="text-org004b27b">
 <div class="org-src-container">
 <pre class="src src-shell">(setq worg-base <span style="color: #daa520;">"~/install/git/org-sources/"</span>)
 (setq worg-htmlroot <span style="color: #daa520;">"~/install/git/blog-org-source-html/"</span>)
@@ -781,9 +794,9 @@ copy directory and file to org source directory.
 </div>
 </div>
 
-<div id="outline-container-orgcae3d3f" class="outline-4">
-<h4 id="orgcae3d3f">move worg-base to anywhere</h4>
-<div class="outline-text-4" id="text-orgcae3d3f">
+<div id="outline-container-orga2d8a6e" class="outline-4">
+<h4 id="orga2d8a6e">move worg-base to anywhere</h4>
+<div class="outline-text-4" id="text-orga2d8a6e">
 <div class="org-src-container">
 <pre class="src src-emacs-lisp">(<span style="color: #00bfff; font-weight: bold;">setq</span> worg-base <span style="color: #daa520;">"~/org/blog/org-sources/"</span>)
 (<span style="color: #00bfff; font-weight: bold;">setq</span> worg-htmlroot <span style="color: #daa520;">"~/org/blog_html/"</span>)
@@ -796,9 +809,9 @@ so this is ok.
 </div>
 </div>
 
-<div id="outline-container-orga362b86" class="outline-4">
-<h4 id="orga362b86">(not necessary) why copy `worg/org-faq.org`</h4>
-<div class="outline-text-4" id="text-orga362b86">
+<div id="outline-container-orga338f8d" class="outline-4">
+<h4 id="orga338f8d">(not necessary) why copy `worg/org-faq.org`</h4>
+<div class="outline-text-4" id="text-orga338f8d">
 <p>
 <code>set-org-publish-project-alist/worg-org-faq/include("org-faq.org")</code> use the <code>"org-faq.org"</code>.
 or, you can code comment <code>:include ("org-faq.org")</code>
@@ -813,9 +826,9 @@ or, you can change to be <code>your-faq.org</code>, or something else, but i am 
 </div>
 </div>
 
-<div id="outline-container-org65b1ae9" class="outline-4">
-<h4 id="org65b1ae9">why copy `worg/macro.setupfile`</h4>
-<div class="outline-text-4" id="text-org65b1ae9">
+<div id="outline-container-org7805d7a" class="outline-4">
+<h4 id="org7805d7a">why copy `worg/macro.setupfile`</h4>
+<div class="outline-text-4" id="text-org7805d7a">
 <p>
 `*message*` will be:
 </p>
@@ -835,9 +848,9 @@ so copy the `worg/macros.setupfile` to `blog/macros.setupfile`
 </div>
 </div>
 
-<div id="outline-container-org08e5714" class="outline-4">
-<h4 id="org08e5714">following error, illustrates the configuration be wrong</h4>
-<div class="outline-text-4" id="text-org08e5714">
+<div id="outline-container-org2a4d4bc" class="outline-4">
+<h4 id="org2a4d4bc">following error, illustrates the configuration be wrong</h4>
+<div class="outline-text-4" id="text-org2a4d4bc">
 <div class="org-src-container">
 <pre class="src src-shell">Publishing file /mnt/c/Users/a/org/blog/org-sources/org-faq.org using &#8216;org-html-publish-to-html&#8217;
 (New file)
@@ -872,22 +885,22 @@ eldoc error: (void-function org-src-get-lang-mode)
 </div>
 </div>
 
-<div id="outline-container-org6af7750" class="outline-2">
-<h2 id="org6af7750">use the http css</h2>
-<div class="outline-text-2" id="text-org6af7750">
+<div id="outline-container-orga42fb5d" class="outline-2">
+<h2 id="orga42fb5d">use the http css</h2>
+<div class="outline-text-2" id="text-orga42fb5d">
 <p>
 sometimes we do not want to let the css files into git repo. so let us
 use the `href=\"<a href="https://orgmode.org/worg/style/worg.css">https://orgmode.org/worg/style/worg.css</a>\"` replace the `href=\"/worg/style/worg.css\"`
 </p>
 </div>
 </div>
-<div id="outline-container-org0e13658" class="outline-2">
-<h2 id="org0e13658">use the worg-css, copy files</h2>
-<div class="outline-text-2" id="text-org0e13658">
+<div id="outline-container-org5d78e27" class="outline-2">
+<h2 id="org5d78e27">(not last version) use the worg-css, copy files</h2>
+<div class="outline-text-2" id="text-org5d78e27">
 </div>
-<div id="outline-container-org4ce3ec2" class="outline-3">
-<h3 id="org4ce3ec2">copy files</h3>
-<div class="outline-text-3" id="text-org4ce3ec2">
+<div id="outline-container-orgfe5d998" class="outline-3">
+<h3 id="orgfe5d998">copy files</h3>
+<div class="outline-text-3" id="text-orgfe5d998">
 <p>
 if you use the <a href="https://eiuapp.github.io/worg-css.git">https://eiuapp.github.io/worg-css.git</a> you must copy the
 following directory or files for worg:
@@ -903,9 +916,9 @@ following directory or files for worg:
 </div>
 </div>
 
-<div id="outline-container-org97d2b90" class="outline-3">
-<h3 id="org97d2b90">not necessary copy</h3>
-<div class="outline-text-3" id="text-org97d2b90">
+<div id="outline-container-org2622396" class="outline-3">
+<h3 id="org2622396">not necessary copy</h3>
+<div class="outline-text-3" id="text-org2622396">
 <p>
 the following files will auto generate, so not necessary copy.
 </p>
@@ -918,18 +931,18 @@ the following files will auto generate, so not necessary copy.
 </div>
 </div>
 
-<div id="outline-container-org87ed6eb" class="outline-3">
-<h3 id="org87ed6eb">.gitignore</h3>
-<div class="outline-text-3" id="text-org87ed6eb">
+<div id="outline-container-orga3b1967" class="outline-3">
+<h3 id="orga3b1967">.gitignore</h3>
+<div class="outline-text-3" id="text-orga3b1967">
 <p>
 add to <code>.gitignore</code> file, if do not want to add to org source repo.
 </p>
 </div>
 </div>
 
-<div id="outline-container-org0c4e5b0" class="outline-3">
-<h3 id="org0c4e5b0">make link for local `org-publish-project`</h3>
-<div class="outline-text-3" id="text-org0c4e5b0">
+<div id="outline-container-orgdb7b311" class="outline-3">
+<h3 id="orgdb7b311">make link for local `org-publish-project`</h3>
+<div class="outline-text-3" id="text-orgdb7b311">
 <p>
 if you are window os, so make link is convenient.
 </p>
@@ -948,22 +961,148 @@ C:\Users\a&gt;
 </div>
 </div>
 
-<div id="outline-container-org12965a7" class="outline-2">
-<h2 id="org12965a7">push to github</h2>
-<div class="outline-text-2" id="text-org12965a7">
+<div id="outline-container-orgbc5477f" class="outline-2">
+<h2 id="orgbc5477f">set up worg css again</h2>
+<div class="outline-text-2" id="text-orgbc5477f">
+</div>
+<div id="outline-container-org2136334" class="outline-3">
+<h3 id="org2136334">migrate org-sources</h3>
+<div class="outline-text-3" id="text-org2136334">
+</div>
+<div id="outline-container-orgb172288" class="outline-4">
+<h4 id="orgb172288">env</h4>
+<div class="outline-text-4" id="text-orgb172288">
+<ul class="org-ul">
+<li>os: mac</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org787ce3c" class="outline-4">
+<h4 id="org787ce3c">(old) download files</h4>
+<div class="outline-text-4" id="text-org787ce3c">
+<div class="org-src-container">
+<pre class="src src-shell">mkdir ~/install/git/ -p
+git clone https://github.com/hniksic/emacs-htmlize --depth <span style="color: #a45bad;">1</span> ~/install/git/emacs-htmlize/
+git clone https://code.orgmode.org/bzg/org-mode --depth <span style="color: #a45bad;">1</span> ~/install/git/org-mode/
+git clone https://code.orgmode.org/bzg/worg.git --depth <span style="color: #a45bad;">1</span> ~/install/git/worg/
+mkdir ~/orgmode.org/org-quotes.js -p
+mkdir ~/orgweb_html -p
+mkdir ~/orgweb -p
+mkdir ~/worg_html/org-contrib/bibtex/ -p
+mkdir ~/worg_html/code -p
+mkdir ~/worg_html/sources -p
+mkdir ~/install/git/orgweb -p
+wget -O ~/install/git/worg/preamble.html https://orgmode.org/preamble.html
+cp ~/install/git/worg/preamble.html ~/orgweb_html/preamble.html <span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">or download `https://orgmode.org/preamble.html`</span>
+cp ~/install/git/worg/preamble.html ~/orgweb/preamble.html <span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">or download `https://orgmode.org/preamble.html`</span>
+</pre>
+</div>
+
+<ol class="org-ol">
+<li>download `<a href="https://orgmode.org/org-mode-unicorn.ico">https://orgmode.org/org-mode-unicorn.ico</a>` to <code>~/install/git/orgweb/</code></li>
+<li>(may not need) `cp ~/install/git/worg/preamble.html ~/install/git/preamble.html` # or download `<a href="https://orgmode.org/preamble.html">https://orgmode.org/preamble.html</a>`</li>
+</ol>
+</div>
+</div>
+
+<div id="outline-container-orga788942" class="outline-4">
+<h4 id="orga788942">now download files</h4>
+<div class="outline-text-4" id="text-orga788942">
+<div class="org-src-container">
+<pre class="src src-shell">mkdir ~/install/git/ -p
+git clone https://github.com/hniksic/emacs-htmlize --depth <span style="color: #a45bad;">1</span> ~/install/git/emacs-htmlize/
+git clone https://code.orgmode.org/bzg/org-mode --depth <span style="color: #a45bad;">1</span> ~/install/git/org-mode/
+git clone https://code.orgmode.org/bzg/worg.git --depth <span style="color: #a45bad;">1</span> ~/install/git/worg/
+<span style="color: #4f97d7;">cd</span> ~/install/git/
+mkdir ~/install/git/orgweb/ -p
+cp worg/preamble.html orgweb/preamble.html
+cp touch org-sources/sitemap.org
+<span style="color: #4f97d7;">echo</span> <span style="color: #daa520;">"hello"</span> &gt; org-sources/sitemap.org
+</pre>
+</div>
+
+<p>
+<code>M-x org-publish-project RTN worg</code>
+</p>
+
+<div class="org-src-container">
+<pre class="src src-shell">Resetting org-publish-cache
+Loading /Users/tomtsang/spacemacs/.cache/.org-timestamps/worg-org-faq.cache...done
+Resetting org-publish-cache
+Loading /Users/tomtsang/spacemacs/.cache/.org-timestamps/worg-pages.cache...done
+Generating sitemap for Sitemap for project worg-pages
+Publishing file /Users/tomtsang/install/git/org-sources/wsl/error-spawn-cmd.exe-enoent.org using &#8216;org-html-publish-to-html&#8217;
+Setting up indent for shell type zsh
+Indentation variables are now local.
+Indentation setup for shell type zsh
+Setting up indent for shell type zsh
+Indentation variables are now local.
+Indentation setup for shell type zsh
+Cannot open load file: No such file or directory, tern.el
+eldoc error: (void-function org-src-get-lang-mode) [<span style="color: #a45bad;">8</span> times]
+</pre>
+</div>
+
+<p>
+so
+</p>
+
+<div class="org-src-container">
+<pre class="src src-shell">npm install -g tern
+</pre>
+</div>
+
+<p>
+but not effective. so search  <code>tern</code> in <code>$HOME/.spacemacs.d/</code>, then code comment
+</p>
+
+<div class="org-src-container">
+<pre class="src src-emacs-lisp"><span style="color: #2aa1ae; background-color: #292e34;">;; </span><span style="color: #2aa1ae; background-color: #292e34;">;; (add-to-list 'ac-modes (js2-mode company-mode tern-mode))</span>
+<span style="color: #2aa1ae; background-color: #292e34;">;; </span><span style="color: #2aa1ae; background-color: #292e34;">(add-to-list 'load-path "~/emacs/tern/emacs/")</span>
+<span style="color: #2aa1ae; background-color: #292e34;">;; </span><span style="color: #2aa1ae; background-color: #292e34;">(autoload 'tern-mode "tern.el" nil t)</span>
+<span style="color: #2aa1ae; background-color: #292e34;">;; </span><span style="color: #2aa1ae; background-color: #292e34;">(add-hook 'js-mode-hook (lambda () (tern-mode t)))</span>
+<span style="color: #2aa1ae; background-color: #292e34;">;; </span><span style="color: #2aa1ae; background-color: #292e34;">(eval-after-load 'tern</span>
+<span style="color: #2aa1ae; background-color: #292e34;">;;   </span><span style="color: #2aa1ae; background-color: #292e34;">'(progn</span>
+<span style="color: #2aa1ae; background-color: #292e34;">;;      </span><span style="color: #2aa1ae; background-color: #292e34;">(require 'tern-auto-complete)</span>
+<span style="color: #2aa1ae; background-color: #292e34;">;;      </span><span style="color: #2aa1ae; background-color: #292e34;">(tern-ac-setup)))</span>
+</pre>
+</div>
+
+<p>
+restart, retry
+</p>
+
+<div class="org-src-container">
+<pre class="src src-shell">ib using &#8216;org-publish-attachment&#8217;
+Publishing file /Users/tomtsang/install/git/worg/org-contrib/bibtex/Schulte_Davison_2011.bib using &#8216;org-publish-attachment&#8217;
+eldoc error: (void-function org-src-get-lang-mode) [<span style="color: #a45bad;">6</span> times]
+</pre>
+</div>
+
+<p>
+However, the re-run once, success, and I do not know why.
+</p>
+</div>
+</div>
+</div>
+</div>
+<div id="outline-container-org344153b" class="outline-2">
+<h2 id="org344153b">push to github</h2>
+<div class="outline-text-2" id="text-org344153b">
 <p>
 after `M-x org-publish-project`, we get the html files. so we push to github.
 </p>
 </div>
-<div id="outline-container-orgf7997de" class="outline-3">
-<h3 id="orgf7997de"><span class="todo TODO">TODO</span> how to use github action</h3>
-<div class="outline-text-3" id="text-orgf7997de">
+<div id="outline-container-org3b5c373" class="outline-3">
+<h3 id="org3b5c373"><span class="todo TODO">TODO</span> how to use github action</h3>
+<div class="outline-text-3" id="text-org3b5c373">
 </div>
 </div>
 
-<div id="outline-container-orgb9a3560" class="outline-3">
-<h3 id="orgb9a3560">ignore *.org files</h3>
-<div class="outline-text-3" id="text-orgb9a3560">
+<div id="outline-container-orgf04c7ff" class="outline-3">
+<h3 id="orgf04c7ff">ignore *.org files</h3>
+<div class="outline-text-3" id="text-orgf04c7ff">
 <p>
 maybe you do not want to let the *.org files to github pages.
 </p>
@@ -971,9 +1110,9 @@ maybe you do not want to let the *.org files to github pages.
 </div>
 </div>
 
-<div id="outline-container-org1f4b5c3" class="outline-2">
-<h2 id="org1f4b5c3">html-postamble</h2>
-<div class="outline-text-2" id="text-org1f4b5c3">
+<div id="outline-container-org4123ade" class="outline-2">
+<h2 id="org4123ade">html-postamble</h2>
+<div class="outline-text-2" id="text-org4123ade">
 <p>
 this part will be the bottom of pages.
 </p>
@@ -987,9 +1126,9 @@ open `emacs.el`, search `:html-postamble`, replace the content for yourself, or 
 </p>
 </div>
 
-<div id="outline-container-org808fe73" class="outline-3">
-<h3 id="org808fe73">set html-postamble nil</h3>
-<div class="outline-text-3" id="text-org808fe73">
+<div id="outline-container-org48654d9" class="outline-3">
+<h3 id="org48654d9">set html-postamble nil</h3>
+<div class="outline-text-3" id="text-org48654d9">
 <p>
 if set `:html-postamble ""` or set `:html-postamble nil`, will get a defautl
 html-postamble.
@@ -1005,16 +1144,16 @@ html-postamble.
 </div>
 </div>
 
-<div id="outline-container-org4e2a726" class="outline-2">
-<h2 id="org4e2a726">html-preamble</h2>
-<div class="outline-text-2" id="text-org4e2a726">
+<div id="outline-container-orga5682ce" class="outline-2">
+<h2 id="orga5682ce">html-preamble</h2>
+<div class="outline-text-2" id="text-orga5682ce">
 <p>
 this part will be the head of pages body.
 </p>
 </div>
-<div id="outline-container-org6550c80" class="outline-3">
-<h3 id="org6550c80">the `worg/preamble.html`</h3>
-<div class="outline-text-3" id="text-org6550c80">
+<div id="outline-container-org35404ae" class="outline-3">
+<h3 id="org35404ae">the `worg/preamble.html`</h3>
+<div class="outline-text-3" id="text-org35404ae">
 <p>
 可以直接使用原始的 preamble.html.
 但是这样,会导致,html页面的左上角,有3个小东西.F12,知道,页面还是生成了一个
@@ -1108,9 +1247,9 @@ fathom('trackPageview');
 </div>
 </div>
 
-<div id="outline-container-org638c7f9" class="outline-3">
-<h3 id="org638c7f9">set html-postamble nil</h3>
-<div class="outline-text-3" id="text-org638c7f9">
+<div id="outline-container-org7ef3481" class="outline-3">
+<h3 id="org7ef3481">set html-postamble nil</h3>
+<div class="outline-text-3" id="text-org7ef3481">
 <div class="org-src-container">
 <pre class="src src-shell">:html-preamble nil
 </pre>
@@ -1118,9 +1257,9 @@ fathom('trackPageview');
 </div>
 </div>
 
-<div id="outline-container-org9f537ba" class="outline-3">
-<h3 id="org9f537ba">set html-postamble</h3>
-<div class="outline-text-3" id="text-org9f537ba">
+<div id="outline-container-orgf819189" class="outline-3">
+<h3 id="orgf819189">set html-postamble</h3>
+<div class="outline-text-3" id="text-orgf819189">
 <div class="org-src-container">
 <pre class="src src-shell">:html-preamble <span style="color: #daa520;">"&lt;div id=\"license\"&gt;&lt;p&gt;Documentation from the eiu.app website (either in its HTML format or in its Org format) is licensed under the &lt;a href=\"http://www.gnu.org/copyleft/fdl.html\"&gt;GNU Free Documentation License version 1.3&lt;/a&gt; or later.  The code examples and css stylesheets are licensed under the &lt;a href=\"http://www.gnu.org/licenses/gpl.html\"&gt;GNU General Public License v3&lt;/a&gt; or later.&lt;/p&gt;&lt;/div&gt;"</span>
 </pre>
@@ -1128,9 +1267,9 @@ fathom('trackPageview');
 </div>
 </div>
 </div>
-<div id="outline-container-org2c1b179" class="outline-2">
-<h2 id="org2c1b179">icon</h2>
-<div class="outline-text-2" id="text-org2c1b179">
+<div id="outline-container-orgc911c25" class="outline-2">
+<h2 id="orgc911c25">icon</h2>
+<div class="outline-text-2" id="text-orgc911c25">
 <ul class="org-ul">
 <li>the `<a href="https://orgmode.org/org-mode-unicorn.ico">https://orgmode.org/org-mode-unicorn.ico</a>` copy to `html-repo/style/org-mode-unicorn.ico`.</li>
 </ul>
@@ -1146,16 +1285,16 @@ fathom('trackPageview');
 </div>
 </div>
 
-<div id="outline-container-org18c87a6" class="outline-2">
-<h2 id="org18c87a6">background image, at lower right corner</h2>
-<div class="outline-text-2" id="text-org18c87a6">
+<div id="outline-container-orgc815f42" class="outline-2">
+<h2 id="orgc815f42">background image, at lower right corner</h2>
+<div class="outline-text-2" id="text-orgc815f42">
 <p>
 右下角背景图片.
 </p>
 </div>
-<div id="outline-container-orgb48981e" class="outline-3">
-<h3 id="orgb48981e">find the background image</h3>
-<div class="outline-text-3" id="text-orgb48981e">
+<div id="outline-container-org0468038" class="outline-3">
+<h3 id="org0468038">find the background image</h3>
+<div class="outline-text-3" id="text-org0468038">
 <p>
 the background image, Is actually a picture, so we find this background image.
 </p>
@@ -1181,9 +1320,9 @@ should be `<img src="https://your-site/img/org-mode-unicorn-logo-worg.png" alt="
 </div>
 </div>
 
-<div id="outline-container-org718d374" class="outline-3">
-<h3 id="org718d374">use <a href="https://orgmode.org/worg/style/worg.css">https://orgmode.org/worg/style/worg.css</a></h3>
-<div class="outline-text-3" id="text-org718d374">
+<div id="outline-container-org5b07a91" class="outline-3">
+<h3 id="org5b07a91">use <a href="https://orgmode.org/worg/style/worg.css">https://orgmode.org/worg/style/worg.css</a></h3>
+<div class="outline-text-3" id="text-org5b07a91">
 <p>
 if you use <a href="https://orgmode.org/worg/style/worg.css">https://orgmode.org/worg/style/worg.css</a>, you can not edit the file.
 so you can not delete the background image.
@@ -1191,9 +1330,9 @@ so you can not delete the background image.
 </div>
 </div>
 
-<div id="outline-container-org6298349" class="outline-3">
-<h3 id="org6298349">use local-fix worg.css</h3>
-<div class="outline-text-3" id="text-org6298349">
+<div id="outline-container-org42d643b" class="outline-3">
+<h3 id="org42d643b">use local-fix worg.css</h3>
+<div class="outline-text-3" id="text-org42d643b">
 <p>
 if your have a github page site, use the `html-repo/style/worg.css`(or download
 form the `<a href="https://orgmode.org/worg/style/worg.css">https://orgmode.org/worg/style/worg.css</a>`), then the
@@ -1209,17 +1348,17 @@ so if you delete the background image, you must fix the `worg.css` file.
 </div>
 </div>
 
-<div id="outline-container-orgc261dda" class="outline-2">
-<h2 id="orgc261dda">use local-fix worg.css</h2>
-<div class="outline-text-2" id="text-orgc261dda">
+<div id="outline-container-org7ac9d84" class="outline-2">
+<h2 id="org7ac9d84">use local-fix worg.css</h2>
+<div class="outline-text-2" id="text-org7ac9d84">
 <p>
 how to delete the lower right corner background image.
 </p>
 </div>
 
-<div id="outline-container-org2ad23fd" class="outline-3">
-<h3 id="org2ad23fd">env</h3>
-<div class="outline-text-3" id="text-org2ad23fd">
+<div id="outline-container-org58999db" class="outline-3">
+<h3 id="org58999db">env</h3>
+<div class="outline-text-3" id="text-org58999db">
 <ul class="org-ul">
 <li>This time, css files related to put into html repo.</li>
 <li>assume the repo is `html`,</li>
@@ -1230,9 +1369,9 @@ how to delete the lower right corner background image.
 </div>
 </div>
 
-<div id="outline-container-org03ca8fb" class="outline-3">
-<h3 id="org03ca8fb">files</h3>
-<div class="outline-text-3" id="text-org03ca8fb">
+<div id="outline-container-org81fadc7" class="outline-3">
+<h3 id="org81fadc7">files</h3>
+<div class="outline-text-3" id="text-org81fadc7">
 <p>
 so the html repo must have:
 </p>
@@ -1245,9 +1384,9 @@ so the html repo must have:
 </div>
 </div>
 
-<div id="outline-container-orgbdaedf4" class="outline-3">
-<h3 id="orgbdaedf4">fix the `style/worg.css`</h3>
-<div class="outline-text-3" id="text-orgbdaedf4">
+<div id="outline-container-orge3110f9" class="outline-3">
+<h3 id="orge3110f9">fix the `style/worg.css`</h3>
+<div class="outline-text-3" id="text-orge3110f9">
 <p>
 change the background-image, ensue the
 `<img src="https://account.github.io/html/img/org-mode-unicorn-logo-worg.png" alt="org-mode-unicorn-logo-worg.png" />` can be find.
@@ -1259,9 +1398,9 @@ change the background-image, ensue the
 </div>
 </div>
 </div>
-<div id="outline-container-org6c7f1c1" class="outline-3">
-<h3 id="org6c7f1c1">emacs.el</h3>
-<div class="outline-text-3" id="text-org6c7f1c1">
+<div id="outline-container-org07ae719" class="outline-3">
+<h3 id="org07ae719">emacs.el</h3>
+<div class="outline-text-3" id="text-org07ae719">
 <p>
 the `html-head`(2 places) should be:
 </p>
@@ -1278,9 +1417,9 @@ the `html-head`(2 places) should be:
 </div>
 </div>
 
-<div id="outline-container-orgdaedf84" class="outline-2">
-<h2 id="orgdaedf84">worg-org-faq not include org-faq.org</h2>
-<div class="outline-text-2" id="text-orgdaedf84">
+<div id="outline-container-org61754cd" class="outline-2">
+<h2 id="org61754cd">worg-org-faq not include org-faq.org</h2>
+<div class="outline-text-2" id="text-org61754cd">
 <p>
 try not include org-faq.org file to my org source directory.
 </p>
@@ -1291,13 +1430,13 @@ just code comment the <code>:include ("org-faq.org")</code>.
 </div>
 </div>
 
-<div id="outline-container-org605da7e" class="outline-2">
-<h2 id="org605da7e">how to write theindex</h2>
-<div class="outline-text-2" id="text-org605da7e">
+<div id="outline-container-org8b69a28" class="outline-2">
+<h2 id="org8b69a28">how to write theindex</h2>
+<div class="outline-text-2" id="text-org8b69a28">
 </div>
-<div id="outline-container-orgdca8dc3" class="outline-3">
-<h3 id="orgdca8dc3">how to write in worg</h3>
-<div class="outline-text-3" id="text-orgdca8dc3">
+<div id="outline-container-org40dae08" class="outline-3">
+<h3 id="org40dae08">how to write in worg</h3>
+<div class="outline-text-3" id="text-org40dae08">
 <p>
 <a href="https://orgmode.org/worg/theindex.html">https://orgmode.org/worg/theindex.html</a> have <code>A</code> =&gt; <code>Agenda view</code> =&gt; <code>Links to</code> ,
 click, then go to <a href="https://orgmode.org/worg/org-hacks.html#links-to-agenda-views">https://orgmode.org/worg/org-hacks.html#links-to-agenda-views</a>,
@@ -1318,13 +1457,13 @@ find <code>#+index: Agenda view!Links to</code>, so the syntax is easy.
 </div>
 </div>
 
-<div id="outline-container-orgadc8a41" class="outline-2">
-<h2 id="orgadc8a41"><span class="todo TODO">TODO</span> add some feature</h2>
-<div class="outline-text-2" id="text-orgadc8a41">
+<div id="outline-container-org7e151e1" class="outline-2">
+<h2 id="org7e151e1"><span class="todo TODO">TODO</span> add some feature</h2>
+<div class="outline-text-2" id="text-org7e151e1">
 </div>
-<div id="outline-container-orge5fca12" class="outline-3">
-<h3 id="orge5fca12">comment</h3>
-<div class="outline-text-3" id="text-orge5fca12">
+<div id="outline-container-orgdc484f9" class="outline-3">
+<h3 id="orgdc484f9">comment</h3>
+<div class="outline-text-3" id="text-orgdc484f9">
 <ul class="org-ul">
 <li>discuz</li>
 <li>github issue</li>
@@ -1332,17 +1471,17 @@ find <code>#+index: Agenda view!Links to</code>, so the syntax is easy.
 </div>
 </div>
 </div>
-<div id="outline-container-org4fcf7d3" class="outline-2">
-<h2 id="org4fcf7d3"><span class="todo TODO">TODO</span> code frame display code type</h2>
-<div class="outline-text-2" id="text-org4fcf7d3">
+<div id="outline-container-org0d0b6cf" class="outline-2">
+<h2 id="org0d0b6cf"><span class="todo TODO">TODO</span> code frame display code type</h2>
+<div class="outline-text-2" id="text-org0d0b6cf">
 <p>
 代码框如何显示一下代码的类型,如: shell, txt, python等
 </p>
 </div>
 </div>
-<div id="outline-container-org2633982" class="outline-2">
-<h2 id="org2633982"><span class="todo TODO">TODO</span> quick change org source directory</h2>
-<div class="outline-text-2" id="text-org2633982">
+<div id="outline-container-orgc44cb70" class="outline-2">
+<h2 id="orgc44cb70"><span class="todo TODO">TODO</span> quick change org source directory</h2>
+<div class="outline-text-2" id="text-orgc44cb70">
 <p>
 just run the following code, whether to switch the `org-publish-project` directory?
 </p>
@@ -1351,6 +1490,15 @@ just run the following code, whether to switch the `org-publish-project` directo
 (setq worg-htmlroot <span style="color: #daa520;">"~/worg_html/"</span>)
 </pre>
 </div>
+</div>
+</div>
+<div id="outline-container-orgca76c48" class="outline-2">
+<h2 id="orgca76c48">git submodule</h2>
+<div class="outline-text-2" id="text-orgca76c48">
+<p>
+when you do not want all in one repository, you will have git submodule
+repositories.
+</p>
 </div>
 </div>
 </div>

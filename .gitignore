@@ -1,7 +1,25 @@
+# 整体编写逻辑
+# 1. 只让指定的文件或文件夹通过(只放行文件夹和html,jpg,png后缀文件)
+# 2. 过滤掉不要的文件(过滤文件夹和)
 
 !.gitignore
 
-# no org or org.html 
+## 1. 写.gitignore只包含指定的文件扩展名
+# 首先忽略所有的文件
+*
+# 但是不忽略目录
+!*/
+# 忽略一些指定的目录名
+img/
+# 不忽略下面指定的文件类型
+!*.html
+!*.jpg
+!*.png
+
+## 2. 写.gitignore过滤的文件
+!.gitignore
+
+# no org or org.html
 *.org
 *.org.html
 
@@ -15,7 +33,7 @@
 /macros.setupfile
 /style/
 
-# bak 
+# bak
 /*.bak/
 /*.bak
 

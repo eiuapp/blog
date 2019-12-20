@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2019-12-16 Mon 12:12 -->
+<!-- 2019-12-20 Fri 15:27 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>egg</title>
@@ -98,15 +98,20 @@ fathom('trackPageview');
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#orge728720">egg start up</a>
+<li><a href="#orgca02bc8">egg start up</a>
 <ul>
-<li><a href="#orga7097d6">add NODE_OPTION</a>
+<li><a href="#org6ce1fdc">add NODE_OPTION</a>
 <ul>
-<li><a href="#org3f91581">env</a></li>
-<li><a href="#org26e7c62">set</a></li>
-<li><a href="#org947df88">check</a></li>
+<li><a href="#orgd0aab05">env</a></li>
+<li><a href="#orgad83a79">set</a></li>
+<li><a href="#orgcd9dcc1">check</a></li>
 </ul>
 </li>
+</ul>
+</li>
+<li><a href="#org886f348">egg with postgresql</a>
+<ul>
+<li><a href="#org74d3d94">sequelize queries returning only strings</a></li>
 </ul>
 </li>
 </ul>
@@ -116,17 +121,17 @@ fathom('trackPageview');
 <a href="../index.html">{Back to site's index}</a>
 </p>
 
-<div id="outline-container-orge728720" class="outline-2">
-<h2 id="orge728720">egg start up</h2>
-<div class="outline-text-2" id="text-orge728720">
+<div id="outline-container-orgca02bc8" class="outline-2">
+<h2 id="orgca02bc8">egg start up</h2>
+<div class="outline-text-2" id="text-orgca02bc8">
 </div>
-<div id="outline-container-orga7097d6" class="outline-3">
-<h3 id="orga7097d6">add NODE_OPTION</h3>
-<div class="outline-text-3" id="text-orga7097d6">
+<div id="outline-container-org6ce1fdc" class="outline-3">
+<h3 id="org6ce1fdc">add NODE_OPTION</h3>
+<div class="outline-text-3" id="text-org6ce1fdc">
 </div>
-<div id="outline-container-org3f91581" class="outline-4">
-<h4 id="org3f91581">env</h4>
-<div class="outline-text-4" id="text-org3f91581">
+<div id="outline-container-orgd0aab05" class="outline-4">
+<h4 id="orgd0aab05">env</h4>
+<div class="outline-text-4" id="text-orgd0aab05">
 <p>
 有一次,突然间出现下面的错误
 </p>
@@ -143,9 +148,9 @@ fathom('trackPageview');
 </div>
 </div>
 
-<div id="outline-container-org26e7c62" class="outline-4">
-<h4 id="org26e7c62">set</h4>
-<div class="outline-text-4" id="text-org26e7c62">
+<div id="outline-container-orgad83a79" class="outline-4">
+<h4 id="orgad83a79">set</h4>
+<div class="outline-text-4" id="text-orgad83a79">
 <p>
 First tested in shell
 </p>
@@ -174,9 +179,9 @@ set the arguments to <code>package.json</code>
 </div>
 </div>
 </div>
-<div id="outline-container-org947df88" class="outline-4">
-<h4 id="org947df88">check</h4>
-<div class="outline-text-4" id="text-org947df88">
+<div id="outline-container-orgcd9dcc1" class="outline-4">
+<h4 id="orgcd9dcc1">check</h4>
+<div class="outline-text-4" id="text-orgcd9dcc1">
 <p>
 放在程序启动后
 </p>
@@ -186,6 +191,82 @@ set the arguments to <code>package.json</code>
 </pre>
 </div>
 </div>
+</div>
+</div>
+</div>
+<div id="outline-container-org886f348" class="outline-2">
+<h2 id="org886f348">egg with postgresql</h2>
+<div class="outline-text-2" id="text-org886f348">
+</div>
+
+<div id="outline-container-org74d3d94" class="outline-3">
+<h3 id="org74d3d94">sequelize queries returning only strings</h3>
+<div class="outline-text-3" id="text-org74d3d94">
+<p>
+当数据库是 postgresql 时，为什么，取到的数据类型是 string, 而不是 int ？
+</p>
+
+<ul class="org-ul">
+<li><a href="https://github.com/sequelize/sequelize/issues/2383#issuecomment-58006083">https://github.com/sequelize/sequelize/issues/2383#issuecomment-58006083</a></li>
+<li><a href="https://github.com/brianc/node-postgres/pull/353">https://github.com/brianc/node-postgres/pull/353</a></li>
+</ul>
+
+<p>
+<a href="https://github.com/brianc/node-postgres/pull/353#issuecomment-283709264">https://github.com/brianc/node-postgres/pull/353#issuecomment-283709264</a>
+</p>
+
+<div class="org-src-container">
+<pre class="src src-javascript"><span style="color: #00bfff; font-weight: bold;">var</span> <span style="color: #7590db;">pg</span> = require(<span style="color: #daa520;">'pg'</span>);
+
+<span style="color: #2aa1ae; background-color: #292e34;">// </span><span style="color: #2aa1ae; background-color: #292e34;">bigint</span>
+pg.types.setTypeParser(<span style="color: #a45bad;">20</span>, <span style="color: #00bfff; font-weight: bold;">function</span> (<span style="color: #7590db;">value</span>) {
+    <span style="color: #00bfff; font-weight: bold;">return</span> parseInt(value);
+});
+
+<span style="color: #2aa1ae; background-color: #292e34;">// </span><span style="color: #2aa1ae; background-color: #292e34;">numeric</span>
+pg.types.setTypeParser(<span style="color: #a45bad;">1700</span>, <span style="color: #00bfff; font-weight: bold;">function</span> (<span style="color: #7590db;">value</span>) {
+    <span style="color: #00bfff; font-weight: bold;">return</span> parseFloat(value);
+});
+</pre>
+</div>
+
+<p>
+so, need add above code snippet into <code>app.js</code>.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-javascript"><span style="color: #daa520;">'use strict'</span>;
+<span style="color: #00bfff; font-weight: bold;">const</span> <span style="color: #7590db;">start</span> = Date.now();
+module.exports = app =&gt; {
+  app.logger.info(<span style="color: #daa520;">'&#21551;&#21160;&#32791;&#26102; %d ms'</span>, Date.now() - start);
+  app.beforeStart(<span style="color: #00bfff; font-weight: bold;">async</span> () =&gt; {
+    <span style="color: #00bfff; font-weight: bold;">const</span> <span style="color: #7590db;">ctx</span> = app.createAnonymousContext();
+    <span style="color: #2aa1ae; background-color: #292e34;">// </span><span style="color: #2aa1ae; background-color: #292e34;">&#21021;&#22987;&#21270;&#24310;&#36831;&#20219;&#21153;</span>
+    app.initDelayTask();
+
+    <span style="color: #00bfff; font-weight: bold;">var</span> <span style="color: #7590db;">pg</span> = require(<span style="color: #daa520;">'pg'</span>);
+    <span style="color: #2aa1ae; background-color: #292e34;">// </span><span style="color: #2aa1ae; background-color: #292e34;">bigint</span>
+    pg.types.setTypeParser(<span style="color: #a45bad;">20</span>, <span style="color: #00bfff; font-weight: bold;">function</span> (<span style="color: #7590db;">value</span>) {
+        <span style="color: #00bfff; font-weight: bold;">return</span> parseInt(value);
+    });
+    <span style="color: #2aa1ae; background-color: #292e34;">// </span><span style="color: #2aa1ae; background-color: #292e34;">numeric</span>
+    pg.types.setTypeParser(<span style="color: #a45bad;">1700</span>, <span style="color: #00bfff; font-weight: bold;">function</span> (<span style="color: #7590db;">value</span>) {
+        <span style="color: #00bfff; font-weight: bold;">return</span> parseFloat(value);
+    });
+  });
+  app.logger.info(<span style="color: #daa520;">'process.env.NODE_OPTIONS is: '</span> + process.env.NODE_OPTIONS);
+};
+</pre>
+</div>
+
+<p>
+It's effective.
+</p>
+
+<p>
+another method is: add a new data type for sequelize.
+how to add new data type, reference <a href="./sequelize.html">here</a>.
+</p>
 </div>
 </div>
 </div>

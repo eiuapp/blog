@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2019-12-16 Mon 18:44 -->
+<!-- 2019-12-20 Fri 15:27 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>postgresql</title>
@@ -98,15 +98,20 @@ fathom('trackPageview');
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#org418396e">start up</a></li>
-<li><a href="#org5485683">commands</a></li>
+<li><a href="#org4febae5">start up</a></li>
+<li><a href="#org0139ebf">commands</a></li>
+<li><a href="#orgd922c68">ERROR: column p.proisagg does not exist</a></li>
+<li><a href="#orgea641e8"><span class="todo TODO">TODO</span> ERROR: permission deny</a></li>
 </ul>
 </div>
 </div>
+<p>
+<a href="../index.html">{Back to site's index}</a>
+</p>
 
-<div id="outline-container-org418396e" class="outline-2">
-<h2 id="org418396e">start up</h2>
-<div class="outline-text-2" id="text-org418396e">
+<div id="outline-container-org4febae5" class="outline-2">
+<h2 id="org4febae5">start up</h2>
+<div class="outline-text-2" id="text-org4febae5">
 <p>
 <a href="https://www.jianshu.com/p/1caf8e5768af">https://www.jianshu.com/p/1caf8e5768af</a>
 </p>
@@ -130,15 +135,39 @@ Enter postgresql
 </div>
 </div>
 
-<div id="outline-container-org5485683" class="outline-2">
-<h2 id="org5485683">commands</h2>
-<div class="outline-text-2" id="text-org5485683">
+<div id="outline-container-org0139ebf" class="outline-2">
+<h2 id="org0139ebf">commands</h2>
+<div class="outline-text-2" id="text-org0139ebf">
 <div class="org-src-container">
 <pre class="src src-shell">\l               ---show databases
 \dt            ---show tables
 \du           --- show users
 </pre>
 </div>
+</div>
+</div>
+<div id="outline-container-orgd922c68" class="outline-2">
+<h2 id="orgd922c68">ERROR: column p.proisagg does not exist</h2>
+<div class="outline-text-2" id="text-orgd922c68">
+<ul class="org-ul">
+<li><a href="https://github.com/schemaspy/schemaspy/issues/537">https://github.com/schemaspy/schemaspy/issues/537</a></li>
+<li><a href="https://blog.csdn.net/weixin_44671994/article/details/87935656">https://blog.csdn.net/weixin_44671994/article/details/87935656</a></li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-orgea641e8" class="outline-2">
+<h2 id="orgea641e8"><span class="todo TODO">TODO</span> ERROR: permission deny</h2>
+<div class="outline-text-2" id="text-orgea641e8">
+<div class="org-src-container">
+<pre class="src src-shell">CREATE USER dev1 WITH PASSWORD <span style="color: #daa520;">'***********'</span>;
+GRANT ALL PRIVILEGES ON DATABASE adb to dev1;
+</pre>
+</div>
+
+<p>
+In this case, the connection with the navicat, still show <code>ERROR: permission denied for table abc</code>
+</p>
 </div>
 </div>
 </div>

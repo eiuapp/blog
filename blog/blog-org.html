@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2019-12-16 Mon 14:44 -->
+<!-- 2020-01-11 Sat 18:34 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>blog with org</title>
@@ -98,39 +98,43 @@ fathom('trackPageview');
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#org04fbf10">org-publish</a>
+<li><a href="#org3127893">org-publish</a>
 <ul>
-<li><a href="#orgf66c58a">org-publish-attachment</a></li>
+<li><a href="#orgc478eaa">org-publish-attachment</a></li>
 </ul>
 </li>
-<li><a href="#org72785d5">some example</a>
+<li><a href="#orgb294ff5">some example</a>
 <ul>
-<li><a href="#org57fea3a">worg</a></li>
-<li><a href="#org277d479">shishougang</a></li>
+<li><a href="#org727cfeb">worg</a></li>
+<li><a href="#org805dbc6">shishougang</a></li>
 </ul>
 </li>
-<li><a href="#orgf1b25dd">how to let your blog auto publish to github</a>
+<li><a href="#org5e9e6c4">how to let your blog auto publish to github</a>
 <ul>
-<li><a href="#org6e8fc77">LxEmacs auto publish</a></li>
-<li><a href="#org641aa57"><span class="todo TODO">TODO</span> github actions</a></li>
+<li><a href="#org62cd802">LxEmacs auto publish</a></li>
+<li><a href="#org4e7bdbe"><span class="todo TODO">TODO</span> github actions</a></li>
 </ul>
 </li>
-<li><a href="#org83c1c6e"><span class="todo TODO">TODO</span> how to extract markdown files</a></li>
-<li><a href="#org58ad81e"><span class="todo TODO">TODO</span> html file convert to org file</a></li>
-<li><a href="#org85ce5c4"><span class="todo TODO">TODO</span> how to use sachachua's configuration to write blog</a></li>
+<li><a href="#org0ce6d1b"><span class="todo TODO">TODO</span> how to extract markdown files</a></li>
+<li><a href="#org4979097">html file convert to org file</a>
+<ul>
+<li><a href="#org36ce277">pandoc</a></li>
+</ul>
+</li>
+<li><a href="#org7702ba7"><span class="todo TODO">TODO</span> how to use sachachua's configuration to write blog</a></li>
 </ul>
 </div>
 </div>
 <p>
 <a href="../index.html">{Back to site's index}</a>
 </p>
-<div id="outline-container-org04fbf10" class="outline-2">
-<h2 id="org04fbf10">org-publish</h2>
-<div class="outline-text-2" id="text-org04fbf10">
+<div id="outline-container-org3127893" class="outline-2">
+<h2 id="org3127893">org-publish</h2>
+<div class="outline-text-2" id="text-org3127893">
 </div>
-<div id="outline-container-orgf66c58a" class="outline-3">
-<h3 id="orgf66c58a">org-publish-attachment</h3>
-<div class="outline-text-3" id="text-orgf66c58a">
+<div id="outline-container-orgc478eaa" class="outline-3">
+<h3 id="orgc478eaa">org-publish-attachment</h3>
+<div class="outline-text-3" id="text-orgc478eaa">
 <p>
 <a href="https://www.reddit.com/r/emacs/comments/cv6sp0/what_and_where_is_orgpublishattachment/">https://www.reddit.com/r/emacs/comments/cv6sp0/what_and_where_is_orgpublishattachment/</a>
 so `C-h f org-publish-attachment` can not see the `org-publish-attachment`
@@ -143,16 +147,16 @@ there is `org-publish-attachment`, so what is the function do, and how to call i
 </div>
 </div>
 </div>
-<div id="outline-container-org72785d5" class="outline-2">
-<h2 id="org72785d5">some example</h2>
-<div class="outline-text-2" id="text-org72785d5">
+<div id="outline-container-orgb294ff5" class="outline-2">
+<h2 id="orgb294ff5">some example</h2>
+<div class="outline-text-2" id="text-orgb294ff5">
 </div>
-<div id="outline-container-org57fea3a" class="outline-3">
-<h3 id="org57fea3a">worg</h3>
+<div id="outline-container-org727cfeb" class="outline-3">
+<h3 id="org727cfeb">worg</h3>
 </div>
-<div id="outline-container-org277d479" class="outline-3">
-<h3 id="org277d479">shishougang</h3>
-<div class="outline-text-3" id="text-org277d479">
+<div id="outline-container-org805dbc6" class="outline-3">
+<h3 id="org805dbc6">shishougang</h3>
+<div class="outline-text-3" id="text-org805dbc6">
 <p>
 <a href="https://github.com/shishougang/wiki">https://github.com/shishougang/wiki</a>
 <a href="https://github.com/shishougang/wiki/blob/377757b036129b5dc9b350a36a02c86f467edb5f/public_html/Emacs/Files/org-publish-example.el">https://github.com/shishougang/wiki/blob/377757b036129b5dc9b350a36a02c86f467edb5f/public_html/Emacs/Files/org-publish-example.el</a>
@@ -161,13 +165,13 @@ there is `org-publish-attachment`, so what is the function do, and how to call i
 </div>
 </div>
 
-<div id="outline-container-orgf1b25dd" class="outline-2">
-<h2 id="orgf1b25dd">how to let your blog auto publish to github</h2>
-<div class="outline-text-2" id="text-orgf1b25dd">
+<div id="outline-container-org5e9e6c4" class="outline-2">
+<h2 id="org5e9e6c4">how to let your blog auto publish to github</h2>
+<div class="outline-text-2" id="text-org5e9e6c4">
 </div>
-<div id="outline-container-org6e8fc77" class="outline-3">
-<h3 id="org6e8fc77">LxEmacs auto publish</h3>
-<div class="outline-text-3" id="text-org6e8fc77">
+<div id="outline-container-org62cd802" class="outline-3">
+<h3 id="org62cd802">LxEmacs auto publish</h3>
+<div class="outline-text-3" id="text-org62cd802">
 <ul class="org-ul">
 <li><a href="https://github.com/byrlx/LxEmacs">https://github.com/byrlx/LxEmacs</a></li>
 <li><a href="https://github.com/byrlx/LxEmacs/blob/master/lx/lxlab.el#L69-L76">https://github.com/byrlx/LxEmacs/blob/master/lx/lxlab.el#L69-L76</a></li>
@@ -221,21 +225,21 @@ if you have many org publish projects, so use following function.
 </div>
 </div>
 
-<div id="outline-container-org641aa57" class="outline-3">
-<h3 id="org641aa57"><span class="todo TODO">TODO</span> github actions</h3>
-<div class="outline-text-3" id="text-org641aa57">
+<div id="outline-container-org4e7bdbe" class="outline-3">
+<h3 id="org4e7bdbe"><span class="todo TODO">TODO</span> github actions</h3>
+<div class="outline-text-3" id="text-org4e7bdbe">
 </div>
 </div>
 </div>
 
-<div id="outline-container-org83c1c6e" class="outline-2">
-<h2 id="org83c1c6e"><span class="todo TODO">TODO</span> how to extract markdown files</h2>
-<div class="outline-text-2" id="text-org83c1c6e">
+<div id="outline-container-org0ce6d1b" class="outline-2">
+<h2 id="org0ce6d1b"><span class="todo TODO">TODO</span> how to extract markdown files</h2>
+<div class="outline-text-2" id="text-org0ce6d1b">
 </div>
 </div>
-<div id="outline-container-org58ad81e" class="outline-2">
-<h2 id="org58ad81e"><span class="todo TODO">TODO</span> html file convert to org file</h2>
-<div class="outline-text-2" id="text-org58ad81e">
+<div id="outline-container-org4979097" class="outline-2">
+<h2 id="org4979097">html file convert to org file</h2>
+<div class="outline-text-2" id="text-org4979097">
 <p>
 Scenes:
 </p>
@@ -243,11 +247,57 @@ Scenes:
 <li>export markdown files to build a book with hugo-book(hugo theme)</li>
 </ul>
 </div>
+
+<div id="outline-container-org36ce277" class="outline-3">
+<h3 id="org36ce277">pandoc</h3>
+<div class="outline-text-3" id="text-org36ce277">
+<p>
+from reddit
+</p>
+
+<p>
+<a href="https://www.reddit.com/r/emacs/comments/55t4dp/is_there_a_way_to_convert_simple_html_files_to/">Is there a way to convert simple HTML files to org-mode files?</a>
+</p>
+
+<div class="org-src-container">
+<pre class="src src-example">Org version: 8.3.6
+Pandoc version: 1.16.0.2
+pandoc-mode: installed.
+</pre>
 </div>
 
-<div id="outline-container-org85ce5c4" class="outline-2">
-<h2 id="org85ce5c4"><span class="todo TODO">TODO</span> how to use sachachua's configuration to write blog</h2>
-<div class="outline-text-2" id="text-org85ce5c4">
+<p>
+UPDATE:
+</p>
+
+<p>
+I tried a solution mentioend by /r/GoldryBluszco, using the -f, &#x2013;from= and -t, &#x2013;to= arguments, but this was the result:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-shell">% pandoc -o cheatsheet.org -f html -t org  <span style="color: #daa520;">'http://sce2.umkc.edu/BIT/burrise/pl/modeling/qanda.html'</span>
+Fetching http://sce2.umkc.edu/BIT/burrise/pl/modeling/qanda.html...
+pandoc: Cannot decode byte <span style="color: #daa520;">'\x92'</span>: Data.Text.Internal.Encoding.Fusion.streamUtf8: Invalid UTF-8 stream
+%
+</pre>
+</div>
+
+<p>
+UPDATE: It looks like the problem was with web-page it self! I tried it with another HTML website and it works juts fine (need some formatting but almost all the job has been done, thanks to pandoc):
+</p>
+
+<div class="org-src-container">
+<pre class="src src-shell">% curl http://anh.cs.luc.edu/170/notes/CSharpHtml/sorting.html  &gt; foo.html
+% pandoc -o foo.org -f html -t org foo.html
+</pre>
+</div>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org7702ba7" class="outline-2">
+<h2 id="org7702ba7"><span class="todo TODO">TODO</span> how to use sachachua's configuration to write blog</h2>
+<div class="outline-text-2" id="text-org7702ba7">
 <ul class="org-ul">
 <li><a href="https://github.com/sachac/.emacs.d">sacha chua's emacs configuration</a></li>
 <li><a href="http://sachachua.com/">sacha chua</a></li>

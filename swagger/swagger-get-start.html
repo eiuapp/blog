@@ -6,7 +6,7 @@
 <!-- 2020-01-11 Sat 18:34 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>code</title>
+<title>swagger</title>
 <meta name="generator" content="Org mode" />
 <meta name="author" content="yunlong zeng" />
 <link rel="stylesheet" title="Standard" href="/html/style/worg.css" type="text/css" />
@@ -93,18 +93,25 @@ fathom('trackPageview');
 </script>
 </div>
 <div id="content">
-<h1 class="title">code</h1>
+<h1 class="title">swagger</h1>
 <div id="table-of-contents">
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#org5774c1c">amazon how to develop</a></li>
-<li><a href="#orgc330704">软件开发的一点思考</a></li>
-<li><a href="#org24354b3">软件开发过程中的其它点</a>
+<li><a href="#orga93fb77">get started</a></li>
+<li><a href="#orgfe2f408">swagger, typeson, docson 结合使用</a></li>
+<li><a href="#orga9e555e">代码自动生成~swagger-ui~</a>
 <ul>
-<li><a href="#org40f1cc7">swagger unit test</a></li>
-<li><a href="#orgd954fff">cncf</a></li>
-<li><a href="#org4ed2f00">k8s</a></li>
+<li><a href="#orgee20934">bad</a></li>
+<li><a href="#orga4e8361">good</a></li>
+<li><a href="#org4436637">example</a></li>
+</ul>
+</li>
+<li><a href="#org4694b0f">unittest</a>
+<ul>
+<li><a href="#orgec3a47b">example</a></li>
+<li><a href="#org8cf679f">swagger-mocha</a></li>
+<li><a href="#org02ca202">google oatts</a></li>
 </ul>
 </li>
 </ul>
@@ -114,97 +121,101 @@ fathom('trackPageview');
 <a href="../index.html">{Back to site's index}</a>
 </p>
 
-<div id="outline-container-org5774c1c" class="outline-2">
-<h2 id="org5774c1c">amazon how to develop</h2>
-<div class="outline-text-2" id="text-org5774c1c">
-<ul class="org-ul">
-<li><a href="https://www.infoq.cn/article/dvqJ4XfiwF-zQupQ7UR9">亚马逊是如何进行软件开发的</a></li>
-</ul>
-</div>
-</div>
 
-<div id="outline-container-orgc330704" class="outline-2">
-<h2 id="orgc330704">软件开发的一点思考</h2>
-<div class="outline-text-2" id="text-orgc330704">
-<ul class="org-ul">
-<li>不能由前端工程师来主定义项目内部字段:
-<ul class="org-ul">
-<li>前端工程师,不适合,想到的东西太多了. 不要使用YAPI这样的东西,效果不好.</li>
-</ul></li>
-</ul>
-</div>
-</div>
-
-<div id="outline-container-org24354b3" class="outline-2">
-<h2 id="org24354b3">软件开发过程中的其它点</h2>
-<div class="outline-text-2" id="text-org24354b3">
-<ul class="org-ul">
-<li>安全(安全)</li>
-<li>权限控制(安全,研发)</li>
-<li>图形化(产品,研发)</li>
-<li>CICD化(SRE)</li>
-<li>云化(SRE)</li>
-<li>docker化(研发)</li>
-<li>结对化编程(研发)</li>
-<li>api管理swagger(研发)</li>
-</ul>
-
-
-<ul class="org-ul">
-<li>流程图
-<ul class="org-ul">
-<li>业务流程图(产品经理)</li>
-<li>架构流程图(研发经理)</li>
-<li>graphviz(研发)</li>
-</ul></li>
-<li>测试(测试经理)
-<ul class="org-ul">
-<li>单元测试(研发)</li>
-<li>前端测试(研发)</li>
-<li>各方面的测试(研发)</li>
-</ul></li>
-<li>产品经理一定要对整个项目通透(产品)
-<ul class="org-ul">
-<li>对原型的处理一定要细致(产品)</li>
-</ul></li>
-<li>数据库(DBA,研发)</li>
-<li></li>
-</ul>
-</div>
-<div id="outline-container-org40f1cc7" class="outline-3">
-<h3 id="org40f1cc7">swagger unit test</h3>
-<div class="outline-text-3" id="text-org40f1cc7">
+<div id="outline-container-orga93fb77" class="outline-2">
+<h2 id="orga93fb77">get started</h2>
+<div class="outline-text-2" id="text-orga93fb77">
 <p>
-Overview
-In microservices architecture, it is important to document and publish the public API. Swagger provides a framework to help you. Introducing Swagger means there are (at least) two descriptions of the API: the Swagger specification and the definition implicit in the implementation of your service. This gives a choice: get your code correct and then create a Swagger specification or create your Swagger definition and then write your code to match. I have tried each method concluding the latter works better for me. Your mileage may vary.
-</p>
-<div class="org-src-container">
-<pre class="src src-markdown"><span style="color: #7590db;">The steps are</span><span style="color: #686868;">:</span>
-<span style="color: #686868;">1.</span> Write Swagger specification
-<span style="color: #686868;">2.</span> Validate Swagger specification
-<span style="color: #686868;">3.</span> Write Swagger tests
-<span style="color: #686868;">4.</span> Run Swagger tests.
-<span style="color: #686868;">5.</span> Write service implementation.
-<span style="color: #686868;">6.</span> Iterate until happy.
-</pre>
-</div>
-
-<p>
-<a href="http://coderobot.downley.net/swagger-driven-testing-in-python.html">Swagger driven testing in Python</a>
+<a href="https://blog.csdn.net/luanpeng825485697/article/details/82819977">https://blog.csdn.net/luanpeng825485697/article/details/82819977</a>
+<a href="https://www.zhihu.com/question/33516911">https://www.zhihu.com/question/33516911</a>
 </p>
 
+<p>
+<a href="https://huangwenchao.gitbooks.io/swagger/content/">https://huangwenchao.gitbooks.io/swagger/content/</a>
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgfe2f408" class="outline-2">
+<h2 id="orgfe2f408">swagger, typeson, docson 结合使用</h2>
+<div class="outline-text-2" id="text-orgfe2f408">
+<p>
+这个比较老
+<a href="https://yq.aliyun.com/articles/773">https://yq.aliyun.com/articles/773</a>
+</p>
+</div>
+</div>
+<div id="outline-container-orga9e555e" class="outline-2">
+<h2 id="orga9e555e">代码自动生成~swagger-ui~</h2>
+<div class="outline-text-2" id="text-orga9e555e">
+</div>
+
+<div id="outline-container-orgee20934" class="outline-3">
+<h3 id="orgee20934">bad</h3>
+<div class="outline-text-3" id="text-orgee20934">
 <ul class="org-ul">
-<li><a href="https://github.com/earldouglas/swagger-test">https://github.com/earldouglas/swagger-test</a>, Specification-driven REST API testing</li>
+<li>swagger2.0 将来会升级至 openapi3.0, 现在与代码集成了, 将来,其它团队升级至
+openapi3.0, 你怎么办?</li>
+<li>与代码相关. 服务不启动, 就看不到对应的~swagger-ui~</li>
+<li>代码启动后, 如果服务对外开放, 就要对这个 URL 专门进行处理(比如:禁止访
+问~swagger-ui~对应的地址)</li>
+<li>与代码相关. 代码背后是一种语言, 那么, 就失去了语言迁移.</li>
+<li>代码注释更多, 代码量显得多.</li>
 </ul>
 </div>
 </div>
 
-<div id="outline-container-orgd954fff" class="outline-3">
-<h3 id="orgd954fff">cncf</h3>
+<div id="outline-container-orga4e8361" class="outline-3">
+<h3 id="orga4e8361">good</h3>
+<div class="outline-text-3" id="text-orga4e8361">
+<ul class="org-ul">
+<li>代码注释更多, 理解代码更容易.</li>
+</ul>
+</div>
 </div>
 
-<div id="outline-container-org4ed2f00" class="outline-3">
-<h3 id="org4ed2f00">k8s</h3>
+<div id="outline-container-org4436637" class="outline-3">
+<h3 id="org4436637">example</h3>
+<div class="outline-text-3" id="text-org4436637">
+<p>
+<a href="https://itnext.io/setting-up-swagger-in-a-node-js-application-d3c4d7aa56d4">https://itnext.io/setting-up-swagger-in-a-node-js-application-d3c4d7aa56d4</a>
+<a href="https://github.com/Yanshijie-EL/egg-swagger-doc">https://github.com/Yanshijie-EL/egg-swagger-doc</a>
+</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org4694b0f" class="outline-2">
+<h2 id="org4694b0f">unittest</h2>
+<div class="outline-text-2" id="text-org4694b0f">
+</div>
+
+<div id="outline-container-orgec3a47b" class="outline-3">
+<h3 id="orgec3a47b">example</h3>
+<div class="outline-text-3" id="text-orgec3a47b">
+<p>
+<a href="https://itnext.io/openapi-swagger-specifications-that-write-your-tests-for-you-sort-of-82276a491c68">https://itnext.io/openapi-swagger-specifications-that-write-your-tests-for-you-sort-of-82276a491c68</a>
+</p>
+</div>
+</div>
+
+<div id="outline-container-org8cf679f" class="outline-3">
+<h3 id="org8cf679f">swagger-mocha</h3>
+<div class="outline-text-3" id="text-org8cf679f">
+<p>
+Automatic validation of Swagger schemas and responses
+<a href="https://github.com/omninews/swagger-mocha">https://github.com/omninews/swagger-mocha</a>
+</p>
+</div>
+</div>
+
+<div id="outline-container-org02ca202" class="outline-3">
+<h3 id="org02ca202">google oatts</h3>
+<div class="outline-text-3" id="text-org02ca202">
+<p>
+<a href="https://github.com/google/oatts">https://github.com/google/oatts</a>
+</p>
+</div>
 </div>
 </div>
 </div>

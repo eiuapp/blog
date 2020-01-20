@@ -1,0 +1,189 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<!-- 2020-01-20 Mon 11:40 -->
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>use $ref to pass a reusable defined parameter</title>
+<meta name="generator" content="Org mode" />
+<meta name="author" content="yunlong zeng" />
+<link rel="stylesheet" title="Standard" href="/html/style/worg.css" type="text/css" />
+<link rel="alternate stylesheet" title="Zenburn" href="/html/style/worg-zenburn.css" type="text/css" />
+<link rel="alternate stylesheet" title="Classic" href="/html/style/worg-classic.css" type="text/css" />
+<link rel="SHORTCUT ICON" href="/html/style/org-mode-unicorn.ico" type="image/x-icon" />
+<link rel="icon" href="/html/style/org-mode-unicorn.ico" type="image/ico" />
+<script type="text/javascript">
+/*
+@licstart  The following is the entire license notice for the
+JavaScript code in this tag.
+
+Copyright (C) 2012-2019 Free Software Foundation, Inc.
+
+The JavaScript code in this tag is free software: you can
+redistribute it and/or modify it under the terms of the GNU
+General Public License (GNU GPL) as published by the Free Software
+Foundation, either version 3 of the License, or (at your option)
+any later version.  The code is distributed WITHOUT ANY WARRANTY;
+without even the implied warranty of MERCHANTABILITY or FITNESS
+FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
+
+As additional permission under GNU GPL version 3 section 7, you
+may distribute non-source (e.g., minimized or compacted) forms of
+that code without the copy of the GNU GPL normally required by
+section 4, provided you include this license notice and a URL
+through which recipients can access the Corresponding Source.
+
+
+@licend  The above is the entire license notice
+for the JavaScript code in this tag.
+*/
+<!--/*--><![CDATA[/*><!--*/
+ function CodeHighlightOn(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(null != target) {
+     elem.cacheClassElem = elem.className;
+     elem.cacheClassTarget = target.className;
+     target.className = "code-highlighted";
+     elem.className   = "code-highlighted";
+   }
+ }
+ function CodeHighlightOff(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(elem.cacheClassElem)
+     elem.className = elem.cacheClassElem;
+   if(elem.cacheClassTarget)
+     target.className = elem.cacheClassTarget;
+ }
+/*]]>*///-->
+</script>
+</head>
+<body>
+<div id="preamble" class="status">
+<script type="text/javascript">
+  document.addEventListener('DOMContentLoaded',function() {
+      document.getElementById("table-of-contents").onclick = function() {
+          var elem = document.getElementById("text-table-of-contents");
+          elem.style.display = elem.style.display == "block" ? "none" : "block";
+      }
+  });
+
+  var url = document.location.href;
+  var orgsource = url.substring(0, url.lastIndexOf("."))+".org.html";
+  function show_org_source(){
+      document.location.href = orgsource;
+  }
+</script>
+
+<script>
+(function(f, a, t, h, o, m){
+	a[h]=a[h]||function(){
+		(a[h].q=a[h].q||[]).push(arguments)
+	};
+	o=f.createElement('script'),
+	m=f.getElementsByTagName('script')[0];
+	o.async=1; o.src=t; o.id='fathom-script';
+	m.parentNode.insertBefore(o,m)
+})(document, window, '//stats.orgmode.org/tracker.js', 'fathom');
+fathom('set', 'siteId', 'NWSQJ');
+fathom('trackPageview');
+</script>
+</div>
+<div id="content">
+<h1 class="title">use $ref to pass a reusable defined parameter</h1>
+<div id="table-of-contents">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#org534bfa8">pass a reusable defined parameter</a>
+<ul>
+<li><a href="#org4b85df3">openapi 3.0</a></li>
+<li><a href="#orgdfcc85b">swagger 2</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+<p>
+<a href="../index.html">{Back to site's index}</a>
+</p>
+
+<div id="outline-container-org534bfa8" class="outline-2">
+<h2 id="org534bfa8">pass a reusable defined parameter</h2>
+<div class="outline-text-2" id="text-org534bfa8">
+<ul class="org-ul">
+<li><a href="https://stackoverflow.com/questions/27005105/swagger-openapi-use-ref-to-pass-a-reusable-defined-parameter?r=SearchResults">https://stackoverflow.com/questions/27005105/swagger-openapi-use-ref-to-pass-a-reusable-defined-parameter?r=SearchResults</a></li>
+</ul>
+</div>
+
+<div id="outline-container-org4b85df3" class="outline-3">
+<h3 id="org4b85df3">openapi 3.0</h3>
+<div class="outline-text-3" id="text-org4b85df3">
+<div class="org-src-container">
+<pre class="src src-yaml"><span style="color: #7590db;">openapi</span>: <span style="color: #daa520;">"3.0.0"</span>
+<span style="color: #7590db;">servers</span>:
+    - <span style="color: #7590db;">url</span>: /v1
+      <span style="color: #7590db;">description</span>: local server
+
+<span style="color: #7590db;">paths</span>:
+   <span style="color: #7590db;">/path</span>:
+      <span style="color: #7590db;">get</span>:
+         <span style="color: #7590db;">parameters</span>:
+            - <span style="color: #7590db;">$ref</span>: <span style="color: #daa520;">"#/components/parameters/limitParam"</span>
+
+<span style="color: #7590db;">components</span>:
+   <span style="color: #7590db;">parameters</span>:
+      <span style="color: #7590db;">limitParam</span>:
+         <span style="color: #7590db;">name</span>: limit
+         <span style="color: #7590db;">in</span>: query
+         <span style="color: #7590db;">description</span>: Limits the number of returned results
+         <span style="color: #7590db;">required</span>: <span style="color: #a45bad;">false</span>
+         <span style="color: #7590db;">schema</span>:
+            <span style="color: #7590db;">type</span>: integer
+            <span style="color: #7590db;">minimum</span>: 10
+            <span style="color: #7590db;">default</span>: 10
+            <span style="color: #7590db;">multipleOf</span>: 10 <span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">matches 10, 20, ...</span>
+            <span style="color: #7590db;">format</span>: int32
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgdfcc85b" class="outline-3">
+<h3 id="orgdfcc85b">swagger 2</h3>
+<div class="outline-text-3" id="text-orgdfcc85b">
+<div class="org-src-container">
+<pre class="src src-yaml"><span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">define a path with parameter reference</span>
+<span style="color: #7590db;">/path</span>:
+   <span style="color: #7590db;">get</span>:
+      <span style="color: #7590db;">parameters</span>:
+         - <span style="color: #7590db;">$ref</span>: <span style="color: #daa520;">"#/parameters/limitParam"</span>
+         - <span style="color: #7590db;">$ref</span>: <span style="color: #daa520;">"#/parameters/offsetParam"</span>
+
+<span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">define reusable parameters:</span>
+<span style="color: #7590db;">parameters</span>:
+   <span style="color: #7590db;">limitParam</span>:
+      <span style="color: #7590db;">name</span>: limit
+      <span style="color: #7590db;">in</span>: query
+      <span style="color: #7590db;">description</span>: Limits the number of returned results
+      <span style="color: #7590db;">required</span>: <span style="color: #a45bad;">false</span>
+      <span style="color: #7590db;">type</span>: integer
+      <span style="color: #7590db;">format</span>: int32
+   <span style="color: #7590db;">offsetParam</span>:
+      <span style="color: #7590db;">name</span>: offset
+      <span style="color: #7590db;">in</span>: query
+      <span style="color: #7590db;">description</span>: Offset from which start returned results
+      <span style="color: #7590db;">required</span>: <span style="color: #a45bad;">false</span>
+      <span style="color: #7590db;">type</span>: integer
+      <span style="color: #7590db;">format</span>: int32
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+</body>
+</html>

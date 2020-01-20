@@ -6,7 +6,7 @@
 <!-- 2020-01-20 Mon 11:40 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>openapi</title>
+<title>how to convert to openapi(v3)</title>
 <meta name="generator" content="Org mode" />
 <meta name="author" content="yunlong zeng" />
 <link rel="stylesheet" title="Standard" href="/html/style/worg.css" type="text/css" />
@@ -93,18 +93,12 @@ fathom('trackPageview');
 </script>
 </div>
 <div id="content">
-<h1 class="title">openapi</h1>
+<h1 class="title">how to convert to openapi(v3)</h1>
 <div id="table-of-contents">
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#org28a1fb4">get started</a></li>
-<li><a href="#org4fbb073">将OpenAPI 3.0转换为Swagger 2.0</a>
-<ul>
-<li><a href="#org5d73c09">swagger-converter</a></li>
-<li><a href="#org0f8d158">others</a></li>
-</ul>
-</li>
+<li><a href="#orgac5bf3b">mysql schema convert to components schema</a></li>
 </ul>
 </div>
 </div>
@@ -112,61 +106,55 @@ fathom('trackPageview');
 <a href="../index.html">{Back to site's index}</a>
 </p>
 
-<div id="outline-container-org28a1fb4" class="outline-2">
-<h2 id="org28a1fb4">get started</h2>
-<div class="outline-text-2" id="text-org28a1fb4">
+<div id="outline-container-orgac5bf3b" class="outline-2">
+<h2 id="orgac5bf3b">mysql schema convert to components schema</h2>
+<div class="outline-text-2" id="text-orgac5bf3b">
 <p>
-<a href="https://www.breakyizhan.com/swagger/2806.html">https://www.breakyizhan.com/swagger/2806.html</a>
+当你已经有了mysql表时,希望能快速得到对应于这个表的components schema, 那么可以按
+下面的来做
 </p>
 
 <p>
-<a href="https://blog.gmem.cc/openapi">https://blog.gmem.cc/openapi</a>
+copy mysql schema, name it "mysql-schema.txt"
 </p>
 
 <div class="org-src-container">
-<pre class="src src-example">学习资料：
-GitHub 上接口规范文档：https://github.com/OAI/OpenAPI-Specification/blob/master/versions/3.0.0.md#responseObject
-较易理解的接口规范文档：https://www.breakyizhan.com/swagger/2810.html
-如何编写基于OpenAPI规范的API文档：https://legacy.gitbook.com/book/huangwenchao/swagger/details
-非常好用的OpenAPI文档编写工具SWAGGERhub,在线编辑，自动mock：
-https://app.swaggerhub.com
+<pre class="src src-example">id	int8
+username	varchar
+password	varchar
+user_type	varchar
 </pre>
 </div>
-</div>
-</div>
 
-<div id="outline-container-org4fbb073" class="outline-2">
-<h2 id="org4fbb073">将OpenAPI 3.0转换为Swagger 2.0</h2>
-<div class="outline-text-2" id="text-org4fbb073">
-</div>
-<div id="outline-container-org5d73c09" class="outline-3">
-<h3 id="org5d73c09">swagger-converter</h3>
-<div class="outline-text-3" id="text-org5d73c09">
-<p>
-<a href="https://github.com/swagger-api/swagger-converter">https://github.com/swagger-api/swagger-converter</a>
-</p>
-</div>
-</div>
-
-<div id="outline-container-org0f8d158" class="outline-3">
-<h3 id="org0f8d158">others</h3>
-<div class="outline-text-3" id="text-org0f8d158">
-<p>
-<a href="https://mlog.club/article/4332121">https://mlog.club/article/4332121</a>
-</p>
 
 <p>
-LucyBot api-spec-converter (online version, GitHub repo, Node.js module) can convert from OpenAPI 3.0 to 2.0.
-</p>
-
-<p>
-API Transformer also claims to be able to convert OpenAPI 3.0 back to OpenAPI 2.0. There's a command-line version too.
+(defun mysql-schema-convert-to-openapi-components-schema ()
+    (interactive)
+    (let ((case-fold-search nil)) ; t or nil
+        (goto-char (point-min))
+        (while (search-forward-regexp "BIGINT.*}" nil t)
+            (replace-match "'integer', description: ''}" t))
+        (goto-char (point-min))
+        (while (search-forward-regexp "INTEGER.*}" nil t)
+            (replace-match "'integer', description: ''}" t))
+        (goto-char (point-min))
+        (while (search-forward-regexp "STRING.*}" nil t)
+            (replace-match "'string', description: ''}" t))
+        (goto-char (point-min))
+        (while (search-forward-regexp "ENUM.*}" nil t)
+            (replace-match "'string', description: ''}" t))
+        (goto-char (point-min))
+        (while (search-forward-regexp "DATE.*}" nil t)
+            (replace-match "'string', description: ''}" t))
+        (goto-char (point-min))
+        (while (search-forward-regexp "CHAR.*}" nil t)
+            (replace-match "'string', description: ''}" t))
 </p>
 
 <p>
-Keep in mind that OAS3→OAS2 convertion is lossy in general, because OAS3 has features that did not exist in OAS2 (such as multiple servers, oneOf/anyOf, different schemas per media type, objects in query string parameters, cookie parameters, and others).
+;; repeat for other string pairs
+))
 </p>
-</div>
 </div>
 </div>
 </div>

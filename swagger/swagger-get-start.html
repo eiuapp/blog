@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2020-01-11 Sat 18:34 -->
+<!-- 2020-01-20 Mon 11:40 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>swagger</title>
@@ -98,20 +98,22 @@ fathom('trackPageview');
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#orga93fb77">get started</a></li>
-<li><a href="#orgfe2f408">swagger, typeson, docson 结合使用</a></li>
-<li><a href="#orga9e555e">代码自动生成~swagger-ui~</a>
+<li><a href="#org893951f">get started</a></li>
+<li><a href="#orgac96079">swagger, typeson, docson 结合使用</a></li>
+<li><a href="#orgeb7d8fe">代码自动生成~swagger-ui~</a>
 <ul>
-<li><a href="#orgee20934">bad</a></li>
-<li><a href="#orga4e8361">good</a></li>
-<li><a href="#org4436637">example</a></li>
+<li><a href="#org1aca04d">bad</a></li>
+<li><a href="#org251da25">good</a></li>
+<li><a href="#orgc1ac4df">example</a></li>
 </ul>
 </li>
-<li><a href="#org4694b0f">unittest</a>
+<li><a href="#orgb9f5586">unittest</a>
 <ul>
-<li><a href="#orgec3a47b">example</a></li>
-<li><a href="#org8cf679f">swagger-mocha</a></li>
-<li><a href="#org02ca202">google oatts</a></li>
+<li><a href="#orgd2048d0">example</a></li>
+<li><a href="#org6529968">swagger-mocha</a></li>
+<li><a href="#orgba5095f">google oatts</a></li>
+<li><a href="#org0bcfa15">swagger-test</a></li>
+<li><a href="#orgf27dbe8">swaggerAssertions</a></li>
 </ul>
 </li>
 </ul>
@@ -122,9 +124,9 @@ fathom('trackPageview');
 </p>
 
 
-<div id="outline-container-orga93fb77" class="outline-2">
-<h2 id="orga93fb77">get started</h2>
-<div class="outline-text-2" id="text-orga93fb77">
+<div id="outline-container-org893951f" class="outline-2">
+<h2 id="org893951f">get started</h2>
+<div class="outline-text-2" id="text-org893951f">
 <p>
 <a href="https://blog.csdn.net/luanpeng825485697/article/details/82819977">https://blog.csdn.net/luanpeng825485697/article/details/82819977</a>
 <a href="https://www.zhihu.com/question/33516911">https://www.zhihu.com/question/33516911</a>
@@ -136,23 +138,23 @@ fathom('trackPageview');
 </div>
 </div>
 
-<div id="outline-container-orgfe2f408" class="outline-2">
-<h2 id="orgfe2f408">swagger, typeson, docson 结合使用</h2>
-<div class="outline-text-2" id="text-orgfe2f408">
+<div id="outline-container-orgac96079" class="outline-2">
+<h2 id="orgac96079">swagger, typeson, docson 结合使用</h2>
+<div class="outline-text-2" id="text-orgac96079">
 <p>
 这个比较老
 <a href="https://yq.aliyun.com/articles/773">https://yq.aliyun.com/articles/773</a>
 </p>
 </div>
 </div>
-<div id="outline-container-orga9e555e" class="outline-2">
-<h2 id="orga9e555e">代码自动生成~swagger-ui~</h2>
-<div class="outline-text-2" id="text-orga9e555e">
+<div id="outline-container-orgeb7d8fe" class="outline-2">
+<h2 id="orgeb7d8fe">代码自动生成~swagger-ui~</h2>
+<div class="outline-text-2" id="text-orgeb7d8fe">
 </div>
 
-<div id="outline-container-orgee20934" class="outline-3">
-<h3 id="orgee20934">bad</h3>
-<div class="outline-text-3" id="text-orgee20934">
+<div id="outline-container-org1aca04d" class="outline-3">
+<h3 id="org1aca04d">bad</h3>
+<div class="outline-text-3" id="text-org1aca04d">
 <ul class="org-ul">
 <li>swagger2.0 将来会升级至 openapi3.0, 现在与代码集成了, 将来,其它团队升级至
 openapi3.0, 你怎么办?</li>
@@ -165,18 +167,18 @@ openapi3.0, 你怎么办?</li>
 </div>
 </div>
 
-<div id="outline-container-orga4e8361" class="outline-3">
-<h3 id="orga4e8361">good</h3>
-<div class="outline-text-3" id="text-orga4e8361">
+<div id="outline-container-org251da25" class="outline-3">
+<h3 id="org251da25">good</h3>
+<div class="outline-text-3" id="text-org251da25">
 <ul class="org-ul">
 <li>代码注释更多, 理解代码更容易.</li>
 </ul>
 </div>
 </div>
 
-<div id="outline-container-org4436637" class="outline-3">
-<h3 id="org4436637">example</h3>
-<div class="outline-text-3" id="text-org4436637">
+<div id="outline-container-orgc1ac4df" class="outline-3">
+<h3 id="orgc1ac4df">example</h3>
+<div class="outline-text-3" id="text-orgc1ac4df">
 <p>
 <a href="https://itnext.io/setting-up-swagger-in-a-node-js-application-d3c4d7aa56d4">https://itnext.io/setting-up-swagger-in-a-node-js-application-d3c4d7aa56d4</a>
 <a href="https://github.com/Yanshijie-EL/egg-swagger-doc">https://github.com/Yanshijie-EL/egg-swagger-doc</a>
@@ -185,23 +187,23 @@ openapi3.0, 你怎么办?</li>
 </div>
 </div>
 
-<div id="outline-container-org4694b0f" class="outline-2">
-<h2 id="org4694b0f">unittest</h2>
-<div class="outline-text-2" id="text-org4694b0f">
+<div id="outline-container-orgb9f5586" class="outline-2">
+<h2 id="orgb9f5586">unittest</h2>
+<div class="outline-text-2" id="text-orgb9f5586">
 </div>
 
-<div id="outline-container-orgec3a47b" class="outline-3">
-<h3 id="orgec3a47b">example</h3>
-<div class="outline-text-3" id="text-orgec3a47b">
+<div id="outline-container-orgd2048d0" class="outline-3">
+<h3 id="orgd2048d0">example</h3>
+<div class="outline-text-3" id="text-orgd2048d0">
 <p>
 <a href="https://itnext.io/openapi-swagger-specifications-that-write-your-tests-for-you-sort-of-82276a491c68">https://itnext.io/openapi-swagger-specifications-that-write-your-tests-for-you-sort-of-82276a491c68</a>
 </p>
 </div>
 </div>
 
-<div id="outline-container-org8cf679f" class="outline-3">
-<h3 id="org8cf679f">swagger-mocha</h3>
-<div class="outline-text-3" id="text-org8cf679f">
+<div id="outline-container-org6529968" class="outline-3">
+<h3 id="org6529968">swagger-mocha</h3>
+<div class="outline-text-3" id="text-org6529968">
 <p>
 Automatic validation of Swagger schemas and responses
 <a href="https://github.com/omninews/swagger-mocha">https://github.com/omninews/swagger-mocha</a>
@@ -209,11 +211,29 @@ Automatic validation of Swagger schemas and responses
 </div>
 </div>
 
-<div id="outline-container-org02ca202" class="outline-3">
-<h3 id="org02ca202">google oatts</h3>
-<div class="outline-text-3" id="text-org02ca202">
+<div id="outline-container-orgba5095f" class="outline-3">
+<h3 id="orgba5095f">google oatts</h3>
+<div class="outline-text-3" id="text-orgba5095f">
 <p>
 <a href="https://github.com/google/oatts">https://github.com/google/oatts</a>
+</p>
+</div>
+</div>
+
+<div id="outline-container-org0bcfa15" class="outline-3">
+<h3 id="org0bcfa15">swagger-test</h3>
+<div class="outline-text-3" id="text-org0bcfa15">
+<p>
+<a href="https://github.com/earldouglas/swagger-test">https://github.com/earldouglas/swagger-test</a>
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgf27dbe8" class="outline-3">
+<h3 id="orgf27dbe8">swaggerAssertions</h3>
+<div class="outline-text-3" id="text-orgf27dbe8">
+<p>
+<a href="https://github.com/Maks3w/SwaggerAssertions">https://github.com/Maks3w/SwaggerAssertions</a>
 </p>
 </div>
 </div>

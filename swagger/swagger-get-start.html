@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2020-01-20 Mon 11:40 -->
+<!-- 2020-01-20 Mon 17:13 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>swagger</title>
@@ -98,22 +98,36 @@ fathom('trackPageview');
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#org893951f">get started</a></li>
-<li><a href="#orgac96079">swagger, typeson, docson 结合使用</a></li>
-<li><a href="#orgeb7d8fe">代码自动生成~swagger-ui~</a>
+<li><a href="#org1840022">get started</a></li>
+<li><a href="#org60e1d92">swagger, typeson, docson 结合使用</a></li>
+<li><a href="#orga4cd0d6">代码自动生成~swagger-ui~</a>
 <ul>
-<li><a href="#org1aca04d">bad</a></li>
-<li><a href="#org251da25">good</a></li>
-<li><a href="#orgc1ac4df">example</a></li>
+<li><a href="#orga4a4356">bad</a></li>
+<li><a href="#org5e2e02d">good</a></li>
+<li><a href="#org12ff03a">example</a></li>
 </ul>
 </li>
-<li><a href="#orgb9f5586">unittest</a>
+<li><a href="#orgdce7eb4">unittest</a>
 <ul>
-<li><a href="#orgd2048d0">example</a></li>
-<li><a href="#org6529968">swagger-mocha</a></li>
-<li><a href="#orgba5095f">google oatts</a></li>
-<li><a href="#org0bcfa15">swagger-test</a></li>
-<li><a href="#orgf27dbe8">swaggerAssertions</a></li>
+<li><a href="#orgf23a33f">best practice</a>
+<ul>
+<li><a href="#orge67273a">m1</a></li>
+<li><a href="#orgbeb081d">m2</a></li>
+<li><a href="#org40cfa2f">m3</a></li>
+<li><a href="#org9af4f88">m4</a></li>
+</ul>
+</li>
+<li><a href="#org92fa039">example</a></li>
+<li><a href="#org3b18dd0">swagger-mocha</a></li>
+<li><a href="#org7123375">google oatts</a></li>
+<li><a href="#org5e46e84">swagger-test</a></li>
+<li><a href="#org82f6fdd">swaggerAssertions</a></li>
+<li><a href="#orgb0c5fcc">dredd</a>
+<ul>
+<li><a href="#org67ecb21">CICD</a></li>
+</ul>
+</li>
+<li><a href="#org0a9a67f">assertible</a></li>
 </ul>
 </li>
 </ul>
@@ -124,9 +138,9 @@ fathom('trackPageview');
 </p>
 
 
-<div id="outline-container-org893951f" class="outline-2">
-<h2 id="org893951f">get started</h2>
-<div class="outline-text-2" id="text-org893951f">
+<div id="outline-container-org1840022" class="outline-2">
+<h2 id="org1840022">get started</h2>
+<div class="outline-text-2" id="text-org1840022">
 <p>
 <a href="https://blog.csdn.net/luanpeng825485697/article/details/82819977">https://blog.csdn.net/luanpeng825485697/article/details/82819977</a>
 <a href="https://www.zhihu.com/question/33516911">https://www.zhihu.com/question/33516911</a>
@@ -138,23 +152,23 @@ fathom('trackPageview');
 </div>
 </div>
 
-<div id="outline-container-orgac96079" class="outline-2">
-<h2 id="orgac96079">swagger, typeson, docson 结合使用</h2>
-<div class="outline-text-2" id="text-orgac96079">
+<div id="outline-container-org60e1d92" class="outline-2">
+<h2 id="org60e1d92">swagger, typeson, docson 结合使用</h2>
+<div class="outline-text-2" id="text-org60e1d92">
 <p>
 这个比较老
 <a href="https://yq.aliyun.com/articles/773">https://yq.aliyun.com/articles/773</a>
 </p>
 </div>
 </div>
-<div id="outline-container-orgeb7d8fe" class="outline-2">
-<h2 id="orgeb7d8fe">代码自动生成~swagger-ui~</h2>
-<div class="outline-text-2" id="text-orgeb7d8fe">
+<div id="outline-container-orga4cd0d6" class="outline-2">
+<h2 id="orga4cd0d6">代码自动生成~swagger-ui~</h2>
+<div class="outline-text-2" id="text-orga4cd0d6">
 </div>
 
-<div id="outline-container-org1aca04d" class="outline-3">
-<h3 id="org1aca04d">bad</h3>
-<div class="outline-text-3" id="text-org1aca04d">
+<div id="outline-container-orga4a4356" class="outline-3">
+<h3 id="orga4a4356">bad</h3>
+<div class="outline-text-3" id="text-orga4a4356">
 <ul class="org-ul">
 <li>swagger2.0 将来会升级至 openapi3.0, 现在与代码集成了, 将来,其它团队升级至
 openapi3.0, 你怎么办?</li>
@@ -167,18 +181,18 @@ openapi3.0, 你怎么办?</li>
 </div>
 </div>
 
-<div id="outline-container-org251da25" class="outline-3">
-<h3 id="org251da25">good</h3>
-<div class="outline-text-3" id="text-org251da25">
+<div id="outline-container-org5e2e02d" class="outline-3">
+<h3 id="org5e2e02d">good</h3>
+<div class="outline-text-3" id="text-org5e2e02d">
 <ul class="org-ul">
 <li>代码注释更多, 理解代码更容易.</li>
 </ul>
 </div>
 </div>
 
-<div id="outline-container-orgc1ac4df" class="outline-3">
-<h3 id="orgc1ac4df">example</h3>
-<div class="outline-text-3" id="text-orgc1ac4df">
+<div id="outline-container-org12ff03a" class="outline-3">
+<h3 id="org12ff03a">example</h3>
+<div class="outline-text-3" id="text-org12ff03a">
 <p>
 <a href="https://itnext.io/setting-up-swagger-in-a-node-js-application-d3c4d7aa56d4">https://itnext.io/setting-up-swagger-in-a-node-js-application-d3c4d7aa56d4</a>
 <a href="https://github.com/Yanshijie-EL/egg-swagger-doc">https://github.com/Yanshijie-EL/egg-swagger-doc</a>
@@ -187,23 +201,153 @@ openapi3.0, 你怎么办?</li>
 </div>
 </div>
 
-<div id="outline-container-orgb9f5586" class="outline-2">
-<h2 id="orgb9f5586">unittest</h2>
-<div class="outline-text-2" id="text-orgb9f5586">
+<div id="outline-container-orgdce7eb4" class="outline-2">
+<h2 id="orgdce7eb4">unittest</h2>
+<div class="outline-text-2" id="text-orgdce7eb4">
 </div>
 
-<div id="outline-container-orgd2048d0" class="outline-3">
-<h3 id="orgd2048d0">example</h3>
-<div class="outline-text-3" id="text-orgd2048d0">
+<div id="outline-container-orgf23a33f" class="outline-3">
+<h3 id="orgf23a33f">best practice</h3>
+<div class="outline-text-3" id="text-orgf23a33f">
+<p>
+无论使用哪一种方法,都可以使用 assertible ,因为这真的是一个好工具
+<a href="https://gorillalogic.com/blog/rest-api-testing-part-1-get-started-with-postman-swagger-and-assertible/">https://gorillalogic.com/blog/rest-api-testing-part-1-get-started-with-postman-swagger-and-assertible/</a>
+类似的工具有:
+<a href="https://www.xoriant.com/blog/product-engineering/testing-rest-apis-swagger.html">https://www.xoriant.com/blog/product-engineering/testing-rest-apis-swagger.html</a>
+</p>
+</div>
+<div id="outline-container-orge67273a" class="outline-4">
+<h4 id="orge67273a">m1</h4>
+<div class="outline-text-4" id="text-orge67273a">
+</div>
+<ul class="org-ul">
+<li><a id="orgbc04a06"></a>step<br />
+<div class="outline-text-5" id="text-orgbc04a06">
+<ul class="org-ul">
+<li>swagger: 写文档</li>
+<li>dredd: 进行测试</li>
+<li>assertible: post deploy hook, 监控</li>
+<li>redoc: generated API Reference Documentation</li>
+</ul>
+
+<p>
+<a href="https://github.com/Redocly/redoc">https://github.com/Redocly/redoc</a>
+</p>
+</div>
+</li>
+<li><a id="orgcf0647a"></a>bad<br />
+<div class="outline-text-5" id="text-orgcf0647a">
+<p>
+dredd 写的测试,必须在 <code>api.yaml</code> 中加入 example annotation, 这样, 我们要测试的案
+例肯定不全.
+</p>
+
+<p>
+openapi3.0 如何写 example annotation?
+</p>
+</div>
+</li>
+
+<li><a id="orgcb9d581"></a>good<br />
+<div class="outline-text-5" id="text-orgcb9d581">
+<p>
+可以监控
+</p>
+</div>
+</li>
+</ul>
+</div>
+
+<div id="outline-container-orgbeb081d" class="outline-4">
+<h4 id="orgbeb081d">m2</h4>
+<div class="outline-text-4" id="text-orgbeb081d">
+</div>
+<ul class="org-ul">
+<li><a id="org3c21309"></a>step<br />
+<div class="outline-text-5" id="text-org3c21309">
+<ul class="org-ul">
+<li>oatts 生成一些个mocha的测试文件</li>
+<li>mocha 测试</li>
+<li>husky.hook 进行 git pre-commit</li>
+<li>assertible: post deploy hook, 监控</li>
+<li>redoc: generated API Reference Documentation</li>
+</ul>
+</div>
+</li>
+
+<li><a id="org616aeca"></a>good<br />
+<div class="outline-text-5" id="text-org616aeca">
+<ul class="org-ul">
+<li>每一个接口,都自动生成一个文件,测试接口,修改测试用例,很方便</li>
+<li>可以对自动生成的测试文件,写模板</li>
+<li>再也不用手写一些测试文件</li>
+</ul>
+<p>
+以前,我都是手写的,那时,好麻烦
+</p>
+</div>
+</li>
+
+<li><a id="orgc588640"></a>bad<br />
+<div class="outline-text-5" id="text-orgc588640">
+<ul class="org-ul">
+<li>没有利用</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+<div id="outline-container-org40cfa2f" class="outline-4">
+<h4 id="org40cfa2f">m3</h4>
+<div class="outline-text-4" id="text-org40cfa2f">
+</div>
+<ul class="org-ul">
+<li><a id="orgb258312"></a>step<br />
+<div class="outline-text-5" id="text-orgb258312">
+<ul class="org-ul">
+<li>swagger</li>
+<li>postman</li>
+<li>newman</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+
+<div id="outline-container-org9af4f88" class="outline-4">
+<h4 id="org9af4f88">m4</h4>
+<div class="outline-text-4" id="text-org9af4f88">
+<p>
+similar to oatts
+</p>
+</div>
+<ul class="org-ul">
+<li><a id="org9a8e477"></a>step<br />
+<div class="outline-text-5" id="text-org9a8e477">
+<ul class="org-ul">
+<li>swagger</li>
+<li>swagger-test-templates</li>
+</ul>
+<p>
+<a href="https://github.com/apigee-127/swagger-test-templates">https://github.com/apigee-127/swagger-test-templates</a>
+</p>
+</div>
+</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org92fa039" class="outline-3">
+<h3 id="org92fa039">example</h3>
+<div class="outline-text-3" id="text-org92fa039">
 <p>
 <a href="https://itnext.io/openapi-swagger-specifications-that-write-your-tests-for-you-sort-of-82276a491c68">https://itnext.io/openapi-swagger-specifications-that-write-your-tests-for-you-sort-of-82276a491c68</a>
 </p>
 </div>
 </div>
 
-<div id="outline-container-org6529968" class="outline-3">
-<h3 id="org6529968">swagger-mocha</h3>
-<div class="outline-text-3" id="text-org6529968">
+<div id="outline-container-org3b18dd0" class="outline-3">
+<h3 id="org3b18dd0">swagger-mocha</h3>
+<div class="outline-text-3" id="text-org3b18dd0">
 <p>
 Automatic validation of Swagger schemas and responses
 <a href="https://github.com/omninews/swagger-mocha">https://github.com/omninews/swagger-mocha</a>
@@ -211,29 +355,61 @@ Automatic validation of Swagger schemas and responses
 </div>
 </div>
 
-<div id="outline-container-orgba5095f" class="outline-3">
-<h3 id="orgba5095f">google oatts</h3>
-<div class="outline-text-3" id="text-orgba5095f">
+<div id="outline-container-org7123375" class="outline-3">
+<h3 id="org7123375">google oatts</h3>
+<div class="outline-text-3" id="text-org7123375">
 <p>
 <a href="https://github.com/google/oatts">https://github.com/google/oatts</a>
 </p>
 </div>
 </div>
 
-<div id="outline-container-org0bcfa15" class="outline-3">
-<h3 id="org0bcfa15">swagger-test</h3>
-<div class="outline-text-3" id="text-org0bcfa15">
+<div id="outline-container-org5e46e84" class="outline-3">
+<h3 id="org5e46e84">swagger-test</h3>
+<div class="outline-text-3" id="text-org5e46e84">
 <p>
 <a href="https://github.com/earldouglas/swagger-test">https://github.com/earldouglas/swagger-test</a>
+</p>
+
+<p>
+<a href="http://cn.voidcc.com/question/p-svzlfimi-bng.html">http://cn.voidcc.com/question/p-svzlfimi-bng.html</a>
+</p>
+</div>
+</div>
+<div id="outline-container-org82f6fdd" class="outline-3">
+<h3 id="org82f6fdd">swaggerAssertions</h3>
+<div class="outline-text-3" id="text-org82f6fdd">
+<p>
+<a href="https://github.com/Maks3w/SwaggerAssertions">https://github.com/Maks3w/SwaggerAssertions</a>
 </p>
 </div>
 </div>
 
-<div id="outline-container-orgf27dbe8" class="outline-3">
-<h3 id="orgf27dbe8">swaggerAssertions</h3>
-<div class="outline-text-3" id="text-orgf27dbe8">
+<div id="outline-container-orgb0c5fcc" class="outline-3">
+<h3 id="orgb0c5fcc">dredd</h3>
+<div class="outline-text-3" id="text-orgb0c5fcc">
 <p>
-<a href="https://github.com/Maks3w/SwaggerAssertions">https://github.com/Maks3w/SwaggerAssertions</a>
+<a href="https://github.com/apiaryio/dredd">https://github.com/apiaryio/dredd</a>
+</p>
+</div>
+
+<div id="outline-container-org67ecb21" class="outline-4">
+<h4 id="org67ecb21">CICD</h4>
+<div class="outline-text-4" id="text-org67ecb21">
+<ul class="org-ul">
+<li><a href="https://blog.apiary.io/How-to-test-api-with-api-blueprint-and-dredd">https://blog.apiary.io/How-to-test-api-with-api-blueprint-and-dredd</a></li>
+<li><a href="https://phil.tech/api/2015/01/28/dredd-api-testing-documentation/">https://phil.tech/api/2015/01/28/dredd-api-testing-documentation/</a></li>
+<li><a href="https://blog.csdn.net/liuyueyi1995/article/details/54379015">https://blog.csdn.net/liuyueyi1995/article/details/54379015</a></li>
+</ul>
+</div>
+</div>
+</div>
+<div id="outline-container-org0a9a67f" class="outline-3">
+<h3 id="org0a9a67f">assertible</h3>
+<div class="outline-text-3" id="text-org0a9a67f">
+<p>
+<a href="https://assertible.com/">https://assertible.com/</a>
+<a href="https://assertible.com/blog/testing-an-api-using-swagger">https://assertible.com/blog/testing-an-api-using-swagger</a>
 </p>
 </div>
 </div>

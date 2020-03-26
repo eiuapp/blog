@@ -3,10 +3,10 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2019-12-16 Mon 12:12 -->
+<!-- 2020-03-26 Thu 11:07 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>&lrm;</title>
+<title>nginx</title>
 <meta name="generator" content="Org mode" />
 <meta name="author" content="yunlong zeng" />
 <link rel="stylesheet" title="Standard" href="/html/style/worg.css" type="text/css" />
@@ -93,26 +93,32 @@ fathom('trackPageview');
 </script>
 </div>
 <div id="content">
+<h1 class="title">nginx</h1>
 <div id="table-of-contents">
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#org85dd7dc">nginx allow *.apk file download</a>
+<li><a href="#org3e087e1">nginx allow *.apk file download</a>
 <ul>
-<li><a href="#org9e2f313">theory</a></li>
-<li><a href="#orgf6fcfee">重新加载nginx的配置</a></li>
+<li><a href="#org73ed940">theory</a></li>
+<li><a href="#org9f1ff6f">重新加载nginx的配置</a></li>
 </ul>
 </li>
 </ul>
 </div>
 </div>
-<div id="outline-container-org85dd7dc" class="outline-2">
-<h2 id="org85dd7dc">nginx allow *.apk file download</h2>
-<div class="outline-text-2" id="text-org85dd7dc">
+<p>
+<a href="../index.html">{Back to site's index}</a>
+</p>
+
+
+<div id="outline-container-org3e087e1" class="outline-2">
+<h2 id="org3e087e1">nginx allow *.apk file download</h2>
+<div class="outline-text-2" id="text-org3e087e1">
 </div>
-<div id="outline-container-org9e2f313" class="outline-3">
-<h3 id="org9e2f313">theory</h3>
-<div class="outline-text-3" id="text-org9e2f313">
+<div id="outline-container-org73ed940" class="outline-3">
+<h3 id="org73ed940">theory</h3>
+<div class="outline-text-3" id="text-org73ed940">
 <p>
 nginx默认不支持这二个后缀的mime类型，我们只要在mime设置文件的地方增加上这二个后缀，nginx便支持正常的下载了。
 </p>
@@ -129,7 +135,7 @@ nginx默认不支持这二个后缀的mime类型，我们只要在mime设置文�
 <pre class="src src-bash">video/x-ms-asf                                   asx asf;
 video/x-ms-wmv                                   wmv;
 video/x-msvideo                                  avi;
-<span style="color: #2aa1ae; background-color: #292e34;">#</span><span style="color: #2aa1ae; background-color: #292e34;">&#28155;&#21152;&#20197;&#19979;&#20108;&#34892;</span>
+<span style="color: #75715E;">#</span><span style="color: #75715E; background-color: #292e34;">&#28155;&#21152;&#20197;&#19979;&#20108;&#34892;</span>
 application/vnd.android.package-archive          apk;
 application/iphone                               pxl IP address;
 </pre>
@@ -141,9 +147,9 @@ application/iphone                               pxl IP address;
 </div>
 </div>
 
-<div id="outline-container-orgf6fcfee" class="outline-3">
-<h3 id="orgf6fcfee">重新加载nginx的配置</h3>
-<div class="outline-text-3" id="text-orgf6fcfee">
+<div id="outline-container-org9f1ff6f" class="outline-3">
+<h3 id="org9f1ff6f">重新加载nginx的配置</h3>
+<div class="outline-text-3" id="text-org9f1ff6f">
 <div class="org-src-container">
 <pre class="src src-bash">[root@localhost nginx]# sbin/nginx -s reload
 </pre>

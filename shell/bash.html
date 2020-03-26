@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2020-01-20 Mon 11:39 -->
+<!-- 2020-03-26 Thu 11:07 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>bash</title>
@@ -98,10 +98,10 @@ fathom('trackPageview');
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#org396ff11">restart npm</a>
+<li><a href="#orgd6103c0">restart npm</a>
 <ul>
-<li><a href="#orgfc9528f">npm run start</a></li>
-<li><a href="#orgcddabdd">npm run build</a></li>
+<li><a href="#org6a7bb08">npm run start</a></li>
+<li><a href="#org3534886">npm run build</a></li>
 </ul>
 </li>
 </ul>
@@ -111,51 +111,56 @@ fathom('trackPageview');
 <a href="../index.html">{Back to site's index}</a>
 </p>
 
-<div id="outline-container-org396ff11" class="outline-2">
-<h2 id="org396ff11">restart npm</h2>
-<div class="outline-text-2" id="text-org396ff11">
+<div id="outline-container-orgd6103c0" class="outline-2">
+<h2 id="orgd6103c0">restart npm</h2>
+<div class="outline-text-2" id="text-orgd6103c0">
 </div>
-<div id="outline-container-orgfc9528f" class="outline-3">
-<h3 id="orgfc9528f">npm run start</h3>
-<div class="outline-text-3" id="text-orgfc9528f">
+<div id="outline-container-org6a7bb08" class="outline-3">
+<h3 id="org6a7bb08">npm run start</h3>
+<div class="outline-text-3" id="text-org6a7bb08">
 <div class="org-src-container">
-<pre class="src src-shell"><span style="color: #2aa1ae; background-color: #292e34;">#</span><span style="color: #2aa1ae; background-color: #292e34;">!/bin/</span><span style="color: #00bfff; font-weight: bold;">bash</span>
+<pre class="src src-shell"><span style="color: #75715E;">#</span><span style="color: #75715E; background-color: #292e34;">!/bin/</span><span style="color: #F92672;">bash</span>
 
-<span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">auto restart npm-run-start, for fangyuan-server-run-start</span>
+<span style="color: #75715E;"># </span><span style="color: #75715E; background-color: #292e34;">auto restart npm-run-start, for fangyuan-server-run-start</span>
 
-<span style="color: #2aa1ae; background-color: #292e34;">#</span><span style="color: #2aa1ae; background-color: #292e34;">pid=`ps -ef | grep 7012 | grep egg-scripts | grep -e '^ubuntu' | awk '{print $2}'`</span>
-<span style="color: #7590db;">progid</span>=<span style="color: #fa8072;">`ps -ef | grep  fangyuan-server-run-start | grep -e '^ubuntu' | grep egg-scripts | awk '{print $2}'`</span>
-<span style="color: #4f97d7;">echo</span> <span style="color: #daa520;">"pid is: ${pid}"</span>
-<span style="color: #7590db;">pidlen</span>=${#<span style="color: #7590db;">progid</span>}
-<span style="color: #4f97d7;">echo</span> <span style="color: #daa520;">"pidlen is: ${pidlen}"</span>
-<span style="color: #7590db;">nid</span>=$<span style="color: #7590db;">pidlen</span>
-<span style="color: #4f97d7;">echo</span> <span style="color: #daa520;">"nid is: $nid"</span>
-<span style="color: #00bfff; font-weight: bold;">if</span> [ $<span style="color: #7590db;">nid</span> -gt <span style="color: #a45bad;">1</span> ]; <span style="color: #00bfff; font-weight: bold;">then</span>
-    <span style="color: #4f97d7;">echo</span> <span style="color: #daa520;">"do_something_1"</span>
-    <span style="color: #4f97d7;">kill</span> $<span style="color: #7590db;">progid</span>
-    <span style="color: #4f97d7;">echo</span> <span style="color: #daa520;">"kill is end"</span>
-<span style="color: #00bfff; font-weight: bold;">else</span>
-    <span style="color: #4f97d7;">echo</span> <span style="color: #daa520;">"do_other"</span>
-<span style="color: #00bfff; font-weight: bold;">fi</span>
-<span style="color: #4f97d7;">cd</span> ${<span style="color: #7590db;">HOME</span>}/fangyuan/local/fangyuan-server-run-start
+<span style="color: #75715E;"># </span><span style="color: #75715E; background-color: #292e34;">find program id </span>
+<span style="color: #75715E;">#</span><span style="color: #75715E; background-color: #292e34;">pid=`ps -ef | grep 7012 | grep egg-scripts | grep -e '^ubuntu' | awk '{print $2}'`</span>
+<span style="color: #FD971F;">progid</span>=<span style="color: #AE81FF; font-weight: bold;">`ps -ef | grep  fangyuan-server-run-start | grep -e '^ubuntu' | grep egg-scripts | awk '{print $2}'`</span>
+<span style="color: #F92672;">echo</span> <span style="color: #E6DB74;">"pid is: ${pid}"</span>
+
+<span style="color: #75715E;"># </span><span style="color: #75715E; background-color: #292e34;">kill program id </span>
+<span style="color: #FD971F;">pidlen</span>=${#<span style="color: #FD971F;">progid</span>}
+<span style="color: #F92672;">echo</span> <span style="color: #E6DB74;">"pidlen is: ${pidlen}"</span>
+<span style="color: #FD971F;">nid</span>=$<span style="color: #FD971F;">pidlen</span>
+<span style="color: #F92672;">echo</span> <span style="color: #E6DB74;">"nid is: $nid"</span>
+<span style="color: #F92672;">if</span> [ $<span style="color: #FD971F;">nid</span> -gt <span style="color: #AE81FF;">1</span> ]; <span style="color: #F92672;">then</span>
+    <span style="color: #F92672;">echo</span> <span style="color: #E6DB74;">"do_something_1"</span>
+    <span style="color: #F92672;">kill</span> $<span style="color: #FD971F;">progid</span>
+    <span style="color: #F92672;">echo</span> <span style="color: #E6DB74;">"kill is end"</span>
+<span style="color: #F92672;">else</span>
+    <span style="color: #F92672;">echo</span> <span style="color: #E6DB74;">"do_other"</span>
+<span style="color: #F92672;">fi</span>
+
+<span style="color: #75715E;"># </span><span style="color: #75715E; background-color: #292e34;">start program</span>
+<span style="color: #F92672;">cd</span> ${<span style="color: #FD971F;">HOME</span>}/fangyuan/local/fangyuan-server-run-start
 git stash &amp;&amp; git pull &amp;&amp; git stash pop
 npm run start
-<span style="color: #4f97d7;">echo</span> <span style="color: #daa520;">"npm run start is end"</span>
+<span style="color: #F92672;">echo</span> <span style="color: #E6DB74;">"npm run start is end"</span>
 </pre>
 </div>
 </div>
 </div>
 
-<div id="outline-container-orgcddabdd" class="outline-3">
-<h3 id="orgcddabdd">npm run build</h3>
-<div class="outline-text-3" id="text-orgcddabdd">
+<div id="outline-container-org3534886" class="outline-3">
+<h3 id="org3534886">npm run build</h3>
+<div class="outline-text-3" id="text-org3534886">
 <div class="org-src-container">
-<pre class="src src-shell"><span style="color: #2aa1ae; background-color: #292e34;">#</span><span style="color: #2aa1ae; background-color: #292e34;">!/bin/</span><span style="color: #00bfff; font-weight: bold;">bash</span>
-<span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">auto restart npm-run-start, for fangyuan-web</span>
-<span style="color: #4f97d7;">cd</span> ${<span style="color: #7590db;">HOME</span>}/fangyuan/local/fangyuan-web
+<pre class="src src-shell"><span style="color: #75715E;">#</span><span style="color: #75715E; background-color: #292e34;">!/bin/</span><span style="color: #F92672;">bash</span>
+<span style="color: #75715E;"># </span><span style="color: #75715E; background-color: #292e34;">auto restart npm-run-start, for fangyuan-web</span>
+<span style="color: #F92672;">cd</span> ${<span style="color: #FD971F;">HOME</span>}/fangyuan/local/fangyuan-web
 git stash &amp;&amp; git pull &amp;&amp; git stash pop
 npm run build
-<span style="color: #4f97d7;">echo</span> <span style="color: #daa520;">"npm run build is end"</span>
+<span style="color: #F92672;">echo</span> <span style="color: #E6DB74;">"npm run build is end"</span>
 </pre>
 </div>
 </div>

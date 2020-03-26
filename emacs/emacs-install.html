@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2019-12-16 Mon 12:12 -->
+<!-- 2020-03-26 Thu 11:07 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>&lrm;</title>
@@ -97,18 +97,18 @@ fathom('trackPageview');
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#org422a86e">install 26.3</a>
+<li><a href="#org94dc60a">install 26.3</a>
 <ul>
-<li><a href="#org122ccc7">REF</a></li>
-<li><a href="#org075dd96">安装 26.3 后，重启了电脑，报错误</a></li>
+<li><a href="#org81b4a44">REF</a></li>
+<li><a href="#org88e152b">安装 26.3 后，重启了电脑，报错误</a></li>
 </ul>
 </li>
 </ul>
 </div>
 </div>
-<div id="outline-container-org422a86e" class="outline-2">
-<h2 id="org422a86e">install 26.3</h2>
-<div class="outline-text-2" id="text-org422a86e">
+<div id="outline-container-org94dc60a" class="outline-2">
+<h2 id="org94dc60a">install 26.3</h2>
+<div class="outline-text-2" id="text-org94dc60a">
 <p>
 update emacs version from 26.1 to 26.3
 </p>
@@ -126,37 +126,37 @@ download address is :
 <pre class="src src-shell">wget -O ~/Downloads/emacs-26.3.tar.xz http://mirrors.nju.edu.cn/gnu/emacs/emacs-26.3.tar.xz
 sudo apt-get build-dep emacs
 tar xf emacs-26.3.tar.xz
-<span style="color: #4f97d7;">cd</span> emacs-26.3  <span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">&#36827;&#20837;&#23433;&#35013;&#30446;&#24405;</span>
+<span style="color: #F92672;">cd</span> emacs-26.3  <span style="color: #75715E;"># </span><span style="color: #75715E; background-color: #292e34;">&#36827;&#20837;&#23433;&#35013;&#30446;&#24405;</span>
 ./configure
 make
 sudo make install
-<span style="color: #4f97d7;">which</span> emacs
+<span style="color: #F92672;">which</span> emacs
 emacs --version
 </pre>
 </div>
 </div>
 
-<div id="outline-container-org122ccc7" class="outline-3">
-<h3 id="org122ccc7">REF</h3>
-<div class="outline-text-3" id="text-org122ccc7">
+<div id="outline-container-org81b4a44" class="outline-3">
+<h3 id="org81b4a44">REF</h3>
+<div class="outline-text-3" id="text-org81b4a44">
 <ul class="org-ul">
 <li><a href="https://www.linuxidc.com/Linux/2019-09/160451.htm">https://www.linuxidc.com/Linux/2019-09/160451.htm</a></li>
 </ul>
 </div>
 </div>
 
-<div id="outline-container-org075dd96" class="outline-3">
-<h3 id="org075dd96">安装 26.3 后，重启了电脑，报错误</h3>
-<div class="outline-text-3" id="text-org075dd96">
+<div id="outline-container-org88e152b" class="outline-3">
+<h3 id="org88e152b">安装 26.3 后，重启了电脑，报错误</h3>
+<div class="outline-text-3" id="text-org88e152b">
 <p>
 没重启电脑的情况下，可以使用. 安装 26.3 后，重启了电脑，就报下面这个错误
 </p>
 
 <div class="org-src-container">
-<pre class="src src-shell">Eager macro-expansion failure: (error <span style="color: #daa520;">"File &#8216;/usr/local/share/emacs/26.3/lisp/emacs-lisp/advice.elc&#8217; was not compiled in Emacs"</span>)
-Eager macro-expansion failure: (error <span style="color: #daa520;">"File &#8216;/usr/local/share/emacs/26.3/lisp/emacs-lisp/easy-mmode.elc&#8217; was not compiled in Emacs"</span>) [<span style="color: #a45bad;">2</span> times]
-define-minor-mode: File &#8216;/usr/local/share/emacs/26.3/lisp/emacs-lisp/debug.elc&#8217; was not compiled<span style="color: #00bfff; font-weight: bold;"> in</span> Emacs
-mwheel-scroll: End of buffer [<span style="color: #a45bad;">4</span> times]
+<pre class="src src-shell">Eager macro-expansion failure: (error <span style="color: #E6DB74;">"File &#8216;/usr/local/share/emacs/26.3/lisp/emacs-lisp/advice.elc&#8217; was not compiled in Emacs"</span>)
+Eager macro-expansion failure: (error <span style="color: #E6DB74;">"File &#8216;/usr/local/share/emacs/26.3/lisp/emacs-lisp/easy-mmode.elc&#8217; was not compiled in Emacs"</span>) [<span style="color: #AE81FF;">2</span> times]
+define-minor-mode: File &#8216;/usr/local/share/emacs/26.3/lisp/emacs-lisp/debug.elc&#8217; was not compiled<span style="color: #F92672;"> in</span> Emacs
+mwheel-scroll: End of buffer [<span style="color: #AE81FF;">4</span> times]
 </pre>
 </div>
 

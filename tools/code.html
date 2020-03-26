@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2020-01-11 Sat 18:34 -->
+<!-- 2020-03-26 Thu 11:07 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>code</title>
@@ -98,13 +98,13 @@ fathom('trackPageview');
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#org5774c1c">amazon how to develop</a></li>
-<li><a href="#orgc330704">软件开发的一点思考</a></li>
-<li><a href="#org24354b3">软件开发过程中的其它点</a>
+<li><a href="#org9536eab">amazon how to develop</a></li>
+<li><a href="#org6711eda">软件开发的一点思考</a></li>
+<li><a href="#orge4ec18f">软件开发过程中的其它点</a>
 <ul>
-<li><a href="#org40f1cc7">swagger unit test</a></li>
-<li><a href="#orgd954fff">cncf</a></li>
-<li><a href="#org4ed2f00">k8s</a></li>
+<li><a href="#org61c8d8c">swagger unit test</a></li>
+<li><a href="#orga27bb8a">cncf</a></li>
+<li><a href="#orge5b3207">k8s</a></li>
 </ul>
 </li>
 </ul>
@@ -114,18 +114,18 @@ fathom('trackPageview');
 <a href="../index.html">{Back to site's index}</a>
 </p>
 
-<div id="outline-container-org5774c1c" class="outline-2">
-<h2 id="org5774c1c">amazon how to develop</h2>
-<div class="outline-text-2" id="text-org5774c1c">
+<div id="outline-container-org9536eab" class="outline-2">
+<h2 id="org9536eab">amazon how to develop</h2>
+<div class="outline-text-2" id="text-org9536eab">
 <ul class="org-ul">
 <li><a href="https://www.infoq.cn/article/dvqJ4XfiwF-zQupQ7UR9">亚马逊是如何进行软件开发的</a></li>
 </ul>
 </div>
 </div>
 
-<div id="outline-container-orgc330704" class="outline-2">
-<h2 id="orgc330704">软件开发的一点思考</h2>
-<div class="outline-text-2" id="text-orgc330704">
+<div id="outline-container-org6711eda" class="outline-2">
+<h2 id="org6711eda">软件开发的一点思考</h2>
+<div class="outline-text-2" id="text-org6711eda">
 <ul class="org-ul">
 <li>不能由前端工程师来主定义项目内部字段:
 <ul class="org-ul">
@@ -135,9 +135,9 @@ fathom('trackPageview');
 </div>
 </div>
 
-<div id="outline-container-org24354b3" class="outline-2">
-<h2 id="org24354b3">软件开发过程中的其它点</h2>
-<div class="outline-text-2" id="text-org24354b3">
+<div id="outline-container-orge4ec18f" class="outline-2">
+<h2 id="orge4ec18f">软件开发过程中的其它点</h2>
+<div class="outline-text-2" id="text-orge4ec18f">
 <ul class="org-ul">
 <li>安全(安全)</li>
 <li>权限控制(安全,研发)</li>
@@ -171,21 +171,21 @@ fathom('trackPageview');
 <li></li>
 </ul>
 </div>
-<div id="outline-container-org40f1cc7" class="outline-3">
-<h3 id="org40f1cc7">swagger unit test</h3>
-<div class="outline-text-3" id="text-org40f1cc7">
+<div id="outline-container-org61c8d8c" class="outline-3">
+<h3 id="org61c8d8c">swagger unit test</h3>
+<div class="outline-text-3" id="text-org61c8d8c">
 <p>
 Overview
 In microservices architecture, it is important to document and publish the public API. Swagger provides a framework to help you. Introducing Swagger means there are (at least) two descriptions of the API: the Swagger specification and the definition implicit in the implementation of your service. This gives a choice: get your code correct and then create a Swagger specification or create your Swagger definition and then write your code to match. I have tried each method concluding the latter works better for me. Your mileage may vary.
 </p>
 <div class="org-src-container">
-<pre class="src src-markdown"><span style="color: #7590db;">The steps are</span><span style="color: #686868;">:</span>
-<span style="color: #686868;">1.</span> Write Swagger specification
-<span style="color: #686868;">2.</span> Validate Swagger specification
-<span style="color: #686868;">3.</span> Write Swagger tests
-<span style="color: #686868;">4.</span> Run Swagger tests.
-<span style="color: #686868;">5.</span> Write service implementation.
-<span style="color: #686868;">6.</span> Iterate until happy.
+<pre class="src src-markdown"><span style="color: #FD971F;">The steps are</span><span style="color: #75715E;">:</span>
+<span style="color: #75715E;">1.</span> Write Swagger specification
+<span style="color: #75715E;">2.</span> Validate Swagger specification
+<span style="color: #75715E;">3.</span> Write Swagger tests
+<span style="color: #75715E;">4.</span> Run Swagger tests.
+<span style="color: #75715E;">5.</span> Write service implementation.
+<span style="color: #75715E;">6.</span> Iterate until happy.
 </pre>
 </div>
 
@@ -199,12 +199,12 @@ In microservices architecture, it is important to document and publish the publi
 </div>
 </div>
 
-<div id="outline-container-orgd954fff" class="outline-3">
-<h3 id="orgd954fff">cncf</h3>
+<div id="outline-container-orga27bb8a" class="outline-3">
+<h3 id="orga27bb8a">cncf</h3>
 </div>
 
-<div id="outline-container-org4ed2f00" class="outline-3">
-<h3 id="org4ed2f00">k8s</h3>
+<div id="outline-container-orge5b3207" class="outline-3">
+<h3 id="orge5b3207">k8s</h3>
 </div>
 </div>
 </div>

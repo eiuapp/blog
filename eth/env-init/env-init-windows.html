@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2019-12-16 Mon 12:12 -->
+<!-- 2020-03-26 Thu 11:07 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>&lrm;</title>
@@ -97,19 +97,19 @@ fathom('trackPageview');
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#orgd5bd435">在windows中搭建eth开发环境</a>
+<li><a href="#orgdd5b327">在windows中搭建eth开发环境</a>
 <ul>
-<li><a href="#orgb9237d8">(报错)参考1</a>
+<li><a href="#org44123e6">(报错)参考1</a>
 <ul>
-<li><a href="#org97a5bb3">env wsl</a></li>
-<li><a href="#orgd86aaaf">env cloud-windows</a></li>
+<li><a href="#org3b41bab">env wsl</a></li>
+<li><a href="#org0effb9a">env cloud-windows</a></li>
 </ul>
 </li>
-<li><a href="#org8ef496a">参考2</a>
+<li><a href="#org35550e9">参考2</a>
 <ul>
-<li><a href="#orgbd76d92">(报错)env wsl</a></li>
-<li><a href="#org4176c65">(报错)env cloud-windows</a></li>
-<li><a href="#org818d783">env windows</a></li>
+<li><a href="#org97344f5">(报错)env wsl</a></li>
+<li><a href="#orgdea5ff3">(报错)env cloud-windows</a></li>
+<li><a href="#orgb9812ac">env windows</a></li>
 </ul>
 </li>
 </ul>
@@ -117,21 +117,21 @@ fathom('trackPageview');
 </ul>
 </div>
 </div>
-<div id="outline-container-orgd5bd435" class="outline-2">
-<h2 id="orgd5bd435">在windows中搭建eth开发环境</h2>
-<div class="outline-text-2" id="text-orgd5bd435">
+<div id="outline-container-orgdd5b327" class="outline-2">
+<h2 id="orgdd5b327">在windows中搭建eth开发环境</h2>
+<div class="outline-text-2" id="text-orgdd5b327">
 </div>
-<div id="outline-container-orgb9237d8" class="outline-3">
-<h3 id="orgb9237d8">(报错)参考1</h3>
-<div class="outline-text-3" id="text-orgb9237d8">
+<div id="outline-container-org44123e6" class="outline-3">
+<h3 id="org44123e6">(报错)参考1</h3>
+<div class="outline-text-3" id="text-org44123e6">
 <p>
 主要参考 <a href="https://learnblockchain.cn/2017/11/24/init-env/">https://learnblockchain.cn/2017/11/24/init-env/</a>
 </p>
 </div>
 
-<div id="outline-container-org97a5bb3" class="outline-4">
-<h4 id="org97a5bb3">env wsl</h4>
-<div class="outline-text-4" id="text-org97a5bb3">
+<div id="outline-container-org3b41bab" class="outline-4">
+<h4 id="org3b41bab">env wsl</h4>
+<div class="outline-text-4" id="text-org3b41bab">
 <ul class="org-ul">
 <li><a href="https://geth.ethereum.org/docs/install-and-build/installing-geth#install-on-ubuntu-via-ppas">https://geth.ethereum.org/docs/install-and-build/installing-geth#install-on-ubuntu-via-ppas</a></li>
 </ul>
@@ -150,14 +150,14 @@ sudo apt-get install ethereum
 <div class="org-src-container">
 <pre class="src src-shell">DESKTOP-APB1HCJ% geth version
 Geth
-Version: <span style="color: #a45bad;">1.9.8-stable</span>
+Version: <span style="color: #AE81FF;">1.9.8-stable</span>
 Git Commit: d62e9b285777c036c108b89fac0c78f7855ba314
 Architecture: amd64
-Protocol Versions: [<span style="color: #a45bad;">64</span> <span style="color: #a45bad;">63</span>]
+Protocol Versions: [<span style="color: #AE81FF;">64</span> <span style="color: #AE81FF;">63</span>]
 Go Version: go1.13.4
 Operating System: linux
-<span style="color: #7590db;">GOPATH</span>=/mnt/c/Users/a/.gvm/pkgsets/go1.12.6/global
-<span style="color: #7590db;">GOROOT</span>=/mnt/c/Users/a/.gvm/gos/go1.12.6
+<span style="color: #FD971F;">GOPATH</span>=/mnt/c/Users/a/.gvm/pkgsets/go1.12.6/global
+<span style="color: #FD971F;">GOROOT</span>=/mnt/c/Users/a/.gvm/gos/go1.12.6
 DESKTOP-APB1HCJ%
 </pre>
 </div>
@@ -167,7 +167,7 @@ DESKTOP-APB1HCJ%
 </p>
 
 <div class="org-src-container">
-<pre class="src src-shell">DESKTOP-APB1HCJ%  geth --datadir testNet --dev console <span style="color: #a45bad;">2</span>&gt;&gt; test.log
+<pre class="src src-shell">DESKTOP-APB1HCJ%  geth --datadir testNet --dev console <span style="color: #AE81FF;">2</span>&gt;&gt; test.log
 Fatal: Error starting protocol stack: listen unix /mnt/c/Users/a/tom/eth/env/testNet/geth.ipc: bind: invalid argument
 DESKTOP-APB1HCJ%
 </pre>
@@ -179,13 +179,13 @@ DESKTOP-APB1HCJ%
 </div>
 </div>
 
-<div id="outline-container-orgd86aaaf" class="outline-4">
-<h4 id="orgd86aaaf">env cloud-windows</h4>
-<div class="outline-text-4" id="text-orgd86aaaf">
+<div id="outline-container-org0effb9a" class="outline-4">
+<h4 id="org0effb9a">env cloud-windows</h4>
+<div class="outline-text-4" id="text-org0effb9a">
 </div>
 <ul class="org-ul">
-<li><a id="orgd92d226"></a>env<br />
-<div class="outline-text-5" id="text-orgd92d226">
+<li><a id="org363cc54"></a>env<br />
+<div class="outline-text-5" id="text-org363cc54">
 <p>
 env:
 </p>
@@ -196,8 +196,8 @@ env:
 </div>
 </li>
 
-<li><a id="org5f33b14"></a>下载安装<br />
-<div class="outline-text-5" id="text-org5f33b14">
+<li><a id="org403bb0b"></a>下载安装<br />
+<div class="outline-text-5" id="text-org403bb0b">
 <p>
 <a href="https://geth.ethereum.org/downloads/">https://geth.ethereum.org/downloads/</a>
 </p>
@@ -208,8 +208,8 @@ env:
 </div>
 </li>
 
-<li><a id="orgfd39d5d"></a>中断`编写合约代码`<br />
-<div class="outline-text-5" id="text-orgfd39d5d">
+<li><a id="org56956a8"></a>中断`编写合约代码`<br />
+<div class="outline-text-5" id="text-org56956a8">
 <p>
 `编写合约代码`之前的操作是成功的.但是`编写合约代码`这一步, 智能合约开发环境已变
 成 remix-ide 所以,这里文章说的`点击 Details 获取部署代码`找不到了
@@ -219,48 +219,48 @@ env:
 </ul>
 </div>
 </div>
-<div id="outline-container-org8ef496a" class="outline-3">
-<h3 id="org8ef496a">参考2</h3>
-<div class="outline-text-3" id="text-org8ef496a">
+<div id="outline-container-org35550e9" class="outline-3">
+<h3 id="org35550e9">参考2</h3>
+<div class="outline-text-3" id="text-org35550e9">
 <p>
 <a href="https://my.oschina.net/ruoli/blog/1796803">https://my.oschina.net/ruoli/blog/1796803</a>
 </p>
 </div>
-<div id="outline-container-orgbd76d92" class="outline-4">
-<h4 id="orgbd76d92">(报错)env wsl</h4>
-<div class="outline-text-4" id="text-orgbd76d92">
+<div id="outline-container-org97344f5" class="outline-4">
+<h4 id="org97344f5">(报错)env wsl</h4>
+<div class="outline-text-4" id="text-org97344f5">
 </div>
 <ul class="org-ul">
-<li><a id="orgf8992e0"></a>报错`geth &#x2013;datadir "./" init genesis.json`报错<br />
-<div class="outline-text-5" id="text-orgf8992e0">
+<li><a id="orgb039b4d"></a>报错`geth &#x2013;datadir "./" init genesis.json`报错<br />
+<div class="outline-text-5" id="text-orgb039b4d">
 <div class="org-src-container">
-<pre class="src src-shell">DESKTOP-APB1HCJ% geth --datadir <span style="color: #daa520;">"./"</span> init genesis.json
-INFO [<span style="color: #a45bad;">12-05</span>|<span style="color: #a45bad;">11:24:59.305</span>] Maximum peer count                       <span style="color: #7590db;">ETH</span>=<span style="color: #a45bad;">50</span> <span style="color: #7590db;">LES</span>=<span style="color: #a45bad;">0</span> <span style="color: #7590db;">total</span>=<span style="color: #a45bad;">50</span>
-INFO [<span style="color: #a45bad;">12-05</span>|<span style="color: #a45bad;">11:24:59.306</span>] Smartcard socket not found, disabling    <span style="color: #7590db;">err</span>=<span style="color: #daa520;">"stat /run/pcscd/pcscd.comm: no such file or directory"</span>
-ERROR[<span style="color: #a45bad;">12-05</span>|<span style="color: #a45bad;">11:24:59.307</span>] Failed to enumerate USB devices          <span style="color: #7590db;">hub</span>=ledger <span style="color: #7590db;">vendor</span>=<span style="color: #a45bad;">11415</span> <span style="color: #7590db;">failcount</span>=<span style="color: #a45bad;">1</span> <span style="color: #7590db;">err</span>=<span style="color: #daa520;">"failed to initialize libusb: libusb: unknown error [code -99]"</span>
-ERROR[<span style="color: #a45bad;">12-05</span>|<span style="color: #a45bad;">11:24:59.307</span>] Failed to enumerate USB devices          <span style="color: #7590db;">hub</span>=trezor <span style="color: #7590db;">vendor</span>=<span style="color: #a45bad;">21324</span> <span style="color: #7590db;">failcount</span>=<span style="color: #a45bad;">1</span> <span style="color: #7590db;">err</span>=<span style="color: #daa520;">"failed to initialize libusb: libusb: unknown error [code -99]"</span>
-ERROR[<span style="color: #a45bad;">12-05</span>|<span style="color: #a45bad;">11:24:59.308</span>] Failed to enumerate USB devices          <span style="color: #7590db;">hub</span>=trezor <span style="color: #7590db;">vendor</span>=<span style="color: #a45bad;">4617</span>  <span style="color: #7590db;">failcount</span>=<span style="color: #a45bad;">1</span> <span style="color: #7590db;">err</span>=<span style="color: #daa520;">"failed to initialize libusb: libusb: unknown error [code -99]"</span>
-ERROR[<span style="color: #a45bad;">12-05</span>|<span style="color: #a45bad;">11:24:59.308</span>] Failed to enumerate USB devices          <span style="color: #7590db;">hub</span>=ledger <span style="color: #7590db;">vendor</span>=<span style="color: #a45bad;">11415</span> <span style="color: #7590db;">failcount</span>=<span style="color: #a45bad;">2</span> <span style="color: #7590db;">err</span>=<span style="color: #daa520;">"failed to initialize libusb: libusb: unknown error [code -99]"</span>
-ERROR[<span style="color: #a45bad;">12-05</span>|<span style="color: #a45bad;">11:24:59.309</span>] Failed to enumerate USB devices          <span style="color: #7590db;">hub</span>=trezor <span style="color: #7590db;">vendor</span>=<span style="color: #a45bad;">21324</span> <span style="color: #7590db;">failcount</span>=<span style="color: #a45bad;">2</span> <span style="color: #7590db;">err</span>=<span style="color: #daa520;">"failed to initialize libusb: libusb: unknown error [code -99]"</span>
-ERROR[<span style="color: #a45bad;">12-05</span>|<span style="color: #a45bad;">11:24:59.309</span>] Failed to enumerate USB devices          <span style="color: #7590db;">hub</span>=trezor <span style="color: #7590db;">vendor</span>=<span style="color: #a45bad;">4617</span>  <span style="color: #7590db;">failcount</span>=<span style="color: #a45bad;">2</span> <span style="color: #7590db;">err</span>=<span style="color: #daa520;">"failed to initialize libusb: libusb: unknown error [code -99]"</span>
-INFO [<span style="color: #a45bad;">12-05</span>|<span style="color: #a45bad;">11:24:59.310</span>] Allocated cache and file handles         <span style="color: #7590db;">database</span>=/mnt/c/Users/a/tom/eth/env-wsl/geth/chaindata <span style="color: #7590db;">cache</span>=<span style="color: #a45bad;">16.00MiB</span> <span style="color: #7590db;">handles</span>=<span style="color: #a45bad;">16</span>
-INFO [<span style="color: #a45bad;">12-05</span>|<span style="color: #a45bad;">11:24:59.449</span>] Writing custom genesis block
-INFO [<span style="color: #a45bad;">12-05</span>|<span style="color: #a45bad;">11:24:59.449</span>] Persisted trie from memory database      <span style="color: #7590db;">nodes</span>=<span style="color: #a45bad;">0</span> <span style="color: #7590db;">size</span>=<span style="color: #a45bad;">0.00B</span> <span style="color: #7590db;">time</span>=<span style="color: #a45bad;">27.6&#181;s</span> <span style="color: #7590db;">gcnodes</span>=<span style="color: #a45bad;">0</span> <span style="color: #7590db;">gcsize</span>=<span style="color: #a45bad;">0.00B</span> <span style="color: #7590db;">gctime</span>=<span style="color: #a45bad;">0s</span> <span style="color: #7590db;">livenodes</span>=<span style="color: #a45bad;">1</span> <span style="color: #7590db;">livesize</span>=<span style="color: #a45bad;">0.00B</span>
-Fatal: Failed to write genesis block: unsupported fork ordering: eip150Block not enabled, but eip155Block enabled at <span style="color: #a45bad;">0</span>
+<pre class="src src-shell">DESKTOP-APB1HCJ% geth --datadir <span style="color: #E6DB74;">"./"</span> init genesis.json
+INFO [<span style="color: #AE81FF;">12-05</span>|<span style="color: #AE81FF;">11:24:59.305</span>] Maximum peer count                       <span style="color: #FD971F;">ETH</span>=<span style="color: #AE81FF;">50</span> <span style="color: #FD971F;">LES</span>=<span style="color: #AE81FF;">0</span> <span style="color: #FD971F;">total</span>=<span style="color: #AE81FF;">50</span>
+INFO [<span style="color: #AE81FF;">12-05</span>|<span style="color: #AE81FF;">11:24:59.306</span>] Smartcard socket not found, disabling    <span style="color: #FD971F;">err</span>=<span style="color: #E6DB74;">"stat /run/pcscd/pcscd.comm: no such file or directory"</span>
+ERROR[<span style="color: #AE81FF;">12-05</span>|<span style="color: #AE81FF;">11:24:59.307</span>] Failed to enumerate USB devices          <span style="color: #FD971F;">hub</span>=ledger <span style="color: #FD971F;">vendor</span>=<span style="color: #AE81FF;">11415</span> <span style="color: #FD971F;">failcount</span>=<span style="color: #AE81FF;">1</span> <span style="color: #FD971F;">err</span>=<span style="color: #E6DB74;">"failed to initialize libusb: libusb: unknown error [code -99]"</span>
+ERROR[<span style="color: #AE81FF;">12-05</span>|<span style="color: #AE81FF;">11:24:59.307</span>] Failed to enumerate USB devices          <span style="color: #FD971F;">hub</span>=trezor <span style="color: #FD971F;">vendor</span>=<span style="color: #AE81FF;">21324</span> <span style="color: #FD971F;">failcount</span>=<span style="color: #AE81FF;">1</span> <span style="color: #FD971F;">err</span>=<span style="color: #E6DB74;">"failed to initialize libusb: libusb: unknown error [code -99]"</span>
+ERROR[<span style="color: #AE81FF;">12-05</span>|<span style="color: #AE81FF;">11:24:59.308</span>] Failed to enumerate USB devices          <span style="color: #FD971F;">hub</span>=trezor <span style="color: #FD971F;">vendor</span>=<span style="color: #AE81FF;">4617</span>  <span style="color: #FD971F;">failcount</span>=<span style="color: #AE81FF;">1</span> <span style="color: #FD971F;">err</span>=<span style="color: #E6DB74;">"failed to initialize libusb: libusb: unknown error [code -99]"</span>
+ERROR[<span style="color: #AE81FF;">12-05</span>|<span style="color: #AE81FF;">11:24:59.308</span>] Failed to enumerate USB devices          <span style="color: #FD971F;">hub</span>=ledger <span style="color: #FD971F;">vendor</span>=<span style="color: #AE81FF;">11415</span> <span style="color: #FD971F;">failcount</span>=<span style="color: #AE81FF;">2</span> <span style="color: #FD971F;">err</span>=<span style="color: #E6DB74;">"failed to initialize libusb: libusb: unknown error [code -99]"</span>
+ERROR[<span style="color: #AE81FF;">12-05</span>|<span style="color: #AE81FF;">11:24:59.309</span>] Failed to enumerate USB devices          <span style="color: #FD971F;">hub</span>=trezor <span style="color: #FD971F;">vendor</span>=<span style="color: #AE81FF;">21324</span> <span style="color: #FD971F;">failcount</span>=<span style="color: #AE81FF;">2</span> <span style="color: #FD971F;">err</span>=<span style="color: #E6DB74;">"failed to initialize libusb: libusb: unknown error [code -99]"</span>
+ERROR[<span style="color: #AE81FF;">12-05</span>|<span style="color: #AE81FF;">11:24:59.309</span>] Failed to enumerate USB devices          <span style="color: #FD971F;">hub</span>=trezor <span style="color: #FD971F;">vendor</span>=<span style="color: #AE81FF;">4617</span>  <span style="color: #FD971F;">failcount</span>=<span style="color: #AE81FF;">2</span> <span style="color: #FD971F;">err</span>=<span style="color: #E6DB74;">"failed to initialize libusb: libusb: unknown error [code -99]"</span>
+INFO [<span style="color: #AE81FF;">12-05</span>|<span style="color: #AE81FF;">11:24:59.310</span>] Allocated cache and file handles         <span style="color: #FD971F;">database</span>=/mnt/c/Users/a/tom/eth/env-wsl/geth/chaindata <span style="color: #FD971F;">cache</span>=<span style="color: #AE81FF;">16.00MiB</span> <span style="color: #FD971F;">handles</span>=<span style="color: #AE81FF;">16</span>
+INFO [<span style="color: #AE81FF;">12-05</span>|<span style="color: #AE81FF;">11:24:59.449</span>] Writing custom genesis block
+INFO [<span style="color: #AE81FF;">12-05</span>|<span style="color: #AE81FF;">11:24:59.449</span>] Persisted trie from memory database      <span style="color: #FD971F;">nodes</span>=<span style="color: #AE81FF;">0</span> <span style="color: #FD971F;">size</span>=<span style="color: #AE81FF;">0.00B</span> <span style="color: #FD971F;">time</span>=<span style="color: #AE81FF;">27.6&#181;s</span> <span style="color: #FD971F;">gcnodes</span>=<span style="color: #AE81FF;">0</span> <span style="color: #FD971F;">gcsize</span>=<span style="color: #AE81FF;">0.00B</span> <span style="color: #FD971F;">gctime</span>=<span style="color: #AE81FF;">0s</span> <span style="color: #FD971F;">livenodes</span>=<span style="color: #AE81FF;">1</span> <span style="color: #FD971F;">livesize</span>=<span style="color: #AE81FF;">0.00B</span>
+Fatal: Failed to write genesis block: unsupported fork ordering: eip150Block not enabled, but eip155Block enabled at <span style="color: #AE81FF;">0</span>
 DESKTOP-APB1HCJ% sudo su
-root@DESKTOP-APB1HCJ:/mnt/c/Users/a/tom/eth/env-wsl# geth --datadir <span style="color: #daa520;">"./"</span> init genesis.json
-INFO [<span style="color: #a45bad;">12-05</span>|<span style="color: #a45bad;">11:25:28.285</span>] Maximum peer count                       <span style="color: #7590db;">ETH</span>=<span style="color: #a45bad;">50</span> <span style="color: #7590db;">LES</span>=<span style="color: #a45bad;">0</span> <span style="color: #7590db;">total</span>=<span style="color: #a45bad;">50</span>
-INFO [<span style="color: #a45bad;">12-05</span>|<span style="color: #a45bad;">11:25:28.286</span>] Smartcard socket not found, disabling    <span style="color: #7590db;">err</span>=<span style="color: #daa520;">"stat /run/pcscd/pcscd.comm: no such file or directory"</span>
-ERROR[<span style="color: #a45bad;">12-05</span>|<span style="color: #a45bad;">11:25:28.287</span>] Failed to enumerate USB devices          <span style="color: #7590db;">hub</span>=ledger <span style="color: #7590db;">vendor</span>=<span style="color: #a45bad;">11415</span> <span style="color: #7590db;">failcount</span>=<span style="color: #a45bad;">1</span> <span style="color: #7590db;">err</span>=<span style="color: #daa520;">"failed to initialize libusb: libusb: unknown error [code -99]"</span>
-ERROR[<span style="color: #a45bad;">12-05</span>|<span style="color: #a45bad;">11:25:28.288</span>] Failed to enumerate USB devices          <span style="color: #7590db;">hub</span>=trezor <span style="color: #7590db;">vendor</span>=<span style="color: #a45bad;">21324</span> <span style="color: #7590db;">failcount</span>=<span style="color: #a45bad;">1</span> <span style="color: #7590db;">err</span>=<span style="color: #daa520;">"failed to initialize libusb: libusb: unknown error [code -99]"</span>
-ERROR[<span style="color: #a45bad;">12-05</span>|<span style="color: #a45bad;">11:25:28.288</span>] Failed to enumerate USB devices          <span style="color: #7590db;">hub</span>=trezor <span style="color: #7590db;">vendor</span>=<span style="color: #a45bad;">4617</span>  <span style="color: #7590db;">failcount</span>=<span style="color: #a45bad;">1</span> <span style="color: #7590db;">err</span>=<span style="color: #daa520;">"failed to initialize libusb: libusb: unknown error [code -99]"</span>
-ERROR[<span style="color: #a45bad;">12-05</span>|<span style="color: #a45bad;">11:25:28.289</span>] Failed to enumerate USB devices          <span style="color: #7590db;">hub</span>=ledger <span style="color: #7590db;">vendor</span>=<span style="color: #a45bad;">11415</span> <span style="color: #7590db;">failcount</span>=<span style="color: #a45bad;">2</span> <span style="color: #7590db;">err</span>=<span style="color: #daa520;">"failed to initialize libusb: libusb: unknown error [code -99]"</span>
-ERROR[<span style="color: #a45bad;">12-05</span>|<span style="color: #a45bad;">11:25:28.289</span>] Failed to enumerate USB devices          <span style="color: #7590db;">hub</span>=trezor <span style="color: #7590db;">vendor</span>=<span style="color: #a45bad;">21324</span> <span style="color: #7590db;">failcount</span>=<span style="color: #a45bad;">2</span> <span style="color: #7590db;">err</span>=<span style="color: #daa520;">"failed to initialize libusb: libusb: unknown error [code -99]"</span>
-ERROR[<span style="color: #a45bad;">12-05</span>|<span style="color: #a45bad;">11:25:28.290</span>] Failed to enumerate USB devices          <span style="color: #7590db;">hub</span>=trezor <span style="color: #7590db;">vendor</span>=<span style="color: #a45bad;">4617</span>  <span style="color: #7590db;">failcount</span>=<span style="color: #a45bad;">2</span> <span style="color: #7590db;">err</span>=<span style="color: #daa520;">"failed to initialize libusb: libusb: unknown error [code -99]"</span>
-INFO [<span style="color: #a45bad;">12-05</span>|<span style="color: #a45bad;">11:25:28.290</span>] Allocated cache and file handles         <span style="color: #7590db;">database</span>=/mnt/c/Users/a/tom/eth/env-wsl/geth/chaindata <span style="color: #7590db;">cache</span>=<span style="color: #a45bad;">16.00MiB</span> <span style="color: #7590db;">handles</span>=<span style="color: #a45bad;">16</span>
-INFO [<span style="color: #a45bad;">12-05</span>|<span style="color: #a45bad;">11:25:28.393</span>] Writing custom genesis block
-INFO [<span style="color: #a45bad;">12-05</span>|<span style="color: #a45bad;">11:25:28.393</span>] Persisted trie from memory database      <span style="color: #7590db;">nodes</span>=<span style="color: #a45bad;">0</span> <span style="color: #7590db;">size</span>=<span style="color: #a45bad;">0.00B</span> <span style="color: #7590db;">time</span>=<span style="color: #a45bad;">9.1&#181;s</span> <span style="color: #7590db;">gcnodes</span>=<span style="color: #a45bad;">0</span> <span style="color: #7590db;">gcsize</span>=<span style="color: #a45bad;">0.00B</span> <span style="color: #7590db;">gctime</span>=<span style="color: #a45bad;">0s</span> <span style="color: #7590db;">livenodes</span>=<span style="color: #a45bad;">1</span> <span style="color: #7590db;">livesize</span>=<span style="color: #a45bad;">0.00B</span>
-Fatal: Failed to write genesis block: unsupported fork ordering: eip150Block not enabled, but eip155Block enabled at <span style="color: #a45bad;">0</span>
+root@DESKTOP-APB1HCJ:/mnt/c/Users/a/tom/eth/env-wsl# geth --datadir <span style="color: #E6DB74;">"./"</span> init genesis.json
+INFO [<span style="color: #AE81FF;">12-05</span>|<span style="color: #AE81FF;">11:25:28.285</span>] Maximum peer count                       <span style="color: #FD971F;">ETH</span>=<span style="color: #AE81FF;">50</span> <span style="color: #FD971F;">LES</span>=<span style="color: #AE81FF;">0</span> <span style="color: #FD971F;">total</span>=<span style="color: #AE81FF;">50</span>
+INFO [<span style="color: #AE81FF;">12-05</span>|<span style="color: #AE81FF;">11:25:28.286</span>] Smartcard socket not found, disabling    <span style="color: #FD971F;">err</span>=<span style="color: #E6DB74;">"stat /run/pcscd/pcscd.comm: no such file or directory"</span>
+ERROR[<span style="color: #AE81FF;">12-05</span>|<span style="color: #AE81FF;">11:25:28.287</span>] Failed to enumerate USB devices          <span style="color: #FD971F;">hub</span>=ledger <span style="color: #FD971F;">vendor</span>=<span style="color: #AE81FF;">11415</span> <span style="color: #FD971F;">failcount</span>=<span style="color: #AE81FF;">1</span> <span style="color: #FD971F;">err</span>=<span style="color: #E6DB74;">"failed to initialize libusb: libusb: unknown error [code -99]"</span>
+ERROR[<span style="color: #AE81FF;">12-05</span>|<span style="color: #AE81FF;">11:25:28.288</span>] Failed to enumerate USB devices          <span style="color: #FD971F;">hub</span>=trezor <span style="color: #FD971F;">vendor</span>=<span style="color: #AE81FF;">21324</span> <span style="color: #FD971F;">failcount</span>=<span style="color: #AE81FF;">1</span> <span style="color: #FD971F;">err</span>=<span style="color: #E6DB74;">"failed to initialize libusb: libusb: unknown error [code -99]"</span>
+ERROR[<span style="color: #AE81FF;">12-05</span>|<span style="color: #AE81FF;">11:25:28.288</span>] Failed to enumerate USB devices          <span style="color: #FD971F;">hub</span>=trezor <span style="color: #FD971F;">vendor</span>=<span style="color: #AE81FF;">4617</span>  <span style="color: #FD971F;">failcount</span>=<span style="color: #AE81FF;">1</span> <span style="color: #FD971F;">err</span>=<span style="color: #E6DB74;">"failed to initialize libusb: libusb: unknown error [code -99]"</span>
+ERROR[<span style="color: #AE81FF;">12-05</span>|<span style="color: #AE81FF;">11:25:28.289</span>] Failed to enumerate USB devices          <span style="color: #FD971F;">hub</span>=ledger <span style="color: #FD971F;">vendor</span>=<span style="color: #AE81FF;">11415</span> <span style="color: #FD971F;">failcount</span>=<span style="color: #AE81FF;">2</span> <span style="color: #FD971F;">err</span>=<span style="color: #E6DB74;">"failed to initialize libusb: libusb: unknown error [code -99]"</span>
+ERROR[<span style="color: #AE81FF;">12-05</span>|<span style="color: #AE81FF;">11:25:28.289</span>] Failed to enumerate USB devices          <span style="color: #FD971F;">hub</span>=trezor <span style="color: #FD971F;">vendor</span>=<span style="color: #AE81FF;">21324</span> <span style="color: #FD971F;">failcount</span>=<span style="color: #AE81FF;">2</span> <span style="color: #FD971F;">err</span>=<span style="color: #E6DB74;">"failed to initialize libusb: libusb: unknown error [code -99]"</span>
+ERROR[<span style="color: #AE81FF;">12-05</span>|<span style="color: #AE81FF;">11:25:28.290</span>] Failed to enumerate USB devices          <span style="color: #FD971F;">hub</span>=trezor <span style="color: #FD971F;">vendor</span>=<span style="color: #AE81FF;">4617</span>  <span style="color: #FD971F;">failcount</span>=<span style="color: #AE81FF;">2</span> <span style="color: #FD971F;">err</span>=<span style="color: #E6DB74;">"failed to initialize libusb: libusb: unknown error [code -99]"</span>
+INFO [<span style="color: #AE81FF;">12-05</span>|<span style="color: #AE81FF;">11:25:28.290</span>] Allocated cache and file handles         <span style="color: #FD971F;">database</span>=/mnt/c/Users/a/tom/eth/env-wsl/geth/chaindata <span style="color: #FD971F;">cache</span>=<span style="color: #AE81FF;">16.00MiB</span> <span style="color: #FD971F;">handles</span>=<span style="color: #AE81FF;">16</span>
+INFO [<span style="color: #AE81FF;">12-05</span>|<span style="color: #AE81FF;">11:25:28.393</span>] Writing custom genesis block
+INFO [<span style="color: #AE81FF;">12-05</span>|<span style="color: #AE81FF;">11:25:28.393</span>] Persisted trie from memory database      <span style="color: #FD971F;">nodes</span>=<span style="color: #AE81FF;">0</span> <span style="color: #FD971F;">size</span>=<span style="color: #AE81FF;">0.00B</span> <span style="color: #FD971F;">time</span>=<span style="color: #AE81FF;">9.1&#181;s</span> <span style="color: #FD971F;">gcnodes</span>=<span style="color: #AE81FF;">0</span> <span style="color: #FD971F;">gcsize</span>=<span style="color: #AE81FF;">0.00B</span> <span style="color: #FD971F;">gctime</span>=<span style="color: #AE81FF;">0s</span> <span style="color: #FD971F;">livenodes</span>=<span style="color: #AE81FF;">1</span> <span style="color: #FD971F;">livesize</span>=<span style="color: #AE81FF;">0.00B</span>
+Fatal: Failed to write genesis block: unsupported fork ordering: eip150Block not enabled, but eip155Block enabled at <span style="color: #AE81FF;">0</span>
 root@DESKTOP-APB1HCJ:/mnt/c/Users/a/tom/eth/env-wsl#
 </pre>
 </div>
@@ -269,13 +269,13 @@ root@DESKTOP-APB1HCJ:/mnt/c/Users/a/tom/eth/env-wsl#
 </ul>
 </div>
 
-<div id="outline-container-org4176c65" class="outline-4">
-<h4 id="org4176c65">(报错)env cloud-windows</h4>
-<div class="outline-text-4" id="text-org4176c65">
+<div id="outline-container-orgdea5ff3" class="outline-4">
+<h4 id="orgdea5ff3">(报错)env cloud-windows</h4>
+<div class="outline-text-4" id="text-orgdea5ff3">
 </div>
 <ul class="org-ul">
-<li><a id="org126bc47"></a>env<br />
-<div class="outline-text-5" id="text-org126bc47">
+<li><a id="orgbbaaec9"></a>env<br />
+<div class="outline-text-5" id="text-orgbbaaec9">
 <p>
 env:
 </p>
@@ -286,16 +286,16 @@ env:
 </div>
 </li>
 
-<li><a id="org56e340d"></a>报错`geth &#x2013;datadir "./" init genesis.json`<br />
-<div class="outline-text-5" id="text-org56e340d">
+<li><a id="org6a8c4b4"></a>报错`geth &#x2013;datadir "./" init genesis.json`<br />
+<div class="outline-text-5" id="text-org6a8c4b4">
 <div class="org-src-container">
 <pre class="src src-shell">C:\Users\Administrator\Desktop\eth\env
-&#955; geth --datadir <span style="color: #daa520;">"./"</span> init genesis.json
-INFO [<span style="color: #a45bad;">12-05</span>|<span style="color: #a45bad;">11:56:05.139</span>] Maximum peer count                       <span style="color: #7590db;">ETH</span>=<span style="color: #a45bad;">50</span> <span style="color: #7590db;">LES</span>=<span style="color: #a45bad;">0</span> <span style="color: #7590db;">total</span>=<span style="color: #a45bad;">50</span>
-INFO [<span style="color: #a45bad;">12-05</span>|<span style="color: #a45bad;">11:56:05.359</span>] Allocated cache and file handles         <span style="color: #7590db;">database</span>=C:<span style="color: #daa520;">\\</span>Users<span style="color: #daa520;">\\</span>Administrator<span style="color: #daa520;">\\</span>Desktop<span style="color: #daa520;">\\</span>eth<span style="color: #daa520;">\\</span>env<span style="color: #daa520;">\\</span>geth<span style="color: #daa520;">\\</span>chaindata <span style="color: #7590db;">cache</span>=<span style="color: #a45bad;">16.00MiB</span> <span style="color: #7590db;">handles</span>=<span style="color: #a45bad;">16</span>
-INFO [<span style="color: #a45bad;">12-05</span>|<span style="color: #a45bad;">11:56:05.431</span>] Writing custom genesis block
-INFO [<span style="color: #a45bad;">12-05</span>|<span style="color: #a45bad;">11:56:05.443</span>] Persisted trie from memory database      <span style="color: #7590db;">nodes</span>=<span style="color: #a45bad;">0</span> <span style="color: #7590db;">size</span>=<span style="color: #a45bad;">0.00B</span> <span style="color: #7590db;">time</span>=<span style="color: #a45bad;">0s</span> <span style="color: #7590db;">gcnodes</span>=<span style="color: #a45bad;">0</span> <span style="color: #7590db;">gcsize</span>=<span style="color: #a45bad;">0.00B</span> <span style="color: #7590db;">gctime</span>=<span style="color: #a45bad;">0s</span> <span style="color: #7590db;">livenodes</span>=<span style="color: #a45bad;">1</span> <span style="color: #7590db;">livesize</span>=<span style="color: #a45bad;">0.00B</span>
-Fatal: Failed to write genesis block: unsupported fork ordering: eip150Block not enabled, but eip155Block enabled at <span style="color: #a45bad;">0</span>
+&#955; geth --datadir <span style="color: #E6DB74;">"./"</span> init genesis.json
+INFO [<span style="color: #AE81FF;">12-05</span>|<span style="color: #AE81FF;">11:56:05.139</span>] Maximum peer count                       <span style="color: #FD971F;">ETH</span>=<span style="color: #AE81FF;">50</span> <span style="color: #FD971F;">LES</span>=<span style="color: #AE81FF;">0</span> <span style="color: #FD971F;">total</span>=<span style="color: #AE81FF;">50</span>
+INFO [<span style="color: #AE81FF;">12-05</span>|<span style="color: #AE81FF;">11:56:05.359</span>] Allocated cache and file handles         <span style="color: #FD971F;">database</span>=C:<span style="color: #E6DB74;">\\</span>Users<span style="color: #E6DB74;">\\</span>Administrator<span style="color: #E6DB74;">\\</span>Desktop<span style="color: #E6DB74;">\\</span>eth<span style="color: #E6DB74;">\\</span>env<span style="color: #E6DB74;">\\</span>geth<span style="color: #E6DB74;">\\</span>chaindata <span style="color: #FD971F;">cache</span>=<span style="color: #AE81FF;">16.00MiB</span> <span style="color: #FD971F;">handles</span>=<span style="color: #AE81FF;">16</span>
+INFO [<span style="color: #AE81FF;">12-05</span>|<span style="color: #AE81FF;">11:56:05.431</span>] Writing custom genesis block
+INFO [<span style="color: #AE81FF;">12-05</span>|<span style="color: #AE81FF;">11:56:05.443</span>] Persisted trie from memory database      <span style="color: #FD971F;">nodes</span>=<span style="color: #AE81FF;">0</span> <span style="color: #FD971F;">size</span>=<span style="color: #AE81FF;">0.00B</span> <span style="color: #FD971F;">time</span>=<span style="color: #AE81FF;">0s</span> <span style="color: #FD971F;">gcnodes</span>=<span style="color: #AE81FF;">0</span> <span style="color: #FD971F;">gcsize</span>=<span style="color: #AE81FF;">0.00B</span> <span style="color: #FD971F;">gctime</span>=<span style="color: #AE81FF;">0s</span> <span style="color: #FD971F;">livenodes</span>=<span style="color: #AE81FF;">1</span> <span style="color: #FD971F;">livesize</span>=<span style="color: #AE81FF;">0.00B</span>
+Fatal: Failed to write genesis block: unsupported fork ordering: eip150Block not enabled, but eip155Block enabled at <span style="color: #AE81FF;">0</span>
 
 C:\Users\Administrator\Desktop\eth\env
 </pre>
@@ -305,13 +305,13 @@ C:\Users\Administrator\Desktop\eth\env
 </ul>
 </div>
 
-<div id="outline-container-org818d783" class="outline-4">
-<h4 id="org818d783">env windows</h4>
-<div class="outline-text-4" id="text-org818d783">
+<div id="outline-container-orgb9812ac" class="outline-4">
+<h4 id="orgb9812ac">env windows</h4>
+<div class="outline-text-4" id="text-orgb9812ac">
 </div>
 <ul class="org-ul">
-<li><a id="org62586b0"></a>env<br />
-<div class="outline-text-5" id="text-org62586b0">
+<li><a id="org032e740"></a>env<br />
+<div class="outline-text-5" id="text-org032e740">
 <p>
 env:
 </p>
@@ -321,15 +321,15 @@ env:
 </div>
 </li>
 
-<li><a id="org001fd98"></a>报错`geth &#x2013;datadir "./" init genesis.json`<br />
-<div class="outline-text-5" id="text-org001fd98">
+<li><a id="orgf8c5581"></a>报错`geth &#x2013;datadir "./" init genesis.json`<br />
+<div class="outline-text-5" id="text-orgf8c5581">
 <div class="org-src-container">
-<pre class="src src-shell">PS&gt;geth --datadir <span style="color: #daa520;">"./"</span> init genesis.json
-INFO [<span style="color: #a45bad;">12-05</span>|<span style="color: #a45bad;">13:40:36.406</span>] Maximum peer count                       <span style="color: #7590db;">ETH</span>=<span style="color: #a45bad;">50</span> <span style="color: #7590db;">LES</span>=<span style="color: #a45bad;">0</span> <span style="color: #7590db;">total</span>=<span style="color: #a45bad;">50</span>
-INFO [<span style="color: #a45bad;">12-05</span>|<span style="color: #a45bad;">13:40:36.575</span>] Allocated cache and file handles         <span style="color: #7590db;">database</span>=C:<span style="color: #daa520;">\\</span>Users<span style="color: #daa520;">\\</span>a<span style="color: #daa520;">\\</span>tom<span style="color: #daa520;">\\</span>eth<span style="color: #daa520;">\\</span>env<span style="color: #daa520;">\\</span>windows<span style="color: #daa520;">\\</span>geth<span style="color: #daa520;">\\</span>chaindata <span style="color: #7590db;">cache</span>=<span style="color: #a45bad;">16.00MiB</span> <span style="color: #7590db;">handles</span>=<span style="color: #a45bad;">16</span>
-INFO [<span style="color: #a45bad;">12-05</span>|<span style="color: #a45bad;">13:40:36.700</span>] Writing custom genesis block
-INFO [<span style="color: #a45bad;">12-05</span>|<span style="color: #a45bad;">13:40:36.703</span>] Persisted trie from memory database      <span style="color: #7590db;">nodes</span>=<span style="color: #a45bad;">0</span> <span style="color: #7590db;">size</span>=<span style="color: #a45bad;">0.00B</span> <span style="color: #7590db;">time</span>=<span style="color: #a45bad;">0s</span> <span style="color: #7590db;">gcnodes</span>=<span style="color: #a45bad;">0</span> <span style="color: #7590db;">gcsize</span>=<span style="color: #a45bad;">0.00B</span> <span style="color: #7590db;">gctime</span>=<span style="color: #a45bad;">0s</span> <span style="color: #7590db;">livenodes</span>=<span style="color: #a45bad;">1</span> <span style="color: #7590db;">livesize</span>=<span style="color: #a45bad;">0.00B</span>
-Fatal: Failed to write genesis block: unsupported fork ordering: eip150Block not enabled, but eip155Block enabled at <span style="color: #a45bad;">0</span>
+<pre class="src src-shell">PS&gt;geth --datadir <span style="color: #E6DB74;">"./"</span> init genesis.json
+INFO [<span style="color: #AE81FF;">12-05</span>|<span style="color: #AE81FF;">13:40:36.406</span>] Maximum peer count                       <span style="color: #FD971F;">ETH</span>=<span style="color: #AE81FF;">50</span> <span style="color: #FD971F;">LES</span>=<span style="color: #AE81FF;">0</span> <span style="color: #FD971F;">total</span>=<span style="color: #AE81FF;">50</span>
+INFO [<span style="color: #AE81FF;">12-05</span>|<span style="color: #AE81FF;">13:40:36.575</span>] Allocated cache and file handles         <span style="color: #FD971F;">database</span>=C:<span style="color: #E6DB74;">\\</span>Users<span style="color: #E6DB74;">\\</span>a<span style="color: #E6DB74;">\\</span>tom<span style="color: #E6DB74;">\\</span>eth<span style="color: #E6DB74;">\\</span>env<span style="color: #E6DB74;">\\</span>windows<span style="color: #E6DB74;">\\</span>geth<span style="color: #E6DB74;">\\</span>chaindata <span style="color: #FD971F;">cache</span>=<span style="color: #AE81FF;">16.00MiB</span> <span style="color: #FD971F;">handles</span>=<span style="color: #AE81FF;">16</span>
+INFO [<span style="color: #AE81FF;">12-05</span>|<span style="color: #AE81FF;">13:40:36.700</span>] Writing custom genesis block
+INFO [<span style="color: #AE81FF;">12-05</span>|<span style="color: #AE81FF;">13:40:36.703</span>] Persisted trie from memory database      <span style="color: #FD971F;">nodes</span>=<span style="color: #AE81FF;">0</span> <span style="color: #FD971F;">size</span>=<span style="color: #AE81FF;">0.00B</span> <span style="color: #FD971F;">time</span>=<span style="color: #AE81FF;">0s</span> <span style="color: #FD971F;">gcnodes</span>=<span style="color: #AE81FF;">0</span> <span style="color: #FD971F;">gcsize</span>=<span style="color: #AE81FF;">0.00B</span> <span style="color: #FD971F;">gctime</span>=<span style="color: #AE81FF;">0s</span> <span style="color: #FD971F;">livenodes</span>=<span style="color: #AE81FF;">1</span> <span style="color: #FD971F;">livesize</span>=<span style="color: #AE81FF;">0.00B</span>
+Fatal: Failed to write genesis block: unsupported fork ordering: eip150Block not enabled, but eip155Block enabled at <span style="color: #AE81FF;">0</span>
 </pre>
 </div>
 
@@ -339,15 +339,15 @@ Fatal: Failed to write genesis block: unsupported fork ordering: eip150Block not
 </div>
 </li>
 
-<li><a id="orgd4cdac1"></a>`geth &#x2013;datadir "./" &#x2013;nodiscover console 2&gt;&gt;geth.log`<br />
-<div class="outline-text-5" id="text-orgd4cdac1">
+<li><a id="orgd662194"></a>`geth &#x2013;datadir "./" &#x2013;nodiscover console 2&gt;&gt;geth.log`<br />
+<div class="outline-text-5" id="text-orgd662194">
 <p>
 这里没有报错.
 </p>
 </div>
 </li>
 
-<li><a id="org81cae95"></a>test<br /></li>
+<li><a id="org4567f2f"></a>test<br /></li>
 </ul>
 </div>
 </div>

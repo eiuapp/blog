@@ -1,0 +1,237 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<!-- 2020-03-26 Thu 11:07 -->
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>spacemacs start up</title>
+<meta name="generator" content="Org mode" />
+<meta name="author" content="yunlong zeng" />
+<link rel="stylesheet" title="Standard" href="/html/style/worg.css" type="text/css" />
+<link rel="alternate stylesheet" title="Zenburn" href="/html/style/worg-zenburn.css" type="text/css" />
+<link rel="alternate stylesheet" title="Classic" href="/html/style/worg-classic.css" type="text/css" />
+<link rel="SHORTCUT ICON" href="/html/style/org-mode-unicorn.ico" type="image/x-icon" />
+<link rel="icon" href="/html/style/org-mode-unicorn.ico" type="image/ico" />
+<script type="text/javascript">
+/*
+@licstart  The following is the entire license notice for the
+JavaScript code in this tag.
+
+Copyright (C) 2012-2019 Free Software Foundation, Inc.
+
+The JavaScript code in this tag is free software: you can
+redistribute it and/or modify it under the terms of the GNU
+General Public License (GNU GPL) as published by the Free Software
+Foundation, either version 3 of the License, or (at your option)
+any later version.  The code is distributed WITHOUT ANY WARRANTY;
+without even the implied warranty of MERCHANTABILITY or FITNESS
+FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
+
+As additional permission under GNU GPL version 3 section 7, you
+may distribute non-source (e.g., minimized or compacted) forms of
+that code without the copy of the GNU GPL normally required by
+section 4, provided you include this license notice and a URL
+through which recipients can access the Corresponding Source.
+
+
+@licend  The above is the entire license notice
+for the JavaScript code in this tag.
+*/
+<!--/*--><![CDATA[/*><!--*/
+ function CodeHighlightOn(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(null != target) {
+     elem.cacheClassElem = elem.className;
+     elem.cacheClassTarget = target.className;
+     target.className = "code-highlighted";
+     elem.className   = "code-highlighted";
+   }
+ }
+ function CodeHighlightOff(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(elem.cacheClassElem)
+     elem.className = elem.cacheClassElem;
+   if(elem.cacheClassTarget)
+     target.className = elem.cacheClassTarget;
+ }
+/*]]>*///-->
+</script>
+</head>
+<body>
+<div id="preamble" class="status">
+<script type="text/javascript">
+  document.addEventListener('DOMContentLoaded',function() {
+      document.getElementById("table-of-contents").onclick = function() {
+          var elem = document.getElementById("text-table-of-contents");
+          elem.style.display = elem.style.display == "block" ? "none" : "block";
+      }
+  });
+
+  var url = document.location.href;
+  var orgsource = url.substring(0, url.lastIndexOf("."))+".org.html";
+  function show_org_source(){
+      document.location.href = orgsource;
+  }
+</script>
+
+<script>
+(function(f, a, t, h, o, m){
+	a[h]=a[h]||function(){
+		(a[h].q=a[h].q||[]).push(arguments)
+	};
+	o=f.createElement('script'),
+	m=f.getElementsByTagName('script')[0];
+	o.async=1; o.src=t; o.id='fathom-script';
+	m.parentNode.insertBefore(o,m)
+})(document, window, '//stats.orgmode.org/tracker.js', 'fathom');
+fathom('set', 'siteId', 'NWSQJ');
+fathom('trackPageview');
+</script>
+</div>
+<div id="content">
+<h1 class="title">spacemacs start up</h1>
+<div id="table-of-contents">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#org2198dd3">emacs 启动 file-missing</a></li>
+<li><a href="#org79a9ca4">emacs 启动 wrong-type-argument undo-tree nil</a></li>
+</ul>
+</div>
+</div>
+<p>
+<a href="../index.html">{Back to site's index}</a>
+</p>
+
+<div id="outline-container-org2198dd3" class="outline-2">
+<h2 id="org2198dd3">emacs 启动 file-missing</h2>
+<div class="outline-text-2" id="text-org2198dd3">
+<div class="org-src-container">
+<pre class="src src-example">Debugger entered--Lisp error: (file-missing "Setting current directory" "No such file or directory" "~/")
+  call-process("/usr/bin/zsh" nil t nil "-c" "/usr/bin/timeout --help")
+  apply(call-process "/usr/bin/zsh" nil t nil ("-c" "/usr/bin/timeout --help"))
+  process-file("/usr/bin/zsh" nil t nil "-c" "/usr/bin/timeout --help")
+  shell-command-to-string("/usr/bin/timeout --help")
+  (string-match-p "^ *-k" (shell-command-to-string (concat prog " --help")))
+  (and prog (string-match-p "^ *-k" (shell-command-to-string (concat prog " --help"))))
+  (if (and prog (string-match-p "^ *-k" (shell-command-to-string (concat prog " --help")))) (progn prog))
+  (when (and prog (string-match-p "^ *-k" (shell-command-to-string (concat prog " --help")))) prog)
+  (let ((prog (or (executable-find "timeout") (executable-find "gtimeout")))) (when (and prog (string-match-p "^ *-k" (shell-command-to-string (concat prog " --help")))) prog))
+  eval((let ((prog (or (executable-find "timeout") (executable-find "gtimeout")))) (when (and prog (string-match-p "^ *-k" (shell-command-to-string (concat prog " --help")))) prog)))
+  custom-initialize-reset(quelpa-build-timeout-executable (let ((prog (or (executable-find "timeout") (executable-find "gtimeout")))) (when (and prog (string-match-p "^ *-k" (shell-command-to-string (concat prog " --help")))) prog)))
+  custom-declare-variable(quelpa-build-timeout-executable (let ((prog (or (executable-find "timeout") (executable-find "gtimeout")))) (when (and prog (string-match-p "^ *-k" (shell-command-to-string (concat prog " --help")))) prog)) "Path to a GNU coreutils \"timeout\" command if available.\nThis must be a version which supports the \"-k\" option." :type (file :must-match t))
+  eval-buffer(#&lt;buffer  *load*-492649&gt; nil "/home/a/spacemacs/core/libs/quelpa.el" nil t)  ; Reading at buffer position 15106
+  load-with-code-conversion("/home/a/spacemacs/core/libs/quelpa.el" "/home/a/spacemacs/core/libs/quelpa.el" nil t)
+  require(quelpa)
+  configuration-layer//configure-quelpa()
+  (let ((display-buffer-alist (quote (("\\(\\*Compile-Log\\*\\)\\|\\(\\*Warnings\\*\\)" (display-buffer-in-side-window) (inhibit-same-window . t) (side . bottom) (window-height . 0.2)))))) (configuration-layer//configure-quelpa) (let* ((upkg-names (configuration-layer//get-uninstalled-packages packages)) (not-inst-count (length upkg-names)) installed-count) (if upkg-names (progn (spacemacs-buffer/set-mode-line "Installing packages..." t) (let ((delayed-warnings-backup delayed-warnings-list)) (spacemacs-buffer/append (format "Found %s new package(s) to install...\n" not-inst-count)) (configuration-layer/retrieve-package-archives) (setq installed-count 0) (spacemacs//redisplay) (let ((--dolist-tail-- upkg-names) pkg-name) (while --dolist-tail-- (setq pkg-name ...) (let ... ...) (setq --dolist-tail-- ...))) (let ((--dolist-tail-- upkg-names) pkg-name) (while --dolist-tail-- (setq pkg-name ...) (let ... ...) (setq --dolist-tail-- ...))) (spacemacs-buffer/append "\n") (if init-file-debug nil (setq delayed-warnings-list delayed-warnings-backup)))))))
+  configuration-layer//install-packages((4clojure ace-link ace-window add-node-modules-path aggressive-indent anaconda-mode anki-editor async attrap auctex auto-compile auto-highlight-symbol auto-yasnippet avy bind-key bind-map blacken bug-hunter caps-lock ccls centered-cursor-mode cider cider-eval-sexp-fu clojure-mode clojure-snippets cmake-font-lock cmm-mode color-identifiers-mode column-enforce-mode command-log-mode company company-anaconda company-auctex company-c-headers company-cabal company-emoji company-ghc company-ghci company-go company-lsp company-lua company-reftex company-restclient company-rtags company-statistics company-tabnine company-web company-ycmd counsel counsel-css ...))
+  (let ((packages (append (configuration-layer//filter-distant-packages configuration-layer--used-packages t (quote (not (oref pkg :lazy-install)))) (if (eq (quote all) dotspacemacs-install-packages) (progn (let (all-other-packages) (let ... ...) (configuration-layer//filter-distant-packages all-other-packages nil))))))) (configuration-layer//install-packages packages) (if (and (or (eq (quote used) dotspacemacs-install-packages) (eq (quote used-only) dotspacemacs-install-packages)) (not configuration-layer-force-distribution) (not configuration-layer-exclude-all-layers)) (progn (configuration-layer/delete-orphan-packages packages))))
+  (progn (let ((packages (append (configuration-layer//filter-distant-packages configuration-layer--used-packages t (quote (not ...))) (if (eq (quote all) dotspacemacs-install-packages) (progn (let ... ... ...)))))) (configuration-layer//install-packages packages) (if (and (or (eq (quote used) dotspacemacs-install-packages) (eq (quote used-only) dotspacemacs-install-packages)) (not configuration-layer-force-distribution) (not configuration-layer-exclude-all-layers)) (progn (configuration-layer/delete-orphan-packages packages)))))
+  (if spacemacs-sync-packages (progn (let ((packages (append (configuration-layer//filter-distant-packages configuration-layer--used-packages t (quote ...)) (if (eq ... dotspacemacs-install-packages) (progn ...))))) (configuration-layer//install-packages packages) (if (and (or (eq (quote used) dotspacemacs-install-packages) (eq (quote used-only) dotspacemacs-install-packages)) (not configuration-layer-force-distribution) (not configuration-layer-exclude-all-layers)) (progn (configuration-layer/delete-orphan-packages packages))))))
+  configuration-layer//load()
+  (cond (changed-since-last-dump-p (configuration-layer//load) (if (spacemacs/emacs-with-pdumper-set-p) (progn (configuration-layer/message "Layer list has changed since last dump.") (configuration-layer//dump-emacs)))) (spacemacs-force-dump (configuration-layer//load) (if (spacemacs/emacs-with-pdumper-set-p) (progn (configuration-layer/message (concat "--force-dump passed on the command line, " "forcing a redump.")) (configuration-layer//dump-emacs)))) ((spacemacs-is-dumping-p) (configuration-layer//load)) ((and (spacemacs/emacs-with-pdumper-set-p) (spacemacs-run-from-dump-p)) (configuration-layer/message "Running from a dumped file. Skipping the loading process!")) (t (configuration-layer//load) (if (spacemacs/emacs-with-pdumper-set-p) (progn (configuration-layer/message (concat "Layer list has not changed since last time. " "Skipping dumping process!"))))))
+  configuration-layer/load()
+  (let ((file-name-handler-alist nil)) (require (quote core-spacemacs)) (spacemacs/dump-restore-load-path) (configuration-layer/load-lock-file) (spacemacs/init) (configuration-layer/stable-elpa-init) (configuration-layer/load) (spacemacs-buffer/display-startup-note) (spacemacs/setup-startup-hook) (spacemacs/dump-eval-delayed-functions) (if (and dotspacemacs-enable-server (not (spacemacs-is-dumping-p))) (progn (require (quote server)) (if dotspacemacs-server-socket-dir (progn (setq server-socket-dir dotspacemacs-server-socket-dir))) (if (server-running-p) nil (message "Starting a server...") (server-start)))))
+  (if (not (version&lt;= spacemacs-emacs-min-version emacs-version)) (error (concat "Your version of Emacs (%s) is too old. " "Spacemacs requires Emacs version %s or above.") emacs-version spacemacs-emacs-min-version) (let ((file-name-handler-alist nil)) (require (quote core-spacemacs)) (spacemacs/dump-restore-load-path) (configuration-layer/load-lock-file) (spacemacs/init) (configuration-layer/stable-elpa-init) (configuration-layer/load) (spacemacs-buffer/display-startup-note) (spacemacs/setup-startup-hook) (spacemacs/dump-eval-delayed-functions) (if (and dotspacemacs-enable-server (not (spacemacs-is-dumping-p))) (progn (require (quote server)) (if dotspacemacs-server-socket-dir (progn (setq server-socket-dir dotspacemacs-server-socket-dir))) (if (server-running-p) nil (message "Starting a server...") (server-start))))))
+  eval-buffer(#&lt;buffer  *load*-804279&gt; nil "/home/a/spacemacs/init.el" nil t)  ; Reading at buffer position 1880
+  load-with-code-conversion("/home/a/spacemacs/init.el" "/home/a/spacemacs/init.el" nil nil)
+  load("/home/a/spacemacs/init.el")
+  (let* ((emacs-directory (file-name-as-directory (chemacs-emacs-profile-key (quote user-emacs-directory)))) (init-file (expand-file-name "init.el" emacs-directory)) (custom-file- (chemacs-emacs-profile-key (quote custom-file) init-file)) (server-name- (chemacs-emacs-profile-key (quote server-name)))) (setq user-emacs-directory emacs-directory) (if server-name- (progn (setq server-name server-name-))) (mapcar (function (lambda (env) (setenv (car env) (cdr env)))) (chemacs-emacs-profile-key (quote env))) (if (chemacs-emacs-profile-key (quote straight-p)) (progn (chemacs-load-straight))) (load init-file) (if (not custom-file) (progn (setq custom-file custom-file-) (if (equal custom-file init-file) nil (load custom-file)))))
+  chemacs-load-profile("spacemacs")
+  (if args (let ((s (split-string (car args) "="))) (cond ((equal (car args) "--with-profile") (add-to-list (quote command-switch-alist) (quote ("--with-profile" lambda (_) (pop command-line-args-left)))) (chemacs-load-profile (car (cdr args)))) ((equal (car s) "--with-profile") (add-to-list (quote command-switch-alist) (cons (car args) (quote (lambda ...)))) (chemacs-load-profile (mapconcat (quote identity) (cdr s) "="))) (t (chemacs-check-command-line-args (cdr args))))) (chemacs-load-profile (chemacs-detect-default-profile)))
+  chemacs-check-command-line-args(nil)
+  (cond ((equal (car args) "--with-profile") (add-to-list (quote command-switch-alist) (quote ("--with-profile" lambda (_) (pop command-line-args-left)))) (chemacs-load-profile (car (cdr args)))) ((equal (car s) "--with-profile") (add-to-list (quote command-switch-alist) (cons (car args) (quote (lambda (_))))) (chemacs-load-profile (mapconcat (quote identity) (cdr s) "="))) (t (chemacs-check-command-line-args (cdr args))))
+  (let ((s (split-string (car args) "="))) (cond ((equal (car args) "--with-profile") (add-to-list (quote command-switch-alist) (quote ("--with-profile" lambda (_) (pop command-line-args-left)))) (chemacs-load-profile (car (cdr args)))) ((equal (car s) "--with-profile") (add-to-list (quote command-switch-alist) (cons (car args) (quote (lambda (_))))) (chemacs-load-profile (mapconcat (quote identity) (cdr s) "="))) (t (chemacs-check-command-line-args (cdr args)))))
+  (if args (let ((s (split-string (car args) "="))) (cond ((equal (car args) "--with-profile") (add-to-list (quote command-switch-alist) (quote ("--with-profile" lambda (_) (pop command-line-args-left)))) (chemacs-load-profile (car (cdr args)))) ((equal (car s) "--with-profile") (add-to-list (quote command-switch-alist) (cons (car args) (quote (lambda ...)))) (chemacs-load-profile (mapconcat (quote identity) (cdr s) "="))) (t (chemacs-check-command-line-args (cdr args))))) (chemacs-load-profile (chemacs-detect-default-profile)))
+  chemacs-check-command-line-args(("/usr/local/bin/emacs"))
+  eval-buffer(#&lt;buffer  *load*&gt; nil "/home/a/.emacs" nil t)  ; Reading at buffer position 7021
+  load-with-code-conversion("/home/a/.emacs" "/home/a/.emacs" t t)
+  load("~/.emacs" t t)
+  #f(compiled-function () #&lt;bytecode 0x25c709&gt;)()
+  command-line()
+  normal-top-level()
+</pre>
+</div>
+
+
+<p>
+<a href="https://en.dlyang.me/debug-log-spacemacs-failed-to-initialize-after-switching-to-develop-branch-on-a-config-file-synchronized-machine/">https://en.dlyang.me/debug-log-spacemacs-failed-to-initialize-after-switching-to-develop-branch-on-a-config-file-synchronized-machine/</a>
+<a href="https://www.reddit.com/r/spacemacs/comments/9yvyg4/no_such_file_or_directory/">https://www.reddit.com/r/spacemacs/comments/9yvyg4/no_such_file_or_directory/</a>
+</p>
+
+<p>
+所以 ~/.spacemacs.d/.spacemacs.env 中的内容一定要与当前机器相匹配。
+</p>
+
+<p>
+快速解决：
+</p>
+
+
+<div class="org-src-container">
+<pre class="src src-shell">cp ~/.spacemacs.d/.spacemacs.env ~/.spacemacs.d/.spacemacs.env.wsl
+rm ~/.spacemacs.d/.spacemacs.env
+emacs --debug-init
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org79a9ca4" class="outline-2">
+<h2 id="org79a9ca4">emacs 启动 wrong-type-argument undo-tree nil</h2>
+<div class="outline-text-2" id="text-org79a9ca4">
+<div class="org-src-container">
+<pre class="src src-example">Debugger entered--Lisp error: (wrong-type-argument undo-tree nil)
+  signal(wrong-type-argument (undo-tree nil))
+  undo-tree-current(nil)
+  (undo-tree-node-previous (undo-tree-current buffer-undo-tree))
+  (and undo-tree-mode (not buffer-read-only) (not (eq t buffer-undo-list)) (undo-tree-node-previous (undo-tree-current buffer-undo-tree)))
+  redisplay_internal\ \(C\ function\)()
+  redisplay()
+  spacemacs//redisplay()
+  (progn (let* ((progress (max 0 (* spacemacs-loading-dots-chunk-size (floor (/ spacemacs-loading-value spacemacs-loading-dots-chunk-threshold))))) (remain (max 0 (- spacemacs-loading-dots-count progress)))) (setq spacemacs-loading-counter 0) (setq spacemacs-loading-string (concat (make-string progress spacemacs-loading-char) (make-string remain spacemacs-loading-char-light))) (spacemacs-buffer/set-mode-line spacemacs-loading-string)) (spacemacs//redisplay))
+  (if (&gt;= spacemacs-loading-counter spacemacs-loading-dots-chunk-threshold) (progn (let* ((progress (max 0 (* spacemacs-loading-dots-chunk-size (floor ...)))) (remain (max 0 (- spacemacs-loading-dots-count progress)))) (setq spacemacs-loading-counter 0) (setq spacemacs-loading-string (concat (make-string progress spacemacs-loading-char) (make-string remain spacemacs-loading-char-light))) (spacemacs-buffer/set-mode-line spacemacs-loading-string)) (spacemacs//redisplay)))
+  (progn (setq spacemacs-loading-counter (1+ spacemacs-loading-counter)) (setq spacemacs-loading-value (1+ spacemacs-loading-value)) (if (&gt;= spacemacs-loading-counter spacemacs-loading-dots-chunk-threshold) (progn (let* ((progress (max 0 (* spacemacs-loading-dots-chunk-size ...))) (remain (max 0 (- spacemacs-loading-dots-count progress)))) (setq spacemacs-loading-counter 0) (setq spacemacs-loading-string (concat (make-string progress spacemacs-loading-char) (make-string remain spacemacs-loading-char-light))) (spacemacs-buffer/set-mode-line spacemacs-loading-string)) (spacemacs//redisplay))))
+  (if (and (not noninteractive) (&gt; spacemacs-loading-dots-chunk-threshold 0) dotspacemacs-loading-progress-bar) (progn (setq spacemacs-loading-counter (1+ spacemacs-loading-counter)) (setq spacemacs-loading-value (1+ spacemacs-loading-value)) (if (&gt;= spacemacs-loading-counter spacemacs-loading-dots-chunk-threshold) (progn (let* ((progress (max 0 ...)) (remain (max 0 ...))) (setq spacemacs-loading-counter 0) (setq spacemacs-loading-string (concat (make-string progress spacemacs-loading-char) (make-string remain spacemacs-loading-char-light))) (spacemacs-buffer/set-mode-line spacemacs-loading-string)) (spacemacs//redisplay)))))
+  spacemacs/update-progress-bar()
+  configuration-layer//configure-package(#&lt;cfgl-package cfgl-package&gt;)
+  mapc(configuration-layer//configure-package (#&lt;cfgl-package cfgl-package&gt; #&lt;cfgl-package cfgl-package&gt; #&lt;cfgl-package cfgl-package&gt; #&lt;cfgl-package cfgl-package&gt; #&lt;cfgl-package cfgl-package&gt; #&lt;cfgl-package cfgl-package&gt; #&lt;cfgl-package cfgl-package&gt; #&lt;cfgl-package cfgl-package&gt; #&lt;cfgl-package cfgl-package&gt; #&lt;cfgl-package cfgl-package&gt; #&lt;cfgl-package cfgl-package&gt; #&lt;cfgl-package cfgl-package&gt; #&lt;cfgl-package cfgl-package&gt; #&lt;cfgl-package cfgl-package&gt; #&lt;cfgl-package cfgl-package&gt; #&lt;cfgl-package cfgl-package&gt; #&lt;cfgl-package cfgl-package&gt; #&lt;cfgl-package cfgl-package&gt; #&lt;cfgl-package cfgl-package&gt; #&lt;cfgl-package cfgl-package&gt; #&lt;cfgl-package cfgl-package&gt; #&lt;cfgl-package cfgl-package&gt; #&lt;cfgl-package cfgl-package&gt; #&lt;cfgl-package cfgl-package&gt; #&lt;cfgl-package cfgl-package&gt; #&lt;cfgl-package cfgl-package&gt; #&lt;cfgl-package cfgl-package&gt; #&lt;cfgl-package cfgl-package&gt; #&lt;cfgl-package cfgl-package&gt; #&lt;cfgl-package cfgl-package&gt; #&lt;cfgl-package cfgl-package&gt; #&lt;cfgl-package cfgl-package&gt; #&lt;cfgl-package cfgl-package&gt; #&lt;cfgl-package cfgl-package&gt; #&lt;cfgl-package cfgl-package&gt; #&lt;cfgl-package cfgl-package&gt; #&lt;cfgl-package cfgl-package&gt; #&lt;cfgl-package cfgl-package&gt; #&lt;cfgl-package cfgl-package&gt; #&lt;cfgl-package cfgl-package&gt; #&lt;cfgl-package cfgl-package&gt; #&lt;cfgl-package cfgl-package&gt; #&lt;cfgl-package cfgl-package&gt; #&lt;cfgl-package cfgl-package&gt; #&lt;cfgl-package cfgl-package&gt; #&lt;cfgl-package cfgl-package&gt; #&lt;cfgl-package cfgl-package&gt; #&lt;cfgl-package cfgl-package&gt; #&lt;cfgl-package cfgl-package&gt; #&lt;cfgl-package cfgl-package&gt; ...))
+  (let (packages-to-configure) (let ((--dolist-tail-- packages) pkg-name) (while --dolist-tail-- (setq pkg-name (car --dolist-tail--)) (let ((pkg (configuration-layer/get-package pkg-name))) (cond ((eieio-oref pkg (quote :lazy-install)) (spacemacs-buffer/message (format "%S ignored since it can be lazily installed." pkg-name))) ((and (eieio-oref pkg ...) (not ...)) (spacemacs-buffer/message (format "%S ignored since it has been excluded." pkg-name))) ((null (eieio-oref pkg ...)) (spacemacs-buffer/message (format "%S ignored since it has no owner layer." pkg-name))) ((not (configuration-layer//package-reqs-used-p pkg)) (spacemacs-buffer/message (format ... pkg-name))) ((not (cfgl-package-enabled-p pkg)) (spacemacs-buffer/message (format "%S is disabled." pkg-name))) (t (let (...) (if dir ...)) (if (memq ... ...) nil (configuration-layer//activate-package pkg-name)) (cond (... ...) (t ... ...))))) (setq --dolist-tail-- (cdr --dolist-tail--)))) (setq packages-to-configure (reverse packages-to-configure)) (mapc (quote configuration-layer//configure-package) packages-to-configure) (mapc (quote configuration-layer//post-configure-package) packages-to-configure))
+  configuration-layer//configure-packages-2((4clojure abbrev ace-link ace-window add-node-modules-path aggressive-indent all-the-icons anaconda-mode anki-editor ansi-colors archive-mode attrap auctex auctex-latexmk auto-compile auto-highlight-symbol auto-yasnippet avy blacken bookmark bracketed-paste bug-hunter caps-lock cc-mode ccls centered-cursor-mode cider cider-eval-sexp-fu clj-refactor clojure-mode clojure-snippets cmake-font-lock cmm-mode color-identifiers-mode column-enforce-mode comint command-log-mode company company-anaconda company-auctex company-box company-c-headers company-cabal company-emoji company-ghc company-ghci company-glsl company-go company-lsp company-lua ...))
+  configuration-layer//configure-packages((4clojure abbrev ace-link ace-window add-node-modules-path aggressive-indent all-the-icons anaconda-mode anki-editor ansi-colors archive-mode async attrap auctex auctex-latexmk auto-compile auto-highlight-symbol auto-yasnippet avy bind-key bind-map blacken bookmark bracketed-paste bug-hunter caps-lock cc-mode ccls centered-cursor-mode cider cider-eval-sexp-fu clj-refactor clojure-mode clojure-snippets cmake-font-lock cmm-mode color-identifiers-mode column-enforce-mode comint command-log-mode company company-anaconda company-auctex company-box company-c-headers company-cabal company-emoji company-ghc company-ghci company-glsl ...))
+  configuration-layer//load()
+  (cond (changed-since-last-dump-p (configuration-layer//load) (if (spacemacs/emacs-with-pdumper-set-p) (progn (configuration-layer/message "Layer list has changed since last dump.") (configuration-layer//dump-emacs)))) (spacemacs-force-dump (configuration-layer//load) (if (spacemacs/emacs-with-pdumper-set-p) (progn (configuration-layer/message (concat "--force-dump passed on the command line, " "forcing a redump.")) (configuration-layer//dump-emacs)))) ((spacemacs-is-dumping-p) (configuration-layer//load)) ((and (spacemacs/emacs-with-pdumper-set-p) (spacemacs-run-from-dump-p)) (configuration-layer/message "Running from a dumped file. Skipping the loading process!")) (t (configuration-layer//load) (if (spacemacs/emacs-with-pdumper-set-p) (progn (configuration-layer/message (concat "Layer list has not changed since last time. " "Skipping dumping process!"))))))
+  configuration-layer/load()
+  (let ((file-name-handler-alist nil)) (require (quote core-spacemacs)) (spacemacs/dump-restore-load-path) (configuration-layer/load-lock-file) (spacemacs/init) (configuration-layer/stable-elpa-init) (configuration-layer/load) (spacemacs-buffer/display-startup-note) (spacemacs/setup-startup-hook) (spacemacs/dump-eval-delayed-functions) (if (and dotspacemacs-enable-server (not (spacemacs-is-dumping-p))) (progn (require (quote server)) (if dotspacemacs-server-socket-dir (progn (setq server-socket-dir dotspacemacs-server-socket-dir))) (if (server-running-p) nil (message "Starting a server...") (server-start)))))
+  (if (not (version&lt;= spacemacs-emacs-min-version emacs-version)) (error (concat "Your version of Emacs (%s) is too old. " "Spacemacs requires Emacs version %s or above.") emacs-version spacemacs-emacs-min-version) (let ((file-name-handler-alist nil)) (require (quote core-spacemacs)) (spacemacs/dump-restore-load-path) (configuration-layer/load-lock-file) (spacemacs/init) (configuration-layer/stable-elpa-init) (configuration-layer/load) (spacemacs-buffer/display-startup-note) (spacemacs/setup-startup-hook) (spacemacs/dump-eval-delayed-functions) (if (and dotspacemacs-enable-server (not (spacemacs-is-dumping-p))) (progn (require (quote server)) (if dotspacemacs-server-socket-dir (progn (setq server-socket-dir dotspacemacs-server-socket-dir))) (if (server-running-p) nil (message "Starting a server...") (server-start))))))
+  eval-buffer(#&lt;buffer  *load*&gt; nil "/home/a/.emacs.d/init.el" nil t)  ; Reading at buffer position 1880
+  load-with-code-conversion("/home/a/.emacs.d/init.el" "/home/a/.emacs.d/init.el" t t)
+  load("/home/a/.emacs.d/init" t t)
+  #f(compiled-function () #&lt;bytecode 0x25c709&gt;)()
+  command-line()
+  normal-top-level()
+</pre>
+</div>
+
+<p>
+在 init.el 文件中加入
+</p>
+
+<div class="org-src-container">
+<pre class="src src-example">(setq projectile-git-submodule-command nil)
+</pre>
+</div>
+
+<p>
+好像没什么用.
+</p>
+</div>
+</div>
+</div>
+</body>
+</html>

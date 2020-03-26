@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2020-01-20 Mon 18:06 -->
+<!-- 2020-03-26 Thu 11:07 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>git faq</title>
@@ -98,8 +98,9 @@ fathom('trackPageview');
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#org461df44">error: cannot pull with rebase: You have unstaged changes.</a></li>
-<li><a href="#orga313a26">error: shallow update not allowed</a></li>
+<li><a href="#org8c4695b">make-git-ignore-file-mode-chmod-changes</a></li>
+<li><a href="#org8b6cb3a">error: cannot pull with rebase: You have unstaged changes.</a></li>
+<li><a href="#org2916b7b">error: shallow update not allowed</a></li>
 </ul>
 </div>
 </div>
@@ -107,32 +108,46 @@ fathom('trackPageview');
 <a href="../index.html">{Back to site's index}</a>
 </p>
 
-<div id="outline-container-org461df44" class="outline-2">
-<h2 id="org461df44">error: cannot pull with rebase: You have unstaged changes.</h2>
-<div class="outline-text-2" id="text-org461df44">
+<div id="outline-container-org8c4695b" class="outline-2">
+<h2 id="org8c4695b">make-git-ignore-file-mode-chmod-changes</h2>
+<div class="outline-text-2" id="text-org8c4695b">
+<p>
+<a href="https://stackoverflow.com/questions/1580596/how-do-i-make-git-ignore-file-mode-chmod-changes">https://stackoverflow.com/questions/1580596/how-do-i-make-git-ignore-file-mode-chmod-changes</a>
+</p>
+
+<div class="org-src-container">
+<pre class="src src-shell">git config core.fileMode false
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org8b6cb3a" class="outline-2">
+<h2 id="org8b6cb3a">error: cannot pull with rebase: You have unstaged changes.</h2>
+<div class="outline-text-2" id="text-org8b6cb3a">
 <p>
 in <code>vscode</code>, offen <code>error: cannot pull with rebase: You have unstaged changes.</code>
 </p>
 </div>
 </div>
 
-<div id="outline-container-orga313a26" class="outline-2">
-<h2 id="orga313a26">error: shallow update not allowed</h2>
-<div class="outline-text-2" id="text-orga313a26">
+<div id="outline-container-org2916b7b" class="outline-2">
+<h2 id="org2916b7b">error: shallow update not allowed</h2>
+<div class="outline-text-2" id="text-org2916b7b">
 <div class="org-src-container">
 <pre class="src src-shell">DESKTOP-APB1HCJ% git push github master
-Enumerating objects: <span style="color: #a45bad;">1944,</span> done.
-Counting objects: <span style="color: #a45bad;">100%</span> (<span style="color: #a45bad;">1944/1944</span>), done.
-Delta compression using up to <span style="color: #a45bad;">6</span> threads
-Compressing objects: <span style="color: #a45bad;">100%</span> (<span style="color: #a45bad;">1766/1766</span>), done.
-Writing objects: <span style="color: #a45bad;">100%</span> (<span style="color: #a45bad;">1944/1944</span>), <span style="color: #a45bad;">393.91</span> KiB | <span style="color: #a45bad;">2.13</span> MiB/s, done.
-Total <span style="color: #a45bad;">1944</span> (delta <span style="color: #a45bad;">1489</span>), reused <span style="color: #a45bad;">228</span> (delta <span style="color: #a45bad;">142</span>)
-remote: Resolving deltas: <span style="color: #a45bad;">100%</span> (<span style="color: #a45bad;">1489/1489</span>), done.
+Enumerating objects: <span style="color: #AE81FF;">1944,</span> done.
+Counting objects: <span style="color: #AE81FF;">100%</span> (<span style="color: #AE81FF;">1944/1944</span>), done.
+Delta compression using up to <span style="color: #AE81FF;">6</span> threads
+Compressing objects: <span style="color: #AE81FF;">100%</span> (<span style="color: #AE81FF;">1766/1766</span>), done.
+Writing objects: <span style="color: #AE81FF;">100%</span> (<span style="color: #AE81FF;">1944/1944</span>), <span style="color: #AE81FF;">393.91</span> KiB | <span style="color: #AE81FF;">2.13</span> MiB/s, done.
+Total <span style="color: #AE81FF;">1944</span> (delta <span style="color: #AE81FF;">1489</span>), reused <span style="color: #AE81FF;">228</span> (delta <span style="color: #AE81FF;">142</span>)
+remote: Resolving deltas: <span style="color: #AE81FF;">100%</span> (<span style="color: #AE81FF;">1489/1489</span>), done.
 To github.com:eiuapp/tl-fangyuan-server.git
- <span style="color: #a45bad;">!</span> [remote rejected] master -&gt; master (shallow update not allowed)
-error: failed to push some refs to <span style="color: #daa520;">'git@github.com:eiuapp/tl-fangyuan-server.git'</span>
+ <span style="color: #E6DB74; font-weight: bold;">!</span> [remote rejected] master -&gt; master (shallow update not allowed)
+error: failed to push some refs to <span style="color: #E6DB74;">'git@github.com:eiuapp/tl-fangyuan-server.git'</span>
 DESKTOP-APB1HCJ% git fetch --unshallow upstream
-fatal: <span style="color: #daa520;">'upstream'</span> does not appear to be a git repository
+fatal: <span style="color: #E6DB74;">'upstream'</span> does not appear to be a git repository
 fatal: Could not read from remote repository.
 
 Please make sure you have the correct access rights

@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2020-01-11 Sat 18:34 -->
+<!-- 2020-03-26 Thu 11:07 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>postgresql</title>
@@ -98,10 +98,10 @@ fathom('trackPageview');
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#org67319c6">start up</a></li>
-<li><a href="#org368a7f8">commands</a></li>
-<li><a href="#orgd01f50f">ERROR: column p.proisagg does not exist</a></li>
-<li><a href="#org9ddd402"><span class="todo TODO">TODO</span> ERROR: permission deny</a></li>
+<li><a href="#org226d4c4">start up</a></li>
+<li><a href="#org771ff9d">commands</a></li>
+<li><a href="#org9bc6098">ERROR: column p.proisagg does not exist</a></li>
+<li><a href="#org8b4ed63"><span class="todo TODO">TODO</span> ERROR: permission deny</a></li>
 </ul>
 </div>
 </div>
@@ -109,9 +109,9 @@ fathom('trackPageview');
 <a href="../index.html">{Back to site's index}</a>
 </p>
 
-<div id="outline-container-org67319c6" class="outline-2">
-<h2 id="org67319c6">start up</h2>
-<div class="outline-text-2" id="text-org67319c6">
+<div id="outline-container-org226d4c4" class="outline-2">
+<h2 id="org226d4c4">start up</h2>
+<div class="outline-text-2" id="text-org226d4c4">
 <p>
 <a href="https://www.jianshu.com/p/1caf8e5768af">https://www.jianshu.com/p/1caf8e5768af</a>
 </p>
@@ -152,9 +152,9 @@ mac@macdeMacBook-Pro ~ %
 </div>
 </div>
 
-<div id="outline-container-org368a7f8" class="outline-2">
-<h2 id="org368a7f8">commands</h2>
-<div class="outline-text-2" id="text-org368a7f8">
+<div id="outline-container-org771ff9d" class="outline-2">
+<h2 id="org771ff9d">commands</h2>
+<div class="outline-text-2" id="text-org771ff9d">
 <div class="org-src-container">
 <pre class="src src-shell">\l               ---show databases
 \dt            ---show tables
@@ -163,9 +163,9 @@ mac@macdeMacBook-Pro ~ %
 </div>
 </div>
 </div>
-<div id="outline-container-orgd01f50f" class="outline-2">
-<h2 id="orgd01f50f">ERROR: column p.proisagg does not exist</h2>
-<div class="outline-text-2" id="text-orgd01f50f">
+<div id="outline-container-org9bc6098" class="outline-2">
+<h2 id="org9bc6098">ERROR: column p.proisagg does not exist</h2>
+<div class="outline-text-2" id="text-org9bc6098">
 <ul class="org-ul">
 <li><a href="https://github.com/schemaspy/schemaspy/issues/537">https://github.com/schemaspy/schemaspy/issues/537</a></li>
 <li><a href="https://blog.csdn.net/weixin_44671994/article/details/87935656">https://blog.csdn.net/weixin_44671994/article/details/87935656</a></li>
@@ -173,11 +173,11 @@ mac@macdeMacBook-Pro ~ %
 </div>
 </div>
 
-<div id="outline-container-org9ddd402" class="outline-2">
-<h2 id="org9ddd402"><span class="todo TODO">TODO</span> ERROR: permission deny</h2>
-<div class="outline-text-2" id="text-org9ddd402">
+<div id="outline-container-org8b4ed63" class="outline-2">
+<h2 id="org8b4ed63"><span class="todo TODO">TODO</span> ERROR: permission deny</h2>
+<div class="outline-text-2" id="text-org8b4ed63">
 <div class="org-src-container">
-<pre class="src src-shell">CREATE USER dev1 WITH PASSWORD <span style="color: #daa520;">'***********'</span>;
+<pre class="src src-shell">CREATE USER dev1 WITH PASSWORD <span style="color: #E6DB74;">'***********'</span>;
 GRANT ALL PRIVILEGES ON DATABASE adb to dev1;
 </pre>
 </div>

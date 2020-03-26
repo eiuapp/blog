@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2019-12-16 Mon 12:12 -->
+<!-- 2020-03-26 Thu 11:07 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>&lrm;</title>
@@ -97,24 +97,24 @@ fathom('trackPageview');
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#org7ae49af">git submodule</a>
+<li><a href="#orgd46f41d">git submodule</a>
 <ul>
-<li><a href="#orgda8e341">在已有 submodule 中，切换 branch</a></li>
-<li><a href="#orgcca2bc7">submodule branch 不是 master 分支</a></li>
-<li><a href="#org1628a4d">(modified content) vs (new commits)</a></li>
-<li><a href="#org8c1eb32">修改 submodule 的 名称</a></li>
+<li><a href="#org2c6b195">在已有 submodule 中，切换 branch</a></li>
+<li><a href="#org8bbe348">submodule branch 不是 master 分支</a></li>
+<li><a href="#org6470702">(modified content) vs (new commits)</a></li>
+<li><a href="#org743b4dc">修改 submodule 的 名称</a></li>
 </ul>
 </li>
 </ul>
 </div>
 </div>
-<div id="outline-container-org7ae49af" class="outline-2">
-<h2 id="org7ae49af">git submodule</h2>
-<div class="outline-text-2" id="text-org7ae49af">
+<div id="outline-container-orgd46f41d" class="outline-2">
+<h2 id="orgd46f41d">git submodule</h2>
+<div class="outline-text-2" id="text-orgd46f41d">
 </div>
-<div id="outline-container-orgda8e341" class="outline-3">
-<h3 id="orgda8e341">在已有 submodule 中，切换 branch</h3>
-<div class="outline-text-3" id="text-orgda8e341">
+<div id="outline-container-org2c6b195" class="outline-3">
+<h3 id="org2c6b195">在已有 submodule 中，切换 branch</h3>
+<div class="outline-text-3" id="text-org2c6b195">
 <p>
 `git config -f .gitmodules submodule.&lt;name&gt;.branch &lt;branch-name&gt;`
 </p>
@@ -131,20 +131,20 @@ fathom('trackPageview');
 <pre class="src src-shell">$ git config -f .gitmodules submodule.DbConnector.branch stable
 
 $ git submodule update --remote
-remote: Counting objects: <span style="color: #a45bad;">4,</span> done.
-remote: Compressing objects: <span style="color: #a45bad;">100%</span> (<span style="color: #a45bad;">2/2</span>), done.
-remote: Total <span style="color: #a45bad;">4</span> (delta <span style="color: #a45bad;">2</span>), reused <span style="color: #a45bad;">4</span> (delta <span style="color: #a45bad;">2</span>)
-Unpacking objects: <span style="color: #a45bad;">100%</span> (<span style="color: #a45bad;">4/4</span>), done.
+remote: Counting objects: <span style="color: #AE81FF;">4,</span> done.
+remote: Compressing objects: <span style="color: #AE81FF;">100%</span> (<span style="color: #AE81FF;">2/2</span>), done.
+remote: Total <span style="color: #AE81FF;">4</span> (delta <span style="color: #AE81FF;">2</span>), reused <span style="color: #AE81FF;">4</span> (delta <span style="color: #AE81FF;">2</span>)
+Unpacking objects: <span style="color: #AE81FF;">100%</span> (<span style="color: #AE81FF;">4/4</span>), done.
 From https://github.com/chaconinc/DbConnector
-   <span style="color: #a45bad;">27cf5d3..c87d55d</span>  stable -&gt; origin/stable
-Submodule path <span style="color: #daa520;">'DbConnector'</span>: checked out <span style="color: #daa520;">'c87d55d4c6d4b05ee34fbc8cb6f7bf4585ae6687'</span>
+   <span style="color: #AE81FF;">27cf5d3..c87d55d</span>  stable -&gt; origin/stable
+Submodule path <span style="color: #E6DB74;">'DbConnector'</span>: checked out <span style="color: #E6DB74;">'c87d55d4c6d4b05ee34fbc8cb6f7bf4585ae6687'</span>
 </pre>
 </div>
 </div>
 </div>
-<div id="outline-container-orgcca2bc7" class="outline-3">
-<h3 id="orgcca2bc7">submodule branch 不是 master 分支</h3>
-<div class="outline-text-3" id="text-orgcca2bc7">
+<div id="outline-container-org8bbe348" class="outline-3">
+<h3 id="org8bbe348">submodule branch 不是 master 分支</h3>
+<div class="outline-text-3" id="text-org8bbe348">
 <p>
 这时，当你 `cd path/to/submodule` 后，`git status`
 </p>
@@ -174,16 +174,16 @@ nothing to commit, working directory clean
 </div>
 </div>
 
-<div id="outline-container-org1628a4d" class="outline-3">
-<h3 id="org1628a4d">(modified content) vs (new commits)</h3>
-<div class="outline-text-3" id="text-org1628a4d">
+<div id="outline-container-org6470702" class="outline-3">
+<h3 id="org6470702">(modified content) vs (new commits)</h3>
+<div class="outline-text-3" id="text-org6470702">
 <div class="org-src-container">
 <pre class="src src-shell">$ git submodule update --remote
 $ git status
 Changes not staged for commit:
-  (use <span style="color: #daa520;">"git add &lt;file&gt;..."</span> to update what will be committed)
-  (use <span style="color: #daa520;">"git checkout -- &lt;file&gt;..."</span> to discard changes<span style="color: #00bfff; font-weight: bold;"> in</span> working directory)
-  (commit or discard the untracked or modified content<span style="color: #00bfff; font-weight: bold;"> in</span> submodules)
+  (use <span style="color: #E6DB74;">"git add &lt;file&gt;..."</span> to update what will be committed)
+  (use <span style="color: #E6DB74;">"git checkout -- &lt;file&gt;..."</span> to discard changes<span style="color: #F92672;"> in</span> working directory)
+  (commit or discard the untracked or modified content<span style="color: #F92672;"> in</span> submodules)
 
         modified:   custom.el
         modified:   layers/tomtsang-org/packages.el
@@ -202,9 +202,9 @@ Changes not staged for commit:
 </div>
 </div>
 
-<div id="outline-container-org8c1eb32" class="outline-3">
-<h3 id="org8c1eb32">修改 submodule 的 名称</h3>
-<div class="outline-text-3" id="text-org8c1eb32">
+<div id="outline-container-org743b4dc" class="outline-3">
+<h3 id="org743b4dc">修改 submodule 的 名称</h3>
+<div class="outline-text-3" id="text-org743b4dc">
 <p>
 <a href="https://git-scm.com/docs/git-submodule">https://git-scm.com/docs/git-submodule</a>
 </p>

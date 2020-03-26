@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2019-12-20 Fri 15:27 -->
+<!-- 2020-03-26 Thu 11:07 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>sequelize</title>
@@ -98,7 +98,20 @@ fathom('trackPageview');
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#org0e8a455">sequelize add new data type</a></li>
+<li><a href="#orgb859794">sequelize add new data type</a></li>
+<li><a href="#orgef2454d">sequelize setting timezone</a>
+<ul>
+<li><a href="#orgc8d748a">思路</a>
+<ul>
+<li><a href="#org40081d1">方式1</a></li>
+<li><a href="#org191b1c2">方式2</a></li>
+<li><a href="#orga2c0889">错误1</a></li>
+<li><a href="#orgcd84c72">错误２</a></li>
+<li><a href="#orgf3a7942">返回最好是 string, 对返回的日期，要再次使用时，必需 new Date()</a></li>
+</ul>
+</li>
+</ul>
+</li>
 </ul>
 </div>
 </div>
@@ -106,9 +119,9 @@ fathom('trackPageview');
 <a href="../index.html">{Back to site's index}</a>
 </p>
 
-<div id="outline-container-org0e8a455" class="outline-2">
-<h2 id="org0e8a455">sequelize add new data type</h2>
-<div class="outline-text-2" id="text-org0e8a455">
+<div id="outline-container-orgb859794" class="outline-2">
+<h2 id="orgb859794">sequelize add new data type</h2>
+<div class="outline-text-2" id="text-orgb859794">
 <p>
 <a href="https://itbilu.com/nodejs/npm/sequelize-docs-v5.html#extending-datatypes">https://itbilu.com/nodejs/npm/sequelize-docs-v5.html#extending-datatypes</a>
 </p>
@@ -116,6 +129,201 @@ fathom('trackPageview');
 <p>
 No real action.
 </p>
+</div>
+</div>
+
+<div id="outline-container-orgef2454d" class="outline-2">
+<h2 id="orgef2454d">sequelize setting timezone</h2>
+<div class="outline-text-2" id="text-orgef2454d">
+<p>
+egg-sequelize 在读取时间时，还是会返回UTC格式。
+导致，存入pg的时候是北京时间, 但是取出的时候，会变成显示　UTC　时间（提前８小时）
+</p>
+
+<p>
+<a href="https://www.jianshu.com/p/99dc4d9e5713">https://www.jianshu.com/p/99dc4d9e5713</a>
+<a href="https://github.com/sequelize/sequelize/issues/854">https://github.com/sequelize/sequelize/issues/854</a>
+</p>
+
+<p>
+发现，mysql　已经是有解决方法了，但是，pg呢？
+</p>
+</div>
+
+<div id="outline-container-orgc8d748a" class="outline-3">
+<h3 id="orgc8d748a">思路</h3>
+<div class="outline-text-3" id="text-orgc8d748a">
+<p>
+把返回出来的时间，进行　+8 小时就可以了。
+</p>
+</div>
+
+<div id="outline-container-org40081d1" class="outline-4">
+<h4 id="org40081d1">方式1</h4>
+<div class="outline-text-4" id="text-org40081d1">
+<p>
+<a href="https://blog.csdn.net/u012193330/article/details/79637660">https://blog.csdn.net/u012193330/article/details/79637660</a>
+<a href="https://github.com/sequelize/sequelize/issues/854#issuecomment-491942457">https://github.com/sequelize/sequelize/issues/854#issuecomment-491942457</a>
+</p>
+
+
+<div class="org-src-container">
+<pre class="src src-javascript"><span style="color: #F92672;">var</span> <span style="color: #FD971F;">pg</span> = require(<span style="color: #E6DB74;">'pg'</span>);
+<span style="color: #75715E;">// </span><span style="color: #75715E; background-color: #292e34;">timestramp</span>
+pg.types.setTypeParser(<span style="color: #AE81FF;">1114</span>, <span style="color: #F92672;">function</span> (<span style="color: #FD971F;">value</span>) { <span style="color: #75715E;">// </span><span style="color: #75715E; background-color: #292e34;">pg timestamp</span>
+    app.logger.debug(<span style="color: #E6DB74;">"value&#29616;&#22312;&#26159;&#65306;"</span> + value);
+    <span style="color: #F92672;">const</span> <span style="color: #FD971F;">timezone</span> = <span style="color: #AE81FF;">8</span>; <span style="color: #75715E;">//</span><span style="color: #75715E; background-color: #292e34;">&#30446;&#26631;&#26102;&#21306;&#26102;&#38388;&#65292;&#19996;&#20843;&#21306;</span>
+    <span style="color: #F92672;">const</span> <span style="color: #FD971F;">offset_GMT</span> = <span style="color: #F92672;">new</span> <span style="color: #66D9EF; font-weight: bold;">Date</span>().getTimezoneOffset(); <span style="color: #75715E;">// </span><span style="color: #75715E; background-color: #292e34;">&#26412;&#22320;&#26102;&#38388;&#21644;&#26684;&#26519;&#23041;&#27835;&#30340;&#26102;&#38388;&#24046;&#65292;&#21333;&#20301;&#20026;&#20998;&#38047;</span>
+    <span style="color: #F92672;">const</span> <span style="color: #FD971F;">nowDate</span> = <span style="color: #F92672;">new</span> <span style="color: #66D9EF; font-weight: bold;">Date</span>(value).getTime(); <span style="color: #75715E;">// </span><span style="color: #75715E; background-color: #292e34;">&#26412;&#22320;&#26102;&#38388;&#36317; 1970 &#24180; 1 &#26376; 1 &#26085;&#21320;&#22812;&#65288;GMT &#26102;&#38388;&#65289;&#20043;&#38388;&#30340;&#27627;&#31186;&#25968;</span>
+    <span style="color: #F92672;">const</span> <span style="color: #FD971F;">targetDate</span> = <span style="color: #F92672;">new</span> <span style="color: #66D9EF; font-weight: bold;">Date</span>(nowDate + offset_GMT * <span style="color: #AE81FF;">60</span> * <span style="color: #AE81FF;">1000</span> + timezone * <span style="color: #AE81FF;">60</span> * <span style="color: #AE81FF;">60</span> * <span style="color: #AE81FF;">1000</span>);
+    app.logger.debug(<span style="color: #E6DB74;">`"&#19996;8&#21306;&#29616;&#22312;&#26159;&#65306;" + ${targetDate} , formatToDayTime: ${app.formatToDayTime(targetDate)}`</span>);
+    <span style="color: #F92672;">return</span> app.formatToDayTime(targetDate);
+});
+</pre>
+</div>
+
+<p>
+其中　
+</p>
+
+<div class="org-src-container">
+<pre class="src src-javascript"><span style="color: #F92672;">const</span> <span style="color: #FD971F;">fecha</span> = require(<span style="color: #E6DB74;">'fecha'</span>);
+module.exports = {
+  formatToDayTime(date = <span style="color: #F92672;">new</span> <span style="color: #66D9EF; font-weight: bold;">Date</span>()) {
+    <span style="color: #F92672;">return</span> fecha.format(date, <span style="color: #E6DB74;">'YYYY-MM-DD HH:mm:ss'</span>);
+  },
+}
+</pre>
+</div>
+</div>
+</div>
+
+
+<div id="outline-container-org191b1c2" class="outline-4">
+<h4 id="org191b1c2">方式2</h4>
+<div class="outline-text-4" id="text-org191b1c2">
+<p>
+<a href="https://github.com/sequelize/sequelize/issues/5002#issuecomment-341404757">https://github.com/sequelize/sequelize/issues/5002#issuecomment-341404757</a>
+</p>
+
+<div class="org-src-container">
+<pre class="src src-javascript"><span style="color: #F92672;">var</span> <span style="color: #FD971F;">pg</span> = require(<span style="color: #E6DB74;">'pg'</span>);
+<span style="color: #75715E;">// </span><span style="color: #75715E; background-color: #292e34;">timestramp</span>
+pg.types.setTypeParser(<span style="color: #AE81FF;">1114</span>, <span style="color: #F92672;">function</span> (<span style="color: #FD971F;">value</span>) {
+    value = <span style="color: #F92672;">new</span> <span style="color: #66D9EF; font-weight: bold;">Date</span>(value);
+    <span style="color: #F92672;">const</span> <span style="color: #FD971F;">fecha</span> = require(<span style="color: #E6DB74;">'fecha'</span>);
+    <span style="color: #F92672;">const</span> <span style="color: #FD971F;">formatToDayTime</span> = <span style="color: #F92672;">function</span>(<span style="color: #FD971F;">date</span> = <span style="color: #F92672;">new</span> <span style="color: #66D9EF; font-weight: bold;">Date</span>()) {
+    <span style="color: #F92672;">return</span> fecha.format(date, <span style="color: #E6DB74;">'YYYY-MM-DD HH:mm:ss'</span>);
+    }
+    <span style="color: #F92672;">let</span> <span style="color: #FD971F;">dataString</span> = value.toLocaleDateString() +<span style="color: #E6DB74;">' '</span>+ value.toLocaleTimeString()
+    <span style="color: #F92672;">return</span> formatToDayTime(<span style="color: #F92672;">new</span> <span style="color: #66D9EF; font-weight: bold;">Date</span>(dataString))
+});
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orga2c0889" class="outline-4">
+<h4 id="orga2c0889">错误1</h4>
+<div class="outline-text-4" id="text-orga2c0889">
+<p>
+　
+但是，发现使用　`JSON.stringify(obj)` 时，会报错　formatToDayTime 的 Date 类型错误 `nodejs.Error: Invalid Date in fecha.format`。
+</p>
+</div>
+
+<ul class="org-ul">
+<li><a id="orgd0c82b1"></a>解决<br />
+<div class="outline-text-5" id="text-orgd0c82b1">
+<p>
+这个错误，是之前定义　在　`config.default.js`下的`sequelize.define.getterMethods`中的
+</p>
+
+<div class="org-src-container">
+<pre class="src src-javascript">createdTime() {
+    <span style="color: #F92672;">const</span> <span style="color: #FD971F;">createdTime</span> = <span style="color: #AE81FF;">this</span>.getDataValue(<span style="color: #E6DB74;">'created_time'</span>);
+    <span style="color: #F92672;">if</span> (createdTime) {
+        <span style="color: #F92672;">return</span> fecha.format(createdTime, <span style="color: #E6DB74;">'YYYY-MM-DD HH:mm:ss'</span>);
+    }
+},
+last_modified_time() {
+    <span style="color: #F92672;">const</span> <span style="color: #FD971F;">last_modified_time</span> = <span style="color: #AE81FF;">this</span>.getDataValue(<span style="color: #E6DB74;">'last_modified_time'</span>);
+    <span style="color: #F92672;">if</span> (last_modified_time) {
+        <span style="color: #F92672;">return</span> fecha.format(last_modified_time, <span style="color: #E6DB74;">'YYYY-MM-DD HH:mm:ss'</span>);
+    }
+},
+</pre>
+</div>
+
+<p>
+加上 `new Date()`, 变成
+</p>
+
+<div class="org-src-container">
+<pre class="src src-javascript">createdTime() {
+    <span style="color: #F92672;">const</span> <span style="color: #FD971F;">createdTime</span> = <span style="color: #AE81FF;">this</span>.getDataValue(<span style="color: #E6DB74;">'created_time'</span>);
+    <span style="color: #F92672;">if</span> (createdTime) {
+        <span style="color: #F92672;">return</span> fecha.format(<span style="color: #F92672;">new</span> <span style="color: #66D9EF; font-weight: bold;">Date</span>(createdTime), <span style="color: #E6DB74;">'YYYY-MM-DD HH:mm:ss'</span>);
+    }
+},
+last_modified_time() {
+    <span style="color: #F92672;">const</span> <span style="color: #FD971F;">last_modified_time</span> = <span style="color: #AE81FF;">this</span>.getDataValue(<span style="color: #E6DB74;">'last_modified_time'</span>);
+    <span style="color: #F92672;">if</span> (last_modified_time) {
+        <span style="color: #F92672;">return</span> fecha.format(<span style="color: #F92672;">new</span> <span style="color: #66D9EF; font-weight: bold;">Date</span>(last_modified_time), <span style="color: #E6DB74;">'YYYY-MM-DD HH:mm:ss'</span>);
+    }
+},
+</pre>
+</div>
+</div>
+</li>
+</ul>
+</div>
+
+<div id="outline-container-orgcd84c72" class="outline-4">
+<h4 id="orgcd84c72">错误２</h4>
+<div class="outline-text-4" id="text-orgcd84c72">
+<p>
+　
+<a href="https://stackoverflow.com/questions/20712291/use-node-postgres-to-get-postgres-timestamp-without-timezone-in-utc">https://stackoverflow.com/questions/20712291/use-node-postgres-to-get-postgres-timestamp-without-timezone-in-utc</a>
+<a href="https://github.com/brianc/node-pg-types">https://github.com/brianc/node-pg-types</a>
+</p>
+
+<p>
+<a href="https://blog.csdn.net/vihmnbn/article/details/82699510">https://blog.csdn.net/vihmnbn/article/details/82699510</a>
+</p>
+
+<div class="org-src-container">
+<pre class="src src-javascript"><span style="color: #75715E;">// </span><span style="color: #75715E; background-color: #292e34;">timestramp</span>
+<span style="color: #F92672;">var</span> <span style="color: #FD971F;">pg</span> = require(<span style="color: #E6DB74;">'pg'</span>);
+pg.types.setTypeParser(<span style="color: #AE81FF;">1114</span>, <span style="color: #F92672;">function</span> (<span style="color: #FD971F;">value</span>) { <span style="color: #75715E;">// </span><span style="color: #75715E; background-color: #292e34;">pg timestamp</span>
+    <span style="color: #F92672;">return</span> value;
+});
+</pre>
+</div>
+
+<p>
+解决了。
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgf3a7942" class="outline-4">
+<h4 id="orgf3a7942">返回最好是 string, 对返回的日期，要再次使用时，必需 new Date()</h4>
+<div class="outline-text-4" id="text-orgf3a7942">
+<div class="org-src-container">
+<pre class="src src-javascript"><span style="color: #F92672;">var</span> <span style="color: #FD971F;">pg</span> = require(<span style="color: #E6DB74;">'pg'</span>);
+<span style="color: #75715E;">// </span><span style="color: #75715E; background-color: #292e34;">timestramp</span>
+pg.types.setTypeParser(<span style="color: #AE81FF;">1114</span>, <span style="color: #F92672;">function</span> (<span style="color: #FD971F;">value</span>) {
+    <span style="color: #F92672;">const</span> <span style="color: #FD971F;">timezone</span> = <span style="color: #AE81FF;">8</span>; <span style="color: #75715E;">//</span><span style="color: #75715E; background-color: #292e34;">&#30446;&#26631;&#26102;&#21306;&#26102;&#38388;&#65292;&#19996;&#20843;&#21306;</span>
+    <span style="color: #F92672;">const</span> <span style="color: #FD971F;">nowDate</span> = <span style="color: #F92672;">new</span> <span style="color: #66D9EF; font-weight: bold;">Date</span>(value).getTime(); <span style="color: #75715E;">// </span><span style="color: #75715E; background-color: #292e34;">&#26412;&#22320;&#26102;&#38388;&#36317; 1970 &#24180; 1 &#26376; 1 &#26085;&#21320;&#22812;&#65288;GMT &#26102;&#38388;&#65289;&#20043;&#38388;&#30340;&#27627;&#31186;&#25968;</span>
+    <span style="color: #F92672;">const</span> <span style="color: #FD971F;">targetDate</span> = <span style="color: #F92672;">new</span> <span style="color: #66D9EF; font-weight: bold;">Date</span>(nowDate + timezone * <span style="color: #AE81FF;">60</span> * <span style="color: #AE81FF;">60</span> * <span style="color: #AE81FF;">1000</span>);
+    app.logger.info(<span style="color: #E6DB74;">`"&#19996;8&#21306;&#29616;&#22312;&#26159;&#65306;" + ${targetDate} , formatToDayTime: ${app.formatToDayTime(targetDate)} `</span>);
+    <span style="color: #F92672;">return</span> <span style="color: #F92672;">new</span> <span style="color: #66D9EF; font-weight: bold;">Date</span>(app.formatToDayTime(targetDate));
+});
+</pre>
+</div>
+</div>
+</div>
 </div>
 </div>
 </div>

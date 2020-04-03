@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2020-03-26 Thu 11:07 -->
+<!-- 2020-04-03 Fri 17:01 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>egg</title>
@@ -98,38 +98,52 @@ fathom('trackPageview');
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#org0085ce0">egg</a>
+<li><a href="#orgdcfc4b8">egg validate</a>
 <ul>
-<li><a href="#orgc0971c6">query body rule validate</a></li>
+<li><a href="#orgff494cf">query body rule validate</a></li>
+<li><a href="#orgb4f30cc">validate enum</a></li>
+<li><a href="#org7a9470f">datetime</a></li>
 </ul>
 </li>
-<li><a href="#orge538cca">egg start up</a>
+<li><a href="#orgd38a916">egg start up</a>
 <ul>
-<li><a href="#orgb3eef16">add NODE_OPTION</a>
+<li><a href="#org942e4f3">add NODE_OPTION</a>
 <ul>
-<li><a href="#orgc8c802e">env</a></li>
-<li><a href="#org4f6ad56">set</a></li>
-<li><a href="#org67d3d18">check</a></li>
-</ul>
-</li>
-</ul>
-</li>
-<li><a href="#org19e66d1">egg with postgresql</a>
-<ul>
-<li><a href="#orgde82ab6">sequelize queries returning only strings</a></li>
-</ul>
-</li>
-<li><a href="#orge022540">send email</a>
-<ul>
-<li><a href="#org6946b14">egg-full-email</a>
-<ul>
-<li><a href="#orgb186416">requirement</a></li>
-<li><a href="#orgfd4a2dd">configuration</a></li>
+<li><a href="#org073d305">env</a></li>
+<li><a href="#org4411c5d">set</a></li>
+<li><a href="#orgf69fb81">check</a></li>
 </ul>
 </li>
 </ul>
 </li>
-<li><a href="#org5a4b46a">egg modify, when sql add a field</a></li>
+<li><a href="#orgd05afe5">egg with postgresql</a>
+<ul>
+<li><a href="#org9f1c3eb">sequelize queries returning only strings</a></li>
+</ul>
+</li>
+<li><a href="#orgea76f54">send email</a>
+<ul>
+<li><a href="#org719f48d">egg-full-email</a>
+<ul>
+<li><a href="#orgfe7b8c2">requirement</a></li>
+<li><a href="#orga24e524">configuration</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#orgb21ff64">egg modify, when sql add a field</a></li>
+<li><a href="#org90f52f4">egg multipart</a></li>
+<li><a href="#org7dc9375">egg debug</a>
+<ul>
+<li><a href="#orgc2ff7d2">egg debug 进化历史</a></li>
+<li><a href="#org72aa9bb">如何对指定模块进行debug</a>
+<ul>
+<li><a href="#org7de1f2c">npm run debug</a></li>
+<li><a href="#org5f418f8">源码</a></li>
+</ul>
+</li>
+</ul>
+</li>
 </ul>
 </div>
 </div>
@@ -137,13 +151,18 @@ fathom('trackPageview');
 <a href="../index.html">{Back to site's index}</a>
 </p>
 
-<div id="outline-container-org0085ce0" class="outline-2">
-<h2 id="org0085ce0">egg</h2>
-<div class="outline-text-2" id="text-org0085ce0">
+<div id="outline-container-orgdcfc4b8" class="outline-2">
+<h2 id="orgdcfc4b8">egg validate</h2>
+<div class="outline-text-2" id="text-orgdcfc4b8">
 </div>
-<div id="outline-container-orgc0971c6" class="outline-3">
-<h3 id="orgc0971c6">query body rule validate</h3>
-<div class="outline-text-3" id="text-orgc0971c6">
+
+<div id="outline-container-orgff494cf" class="outline-3">
+<h3 id="orgff494cf">query body rule validate</h3>
+<div class="outline-text-3" id="text-orgff494cf">
+<p>
+eggjs的参数校验模块egg-validate
+</p>
+
 <div class="org-src-container">
 <pre class="src src-example">const rule = {
   pageNum: 'string',
@@ -163,20 +182,48 @@ ctx.validate(ruleFilter, this.ctx.request.body.filter);
 </div>
 </div>
 </div>
+
+<div id="outline-container-orgb4f30cc" class="outline-3">
+<h3 id="orgb4f30cc">validate enum</h3>
+<div class="outline-text-3" id="text-orgb4f30cc">
+<p>
+validate enum(枚举)
+</p>
+<div class="org-src-container">
+<pre class="src src-javascript"><span style="color: #00bfff; font-weight: bold;">const</span> <span style="color: #7590db;">rule</span> = {
+  event_status: [<span style="color: #daa520;">'accept'</span>, <span style="color: #daa520;">'processing'</span>, <span style="color: #daa520;">'finished'</span>, <span style="color: #daa520;">'paused'</span>, <span style="color: #daa520;">'deleted'</span>],
+};
+ctx.validate(rule, params);
+</pre>
+</div>
+</div>
 </div>
 
+<div id="outline-container-org7a9470f" class="outline-3">
+<h3 id="org7a9470f">datetime</h3>
+<div class="outline-text-3" id="text-org7a9470f">
+<div class="org-src-container">
+<pre class="src src-javascript"><span style="color: #00bfff; font-weight: bold;">const</span> <span style="color: #7590db;">rule</span> = {
+  event_created_time: <span style="color: #daa520;">'datetime'</span>,
+};
+ctx.validate(rule, params);
+</pre>
+</div>
+</div>
+</div>
+</div>
 
-<div id="outline-container-orge538cca" class="outline-2">
-<h2 id="orge538cca">egg start up</h2>
-<div class="outline-text-2" id="text-orge538cca">
+<div id="outline-container-orgd38a916" class="outline-2">
+<h2 id="orgd38a916">egg start up</h2>
+<div class="outline-text-2" id="text-orgd38a916">
 </div>
-<div id="outline-container-orgb3eef16" class="outline-3">
-<h3 id="orgb3eef16">add NODE_OPTION</h3>
-<div class="outline-text-3" id="text-orgb3eef16">
+<div id="outline-container-org942e4f3" class="outline-3">
+<h3 id="org942e4f3">add NODE_OPTION</h3>
+<div class="outline-text-3" id="text-org942e4f3">
 </div>
-<div id="outline-container-orgc8c802e" class="outline-4">
-<h4 id="orgc8c802e">env</h4>
-<div class="outline-text-4" id="text-orgc8c802e">
+<div id="outline-container-org073d305" class="outline-4">
+<h4 id="org073d305">env</h4>
+<div class="outline-text-4" id="text-org073d305">
 <p>
 有一次,突然间出现下面的错误
 </p>
@@ -193,20 +240,20 @@ ctx.validate(ruleFilter, this.ctx.request.body.filter);
 </div>
 </div>
 
-<div id="outline-container-org4f6ad56" class="outline-4">
-<h4 id="org4f6ad56">set</h4>
-<div class="outline-text-4" id="text-org4f6ad56">
+<div id="outline-container-org4411c5d" class="outline-4">
+<h4 id="org4411c5d">set</h4>
+<div class="outline-text-4" id="text-org4411c5d">
 <p>
 First tested in shell
 </p>
 
 <div class="org-src-container">
-<pre class="src src-shell">$ <span style="color: #FD971F;">NODE_OPTIONS</span>=<span style="color: #E6DB74;">'--max-http-header-size=80000'</span> node ./node_modules/egg-bin/bin/egg-bin.js  dev --sticky --port=<span style="color: #AE81FF;">7016</span>
+<pre class="src src-shell">$ <span style="color: #7590db;">NODE_OPTIONS</span>=<span style="color: #daa520;">'--max-http-header-size=80000'</span> node ./node_modules/egg-bin/bin/egg-bin.js  dev --sticky --port=<span style="color: #a45bad;">7016</span>
 </pre>
 </div>
 
 <div class="org-src-container">
-<pre class="src src-shell"><span style="color: #F92672;">export</span> <span style="color: #FD971F;">NODE_OPTIONS</span>=<span style="color: #E6DB74;">'--max-http-header-size=80000'</span>
+<pre class="src src-shell"><span style="color: #4f97d7;">export</span> <span style="color: #7590db;">NODE_OPTIONS</span>=<span style="color: #daa520;">'--max-http-header-size=80000'</span>
 npm run dev
 </pre>
 </div>
@@ -216,37 +263,37 @@ set the arguments to <code>package.json</code>
 </p>
 <div class="org-src-container">
 <pre class="src src-json">{
-  <span style="color: #F92672;">"scripts"</span>: {
-    <span style="color: #F92672;">"dev"</span>: "NODE_OPTIONS='--max-http-header-size=<span style="color: #AE81FF;">80000</span>' egg-bin dev --sticky --port=<span style="color: #AE81FF;">7016</span>",
+  <span style="color: #00bfff; font-weight: bold;">"scripts"</span>: {
+    <span style="color: #00bfff; font-weight: bold;">"dev"</span>: "NODE_OPTIONS='--max-http-header-size=<span style="color: #a45bad;">80000</span>' egg-bin dev --sticky --port=<span style="color: #a45bad;">7016</span>",
   }
 }
 </pre>
 </div>
 </div>
 </div>
-<div id="outline-container-org67d3d18" class="outline-4">
-<h4 id="org67d3d18">check</h4>
-<div class="outline-text-4" id="text-org67d3d18">
+<div id="outline-container-orgf69fb81" class="outline-4">
+<h4 id="orgf69fb81">check</h4>
+<div class="outline-text-4" id="text-orgf69fb81">
 <p>
 放在程序启动后
 </p>
 
 <div class="org-src-container">
-<pre class="src src-javascript">app.logger.info(<span style="color: #E6DB74;">'process.env.NODE_OPTIONS is: '</span> + process.env.NODE_OPTIONS);
+<pre class="src src-javascript">app.logger.info(<span style="color: #daa520;">'process.env.NODE_OPTIONS is: '</span> + process.env.NODE_OPTIONS);
 </pre>
 </div>
 </div>
 </div>
 </div>
 </div>
-<div id="outline-container-org19e66d1" class="outline-2">
-<h2 id="org19e66d1">egg with postgresql</h2>
-<div class="outline-text-2" id="text-org19e66d1">
+<div id="outline-container-orgd05afe5" class="outline-2">
+<h2 id="orgd05afe5">egg with postgresql</h2>
+<div class="outline-text-2" id="text-orgd05afe5">
 </div>
 
-<div id="outline-container-orgde82ab6" class="outline-3">
-<h3 id="orgde82ab6">sequelize queries returning only strings</h3>
-<div class="outline-text-3" id="text-orgde82ab6">
+<div id="outline-container-org9f1c3eb" class="outline-3">
+<h3 id="org9f1c3eb">sequelize queries returning only strings</h3>
+<div class="outline-text-3" id="text-org9f1c3eb">
 <p>
 当数据库是 postgresql 时，为什么，取到的数据类型是 string, 而不是 int ？
 </p>
@@ -261,16 +308,16 @@ set the arguments to <code>package.json</code>
 </p>
 
 <div class="org-src-container">
-<pre class="src src-javascript"><span style="color: #F92672;">var</span> <span style="color: #FD971F;">pg</span> = require(<span style="color: #E6DB74;">'pg'</span>);
+<pre class="src src-javascript"><span style="color: #00bfff; font-weight: bold;">var</span> <span style="color: #7590db;">pg</span> = require(<span style="color: #daa520;">'pg'</span>);
 
-<span style="color: #75715E;">// </span><span style="color: #75715E; background-color: #292e34;">bigint</span>
-pg.types.setTypeParser(<span style="color: #AE81FF;">20</span>, <span style="color: #F92672;">function</span> (<span style="color: #FD971F;">value</span>) {
-    <span style="color: #F92672;">return</span> parseInt(value);
+<span style="color: #2aa1ae; background-color: #292e34;">// </span><span style="color: #2aa1ae; background-color: #292e34;">bigint</span>
+pg.types.setTypeParser(<span style="color: #a45bad;">20</span>, <span style="color: #00bfff; font-weight: bold;">function</span> (<span style="color: #7590db;">value</span>) {
+    <span style="color: #00bfff; font-weight: bold;">return</span> parseInt(value);
 });
 
-<span style="color: #75715E;">// </span><span style="color: #75715E; background-color: #292e34;">numeric</span>
-pg.types.setTypeParser(<span style="color: #AE81FF;">1700</span>, <span style="color: #F92672;">function</span> (<span style="color: #FD971F;">value</span>) {
-    <span style="color: #F92672;">return</span> parseFloat(value);
+<span style="color: #2aa1ae; background-color: #292e34;">// </span><span style="color: #2aa1ae; background-color: #292e34;">numeric</span>
+pg.types.setTypeParser(<span style="color: #a45bad;">1700</span>, <span style="color: #00bfff; font-weight: bold;">function</span> (<span style="color: #7590db;">value</span>) {
+    <span style="color: #00bfff; font-weight: bold;">return</span> parseFloat(value);
 });
 </pre>
 </div>
@@ -280,26 +327,26 @@ so, need add above code snippet into <code>app.js</code>.
 </p>
 
 <div class="org-src-container">
-<pre class="src src-javascript"><span style="color: #E6DB74;">'use strict'</span>;
-<span style="color: #F92672;">const</span> <span style="color: #FD971F;">start</span> = Date.now();
+<pre class="src src-javascript"><span style="color: #daa520;">'use strict'</span>;
+<span style="color: #00bfff; font-weight: bold;">const</span> <span style="color: #7590db;">start</span> = Date.now();
 module.exports = app =&gt; {
-  app.logger.info(<span style="color: #E6DB74;">'&#21551;&#21160;&#32791;&#26102; %d ms'</span>, Date.now() - start);
-  app.beforeStart(<span style="color: #F92672;">async</span> () =&gt; {
-    <span style="color: #F92672;">const</span> <span style="color: #FD971F;">ctx</span> = app.createAnonymousContext();
-    <span style="color: #75715E;">// </span><span style="color: #75715E; background-color: #292e34;">&#21021;&#22987;&#21270;&#24310;&#36831;&#20219;&#21153;</span>
+  app.logger.info(<span style="color: #daa520;">'&#21551;&#21160;&#32791;&#26102; %d ms'</span>, Date.now() - start);
+  app.beforeStart(<span style="color: #00bfff; font-weight: bold;">async</span> () =&gt; {
+    <span style="color: #00bfff; font-weight: bold;">const</span> <span style="color: #7590db;">ctx</span> = app.createAnonymousContext();
+    <span style="color: #2aa1ae; background-color: #292e34;">// </span><span style="color: #2aa1ae; background-color: #292e34;">&#21021;&#22987;&#21270;&#24310;&#36831;&#20219;&#21153;</span>
     app.initDelayTask();
 
-    <span style="color: #F92672;">var</span> <span style="color: #FD971F;">pg</span> = require(<span style="color: #E6DB74;">'pg'</span>);
-    <span style="color: #75715E;">// </span><span style="color: #75715E; background-color: #292e34;">bigint</span>
-    pg.types.setTypeParser(<span style="color: #AE81FF;">20</span>, <span style="color: #F92672;">function</span> (<span style="color: #FD971F;">value</span>) {
-        <span style="color: #F92672;">return</span> parseInt(value);
+    <span style="color: #00bfff; font-weight: bold;">var</span> <span style="color: #7590db;">pg</span> = require(<span style="color: #daa520;">'pg'</span>);
+    <span style="color: #2aa1ae; background-color: #292e34;">// </span><span style="color: #2aa1ae; background-color: #292e34;">bigint</span>
+    pg.types.setTypeParser(<span style="color: #a45bad;">20</span>, <span style="color: #00bfff; font-weight: bold;">function</span> (<span style="color: #7590db;">value</span>) {
+        <span style="color: #00bfff; font-weight: bold;">return</span> parseInt(value);
     });
-    <span style="color: #75715E;">// </span><span style="color: #75715E; background-color: #292e34;">numeric</span>
-    pg.types.setTypeParser(<span style="color: #AE81FF;">1700</span>, <span style="color: #F92672;">function</span> (<span style="color: #FD971F;">value</span>) {
-        <span style="color: #F92672;">return</span> parseFloat(value);
+    <span style="color: #2aa1ae; background-color: #292e34;">// </span><span style="color: #2aa1ae; background-color: #292e34;">numeric</span>
+    pg.types.setTypeParser(<span style="color: #a45bad;">1700</span>, <span style="color: #00bfff; font-weight: bold;">function</span> (<span style="color: #7590db;">value</span>) {
+        <span style="color: #00bfff; font-weight: bold;">return</span> parseFloat(value);
     });
   });
-  app.logger.info(<span style="color: #E6DB74;">'process.env.NODE_OPTIONS is: '</span> + process.env.NODE_OPTIONS);
+  app.logger.info(<span style="color: #daa520;">'process.env.NODE_OPTIONS is: '</span> + process.env.NODE_OPTIONS);
 };
 </pre>
 </div>
@@ -316,25 +363,25 @@ how to add new data type, reference <a href="./sequelize.html">here</a>.
 </div>
 </div>
 
-<div id="outline-container-orge022540" class="outline-2">
-<h2 id="orge022540">send email</h2>
-<div class="outline-text-2" id="text-orge022540">
+<div id="outline-container-orgea76f54" class="outline-2">
+<h2 id="orgea76f54">send email</h2>
+<div class="outline-text-2" id="text-orgea76f54">
 <p>
 egg上发送邮件
 </p>
 </div>
 
-<div id="outline-container-org6946b14" class="outline-3">
-<h3 id="org6946b14">egg-full-email</h3>
-<div class="outline-text-3" id="text-org6946b14">
+<div id="outline-container-org719f48d" class="outline-3">
+<h3 id="org719f48d">egg-full-email</h3>
+<div class="outline-text-3" id="text-org719f48d">
 <p>
 use the [egg-full-email][<a href="https://github.com/alex-my/egg-full-email/">https://github.com/alex-my/egg-full-email/</a>]
 </p>
 </div>
 
-<div id="outline-container-orgb186416" class="outline-4">
-<h4 id="orgb186416">requirement</h4>
-<div class="outline-text-4" id="text-orgb186416">
+<div id="outline-container-orgfe7b8c2" class="outline-4">
+<h4 id="orgfe7b8c2">requirement</h4>
+<div class="outline-text-4" id="text-orgfe7b8c2">
 <p>
 QQ邮箱开通 POP3/SMTP 服务.
 开通方式：
@@ -343,22 +390,22 @@ QQ邮箱开通 POP3/SMTP 服务.
 </div>
 </div>
 
-<div id="outline-container-orgfd4a2dd" class="outline-4">
-<h4 id="orgfd4a2dd">configuration</h4>
-<div class="outline-text-4" id="text-orgfd4a2dd">
+<div id="outline-container-orga24e524" class="outline-4">
+<h4 id="orga24e524">configuration</h4>
+<div class="outline-text-4" id="text-orga24e524">
 <p>
 参考文档的配置就行了
 </p>
 
 <div class="org-src-container">
 <pre class="src src-javascript">fullEmail: {
-  service: <span style="color: #E6DB74;">'QQ'</span>, <span style="color: #75715E;">// </span><span style="color: #75715E; background-color: #292e34;">https://nodemailer.com/smtp/well-known/, eg: qiye.aliyun, 126, QQ&#65288;&#32780;&#19981;&#26159;qq&#65289;</span>
-  port: <span style="color: #E6DB74;">'465'</span>, <span style="color: #75715E;">// </span><span style="color: #75715E; background-color: #292e34;">SMTP port</span>
-  ssl: <span style="color: #AE81FF;">true</span>, <span style="color: #75715E;">// </span><span style="color: #75715E; background-color: #292e34;">use ssl</span>
-  user: <span style="color: #E6DB74;">'766529074@qq.com'</span>,
-  password: <span style="color: #E6DB74;">'qq-POP3/SMTP-&#25480;&#26435;&#30721;-&#19981;&#26159;QQ&#26412;&#36523;&#30340;&#23494;&#30721;'</span>, <span style="color: #75715E;">// </span><span style="color: #75715E; background-color: #292e34;">POP3/SMTP&#26381;&#21153;&#25480;&#26435;&#30721;</span>
-  from: <span style="color: #E6DB74;">'766529074@qq.com'</span>, <span style="color: #75715E;">// </span><span style="color: #75715E; background-color: #292e34;">eg: egg-full-email <a href="mailto:alex_my%40126.com">&lt;alex_my@126.com&gt;</a></span>
-  debug: <span style="color: #AE81FF;">false</span>,
+  service: <span style="color: #daa520;">'QQ'</span>, <span style="color: #2aa1ae; background-color: #292e34;">// </span><span style="color: #2aa1ae; background-color: #292e34;">https://nodemailer.com/smtp/well-known/, eg: qiye.aliyun, 126, QQ&#65288;&#32780;&#19981;&#26159;qq&#65289;</span>
+  port: <span style="color: #daa520;">'465'</span>, <span style="color: #2aa1ae; background-color: #292e34;">// </span><span style="color: #2aa1ae; background-color: #292e34;">SMTP port</span>
+  ssl: <span style="color: #a45bad;">true</span>, <span style="color: #2aa1ae; background-color: #292e34;">// </span><span style="color: #2aa1ae; background-color: #292e34;">use ssl</span>
+  user: <span style="color: #daa520;">'766529074@qq.com'</span>,
+  password: <span style="color: #daa520;">'qq-POP3/SMTP-&#25480;&#26435;&#30721;-&#19981;&#26159;QQ&#26412;&#36523;&#30340;&#23494;&#30721;'</span>, <span style="color: #2aa1ae; background-color: #292e34;">// </span><span style="color: #2aa1ae; background-color: #292e34;">POP3/SMTP&#26381;&#21153;&#25480;&#26435;&#30721;</span>
+  from: <span style="color: #daa520;">'766529074@qq.com'</span>, <span style="color: #2aa1ae; background-color: #292e34;">// </span><span style="color: #2aa1ae; background-color: #292e34;">eg: egg-full-email <a href="mailto:alex_my%40126.com">&lt;alex_my@126.com&gt;</a></span>
+  debug: <span style="color: #a45bad;">false</span>,
 },
 </pre>
 </div>
@@ -368,20 +415,20 @@ QQ邮箱开通 POP3/SMTP 服务.
 </p>
 
 <div class="org-src-container">
-<pre class="src src-javascript"><span style="color: #F92672;">async</span> resetPassword() {
-  <span style="color: #75715E;">// </span><span style="color: #75715E; background-color: #292e34;">After changed the password</span>
-  <span style="color: #F92672;">const</span> { ctx, app } = <span style="color: #AE81FF;">this</span>;
-  ctx.logger.info(<span style="color: #E6DB74;">`start resetPassword!`</span>);
+<pre class="src src-javascript"><span style="color: #00bfff; font-weight: bold;">async</span> resetPassword() {
+  <span style="color: #2aa1ae; background-color: #292e34;">// </span><span style="color: #2aa1ae; background-color: #292e34;">After changed the password</span>
+  <span style="color: #00bfff; font-weight: bold;">const</span> { ctx, app } = <span style="color: #a45bad;">this</span>;
+  ctx.logger.info(<span style="color: #daa520;">`start resetPassword!`</span>);
 
-  <span style="color: #F92672;">const</span> <span style="color: #FD971F;">to</span> = <span style="color: #E6DB74;">'273412935@qq.com'</span>;
-  <span style="color: #F92672;">const</span> <span style="color: #FD971F;">subject</span> = <span style="color: #E6DB74;">'reset password'</span>;
-  <span style="color: #F92672;">const</span> <span style="color: #FD971F;">html</span> = <span style="color: #E6DB74;">'&lt;p&gt;&lt;span style="color: red"&gt;You have now changed your password. &lt;/span&gt;&lt;/p&gt;'</span>;
+  <span style="color: #00bfff; font-weight: bold;">const</span> <span style="color: #7590db;">to</span> = <span style="color: #daa520;">'273412935@qq.com'</span>;
+  <span style="color: #00bfff; font-weight: bold;">const</span> <span style="color: #7590db;">subject</span> = <span style="color: #daa520;">'reset password'</span>;
+  <span style="color: #00bfff; font-weight: bold;">const</span> <span style="color: #7590db;">html</span> = <span style="color: #daa520;">'&lt;p&gt;&lt;span style="color: red"&gt;You have now changed your password. &lt;/span&gt;&lt;/p&gt;'</span>;
 
-  <span style="color: #75715E;">// </span><span style="color: #75715E; background-color: #292e34;">result: true if success, or false</span>
-  <span style="color: #F92672;">const</span> <span style="color: #FD971F;">result</span> = <span style="color: #F92672;">await</span> app.fullEmail.sender(to, subject, html);
-  ctx.logger.info(<span style="color: #E6DB74;">`result: ${result}`</span>);
+  <span style="color: #2aa1ae; background-color: #292e34;">// </span><span style="color: #2aa1ae; background-color: #292e34;">result: true if success, or false</span>
+  <span style="color: #00bfff; font-weight: bold;">const</span> <span style="color: #7590db;">result</span> = <span style="color: #00bfff; font-weight: bold;">await</span> app.fullEmail.sender(to, subject, html);
+  ctx.logger.info(<span style="color: #daa520;">`result: ${result}`</span>);
 
-  <span style="color: #AE81FF;">this</span>.ctx.body = <span style="color: #E6DB74;">'reset password success'</span>;
+  <span style="color: #a45bad;">this</span>.ctx.body = <span style="color: #daa520;">'reset password success'</span>;
 }
 </pre>
 </div>
@@ -390,10 +437,9 @@ QQ邮箱开通 POP3/SMTP 服务.
 </div>
 </div>
 
-
-<div id="outline-container-org5a4b46a" class="outline-2">
-<h2 id="org5a4b46a">egg modify, when sql add a field</h2>
-<div class="outline-text-2" id="text-org5a4b46a">
+<div id="outline-container-orgb21ff64" class="outline-2">
+<h2 id="orgb21ff64">egg modify, when sql add a field</h2>
+<div class="outline-text-2" id="text-orgb21ff64">
 <p>
 当数据库中表新增一个字段时, 你需要注意：
 </p>
@@ -417,6 +463,107 @@ openapi:
 <li>global field</li>
 <li>api responses body</li>
 </ol>
+</div>
+</div>
+<div id="outline-container-org90f52f4" class="outline-2">
+<h2 id="org90f52f4">egg multipart</h2>
+<div class="outline-text-2" id="text-org90f52f4">
+<div class="org-src-container">
+<pre class="src src-javascript"><span style="color: #2aa1ae; background-color: #292e34;">// </span><span style="color: #2aa1ae; background-color: #292e34;">&#19978;&#20256;&#25991;&#20214;&#21517; upload file name</span>
+<span style="color: #00bfff; font-weight: bold;">const</span> <span style="color: #7590db;">stream</span> = <span style="color: #00bfff; font-weight: bold;">await</span> <span style="color: #a45bad;">this</span>.ctx.getFileStream();
+<span style="color: #00bfff; font-weight: bold;">const</span> <span style="color: #7590db;">uploadFileName</span> = stream.filename;
+<span style="color: #a45bad;">this</span>.app.logger.info(<span style="color: #daa520;">`uploadFileName: ${uploadFileName}`</span>)
+<span style="color: #2aa1ae; background-color: #292e34;">// </span><span style="color: #2aa1ae; background-color: #292e34;">&#19978;&#20256;&#25991;&#20214;&#22823;&#23567; upload file size</span>
+<span style="color: #00bfff; font-weight: bold;">const</span> <span style="color: #7590db;">uploadFileSize</span> = <span style="color: #a45bad;">this</span>.ctx.request.get(<span style="color: #daa520;">'Content-Length'</span>);
+<span style="color: #a45bad;">this</span>.ctx.logger.info(<span style="color: #daa520;">` uploadFileSize: ${JSON.stringify(uploadFileSize)} `</span>);
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-org7dc9375" class="outline-2">
+<h2 id="org7dc9375">egg debug</h2>
+<div class="outline-text-2" id="text-org7dc9375">
+</div>
+<div id="outline-container-orgc2ff7d2" class="outline-3">
+<h3 id="orgc2ff7d2">egg debug 进化历史</h3>
+<div class="outline-text-3" id="text-orgc2ff7d2">
+<p>
+<a href="https://github.com/atian25/blog/issues/25">https://github.com/atian25/blog/issues/25</a>
+</p>
+</div>
+</div>
+<div id="outline-container-org72aa9bb" class="outline-3">
+<h3 id="org72aa9bb">如何对指定模块进行debug</h3>
+<div class="outline-text-3" id="text-org72aa9bb">
+<p>
+比如，我们有一个场景，要对　egg-route 进行 debug, 查看访问的到底被哪个　route 匹
+配。
+</p>
+</div>
+
+<div id="outline-container-org7de1f2c" class="outline-4">
+<h4 id="org7de1f2c">npm run debug</h4>
+<div class="outline-text-4" id="text-org7de1f2c">
+<p>
+<a href="https://juejin.im/post/5ad1b179f265da237a4d7320">https://juejin.im/post/5ad1b179f265da237a4d7320</a>
+</p>
+
+<p>
+<code>package.json</code> 中修改　~scripts.debug~, 加入 <code>DEBUG=egg-route</code> (注意大小写，在
+windows下可以设置成小写)修改成：
+</p>
+
+<div class="org-src-container">
+<pre class="src src-javascript"><span style="color: #daa520;">"debug"</span>: <span style="color: #daa520;">"DEBUG=egg-router egg-bin debug --sticky --port=7014"</span>,
+</pre>
+</div>
+
+<p>
+然后运行　~npm run debug~ ，就有了对　egg-route　模块的debug信息。
+</p>
+</div>
+</div>
+
+<div id="outline-container-org5f418f8" class="outline-4">
+<h4 id="org5f418f8">源码</h4>
+<div class="outline-text-4" id="text-org5f418f8">
+<p>
+~./node_modules/@eggjs/router/lib/router.js~　中　route() 中　在合适的地方，加入
+</p>
+
+<div class="org-src-container">
+<pre class="src src-javascript">debug(<span style="color: #daa520;">'matched:'</span>,&#160;matched);
+</pre>
+</div>
+
+<p>
+会打印出：
+</p>
+
+<div class="org-src-container">
+<pre class="src src-example">egg-router matched: { path:
+ [ Layer {
+     opts: [Object],
+     name: null,
+     methods: [Array],
+     paramNames: [Array],
+     stack: [Array],
+     path: '/template/:id',
+     regexp: /^\/template\/((?:[^\/]+?))(?:\/(?=$))?$/ } ],
+pathAndMethod:
+ [ Layer {
+     opts: [Object],
+     name: null,
+     methods: [Array],
+     paramNames: [Array],
+     stack: [Array],
+     path: '/template/:id',
+     regexp: /^\/template\/((?:[^\/]+?))(?:\/(?=$))?$/ } ],
+route: true } +0ms
+</pre>
+</div>
+</div>
+</div>
 </div>
 </div>
 </div>

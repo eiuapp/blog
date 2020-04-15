@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2020-04-03 Fri 17:01 -->
+<!-- 2020-04-15 Wed 09:55 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>egg</title>
@@ -98,48 +98,48 @@ fathom('trackPageview');
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#orgdcfc4b8">egg validate</a>
+<li><a href="#org74ff42c">egg validate</a>
 <ul>
-<li><a href="#orgff494cf">query body rule validate</a></li>
-<li><a href="#orgb4f30cc">validate enum</a></li>
-<li><a href="#org7a9470f">datetime</a></li>
+<li><a href="#org360480f">query body rule validate</a></li>
+<li><a href="#org851f1a4">validate enum</a></li>
+<li><a href="#orgdbb2ef1">datetime</a></li>
 </ul>
 </li>
-<li><a href="#orgd38a916">egg start up</a>
+<li><a href="#org71054fe">egg start up</a>
 <ul>
-<li><a href="#org942e4f3">add NODE_OPTION</a>
+<li><a href="#org838ad0f">add NODE_OPTION</a>
 <ul>
-<li><a href="#org073d305">env</a></li>
-<li><a href="#org4411c5d">set</a></li>
-<li><a href="#orgf69fb81">check</a></li>
-</ul>
-</li>
-</ul>
-</li>
-<li><a href="#orgd05afe5">egg with postgresql</a>
-<ul>
-<li><a href="#org9f1c3eb">sequelize queries returning only strings</a></li>
-</ul>
-</li>
-<li><a href="#orgea76f54">send email</a>
-<ul>
-<li><a href="#org719f48d">egg-full-email</a>
-<ul>
-<li><a href="#orgfe7b8c2">requirement</a></li>
-<li><a href="#orga24e524">configuration</a></li>
+<li><a href="#orgdd566c6">env</a></li>
+<li><a href="#org86d9b74">set</a></li>
+<li><a href="#org8bf21c5">check</a></li>
 </ul>
 </li>
 </ul>
 </li>
-<li><a href="#orgb21ff64">egg modify, when sql add a field</a></li>
-<li><a href="#org90f52f4">egg multipart</a></li>
-<li><a href="#org7dc9375">egg debug</a>
+<li><a href="#orgd2742ce">egg with postgresql</a>
 <ul>
-<li><a href="#orgc2ff7d2">egg debug 进化历史</a></li>
-<li><a href="#org72aa9bb">如何对指定模块进行debug</a>
+<li><a href="#org1383202">sequelize queries returning only strings</a></li>
+</ul>
+</li>
+<li><a href="#org177acab">send email</a>
 <ul>
-<li><a href="#org7de1f2c">npm run debug</a></li>
-<li><a href="#org5f418f8">源码</a></li>
+<li><a href="#org0960d13">egg-full-email</a>
+<ul>
+<li><a href="#org358bf7d">requirement</a></li>
+<li><a href="#org9600a81">configuration</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#orga91e1b4">egg modify, when sql add a field</a></li>
+<li><a href="#orga76aa29">egg multipart</a></li>
+<li><a href="#orgca2c25b">egg debug</a>
+<ul>
+<li><a href="#orgdca1d8f">egg debug 进化历史</a></li>
+<li><a href="#org1f052e8">如何对指定模块进行debug</a>
+<ul>
+<li><a href="#org86b6397">npm run debug</a></li>
+<li><a href="#orga2c2e62">源码</a></li>
 </ul>
 </li>
 </ul>
@@ -151,14 +151,14 @@ fathom('trackPageview');
 <a href="../index.html">{Back to site's index}</a>
 </p>
 
-<div id="outline-container-orgdcfc4b8" class="outline-2">
-<h2 id="orgdcfc4b8">egg validate</h2>
-<div class="outline-text-2" id="text-orgdcfc4b8">
+<div id="outline-container-org74ff42c" class="outline-2">
+<h2 id="org74ff42c">egg validate</h2>
+<div class="outline-text-2" id="text-org74ff42c">
 </div>
 
-<div id="outline-container-orgff494cf" class="outline-3">
-<h3 id="orgff494cf">query body rule validate</h3>
-<div class="outline-text-3" id="text-orgff494cf">
+<div id="outline-container-org360480f" class="outline-3">
+<h3 id="org360480f">query body rule validate</h3>
+<div class="outline-text-3" id="text-org360480f">
 <p>
 eggjs的参数校验模块egg-validate
 </p>
@@ -183,9 +183,9 @@ ctx.validate(ruleFilter, this.ctx.request.body.filter);
 </div>
 </div>
 
-<div id="outline-container-orgb4f30cc" class="outline-3">
-<h3 id="orgb4f30cc">validate enum</h3>
-<div class="outline-text-3" id="text-orgb4f30cc">
+<div id="outline-container-org851f1a4" class="outline-3">
+<h3 id="org851f1a4">validate enum</h3>
+<div class="outline-text-3" id="text-org851f1a4">
 <p>
 validate enum(枚举)
 </p>
@@ -199,9 +199,9 @@ ctx.validate(rule, params);
 </div>
 </div>
 
-<div id="outline-container-org7a9470f" class="outline-3">
-<h3 id="org7a9470f">datetime</h3>
-<div class="outline-text-3" id="text-org7a9470f">
+<div id="outline-container-orgdbb2ef1" class="outline-3">
+<h3 id="orgdbb2ef1">datetime</h3>
+<div class="outline-text-3" id="text-orgdbb2ef1">
 <div class="org-src-container">
 <pre class="src src-javascript"><span style="color: #00bfff; font-weight: bold;">const</span> <span style="color: #7590db;">rule</span> = {
   event_created_time: <span style="color: #daa520;">'datetime'</span>,
@@ -213,17 +213,17 @@ ctx.validate(rule, params);
 </div>
 </div>
 
-<div id="outline-container-orgd38a916" class="outline-2">
-<h2 id="orgd38a916">egg start up</h2>
-<div class="outline-text-2" id="text-orgd38a916">
+<div id="outline-container-org71054fe" class="outline-2">
+<h2 id="org71054fe">egg start up</h2>
+<div class="outline-text-2" id="text-org71054fe">
 </div>
-<div id="outline-container-org942e4f3" class="outline-3">
-<h3 id="org942e4f3">add NODE_OPTION</h3>
-<div class="outline-text-3" id="text-org942e4f3">
+<div id="outline-container-org838ad0f" class="outline-3">
+<h3 id="org838ad0f">add NODE_OPTION</h3>
+<div class="outline-text-3" id="text-org838ad0f">
 </div>
-<div id="outline-container-org073d305" class="outline-4">
-<h4 id="org073d305">env</h4>
-<div class="outline-text-4" id="text-org073d305">
+<div id="outline-container-orgdd566c6" class="outline-4">
+<h4 id="orgdd566c6">env</h4>
+<div class="outline-text-4" id="text-orgdd566c6">
 <p>
 有一次,突然间出现下面的错误
 </p>
@@ -240,9 +240,9 @@ ctx.validate(rule, params);
 </div>
 </div>
 
-<div id="outline-container-org4411c5d" class="outline-4">
-<h4 id="org4411c5d">set</h4>
-<div class="outline-text-4" id="text-org4411c5d">
+<div id="outline-container-org86d9b74" class="outline-4">
+<h4 id="org86d9b74">set</h4>
+<div class="outline-text-4" id="text-org86d9b74">
 <p>
 First tested in shell
 </p>
@@ -271,9 +271,9 @@ set the arguments to <code>package.json</code>
 </div>
 </div>
 </div>
-<div id="outline-container-orgf69fb81" class="outline-4">
-<h4 id="orgf69fb81">check</h4>
-<div class="outline-text-4" id="text-orgf69fb81">
+<div id="outline-container-org8bf21c5" class="outline-4">
+<h4 id="org8bf21c5">check</h4>
+<div class="outline-text-4" id="text-org8bf21c5">
 <p>
 放在程序启动后
 </p>
@@ -286,14 +286,14 @@ set the arguments to <code>package.json</code>
 </div>
 </div>
 </div>
-<div id="outline-container-orgd05afe5" class="outline-2">
-<h2 id="orgd05afe5">egg with postgresql</h2>
-<div class="outline-text-2" id="text-orgd05afe5">
+<div id="outline-container-orgd2742ce" class="outline-2">
+<h2 id="orgd2742ce">egg with postgresql</h2>
+<div class="outline-text-2" id="text-orgd2742ce">
 </div>
 
-<div id="outline-container-org9f1c3eb" class="outline-3">
-<h3 id="org9f1c3eb">sequelize queries returning only strings</h3>
-<div class="outline-text-3" id="text-org9f1c3eb">
+<div id="outline-container-org1383202" class="outline-3">
+<h3 id="org1383202">sequelize queries returning only strings</h3>
+<div class="outline-text-3" id="text-org1383202">
 <p>
 当数据库是 postgresql 时，为什么，取到的数据类型是 string, 而不是 int ？
 </p>
@@ -363,25 +363,25 @@ how to add new data type, reference <a href="./sequelize.html">here</a>.
 </div>
 </div>
 
-<div id="outline-container-orgea76f54" class="outline-2">
-<h2 id="orgea76f54">send email</h2>
-<div class="outline-text-2" id="text-orgea76f54">
+<div id="outline-container-org177acab" class="outline-2">
+<h2 id="org177acab">send email</h2>
+<div class="outline-text-2" id="text-org177acab">
 <p>
 egg上发送邮件
 </p>
 </div>
 
-<div id="outline-container-org719f48d" class="outline-3">
-<h3 id="org719f48d">egg-full-email</h3>
-<div class="outline-text-3" id="text-org719f48d">
+<div id="outline-container-org0960d13" class="outline-3">
+<h3 id="org0960d13">egg-full-email</h3>
+<div class="outline-text-3" id="text-org0960d13">
 <p>
 use the [egg-full-email][<a href="https://github.com/alex-my/egg-full-email/">https://github.com/alex-my/egg-full-email/</a>]
 </p>
 </div>
 
-<div id="outline-container-orgfe7b8c2" class="outline-4">
-<h4 id="orgfe7b8c2">requirement</h4>
-<div class="outline-text-4" id="text-orgfe7b8c2">
+<div id="outline-container-org358bf7d" class="outline-4">
+<h4 id="org358bf7d">requirement</h4>
+<div class="outline-text-4" id="text-org358bf7d">
 <p>
 QQ邮箱开通 POP3/SMTP 服务.
 开通方式：
@@ -390,9 +390,9 @@ QQ邮箱开通 POP3/SMTP 服务.
 </div>
 </div>
 
-<div id="outline-container-orga24e524" class="outline-4">
-<h4 id="orga24e524">configuration</h4>
-<div class="outline-text-4" id="text-orga24e524">
+<div id="outline-container-org9600a81" class="outline-4">
+<h4 id="org9600a81">configuration</h4>
+<div class="outline-text-4" id="text-org9600a81">
 <p>
 参考文档的配置就行了
 </p>
@@ -437,9 +437,9 @@ QQ邮箱开通 POP3/SMTP 服务.
 </div>
 </div>
 
-<div id="outline-container-orgb21ff64" class="outline-2">
-<h2 id="orgb21ff64">egg modify, when sql add a field</h2>
-<div class="outline-text-2" id="text-orgb21ff64">
+<div id="outline-container-orga91e1b4" class="outline-2">
+<h2 id="orga91e1b4">egg modify, when sql add a field</h2>
+<div class="outline-text-2" id="text-orga91e1b4">
 <p>
 当数据库中表新增一个字段时, 你需要注意：
 </p>
@@ -465,9 +465,9 @@ openapi:
 </ol>
 </div>
 </div>
-<div id="outline-container-org90f52f4" class="outline-2">
-<h2 id="org90f52f4">egg multipart</h2>
-<div class="outline-text-2" id="text-org90f52f4">
+<div id="outline-container-orga76aa29" class="outline-2">
+<h2 id="orga76aa29">egg multipart</h2>
+<div class="outline-text-2" id="text-orga76aa29">
 <div class="org-src-container">
 <pre class="src src-javascript"><span style="color: #2aa1ae; background-color: #292e34;">// </span><span style="color: #2aa1ae; background-color: #292e34;">&#19978;&#20256;&#25991;&#20214;&#21517; upload file name</span>
 <span style="color: #00bfff; font-weight: bold;">const</span> <span style="color: #7590db;">stream</span> = <span style="color: #00bfff; font-weight: bold;">await</span> <span style="color: #a45bad;">this</span>.ctx.getFileStream();
@@ -480,30 +480,30 @@ openapi:
 </div>
 </div>
 </div>
-<div id="outline-container-org7dc9375" class="outline-2">
-<h2 id="org7dc9375">egg debug</h2>
-<div class="outline-text-2" id="text-org7dc9375">
+<div id="outline-container-orgca2c25b" class="outline-2">
+<h2 id="orgca2c25b">egg debug</h2>
+<div class="outline-text-2" id="text-orgca2c25b">
 </div>
-<div id="outline-container-orgc2ff7d2" class="outline-3">
-<h3 id="orgc2ff7d2">egg debug 进化历史</h3>
-<div class="outline-text-3" id="text-orgc2ff7d2">
+<div id="outline-container-orgdca1d8f" class="outline-3">
+<h3 id="orgdca1d8f">egg debug 进化历史</h3>
+<div class="outline-text-3" id="text-orgdca1d8f">
 <p>
 <a href="https://github.com/atian25/blog/issues/25">https://github.com/atian25/blog/issues/25</a>
 </p>
 </div>
 </div>
-<div id="outline-container-org72aa9bb" class="outline-3">
-<h3 id="org72aa9bb">如何对指定模块进行debug</h3>
-<div class="outline-text-3" id="text-org72aa9bb">
+<div id="outline-container-org1f052e8" class="outline-3">
+<h3 id="org1f052e8">如何对指定模块进行debug</h3>
+<div class="outline-text-3" id="text-org1f052e8">
 <p>
 比如，我们有一个场景，要对　egg-route 进行 debug, 查看访问的到底被哪个　route 匹
 配。
 </p>
 </div>
 
-<div id="outline-container-org7de1f2c" class="outline-4">
-<h4 id="org7de1f2c">npm run debug</h4>
-<div class="outline-text-4" id="text-org7de1f2c">
+<div id="outline-container-org86b6397" class="outline-4">
+<h4 id="org86b6397">npm run debug</h4>
+<div class="outline-text-4" id="text-org86b6397">
 <p>
 <a href="https://juejin.im/post/5ad1b179f265da237a4d7320">https://juejin.im/post/5ad1b179f265da237a4d7320</a>
 </p>
@@ -524,9 +524,9 @@ windows下可以设置成小写)修改成：
 </div>
 </div>
 
-<div id="outline-container-org5f418f8" class="outline-4">
-<h4 id="org5f418f8">源码</h4>
-<div class="outline-text-4" id="text-org5f418f8">
+<div id="outline-container-orga2c2e62" class="outline-4">
+<h4 id="orga2c2e62">源码</h4>
+<div class="outline-text-4" id="text-orga2c2e62">
 <p>
 ~./node_modules/@eggjs/router/lib/router.js~　中　route() 中　在合适的地方，加入
 </p>

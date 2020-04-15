@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2020-03-26 Thu 11:07 -->
+<!-- 2020-04-15 Wed 09:55 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>openapi faq</title>
@@ -98,8 +98,9 @@ fathom('trackPageview');
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#org862e83b">参数序列化</a></li>
-<li><a href="#orgcc0e579">Bearer Authentication</a></li>
+<li><a href="#orgefb0d7d">参数序列化</a></li>
+<li><a href="#org1b923be">Bearer Authentication</a></li>
+<li><a href="#org95d3b53">对返回字段为整数时，进行最小值，最大值限制</a></li>
 </ul>
 </div>
 </div>
@@ -107,23 +108,23 @@ fathom('trackPageview');
 <a href="../../index.html">{Back to site's index}</a>
 </p>
 
-<div id="outline-container-org862e83b" class="outline-2">
-<h2 id="org862e83b">参数序列化</h2>
-<div class="outline-text-2" id="text-org862e83b">
+<div id="outline-container-orgefb0d7d" class="outline-2">
+<h2 id="orgefb0d7d">参数序列化</h2>
+<div class="outline-text-2" id="text-orgefb0d7d">
 <p>
 <a href="https://www.breakyizhan.com/swagger/2955.html">https://www.breakyizhan.com/swagger/2955.html</a>
 </p>
 
 <div class="org-src-container">
-<pre class="src src-yaml"><span style="color: #FD971F;">/incentive/option/grant/{id}</span>:
-  <span style="color: #FD971F;">get</span>:
-    <span style="color: #FD971F;">parameters</span>:
-      - <span style="color: #FD971F;">description</span>: <span style="color: #E6DB74;">''</span>
-        <span style="color: #FD971F;">in</span>: path
-        <span style="color: #FD971F;">name</span>: id
-        <span style="color: #FD971F;">required</span>: <span style="color: #AE81FF;">true</span>
-        <span style="color: #FD971F;">schema</span>:
-          <span style="color: #FD971F;">type</span>: number
+<pre class="src src-yaml"><span style="color: #7590db;">/incentive/option/grant/{id}</span>:
+  <span style="color: #7590db;">get</span>:
+    <span style="color: #7590db;">parameters</span>:
+      - <span style="color: #7590db;">description</span>: <span style="color: #daa520;">''</span>
+        <span style="color: #7590db;">in</span>: path
+        <span style="color: #7590db;">name</span>: id
+        <span style="color: #7590db;">required</span>: <span style="color: #a45bad;">true</span>
+        <span style="color: #7590db;">schema</span>:
+          <span style="color: #7590db;">type</span>: number
 </pre>
 </div>
 
@@ -133,11 +134,50 @@ fathom('trackPageview');
 </div>
 </div>
 
-<div id="outline-container-orgcc0e579" class="outline-2">
-<h2 id="orgcc0e579">Bearer Authentication</h2>
-<div class="outline-text-2" id="text-orgcc0e579">
+<div id="outline-container-org1b923be" class="outline-2">
+<h2 id="org1b923be">Bearer Authentication</h2>
+<div class="outline-text-2" id="text-org1b923be">
 <p>
-<a href="https://swagger.io/docs/specification/authentication/bearer-authentication/">https://swagger.io/docs/specification/authentication/bearer-authentication/</a></p>
+<a href="https://swagger.io/docs/specification/authentication/bearer-authentication/">https://swagger.io/docs/specification/authentication/bearer-authentication/</a>
+</p>
+
+<p>
+如果对单个接口不使用　Authentication, 则： <code>security: []</code>
+</p>
+
+<div class="org-src-container">
+<pre class="src src-yaml"><span style="color: #7590db;">get</span>:
+  <span style="color: #7590db;">security</span>: []
+  <span style="color: #7590db;">responses</span>:
+</pre>
+</div>
+</div>
+</div>
+
+
+
+<div id="outline-container-org95d3b53" class="outline-2">
+<h2 id="org95d3b53">对返回字段为整数时，进行最小值，最大值限制</h2>
+<div class="outline-text-2" id="text-org95d3b53">
+<p>
+如，我们对 status code 作 <code>minimum</code>, <code>maximum</code>
+</p>
+
+<div class="org-src-container">
+<pre class="src src-yaml"><span style="color: #7590db;">get</span>:
+  <span style="color: #7590db;">security</span>: []
+  <span style="color: #7590db;">responses</span>:
+    <span style="color: #daa520;">'200'</span>:
+      <span style="color: #7590db;">content</span>:
+        <span style="color: #7590db;">application/json</span>:
+          <span style="color: #7590db;">schema</span>:
+            <span style="color: #7590db;">properties</span>:
+              <span style="color: #7590db;">code</span>:
+                <span style="color: #7590db;">type</span>: integer
+                <span style="color: #7590db;">minimum</span>: 100
+                <span style="color: #7590db;">maximum</span>: 511
+</pre>
+</div>
 </div>
 </div>
 </div>

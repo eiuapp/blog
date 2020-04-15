@@ -6,7 +6,7 @@
 <!-- 2020-04-15 Wed 09:55 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>snippets</title>
+<title>ubuntu</title>
 <meta name="generator" content="Org mode" />
 <meta name="author" content="yunlong zeng" />
 <link rel="stylesheet" title="Standard" href="/html/style/worg.css" type="text/css" />
@@ -93,20 +93,12 @@ fathom('trackPageview');
 </script>
 </div>
 <div id="content">
-<h1 class="title">snippets</h1>
+<h1 class="title">ubuntu</h1>
 <div id="table-of-contents">
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#org913fdc2">集成大神的 emacs snippets</a>
-<ul>
-<li><a href="#orge5fd6b7">snippets set</a></li>
-<li><a href="#org53f946b">repo</a></li>
-<li><a href="#orged9b853">lazycat</a></li>
-</ul>
-</li>
-<li><a href="#orgd76cbfe">加载新的 snippets file</a></li>
-<li><a href="#orgfc68f70">new snippets</a></li>
+<li><a href="#org2f43b60">Ubuntu输入密码后无法进入桌面，但是可以进入命令行界面</a></li>
 </ul>
 </div>
 </div>
@@ -114,59 +106,47 @@ fathom('trackPageview');
 <a href="../index.html">{Back to site's index}</a>
 </p>
 
-<div id="outline-container-org913fdc2" class="outline-2">
-<h2 id="org913fdc2">集成大神的 emacs snippets</h2>
-<div class="outline-text-2" id="text-org913fdc2">
-</div>
-<div id="outline-container-orge5fd6b7" class="outline-3">
-<h3 id="orge5fd6b7">snippets set</h3>
-<div class="outline-text-3" id="text-orge5fd6b7">
-<ul class="org-ul">
-<li>[magnars](<a href="https://github.com/magnars/.emacs.d/tree/master/snippets">https://github.com/magnars/.emacs.d/tree/master/snippets</a>)</li>
-<li>[lazycat](<a href="https://github.com/manateelazycat/lazycat-emacs/tree/master/site-lisp/extensions/yasnippet/snippets">https://github.com/manateelazycat/lazycat-emacs/tree/master/site-lisp/extensions/yasnippet/snippets</a>)</li>
-</ul>
-</div>
+<div id="outline-container-org2f43b60" class="outline-2">
+<h2 id="org2f43b60">Ubuntu输入密码后无法进入桌面，但是可以进入命令行界面</h2>
+<div class="outline-text-2" id="text-org2f43b60">
+<p>
+<a href="https://blog.csdn.net/e01528/article/details/79532932">https://blog.csdn.net/e01528/article/details/79532932</a>
+</p>
+
+<ol class="org-ol">
+<li>Ctrl+Alt+F1进入命令行界面，root账户登陆</li>
+
+<li>卸载Xwindows软件 </li>
+</ol>
+
+<div class="org-src-container">
+<pre class="src src-shell">sudo apt-get autoremove ubuntu-desktop
+</pre>
 </div>
 
-<div id="outline-container-org53f946b" class="outline-3">
-<h3 id="org53f946b">repo</h3>
-<div class="outline-text-3" id="text-org53f946b">
-<ul class="org-ul">
-<li><a href="https://github.com/joaotavora/yasnippet">https://github.com/joaotavora/yasnippet</a></li>
-<li><a href="https://github.com/AndreaCrotti/yasnippet-snippets">https://github.com/AndreaCrotti/yasnippet-snippets</a></li>
-</ul>
-</div>
-</div>
+<ol class="org-ol">
+<li>安装所有依赖软件</li>
+</ol>
 
-<div id="outline-container-orged9b853" class="outline-3">
-<h3 id="orged9b853">lazycat</h3>
-<div class="outline-text-3" id="text-orged9b853">
-<ul class="org-ul">
-<li>[lazycat](<a href="https://github.com/manateelazycat/lazycat-emacs/tree/master/site-lisp/extensions/yasnippet/snippets">https://github.com/manateelazycat/lazycat-emacs/tree/master/site-lisp/extensions/yasnippet/snippets</a>)</li>
-</ul>
+<div class="org-src-container">
+<pre class="src src-shell">sudo apt-get install ubuntu-desktop
+</pre>
+</div>
 
 <p>
-就是使用的上面2个repo, 然后自己定制的。
+(安装到这一步，reboot尝试可以登入界面，不行就执行下面上那个命令)
 </p>
-</div>
-</div>
-</div>
-<div id="outline-container-orgd76cbfe" class="outline-2">
-<h2 id="orgd76cbfe">加载新的 snippets file</h2>
-<div class="outline-text-2" id="text-orgd76cbfe">
-<p>
-Q: 当你写了一个新的 snippets, 如何手动加载?
-A: <code>M-x yas-reload-all</code>
-</p>
-</div>
+
+<div class="org-src-container">
+<pre class="src src-shell">sudo apt-get install python-ntdb
+sudo apt-get install libntdb1:amd64
+sudo apt-get install libupstart1:amd64
+</pre>
 </div>
 
-<div id="outline-container-orgfc68f70" class="outline-2">
-<h2 id="orgfc68f70">new snippets</h2>
-<div class="outline-text-2" id="text-orgfc68f70">
-<p>
-<code>M-x yas/new-snippet</code>
-</p>
+<ol class="org-ol">
+<li>重启 reboot</li>
+</ol>
 </div>
 </div>
 </div>

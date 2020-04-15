@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2020-03-26 Thu 11:07 -->
+<!-- 2020-04-15 Wed 09:56 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>postgresql</title>
@@ -98,10 +98,13 @@ fathom('trackPageview');
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#org226d4c4">start up</a></li>
-<li><a href="#org771ff9d">commands</a></li>
-<li><a href="#org9bc6098">ERROR: column p.proisagg does not exist</a></li>
-<li><a href="#org8b4ed63"><span class="todo TODO">TODO</span> ERROR: permission deny</a></li>
+<li><a href="#orgc3ed481">start up</a></li>
+<li><a href="#orgfd671a8">Enter postgresql</a></li>
+<li><a href="#org874a1db">create DATABASE &amp;&amp; GRANT</a></li>
+<li><a href="#org524d632">create user &amp;&amp; GRANT</a></li>
+<li><a href="#orgcd300e7">commands</a></li>
+<li><a href="#org4b163a2">ERROR: column p.proisagg does not exist</a></li>
+<li><a href="#org268bde5"><span class="todo TODO">TODO</span> ERROR: permission deny</a></li>
 </ul>
 </div>
 </div>
@@ -109,9 +112,9 @@ fathom('trackPageview');
 <a href="../index.html">{Back to site's index}</a>
 </p>
 
-<div id="outline-container-org226d4c4" class="outline-2">
-<h2 id="org226d4c4">start up</h2>
-<div class="outline-text-2" id="text-org226d4c4">
+<div id="outline-container-orgc3ed481" class="outline-2">
+<h2 id="orgc3ed481">start up</h2>
+<div class="outline-text-2" id="text-orgc3ed481">
 <p>
 <a href="https://www.jianshu.com/p/1caf8e5768af">https://www.jianshu.com/p/1caf8e5768af</a>
 </p>
@@ -152,9 +155,48 @@ mac@macdeMacBook-Pro ~ %
 </div>
 </div>
 
-<div id="outline-container-org771ff9d" class="outline-2">
-<h2 id="org771ff9d">commands</h2>
-<div class="outline-text-2" id="text-org771ff9d">
+<div id="outline-container-orgfd671a8" class="outline-2">
+<h2 id="orgfd671a8">Enter postgresql</h2>
+<div class="outline-text-2" id="text-orgfd671a8">
+<div class="org-src-container">
+<pre class="src src-shell">psql -U user -d esop
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org874a1db" class="outline-2">
+<h2 id="org874a1db">create DATABASE &amp;&amp; GRANT</h2>
+<div class="outline-text-2" id="text-org874a1db">
+<div class="org-src-container">
+<pre class="src src-shell">mac@macdeMacBook-Pro ~ % psql -U postgres -d esop
+<span style="color: #bc6ec5; font-weight: bold;">psql</span> (<span style="color: #a45bad;">11.5</span>)
+Type <span style="color: #daa520;">"help"</span> for help.
+
+<span style="color: #7590db;">esop</span>=# CREATE DATABASE database1;
+CREATE DATABASE
+<span style="color: #7590db;">esop</span>=# GRANT ALL PRIVILEGES ON DATABASE database1 to user1;
+GRANT
+<span style="color: #7590db;">esop</span>=&gt; exit
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org524d632" class="outline-2">
+<h2 id="org524d632">create user &amp;&amp; GRANT</h2>
+<div class="outline-text-2" id="text-org524d632">
+<div class="org-src-container">
+<pre class="src src-shell">CREATE USER user1 WITH PASSWORD <span style="color: #daa520;">'PASSWORD1'</span>;
+GRANT ALL PRIVILEGES ON DATABASE database1 to user1;
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgcd300e7" class="outline-2">
+<h2 id="orgcd300e7">commands</h2>
+<div class="outline-text-2" id="text-orgcd300e7">
 <div class="org-src-container">
 <pre class="src src-shell">\l               ---show databases
 \dt            ---show tables
@@ -163,9 +205,9 @@ mac@macdeMacBook-Pro ~ %
 </div>
 </div>
 </div>
-<div id="outline-container-org9bc6098" class="outline-2">
-<h2 id="org9bc6098">ERROR: column p.proisagg does not exist</h2>
-<div class="outline-text-2" id="text-org9bc6098">
+<div id="outline-container-org4b163a2" class="outline-2">
+<h2 id="org4b163a2">ERROR: column p.proisagg does not exist</h2>
+<div class="outline-text-2" id="text-org4b163a2">
 <ul class="org-ul">
 <li><a href="https://github.com/schemaspy/schemaspy/issues/537">https://github.com/schemaspy/schemaspy/issues/537</a></li>
 <li><a href="https://blog.csdn.net/weixin_44671994/article/details/87935656">https://blog.csdn.net/weixin_44671994/article/details/87935656</a></li>
@@ -173,11 +215,11 @@ mac@macdeMacBook-Pro ~ %
 </div>
 </div>
 
-<div id="outline-container-org8b4ed63" class="outline-2">
-<h2 id="org8b4ed63"><span class="todo TODO">TODO</span> ERROR: permission deny</h2>
-<div class="outline-text-2" id="text-org8b4ed63">
+<div id="outline-container-org268bde5" class="outline-2">
+<h2 id="org268bde5"><span class="todo TODO">TODO</span> ERROR: permission deny</h2>
+<div class="outline-text-2" id="text-org268bde5">
 <div class="org-src-container">
-<pre class="src src-shell">CREATE USER dev1 WITH PASSWORD <span style="color: #E6DB74;">'***********'</span>;
+<pre class="src src-shell">CREATE USER dev1 WITH PASSWORD <span style="color: #daa520;">'***********'</span>;
 GRANT ALL PRIVILEGES ON DATABASE adb to dev1;
 </pre>
 </div>

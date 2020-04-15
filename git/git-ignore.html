@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2020-03-26 Thu 11:07 -->
+<!-- 2020-04-15 Wed 09:55 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>git ignore</title>
@@ -98,22 +98,24 @@ fathom('trackPageview');
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#orgcfa5b2e">git ignore keep specify files</a>
+<li><a href="#orgd168e6f">git ignore keep specify files</a>
 <ul>
-<li><a href="#org57c604a">gitignore 例子 只包含特定文件</a></li>
-<li><a href="#org4cc1fac">ref</a></li>
+<li><a href="#org20ecd17">gitignore 例子 只包含特定文件</a></li>
+<li><a href="#org70ee418">ref</a></li>
 </ul>
 </li>
+<li><a href="#org7b6bbd4">make-git-ignore-file-mode-chmod-changes</a></li>
 </ul>
 </div>
 </div>
-<div id="outline-container-orgcfa5b2e" class="outline-2">
-<h2 id="orgcfa5b2e">git ignore keep specify files</h2>
-<div class="outline-text-2" id="text-orgcfa5b2e">
+
+<div id="outline-container-orgd168e6f" class="outline-2">
+<h2 id="orgd168e6f">git ignore keep specify files</h2>
+<div class="outline-text-2" id="text-orgd168e6f">
 </div>
-<div id="outline-container-org57c604a" class="outline-3">
-<h3 id="org57c604a">gitignore 例子 只包含特定文件</h3>
-<div class="outline-text-3" id="text-org57c604a">
+<div id="outline-container-org20ecd17" class="outline-3">
+<h3 id="org20ecd17">gitignore 例子 只包含特定文件</h3>
+<div class="outline-text-3" id="text-org20ecd17">
 <div class="org-src-container">
 <pre class="src src-example"># 整体编写逻辑
 # 1. 只让指定的文件或文件夹通过(只放行文件夹和html,jpg,png后缀文件)
@@ -154,9 +156,9 @@ a.png
 </div>
 </div>
 </div>
-<div id="outline-container-org4cc1fac" class="outline-3">
-<h3 id="org4cc1fac">ref</h3>
-<div class="outline-text-3" id="text-org4cc1fac">
+<div id="outline-container-org70ee418" class="outline-3">
+<h3 id="org70ee418">ref</h3>
+<div class="outline-text-3" id="text-org70ee418">
 <ul class="org-ul">
 <li><a href="https://git-scm.com/docs/gitignore">https://git-scm.com/docs/gitignore</a></li>
 <li><a href="https://blog.csdn.net/da_kao_la/article/details/88554817">https://blog.csdn.net/da_kao_la/article/details/88554817</a></li>
@@ -164,6 +166,20 @@ a.png
 <li><a href="https://stackoverflow.com/questions/19023550/how-do-i-add-files-without-dots-in-them-all-extension-less-files-to-the-gitign">https://stackoverflow.com/questions/19023550/how-do-i-add-files-without-dots-in-them-all-extension-less-files-to-the-gitign</a></li>
 </ul>
 </div>
+</div>
+</div>
+
+<div id="outline-container-org7b6bbd4" class="outline-2">
+<h2 id="org7b6bbd4">make-git-ignore-file-mode-chmod-changes</h2>
+<div class="outline-text-2" id="text-org7b6bbd4">
+<div class="org-src-container">
+<pre class="src src-shell">git config core.fileMode false
+git config --global core.fileMode false
+</pre>
+</div>
+
+<p>
+<a href="https://stackoverflow.com/questions/1580596/how-do-i-make-git-ignore-file-mode-chmod-changes">https://stackoverflow.com/questions/1580596/how-do-i-make-git-ignore-file-mode-chmod-changes</a></p>
 </div>
 </div>
 </div>

@@ -1,0 +1,296 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<!-- 2020-04-15 Wed 09:55 -->
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>prism</title>
+<meta name="generator" content="Org mode" />
+<meta name="author" content="yunlong zeng" />
+<link rel="stylesheet" title="Standard" href="/html/style/worg.css" type="text/css" />
+<link rel="alternate stylesheet" title="Zenburn" href="/html/style/worg-zenburn.css" type="text/css" />
+<link rel="alternate stylesheet" title="Classic" href="/html/style/worg-classic.css" type="text/css" />
+<link rel="SHORTCUT ICON" href="/html/style/org-mode-unicorn.ico" type="image/x-icon" />
+<link rel="icon" href="/html/style/org-mode-unicorn.ico" type="image/ico" />
+<script type="text/javascript">
+/*
+@licstart  The following is the entire license notice for the
+JavaScript code in this tag.
+
+Copyright (C) 2012-2019 Free Software Foundation, Inc.
+
+The JavaScript code in this tag is free software: you can
+redistribute it and/or modify it under the terms of the GNU
+General Public License (GNU GPL) as published by the Free Software
+Foundation, either version 3 of the License, or (at your option)
+any later version.  The code is distributed WITHOUT ANY WARRANTY;
+without even the implied warranty of MERCHANTABILITY or FITNESS
+FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
+
+As additional permission under GNU GPL version 3 section 7, you
+may distribute non-source (e.g., minimized or compacted) forms of
+that code without the copy of the GNU GPL normally required by
+section 4, provided you include this license notice and a URL
+through which recipients can access the Corresponding Source.
+
+
+@licend  The above is the entire license notice
+for the JavaScript code in this tag.
+*/
+<!--/*--><![CDATA[/*><!--*/
+ function CodeHighlightOn(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(null != target) {
+     elem.cacheClassElem = elem.className;
+     elem.cacheClassTarget = target.className;
+     target.className = "code-highlighted";
+     elem.className   = "code-highlighted";
+   }
+ }
+ function CodeHighlightOff(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(elem.cacheClassElem)
+     elem.className = elem.cacheClassElem;
+   if(elem.cacheClassTarget)
+     target.className = elem.cacheClassTarget;
+ }
+/*]]>*///-->
+</script>
+</head>
+<body>
+<div id="preamble" class="status">
+<script type="text/javascript">
+  document.addEventListener('DOMContentLoaded',function() {
+      document.getElementById("table-of-contents").onclick = function() {
+          var elem = document.getElementById("text-table-of-contents");
+          elem.style.display = elem.style.display == "block" ? "none" : "block";
+      }
+  });
+
+  var url = document.location.href;
+  var orgsource = url.substring(0, url.lastIndexOf("."))+".org.html";
+  function show_org_source(){
+      document.location.href = orgsource;
+  }
+</script>
+
+<script>
+(function(f, a, t, h, o, m){
+	a[h]=a[h]||function(){
+		(a[h].q=a[h].q||[]).push(arguments)
+	};
+	o=f.createElement('script'),
+	m=f.getElementsByTagName('script')[0];
+	o.async=1; o.src=t; o.id='fathom-script';
+	m.parentNode.insertBefore(o,m)
+})(document, window, '//stats.orgmode.org/tracker.js', 'fathom');
+fathom('set', 'siteId', 'NWSQJ');
+fathom('trackPageview');
+</script>
+</div>
+<div id="content">
+<h1 class="title">prism</h1>
+<div id="table-of-contents">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#orgbf80dfc">install</a></li>
+<li><a href="#org5ff0568">prism start</a></li>
+<li><a href="#org4ea9437">注意 openapi 写法</a>
+<ul>
+<li><a href="#org7d45d3b">swagger 2.0</a></li>
+<li><a href="#orgbc64231">openapi 3.0</a></li>
+</ul>
+</li>
+<li><a href="#org3638c56">error     Violation: request Invalid security scheme used</a></li>
+</ul>
+</div>
+</div>
+<p>
+<a href="../index.html">{Back to site's index}</a>
+</p>
+
+<p>
+<a href="https://github.com/stoplightio/prism">https://github.com/stoplightio/prism</a>
+</p>
+
+<p>
+<a href="https://stoplight.io/p/docs/gh/stoplightio/prism">https://stoplight.io/p/docs/gh/stoplightio/prism</a>
+</p>
+
+<div id="outline-container-orgbf80dfc" class="outline-2">
+<h2 id="orgbf80dfc">install</h2>
+<div class="outline-text-2" id="text-orgbf80dfc">
+<div class="org-src-container">
+<pre class="src src-shell">npm install -g @stoplight/prism-cli
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org5ff0568" class="outline-2">
+<h2 id="org5ff0568">prism start</h2>
+<div class="outline-text-2" id="text-org5ff0568">
+<div class="org-src-container">
+<pre class="src src-shell">prism mock -d ./openapi.yaml -h <span style="color: #a45bad;">192.168.168.137</span> -p <span style="color: #a45bad;">7020</span>
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org4ea9437" class="outline-2">
+<h2 id="org4ea9437">注意 openapi 写法</h2>
+<div class="outline-text-2" id="text-org4ea9437">
+</div>
+<div id="outline-container-org7d45d3b" class="outline-3">
+<h3 id="org7d45d3b">swagger 2.0</h3>
+<div class="outline-text-3" id="text-org7d45d3b">
+<p>
+来自 <a href="https://github.com/swagger-api/swagger-node/blob/master/docs/mock-mode.md#quick-example-mock-mode-in-action">https://github.com/swagger-api/swagger-node/blob/master/docs/mock-mode.md#quick-example-mock-mode-in-action</a> 的示例
+</p>
+
+<div class="org-src-container">
+<pre class="src src-yaml"><span style="color: #7590db;">swagger</span>: <span style="color: #daa520;">'2.0'</span>
+<span style="color: #7590db;">info</span>:
+  <span style="color: #7590db;">version</span>: <span style="color: #daa520;">"0.0.1"</span>
+  <span style="color: #7590db;">title</span>: Mock mode test
+<span style="color: #7590db;">host</span>: localhost
+<span style="color: #7590db;">basePath</span>: /
+<span style="color: #7590db;">schemes</span>:
+  - http
+<span style="color: #7590db;">consumes</span>:
+  - application/json
+<span style="color: #7590db;">produces</span>:
+  - application/json
+<span style="color: #7590db;">paths</span>:
+  <span style="color: #7590db;">/weather</span>:
+    <span style="color: #7590db;">x-swagger-router-controller</span>: weather
+    <span style="color: #7590db;">get</span>:
+      <span style="color: #7590db;">responses</span>:
+        <span style="color: #daa520;">"200"</span>:
+          <span style="color: #7590db;">description</span>: Success
+          <span style="color: #7590db;">schema</span>:
+            <span style="color: #7590db;">$ref</span>: <span style="color: #daa520;">"#/definitions/WeatherResponse"</span>
+<span style="color: #7590db;">definitions</span>:
+  <span style="color: #7590db;">WeatherResponse</span>:
+    <span style="color: #7590db;">required</span>:
+      - message
+    <span style="color: #7590db;">properties</span>:
+      <span style="color: #7590db;">message</span>:
+        <span style="color: #7590db;">type</span>: string
+</pre>
+</div>
+
+<p>
+命名成 <code>weather.yaml</code>, 运行
+</p>
+
+<div class="org-src-container">
+<pre class="src src-shell">prism mock -d ./weather.yaml
+curl -i http://localhost:4010/weather
+</pre>
+</div>
+
+<p>
+会正常返回 mock 数据了。
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgbc64231" class="outline-3">
+<h3 id="orgbc64231">openapi 3.0</h3>
+<div class="outline-text-3" id="text-orgbc64231">
+<p>
+改写上面的 swagger 2.0 为 openapi 3.0
+</p>
+
+<div class="org-src-container">
+<pre class="src src-yaml"><span style="color: #7590db;">openapi</span>: 3.0.0
+<span style="color: #7590db;">info</span>:
+  <span style="color: #7590db;">title</span>: weather
+  <span style="color: #7590db;">description</span>: weather project
+  <span style="color: #7590db;">version</span>: 0.0.1
+
+<span style="color: #7590db;">servers</span>:
+  - <span style="color: #7590db;">url</span>: http://192.168.168.165:7014
+    <span style="color: #7590db;">description</span>: Optional server description, e.g. Internal staging server for dev
+
+<span style="color: #7590db;">paths</span>:
+  <span style="color: #7590db;">/string</span>:
+    <span style="color: #7590db;">x-swagger-router-controller</span>: weather
+    <span style="color: #7590db;">get</span>:
+      <span style="color: #7590db;">responses</span>:
+        <span style="color: #daa520;">'200'</span>:
+          <span style="color: #7590db;">description</span>: Success
+          <span style="color: #7590db;">content</span>:
+            <span style="color: #7590db;">application/json</span>:
+              <span style="color: #7590db;">schema</span>:
+                <span style="color: #7590db;">required</span>:
+                  - message
+                <span style="color: #7590db;">properties</span>:
+                  <span style="color: #7590db;">message</span>:
+                    <span style="color: #7590db;">type</span>: string
+</pre>
+</div>
+
+<p>
+注意： <code>responses</code> 必须写上
+</p>
+
+<div class="org-src-container">
+<pre class="src src-yaml"><span style="color: #7590db;">content</span>:
+  <span style="color: #7590db;">application/json</span>:
+</pre>
+</div>
+
+<p>
+否则，~curl -i <a href="http://localhost:4010/weather">http://localhost:4010/weather</a>~ 会无法得到 mock 数据。
+</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org3638c56" class="outline-2">
+<h2 id="org3638c56">error     Violation: request Invalid security scheme used</h2>
+<div class="outline-text-2" id="text-org3638c56">
+<div class="org-src-container">
+<pre class="src src-example">[11:59:59 AM] › [HTTP SERVER] post /user/passwordInit ℹ  info      Request received
+[11:59:59 AM] ›     [NEGOTIATOR] ℹ  info      Request contains an accept header: application/json
+[11:59:59 AM] ›     [VALIDATOR] ⚠  warning   Request did not pass the validation rules
+[11:59:59 AM] ›     [NEGOTIATOR] ✔  success   Found response 401. I'll try with it.
+[11:59:59 AM] ›     [NEGOTIATOR] ✔  success   Responding with the requested status code 401
+[11:59:59 AM] ›     [VALIDATOR] ✖  error     Violation: request Invalid security scheme used
+</pre>
+</div>
+
+<p>
+主要是２个原因：
+</p>
+
+<ol class="org-ol">
+<li>security 设置不正确</li>
+<li>prism -d　失效，手工重启</li>
+</ol>
+
+<p>
+如果不要 security, 则在yaml中设置为 <code>[]</code>
+</p>
+
+<div class="org-src-container">
+<pre class="src src-example">post:
+  security: []
+  responses:
+    '200':
+      content:
+        application/json:
+</pre>
+</div>
+</div>
+</div>
+</div>
+</body>
+</html>

@@ -3,10 +3,10 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2020-04-15 Wed 09:55 -->
+<!-- 2020-04-15 Wed 09:56 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>snippets</title>
+<title>openapi mock server</title>
 <meta name="generator" content="Org mode" />
 <meta name="author" content="yunlong zeng" />
 <link rel="stylesheet" title="Standard" href="/html/style/worg.css" type="text/css" />
@@ -93,20 +93,14 @@ fathom('trackPageview');
 </script>
 </div>
 <div id="content">
-<h1 class="title">snippets</h1>
+<h1 class="title">openapi mock server</h1>
 <div id="table-of-contents">
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#org913fdc2">集成大神的 emacs snippets</a>
-<ul>
-<li><a href="#orge5fd6b7">snippets set</a></li>
-<li><a href="#org53f946b">repo</a></li>
-<li><a href="#orged9b853">lazycat</a></li>
-</ul>
-</li>
-<li><a href="#orgd76cbfe">加载新的 snippets file</a></li>
-<li><a href="#orgfc68f70">new snippets</a></li>
+<li><a href="#org96aa80c">prism</a></li>
+<li><a href="#orgd9fcf2f">swagger-editor</a></li>
+<li><a href="#org7d92e74">swagger-node</a></li>
 </ul>
 </div>
 </div>
@@ -114,58 +108,33 @@ fathom('trackPageview');
 <a href="../index.html">{Back to site's index}</a>
 </p>
 
-<div id="outline-container-org913fdc2" class="outline-2">
-<h2 id="org913fdc2">集成大神的 emacs snippets</h2>
-<div class="outline-text-2" id="text-org913fdc2">
-</div>
-<div id="outline-container-orge5fd6b7" class="outline-3">
-<h3 id="orge5fd6b7">snippets set</h3>
-<div class="outline-text-3" id="text-orge5fd6b7">
-<ul class="org-ul">
-<li>[magnars](<a href="https://github.com/magnars/.emacs.d/tree/master/snippets">https://github.com/magnars/.emacs.d/tree/master/snippets</a>)</li>
-<li>[lazycat](<a href="https://github.com/manateelazycat/lazycat-emacs/tree/master/site-lisp/extensions/yasnippet/snippets">https://github.com/manateelazycat/lazycat-emacs/tree/master/site-lisp/extensions/yasnippet/snippets</a>)</li>
-</ul>
-</div>
-</div>
-
-<div id="outline-container-org53f946b" class="outline-3">
-<h3 id="org53f946b">repo</h3>
-<div class="outline-text-3" id="text-org53f946b">
-<ul class="org-ul">
-<li><a href="https://github.com/joaotavora/yasnippet">https://github.com/joaotavora/yasnippet</a></li>
-<li><a href="https://github.com/AndreaCrotti/yasnippet-snippets">https://github.com/AndreaCrotti/yasnippet-snippets</a></li>
-</ul>
-</div>
-</div>
-
-<div id="outline-container-orged9b853" class="outline-3">
-<h3 id="orged9b853">lazycat</h3>
-<div class="outline-text-3" id="text-orged9b853">
-<ul class="org-ul">
-<li>[lazycat](<a href="https://github.com/manateelazycat/lazycat-emacs/tree/master/site-lisp/extensions/yasnippet/snippets">https://github.com/manateelazycat/lazycat-emacs/tree/master/site-lisp/extensions/yasnippet/snippets</a>)</li>
-</ul>
-
+<div id="outline-container-org96aa80c" class="outline-2">
+<h2 id="org96aa80c">prism</h2>
+<div class="outline-text-2" id="text-org96aa80c">
 <p>
-就是使用的上面2个repo, 然后自己定制的。
-</p>
-</div>
-</div>
-</div>
-<div id="outline-container-orgd76cbfe" class="outline-2">
-<h2 id="orgd76cbfe">加载新的 snippets file</h2>
-<div class="outline-text-2" id="text-orgd76cbfe">
-<p>
-Q: 当你写了一个新的 snippets, 如何手动加载?
-A: <code>M-x yas-reload-all</code>
+<a href="./prism.html">{prism}</a>
 </p>
 </div>
 </div>
 
-<div id="outline-container-orgfc68f70" class="outline-2">
-<h2 id="orgfc68f70">new snippets</h2>
-<div class="outline-text-2" id="text-orgfc68f70">
+<div id="outline-container-orgd9fcf2f" class="outline-2">
+<h2 id="orgd9fcf2f">swagger-editor</h2>
+<div class="outline-text-2" id="text-orgd9fcf2f">
 <p>
-<code>M-x yas/new-snippet</code>
+从这里可以生成一个 nodejs server 的 zip 文件。下载后，~cnpm i &amp;&amp; node index.js~.
+</p>
+
+<p>
+这种方式，openapi.yaml文件中的api数量不能太多，否则，服务端会生成mock server失败。
+</p>
+</div>
+</div>
+
+<div id="outline-container-org7d92e74" class="outline-2">
+<h2 id="org7d92e74">swagger-node</h2>
+<div class="outline-text-2" id="text-org7d92e74">
+<p>
+<a href="https://github.com/swagger-api/swagger-node">https://github.com/swagger-api/swagger-node</a>
 </p>
 </div>
 </div>

@@ -1,0 +1,485 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<!-- 2020-04-15 Wed 09:55 -->
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>ubuntu</title>
+<meta name="generator" content="Org mode" />
+<meta name="author" content="yunlong zeng" />
+<link rel="stylesheet" title="Standard" href="/html/style/worg.css" type="text/css" />
+<link rel="alternate stylesheet" title="Zenburn" href="/html/style/worg-zenburn.css" type="text/css" />
+<link rel="alternate stylesheet" title="Classic" href="/html/style/worg-classic.css" type="text/css" />
+<link rel="SHORTCUT ICON" href="/html/style/org-mode-unicorn.ico" type="image/x-icon" />
+<link rel="icon" href="/html/style/org-mode-unicorn.ico" type="image/ico" />
+<script type="text/javascript">
+/*
+@licstart  The following is the entire license notice for the
+JavaScript code in this tag.
+
+Copyright (C) 2012-2019 Free Software Foundation, Inc.
+
+The JavaScript code in this tag is free software: you can
+redistribute it and/or modify it under the terms of the GNU
+General Public License (GNU GPL) as published by the Free Software
+Foundation, either version 3 of the License, or (at your option)
+any later version.  The code is distributed WITHOUT ANY WARRANTY;
+without even the implied warranty of MERCHANTABILITY or FITNESS
+FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
+
+As additional permission under GNU GPL version 3 section 7, you
+may distribute non-source (e.g., minimized or compacted) forms of
+that code without the copy of the GNU GPL normally required by
+section 4, provided you include this license notice and a URL
+through which recipients can access the Corresponding Source.
+
+
+@licend  The above is the entire license notice
+for the JavaScript code in this tag.
+*/
+<!--/*--><![CDATA[/*><!--*/
+ function CodeHighlightOn(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(null != target) {
+     elem.cacheClassElem = elem.className;
+     elem.cacheClassTarget = target.className;
+     target.className = "code-highlighted";
+     elem.className   = "code-highlighted";
+   }
+ }
+ function CodeHighlightOff(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(elem.cacheClassElem)
+     elem.className = elem.cacheClassElem;
+   if(elem.cacheClassTarget)
+     target.className = elem.cacheClassTarget;
+ }
+/*]]>*///-->
+</script>
+</head>
+<body>
+<div id="preamble" class="status">
+<script type="text/javascript">
+  document.addEventListener('DOMContentLoaded',function() {
+      document.getElementById("table-of-contents").onclick = function() {
+          var elem = document.getElementById("text-table-of-contents");
+          elem.style.display = elem.style.display == "block" ? "none" : "block";
+      }
+  });
+
+  var url = document.location.href;
+  var orgsource = url.substring(0, url.lastIndexOf("."))+".org.html";
+  function show_org_source(){
+      document.location.href = orgsource;
+  }
+</script>
+
+<script>
+(function(f, a, t, h, o, m){
+	a[h]=a[h]||function(){
+		(a[h].q=a[h].q||[]).push(arguments)
+	};
+	o=f.createElement('script'),
+	m=f.getElementsByTagName('script')[0];
+	o.async=1; o.src=t; o.id='fathom-script';
+	m.parentNode.insertBefore(o,m)
+})(document, window, '//stats.orgmode.org/tracker.js', 'fathom');
+fathom('set', 'siteId', 'NWSQJ');
+fathom('trackPageview');
+</script>
+</div>
+<div id="content">
+<h1 class="title">ubuntu</h1>
+<div id="table-of-contents">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#apt-source">apt source</a></li>
+<li><a href="#wubi-input">wubi input</a></li>
+<li><a href="#curl">curl</a></li>
+<li><a href="#zsh">zsh</a></li>
+<li><a href="#oh-my-zsh">oh-my-zsh</a></li>
+<li><a href="#oh-my-zsh-plugins">oh-my-zsh plugins</a></li>
+<li><a href="#不推荐autojump">（不推荐）autojump</a></li>
+<li><a href="#emacs">emacs</a></li>
+<li><a href="#nvm-nodejs">nvm &amp;&amp; nodejs</a>
+<ul>
+<li><a href="#npn-install-packages">npn install packages</a></li>
+</ul>
+</li>
+<li><a href="#wps">wps</a></li>
+<li><a href="#transmission">Transmission</a></li>
+<li><a href="#docker">Docker</a></li>
+<li><a href="#qq-wechat">qq &amp;&amp; wechat</a>
+<ul>
+<li><a href="#install-qq">Install qq</a></li>
+<li><a href="#install-wechat">Install wechat</a></li>
+</ul>
+</li>
+<li><a href="#not-need失败-softether-vpn-client">(not need)(失败) softether vpn client</a></li>
+<li><a href="#not-need-softether-vpn-server">(not need) softether vpn server</a></li>
+<li><a href="#transmission种子客户端">Transmission种子客户端</a></li>
+<li><a href="#ubuntu-desktop-l2tp-client-vpn-network-manager-l2tp-gnome">ubuntu desktop l2tp client (vpn) (network-manager-l2tp-gnome)</a></li>
+<li><a href="#cant_connect_to_internet_anymore_without_vpn">cant\_connect\_to\_internet\_anymore\_without\_vpn</a></li>
+<li><a href="#baidu-netdisk">baidu netdisk</a></li>
+<li><a href="#解决linux写入ntfs盘时报错只读文件系统">解决linux写入ntfs盘时报错：只读文件系统</a></li>
+<li><a href="#ubantu18.04系统安装迅雷等常用软件">Ubantu18.04系统安装迅雷等常用软件</a></li>
+<li><a href="#pandoc">pandoc</a></li>
+</ul>
+</div>
+</div>
+<p>
+<a href="../index.html">{Back to site's index}</a>
+</p>
+
+<p>
+ubuntu 18.04 start to setup
+</p>
+
+<div id="outline-container-org9dbfc21" class="outline-2">
+<h2 id="apt-source">apt source</h2>
+<div class="outline-text-2" id="text-apt-source">
+<p>
+<a href="https://blog.csdn.net/qq%5C_32013641/article/details/86572554">https://blog.csdn.net/qq%5C_32013641/article/details/86572554</a>
+<a href="https://www.cnblogs.com/Eric-Shenblog/p/10862027.html">https://www.cnblogs.com/Eric-Shenblog/p/10862027.html</a>
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgfe6ca2d" class="outline-2">
+<h2 id="wubi-input">wubi input</h2>
+<div class="outline-text-2" id="text-wubi-input">
+<p>
+<a href="https://www.cnblogs.com/wenchaoz/p/8981834.html">https://www.cnblogs.com/wenchaoz/p/8981834.html</a>
+<a href="https://www.cnblogs.com/qikeyishu/p/10709217.html">https://www.cnblogs.com/qikeyishu/p/10709217.html</a>
+</p>
+</div>
+</div>
+
+<div id="outline-container-org20a0219" class="outline-2">
+<h2 id="curl">curl</h2>
+<div class="outline-text-2" id="text-curl">
+<div class="org-src-container">
+<pre class="src src-shell">sudo apt install curl
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgc1acf4b" class="outline-2">
+<h2 id="zsh">zsh</h2>
+<div class="outline-text-2" id="text-zsh">
+<div class="org-src-container">
+<pre class="src src-shell">sudo apt install zsh -y
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org48a73d5" class="outline-2">
+<h2 id="oh-my-zsh">oh-my-zsh</h2>
+<div class="outline-text-2" id="text-oh-my-zsh">
+<p>
+<a href="https://ohmyz.sh/">https://ohmyz.sh/</a>
+</p>
+
+<div class="org-src-container">
+<pre class="src src-shell">sh -c <span style="color: #daa520;">"$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"</span>
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgeea14dc" class="outline-2">
+<h2 id="oh-my-zsh-plugins">oh-my-zsh plugins</h2>
+<div class="outline-text-2" id="text-oh-my-zsh-plugins">
+<div class="org-src-container">
+<pre class="src src-shell">git clone https://github.com/zsh-users/zsh-autosuggestions $<span style="color: #7590db;">ZSH_CUSTOM</span>/plugins/zsh-autosuggestions
+git clone https://github.com/zsh-users/zsh-syntax-highlighting.git $<span style="color: #7590db;">ZSH_CUSTOM</span>/plugins/zsh-syntax-highlighting
+git clone https://github.com/mfaerevaag/wd.git $<span style="color: #7590db;">ZSH_CUSTOM</span>/plugins/wd
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org823fe71" class="outline-2">
+<h2 id="不推荐autojump">（不推荐）autojump</h2>
+<div class="outline-text-2" id="text-不推荐autojump">
+<div class="org-src-container">
+<pre class="src src-shell">sudo apt-get install autojump
+<span style="color: #4f97d7;">source</span> /usr/share/autojump/autojump.sh <span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">on startup</span>
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orge857f6c" class="outline-2">
+<h2 id="emacs">emacs</h2>
+<div class="outline-text-2" id="text-emacs">
+<p>
+<a href="http://ergoemacs.org/emacs/building_emacs_on_linux.html">http://ergoemacs.org/emacs/building_emacs_on_linux.html</a>
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgb06a4f2" class="outline-2">
+<h2 id="nvm-nodejs">nvm &amp;&amp; nodejs</h2>
+<div class="outline-text-2" id="text-nvm-nodejs">
+<p>
+<a href="https://github.com/eiuapp/eiuapp-learn/blob/master/content/nodejs/nodejs-install.md">https://github.com/eiuapp/eiuapp-learn/blob/master/content/nodejs/nodejs-install.md</a>
+</p>
+
+<pre class="example">
+which nvm
+nvm --version
+nvm install v11.14.0
+nvm --version
+nvm version
+source ~/.zshrc
+nvm ls
+nvm use v11.14.0
+node --version
+npm --version
+</pre>
+</div>
+
+<div id="outline-container-org6269aa4" class="outline-3">
+<h3 id="npn-install-packages">npn install packages</h3>
+<div class="outline-text-3" id="text-npn-install-packages">
+<pre class="example">
+npm install -g cnpm
+cnpm install -g egg anywhere mocha pm2 ndb
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org58a17b2" class="outline-2">
+<h2 id="wps">wps</h2>
+<div class="outline-text-2" id="text-wps">
+<p>
+<a href="https://www.wps.cn/product/wpslinux/">https://www.wps.cn/product/wpslinux/</a>#
+<a href="https://www.jianshu.com/p/0fd89f4f029d">https://www.jianshu.com/p/0fd89f4f029d</a>
+</p>
+</div>
+</div>
+
+<div id="outline-container-org335dd70" class="outline-2">
+<h2 id="transmission">Transmission</h2>
+<div class="outline-text-2" id="text-transmission">
+</div>
+</div>
+
+<div id="outline-container-orgb630f8d" class="outline-2">
+<h2 id="docker">Docker</h2>
+<div class="outline-text-2" id="text-docker">
+<p>
+本脚本依赖Docker，需要提前安装好Docker环境。参考<a href="https://yeasy.gitbooks.io/docker%5C_practice/install/ubuntu.html%E5%AE%89%E8%A3%85">https://yeasy.gitbooks.io/docker%5C_practice/install/ubuntu.html%E5%AE%89%E8%A3%85</a>
+</p>
+
+<p>
+Ubuntu 18.04(及以上)简化安装：
+</p>
+
+<div class="org-src-container">
+<pre class="src src-shell">sudo apt update
+sudo apt install docker.io -y
+sudo usermod -aG docker&#12288;$<span style="color: #7590db;">USER</span>
+</pre>
+</div>
+
+<p>
+安装完成需要退出当前终端并重新登录。
+</p>
+</div>
+</div>
+
+<div id="outline-container-org9fd87cd" class="outline-2">
+<h2 id="qq-wechat">qq &amp;&amp; wechat</h2>
+<div class="outline-text-2" id="text-qq-wechat">
+<p>
+<a href="https://zhuanlan.zhihu.com/p/96530693">https://zhuanlan.zhihu.com/p/96530693</a>
+</p>
+</div>
+
+<div id="outline-container-orge0c57f3" class="outline-3">
+<h3 id="install-qq">Install qq</h3>
+<div class="outline-text-3" id="text-install-qq">
+<pre class="example">
+bash &lt;(curl -L -s https://raw.githubusercontent.com/ygcaicn/ubuntu_qq/master/qq.sh)
+</pre>
+</div>
+</div>
+
+<div id="outline-container-org93af51a" class="outline-3">
+<h3 id="install-wechat">Install wechat</h3>
+<div class="outline-text-3" id="text-install-wechat">
+<pre class="example">
+bash &lt;(curl -L -s https://raw.githubusercontent.com/ygcaicn/ubuntu_qq/master/wechat.sh)
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org99c83cd" class="outline-2">
+<h2 id="not-need失败-softether-vpn-client">(not need)(失败) softether vpn client</h2>
+<div class="outline-text-2" id="text-not-need失败-softether-vpn-client">
+<p>
+<a href="https://blog.csdn.net/musiclvme/article/details/104323975">https://blog.csdn.net/musiclvme/article/details/104323975</a>
+<a href="https://lianyaohao.cn/wordpress/index.php/2019/08/13/softether-vpn-client/">https://lianyaohao.cn/wordpress/index.php/2019/08/13/softether-vpn-client/</a>
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgfed6593" class="outline-2">
+<h2 id="not-need-softether-vpn-server">(not need) softether vpn server</h2>
+<div class="outline-text-2" id="text-not-need-softether-vpn-server">
+<p>
+<a href="https://code.launchpad.net/~paskal-07/+archive/ubuntu/softethervpn">https://code.launchpad.net/~paskal-07/+archive/ubuntu/softethervpn</a>
+</p>
+</div>
+</div>
+
+<div id="outline-container-org9422ddf" class="outline-2">
+<h2 id="transmission种子客户端">Transmission种子客户端</h2>
+<div class="outline-text-2" id="text-transmission种子客户端">
+</div>
+</div>
+
+<div id="outline-container-org92ff439" class="outline-2">
+<h2 id="ubuntu-desktop-l2tp-client-vpn-network-manager-l2tp-gnome">ubuntu desktop l2tp client (vpn) (network-manager-l2tp-gnome)</h2>
+<div class="outline-text-2" id="text-ubuntu-desktop-l2tp-client-vpn-network-manager-l2tp-gnome">
+<p>
+<a href="https://my.oschina.net/podjonss/blog/2243307">https://my.oschina.net/podjonss/blog/2243307</a>
+<a href="https://blog.csdn.net/chichu261/article/details/84981600">https://blog.csdn.net/chichu261/article/details/84981600</a>
+<a href="https://www.linuxidc.com/Linux/2012-10/71621.htm">https://www.linuxidc.com/Linux/2012-10/71621.htm</a>
+</p>
+
+<pre class="example">
+解决方案
+1、命令行输入：
+
+sudo apt-get install network-manager-l2tp-gnome
+1
+2、Ubuntu18.04 右上角 下拉箭头中找 设置 或者直接点击 齿轮型图标，进入设置。
+3、在设置界面，选择网络，界面出现 VPN
+4、点击VPN右侧的 +,
+便可以看见第2层隧道协议（L2TP）
+说明执行的命令生效。
+5、点击L2TP进入界面填写入：代理地址，用户名和密码。
+其余默认。进行连接测试。
+6. 单击IPSec设置...
+单击“启用到L2TP主机的IPsec隧道”框，
+将Gateway ID字段留空。
+在预共享密钥字段中输入共享密钥。
+展开“高级选项”区域
+在“阶段1算法”框中输入“3des-sha1-modp1024”。
+在Phase 2 Algorithms框中输入“3des-sha1”。
+选中“强制UDP封装”复选框。
+单击确定。
+单击保存。
+
+Click IPSec Settings…
+Click the box for “Enable IPsec tunnel to L2TP host”
+Enter the shared secret into the Pre-shared key field.
+Leave the Gateway ID field empty.
+Expand the Advanced options area
+Enter “3des-sha1-modp1024” into the Phase 1 Algorithms box.
+Enter “3des-sha1” into the Phase 2 Algorithms box.
+Leave the box checked for “Enforce UDP encapsulation”.
+Click OK.
+Click Save.
+注：如果公司有其他设置，这个就需要与同事沟通了。
+</pre>
+
+<p>
+连接成功后，
+</p>
+
+<div class="org-src-container">
+<pre class="src src-sh">a@a:~$ route
+Kernel IP routing table
+Destination     Gateway         Genmask         Flags Metric Ref    Use Iface
+default         <span style="color: #a45bad;">0.0.0.0</span>         <span style="color: #a45bad;">0.0.0.0</span>         U     <span style="color: #a45bad;">50</span>     <span style="color: #a45bad;">0</span>        <span style="color: #a45bad;">0</span> ppp0
+default         ip-192-168-168- <span style="color: #a45bad;">0.0.0.0</span>         UG    <span style="color: #a45bad;">100</span>    <span style="color: #a45bad;">0</span>        <span style="color: #a45bad;">0</span> enp2s0
+one.one.one.one <span style="color: #a45bad;">0.0.0.0</span>         <span style="color: #a45bad;">255.255.255.255</span> UH    <span style="color: #a45bad;">50</span>     <span style="color: #a45bad;">0</span>        <span style="color: #a45bad;">0</span> ppp0
+ec2-18-162-116- ip-192-168-168- <span style="color: #a45bad;">255.255.255.255</span> UGH   <span style="color: #a45bad;">100</span>    <span style="color: #a45bad;">0</span>        <span style="color: #a45bad;">0</span> enp2s0
+link-local      <span style="color: #a45bad;">0.0.0.0</span>         <span style="color: #a45bad;">255.255.0.0</span>     U     <span style="color: #a45bad;">1000</span>   <span style="color: #a45bad;">0</span>        <span style="color: #a45bad;">0</span> enp2s0
+<span style="color: #a45bad;">192.168.168.0</span>   <span style="color: #a45bad;">0.0.0.0</span>         <span style="color: #a45bad;">255.255.254.0</span>   U     <span style="color: #a45bad;">100</span>    <span style="color: #a45bad;">0</span>        <span style="color: #a45bad;">0</span> enp2s0
+ip-192-168-168- <span style="color: #a45bad;">0.0.0.0</span>         <span style="color: #a45bad;">255.255.255.255</span> UH    <span style="color: #a45bad;">100</span>    <span style="color: #a45bad;">0</span>        <span style="color: #a45bad;">0</span> enp2s0
+a@a:~$
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org552f677" class="outline-2">
+<h2 id="cant_connect_to_internet_anymore_without_vpn">cant\_connect\_to\_internet\_anymore\_without\_vpn</h2>
+<div class="outline-text-2" id="text-cant_connect_to_internet_anymore_without_vpn">
+<p>
+关闭　VPN　的同时，关闭 wired, 然后打开　wired
+</p>
+</div>
+</div>
+
+<div id="outline-container-org65ce47b" class="outline-2">
+<h2 id="baidu-netdisk">baidu netdisk</h2>
+<div class="outline-text-2" id="text-baidu-netdisk">
+<div class="org-src-container">
+<pre class="src src-sh">sudo dpkg -i ./baidunetdisk_linux_3.0.1.2.deb
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgf9047b1" class="outline-2">
+<h2 id="解决linux写入ntfs盘时报错只读文件系统">解决linux写入ntfs盘时报错：只读文件系统</h2>
+<div class="outline-text-2" id="text-解决linux写入ntfs盘时报错只读文件系统">
+<p>
+<a href="https://askubuntu.com/questions/204166/how-do-i-mount-a-hibernated-ntfs-partition">https://askubuntu.com/questions/204166/how-do-i-mount-a-hibernated-ntfs-partition</a>
+<a href="https://blog.csdn.net/liushall/article/details/80684997?depth%5C_1-utm%5C_source=distribute.pc%5C_relevant.none-task&amp;utm%5C_source=distribute.pc%5C_relevant.none-task">https://blog.csdn.net/liushall/article/details/80684997?depth%5C_1-utm%5C_source=distribute.pc%5C_relevant.none-task&amp;utm%5C_source=distribute.pc%5C_relevant.none-task</a>
+</p>
+
+<div class="org-src-container">
+<pre class="src src-sh">sudo umount /dev/sda3 <span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">&#21368;&#36733;&#24050;&#25346;&#36733;&#30340;&#35774;&#22791;</span>
+mkdir /media/FE46D60C46D5C615
+sudo mount -t ntfs-3g -o remove_hiberfile /dev/sde3 /media/FE46D60C46D5C615
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org52b1feb" class="outline-2">
+<h2 id="ubantu18.04系统安装迅雷等常用软件">Ubantu18.04系统安装迅雷等常用软件</h2>
+<div class="outline-text-2" id="text-ubantu18.04系统安装迅雷等常用软件">
+<p>
+<a href="https://blog.csdn.net/hanjushi2/article/details/82184397">https://blog.csdn.net/hanjushi2/article/details/82184397</a>
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgb32280b" class="outline-2">
+<h2 id="pandoc">pandoc</h2>
+<div class="outline-text-2" id="text-pandoc">
+<div class="org-src-container">
+<pre class="src src-shell">sudo apt install pandoc
+</pre>
+</div>
+
+<p>
+示例
+</p>
+
+<div class="org-src-container">
+<pre class="src src-shell">pandoc -o abc.org -f markdown -t org ./abc.md
+</pre>
+</div>
+</div>
+</div>
+</div>
+</body>
+</html>

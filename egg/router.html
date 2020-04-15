@@ -6,7 +6,7 @@
 <!-- 2020-04-15 Wed 09:55 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>snippets</title>
+<title>egg router</title>
 <meta name="generator" content="Org mode" />
 <meta name="author" content="yunlong zeng" />
 <link rel="stylesheet" title="Standard" href="/html/style/worg.css" type="text/css" />
@@ -93,20 +93,13 @@ fathom('trackPageview');
 </script>
 </div>
 <div id="content">
-<h1 class="title">snippets</h1>
+<h1 class="title">egg router</h1>
 <div id="table-of-contents">
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#org913fdc2">集成大神的 emacs snippets</a>
-<ul>
-<li><a href="#orge5fd6b7">snippets set</a></li>
-<li><a href="#org53f946b">repo</a></li>
-<li><a href="#orged9b853">lazycat</a></li>
-</ul>
-</li>
-<li><a href="#orgd76cbfe">加载新的 snippets file</a></li>
-<li><a href="#orgfc68f70">new snippets</a></li>
+<li><a href="#org73cf19f">router 字符错误</a></li>
+<li><a href="#org9f60be6">router &amp;&amp; middleware</a></li>
 </ul>
 </div>
 </div>
@@ -114,59 +107,52 @@ fathom('trackPageview');
 <a href="../index.html">{Back to site's index}</a>
 </p>
 
-<div id="outline-container-org913fdc2" class="outline-2">
-<h2 id="org913fdc2">集成大神的 emacs snippets</h2>
-<div class="outline-text-2" id="text-org913fdc2">
-</div>
-<div id="outline-container-orge5fd6b7" class="outline-3">
-<h3 id="orge5fd6b7">snippets set</h3>
-<div class="outline-text-3" id="text-orge5fd6b7">
-<ul class="org-ul">
-<li>[magnars](<a href="https://github.com/magnars/.emacs.d/tree/master/snippets">https://github.com/magnars/.emacs.d/tree/master/snippets</a>)</li>
-<li>[lazycat](<a href="https://github.com/manateelazycat/lazycat-emacs/tree/master/site-lisp/extensions/yasnippet/snippets">https://github.com/manateelazycat/lazycat-emacs/tree/master/site-lisp/extensions/yasnippet/snippets</a>)</li>
-</ul>
-</div>
-</div>
-
-<div id="outline-container-org53f946b" class="outline-3">
-<h3 id="org53f946b">repo</h3>
-<div class="outline-text-3" id="text-org53f946b">
-<ul class="org-ul">
-<li><a href="https://github.com/joaotavora/yasnippet">https://github.com/joaotavora/yasnippet</a></li>
-<li><a href="https://github.com/AndreaCrotti/yasnippet-snippets">https://github.com/AndreaCrotti/yasnippet-snippets</a></li>
-</ul>
-</div>
-</div>
-
-<div id="outline-container-orged9b853" class="outline-3">
-<h3 id="orged9b853">lazycat</h3>
-<div class="outline-text-3" id="text-orged9b853">
-<ul class="org-ul">
-<li>[lazycat](<a href="https://github.com/manateelazycat/lazycat-emacs/tree/master/site-lisp/extensions/yasnippet/snippets">https://github.com/manateelazycat/lazycat-emacs/tree/master/site-lisp/extensions/yasnippet/snippets</a>)</li>
-</ul>
+<div id="outline-container-org73cf19f" class="outline-2">
+<h2 id="org73cf19f">router 字符错误</h2>
+<div class="outline-text-2" id="text-org73cf19f">
+<p>
+居然有遇到一次，错误的隐藏字符。这个问题，搞了大半天。
+</p>
 
 <p>
-就是使用的上面2个repo, 然后自己定制的。
+当使用vi打开时，发现了这个问题
 </p>
+
+<div class="org-src-container">
+<pre class="src src-javascript">module.exports = app =&gt; {
+  <span style="color: #00bfff; font-weight: bold;">const</span> { router, controller } = app;
+  <span style="color: #00bfff; font-weight: bold;">const</span> { ums, tms, bms, cms, ems, sms, pms, rms, utils } = controller;
+  <span style="color: #9f8766;">/**</span>
+<span style="color: #9f8766;">   * &#31995;&#32479;&#37197;&#32622;&#31649;&#29702;</span>
+<span style="color: #9f8766;">   */</span>
+  router.get(<span style="color: #daa520;">'/sysconfig/list'</span>, sms.smsConfig.getListAndCountAll);
+  router.get(<span style="color: #daa520;">'&lt;200b&gt;/loginStrategy/list'</span>, sms.smsConfig.loginStrategyList);
+  <span style="color: #2aa1ae; background-color: #292e34;">// </span><span style="color: #2aa1ae; background-color: #292e34;">router.post('/loginStrategy&lt;200b&gt;/delete/:ids', sms.smsConfig.updateDeleteStatus);</span>
+  <span style="color: #2aa1ae; background-color: #292e34;">// </span><span style="color: #2aa1ae; background-color: #292e34;">router.post('/loginStrategy&lt;200b&gt;/create', sms.smsConfig.saveNew);</span>
+};
+</pre>
 </div>
-</div>
-</div>
-<div id="outline-container-orgd76cbfe" class="outline-2">
-<h2 id="orgd76cbfe">加载新的 snippets file</h2>
-<div class="outline-text-2" id="text-orgd76cbfe">
-<p>
-Q: 当你写了一个新的 snippets, 如何手动加载?
-A: <code>M-x yas-reload-all</code>
-</p>
 </div>
 </div>
 
-<div id="outline-container-orgfc68f70" class="outline-2">
-<h2 id="orgfc68f70">new snippets</h2>
-<div class="outline-text-2" id="text-orgfc68f70">
+<div id="outline-container-org9f60be6" class="outline-2">
+<h2 id="org9f60be6">router &amp;&amp; middleware</h2>
+<div class="outline-text-2" id="text-org9f60be6">
 <p>
-<code>M-x yas/new-snippet</code>
+<a href="https://github.com/eiuapp/tl-fangyuan-server/commit/bfe645f8ff2e69917da9e7716b386b238954d5a0">https://github.com/eiuapp/tl-fangyuan-server/commit/bfe645f8ff2e69917da9e7716b386b238954d5a0</a>
 </p>
+
+<p>
+启发来自于：
+</p>
+
+<p>
+<a href="https://www.jianshu.com/p/a6f9e6b47b9f">https://www.jianshu.com/p/a6f9e6b47b9f</a>
+</p>
+
+
+<p>
+const isAdmin = app.middleware.isAdmin({}, app);</p>
 </div>
 </div>
 </div>

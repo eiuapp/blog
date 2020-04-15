@@ -1,0 +1,229 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<!-- 2020-04-15 Wed 09:56 -->
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>samba</title>
+<meta name="generator" content="Org mode" />
+<meta name="author" content="yunlong zeng" />
+<link rel="stylesheet" title="Standard" href="/html/style/worg.css" type="text/css" />
+<link rel="alternate stylesheet" title="Zenburn" href="/html/style/worg-zenburn.css" type="text/css" />
+<link rel="alternate stylesheet" title="Classic" href="/html/style/worg-classic.css" type="text/css" />
+<link rel="SHORTCUT ICON" href="/html/style/org-mode-unicorn.ico" type="image/x-icon" />
+<link rel="icon" href="/html/style/org-mode-unicorn.ico" type="image/ico" />
+<script type="text/javascript">
+/*
+@licstart  The following is the entire license notice for the
+JavaScript code in this tag.
+
+Copyright (C) 2012-2019 Free Software Foundation, Inc.
+
+The JavaScript code in this tag is free software: you can
+redistribute it and/or modify it under the terms of the GNU
+General Public License (GNU GPL) as published by the Free Software
+Foundation, either version 3 of the License, or (at your option)
+any later version.  The code is distributed WITHOUT ANY WARRANTY;
+without even the implied warranty of MERCHANTABILITY or FITNESS
+FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
+
+As additional permission under GNU GPL version 3 section 7, you
+may distribute non-source (e.g., minimized or compacted) forms of
+that code without the copy of the GNU GPL normally required by
+section 4, provided you include this license notice and a URL
+through which recipients can access the Corresponding Source.
+
+
+@licend  The above is the entire license notice
+for the JavaScript code in this tag.
+*/
+<!--/*--><![CDATA[/*><!--*/
+ function CodeHighlightOn(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(null != target) {
+     elem.cacheClassElem = elem.className;
+     elem.cacheClassTarget = target.className;
+     target.className = "code-highlighted";
+     elem.className   = "code-highlighted";
+   }
+ }
+ function CodeHighlightOff(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(elem.cacheClassElem)
+     elem.className = elem.cacheClassElem;
+   if(elem.cacheClassTarget)
+     target.className = elem.cacheClassTarget;
+ }
+/*]]>*///-->
+</script>
+</head>
+<body>
+<div id="preamble" class="status">
+<script type="text/javascript">
+  document.addEventListener('DOMContentLoaded',function() {
+      document.getElementById("table-of-contents").onclick = function() {
+          var elem = document.getElementById("text-table-of-contents");
+          elem.style.display = elem.style.display == "block" ? "none" : "block";
+      }
+  });
+
+  var url = document.location.href;
+  var orgsource = url.substring(0, url.lastIndexOf("."))+".org.html";
+  function show_org_source(){
+      document.location.href = orgsource;
+  }
+</script>
+
+<script>
+(function(f, a, t, h, o, m){
+	a[h]=a[h]||function(){
+		(a[h].q=a[h].q||[]).push(arguments)
+	};
+	o=f.createElement('script'),
+	m=f.getElementsByTagName('script')[0];
+	o.async=1; o.src=t; o.id='fathom-script';
+	m.parentNode.insertBefore(o,m)
+})(document, window, '//stats.orgmode.org/tracker.js', 'fathom');
+fathom('set', 'siteId', 'NWSQJ');
+fathom('trackPageview');
+</script>
+</div>
+<div id="content">
+<h1 class="title">samba</h1>
+<div id="table-of-contents">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#org0f8797b">Ubuntu下samba配置和使用</a>
+<ul>
+<li><a href="#orgfc27797">/etc/samba/smb.conf</a></li>
+<li><a href="#org1ac1cfb">如果配置不正确，会报错的</a></li>
+<li><a href="#org928eb6b">提示不可写</a></li>
+<li><a href="#org0a996f4">当windows连接时</a>
+<ul>
+<li><a href="#orga9af1a5">出现　~你不能访问此共享文件夹，因为你组织的安全策略阻止未经身份验证的来宾访问~ 时</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+<p>
+<a href="../index.html">{Back to site's index}</a>
+</p>
+
+<div id="outline-container-org0f8797b" class="outline-2">
+<h2 id="org0f8797b">Ubuntu下samba配置和使用</h2>
+<div class="outline-text-2" id="text-org0f8797b">
+<p>
+<a href="https://jingyan.baidu.com/article/3a2f7c2ed314ef26afd611a1.html">https://jingyan.baidu.com/article/3a2f7c2ed314ef26afd611a1.html</a>
+</p>
+
+
+<div class="org-src-container">
+<pre class="src src-shell">sudo apt-get install samba samba-common -y
+sudo useradd share
+sudo mkdir -p /home/share/share
+sudo chmod <span style="color: #a45bad;">777</span> /home/share
+sudo chmod <span style="color: #a45bad;">777</span> /home/share/share
+sudo cp /etc/samba/smb.conf /etc/samba/smb.conf.bak
+sudo vi /etc/samba/smb.conf
+sudo smbpasswd -a share
+sudo service smbd restart
+</pre>
+</div>
+</div>
+
+
+<div id="outline-container-orgfc27797" class="outline-3">
+<h3 id="orgfc27797">/etc/samba/smb.conf</h3>
+<div class="outline-text-3" id="text-orgfc27797">
+<p>
+一个正确配置示例：
+</p>
+
+<div class="org-src-container">
+<pre class="src src-example">[share]
+   comment = share folder
+   browseable = yes
+   path = /home/share/share
+   create mask = 0777
+   directory mask = 0777
+   valid users = share
+   force user = nobody
+   force group = nogroup
+   public = yes
+   available = yes
+   writable = yes
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org1ac1cfb" class="outline-3">
+<h3 id="org1ac1cfb">如果配置不正确，会报错的</h3>
+<div class="outline-text-3" id="text-org1ac1cfb">
+<div class="org-src-container">
+<pre class="src src-shell">ubuntu@utuntu:~$ sudo systemctl status smbd.service
+&#9679; smbd.service - Samba SMB Daemon
+   Loaded: loaded (/lib/systemd/system/smbd.service; enabled; vendor preset: enabled)
+   Active: failed (Result: exit-code) since Tue <span style="color: #a45bad;">2020-04-07</span> <span style="color: #a45bad;">17:18:51</span> CST; <span style="color: #a45bad;">14s</span> ago
+     Docs: man:smbd(<span style="color: #a45bad;">8</span>)
+           man:samba(<span style="color: #a45bad;">7</span>)
+           man:smb.conf(<span style="color: #a45bad;">5</span>)
+  Process: <span style="color: #a45bad;">20722</span> <span style="color: #7590db;">ExecStart</span>=/usr/sbin/smbd --foreground --no-process-group $<span style="color: #7590db;">SMBDOPTIONS</span> (<span style="color: #7590db;">code</span>=exited, <span style="color: #7590db;">status</span>=<span style="color: #a45bad;">1/FAILURE</span>)
+ Main PID: <span style="color: #a45bad;">20722</span> (<span style="color: #7590db;">code</span>=exited, <span style="color: #7590db;">status</span>=<span style="color: #a45bad;">1/FAILURE</span>)
+
+Apr <span style="color: #a45bad;">07</span> <span style="color: #a45bad;">17:18:51</span> utuntu systemd[<span style="color: #a45bad;">1</span>]: Starting Samba SMB Daemon...
+Apr <span style="color: #a45bad;">07</span> <span style="color: #a45bad;">17:18:51</span> utuntu systemd[<span style="color: #a45bad;">1</span>]: smbd.service: Main process exited, <span style="color: #7590db;">code</span>=exited, <span style="color: #7590db;">status</span>=<span style="color: #a45bad;">1/FAILURE</span>
+Apr <span style="color: #a45bad;">07</span> <span style="color: #a45bad;">17:18:51</span> utuntu systemd[<span style="color: #a45bad;">1</span>]: smbd.service: Failed with result <span style="color: #daa520;">'exit-code'</span>.
+Apr <span style="color: #a45bad;">07</span> <span style="color: #a45bad;">17:18:51</span> utuntu systemd[<span style="color: #a45bad;">1</span>]: Failed to start Samba SMB Daemon.
+ubuntu@utuntu:~$
+</pre>
+</div>
+
+<div class="org-src-container">
+<pre class="src src-shell">sudo systemctl status smbd.service
+sudo journalctl -xe
+sudo service smbd restart
+</pre>
+</div>
+</div>
+</div>
+
+
+<div id="outline-container-org928eb6b" class="outline-3">
+<h3 id="org928eb6b">提示不可写</h3>
+<div class="outline-text-3" id="text-org928eb6b">
+<p>
+使用的服务器目录文件的所有者必须是配置中的用户
+如果遇到提示不可写的话可以在配置中加入writable=yes
+</p>
+</div>
+</div>
+
+<div id="outline-container-org0a996f4" class="outline-3">
+<h3 id="org0a996f4">当windows连接时</h3>
+<div class="outline-text-3" id="text-org0a996f4">
+<p>
+<code>win+R</code>, <code>\\ip</code>, (如：~\\192.168.168.137~), 输入 samba user, samba passwd就可以了。
+</p>
+</div>
+
+<div id="outline-container-orga9af1a5" class="outline-4">
+<h4 id="orga9af1a5">出现　~你不能访问此共享文件夹，因为你组织的安全策略阻止未经身份验证的来宾访问~ 时</h4>
+<div class="outline-text-4" id="text-orga9af1a5">
+<p>
+<a href="https://www.jianshu.com/p/79332fd23bd3">https://www.jianshu.com/p/79332fd23bd3</a></p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</body>
+</html>

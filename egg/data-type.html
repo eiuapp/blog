@@ -6,7 +6,7 @@
 <!-- 2020-04-30 Thu 18:49 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>navicat</title>
+<title>egg data type</title>
 <meta name="generator" content="Org mode" />
 <meta name="author" content="yunlong zeng" />
 <link rel="stylesheet" title="Standard" href="/html/style/worg.css" type="text/css" />
@@ -93,20 +93,12 @@ fathom('trackPageview');
 </script>
 </div>
 <div id="content">
-<h1 class="title">navicat</h1>
+<h1 class="title">egg data type</h1>
 <div id="table-of-contents">
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#orgdd7ec23">Ubuntu 19.10 下 Navicat 15 premium 无限期试用（亲测有效）</a>
-<ul>
-<li><a href="#org14f9640">env</a></li>
-<li><a href="#org1f659a9">start</a></li>
-<li><a href="#orgb1d51dd"><code>apt install gcc-9 g++9</code> 报错</a></li>
-<li><a href="#orgcb2698e">过期</a></li>
-</ul>
-</li>
-<li><a href="#orgea75651">windows 10 Navicat Premium 15 永久激活版安装教程</a></li>
+<li><a href="#org4a49b91">enum</a></li>
 </ul>
 </div>
 </div>
@@ -114,76 +106,38 @@ fathom('trackPageview');
 <a href="../index.html">{Back to site's index}</a>
 </p>
 
+<div id="outline-container-org4a49b91" class="outline-2">
+<h2 id="org4a49b91">enum</h2>
+<div class="outline-text-2" id="text-org4a49b91">
 <p>
-请支持正版
-</p>
-
-<div id="outline-container-orgdd7ec23" class="outline-2">
-<h2 id="orgdd7ec23">Ubuntu 19.10 下 Navicat 15 premium 无限期试用（亲测有效）</h2>
-<div class="outline-text-2" id="text-orgdd7ec23">
-</div>
-<div id="outline-container-org14f9640" class="outline-3">
-<h3 id="org14f9640">env</h3>
-<div class="outline-text-3" id="text-org14f9640">
-<ul class="org-ul">
-<li>os: ubuntu 18</li>
-</ul>
-</div>
-</div>
-
-<div id="outline-container-org1f659a9" class="outline-3">
-<h3 id="org1f659a9">start</h3>
-<div class="outline-text-3" id="text-org1f659a9">
-<p>
-<a href="https://blog.csdn.net/u014585456/article/details/104464269">https://blog.csdn.net/u014585456/article/details/104464269</a>
+里面的item, 只能是 string类型
 </p>
 
 <p>
-下载　<a href="https://pan.baidu.com/s/1u01pL0Fz7A0L1sfvU6_ZHg%E3%80%80%E3%80%80%E6%8F%90%E5%8F%96%E7%A0%81%EF%BC%9Ajjtr">https://pan.baidu.com/s/1u01pL0Fz7A0L1sfvU6_ZHg%E3%80%80%E3%80%80%E6%8F%90%E5%8F%96%E7%A0%81%EF%BC%9Ajjtr</a>
+enable_status: { type: ENUM, values: [0, 1], defaultValue: 0, allowNull: false
+},
 </p>
 
 <p>
-输入注册码： 复制软件激活页面注册码并粘贴此处
-生成激活码
+then
 </p>
 
 <p>
-这一步，没有成功，但是，依然可以试用。
-</p>
-</div>
-</div>
-
-<div id="outline-container-orgb1d51dd" class="outline-3">
-<h3 id="orgb1d51dd"><code>apt install gcc-9 g++9</code> 报错</h3>
-<div class="outline-text-3" id="text-orgb1d51dd">
-<p>
-如果当安装~apt install gcc-9 g++9~ 报依赖错误，并最后指向要安装　:i386 的包时，请停止下来，另找方法。
+± npx sequelize db:migrate
 </p>
 
 <p>
-因为，我尝试安装后，导致我的 Ubuntu-desktop 登陆出错（通过重新安装 ubuntu-desktop 解决），同时，我的 emacs 软件无法正常打开。
-</p>
-</div>
-</div>
-
-<div id="outline-container-orgcb2698e" class="outline-3">
-<h3 id="orgcb2698e">过期</h3>
-<div class="outline-text-3" id="text-orgcb2698e">
-<p>
-这个方法安装后,15天过去了,就失效了.
-</p>
-</div>
-</div>
-</div>
-<div id="outline-container-orgea75651" class="outline-2">
-<h2 id="orgea75651">windows 10 Navicat Premium 15 永久激活版安装教程</h2>
-<div class="outline-text-2" id="text-orgea75651">
-<p>
-<a href="https://www.cnblogs.com/poloyy/p/12231357.html">https://www.cnblogs.com/poloyy/p/12231357.html</a>
+Sequelize CLI [Node: 11.14.0, CLI: 5.5.1, ORM: 5.21.5]
 </p>
 
 <p>
-还未实操作,未测试有效性.
+Loaded configuration file "database/config.json".
+Using environment "development".
+<code>= 20200416075347-init-ums_users: migrating ======</code>
+</p>
+
+<p>
+ERROR: type "public.enum_ums_users_enable_status" does not exist
 </p>
 </div>
 </div>

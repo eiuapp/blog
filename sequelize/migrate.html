@@ -1,0 +1,367 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<!-- 2020-04-30 Thu 18:49 -->
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>sequelize migrate</title>
+<meta name="generator" content="Org mode" />
+<meta name="author" content="yunlong zeng" />
+<link rel="stylesheet" title="Standard" href="/html/style/worg.css" type="text/css" />
+<link rel="alternate stylesheet" title="Zenburn" href="/html/style/worg-zenburn.css" type="text/css" />
+<link rel="alternate stylesheet" title="Classic" href="/html/style/worg-classic.css" type="text/css" />
+<link rel="SHORTCUT ICON" href="/html/style/org-mode-unicorn.ico" type="image/x-icon" />
+<link rel="icon" href="/html/style/org-mode-unicorn.ico" type="image/ico" />
+<script type="text/javascript">
+/*
+@licstart  The following is the entire license notice for the
+JavaScript code in this tag.
+
+Copyright (C) 2012-2019 Free Software Foundation, Inc.
+
+The JavaScript code in this tag is free software: you can
+redistribute it and/or modify it under the terms of the GNU
+General Public License (GNU GPL) as published by the Free Software
+Foundation, either version 3 of the License, or (at your option)
+any later version.  The code is distributed WITHOUT ANY WARRANTY;
+without even the implied warranty of MERCHANTABILITY or FITNESS
+FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
+
+As additional permission under GNU GPL version 3 section 7, you
+may distribute non-source (e.g., minimized or compacted) forms of
+that code without the copy of the GNU GPL normally required by
+section 4, provided you include this license notice and a URL
+through which recipients can access the Corresponding Source.
+
+
+@licend  The above is the entire license notice
+for the JavaScript code in this tag.
+*/
+<!--/*--><![CDATA[/*><!--*/
+ function CodeHighlightOn(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(null != target) {
+     elem.cacheClassElem = elem.className;
+     elem.cacheClassTarget = target.className;
+     target.className = "code-highlighted";
+     elem.className   = "code-highlighted";
+   }
+ }
+ function CodeHighlightOff(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(elem.cacheClassElem)
+     elem.className = elem.cacheClassElem;
+   if(elem.cacheClassTarget)
+     target.className = elem.cacheClassTarget;
+ }
+/*]]>*///-->
+</script>
+</head>
+<body>
+<div id="preamble" class="status">
+<script type="text/javascript">
+  document.addEventListener('DOMContentLoaded',function() {
+      document.getElementById("table-of-contents").onclick = function() {
+          var elem = document.getElementById("text-table-of-contents");
+          elem.style.display = elem.style.display == "block" ? "none" : "block";
+      }
+  });
+
+  var url = document.location.href;
+  var orgsource = url.substring(0, url.lastIndexOf("."))+".org.html";
+  function show_org_source(){
+      document.location.href = orgsource;
+  }
+</script>
+
+<script>
+(function(f, a, t, h, o, m){
+	a[h]=a[h]||function(){
+		(a[h].q=a[h].q||[]).push(arguments)
+	};
+	o=f.createElement('script'),
+	m=f.getElementsByTagName('script')[0];
+	o.async=1; o.src=t; o.id='fathom-script';
+	m.parentNode.insertBefore(o,m)
+})(document, window, '//stats.orgmode.org/tracker.js', 'fathom');
+fathom('set', 'siteId', 'NWSQJ');
+fathom('trackPageview');
+</script>
+</div>
+<div id="content">
+<h1 class="title">sequelize migrate</h1>
+<div id="table-of-contents">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#orga6b8e45">migrate to test env</a></li>
+<li><a href="#org62e9655">new project</a>
+<ul>
+<li><a href="#org0650e44">use egg &amp;&amp; sequelize</a></li>
+<li><a href="#orgf39674a">Project bootstrapping</a></li>
+</ul>
+</li>
+<li><a href="#org5d82c2e">migrate 中使用原生sql语法</a></li>
+<li><a href="#orgb02a8ba">storage写入JSON</a></li>
+<li><a href="#orgf7a6e26">Undoing(单条) 指定单次的 Migrations</a></li>
+<li><a href="#org32cd0b0">Undoing(到达历史状态) 到指定单次的 Migrations</a></li>
+<li><a href="#orgce2870c">注意</a>
+<ul>
+<li><a href="#org22fb196">删除掉 <code>*.js</code> 文件</a></li>
+</ul>
+</li>
+<li><a href="#org5f676ce">Index columns during createTable</a></li>
+</ul>
+</div>
+</div>
+<p>
+<a href="../index.html">{Back to site's index}</a>
+</p>
+
+<p>
+sequelize migrate
+</p>
+
+<p>
+<a href="https://sequelize.org/master/manual/migrations.html">https://sequelize.org/master/manual/migrations.html</a>
+</p>
+
+<p>
+<a href="https://github.com/sequelize/cli">https://github.com/sequelize/cli</a>
+</p>
+
+<div id="outline-container-orga6b8e45" class="outline-2">
+<h2 id="orga6b8e45">migrate to test env</h2>
+<div class="outline-text-2" id="text-orga6b8e45">
+<div class="org-src-container">
+<pre class="src src-shell">npx sequelize db:migrate --env test
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org62e9655" class="outline-2">
+<h2 id="org62e9655">new project</h2>
+<div class="outline-text-2" id="text-org62e9655">
+</div>
+<div id="outline-container-org0650e44" class="outline-3">
+<h3 id="org0650e44">use egg &amp;&amp; sequelize</h3>
+<div class="outline-text-3" id="text-org0650e44">
+<p>
+脚手架
+<a href="https://eggjs.org/zh-cn/tutorials/sequelize.html#%E8%84%9A%E6%89%8B%E6%9E%B6">https://eggjs.org/zh-cn/tutorials/sequelize.html#%E8%84%9A%E6%89%8B%E6%9E%B6</a>
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgf39674a" class="outline-3">
+<h3 id="orgf39674a">Project bootstrapping</h3>
+<div class="outline-text-3" id="text-orgf39674a">
+<p>
+<a href="https://sequelize.org/master/manual/migrations.html">https://sequelize.org/master/manual/migrations.html</a> 在 project bootstrapping 有
+提到：
+</p>
+
+<div class="org-src-container">
+<pre class="src src-shell">npx sequelize-cli init
+</pre>
+</div>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org5d82c2e" class="outline-2">
+<h2 id="org5d82c2e">migrate 中使用原生sql语法</h2>
+<div class="outline-text-2" id="text-org5d82c2e">
+<p>
+<a href="https://github.com/sequelize/cli/blob/master/docs/README.md#the-migration-schema">https://github.com/sequelize/cli/blob/master/docs/README.md#the-migration-schema</a>
+</p>
+
+<div class="org-src-container">
+<pre class="src src-example">Additional note: If you need to access the sequelize instance, you can easily do that via queryInterface.sequelize. For example
+</pre>
+</div>
+
+<div class="org-src-container">
+<pre class="src src-javascript">queryInterface.sequelize.query(<span style="color: #daa520;">'CREATE TABLE mytable();'</span>).
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgb02a8ba" class="outline-2">
+<h2 id="orgb02a8ba">storage写入JSON</h2>
+<div class="outline-text-2" id="text-orgb02a8ba">
+<p>
+不写入数据库, 则 <code>database/config.json</code> 中配置
+</p>
+
+<div class="org-src-container">
+<pre class="src src-json">{
+  <span style="color: #00bfff; font-weight: bold;">"development"</span>: {
+    <span style="color: #00bfff; font-weight: bold;">"dialect"</span>: <span style="color: #daa520;">"postgres"</span>,
+    <span style="color: #00bfff; font-weight: bold;">"database"</span>: <span style="color: #daa520;">"esop_dev3"</span>,
+    <span style="color: #00bfff; font-weight: bold;">"host"</span>: "<span style="color: #a45bad;">192</span>.<span style="color: #a45bad;">168</span>.<span style="color: #a45bad;">168</span>.<span style="color: #a45bad;">158</span>",
+    <span style="color: #00bfff; font-weight: bold;">"port"</span>: "<span style="color: #a45bad;">5432</span>",
+    <span style="color: #00bfff; font-weight: bold;">"username"</span>: <span style="color: #daa520;">"esop"</span>,
+    <span style="color: #00bfff; font-weight: bold;">"password"</span>: <span style="color: #daa520;">"CwfhbsgL0RE7upUx"</span>,
+    <span style="color: #00bfff; font-weight: bold;">"timezone"</span>: "+<span style="color: #a45bad;">08</span>:<span style="color: #a45bad;">00</span>",
+    <span style="color: #00bfff; font-weight: bold;">"migrationStorage"</span>: <span style="color: #daa520;">"json"</span>,
+    <span style="color: #00bfff; font-weight: bold;">"migrationStoragePath"</span>: <span style="color: #daa520;">"database/storage/migrations/sequelizeMeta.json"</span>,
+    <span style="color: #00bfff; font-weight: bold;">"migrationStorageTableName"</span>: <span style="color: #daa520;">"sequelize_meta"</span>,
+    <span style="color: #00bfff; font-weight: bold;">"seederStorage"</span>: <span style="color: #daa520;">"json"</span>,
+    <span style="color: #00bfff; font-weight: bold;">"seederStoragePath"</span>: <span style="color: #daa520;">"database/storage/seed/sequelizeData.json"</span>,
+    <span style="color: #00bfff; font-weight: bold;">"seederStorageTableName"</span>: <span style="color: #daa520;">"sequelize_data"</span>
+  }
+}
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgf7a6e26" class="outline-2">
+<h2 id="orgf7a6e26">Undoing(单条) 指定单次的 Migrations</h2>
+<div class="outline-text-2" id="text-orgf7a6e26">
+<p>
+<code>db:migrate:undo --name</code>
+</p>
+
+<p>
+sequelize_meta.json 是：
+</p>
+
+<div class="org-src-container">
+<pre class="src src-json">[
+  "<span style="color: #a45bad;">20200416075347</span>-init-ums_user.js",
+  "<span style="color: #a45bad;">20200417015603</span>-create-person.js",
+  "<span style="color: #a45bad;">20200416113724</span>-init-ums_role.js",
+  "<span style="color: #a45bad;">20200417022557</span>-person-add-column-petname.js"
+]
+</pre>
+</div>
+
+<p>
+此时，我们要对 <code>"20200416113724-init-ums_role.js"</code> 进行 undoing(down) 操作。
+运行：
+</p>
+<div class="org-src-container">
+<pre class="src src-shell">npx sequelize db:migrate:undo --name <span style="color: #a45bad;">20200416113724-init-ums_role.js</span>
+</pre>
+</div>
+<p>
+运行后，sequelize_meta.json 是：
+</p>
+<div class="org-src-container">
+<pre class="src src-json">[
+  "<span style="color: #a45bad;">20200416075347</span>-init-ums_user.js",
+  "<span style="color: #a45bad;">20200417015603</span>-create-person.js",
+  "<span style="color: #a45bad;">20200416113724</span>-init-ums_role.js",
+  "<span style="color: #a45bad;">20200417022557</span>-person-add-column-petname.js"
+]
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-org32cd0b0" class="outline-2">
+<h2 id="org32cd0b0">Undoing(到达历史状态) 到指定单次的 Migrations</h2>
+<div class="outline-text-2" id="text-org32cd0b0">
+<p>
+<code>db:migrate:undo:all --to</code>
+</p>
+
+<p>
+sequelize_meta.json 是：
+</p>
+
+<div class="org-src-container">
+<pre class="src src-json">[
+  "<span style="color: #a45bad;">20200416075347</span>-init-ums_user.js",
+  "<span style="color: #a45bad;">20200417015603</span>-create-person.js",
+  "<span style="color: #a45bad;">20200416113724</span>-init-ums_role.js",
+  "<span style="color: #a45bad;">20200417022557</span>-person-add-column-petname.js"
+]
+</pre>
+</div>
+
+<p>
+此时，我们要直接回到 <code>"20200417015603-create-person.js"</code> 的状态。
+</p>
+
+<p>
+进行 undoing(down) 操作。
+运行：
+</p>
+<div class="org-src-container">
+<pre class="src src-shell">npx sequelize db:migrate:undo:all --to <span style="color: #a45bad;">20200416113724-init-ums_role.js</span>
+</pre>
+</div>
+
+<p>
+运行后，sequelize_meta.json 是：
+</p>
+<div class="org-src-container">
+<pre class="src src-json">[
+  "<span style="color: #a45bad;">20200416075347</span>-init-ums_user.js",
+  "<span style="color: #a45bad;">20200417015603</span>-create-person.js",
+]
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgce2870c" class="outline-2">
+<h2 id="orgce2870c">注意</h2>
+<div class="outline-text-2" id="text-orgce2870c">
+</div>
+<div id="outline-container-org22fb196" class="outline-3">
+<h3 id="org22fb196">删除掉 <code>*.js</code> 文件</h3>
+<div class="outline-text-3" id="text-org22fb196">
+<p>
+如果真要回到指定状态，则，要同时，删除掉 <code>*.js</code> 文件，否则，当你运行
+<code>npx sequelize db:migrate</code> 后，又会回到 删除前的状态。
+</p>
+
+<p>
+其实只要 <code>npx sequelize db:migrate</code> 理解成:
+</p>
+<ol class="org-ol">
+<li>对 <code>database/migrations/*.js</code> 所有文件进行 migrate.</li>
+<li>migrate前对 <code>migrationStoragePath</code> (如：~database/storage/migrations/sequelizeMeta.json~) 进行检查，如果存在，则不up</li>
+</ol>
+</div>
+</div>
+</div>
+<div id="outline-container-org5f676ce" class="outline-2">
+<h2 id="org5f676ce">Index columns during createTable</h2>
+<div class="outline-text-2" id="text-org5f676ce">
+<p>
+<a href="https://github.com/sequelize/cli/issues/410#issuecomment-523420333">https://github.com/sequelize/cli/issues/410#issuecomment-523420333</a>
+<a href="https://github.com/sequelize/sequelize/pull/9946/files">https://github.com/sequelize/sequelize/pull/9946/files</a>
+</p>
+
+<p>
+如果是建表之后,加索引则 <code>addIndex</code>
+<a href="https://sequelize.org/master/manual/migrations.html">https://sequelize.org/master/manual/migrations.html</a>
+</p>
+
+<div class="org-src-container">
+<pre class="src src-javascript"><span style="color: #00bfff; font-weight: bold;">await</span> queryInterface.addIndex(
+  <span style="color: #daa520;">'Person'</span>,
+  <span style="color: #daa520;">'petName'</span>,
+  {
+    fields: <span style="color: #daa520;">'petName'</span>,
+    unique: <span style="color: #a45bad;">true</span>,
+    transaction,
+  }
+);
+</pre>
+</div>
+</div>
+</div>
+</div>
+</body>
+</html>

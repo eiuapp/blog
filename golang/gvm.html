@@ -6,7 +6,7 @@
 <!-- 2020-05-13 Wed 19:57 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>navicat</title>
+<title>golang gvm</title>
 <meta name="generator" content="Org mode" />
 <meta name="author" content="yunlong zeng" />
 <link rel="stylesheet" title="Standard" href="/html/style/worg.css" type="text/css" />
@@ -93,29 +93,26 @@ fathom('trackPageview');
 </script>
 </div>
 <div id="content">
-<h1 class="title">navicat</h1>
+<h1 class="title">golang gvm</h1>
 <div id="table-of-contents">
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#orgf7a7544">Ubuntu 19.10 下 Navicat 15 premium 无限期试用（亲测有效）</a>
+<li><a href="#org87fa111">gvm</a></li>
+<li><a href="#orge5aa5f3">gvm 简单使用</a></li>
+<li><a href="#orgfb0e1b8">Golang GVM 修改国内镜像</a>
 <ul>
-<li><a href="#org89997d8">env</a></li>
-<li><a href="#org8916b8e">start</a></li>
-<li><a href="#org28939e8"><code>apt install gcc-9 g++9</code> 报错</a></li>
-<li><a href="#org9329f87">过期</a></li>
-</ul>
-</li>
-<li><a href="#org156cf7b">windows 10 Navicat Premium 15 永久激活版安装教程</a>
+<li><a href="#org110e1a0">shell</a></li>
+<li><a href="#org8a4d0c4">source</a>
 <ul>
-<li><a href="#org62047c2">first try</a>
-<ul>
-<li><a href="#org195305d">error 1</a></li>
-<li><a href="#org7892047">error 2</a></li>
+<li><a href="#orgb0b495b">git://github.com/golang/go</a></li>
+<li><a href="#org016d48c">github source</a></li>
+<li><a href="#org0f55dd0">shopex.cn</a></li>
 </ul>
 </li>
 </ul>
 </li>
+<li><a href="#orgf617bec">gvm linkthis</a></li>
 </ul>
 </div>
 </div>
@@ -123,115 +120,126 @@ fathom('trackPageview');
 <a href="../index.html">{Back to site's index}</a>
 </p>
 
+<div id="outline-container-org87fa111" class="outline-2">
+<h2 id="org87fa111">gvm</h2>
+<div class="outline-text-2" id="text-org87fa111">
 <p>
-请支持正版
-</p>
-
-<div id="outline-container-orgf7a7544" class="outline-2">
-<h2 id="orgf7a7544">Ubuntu 19.10 下 Navicat 15 premium 无限期试用（亲测有效）</h2>
-<div class="outline-text-2" id="text-orgf7a7544">
-</div>
-<div id="outline-container-org89997d8" class="outline-3">
-<h3 id="org89997d8">env</h3>
-<div class="outline-text-3" id="text-org89997d8">
-<ul class="org-ul">
-<li>os: ubuntu 18</li>
-</ul>
-</div>
-</div>
-
-<div id="outline-container-org8916b8e" class="outline-3">
-<h3 id="org8916b8e">start</h3>
-<div class="outline-text-3" id="text-org8916b8e">
-<p>
-<a href="https://blog.csdn.net/u014585456/article/details/104464269">https://blog.csdn.net/u014585456/article/details/104464269</a>
+<a href="https://github.com/moovweb/gvm">https://github.com/moovweb/gvm</a>
 </p>
 
 <p>
-下载　<a href="https://pan.baidu.com/s/1u01pL0Fz7A0L1sfvU6_ZHg%E3%80%80%E3%80%80%E6%8F%90%E5%8F%96%E7%A0%81%EF%BC%9Ajjtr">https://pan.baidu.com/s/1u01pL0Fz7A0L1sfvU6_ZHg%E3%80%80%E3%80%80%E6%8F%90%E5%8F%96%E7%A0%81%EF%BC%9Ajjtr</a>
+<a href="https://github.com/eiuapp/eiuapp-learn/blob/48677e28a6c8bc5f91a27c7586789dd72e26d393/content/note/note-about-gvm">https://github.com/eiuapp/eiuapp-learn/blob/48677e28a6c8bc5f91a27c7586789dd72e26d393/content/note/note-about-gvm</a>.
 </p>
 
 <p>
-输入注册码： 复制软件激活页面注册码并粘贴此处
-生成激活码
-</p>
-
-<p>
-这一步，没有成功，但是，依然可以试用。
+<a href="https://github.com/eiuapp/eiuapp-learn/blob/48677e28a6c8bc5f91a27c7586789dd72e26d393/content/golang/golang-gvm">https://github.com/eiuapp/eiuapp-learn/blob/48677e28a6c8bc5f91a27c7586789dd72e26d393/content/golang/golang-gvm</a>.
 </p>
 </div>
 </div>
 
-<div id="outline-container-org28939e8" class="outline-3">
-<h3 id="org28939e8"><code>apt install gcc-9 g++9</code> 报错</h3>
-<div class="outline-text-3" id="text-org28939e8">
+<div id="outline-container-orge5aa5f3" class="outline-2">
+<h2 id="orge5aa5f3">gvm 简单使用</h2>
+<div class="outline-text-2" id="text-orge5aa5f3">
 <p>
-如果当安装~apt install gcc-9 g++9~ 报依赖错误，并最后指向要安装　:i386 的包时，请停止下来，另找方法。
-</p>
-
-<p>
-因为，我尝试安装后，导致我的 Ubuntu-desktop 登陆出错（通过重新安装 ubuntu-desktop 解决），同时，我的 emacs 软件无法正常打开。
+<a href="https://www.cnblogs.com/tomtellyou/p/12455721.html">https://www.cnblogs.com/tomtellyou/p/12455721.html</a>
 </p>
 </div>
 </div>
 
-<div id="outline-container-org9329f87" class="outline-3">
-<h3 id="org9329f87">过期</h3>
-<div class="outline-text-3" id="text-org9329f87">
+<div id="outline-container-orgfb0e1b8" class="outline-2">
+<h2 id="orgfb0e1b8">Golang GVM 修改国内镜像</h2>
+<div class="outline-text-2" id="text-orgfb0e1b8">
+</div>
+<div id="outline-container-org110e1a0" class="outline-3">
+<h3 id="org110e1a0">shell</h3>
+<div class="outline-text-3" id="text-org110e1a0">
 <p>
-这个方法安装后,15天过去了,就失效了.
-</p>
-</div>
-</div>
-</div>
-<div id="outline-container-org156cf7b" class="outline-2">
-<h2 id="org156cf7b">windows 10 Navicat Premium 15 永久激活版安装教程</h2>
-<div class="outline-text-2" id="text-org156cf7b">
-<p>
-<a href="https://www.cnblogs.com/poloyy/p/12231357.html">https://www.cnblogs.com/poloyy/p/12231357.html</a>
+<a href="http://mirrors.shopex.cn/.site/static/help/golang">http://mirrors.shopex.cn/.site/static/help/golang</a>.
 </p>
 
 <p>
-还未实操作,未测试有效性.
-</p>
-</div>
-
-<div id="outline-container-org62047c2" class="outline-3">
-<h3 id="org62047c2">first try</h3>
-<div class="outline-text-3" id="text-org62047c2">
-</div>
-<div id="outline-container-org195305d" class="outline-4">
-<h4 id="org195305d">error 1</h4>
-<div class="outline-text-4" id="text-org195305d">
-<div class="org-src-container">
-<pre class="src src-example">在 1) Patch 中选择Backup、Host、Navicat v15这三个，默认也是选择了这三个；勾选这三个后点击Patch
-
-点击Patch按钮并找到Navicat Premium 15的安装目录的navicat.exe文件
-
-</pre>
-</div>
-
-<p>
-这一步中, 并没有让我去找 Navicat Premium 15的安装目录.
+gvm install go1.14.1 &#x2013;source=<a href="http://golang.mirrors.shopex.cn">http://golang.mirrors.shopex.cn</a>
 </p>
 </div>
 </div>
 
-<div id="outline-container-org7892047" class="outline-4">
-<h4 id="org7892047">error 2</h4>
-<div class="outline-text-4" id="text-org7892047">
-<div class="org-src-container">
-<pre class="src src-example">点击手动激活后会生成一个请求码
-
-复制请求码到注册机中的Request Code里面，之后点击Activation Code下面的Generate按钮就会生成一个激活码
-</pre>
-</div>
+<div id="outline-container-org8a4d0c4" class="outline-3">
+<h3 id="org8a4d0c4">source</h3>
+<div class="outline-text-3" id="text-org8a4d0c4">
+<p>
+修改方法：
+</p>
 
 <p>
-这一步后, 没有成功地生成一个激活码.
+vim ~/.gvm/scripts/install
+</p>
+
+<p>
+修改
+</p>
+
+<p>
+GO_SOURCE_URL=<a href="https://github.com/golang/go">https://github.com/golang/go</a>
+</p>
+</div>
+
+<div id="outline-container-orgb0b495b" class="outline-4">
+<h4 id="orgb0b495b">git://github.com/golang/go</h4>
+<div class="outline-text-4" id="text-orgb0b495b">
+<p>
+GO_SOURCE_URL=git://github.com/golang/go
 </p>
 </div>
 </div>
+
+<div id="outline-container-org016d48c" class="outline-4">
+<h4 id="org016d48c">github source</h4>
+<div class="outline-text-4" id="text-org016d48c">
+<p>
+<a href="https://gist.github.com/rambolee/f7bc4cfdc52d8c2535513bd933d71c78">https://gist.github.com/rambolee/f7bc4cfdc52d8c2535513bd933d71c78</a>
+</p>
+
+<p>
+国内访问不了<a href="https://go.googlesource.com/go">https://go.googlesource.com/go</a> 可将 GO_SOURCE_URL修改为github上的源码镜像
+</p>
+
+<p>
+修改方法：
+</p>
+
+<p>
+vim ~/.gvm/scripts/install
+</p>
+
+<p>
+修改
+</p>
+
+<p>
+GO_SOURCE_URL=<a href="https://github.com/golang/go">https://github.com/golang/go</a>
+</p>
+</div>
+</div>
+
+<div id="outline-container-org0f55dd0" class="outline-4">
+<h4 id="org0f55dd0">shopex.cn</h4>
+<div class="outline-text-4" id="text-org0f55dd0">
+<p>
+<a href="http://mirrors.shopex.cn/.site/static/help/golang">http://mirrors.shopex.cn/.site/static/help/golang</a>.
+</p>
+</div>
+</div>
+</div>
+</div>
+
+
+<div id="outline-container-orgf617bec" class="outline-2">
+<h2 id="orgf617bec">gvm linkthis</h2>
+<div class="outline-text-2" id="text-orgf617bec">
+<p>
+记录了一下如何正确使用gvm
+<a href="https://www.xiaorongmao.com/blog/133">https://www.xiaorongmao.com/blog/133</a>
+</p>
 </div>
 </div>
 </div>

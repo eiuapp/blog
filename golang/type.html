@@ -6,7 +6,7 @@
 <!-- 2020-05-22 Fri 10:33 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>some awesome emacs config</title>
+<title>golang type</title>
 <meta name="generator" content="Org mode" />
 <meta name="author" content="yunlong zeng" />
 <link rel="stylesheet" title="Standard" href="/html/style/worg.css" type="text/css" />
@@ -93,54 +93,61 @@ fathom('trackPageview');
 </script>
 </div>
 <div id="content">
-<h1 class="title">some awesome emacs config</h1>
+<h1 class="title">golang type</h1>
 <div id="table-of-contents">
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#org4463909">some awesome emacs config</a>
-<ul>
-<li><a href="#org0608511">LxEmacs</a></li>
-<li><a href="#org64e70b7">shachua</a></li>
-</ul>
-</li>
-<li><a href="#org75ee500">some emacs config</a>
-<ul>
-<li><a href="#org57352b8">zhcosin</a></li>
-</ul>
-</li>
+<li><a href="#org3ae30c9">type convert</a></li>
 </ul>
 </div>
 </div>
-
-<div id="outline-container-org4463909" class="outline-2">
-<h2 id="org4463909">some awesome emacs config</h2>
-<div class="outline-text-2" id="text-org4463909">
-</div>
-<div id="outline-container-org0608511" class="outline-3">
-<h3 id="org0608511">LxEmacs</h3>
-<div class="outline-text-3" id="text-org0608511">
 <p>
-<a href="https://github.com/byrlx/LxEmacs">https://github.com/byrlx/LxEmacs</a>
+<a href="../index.html">{Back to site's index}</a>
 </p>
-</div>
-</div>
 
-<div id="outline-container-org64e70b7" class="outline-3">
-<h3 id="org64e70b7">shachua</h3>
-</div>
-</div>
+<div id="outline-container-org3ae30c9" class="outline-2">
+<h2 id="org3ae30c9">type convert</h2>
+<div class="outline-text-2" id="text-org3ae30c9">
+<div class="org-src-container">
+<pre class="src src-example">#string到int
+int,err := strconv.Atoi(string)
 
-<div id="outline-container-org75ee500" class="outline-2">
-<h2 id="org75ee500">some emacs config</h2>
-<div class="outline-text-2" id="text-org75ee500">
-</div>
-<div id="outline-container-org57352b8" class="outline-3">
-<h3 id="org57352b8">zhcosin</h3>
-<div class="outline-text-3" id="text-org57352b8">
-<p>
-<a href="https://github.com/zhcosin/dotemacs">https://github.com/zhcosin/dotemacs</a>
-</p>
+#string到int64
+int64, err := strconv.ParseInt(string, 10, 64)
+//第二个参数为基数（2~36），
+//第三个参数位大小表示期望转换的结果类型，其值可以为0, 8, 16, 32和64，
+//分别对应 int, int8, int16, int32和int64
+
+#int到string
+string := strconv.Itoa(int)
+//等价于
+string := strconv.FormatInt(int64(int),10)
+
+#int64到string
+string := strconv.FormatInt(int64,10)
+//第二个参数为基数，可选2~36
+//对于无符号整形，可以使用FormatUint(i uint64, base int)
+
+#float到string
+string := strconv.FormatFloat(float32,'E',-1,32)
+string := strconv.FormatFloat(float64,'E',-1,64)
+// 'b' (-ddddp±ddd，二进制指数)
+// 'e' (-d.dddde±dd，十进制指数)
+// 'E' (-d.ddddE±dd，十进制指数)
+// 'f' (-ddd.dddd，没有指数)
+// 'g' ('e':大指数，'f':其它情况)
+// 'G' ('E':大指数，'f':其它情况)
+
+#string到float64
+float,err := strconv.ParseFloat(string,64)
+
+#string到float32
+float,err := strconv.ParseFloat(string,32)
+
+#int到int64
+int64_ := int64(1234)
+</pre>
 </div>
 </div>
 </div>

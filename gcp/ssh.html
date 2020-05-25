@@ -6,7 +6,7 @@
 <!-- 2020-05-25 Mon 19:58 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>spacemacs layout</title>
+<title>gcp ssh login</title>
 <meta name="generator" content="Org mode" />
 <meta name="author" content="yunlong zeng" />
 <link rel="stylesheet" title="Standard" href="/html/style/worg.css" type="text/css" />
@@ -93,41 +93,75 @@ fathom('trackPageview');
 </script>
 </div>
 <div id="content">
-<h1 class="title">spacemacs layout</h1>
+<h1 class="title">gcp ssh login</h1>
 <div id="table-of-contents">
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#orgf83a7bc">delete layout</a>
-<ul>
-<li><a href="#orgab389b6">delete specific layout</a></li>
-<li><a href="#orgc14bd23">delete current layout</a></li>
+<li><a href="#org97b4219">复制公钥</a></li>
+<li><a href="#orgcde16f7">导入公钥</a></li>
+<li><a href="#orgf5b521d">本地通过私钥登录</a></li>
+<li><a href="#org89da165">ref</a></li>
 </ul>
-</li>
+</div>
+</div>
+<p>
+<a href="../index.html">{Back to site's index}</a>
+</p>
+
+<p>
+公钥 ssh login gcp 实例
+</p>
+
+<div id="outline-container-org97b4219" class="outline-2">
+<h2 id="org97b4219">复制公钥</h2>
+<div class="outline-text-2" id="text-org97b4219">
+<div class="org-src-container">
+<pre class="src src-shell">$ cat myKey.pub
+ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQCjHKPaeglRVJzAhNq+W
+&#20013;&#38388;&#37096;&#20998;&#30465;&#30053;&#12290;&#12290;&#12290;
+dKx8sJ0Rw4kUqm2eU2vo8S5IEA0Nk2f7BtVGE8VOCHgmDbv2tLp9845UVp1 user@computer-name.local
+<span style="color: #579C4C; background-color: #292e34;"># </span><span style="color: #579C4C; background-color: #292e34;">&#25226;&#36825;&#38271;&#38271;&#30340;&#19968;&#27573;&#22797;&#21046;&#19979;&#26469;&#65292;&#25226;&#20854;&#20013;&#30340; user@computer-name.local &#25913;&#20026;&#20320;&#22312;&#27983;&#35272;&#22120; SSH &#30331;&#20837;&#20043;&#21518;&#30340;&#24403;&#21069;&#29992;&#25143;&#21517; ${whoami}</span>
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgcde16f7" class="outline-2">
+<h2 id="orgcde16f7">导入公钥</h2>
+<div class="outline-text-2" id="text-orgcde16f7">
+<div class="org-src-container">
+<pre class="src src-example"># 进入谷歌云平台页面 -&gt; 计算引擎 -&gt; 元数据 -&gt; SSH 密钥，粘贴保存
+# 谷歌就会把上面这段 public key 写入到 ~/.ssh/authorized_keys
+</pre>
+</div>
+
+<p>
+这里不会操作的话,看一下
+</p>
+<ul class="org-ul">
+<li><a href="https://zhuanlan.zhihu.com/p/55299163">https://zhuanlan.zhihu.com/p/55299163</a> ,有图</li>
+<li><a href="https://cloud.google.com/compute/docs/instances/adding-removing-ssh-keys#edit-ssh-metadata">https://cloud.google.com/compute/docs/instances/adding-removing-ssh-keys#edit-ssh-metadata</a></li>
 </ul>
 </div>
 </div>
 
-<div id="outline-container-orgf83a7bc" class="outline-2">
-<h2 id="orgf83a7bc">delete layout</h2>
-<div class="outline-text-2" id="text-orgf83a7bc">
+<div id="outline-container-orgf5b521d" class="outline-2">
+<h2 id="orgf5b521d">本地通过私钥登录</h2>
+<div class="outline-text-2" id="text-orgf5b521d">
+<div class="org-src-container">
+<pre class="src src-shell">$ ssh -i myKey user@<span style="color: #339CDB;">35.189.175.199</span>
+</pre>
 </div>
-<div id="outline-container-orgab389b6" class="outline-3">
-<h3 id="orgab389b6">delete specific layout</h3>
-<div class="outline-text-3" id="text-orgab389b6">
-<p>
-<code>SPC l X layout-name RTN</code>
-</p>
 </div>
 </div>
 
-<div id="outline-container-orgc14bd23" class="outline-3">
-<h3 id="orgc14bd23">delete current layout</h3>
-<div class="outline-text-3" id="text-orgc14bd23">
-<p>
-switch to the delete layout, then <code>SPC l d</code> (function is: <code>spacemacs/layouts-ts-close</code>)
-</p>
-</div>
+<div id="outline-container-org89da165" class="outline-2">
+<h2 id="org89da165">ref</h2>
+<div class="outline-text-2" id="text-org89da165">
+<ul class="org-ul">
+<li><a href="https://www.jianshu.com/p/57e85cf3e50b">https://www.jianshu.com/p/57e85cf3e50b</a></li>
+</ul>
 </div>
 </div>
 </div>

@@ -6,7 +6,7 @@
 <!-- 2020-05-25 Mon 19:58 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>spacemacs layout</title>
+<title>emacs add extension</title>
 <meta name="generator" content="Org mode" />
 <meta name="author" content="yunlong zeng" />
 <link rel="stylesheet" title="Standard" href="/html/style/worg.css" type="text/css" />
@@ -93,39 +93,72 @@ fathom('trackPageview');
 </script>
 </div>
 <div id="content">
-<h1 class="title">spacemacs layout</h1>
+<h1 class="title">emacs add extension</h1>
 <div id="table-of-contents">
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#orgf83a7bc">delete layout</a>
+<li><a href="#orge90bfd6">how to add extension for emacs or spacemacs</a>
 <ul>
-<li><a href="#orgab389b6">delete specific layout</a></li>
-<li><a href="#orgc14bd23">delete current layout</a></li>
+<li><a href="#org0bd6c82">env</a></li>
+<li><a href="#orgf5b5a90">add git submodule</a></li>
+<li><a href="#org82bb8ef">load file</a></li>
 </ul>
 </li>
 </ul>
 </div>
 </div>
-
-<div id="outline-container-orgf83a7bc" class="outline-2">
-<h2 id="orgf83a7bc">delete layout</h2>
-<div class="outline-text-2" id="text-orgf83a7bc">
-</div>
-<div id="outline-container-orgab389b6" class="outline-3">
-<h3 id="orgab389b6">delete specific layout</h3>
-<div class="outline-text-3" id="text-orgab389b6">
 <p>
-<code>SPC l X layout-name RTN</code>
+<a href="../index.html">{Back to site's index}</a>
+</p>
+
+
+<div id="outline-container-orge90bfd6" class="outline-2">
+<h2 id="orge90bfd6">how to add extension for emacs or spacemacs</h2>
+<div class="outline-text-2" id="text-orge90bfd6">
+</div>
+<div id="outline-container-org0bd6c82" class="outline-3">
+<h3 id="org0bd6c82">env</h3>
+<div class="outline-text-3" id="text-org0bd6c82">
+<p>
+example: i want to 将默认Visual Studio Code Dark +主题完整移植至Emacs
+</p>
+
+<p>
+resource: <a href="https://github.com/ianpan870102/vscode-dark-emacs-theme">https://github.com/ianpan870102/vscode-dark-emacs-theme</a>
 </p>
 </div>
 </div>
 
-<div id="outline-container-orgc14bd23" class="outline-3">
-<h3 id="orgc14bd23">delete current layout</h3>
-<div class="outline-text-3" id="text-orgc14bd23">
+<div id="outline-container-orgf5b5a90" class="outline-3">
+<h3 id="orgf5b5a90">add git submodule</h3>
+<div class="outline-text-3" id="text-orgf5b5a90">
+<div class="org-src-container">
+<pre class="src src-shell"><span style="color: #d4d4d4;">cd</span> ~/.spacemacs.d/
+git submodule add https://github.com/ianpan870102/vscode-dark-emacs-theme site-lisp/extensions/vscode-dark-emacs-theme
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org82bb8ef" class="outline-3">
+<h3 id="org82bb8ef">load file</h3>
+<div class="outline-text-3" id="text-org82bb8ef">
 <p>
-switch to the delete layout, then <code>SPC l d</code> (function is: <code>spacemacs/layouts-ts-close</code>)
+在配置文件中加入
+</p>
+
+<div class="org-src-container">
+<pre class="src src-emacs-lisp"><span style="color: #579C4C; background-color: #292e34;">;; </span><span style="color: #579C4C; background-color: #292e34;">start use vscode-dark-emacs-theme</span>
+<span style="color: #579C4C; background-color: #292e34;">;; </span><span style="color: #579C4C; background-color: #292e34;">dir: site-lisp/extensions/vscode-dark-emacs-theme</span>
+(add-to-list 'custom-theme-load-path <span style="color: #daa520;">"~/.spacemacs.d/site-lisp/extensions/vscode-dark-emacs-theme/"</span>)
+(load-theme 'vscode-dark t)
+<span style="color: #579C4C; background-color: #292e34;">;; </span><span style="color: #579C4C; background-color: #292e34;">end use vscode-dark-emacs-theme</span>
+</pre>
+</div>
+
+<p>
+restart emacs
 </p>
 </div>
 </div>

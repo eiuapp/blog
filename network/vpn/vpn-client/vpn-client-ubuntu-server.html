@@ -1,0 +1,271 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<!-- 2020-05-25 Mon 19:58 -->
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>ubuntu server as vpn client connect vpn server</title>
+<meta name="generator" content="Org mode" />
+<meta name="author" content="yunlong zeng" />
+<link rel="stylesheet" title="Standard" href="/html/style/worg.css" type="text/css" />
+<link rel="alternate stylesheet" title="Zenburn" href="/html/style/worg-zenburn.css" type="text/css" />
+<link rel="alternate stylesheet" title="Classic" href="/html/style/worg-classic.css" type="text/css" />
+<link rel="SHORTCUT ICON" href="/html/style/org-mode-unicorn.ico" type="image/x-icon" />
+<link rel="icon" href="/html/style/org-mode-unicorn.ico" type="image/ico" />
+<script type="text/javascript">
+/*
+@licstart  The following is the entire license notice for the
+JavaScript code in this tag.
+
+Copyright (C) 2012-2019 Free Software Foundation, Inc.
+
+The JavaScript code in this tag is free software: you can
+redistribute it and/or modify it under the terms of the GNU
+General Public License (GNU GPL) as published by the Free Software
+Foundation, either version 3 of the License, or (at your option)
+any later version.  The code is distributed WITHOUT ANY WARRANTY;
+without even the implied warranty of MERCHANTABILITY or FITNESS
+FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
+
+As additional permission under GNU GPL version 3 section 7, you
+may distribute non-source (e.g., minimized or compacted) forms of
+that code without the copy of the GNU GPL normally required by
+section 4, provided you include this license notice and a URL
+through which recipients can access the Corresponding Source.
+
+
+@licend  The above is the entire license notice
+for the JavaScript code in this tag.
+*/
+<!--/*--><![CDATA[/*><!--*/
+ function CodeHighlightOn(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(null != target) {
+     elem.cacheClassElem = elem.className;
+     elem.cacheClassTarget = target.className;
+     target.className = "code-highlighted";
+     elem.className   = "code-highlighted";
+   }
+ }
+ function CodeHighlightOff(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(elem.cacheClassElem)
+     elem.className = elem.cacheClassElem;
+   if(elem.cacheClassTarget)
+     target.className = elem.cacheClassTarget;
+ }
+/*]]>*///-->
+</script>
+</head>
+<body>
+<div id="preamble" class="status">
+<script type="text/javascript">
+  document.addEventListener('DOMContentLoaded',function() {
+      document.getElementById("table-of-contents").onclick = function() {
+          var elem = document.getElementById("text-table-of-contents");
+          elem.style.display = elem.style.display == "block" ? "none" : "block";
+      }
+  });
+
+  var url = document.location.href;
+  var orgsource = url.substring(0, url.lastIndexOf("."))+".org.html";
+  function show_org_source(){
+      document.location.href = orgsource;
+  }
+</script>
+
+<script>
+(function(f, a, t, h, o, m){
+	a[h]=a[h]||function(){
+		(a[h].q=a[h].q||[]).push(arguments)
+	};
+	o=f.createElement('script'),
+	m=f.getElementsByTagName('script')[0];
+	o.async=1; o.src=t; o.id='fathom-script';
+	m.parentNode.insertBefore(o,m)
+})(document, window, '//stats.orgmode.org/tracker.js', 'fathom');
+fathom('set', 'siteId', 'NWSQJ');
+fathom('trackPageview');
+</script>
+</div>
+<div id="content">
+<h1 class="title">ubuntu server as vpn client connect vpn server</h1>
+<div id="table-of-contents">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#org7e7188d">使用命令行配置-linux-vpn-客户端</a></li>
+<li><a href="#orgc331e9f">env</a></li>
+<li><a href="#org2724ead">把部分配置写进shell</a></li>
+<li><a href="#org2e46ad8">error: 开始 L2TP 连接</a></li>
+</ul>
+</div>
+</div>
+<p>
+<a href="../index.html">{Back to site's index}</a>
+</p>
+
+<p>
+ubuntu server connect vpn server
+</p>
+
+<div id="outline-container-org7e7188d" class="outline-2">
+<h2 id="org7e7188d">使用命令行配置-linux-vpn-客户端</h2>
+<div class="outline-text-2" id="text-org7e7188d">
+<p>
+主要是按 <a href="https://github.com/hwdsl2/setup-ipsec-vpn/blob/master/docs/clients-zh.md#%E4%BD%BF%E7%94%A8%E5%91%BD%E4%BB%A4%E8%A1%8C%E9%85%8D%E7%BD%AE-linux-vpn-%E5%AE%A2%E6%88%B7%E7%AB%AF">使用命令行配置 Linux VPN 客户端</a> 进行
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgc331e9f" class="outline-2">
+<h2 id="orgc331e9f">env</h2>
+<div class="outline-text-2" id="text-orgc331e9f">
+<ul class="org-ul">
+<li>cloud: tencent cloud</li>
+<li>os: ubuntu server 16.04</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org2724ead" class="outline-2">
+<h2 id="org2724ead">把部分配置写进shell</h2>
+<div class="outline-text-2" id="text-org2724ead">
+<div class="org-src-container">
+<pre class="src src-shell">&#10140;  ~ vi ./l2tp.env.sh
+&#10140;  ~ cat ./l2tp.env.sh
+<span style="color: #579C4C; background-color: #292e34;">#</span><span style="color: #579C4C; background-color: #292e34;">/bin/bash</span>
+
+<span style="color: #d4d4d4;">export</span> <span style="color: #d4d4d4;">VPN_SERVER_IP</span>=<span style="color: #daa520;">'1**.***.***.**5'</span>
+<span style="color: #d4d4d4;">export</span> <span style="color: #d4d4d4;">VPN_IPSEC_PSK</span>=<span style="color: #daa520;">'vpn'</span>
+<span style="color: #d4d4d4;">export</span> <span style="color: #d4d4d4;">VPN_USER</span>=<span style="color: #daa520;">'vpn03'</span>
+<span style="color: #d4d4d4;">export</span> <span style="color: #d4d4d4;">VPN_PASSWORD</span>=<span style="color: #daa520;">'z********1'</span>
+
+cat &gt; /etc/ipsec.conf &lt;&lt;EOF
+<span style="color: #ffff00; font-weight: bold;"># ipsec.conf - strongSwan IPsec configuration file</span>
+
+<span style="color: #ffff00; font-weight: bold;"># basic configuration</span>
+
+<span style="color: #ffff00; font-weight: bold;">config setup</span>
+<span style="color: #ffff00; font-weight: bold;">  # strictcrlpolicy=yes</span>
+<span style="color: #ffff00; font-weight: bold;">  # uniqueids = no</span>
+
+<span style="color: #ffff00; font-weight: bold;"># Add connections here.</span>
+
+<span style="color: #ffff00; font-weight: bold;"># Sample VPN connections</span>
+
+<span style="color: #ffff00; font-weight: bold;">conn %default</span>
+<span style="color: #ffff00; font-weight: bold;">  ikelifetime=60m</span>
+<span style="color: #ffff00; font-weight: bold;">  keylife=20m</span>
+<span style="color: #ffff00; font-weight: bold;">  rekeymargin=3m</span>
+<span style="color: #ffff00; font-weight: bold;">  keyingtries=1</span>
+<span style="color: #ffff00; font-weight: bold;">  keyexchange=ikev1</span>
+<span style="color: #ffff00; font-weight: bold;">  authby=secret</span>
+<span style="color: #ffff00; font-weight: bold;">  ike=aes128-sha1-modp2048!</span>
+<span style="color: #ffff00; font-weight: bold;">  esp=aes128-sha1-modp2048!</span>
+
+<span style="color: #ffff00; font-weight: bold;">conn myvpn</span>
+<span style="color: #ffff00; font-weight: bold;">  keyexchange=ikev1</span>
+<span style="color: #ffff00; font-weight: bold;">  left=%defaultroute</span>
+<span style="color: #ffff00; font-weight: bold;">  auto=add</span>
+<span style="color: #ffff00; font-weight: bold;">  authby=secret</span>
+<span style="color: #ffff00; font-weight: bold;">  type=transport</span>
+<span style="color: #ffff00; font-weight: bold;">  leftprotoport=17/1701</span>
+<span style="color: #ffff00; font-weight: bold;">  rightprotoport=17/1701</span>
+<span style="color: #ffff00; font-weight: bold;">  right=$VPN_SERVER_IP</span>
+<span style="color: #ffff00; font-weight: bold;">EOF</span>
+
+cat &gt; /etc/ipsec.secrets &lt;&lt;EOF
+<span style="color: #ffff00; font-weight: bold;">: PSK "$VPN_IPSEC_PSK"</span>
+<span style="color: #ffff00; font-weight: bold;">EOF</span>
+
+chmod <span style="color: #339CDB;">600</span> /etc/ipsec.secrets
+
+
+
+cat &gt; /etc/xl2tpd/xl2tpd.conf &lt;&lt;EOF
+<span style="color: #ffff00; font-weight: bold;">[lac myvpn]</span>
+<span style="color: #ffff00; font-weight: bold;">lns = $VPN_SERVER_IP</span>
+<span style="color: #ffff00; font-weight: bold;">ppp debug = yes</span>
+<span style="color: #ffff00; font-weight: bold;">pppoptfile = /etc/ppp/options.l2tpd.client</span>
+<span style="color: #ffff00; font-weight: bold;">length bit = yes</span>
+<span style="color: #ffff00; font-weight: bold;">EOF</span>
+
+cat &gt; /etc/ppp/options.l2tpd.client &lt;&lt;EOF
+<span style="color: #ffff00; font-weight: bold;">ipcp-accept-local</span>
+<span style="color: #ffff00; font-weight: bold;">ipcp-accept-remote</span>
+<span style="color: #ffff00; font-weight: bold;">refuse-eap</span>
+<span style="color: #ffff00; font-weight: bold;">require-chap</span>
+<span style="color: #ffff00; font-weight: bold;">noccp</span>
+<span style="color: #ffff00; font-weight: bold;">noauth</span>
+<span style="color: #ffff00; font-weight: bold;">mtu 1280</span>
+<span style="color: #ffff00; font-weight: bold;">mru 1280</span>
+<span style="color: #ffff00; font-weight: bold;">noipdefault</span>
+<span style="color: #ffff00; font-weight: bold;">defaultroute</span>
+<span style="color: #ffff00; font-weight: bold;">usepeerdns</span>
+<span style="color: #ffff00; font-weight: bold;">connect-delay 5000</span>
+<span style="color: #ffff00; font-weight: bold;">name $VPN_USER</span>
+<span style="color: #ffff00; font-weight: bold;">password $VPN_PASSWORD</span>
+<span style="color: #ffff00; font-weight: bold;">EOF</span>
+
+chmod <span style="color: #339CDB;">600</span> /etc/ppp/options.l2tpd.client
+
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org2e46ad8" class="outline-2">
+<h2 id="org2e46ad8">error: 开始 L2TP 连接</h2>
+<div class="outline-text-2" id="text-org2e46ad8">
+<div class="org-src-container">
+<pre class="src src-example">开始 L2TP 连接：
+
+echo "c myvpn" &gt; /var/run/xl2tpd/l2tp-control
+
+运行 ifconfig 并且检查输出。现在你应该看到一个新的网络接口 ppp0
+</pre>
+</div>
+
+<p>
+但是，在我的机器上并没有生成 ppp0 网络接口。
+</p>
+
+<p>
+<a href="https://github.com/hwdsl2/setup-ipsec-vpn/issues/290#issuecomment-353478360https://github.com/hwdsl2/setup-ipsec-vpn/issues/290%23issuecomment-353478360">https://github.com/hwdsl2/setup-ipsec-vpn/issues/290#issuecomment-353478360https://github.com/hwdsl2/setup-ipsec-vpn/issues/290%23issuecomment-353478360</a>
+</p>
+
+<p>
+<a href="https://github.com/libreswan/libreswan/issues/140">https://github.com/libreswan/libreswan/issues/140</a>
+</p>
+
+<p>
+<a href="https://github.com/hwdsl2/setup-ipsec-vpn/issues/380">https://github.com/hwdsl2/setup-ipsec-vpn/issues/380</a>
+</p>
+
+<p>
+<a href="https://github.com/hwdsl2/setup-ipsec-vpn/issues/380#issuecomment-389727804">https://github.com/hwdsl2/setup-ipsec-vpn/issues/380#issuecomment-389727804</a>
+</p>
+
+<p>
+这几个地方指出的是 linux kernel version 不支持的问题。
+所以要
+</p>
+
+<ul class="org-ul">
+<li>Option1: kernel 至 4.16 或以上</li>
+<li>Option2: kernel 至 4.9</li>
+</ul>
+
+<p>
+具体升级过程，参考其它文档
+</p>
+</div>
+</div>
+</div>
+</body>
+</html>

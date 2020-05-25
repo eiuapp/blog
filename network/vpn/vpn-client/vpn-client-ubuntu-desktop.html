@@ -6,7 +6,7 @@
 <!-- 2020-05-25 Mon 19:58 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>spacemacs layout</title>
+<title>ubuntu desktop as vpn client connect vpn server</title>
 <meta name="generator" content="Org mode" />
 <meta name="author" content="yunlong zeng" />
 <link rel="stylesheet" title="Standard" href="/html/style/worg.css" type="text/css" />
@@ -93,40 +93,128 @@ fathom('trackPageview');
 </script>
 </div>
 <div id="content">
-<h1 class="title">spacemacs layout</h1>
+<h1 class="title">ubuntu desktop as vpn client connect vpn server</h1>
 <div id="table-of-contents">
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#orgf83a7bc">delete layout</a>
+<li><a href="#orgbc256c3">ubuntu desktop connect vpn server</a>
 <ul>
-<li><a href="#orgab389b6">delete specific layout</a></li>
-<li><a href="#orgc14bd23">delete current layout</a></li>
+<li><a href="#org64dd196">vpn Identity</a></li>
+<li><a href="#orgf67269c">IPsec Settings</a>
+<ul>
+<li><a href="#org03dda9d"><code>General</code> 下</a></li>
+<li><a href="#org55f849c"><code>Advanced</code> 下</a></li>
+</ul>
+</li>
+<li><a href="#orgf8c9e2a">PPP Settings</a>
+<ul>
+<li><a href="#orge0aca30"><code>Authentication</code> 下</a></li>
+<li><a href="#org499a3c1"><code>Security and Compression</code> 下</a></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
 </div>
 </div>
-
-<div id="outline-container-orgf83a7bc" class="outline-2">
-<h2 id="orgf83a7bc">delete layout</h2>
-<div class="outline-text-2" id="text-orgf83a7bc">
-</div>
-<div id="outline-container-orgab389b6" class="outline-3">
-<h3 id="orgab389b6">delete specific layout</h3>
-<div class="outline-text-3" id="text-orgab389b6">
 <p>
-<code>SPC l X layout-name RTN</code>
+<a href="../index.html">{Back to site's index}</a>
+</p>
+
+<div id="outline-container-orgbc256c3" class="outline-2">
+<h2 id="orgbc256c3">ubuntu desktop connect vpn server</h2>
+<div class="outline-text-2" id="text-orgbc256c3">
+</div>
+<div id="outline-container-org64dd196" class="outline-3">
+<h3 id="org64dd196">vpn Identity</h3>
+<div class="outline-text-3" id="text-org64dd196">
+<p>
+settings =&gt; network =&gt; vpn =&gt; + =&gt; select "Layer 2 Tunneling Protocol(L2TP)"
+</p>
+
+<p>
+写入：
+</p>
+
+<div class="org-src-container">
+<pre class="src src-example">name: 随便写
+
+Gateway: 18.162.123.234 (your vpn server ip address)
+
+username: vpn03
+password: your-password
+
+NT Domain: 空
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgf67269c" class="outline-3">
+<h3 id="orgf67269c">IPsec Settings</h3>
+<div class="outline-text-3" id="text-orgf67269c">
+<p>
+click "IPsec Settings", show "IPsec tunnel to L2TP host" window,
+勾选 "Enable IPsec tunnel to L2TP host"(前面打勾),
+</p>
+</div>
+<div id="outline-container-org03dda9d" class="outline-4">
+<h4 id="org03dda9d"><code>General</code> 下</h4>
+<div class="outline-text-4" id="text-org03dda9d">
+<p>
+<code>Gateway ID</code> 为空,
+<code>Pre-shared key</code> 写入共享密码，比如服务端设置共享密码是"vpn", 那这里就写上"vpn"
 </p>
 </div>
 </div>
-
-<div id="outline-container-orgc14bd23" class="outline-3">
-<h3 id="orgc14bd23">delete current layout</h3>
-<div class="outline-text-3" id="text-orgc14bd23">
+<div id="outline-container-org55f849c" class="outline-4">
+<h4 id="org55f849c"><code>Advanced</code> 下</h4>
+<div class="outline-text-4" id="text-org55f849c">
 <p>
-switch to the delete layout, then <code>SPC l d</code> (function is: <code>spacemacs/layouts-ts-close</code>)
+<code>Phase1 Algorithms:</code> 写 <code>3des-sha1-modp 1024</code>
+<code>Phase2 Algorithms:</code> 写 <code>3des-sha1</code>
 </p>
+</div>
+</div>
+</div>
+<div id="outline-container-orgf8c9e2a" class="outline-3">
+<h3 id="orgf8c9e2a">PPP Settings</h3>
+<div class="outline-text-3" id="text-orgf8c9e2a">
+<p>
+click "PPP Settings", show "L2TP PPP Options" window,
+</p>
+</div>
+<div id="outline-container-orge0aca30" class="outline-4">
+<h4 id="orge0aca30"><code>Authentication</code> 下</h4>
+<div class="outline-text-4" id="text-orge0aca30">
+<p>
+勾选(前面打勾),
+</p>
+
+<div class="org-src-container">
+<pre class="src src-example">PAP, CHAP, MSCHAP, MSCHAPv2, EAP
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org499a3c1" class="outline-4">
+<h4 id="org499a3c1"><code>Security and Compression</code> 下</h4>
+<div class="outline-text-4" id="text-org499a3c1">
+<p>
+勾选(前面打勾),
+</p>
+
+<div class="org-src-container">
+<pre class="src src-example">Allow BSD data compression
+Allow Deflate data compression
+Use TCP header compression
+Use protocol field compression negotiation
+Use Address/Control compression
+</pre>
+</div>
+</div>
 </div>
 </div>
 </div>

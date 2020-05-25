@@ -6,7 +6,7 @@
 <!-- 2020-05-25 Mon 19:58 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>spacemacs layout</title>
+<title>mac as vpn client connect vpn server</title>
 <meta name="generator" content="Org mode" />
 <meta name="author" content="yunlong zeng" />
 <link rel="stylesheet" title="Standard" href="/html/style/worg.css" type="text/css" />
@@ -93,39 +93,67 @@ fathom('trackPageview');
 </script>
 </div>
 <div id="content">
-<h1 class="title">spacemacs layout</h1>
+<h1 class="title">mac as vpn client connect vpn server</h1>
 <div id="table-of-contents">
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#orgf83a7bc">delete layout</a>
+<li><a href="#orgd4cf66f">在mac上连接vpn服务器</a>
 <ul>
-<li><a href="#orgab389b6">delete specific layout</a></li>
-<li><a href="#orgc14bd23">delete current layout</a></li>
+<li><a href="#org5ccec59">加网络</a></li>
+<li><a href="#org4249ea8">设定服务顺序</a></li>
+<li><a href="#org3b28bca">在菜单栏中显示VPN状态</a></li>
 </ul>
 </li>
 </ul>
 </div>
 </div>
-
-<div id="outline-container-orgf83a7bc" class="outline-2">
-<h2 id="orgf83a7bc">delete layout</h2>
-<div class="outline-text-2" id="text-orgf83a7bc">
-</div>
-<div id="outline-container-orgab389b6" class="outline-3">
-<h3 id="orgab389b6">delete specific layout</h3>
-<div class="outline-text-3" id="text-orgab389b6">
 <p>
-<code>SPC l X layout-name RTN</code>
+<a href="../index.html">{Back to site's index}</a>
+</p>
+
+
+<div id="outline-container-orgd4cf66f" class="outline-2">
+<h2 id="orgd4cf66f">在mac上连接vpn服务器</h2>
+<div class="outline-text-2" id="text-orgd4cf66f">
+</div>
+<div id="outline-container-org5ccec59" class="outline-3">
+<h3 id="org5ccec59">加网络</h3>
+<div class="outline-text-3" id="text-org5ccec59">
+<p>
+网络，点左下角+号，接口选择VPN, VPN类型选择 L2TP/IPSec, 服务名称随意写
+</p>
+
+<p>
+配置：默认
+服务器地址：写VPN服务器地址
+帐户名称：写VPN服务器设置的账户名
+</p>
+
+<p>
+点击鉴定设置，其实就是写上账户名称对应的密码信息
+再设置共享密码：
+</p>
+</div>
+</div>
+<div id="outline-container-org4249ea8" class="outline-3">
+<h3 id="org4249ea8">设定服务顺序</h3>
+<div class="outline-text-3" id="text-org4249ea8">
+<p>
+网络界面, 左下角，设置按键，选择“设定服务顺序”，拖拉至第一位。
 </p>
 </div>
 </div>
 
-<div id="outline-container-orgc14bd23" class="outline-3">
-<h3 id="orgc14bd23">delete current layout</h3>
-<div class="outline-text-3" id="text-orgc14bd23">
+<div id="outline-container-org3b28bca" class="outline-3">
+<h3 id="org3b28bca">在菜单栏中显示VPN状态</h3>
+<div class="outline-text-3" id="text-org3b28bca">
 <p>
-switch to the delete layout, then <code>SPC l d</code> (function is: <code>spacemacs/layouts-ts-close</code>)
+点击确定后，回到网络界面，勾选 “在菜单栏中显示VPN状态”。
+</p>
+
+<p>
+然后，我们去菜单栏上连接吧。
 </p>
 </div>
 </div>

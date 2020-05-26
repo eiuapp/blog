@@ -6,7 +6,7 @@
 <!-- 2020-05-26 Tue 17:18 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>gcp ssh login</title>
+<title>network tcp</title>
 <meta name="generator" content="Org mode" />
 <meta name="author" content="yunlong zeng" />
 <link rel="stylesheet" title="Standard" href="/html/style/worg.css" type="text/css" />
@@ -93,15 +93,13 @@ fathom('trackPageview');
 </script>
 </div>
 <div id="content">
-<h1 class="title">gcp ssh login</h1>
+<h1 class="title">network tcp</h1>
 <div id="table-of-contents">
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#org1238811">复制公钥</a></li>
-<li><a href="#orgbb10d06">导入公钥</a></li>
-<li><a href="#org1ef06cc">本地通过私钥登录</a></li>
-<li><a href="#orgcfe1cc4">ref</a></li>
+<li><a href="#orgb255b6f">测试TCP和UDP端口的方法</a></li>
+<li><a href="#org9741ff7">nc -u test udp port</a></li>
 </ul>
 </div>
 </div>
@@ -109,66 +107,29 @@ fathom('trackPageview');
 <a href="../index.html">{Back to site's index}</a>
 </p>
 
-<p>
-公钥 ssh login gcp 实例
-</p>
-
-<div id="outline-container-org1238811" class="outline-2">
-<h2 id="org1238811">复制公钥</h2>
-<div class="outline-text-2" id="text-org1238811">
+<div id="outline-container-orgb255b6f" class="outline-2">
+<h2 id="orgb255b6f">测试TCP和UDP端口的方法</h2>
+<div class="outline-text-2" id="text-orgb255b6f">
 <div class="org-src-container">
-<pre class="src src-shell">$ cat myKey.pub
-ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQCjHKPaeglRVJzAhNq+W
-&#20013;&#38388;&#37096;&#20998;&#30465;&#30053;&#12290;&#12290;&#12290;
-dKx8sJ0Rw4kUqm2eU2vo8S5IEA0Nk2f7BtVGE8VOCHgmDbv2tLp9845UVp1 user@computer-name.local
-<span style="color: #579C4C; background-color: #292e34;"># </span><span style="color: #579C4C; background-color: #292e34;">&#25226;&#36825;&#38271;&#38271;&#30340;&#19968;&#27573;&#22797;&#21046;&#19979;&#26469;&#65292;&#25226;&#20854;&#20013;&#30340; user@computer-name.local &#25913;&#20026;&#20320;&#22312;&#27983;&#35272;&#22120; SSH &#30331;&#20837;&#20043;&#21518;&#30340;&#24403;&#21069;&#29992;&#25143;&#21517; ${whoami}</span>
-</pre>
-</div>
-
-<p>
-比如,我们要登陆的服务器的用户名是: <code>abc</code> , 则，把 <code>user@computer-name.local</code> 改为 <code>abc</code>
-</p>
-</div>
-</div>
-<div id="outline-container-orgbb10d06" class="outline-2">
-<h2 id="orgbb10d06">导入公钥</h2>
-<div class="outline-text-2" id="text-orgbb10d06">
-<div class="org-src-container">
-<pre class="src src-example"># 进入谷歌云平台页面 -&gt; 计算引擎 -&gt; 元数据 -&gt; SSH 密钥，粘贴保存
-# 谷歌就会把上面这段 public key 写入到 ~/.ssh/authorized_keys
-</pre>
-</div>
-
-<p>
-这里不会操作的话,看一下
-</p>
-<ul class="org-ul">
-<li><a href="https://zhuanlan.zhihu.com/p/55299163">https://zhuanlan.zhihu.com/p/55299163</a> ,有图</li>
-<li><a href="https://cloud.google.com/compute/docs/instances/adding-removing-ssh-keys#edit-ssh-metadata">https://cloud.google.com/compute/docs/instances/adding-removing-ssh-keys#edit-ssh-metadata</a></li>
-</ul>
-
-<p>
-metadata url: <a href="https://console.cloud.google.com/compute/metadata/sshKeys?_ga=2.94037918.2043841065.1590394040-1030834072.1590371959">https://console.cloud.google.com/compute/metadata/sshKeys?_ga=2.94037918.2043841065.1590394040-1030834072.1590371959</a>
-</p>
-</div>
-</div>
-
-<div id="outline-container-org1ef06cc" class="outline-2">
-<h2 id="org1ef06cc">本地通过私钥登录</h2>
-<div class="outline-text-2" id="text-org1ef06cc">
-<div class="org-src-container">
-<pre class="src src-shell">$ ssh -i myKey user@<span style="color: #339CDB;">35.189.175.199</span>
+<pre class="src src-shell">telnet ip port
 </pre>
 </div>
 </div>
 </div>
 
-<div id="outline-container-orgcfe1cc4" class="outline-2">
-<h2 id="orgcfe1cc4">ref</h2>
-<div class="outline-text-2" id="text-orgcfe1cc4">
-<ul class="org-ul">
-<li><a href="https://www.jianshu.com/p/57e85cf3e50b">https://www.jianshu.com/p/57e85cf3e50b</a></li>
-</ul>
+<div id="outline-container-org9741ff7" class="outline-2">
+<h2 id="org9741ff7">nc -u test udp port</h2>
+<div class="outline-text-2" id="text-org9741ff7">
+<p>
+<a href="https://blog.csdn.net/iw1210/article/details/51603772">https://blog.csdn.net/iw1210/article/details/51603772</a>
+</p>
+
+<div class="org-src-container">
+<pre class="src src-shell">&#926; ~ git:(ubuntu) &#9654; nc -vuz <span style="color: #339CDB;">34.92.143.223</span> <span style="color: #339CDB;">500</span>
+Connection to <span style="color: #339CDB;">34.92.143.223</span> <span style="color: #339CDB;">500</span> port [udp/isakmp] succeeded!
+&#926; ~ git:(ubuntu) &#9654;
+</pre>
+</div>
 </div>
 </div>
 </div>

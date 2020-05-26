@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2020-05-25 Mon 19:58 -->
+<!-- 2020-05-26 Tue 17:18 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>vpn index</title>
@@ -98,9 +98,25 @@ fathom('trackPageview');
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#orgc5fe8c3">(必看)配置</a></li>
-<li><a href="#orgeffab64">vpn client</a></li>
-<li><a href="#org7a0d856">vpn server</a></li>
+<li><a href="#orgcc96b49">(必看)配置</a>
+<ul>
+<li><a href="#orgd855d47">server</a>
+<ul>
+<li><a href="#org481078a">(推荐) GCP instance part</a></li>
+<li><a href="#orgb3fa2cd">(推荐)docker</a></li>
+<li><a href="#orge288c9e">gcp ubuntu vpn server</a></li>
+<li><a href="#org152b9cf">gcp centos vpn server</a></li>
+</ul>
+</li>
+<li><a href="#org05bcca6">client</a>
+<ul>
+<li><a href="#orgb0e1dad">(推荐) xauth</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#orge44073d">vpn client</a></li>
+<li><a href="#org7743b27">vpn server</a></li>
 </ul>
 </div>
 </div>
@@ -108,28 +124,98 @@ fathom('trackPageview');
 <a href="../index.html">{Back to site's index}</a>
 </p>
 
-<div id="outline-container-orgc5fe8c3" class="outline-2">
-<h2 id="orgc5fe8c3">(必看)配置</h2>
-<div class="outline-text-2" id="text-orgc5fe8c3">
+<div id="outline-container-orgcc96b49" class="outline-2">
+<h2 id="orgcc96b49">(必看)配置</h2>
+<div class="outline-text-2" id="text-orgcc96b49">
 <ul class="org-ul">
 <li><a href="https://github.com/hwdsl2/setup-ipsec-vpn">https://github.com/hwdsl2/setup-ipsec-vpn</a></li>
 <li><a href="https://github.com/hwdsl2/docker-ipsec-vpn-server">https://github.com/hwdsl2/docker-ipsec-vpn-server</a></li>
 </ul>
 </div>
+
+<div id="outline-container-orgd855d47" class="outline-3">
+<h3 id="orgd855d47">server</h3>
+<div class="outline-text-3" id="text-orgd855d47">
+</div>
+<div id="outline-container-org481078a" class="outline-4">
+<h4 id="org481078a">(推荐) GCP instance part</h4>
+<div class="outline-text-4" id="text-org481078a">
+<p>
+<a href="https://github.com/EchoZuo/Google-GCP-VPS">https://github.com/EchoZuo/Google-GCP-VPS</a>
+</p>
+
+<p>
+主要参考第1-6步，第7步后的操作改成下文的 docker 方式安装
+在创建并应用 firewall 时，
+</p>
+
+<ul class="org-ul">
+<li>目标 选择  网络中的所有实例</li>
+<li>目标 选择  网络中的所有实例</li>
+<li>目标 选择  网络中的所有实例</li>
+</ul>
+<p>
+(因为忘记配置firewall, 以及配置 firewall 时未选择实例，导致vpn server长时间未收
+到vpn client的请求)
+</p>
+</div>
+</div>
+<div id="outline-container-orgb3fa2cd" class="outline-4">
+<h4 id="orgb3fa2cd">(推荐)docker</h4>
+<div class="outline-text-4" id="text-orgb3fa2cd">
+<p>
+<a href="https://github.com/hwdsl2/docker-ipsec-vpn-server">https://github.com/hwdsl2/docker-ipsec-vpn-server</a>
+</p>
+</div>
+</div>
+<div id="outline-container-orge288c9e" class="outline-4">
+<h4 id="orge288c9e">gcp ubuntu vpn server</h4>
+<div class="outline-text-4" id="text-orge288c9e">
+<p>
+<a href="https://medium.com/%E6%BE%84%E6%80%9D%E8%A8%AD%E8%A8%88-%E6%B2%88%E6%80%9D%E4%B8%96%E7%95%8C%E7%9A%84%E8%A7%A3%E6%B1%BA%E6%96%B9%E6%A1%88/google-cloud-platform-%E6%90%AD%E5%BB%BA%E5%80%8B%E4%BA%BAvpn-358ccdbeca40">https://medium.com/%E6%BE%84%E6%80%9D%E8%A8%AD%E8%A8%88-%E6%B2%88%E6%80%9D%E4%B8%96%E7%95%8C%E7%9A%84%E8%A7%A3%E6%B1%BA%E6%96%B9%E6%A1%88/google-cloud-platform-%E6%90%AD%E5%BB%BA%E5%80%8B%E4%BA%BAvpn-358ccdbeca40</a>
+</p>
+</div>
 </div>
 
-<div id="outline-container-orgeffab64" class="outline-2">
-<h2 id="orgeffab64">vpn client</h2>
-<div class="outline-text-2" id="text-orgeffab64">
+<div id="outline-container-org152b9cf" class="outline-4">
+<h4 id="org152b9cf">gcp centos vpn server</h4>
+<div class="outline-text-4" id="text-org152b9cf">
+<p>
+<a href="https://suchenrain.github.io/en/posts/37388/">https://suchenrain.github.io/en/posts/37388/</a>
+</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org05bcca6" class="outline-3">
+<h3 id="org05bcca6">client</h3>
+<div class="outline-text-3" id="text-org05bcca6">
+<p>
+<a href="https://github.com/hwdsl2/setup-ipsec-vpn/blob/master/README-zh.md#%E4%B8%8B%E4%B8%80%E6%AD%A5">https://github.com/hwdsl2/setup-ipsec-vpn/blob/master/README-zh.md#%E4%B8%8B%E4%B8%80%E6%AD%A5</a>
+</p>
+</div>
+<div id="outline-container-orgb0e1dad" class="outline-4">
+<h4 id="orgb0e1dad">(推荐) xauth</h4>
+<div class="outline-text-4" id="text-orgb0e1dad">
+<p>
+<a href="https://github.com/hwdsl2/setup-ipsec-vpn/blob/master/docs/clients-xauth-zh.md">https://github.com/hwdsl2/setup-ipsec-vpn/blob/master/docs/clients-xauth-zh.md</a>
+</p>
+</div>
+</div>
+</div>
+</div>
+<div id="outline-container-orge44073d" class="outline-2">
+<h2 id="orge44073d">vpn client</h2>
+<div class="outline-text-2" id="text-orge44073d">
 <p>
 <a href="./vpn-client/index.html">{vpn client}</a>
 </p>
 </div>
 </div>
 
-<div id="outline-container-org7a0d856" class="outline-2">
-<h2 id="org7a0d856">vpn server</h2>
-<div class="outline-text-2" id="text-org7a0d856">
+<div id="outline-container-org7743b27" class="outline-2">
+<h2 id="org7743b27">vpn server</h2>
+<div class="outline-text-2" id="text-org7743b27">
 <p>
 <a href="./vpn-server/index.html">{vpn server}</a>
 </p>

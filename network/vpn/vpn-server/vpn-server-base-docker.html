@@ -1,0 +1,204 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<!-- 2020-05-26 Tue 17:18 -->
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>vpn server base docker</title>
+<meta name="generator" content="Org mode" />
+<meta name="author" content="yunlong zeng" />
+<link rel="stylesheet" title="Standard" href="/html/style/worg.css" type="text/css" />
+<link rel="alternate stylesheet" title="Zenburn" href="/html/style/worg-zenburn.css" type="text/css" />
+<link rel="alternate stylesheet" title="Classic" href="/html/style/worg-classic.css" type="text/css" />
+<link rel="SHORTCUT ICON" href="/html/style/org-mode-unicorn.ico" type="image/x-icon" />
+<link rel="icon" href="/html/style/org-mode-unicorn.ico" type="image/ico" />
+<script type="text/javascript">
+/*
+@licstart  The following is the entire license notice for the
+JavaScript code in this tag.
+
+Copyright (C) 2012-2019 Free Software Foundation, Inc.
+
+The JavaScript code in this tag is free software: you can
+redistribute it and/or modify it under the terms of the GNU
+General Public License (GNU GPL) as published by the Free Software
+Foundation, either version 3 of the License, or (at your option)
+any later version.  The code is distributed WITHOUT ANY WARRANTY;
+without even the implied warranty of MERCHANTABILITY or FITNESS
+FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
+
+As additional permission under GNU GPL version 3 section 7, you
+may distribute non-source (e.g., minimized or compacted) forms of
+that code without the copy of the GNU GPL normally required by
+section 4, provided you include this license notice and a URL
+through which recipients can access the Corresponding Source.
+
+
+@licend  The above is the entire license notice
+for the JavaScript code in this tag.
+*/
+<!--/*--><![CDATA[/*><!--*/
+ function CodeHighlightOn(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(null != target) {
+     elem.cacheClassElem = elem.className;
+     elem.cacheClassTarget = target.className;
+     target.className = "code-highlighted";
+     elem.className   = "code-highlighted";
+   }
+ }
+ function CodeHighlightOff(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(elem.cacheClassElem)
+     elem.className = elem.cacheClassElem;
+   if(elem.cacheClassTarget)
+     target.className = elem.cacheClassTarget;
+ }
+/*]]>*///-->
+</script>
+</head>
+<body>
+<div id="preamble" class="status">
+<script type="text/javascript">
+  document.addEventListener('DOMContentLoaded',function() {
+      document.getElementById("table-of-contents").onclick = function() {
+          var elem = document.getElementById("text-table-of-contents");
+          elem.style.display = elem.style.display == "block" ? "none" : "block";
+      }
+  });
+
+  var url = document.location.href;
+  var orgsource = url.substring(0, url.lastIndexOf("."))+".org.html";
+  function show_org_source(){
+      document.location.href = orgsource;
+  }
+</script>
+
+<script>
+(function(f, a, t, h, o, m){
+	a[h]=a[h]||function(){
+		(a[h].q=a[h].q||[]).push(arguments)
+	};
+	o=f.createElement('script'),
+	m=f.getElementsByTagName('script')[0];
+	o.async=1; o.src=t; o.id='fathom-script';
+	m.parentNode.insertBefore(o,m)
+})(document, window, '//stats.orgmode.org/tracker.js', 'fathom');
+fathom('set', 'siteId', 'NWSQJ');
+fathom('trackPageview');
+</script>
+</div>
+<div id="content">
+<h1 class="title">vpn server base docker</h1>
+<div id="table-of-contents">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#org6daa32f">logs</a>
+<ul>
+<li><a href="#org167c51a">once, vpn client connect vpn server, then logs show:</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+<p>
+<a href="../index.html">{Back to site's index}</a>
+</p>
+
+<p>
+<a href="https://github.com/hwdsl2/docker-ipsec-vpn-server">https://github.com/hwdsl2/docker-ipsec-vpn-server</a>
+</p>
+
+<div id="outline-container-org6daa32f" class="outline-2">
+<h2 id="org6daa32f">logs</h2>
+<div class="outline-text-2" id="text-org6daa32f">
+<div class="org-src-container">
+<pre class="src src-shell">&#10140;  ~ docker logs -f ipsec-vpn-server
+
+Trying to auto discover IP of this server...
+
+================================================
+
+IPsec VPN server is now ready for use!
+
+Connect to your new VPN with these details:
+
+Server IP: your_ip
+IPsec PSK: your_psk
+Username: your_username
+Password: your_password
+
+Write these down. You<span style="color: #daa520;">'ll need them to connect!</span>
+
+<span style="color: #daa520;">Important notes:   https://git.io/vpnnotes2</span>
+<span style="color: #daa520;">Setup VPN clients: https://git.io/vpnclients</span>
+
+<span style="color: #daa520;">================================================</span>
+
+<span style="color: #daa520;">Redirecting to: /etc/init.d/ipsec start</span>
+<span style="color: #daa520;">Starting pluto IKE daemon for IPsec: .</span>
+<span style="color: #daa520;">xl2tpd[1]: Not looking for kernel SAref support.</span>
+<span style="color: #daa520;">xl2tpd[1]: Using l2tp kernel support.</span>
+<span style="color: #daa520;">xl2tpd[1]: xl2tpd version xl2tpd-1.3.12 started on 2d71a508a246 PID:1</span>
+<span style="color: #daa520;">xl2tpd[1]: Written by Mark Spencer, Copyright (C) 1998, Adtran, Inc.</span>
+<span style="color: #daa520;">xl2tpd[1]: Forked by Scott Balmos and David Stipp, (C) 2001</span>
+<span style="color: #daa520;">xl2tpd[1]: Inherited by Jeff McAdams, (C) 2002</span>
+<span style="color: #daa520;">xl2tpd[1]: Forked again by Xelerance (www.xelerance.com) (C) 2006-2016</span>
+<span style="color: #daa520;">xl2tpd[1]: Listening on IP address 0.0.0.0, port 1701</span>
+
+</pre>
+</div>
+
+<p>
+这时，表示服务已在ready状态。
+</p>
+</div>
+
+
+<div id="outline-container-org167c51a" class="outline-3">
+<h3 id="org167c51a">once, vpn client connect vpn server, then logs show:</h3>
+<div class="outline-text-3" id="text-org167c51a">
+<div class="org-src-container">
+<pre class="src src-shell">
+...
+  xl2tpd[<span style="color: #339CDB;">1</span>]: Inherited by Jeff McAdams, (C) <span style="color: #339CDB;">2002</span>
+  xl2tpd[<span style="color: #339CDB;">1</span>]: Forked again by Xelerance (www.xelerance.com) (C) <span style="color: #339CDB;">2006-2016</span>
+  xl2tpd[<span style="color: #339CDB;">1</span>]: Listening on IP address <span style="color: #339CDB;">0.0.0.0,</span> port <span style="color: #339CDB;">1701</span>
+
+
+  xl2tpd[<span style="color: #339CDB;">1</span>]: Connection established to <span style="color: #339CDB;">112.97.54.7,</span> <span style="color: #339CDB;">63471.</span>  Local: <span style="color: #339CDB;">55261,</span> Remote: <span style="color: #339CDB;">20</span> (<span style="color: #d4d4d4;">ref</span>=<span style="color: #339CDB;">0/0</span>).  LNS session is <span style="color: #daa520;">'default'</span>
+  xl2tpd[<span style="color: #339CDB;">1</span>]: start_pppd: I<span style="color: #daa520;">'m running:</span>
+<span style="color: #daa520;">  xl2tpd[1]: "/usr/sbin/pppd"</span>
+<span style="color: #daa520;">  xl2tpd[1]: "plugin"</span>
+<span style="color: #daa520;">  xl2tpd[1]: "pppol2tp.so"</span>
+<span style="color: #daa520;">  xl2tpd[1]: "pppol2tp"</span>
+<span style="color: #daa520;">  xl2tpd[1]: "7"</span>
+<span style="color: #daa520;">  xl2tpd[1]: "pppol2tp_lns_mode"</span>
+<span style="color: #daa520;">  xl2tpd[1]: "pppol2tp_tunnel_id"</span>
+<span style="color: #daa520;">  xl2tpd[1]: "55261"</span>
+<span style="color: #daa520;">  xl2tpd[1]: "pppol2tp_session_id"</span>
+<span style="color: #daa520;">  xl2tpd[1]: "55741"</span>
+<span style="color: #daa520;">  xl2tpd[1]: "passive"</span>
+<span style="color: #daa520;">  xl2tpd[1]: "nodetach"</span>
+<span style="color: #daa520;">  xl2tpd[1]: "192.168.42.1:192.168.42.10"</span>
+<span style="color: #daa520;">  xl2tpd[1]: "refuse-pap"</span>
+<span style="color: #daa520;">  xl2tpd[1]: "auth"</span>
+<span style="color: #daa520;">  xl2tpd[1]: "require-chap"</span>
+<span style="color: #daa520;">  xl2tpd[1]: "name"</span>
+<span style="color: #daa520;">  xl2tpd[1]: "l2tpd"</span>
+<span style="color: #daa520;">  xl2tpd[1]: "file"</span>
+<span style="color: #daa520;">  xl2tpd[1]: "/etc/ppp/options.xl2tpd"</span>
+<span style="color: #daa520;">  xl2tpd[1]: Call established with 112.97.54.7, PID: 281, Local: 55741, Remote: 6492, Serial: 1</span>
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+</body>
+</html>

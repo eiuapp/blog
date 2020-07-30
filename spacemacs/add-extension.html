@@ -3,12 +3,12 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2020-05-25 Mon 19:58 -->
+<!-- 2020-07-30 Thu 16:11 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>emacs add extension</title>
 <meta name="generator" content="Org mode" />
-<meta name="author" content="yunlong zeng" />
+<meta name="author" content="a" />
 <link rel="stylesheet" title="Standard" href="/html/style/worg.css" type="text/css" />
 <link rel="alternate stylesheet" title="Zenburn" href="/html/style/worg-zenburn.css" type="text/css" />
 <link rel="alternate stylesheet" title="Classic" href="/html/style/worg-classic.css" type="text/css" />
@@ -98,11 +98,11 @@ fathom('trackPageview');
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#orge90bfd6">how to add extension for emacs or spacemacs</a>
+<li><a href="#orga2a9b7d">how to add extension for emacs or spacemacs</a>
 <ul>
-<li><a href="#org0bd6c82">env</a></li>
-<li><a href="#orgf5b5a90">add git submodule</a></li>
-<li><a href="#org82bb8ef">load file</a></li>
+<li><a href="#org4213df0">env</a></li>
+<li><a href="#org33086cb">add git submodule</a></li>
+<li><a href="#org299c513">load file</a></li>
 </ul>
 </li>
 </ul>
@@ -113,13 +113,13 @@ fathom('trackPageview');
 </p>
 
 
-<div id="outline-container-orge90bfd6" class="outline-2">
-<h2 id="orge90bfd6">how to add extension for emacs or spacemacs</h2>
-<div class="outline-text-2" id="text-orge90bfd6">
+<div id="outline-container-orga2a9b7d" class="outline-2">
+<h2 id="orga2a9b7d">how to add extension for emacs or spacemacs</h2>
+<div class="outline-text-2" id="text-orga2a9b7d">
 </div>
-<div id="outline-container-org0bd6c82" class="outline-3">
-<h3 id="org0bd6c82">env</h3>
-<div class="outline-text-3" id="text-org0bd6c82">
+<div id="outline-container-org4213df0" class="outline-3">
+<h3 id="org4213df0">env</h3>
+<div class="outline-text-3" id="text-org4213df0">
 <p>
 example: i want to 将默认Visual Studio Code Dark +主题完整移植至Emacs
 </p>
@@ -130,9 +130,9 @@ resource: <a href="https://github.com/ianpan870102/vscode-dark-emacs-theme">http
 </div>
 </div>
 
-<div id="outline-container-orgf5b5a90" class="outline-3">
-<h3 id="orgf5b5a90">add git submodule</h3>
-<div class="outline-text-3" id="text-orgf5b5a90">
+<div id="outline-container-org33086cb" class="outline-3">
+<h3 id="org33086cb">add git submodule</h3>
+<div class="outline-text-3" id="text-org33086cb">
 <div class="org-src-container">
 <pre class="src src-shell"><span style="color: #d4d4d4;">cd</span> ~/.spacemacs.d/
 git submodule add https://github.com/ianpan870102/vscode-dark-emacs-theme site-lisp/extensions/vscode-dark-emacs-theme
@@ -141,19 +141,19 @@ git submodule add https://github.com/ianpan870102/vscode-dark-emacs-theme site-l
 </div>
 </div>
 
-<div id="outline-container-org82bb8ef" class="outline-3">
-<h3 id="org82bb8ef">load file</h3>
-<div class="outline-text-3" id="text-org82bb8ef">
+<div id="outline-container-org299c513" class="outline-3">
+<h3 id="org299c513">load file</h3>
+<div class="outline-text-3" id="text-org299c513">
 <p>
 在配置文件中加入
 </p>
 
 <div class="org-src-container">
-<pre class="src src-emacs-lisp"><span style="color: #579C4C; background-color: #292e34;">;; </span><span style="color: #579C4C; background-color: #292e34;">start use vscode-dark-emacs-theme</span>
-<span style="color: #579C4C; background-color: #292e34;">;; </span><span style="color: #579C4C; background-color: #292e34;">dir: site-lisp/extensions/vscode-dark-emacs-theme</span>
+<pre class="src src-emacs-lisp"><span style="color: #579C4C;">;; </span><span style="color: #579C4C;">start use vscode-dark-emacs-theme</span>
+<span style="color: #579C4C;">;; </span><span style="color: #579C4C;">dir: site-lisp/extensions/vscode-dark-emacs-theme</span>
 (add-to-list 'custom-theme-load-path <span style="color: #daa520;">"~/.spacemacs.d/site-lisp/extensions/vscode-dark-emacs-theme/"</span>)
 (load-theme 'vscode-dark t)
-<span style="color: #579C4C; background-color: #292e34;">;; </span><span style="color: #579C4C; background-color: #292e34;">end use vscode-dark-emacs-theme</span>
+<span style="color: #579C4C;">;; </span><span style="color: #579C4C;">end use vscode-dark-emacs-theme</span>
 </pre>
 </div>
 

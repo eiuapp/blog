@@ -3,12 +3,12 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2020-04-15 Wed 09:55 -->
+<!-- 2020-07-30 Thu 16:12 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>emacs install</title>
 <meta name="generator" content="Org mode" />
-<meta name="author" content="yunlong zeng" />
+<meta name="author" content="a" />
 <link rel="stylesheet" title="Standard" href="/html/style/worg.css" type="text/css" />
 <link rel="alternate stylesheet" title="Zenburn" href="/html/style/worg-zenburn.css" type="text/css" />
 <link rel="alternate stylesheet" title="Classic" href="/html/style/worg-classic.css" type="text/css" />
@@ -98,14 +98,14 @@ fathom('trackPageview');
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#org0e70882">install 26.3 Dependencies</a></li>
-<li><a href="#orge48d680">update emacs version from 26.1 to 26.3</a>
+<li><a href="#orgd880c70">install 26.3 Dependencies</a></li>
+<li><a href="#orge2cce7c">update emacs version from 26.1 to 26.3</a>
 <ul>
-<li><a href="#orge7ae66b">REF</a></li>
-<li><a href="#org939671a">安装 26.3 后，重启了电脑，报错误</a></li>
+<li><a href="#org35f0fdc">REF</a></li>
+<li><a href="#orgf57309f">安装 26.3 后，重启了电脑，报错误</a></li>
 </ul>
 </li>
-<li><a href="#org713bb3f">configure: error: no acceptable C compiler found in $PATH</a></li>
+<li><a href="#org7bc4640">configure: error: no acceptable C compiler found in $PATH</a></li>
 </ul>
 </div>
 </div>
@@ -113,9 +113,9 @@ fathom('trackPageview');
 <a href="../index.html">{Back to site's index}</a>
 </p>
 
-<div id="outline-container-org0e70882" class="outline-2">
-<h2 id="org0e70882">install 26.3 Dependencies</h2>
-<div class="outline-text-2" id="text-org0e70882">
+<div id="outline-container-orgd880c70" class="outline-2">
+<h2 id="orgd880c70">install 26.3 Dependencies</h2>
+<div class="outline-text-2" id="text-orgd880c70">
 <p>
 <a href="http://ergoemacs.org/emacs/building_emacs_on_linux.html">http://ergoemacs.org/emacs/building_emacs_on_linux.html</a>
 </p>
@@ -128,9 +128,9 @@ sudo apt-get build-dep emacs25
 </div>
 </div>
 
-<div id="outline-container-orge48d680" class="outline-2">
-<h2 id="orge48d680">update emacs version from 26.1 to 26.3</h2>
-<div class="outline-text-2" id="text-orge48d680">
+<div id="outline-container-orge2cce7c" class="outline-2">
+<h2 id="orge2cce7c">update emacs version from 26.1 to 26.3</h2>
+<div class="outline-text-2" id="text-orge2cce7c">
 <p>
 download address is :
 </p>
@@ -144,37 +144,37 @@ download address is :
 <pre class="src src-shell">wget -O ~/Downloads/emacs-26.3.tar.xz http://mirrors.nju.edu.cn/gnu/emacs/emacs-26.3.tar.xz
 sudo apt-get build-dep emacs
 tar xf emacs-26.3.tar.xz
-<span style="color: #4f97d7;">cd</span> emacs-26.3  <span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">&#36827;&#20837;&#23433;&#35013;&#30446;&#24405;</span>
+<span style="color: #d4d4d4;">cd</span> emacs-26.3  <span style="color: #579C4C;"># </span><span style="color: #579C4C;">&#36827;&#20837;&#23433;&#35013;&#30446;&#24405;</span>
 ./configure
 make
 sudo make install
-<span style="color: #4f97d7;">which</span> emacs
+<span style="color: #d4d4d4;">which</span> emacs
 emacs --version
 </pre>
 </div>
 </div>
 
-<div id="outline-container-orge7ae66b" class="outline-3">
-<h3 id="orge7ae66b">REF</h3>
-<div class="outline-text-3" id="text-orge7ae66b">
+<div id="outline-container-org35f0fdc" class="outline-3">
+<h3 id="org35f0fdc">REF</h3>
+<div class="outline-text-3" id="text-org35f0fdc">
 <ul class="org-ul">
 <li><a href="https://www.linuxidc.com/Linux/2019-09/160451.htm">https://www.linuxidc.com/Linux/2019-09/160451.htm</a></li>
 </ul>
 </div>
 </div>
 
-<div id="outline-container-org939671a" class="outline-3">
-<h3 id="org939671a">安装 26.3 后，重启了电脑，报错误</h3>
-<div class="outline-text-3" id="text-org939671a">
+<div id="outline-container-orgf57309f" class="outline-3">
+<h3 id="orgf57309f">安装 26.3 后，重启了电脑，报错误</h3>
+<div class="outline-text-3" id="text-orgf57309f">
 <p>
 没重启电脑的情况下，可以使用. 安装 26.3 后，重启了电脑，就报下面这个错误
 </p>
 
 <div class="org-src-container">
 <pre class="src src-shell">Eager macro-expansion failure: (error <span style="color: #daa520;">"File &#8216;/usr/local/share/emacs/26.3/lisp/emacs-lisp/advice.elc&#8217; was not compiled in Emacs"</span>)
-Eager macro-expansion failure: (error <span style="color: #daa520;">"File &#8216;/usr/local/share/emacs/26.3/lisp/emacs-lisp/easy-mmode.elc&#8217; was not compiled in Emacs"</span>) [<span style="color: #a45bad;">2</span> times]
-define-minor-mode: File &#8216;/usr/local/share/emacs/26.3/lisp/emacs-lisp/debug.elc&#8217; was not compiled<span style="color: #00bfff; font-weight: bold;"> in</span> Emacs
-mwheel-scroll: End of buffer [<span style="color: #a45bad;">4</span> times]
+Eager macro-expansion failure: (error <span style="color: #daa520;">"File &#8216;/usr/local/share/emacs/26.3/lisp/emacs-lisp/easy-mmode.elc&#8217; was not compiled in Emacs"</span>) [2 times]
+define-minor-mode: File &#8216;/usr/local/share/emacs/26.3/lisp/emacs-lisp/debug.elc&#8217; was not compiled<span style="color: #00bfff;"> in</span> Emacs
+mwheel-scroll: End of buffer [4 times]
 </pre>
 </div>
 
@@ -187,9 +187,9 @@ mwheel-scroll: End of buffer [<span style="color: #a45bad;">4</span> times]
 </div>
 
 
-<div id="outline-container-org713bb3f" class="outline-2">
-<h2 id="org713bb3f">configure: error: no acceptable C compiler found in $PATH</h2>
-<div class="outline-text-2" id="text-org713bb3f">
+<div id="outline-container-org7bc4640" class="outline-2">
+<h2 id="org7bc4640">configure: error: no acceptable C compiler found in $PATH</h2>
+<div class="outline-text-2" id="text-org7bc4640">
 <p>
 就是 gcc not found
 找到 <a href="https://www.linuxidc.com/Linux/2019-06/159059.htm">https://www.linuxidc.com/Linux/2019-06/159059.htm</a>， 发现没有必要。我直接回到

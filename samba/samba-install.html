@@ -3,12 +3,12 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2020-04-15 Wed 09:56 -->
+<!-- 2020-07-30 Thu 16:13 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>samba</title>
 <meta name="generator" content="Org mode" />
-<meta name="author" content="yunlong zeng" />
+<meta name="author" content="a" />
 <link rel="stylesheet" title="Standard" href="/html/style/worg.css" type="text/css" />
 <link rel="alternate stylesheet" title="Zenburn" href="/html/style/worg-zenburn.css" type="text/css" />
 <link rel="alternate stylesheet" title="Classic" href="/html/style/worg-classic.css" type="text/css" />
@@ -98,14 +98,14 @@ fathom('trackPageview');
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#org0f8797b">Ubuntu下samba配置和使用</a>
+<li><a href="#org7799645">Ubuntu下samba配置和使用</a>
 <ul>
-<li><a href="#orgfc27797">/etc/samba/smb.conf</a></li>
-<li><a href="#org1ac1cfb">如果配置不正确，会报错的</a></li>
-<li><a href="#org928eb6b">提示不可写</a></li>
-<li><a href="#org0a996f4">当windows连接时</a>
+<li><a href="#org6fc83d9">/etc/samba/smb.conf</a></li>
+<li><a href="#org4f231d0">如果配置不正确，会报错的</a></li>
+<li><a href="#org29b810e">提示不可写</a></li>
+<li><a href="#org15e0167">当windows连接时</a>
 <ul>
-<li><a href="#orga9af1a5">出现　~你不能访问此共享文件夹，因为你组织的安全策略阻止未经身份验证的来宾访问~ 时</a></li>
+<li><a href="#orgce67244">出现　~你不能访问此共享文件夹，因为你组织的安全策略阻止未经身份验证的来宾访问~ 时</a></li>
 </ul>
 </li>
 </ul>
@@ -117,9 +117,9 @@ fathom('trackPageview');
 <a href="../index.html">{Back to site's index}</a>
 </p>
 
-<div id="outline-container-org0f8797b" class="outline-2">
-<h2 id="org0f8797b">Ubuntu下samba配置和使用</h2>
-<div class="outline-text-2" id="text-org0f8797b">
+<div id="outline-container-org7799645" class="outline-2">
+<h2 id="org7799645">Ubuntu下samba配置和使用</h2>
+<div class="outline-text-2" id="text-org7799645">
 <p>
 <a href="https://jingyan.baidu.com/article/3a2f7c2ed314ef26afd611a1.html">https://jingyan.baidu.com/article/3a2f7c2ed314ef26afd611a1.html</a>
 </p>
@@ -129,8 +129,8 @@ fathom('trackPageview');
 <pre class="src src-shell">sudo apt-get install samba samba-common -y
 sudo useradd share
 sudo mkdir -p /home/share/share
-sudo chmod <span style="color: #a45bad;">777</span> /home/share
-sudo chmod <span style="color: #a45bad;">777</span> /home/share/share
+sudo chmod 777 /home/share
+sudo chmod 777 /home/share/share
 sudo cp /etc/samba/smb.conf /etc/samba/smb.conf.bak
 sudo vi /etc/samba/smb.conf
 sudo smbpasswd -a share
@@ -140,15 +140,15 @@ sudo service smbd restart
 </div>
 
 
-<div id="outline-container-orgfc27797" class="outline-3">
-<h3 id="orgfc27797">/etc/samba/smb.conf</h3>
-<div class="outline-text-3" id="text-orgfc27797">
+<div id="outline-container-org6fc83d9" class="outline-3">
+<h3 id="org6fc83d9">/etc/samba/smb.conf</h3>
+<div class="outline-text-3" id="text-org6fc83d9">
 <p>
 一个正确配置示例：
 </p>
 
 <div class="org-src-container">
-<pre class="src src-example">[share]
+<pre class="src src-example">[share] 
    comment = share folder
    browseable = yes
    path = /home/share/share
@@ -165,24 +165,24 @@ sudo service smbd restart
 </div>
 </div>
 
-<div id="outline-container-org1ac1cfb" class="outline-3">
-<h3 id="org1ac1cfb">如果配置不正确，会报错的</h3>
-<div class="outline-text-3" id="text-org1ac1cfb">
+<div id="outline-container-org4f231d0" class="outline-3">
+<h3 id="org4f231d0">如果配置不正确，会报错的</h3>
+<div class="outline-text-3" id="text-org4f231d0">
 <div class="org-src-container">
 <pre class="src src-shell">ubuntu@utuntu:~$ sudo systemctl status smbd.service
 &#9679; smbd.service - Samba SMB Daemon
    Loaded: loaded (/lib/systemd/system/smbd.service; enabled; vendor preset: enabled)
-   Active: failed (Result: exit-code) since Tue <span style="color: #a45bad;">2020-04-07</span> <span style="color: #a45bad;">17:18:51</span> CST; <span style="color: #a45bad;">14s</span> ago
-     Docs: man:smbd(<span style="color: #a45bad;">8</span>)
-           man:samba(<span style="color: #a45bad;">7</span>)
-           man:smb.conf(<span style="color: #a45bad;">5</span>)
-  Process: <span style="color: #a45bad;">20722</span> <span style="color: #7590db;">ExecStart</span>=/usr/sbin/smbd --foreground --no-process-group $<span style="color: #7590db;">SMBDOPTIONS</span> (<span style="color: #7590db;">code</span>=exited, <span style="color: #7590db;">status</span>=<span style="color: #a45bad;">1/FAILURE</span>)
- Main PID: <span style="color: #a45bad;">20722</span> (<span style="color: #7590db;">code</span>=exited, <span style="color: #7590db;">status</span>=<span style="color: #a45bad;">1/FAILURE</span>)
+   Active: failed (Result: exit-code) since Tue 2020-04-07 17:18:51 CST; 14s ago
+     Docs: man:smbd(8)
+           man:samba(7)
+           man:smb.conf(5)
+  Process: 20722 <span style="color: #d4d4d4;">ExecStart</span>=/usr/sbin/smbd --foreground --no-process-group $<span style="color: #d4d4d4;">SMBDOPTIONS</span> (<span style="color: #d4d4d4;">code</span>=exited, <span style="color: #d4d4d4;">status</span>=1/FAILURE)
+ Main PID: 20722 (<span style="color: #d4d4d4;">code</span>=exited, <span style="color: #d4d4d4;">status</span>=1/FAILURE)
 
-Apr <span style="color: #a45bad;">07</span> <span style="color: #a45bad;">17:18:51</span> utuntu systemd[<span style="color: #a45bad;">1</span>]: Starting Samba SMB Daemon...
-Apr <span style="color: #a45bad;">07</span> <span style="color: #a45bad;">17:18:51</span> utuntu systemd[<span style="color: #a45bad;">1</span>]: smbd.service: Main process exited, <span style="color: #7590db;">code</span>=exited, <span style="color: #7590db;">status</span>=<span style="color: #a45bad;">1/FAILURE</span>
-Apr <span style="color: #a45bad;">07</span> <span style="color: #a45bad;">17:18:51</span> utuntu systemd[<span style="color: #a45bad;">1</span>]: smbd.service: Failed with result <span style="color: #daa520;">'exit-code'</span>.
-Apr <span style="color: #a45bad;">07</span> <span style="color: #a45bad;">17:18:51</span> utuntu systemd[<span style="color: #a45bad;">1</span>]: Failed to start Samba SMB Daemon.
+Apr 07 17:18:51 utuntu systemd[1]: Starting Samba SMB Daemon...
+Apr 07 17:18:51 utuntu systemd[1]: smbd.service: Main process exited, <span style="color: #d4d4d4;">code</span>=exited, <span style="color: #d4d4d4;">status</span>=1/FAILURE
+Apr 07 17:18:51 utuntu systemd[1]: smbd.service: Failed with result <span style="color: #daa520;">'exit-code'</span>.
+Apr 07 17:18:51 utuntu systemd[1]: Failed to start Samba SMB Daemon.
 ubuntu@utuntu:~$
 </pre>
 </div>
@@ -197,9 +197,9 @@ sudo service smbd restart
 </div>
 
 
-<div id="outline-container-org928eb6b" class="outline-3">
-<h3 id="org928eb6b">提示不可写</h3>
-<div class="outline-text-3" id="text-org928eb6b">
+<div id="outline-container-org29b810e" class="outline-3">
+<h3 id="org29b810e">提示不可写</h3>
+<div class="outline-text-3" id="text-org29b810e">
 <p>
 使用的服务器目录文件的所有者必须是配置中的用户
 如果遇到提示不可写的话可以在配置中加入writable=yes
@@ -207,17 +207,17 @@ sudo service smbd restart
 </div>
 </div>
 
-<div id="outline-container-org0a996f4" class="outline-3">
-<h3 id="org0a996f4">当windows连接时</h3>
-<div class="outline-text-3" id="text-org0a996f4">
+<div id="outline-container-org15e0167" class="outline-3">
+<h3 id="org15e0167">当windows连接时</h3>
+<div class="outline-text-3" id="text-org15e0167">
 <p>
 <code>win+R</code>, <code>\\ip</code>, (如：~\\192.168.168.137~), 输入 samba user, samba passwd就可以了。
 </p>
 </div>
 
-<div id="outline-container-orga9af1a5" class="outline-4">
-<h4 id="orga9af1a5">出现　~你不能访问此共享文件夹，因为你组织的安全策略阻止未经身份验证的来宾访问~ 时</h4>
-<div class="outline-text-4" id="text-orga9af1a5">
+<div id="outline-container-orgce67244" class="outline-4">
+<h4 id="orgce67244">出现　~你不能访问此共享文件夹，因为你组织的安全策略阻止未经身份验证的来宾访问~ 时</h4>
+<div class="outline-text-4" id="text-orgce67244">
 <p>
 <a href="https://www.jianshu.com/p/79332fd23bd3">https://www.jianshu.com/p/79332fd23bd3</a></p>
 </div>

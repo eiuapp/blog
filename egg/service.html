@@ -3,12 +3,12 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2020-04-30 Thu 18:49 -->
+<!-- 2020-07-30 Thu 16:11 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>egg service</title>
 <meta name="generator" content="Org mode" />
-<meta name="author" content="yunlong zeng" />
+<meta name="author" content="a" />
 <link rel="stylesheet" title="Standard" href="/html/style/worg.css" type="text/css" />
 <link rel="alternate stylesheet" title="Zenburn" href="/html/style/worg-zenburn.css" type="text/css" />
 <link rel="alternate stylesheet" title="Classic" href="/html/style/worg-classic.css" type="text/css" />
@@ -98,11 +98,11 @@ fathom('trackPageview');
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#org3b1eaba">egg service throw error</a>
+<li><a href="#orga7187b8">egg service throw error</a>
 <ul>
-<li><a href="#orgc5496f7">先在 app/service/a.js 中写下 ctx.status, ctx.body,</a></li>
-<li><a href="#org9c71a8c">在 app/controller/a.js 中写下 catch 接收 err</a></li>
-<li><a href="#org549ca16">(可选) 在 app/core/base_controller.js 中写下 fail, success</a></li>
+<li><a href="#orgb4255ac">先在 app/service/a.js 中写下 ctx.status, ctx.body,</a></li>
+<li><a href="#orgfeae2e9">在 app/controller/a.js 中写下 catch 接收 err</a></li>
+<li><a href="#orgd4f4b25">(可选) 在 app/core/base_controller.js 中写下 fail, success</a></li>
 </ul>
 </li>
 </ul>
@@ -112,60 +112,60 @@ fathom('trackPageview');
 <a href="../index.html">{Back to site's index}</a>
 </p>
 
-<div id="outline-container-org3b1eaba" class="outline-2">
-<h2 id="org3b1eaba">egg service throw error</h2>
-<div class="outline-text-2" id="text-org3b1eaba">
+<div id="outline-container-orga7187b8" class="outline-2">
+<h2 id="orga7187b8">egg service throw error</h2>
+<div class="outline-text-2" id="text-orga7187b8">
 </div>
-<div id="outline-container-orgc5496f7" class="outline-3">
-<h3 id="orgc5496f7">先在 app/service/a.js 中写下 ctx.status, ctx.body,</h3>
-<div class="outline-text-3" id="text-orgc5496f7">
+<div id="outline-container-orgb4255ac" class="outline-3">
+<h3 id="orgb4255ac">先在 app/service/a.js 中写下 ctx.status, ctx.body,</h3>
+<div class="outline-text-3" id="text-orgb4255ac">
 <div class="org-src-container">
-<pre class="src src-javascript"><span style="color: #00bfff; font-weight: bold;">if</span> (<span style="color: #daa520;">''</span> + id === <span style="color: #daa520;">''</span> + userInfo.id) {
-  <span style="color: #2aa1ae; background-color: #292e34;">// </span><span style="color: #2aa1ae; background-color: #292e34;">return this.fail(41001, '&#33258;&#24049;&#19981;&#21487;&#20197;&#21024;&#33258;&#24049;');</span>
-  ctx.status = <span style="color: #a45bad;">200</span>;
+<pre class="src src-javascript"><span style="color: #00bfff;">if</span> (<span style="color: #daa520;">''</span> + id === <span style="color: #daa520;">''</span> + userInfo.id) {
+  <span style="color: #579C4C;">// </span><span style="color: #579C4C;">return this.fail(41001, '&#33258;&#24049;&#19981;&#21487;&#20197;&#21024;&#33258;&#24049;');</span>
+  ctx.status = 200;
   ctx.body = {
-    code: <span style="color: #a45bad;">41001</span>,
+    code: 41001,
     message: <span style="color: #daa520;">'&#33258;&#24049;&#19981;&#21487;&#20197;&#21024;&#33258;&#24049;&#65281;'</span>,
   };
-  ctx.<span style="color: #00bfff; font-weight: bold;">throw</span>(<span style="color: #a45bad;">41001</span>, ctx.body.message);
+  ctx.<span style="color: #00bfff;">throw</span>(41001, ctx.body.message);
 }
 </pre>
 </div>
 </div>
 </div>
-<div id="outline-container-org9c71a8c" class="outline-3">
-<h3 id="org9c71a8c">在 app/controller/a.js 中写下 catch 接收 err</h3>
-<div class="outline-text-3" id="text-org9c71a8c">
+<div id="outline-container-orgfeae2e9" class="outline-3">
+<h3 id="orgfeae2e9">在 app/controller/a.js 中写下 catch 接收 err</h3>
+<div class="outline-text-3" id="text-orgfeae2e9">
 <div class="org-src-container">
-<pre class="src src-javascript"><span style="color: #00bfff; font-weight: bold;">try</span> {
-  <span style="color: #00bfff; font-weight: bold;">const</span> <span style="color: #7590db;">usm_user_id</span> = <span style="color: #00bfff; font-weight: bold;">await</span> ctx.service.umsUser.deleteUserById({ id: idArray[<span style="color: #a45bad;">0</span>] });
-  <span style="color: #00bfff; font-weight: bold;">return</span> <span style="color: #a45bad;">this</span>.success(usm_user_id);
-} <span style="color: #00bfff; font-weight: bold;">catch</span> (err) {
-  <span style="color: #a45bad;">this</span>.ctx.logger.info(<span style="color: #daa520;">`err is ${JSON.stringify(err)}, ctx.body.code: ${this.ctx.body.code}`</span>);
-  <span style="color: #00bfff; font-weight: bold;">return</span> <span style="color: #a45bad;">this</span>.fail(<span style="color: #a45bad;">this</span>.ctx.body.code, <span style="color: #a45bad;">this</span>.ctx.body.message);
+<pre class="src src-javascript"><span style="color: #00bfff;">try</span> {
+  <span style="color: #00bfff;">const</span> <span style="color: #d4d4d4;">usm_user_id</span> = <span style="color: #00bfff;">await</span> ctx.service.umsUser.deleteUserById({ id: idArray[0] });
+  <span style="color: #00bfff;">return</span> <span style="color: #339CDB;">this</span>.success(usm_user_id);
+} <span style="color: #00bfff;">catch</span> (err) {
+  <span style="color: #339CDB;">this</span>.ctx.logger.info(<span style="color: #daa520;">`err is ${JSON.stringify(err)}, ctx.body.code: ${this.ctx.body.code}`</span>);
+  <span style="color: #00bfff;">return</span> <span style="color: #339CDB;">this</span>.fail(<span style="color: #339CDB;">this</span>.ctx.body.code, <span style="color: #339CDB;">this</span>.ctx.body.message);
 }
 </pre>
 </div>
 </div>
 </div>
 
-<div id="outline-container-org549ca16" class="outline-3">
-<h3 id="org549ca16">(可选) 在 app/core/base_controller.js 中写下 fail, success</h3>
-<div class="outline-text-3" id="text-org549ca16">
+<div id="outline-container-orgd4f4b25" class="outline-3">
+<h3 id="orgd4f4b25">(可选) 在 app/core/base_controller.js 中写下 fail, success</h3>
+<div class="outline-text-3" id="text-orgd4f4b25">
 <div class="org-src-container">
 <pre class="src src-javascript">success(data, status) {
-  <span style="color: #a45bad;">this</span>.ctx.body = { code: <span style="color: #a45bad;">this</span>.ctx.SUCCESS_CODE, data };
-  <span style="color: #a45bad;">this</span>.ctx.status = status || <span style="color: #a45bad;">200</span>;
+  <span style="color: #339CDB;">this</span>.ctx.body = { code: <span style="color: #339CDB;">this</span>.ctx.SUCCESS_CODE, data };
+  <span style="color: #339CDB;">this</span>.ctx.status = status || 200;
 }
 
 fail(code, message) {
-  <span style="color: #a45bad;">this</span>.ctx.body = { code, message, data: {} };
-  <span style="color: #a45bad;">this</span>.ctx.status = <span style="color: #a45bad;">200</span>;
+  <span style="color: #339CDB;">this</span>.ctx.body = { code, message, data: {} };
+  <span style="color: #339CDB;">this</span>.ctx.status = 200;
 }
 
 notFound(msg) {
   msg = msg || <span style="color: #daa520;">'not found'</span>;
-  <span style="color: #a45bad;">this</span>.ctx.<span style="color: #00bfff; font-weight: bold;">throw</span>(<span style="color: #a45bad;">404</span>, msg);
+  <span style="color: #339CDB;">this</span>.ctx.<span style="color: #00bfff;">throw</span>(404, msg);
 }
 </pre>
 </div>

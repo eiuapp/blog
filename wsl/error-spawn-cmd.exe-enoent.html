@@ -3,12 +3,12 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2020-03-26 Thu 11:07 -->
+<!-- 2020-07-30 Thu 16:12 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>&lrm;</title>
 <meta name="generator" content="Org mode" />
-<meta name="author" content="yunlong zeng" />
+<meta name="author" content="a" />
 <link rel="stylesheet" title="Standard" href="/html/style/worg.css" type="text/css" />
 <link rel="alternate stylesheet" title="Zenburn" href="/html/style/worg-zenburn.css" type="text/css" />
 <link rel="alternate stylesheet" title="Classic" href="/html/style/worg-classic.css" type="text/css" />
@@ -97,20 +97,20 @@ fathom('trackPageview');
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#orgd80ede1">Error: spawn cmd.exe ENOENT</a></li>
+<li><a href="#org5245de0">Error: spawn cmd.exe ENOENT</a></li>
 </ul>
 </div>
 </div>
-<div id="outline-container-orgd80ede1" class="outline-2">
-<h2 id="orgd80ede1">Error: spawn cmd.exe ENOENT&#xa0;&#xa0;&#xa0;<span class="tag"><span class="wsl">wsl</span></span></h2>
-<div class="outline-text-2" id="text-orgd80ede1">
+<div id="outline-container-org5245de0" class="outline-2">
+<h2 id="org5245de0">Error: spawn cmd.exe ENOENT&#xa0;&#xa0;&#xa0;<span class="tag"><span class="wsl">wsl</span></span></h2>
+<div class="outline-text-2" id="text-org5245de0">
 <p>
 在wsl中,会出现无法 fork child_process的问题.
 </p>
 
 <div class="org-src-container">
 <pre class="src src-shell">$ npm run serve
-Use /* eslint-disable */ to ignore all warnings<span style="color: #F92672;"> in</span> a file.
+Use /* eslint-disable */ to ignore all warnings<span style="color: #00bfff;"> in</span> a file.
 
   App running at:
   - Local:   http://localhost:7012/
@@ -120,28 +120,28 @@ Use /* eslint-disable */ to ignore all warnings<span style="color: #F92672;"> in
   To create a production build, run npm run build.
 
 events.js:170
-      throw er; // Unhandled <span style="color: #E6DB74;">'error'</span> event
+      throw er; // Unhandled <span style="color: #daa520;">'error'</span> event
       ^
 
 Error: spawn cmd.exe ENOENT
     at Process.ChildProcess._handle.onexit (internal/child_process.js:247:19)
     at onErrorNT (internal/child_process.js:429:16)
     at processTicksAndRejections (internal/process/task_queues.js:81:17)
-Emitted <span style="color: #E6DB74;">'error'</span> event at:
+Emitted <span style="color: #daa520;">'error'</span> event at:
     at Process.ChildProcess._handle.onexit (internal/child_process.js:253:12)
     at onErrorNT (internal/child_process.js:429:16)
     at processTicksAndRejections (internal/process/task_queues.js:81:17)
 npm ERR! code ELIFECYCLE
-npm ERR! errno <span style="color: #AE81FF;">1</span>
-npm ERR! fangyuan@<span style="color: #AE81FF;">1.0.0</span> serve: <span style="color: #AE81FF; font-weight: bold;">`vue-cli-service serve`</span>
-npm ERR! Exit status <span style="color: #AE81FF;">1</span>
+npm ERR! errno 1
+npm ERR! fangyuan@1.0.0 serve: <span style="color: #00cdcd; font-weight: bold;">`vue-cli-service serve`</span>
+npm ERR! Exit status 1
 npm ERR!
-npm ERR! Failed at the fangyuan@<span style="color: #AE81FF;">1.0.0</span> serve script.
+npm ERR! Failed at the fangyuan@1.0.0 serve script.
 npm ERR! This is probably not a problem with npm. There is likely additional logging output above.
 
-npm ERR! A complete log of this run can be found<span style="color: #F92672;"> in</span>:
+npm ERR! A complete log of this run can be found<span style="color: #00bfff;"> in</span>:
 npm ERR!     /mnt/c/Users/a/.npm/_logs/2019-11-21T10_06_20_613Z-debug.log
-$ export <span style="color: #FD971F;">PATH</span>=$<span style="color: #FD971F;">PATH</span>:/mnt/c/Windows/System32
+$ export <span style="color: #d4d4d4;">PATH</span>=$<span style="color: #d4d4d4;">PATH</span>:/mnt/c/Windows/System32
 $ npm run serve
 </pre>
 </div>
@@ -151,7 +151,7 @@ $ npm run serve
 </p>
 
 <div class="org-src-container">
-<pre class="src src-shell">$ export <span style="color: #FD971F;">PATH</span>=$<span style="color: #FD971F;">PATH</span>:/mnt/c/Windows/System32
+<pre class="src src-shell">$ export <span style="color: #d4d4d4;">PATH</span>=$<span style="color: #d4d4d4;">PATH</span>:/mnt/c/Windows/System32
 $ npm run serve
 </pre>
 </div>

@@ -3,12 +3,12 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2020-05-13 Wed 19:57 -->
+<!-- 2020-07-30 Thu 16:11 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>navicat</title>
 <meta name="generator" content="Org mode" />
-<meta name="author" content="yunlong zeng" />
+<meta name="author" content="a" />
 <link rel="stylesheet" title="Standard" href="/html/style/worg.css" type="text/css" />
 <link rel="alternate stylesheet" title="Zenburn" href="/html/style/worg-zenburn.css" type="text/css" />
 <link rel="alternate stylesheet" title="Classic" href="/html/style/worg-classic.css" type="text/css" />
@@ -60,6 +60,28 @@ for the JavaScript code in this tag.
  }
 /*]]>*///-->
 </script>
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        displayAlign: "center",
+        displayIndent: "0em",
+
+        "HTML-CSS": { scale: 100,
+                        linebreaks: { automatic: "false" },
+                        webFont: "TeX"
+                       },
+        SVG: {scale: 100,
+              linebreaks: { automatic: "false" },
+              font: "TeX"},
+        NativeMML: {scale: 100},
+        TeX: { equationNumbers: {autoNumber: "AMS"},
+               MultLineWidth: "85%",
+               TagSide: "right",
+               TagIndent: ".8em"
+             }
+});
+</script>
+<script type="text/javascript"
+        src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS_HTML"></script>
 </head>
 <body>
 <div id="preamble" class="status">
@@ -98,20 +120,26 @@ fathom('trackPageview');
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#orgf7a7544">Ubuntu 19.10 下 Navicat 15 premium 无限期试用（亲测有效）</a>
+<li><a href="#org3a3652c">Ubuntu 19.10 下 Navicat 15 premium 无限期试用（亲测有效）</a>
 <ul>
-<li><a href="#org89997d8">env</a></li>
-<li><a href="#org8916b8e">start</a></li>
-<li><a href="#org28939e8"><code>apt install gcc-9 g++9</code> 报错</a></li>
-<li><a href="#org9329f87">过期</a></li>
+<li><a href="#org2eddc4a">env</a></li>
+<li><a href="#orgf0e17f4">start</a></li>
+<li><a href="#orgabacb5c"><code>apt install gcc-9 g++9</code> 报错</a></li>
+<li><a href="#orgf11953b">过期</a></li>
 </ul>
 </li>
-<li><a href="#org156cf7b">windows 10 Navicat Premium 15 永久激活版安装教程</a>
+<li><a href="#orgc31b90f">windows 10 Navicat Premium 15 永久激活版安装教程</a>
 <ul>
-<li><a href="#org62047c2">first try</a>
+<li><a href="#orgf17c8d7">success</a>
 <ul>
-<li><a href="#org195305d">error 1</a></li>
-<li><a href="#org7892047">error 2</a></li>
+<li><a href="#org420b49c">step</a></li>
+<li><a href="#orgfdeada4">navicat的破解注册机出现错误提示No All Pattern Found! File Already Patched?</a></li>
+</ul>
+</li>
+<li><a href="#org259c737">(跳过) first try</a>
+<ul>
+<li><a href="#org009d4ec">error 1</a></li>
+<li><a href="#orgb7491d9">error 2</a></li>
 </ul>
 </li>
 </ul>
@@ -127,22 +155,22 @@ fathom('trackPageview');
 请支持正版
 </p>
 
-<div id="outline-container-orgf7a7544" class="outline-2">
-<h2 id="orgf7a7544">Ubuntu 19.10 下 Navicat 15 premium 无限期试用（亲测有效）</h2>
-<div class="outline-text-2" id="text-orgf7a7544">
+<div id="outline-container-org3a3652c" class="outline-2">
+<h2 id="org3a3652c">Ubuntu 19.10 下 Navicat 15 premium 无限期试用（亲测有效）</h2>
+<div class="outline-text-2" id="text-org3a3652c">
 </div>
-<div id="outline-container-org89997d8" class="outline-3">
-<h3 id="org89997d8">env</h3>
-<div class="outline-text-3" id="text-org89997d8">
+<div id="outline-container-org2eddc4a" class="outline-3">
+<h3 id="org2eddc4a">env</h3>
+<div class="outline-text-3" id="text-org2eddc4a">
 <ul class="org-ul">
 <li>os: ubuntu 18</li>
 </ul>
 </div>
 </div>
 
-<div id="outline-container-org8916b8e" class="outline-3">
-<h3 id="org8916b8e">start</h3>
-<div class="outline-text-3" id="text-org8916b8e">
+<div id="outline-container-orgf0e17f4" class="outline-3">
+<h3 id="orgf0e17f4">start</h3>
+<div class="outline-text-3" id="text-orgf0e17f4">
 <p>
 <a href="https://blog.csdn.net/u014585456/article/details/104464269">https://blog.csdn.net/u014585456/article/details/104464269</a>
 </p>
@@ -162,9 +190,9 @@ fathom('trackPageview');
 </div>
 </div>
 
-<div id="outline-container-org28939e8" class="outline-3">
-<h3 id="org28939e8"><code>apt install gcc-9 g++9</code> 报错</h3>
-<div class="outline-text-3" id="text-org28939e8">
+<div id="outline-container-orgabacb5c" class="outline-3">
+<h3 id="orgabacb5c"><code>apt install gcc-9 g++9</code> 报错</h3>
+<div class="outline-text-3" id="text-orgabacb5c">
 <p>
 如果当安装~apt install gcc-9 g++9~ 报依赖错误，并最后指向要安装　:i386 的包时，请停止下来，另找方法。
 </p>
@@ -175,34 +203,76 @@ fathom('trackPageview');
 </div>
 </div>
 
-<div id="outline-container-org9329f87" class="outline-3">
-<h3 id="org9329f87">过期</h3>
-<div class="outline-text-3" id="text-org9329f87">
+<div id="outline-container-orgf11953b" class="outline-3">
+<h3 id="orgf11953b">过期</h3>
+<div class="outline-text-3" id="text-orgf11953b">
 <p>
 这个方法安装后,15天过去了,就失效了.
 </p>
 </div>
 </div>
 </div>
-<div id="outline-container-org156cf7b" class="outline-2">
-<h2 id="org156cf7b">windows 10 Navicat Premium 15 永久激活版安装教程</h2>
-<div class="outline-text-2" id="text-org156cf7b">
+<div id="outline-container-orgc31b90f" class="outline-2">
+<h2 id="orgc31b90f">windows 10 Navicat Premium 15 永久激活版安装教程</h2>
+<div class="outline-text-2" id="text-orgc31b90f">
+</div>
+
+<div id="outline-container-orgf17c8d7" class="outline-3">
+<h3 id="orgf17c8d7">success</h3>
+<div class="outline-text-3" id="text-orgf17c8d7">
+</div>
+<div id="outline-container-org420b49c" class="outline-4">
+<h4 id="org420b49c">step</h4>
+<div class="outline-text-4" id="text-org420b49c">
+<ul class="org-ul">
+<li><a href="https://www.cnblogs.com/poloyy/p/12231357.html">https://www.cnblogs.com/poloyy/p/12231357.html</a></li>
+<li><a href="https://www.cnblogs.com/Jeanferly/p/12984522.html">https://www.cnblogs.com/Jeanferly/p/12984522.html</a></li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-orgfdeada4" class="outline-4">
+<h4 id="orgfdeada4">navicat的破解注册机出现错误提示No All Pattern Found! File Already Patched?</h4>
+<div class="outline-text-4" id="text-orgfdeada4">
+<ul class="org-ul">
+<li><a href="https://www.cnblogs.com/sunbr/p/12547548.html">https://www.cnblogs.com/sunbr/p/12547548.html</a></li>
+</ul>
 <p>
-<a href="https://www.cnblogs.com/poloyy/p/12231357.html">https://www.cnblogs.com/poloyy/p/12231357.html</a>
+第一步：先把注册机放入安装目录。 （这一步非常关键，先不要打开桌面上安装好的快捷方式！！）
 </p>
 
 <p>
-还未实操作,未测试有效性.
+第二步(可先尝试跳过，我没有操作这一步)：如果之前下载过，把注册表清理干净
+</p>
+
+<p>
+　　计算机\HKEY_CURRENT_USER\SOFTWARE\PremiumSoft（把这个目录下面的东西全部删了！）
+</p>
+
+<p>
+第三步：右键管理员身份运行注册机程序，点击“path”按钮
+　　这时会重新生成一个新的文件navicat.exe
+</p>
+
+<p>
+第四步：双击运行新的navicat.exe，点击“Generate”获取许可证：
+　　再激活，将请求码复制放入点击左下方的“Generate”，成功出现激活码！
+</p>
+
+<p>
+安装包和注册机下载地址：<a href="https://www.lanzous.com/iaj8tsj">https://www.lanzous.com/iaj8tsj</a>
 </p>
 </div>
-
-<div id="outline-container-org62047c2" class="outline-3">
-<h3 id="org62047c2">first try</h3>
-<div class="outline-text-3" id="text-org62047c2">
 </div>
-<div id="outline-container-org195305d" class="outline-4">
-<h4 id="org195305d">error 1</h4>
-<div class="outline-text-4" id="text-org195305d">
+</div>
+
+<div id="outline-container-org259c737" class="outline-3">
+<h3 id="org259c737">(跳过) first try</h3>
+<div class="outline-text-3" id="text-org259c737">
+</div>
+<div id="outline-container-org009d4ec" class="outline-4">
+<h4 id="org009d4ec">error 1</h4>
+<div class="outline-text-4" id="text-org009d4ec">
 <div class="org-src-container">
 <pre class="src src-example">在 1) Patch 中选择Backup、Host、Navicat v15这三个，默认也是选择了这三个；勾选这三个后点击Patch
 
@@ -217,9 +287,9 @@ fathom('trackPageview');
 </div>
 </div>
 
-<div id="outline-container-org7892047" class="outline-4">
-<h4 id="org7892047">error 2</h4>
-<div class="outline-text-4" id="text-org7892047">
+<div id="outline-container-orgb7491d9" class="outline-4">
+<h4 id="orgb7491d9">error 2</h4>
+<div class="outline-text-4" id="text-orgb7491d9">
 <div class="org-src-container">
 <pre class="src src-example">点击手动激活后会生成一个请求码
 

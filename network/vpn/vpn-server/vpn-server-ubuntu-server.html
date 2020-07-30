@@ -1,0 +1,873 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<!-- 2020-07-30 Thu 16:13 -->
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>ubuntu server as vpn server</title>
+<meta name="generator" content="Org mode" />
+<meta name="author" content="a" />
+<link rel="stylesheet" title="Standard" href="/html/style/worg.css" type="text/css" />
+<link rel="alternate stylesheet" title="Zenburn" href="/html/style/worg-zenburn.css" type="text/css" />
+<link rel="alternate stylesheet" title="Classic" href="/html/style/worg-classic.css" type="text/css" />
+<link rel="SHORTCUT ICON" href="/html/style/org-mode-unicorn.ico" type="image/x-icon" />
+<link rel="icon" href="/html/style/org-mode-unicorn.ico" type="image/ico" />
+<script type="text/javascript">
+/*
+@licstart  The following is the entire license notice for the
+JavaScript code in this tag.
+
+Copyright (C) 2012-2019 Free Software Foundation, Inc.
+
+The JavaScript code in this tag is free software: you can
+redistribute it and/or modify it under the terms of the GNU
+General Public License (GNU GPL) as published by the Free Software
+Foundation, either version 3 of the License, or (at your option)
+any later version.  The code is distributed WITHOUT ANY WARRANTY;
+without even the implied warranty of MERCHANTABILITY or FITNESS
+FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
+
+As additional permission under GNU GPL version 3 section 7, you
+may distribute non-source (e.g., minimized or compacted) forms of
+that code without the copy of the GNU GPL normally required by
+section 4, provided you include this license notice and a URL
+through which recipients can access the Corresponding Source.
+
+
+@licend  The above is the entire license notice
+for the JavaScript code in this tag.
+*/
+<!--/*--><![CDATA[/*><!--*/
+ function CodeHighlightOn(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(null != target) {
+     elem.cacheClassElem = elem.className;
+     elem.cacheClassTarget = target.className;
+     target.className = "code-highlighted";
+     elem.className   = "code-highlighted";
+   }
+ }
+ function CodeHighlightOff(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(elem.cacheClassElem)
+     elem.className = elem.cacheClassElem;
+   if(elem.cacheClassTarget)
+     target.className = elem.cacheClassTarget;
+ }
+/*]]>*///-->
+</script>
+</head>
+<body>
+<div id="preamble" class="status">
+<script type="text/javascript">
+  document.addEventListener('DOMContentLoaded',function() {
+      document.getElementById("table-of-contents").onclick = function() {
+          var elem = document.getElementById("text-table-of-contents");
+          elem.style.display = elem.style.display == "block" ? "none" : "block";
+      }
+  });
+
+  var url = document.location.href;
+  var orgsource = url.substring(0, url.lastIndexOf("."))+".org.html";
+  function show_org_source(){
+      document.location.href = orgsource;
+  }
+</script>
+
+<script>
+(function(f, a, t, h, o, m){
+	a[h]=a[h]||function(){
+		(a[h].q=a[h].q||[]).push(arguments)
+	};
+	o=f.createElement('script'),
+	m=f.getElementsByTagName('script')[0];
+	o.async=1; o.src=t; o.id='fathom-script';
+	m.parentNode.insertBefore(o,m)
+})(document, window, '//stats.orgmode.org/tracker.js', 'fathom');
+fathom('set', 'siteId', 'NWSQJ');
+fathom('trackPageview');
+</script>
+</div>
+<div id="content">
+<h1 class="title">ubuntu server as vpn server</h1>
+<div id="table-of-contents">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#orge00af49">WARNING <b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b>*</b></b></b></b></b></b></b></b></b></b></b></b></b></b></b></b></b></a></li>
+</ul>
+</div>
+</div>
+<p>
+<a href="../index.html">{Back to site's index}</a>
+</p>
+
+<p>
+ubuntu server as vpn server
+</p>
+
+<p>
+<a href="https://github.com/hwdsl2/setup-ipsec-vpn/blob/master/README-zh.md#%E5%AE%89%E8%A3%85%E8%AF%B4%E6%98%8E">https://github.com/hwdsl2/setup-ipsec-vpn/blob/master/README-zh.md#%E5%AE%89%E8%A3%85%E8%AF%B4%E6%98%8E</a>
+</p>
+
+<p>
+记录一个安装日志
+</p>
+
+<p>
+#+BEGIN_SRC shell
+➜  ~
+## 所有变量值必须用 '单引号' 括起来
+## <b>不要</b> 在值中使用这些字符：  \ " '
+➜  ~ wget <a href="https://git.io/vpnsetup">https://git.io/vpnsetup</a> -O vpnsetup.sh &amp;&amp; sudo \
+VPN_IPSEC_PSK='你的IPsec预共享密钥' \
+VPN_USER='你的VPN用户名' \
+VPN_PASSWORD='你的VPN密码' \
+sh vpnsetup.sh
+</p>
+
+<p>
+&#x2013;2020-05-25 12:01:52&#x2013;  <a href="https://git.io/vpnsetup">https://git.io/vpnsetup</a>
+Resolving git.io (git.io)&#x2026; 18.210.187.7, 3.226.24.71, 52.206.116.16, &#x2026;
+Connecting to git.io (git.io)|18.210.187.7|:443&#x2026; connected.
+HTTP request sent, awaiting response&#x2026; 302 Found
+Location: <a href="https://raw.githubusercontent.com/hwdsl2/setup-ipsec-vpn/master/vpnsetup.sh">https://raw.githubusercontent.com/hwdsl2/setup-ipsec-vpn/master/vpnsetup.sh</a> [following]
+&#x2013;2020-05-25 12:01:53&#x2013;  <a href="https://raw.githubusercontent.com/hwdsl2/setup-ipsec-vpn/master/vpnsetup.sh">https://raw.githubusercontent.com/hwdsl2/setup-ipsec-vpn/master/vpnsetup.sh</a>
+Resolving raw.githubusercontent.com (raw.githubusercontent.com)&#x2026; 151.101.192.133, 151.101.128.133, 151.101.64.133, &#x2026;
+Connecting to raw.githubusercontent.com (raw.githubusercontent.com)|151.101.192.133|:443&#x2026; connected.
+HTTP request sent, awaiting response&#x2026; 200 OK
+Length: 15273 (15K) [text/plain]
+Saving to: ‘vpnsetup.sh’
+</p>
+
+<p>
+vpnsetup.sh                                                   100%[===============================================================================================================================================&gt;]  14.92K  &#x2013;.-KB/s    in 0s
+</p>
+
+<p>
+2020-05-25 12:01:54 (30.1 MB/s) - ‘vpnsetup.sh’ saved <code>[15273/15273]</code>
+</p>
+
+
+<p>
+## VPN setup in progress&#x2026; Please be patient.
+</p>
+
+
+<p>
+## Populating apt-get cache&#x2026;
+</p>
+
+<p>
+Get:1 <a href="http://security.ubuntu.com/ubuntu">http://security.ubuntu.com/ubuntu</a> bionic-security InRelease [88.7 kB]
+Hit:2 <a href="http://asia-east2-c.gce.clouds.archive.ubuntu.com/ubuntu">http://asia-east2-c.gce.clouds.archive.ubuntu.com/ubuntu</a> bionic InRelease
+Get:3 <a href="http://archive.canonical.com/ubuntu">http://archive.canonical.com/ubuntu</a> bionic InRelease [10.2 kB]
+Get:4 <a href="http://asia-east2-c.gce.clouds.archive.ubuntu.com/ubuntu">http://asia-east2-c.gce.clouds.archive.ubuntu.com/ubuntu</a> bionic-updates InRelease [88.7 kB]
+Get:5 <a href="http://archive.canonical.com/ubuntu">http://archive.canonical.com/ubuntu</a> bionic/partner amd64 Packages [2288 B]
+Get:6 <a href="http://archive.canonical.com/ubuntu">http://archive.canonical.com/ubuntu</a> bionic/partner Translation-en [1332 B]
+Get:7 <a href="http://security.ubuntu.com/ubuntu">http://security.ubuntu.com/ubuntu</a> bionic-security/main amd64 Packages [724 kB]
+Get:8 <a href="http://asia-east2-c.gce.clouds.archive.ubuntu.com/ubuntu">http://asia-east2-c.gce.clouds.archive.ubuntu.com/ubuntu</a> bionic-backports InRelease [74.6 kB]
+Get:9 <a href="http://asia-east2-c.gce.clouds.archive.ubuntu.com/ubuntu">http://asia-east2-c.gce.clouds.archive.ubuntu.com/ubuntu</a> bionic/universe amd64 Packages [8570 kB]
+Get:10 <a href="http://security.ubuntu.com/ubuntu">http://security.ubuntu.com/ubuntu</a> bionic-security/main Translation-en [229 kB]
+Get:11 <a href="http://security.ubuntu.com/ubuntu">http://security.ubuntu.com/ubuntu</a> bionic-security/restricted amd64 Packages [45.7 kB]
+Get:12 <a href="http://security.ubuntu.com/ubuntu">http://security.ubuntu.com/ubuntu</a> bionic-security/restricted Translation-en [11.4 kB]
+Get:13 <a href="http://security.ubuntu.com/ubuntu">http://security.ubuntu.com/ubuntu</a> bionic-security/universe amd64 Packages [666 kB]
+Get:14 <a href="http://security.ubuntu.com/ubuntu">http://security.ubuntu.com/ubuntu</a> bionic-security/universe Translation-en [221 kB]
+Get:15 <a href="http://security.ubuntu.com/ubuntu">http://security.ubuntu.com/ubuntu</a> bionic-security/multiverse amd64 Packages [7596 B]
+Get:16 <a href="http://security.ubuntu.com/ubuntu">http://security.ubuntu.com/ubuntu</a> bionic-security/multiverse Translation-en [2824 B]
+Get:17 <a href="http://asia-east2-c.gce.clouds.archive.ubuntu.com/ubuntu">http://asia-east2-c.gce.clouds.archive.ubuntu.com/ubuntu</a> bionic/universe Translation-en [4941 kB]
+Get:18 <a href="http://asia-east2-c.gce.clouds.archive.ubuntu.com/ubuntu">http://asia-east2-c.gce.clouds.archive.ubuntu.com/ubuntu</a> bionic/multiverse amd64 Packages [151 kB]
+Get:19 <a href="http://asia-east2-c.gce.clouds.archive.ubuntu.com/ubuntu">http://asia-east2-c.gce.clouds.archive.ubuntu.com/ubuntu</a> bionic/multiverse Translation-en [108 kB]
+Get:20 <a href="http://asia-east2-c.gce.clouds.archive.ubuntu.com/ubuntu">http://asia-east2-c.gce.clouds.archive.ubuntu.com/ubuntu</a> bionic-updates/main amd64 Packages [948 kB]
+Get:21 <a href="http://asia-east2-c.gce.clouds.archive.ubuntu.com/ubuntu">http://asia-east2-c.gce.clouds.archive.ubuntu.com/ubuntu</a> bionic-updates/main Translation-en [323 kB]
+Get:22 <a href="http://asia-east2-c.gce.clouds.archive.ubuntu.com/ubuntu">http://asia-east2-c.gce.clouds.archive.ubuntu.com/ubuntu</a> bionic-updates/restricted amd64 Packages [55.3 kB]
+Get:23 <a href="http://asia-east2-c.gce.clouds.archive.ubuntu.com/ubuntu">http://asia-east2-c.gce.clouds.archive.ubuntu.com/ubuntu</a> bionic-updates/restricted Translation-en [13.8 kB]
+Get:24 <a href="http://asia-east2-c.gce.clouds.archive.ubuntu.com/ubuntu">http://asia-east2-c.gce.clouds.archive.ubuntu.com/ubuntu</a> bionic-updates/universe amd64 Packages [1075 kB]
+Get:25 <a href="http://asia-east2-c.gce.clouds.archive.ubuntu.com/ubuntu">http://asia-east2-c.gce.clouds.archive.ubuntu.com/ubuntu</a> bionic-updates/universe Translation-en [334 kB]
+Get:26 <a href="http://asia-east2-c.gce.clouds.archive.ubuntu.com/ubuntu">http://asia-east2-c.gce.clouds.archive.ubuntu.com/ubuntu</a> bionic-updates/multiverse amd64 Packages [15.7 kB]
+Get:27 <a href="http://asia-east2-c.gce.clouds.archive.ubuntu.com/ubuntu">http://asia-east2-c.gce.clouds.archive.ubuntu.com/ubuntu</a> bionic-updates/multiverse Translation-en [6384 B]
+Get:28 <a href="http://asia-east2-c.gce.clouds.archive.ubuntu.com/ubuntu">http://asia-east2-c.gce.clouds.archive.ubuntu.com/ubuntu</a> bionic-backports/main amd64 Packages [7516 B]
+Get:29 <a href="http://asia-east2-c.gce.clouds.archive.ubuntu.com/ubuntu">http://asia-east2-c.gce.clouds.archive.ubuntu.com/ubuntu</a> bionic-backports/main Translation-en [4764 B]
+Get:30 <a href="http://asia-east2-c.gce.clouds.archive.ubuntu.com/ubuntu">http://asia-east2-c.gce.clouds.archive.ubuntu.com/ubuntu</a> bionic-backports/universe amd64 Packages [7484 B]
+Get:31 <a href="http://asia-east2-c.gce.clouds.archive.ubuntu.com/ubuntu">http://asia-east2-c.gce.clouds.archive.ubuntu.com/ubuntu</a> bionic-backports/universe Translation-en [4436 B]
+Fetched 18.7 MB in 7s (2704 kB/s)
+Reading package lists&#x2026;
+</p>
+
+<p>
+## Installing packages required for setup&#x2026;
+</p>
+
+<p>
+## Installing packages required for setup&#x2026;
+</p>
+
+<p>
+Reading package lists&#x2026;
+Building dependency tree&#x2026;
+Reading state information&#x2026;
+gawk is already the newest version (1:4.1.4+dfsg-1build1).
+gawk set to manually installed.
+iptables is already the newest version (1.6.1-2ubuntu2).
+iptables set to manually installed.
+net-tools is already the newest version (1.60+git20161116.90da8a0-1ubuntu1).
+net-tools set to manually installed.
+sed is already the newest version (4.4-2).
+sed set to manually installed.
+dnsutils is already the newest version (1:9.11.3+dfsg-1ubuntu1.12).
+dnsutils set to manually installed.
+grep is already the newest version (3.1-2build1).
+iproute2 is already the newest version (4.15.0-2ubuntu1.1).
+iproute2 set to manually installed.
+openssl is already the newest version (1.1.1-1ubuntu2.1~18.04.5).
+openssl set to manually installed.
+wget is already the newest version (1.19.4-1ubuntu2.2).
+wget set to manually installed.
+The following packages were automatically installed and are no longer required:
+  grub-pc-bin libnuma1
+Use 'sudo apt autoremove' to remove them.
+0 upgraded, 0 newly installed, 0 to remove and 7 not upgraded.
+</p>
+
+<p>
+## Trying to auto discover IP of this server&#x2026;
+</p>
+
+<p>
+In case the script hangs here for more than a few minutes,
+press Ctrl-C to abort. Then edit it and manually enter IP.
+</p>
+
+<p>
+## Installing packages required for the VPN&#x2026;
+</p>
+
+<p>
+Reading package lists&#x2026;
+Building dependency tree&#x2026;
+Reading state information&#x2026;
+bison is already the newest version (2:3.0.4.dfsg-1build1).
+make is already the newest version (4.1-9.1ubuntu1).
+gcc is already the newest version (4:7.4.0-1ubuntu2.3).
+The following packages were automatically installed and are no longer required:
+  grub-pc-bin libnuma1
+Use 'sudo apt autoremove' to remove them.
+The following additional packages will be installed:
+  build-essential dpkg-dev fakeroot g++ g++-7 libalgorithm-diff-perl libalgorithm-diff-xs-perl libalgorithm-merge-perl libcurl3-nss libdpkg-perl libevent-core-2.1-6 libevent-extra-2.1-6 libevent-openssl-2.1-6 libevent-pthreads-2.1-6 libfakeroot
+  libfile-fcntllock-perl libfl-dev libfl2 libpcre16-3 libpcre3-dev libpcre32-3 libpcrecpp0v5 libsepol1-dev libstdc++-7-dev
+Suggested packages:
+  debian-keyring flex-doc g++-multilib g++-7-multilib gcc-7-doc libstdc++6-7-dbg libcurl4-doc libidn11-dev libkrb5-dev libldap2-dev librtmp-dev libssh2-1-dev zlib1g-dev bzr libstdc++-7-doc
+The following NEW packages will be installed:
+  build-essential dpkg-dev fakeroot flex g++ g++-7 libalgorithm-diff-perl libalgorithm-diff-xs-perl libalgorithm-merge-perl libcap-ng-dev libcap-ng-utils libcurl3-nss libcurl4-nss-dev libdpkg-perl libevent-core-2.1-6 libevent-dev
+  libevent-extra-2.1-6 libevent-openssl-2.1-6 libevent-pthreads-2.1-6 libfakeroot libfile-fcntllock-perl libfl-dev libfl2 libnspr4-dev libnss3-dev libnss3-tools libpam0g-dev libpcre16-3 libpcre3-dev libpcre32-3 libpcrecpp0v5 libselinux1-dev
+  libsepol1-dev libstdc++-7-dev pkg-config ppp xl2tpd
+0 upgraded, 37 newly installed, 0 to remove and 7 not upgraded.
+Need to get 16.7 MB of archives.
+After this operation, 67.5 MB of additional disk space will be used.
+Get:1 <a href="http://asia-east2-c.gce.clouds.archive.ubuntu.com/ubuntu">http://asia-east2-c.gce.clouds.archive.ubuntu.com/ubuntu</a> bionic/main amd64 flex amd64 2.6.4-6 [316 kB]
+Get:2 <a href="http://asia-east2-c.gce.clouds.archive.ubuntu.com/ubuntu">http://asia-east2-c.gce.clouds.archive.ubuntu.com/ubuntu</a> bionic-updates/main amd64 libstdc++-7-dev amd64 7.5.0-3ubuntu1~18.04 [1471 kB]
+Get:3 <a href="http://asia-east2-c.gce.clouds.archive.ubuntu.com/ubuntu">http://asia-east2-c.gce.clouds.archive.ubuntu.com/ubuntu</a> bionic-updates/main amd64 g++-7 amd64 7.5.0-3ubuntu1~18.04 [9697 kB]
+Get:4 <a href="http://asia-east2-c.gce.clouds.archive.ubuntu.com/ubuntu">http://asia-east2-c.gce.clouds.archive.ubuntu.com/ubuntu</a> bionic-updates/main amd64 g++ amd64 4:7.4.0-1ubuntu2.3 [1568 B]
+Get:5 <a href="http://asia-east2-c.gce.clouds.archive.ubuntu.com/ubuntu">http://asia-east2-c.gce.clouds.archive.ubuntu.com/ubuntu</a> bionic-updates/main amd64 libdpkg-perl all 1.19.0.5ubuntu2.3 [211 kB]
+Get:6 <a href="http://asia-east2-c.gce.clouds.archive.ubuntu.com/ubuntu">http://asia-east2-c.gce.clouds.archive.ubuntu.com/ubuntu</a> bionic-updates/main amd64 dpkg-dev all 1.19.0.5ubuntu2.3 [607 kB]
+Get:7 <a href="http://asia-east2-c.gce.clouds.archive.ubuntu.com/ubuntu">http://asia-east2-c.gce.clouds.archive.ubuntu.com/ubuntu</a> bionic/main amd64 build-essential amd64 12.4ubuntu1 [4758 B]
+Get:8 <a href="http://asia-east2-c.gce.clouds.archive.ubuntu.com/ubuntu">http://asia-east2-c.gce.clouds.archive.ubuntu.com/ubuntu</a> bionic/main amd64 libfakeroot amd64 1.22-2ubuntu1 [25.9 kB]
+Get:9 <a href="http://asia-east2-c.gce.clouds.archive.ubuntu.com/ubuntu">http://asia-east2-c.gce.clouds.archive.ubuntu.com/ubuntu</a> bionic/main amd64 fakeroot amd64 1.22-2ubuntu1 [62.3 kB]
+Get:10 <a href="http://asia-east2-c.gce.clouds.archive.ubuntu.com/ubuntu">http://asia-east2-c.gce.clouds.archive.ubuntu.com/ubuntu</a> bionic/main amd64 libalgorithm-diff-perl all 1.19.03-1 [47.6 kB]
+Get:11 <a href="http://asia-east2-c.gce.clouds.archive.ubuntu.com/ubuntu">http://asia-east2-c.gce.clouds.archive.ubuntu.com/ubuntu</a> bionic/main amd64 libalgorithm-diff-xs-perl amd64 0.04-5 [11.1 kB]
+Get:12 <a href="http://asia-east2-c.gce.clouds.archive.ubuntu.com/ubuntu">http://asia-east2-c.gce.clouds.archive.ubuntu.com/ubuntu</a> bionic/main amd64 libalgorithm-merge-perl all 0.08-3 [12.0 kB]
+Get:13 <a href="http://asia-east2-c.gce.clouds.archive.ubuntu.com/ubuntu">http://asia-east2-c.gce.clouds.archive.ubuntu.com/ubuntu</a> bionic/main amd64 libcap-ng-dev amd64 0.7.7-3.1 [21.7 kB]
+Get:14 <a href="http://asia-east2-c.gce.clouds.archive.ubuntu.com/ubuntu">http://asia-east2-c.gce.clouds.archive.ubuntu.com/ubuntu</a> bionic/universe amd64 libcap-ng-utils amd64 0.7.7-3.1 [15.5 kB]
+Get:15 <a href="http://asia-east2-c.gce.clouds.archive.ubuntu.com/ubuntu">http://asia-east2-c.gce.clouds.archive.ubuntu.com/ubuntu</a> bionic-updates/main amd64 libcurl3-nss amd64 7.58.0-2ubuntu3.8 [219 kB]
+Get:16 <a href="http://asia-east2-c.gce.clouds.archive.ubuntu.com/ubuntu">http://asia-east2-c.gce.clouds.archive.ubuntu.com/ubuntu</a> bionic-updates/main amd64 libcurl4-nss-dev amd64 7.58.0-2ubuntu3.8 [300 kB]
+Get:17 <a href="http://asia-east2-c.gce.clouds.archive.ubuntu.com/ubuntu">http://asia-east2-c.gce.clouds.archive.ubuntu.com/ubuntu</a> bionic/main amd64 libevent-core-2.1-6 amd64 2.1.8-stable-4build1 [85.9 kB]
+Get:18 <a href="http://asia-east2-c.gce.clouds.archive.ubuntu.com/ubuntu">http://asia-east2-c.gce.clouds.archive.ubuntu.com/ubuntu</a> bionic/main amd64 libevent-extra-2.1-6 amd64 2.1.8-stable-4build1 [56.2 kB]
+Get:19 <a href="http://asia-east2-c.gce.clouds.archive.ubuntu.com/ubuntu">http://asia-east2-c.gce.clouds.archive.ubuntu.com/ubuntu</a> bionic/main amd64 libevent-pthreads-2.1-6 amd64 2.1.8-stable-4build1 [5228 B]
+Get:20 <a href="http://asia-east2-c.gce.clouds.archive.ubuntu.com/ubuntu">http://asia-east2-c.gce.clouds.archive.ubuntu.com/ubuntu</a> bionic/main amd64 libevent-openssl-2.1-6 amd64 2.1.8-stable-4build1 [11.8 kB]
+Get:21 <a href="http://asia-east2-c.gce.clouds.archive.ubuntu.com/ubuntu">http://asia-east2-c.gce.clouds.archive.ubuntu.com/ubuntu</a> bionic/main amd64 libevent-dev amd64 2.1.8-stable-4build1 [261 kB]
+Get:22 <a href="http://asia-east2-c.gce.clouds.archive.ubuntu.com/ubuntu">http://asia-east2-c.gce.clouds.archive.ubuntu.com/ubuntu</a> bionic/main amd64 libfile-fcntllock-perl amd64 0.22-3build2 [33.2 kB]
+Get:23 <a href="http://asia-east2-c.gce.clouds.archive.ubuntu.com/ubuntu">http://asia-east2-c.gce.clouds.archive.ubuntu.com/ubuntu</a> bionic/main amd64 libfl2 amd64 2.6.4-6 [11.4 kB]
+Get:24 <a href="http://asia-east2-c.gce.clouds.archive.ubuntu.com/ubuntu">http://asia-east2-c.gce.clouds.archive.ubuntu.com/ubuntu</a> bionic/main amd64 libfl-dev amd64 2.6.4-6 [6320 B]
+Get:25 <a href="http://asia-east2-c.gce.clouds.archive.ubuntu.com/ubuntu">http://asia-east2-c.gce.clouds.archive.ubuntu.com/ubuntu</a> bionic/main amd64 libnspr4-dev amd64 2:4.18-1ubuntu1 [211 kB]
+Get:26 <a href="http://asia-east2-c.gce.clouds.archive.ubuntu.com/ubuntu">http://asia-east2-c.gce.clouds.archive.ubuntu.com/ubuntu</a> bionic-updates/main amd64 libnss3-dev amd64 2:3.35-2ubuntu2.7 [227 kB]
+Get:27 <a href="http://asia-east2-c.gce.clouds.archive.ubuntu.com/ubuntu">http://asia-east2-c.gce.clouds.archive.ubuntu.com/ubuntu</a> bionic-updates/universe amd64 libnss3-tools amd64 2:3.35-2ubuntu2.7 [870 kB]
+Get:28 <a href="http://asia-east2-c.gce.clouds.archive.ubuntu.com/ubuntu">http://asia-east2-c.gce.clouds.archive.ubuntu.com/ubuntu</a> bionic-updates/main amd64 libpam0g-dev amd64 1.1.8-3.6ubuntu2.18.04.1 [110 kB]
+Get:29 <a href="http://asia-east2-c.gce.clouds.archive.ubuntu.com/ubuntu">http://asia-east2-c.gce.clouds.archive.ubuntu.com/ubuntu</a> bionic/main amd64 libpcre16-3 amd64 2:8.39-9 [147 kB]
+Get:30 <a href="http://asia-east2-c.gce.clouds.archive.ubuntu.com/ubuntu">http://asia-east2-c.gce.clouds.archive.ubuntu.com/ubuntu</a> bionic/main amd64 libpcre32-3 amd64 2:8.39-9 [138 kB]
+Get:31 <a href="http://asia-east2-c.gce.clouds.archive.ubuntu.com/ubuntu">http://asia-east2-c.gce.clouds.archive.ubuntu.com/ubuntu</a> bionic/main amd64 libpcrecpp0v5 amd64 2:8.39-9 [15.3 kB]
+Get:32 <a href="http://asia-east2-c.gce.clouds.archive.ubuntu.com/ubuntu">http://asia-east2-c.gce.clouds.archive.ubuntu.com/ubuntu</a> bionic/main amd64 libpcre3-dev amd64 2:8.39-9 [537 kB]
+Get:33 <a href="http://asia-east2-c.gce.clouds.archive.ubuntu.com/ubuntu">http://asia-east2-c.gce.clouds.archive.ubuntu.com/ubuntu</a> bionic/main amd64 libsepol1-dev amd64 2.7-1 [324 kB]
+Get:34 <a href="http://asia-east2-c.gce.clouds.archive.ubuntu.com/ubuntu">http://asia-east2-c.gce.clouds.archive.ubuntu.com/ubuntu</a> bionic/main amd64 libselinux1-dev amd64 2.7-2build2 [149 kB]
+Get:35 <a href="http://asia-east2-c.gce.clouds.archive.ubuntu.com/ubuntu">http://asia-east2-c.gce.clouds.archive.ubuntu.com/ubuntu</a> bionic/main amd64 pkg-config amd64 0.29.1-0ubuntu2 [45.0 kB]
+Get:36 <a href="http://asia-east2-c.gce.clouds.archive.ubuntu.com/ubuntu">http://asia-east2-c.gce.clouds.archive.ubuntu.com/ubuntu</a> bionic-updates/main amd64 ppp amd64 2.4.7-2+2ubuntu1.2 [328 kB]
+Get:37 <a href="http://asia-east2-c.gce.clouds.archive.ubuntu.com/ubuntu">http://asia-east2-c.gce.clouds.archive.ubuntu.com/ubuntu</a> bionic-updates/universe amd64 xl2tpd amd64 1.3.10-1ubuntu1 [70.6 kB]
+Fetched 16.7 MB in 6s (2791 kB/s)
+Extracting templates from packages: 100%
+Selecting previously unselected package flex.
+(Reading database &#x2026; 71096 files and directories currently installed.)
+Preparing to unpack &#x2026;/00-flex_2.6.4-6_amd64.deb &#x2026;
+Unpacking flex (2.6.4-6) &#x2026;
+Selecting previously unselected package libstdc++-7-dev:amd64.
+Preparing to unpack &#x2026;/01-libstdc++-7-dev_7.5.0-3ubuntu1~18.04_amd64.deb &#x2026;
+Unpacking libstdc++-7-dev:amd64 (7.5.0-3ubuntu1~18.04) &#x2026;
+Selecting previously unselected package g++-7.
+Preparing to unpack &#x2026;/02-g++-7_7.5.0-3ubuntu1~18.04_amd64.deb &#x2026;
+Unpacking g++-7 (7.5.0-3ubuntu1~18.04) &#x2026;
+Selecting previously unselected package g++.
+Preparing to unpack &#x2026;/03-g++_4%3a7.4.0-1ubuntu2.3_amd64.deb &#x2026;
+Unpacking g++ (4:7.4.0-1ubuntu2.3) &#x2026;
+Selecting previously unselected package libdpkg-perl.
+Preparing to unpack &#x2026;/04-libdpkg-perl_1.19.0.5ubuntu2.3_all.deb &#x2026;
+Unpacking libdpkg-perl (1.19.0.5ubuntu2.3) &#x2026;
+Selecting previously unselected package dpkg-dev.
+Preparing to unpack &#x2026;/05-dpkg-dev_1.19.0.5ubuntu2.3_all.deb &#x2026;
+Unpacking dpkg-dev (1.19.0.5ubuntu2.3) &#x2026;
+Selecting previously unselected package build-essential.
+Preparing to unpack &#x2026;/06-build-essential_12.4ubuntu1_amd64.deb &#x2026;
+Unpacking build-essential (12.4ubuntu1) &#x2026;
+Selecting previously unselected package libfakeroot:amd64.
+Preparing to unpack &#x2026;/07-libfakeroot_1.22-2ubuntu1_amd64.deb &#x2026;
+Unpacking libfakeroot:amd64 (1.22-2ubuntu1) &#x2026;
+Selecting previously unselected package fakeroot.
+Preparing to unpack &#x2026;/08-fakeroot_1.22-2ubuntu1_amd64.deb &#x2026;
+Unpacking fakeroot (1.22-2ubuntu1) &#x2026;
+Selecting previously unselected package libalgorithm-diff-perl.
+Preparing to unpack &#x2026;/09-libalgorithm-diff-perl_1.19.03-1_all.deb &#x2026;
+Unpacking libalgorithm-diff-perl (1.19.03-1) &#x2026;
+Selecting previously unselected package libalgorithm-diff-xs-perl.
+Preparing to unpack &#x2026;/10-libalgorithm-diff-xs-perl_0.04-5_amd64.deb &#x2026;
+Unpacking libalgorithm-diff-xs-perl (0.04-5) &#x2026;
+Selecting previously unselected package libalgorithm-merge-perl.
+Preparing to unpack &#x2026;/11-libalgorithm-merge-perl_0.08-3_all.deb &#x2026;
+Unpacking libalgorithm-merge-perl (0.08-3) &#x2026;
+Selecting previously unselected package libcap-ng-dev.
+Preparing to unpack &#x2026;/12-libcap-ng-dev_0.7.7-3.1_amd64.deb &#x2026;
+Unpacking libcap-ng-dev (0.7.7-3.1) &#x2026;
+Selecting previously unselected package libcap-ng-utils.
+Preparing to unpack &#x2026;/13-libcap-ng-utils_0.7.7-3.1_amd64.deb &#x2026;
+Unpacking libcap-ng-utils (0.7.7-3.1) &#x2026;
+Selecting previously unselected package libcurl3-nss:amd64.
+Preparing to unpack &#x2026;/14-libcurl3-nss_7.58.0-2ubuntu3.8_amd64.deb &#x2026;
+Unpacking libcurl3-nss:amd64 (7.58.0-2ubuntu3.8) &#x2026;
+Selecting previously unselected package libcurl4-nss-dev:amd64.
+Preparing to unpack &#x2026;/15-libcurl4-nss-dev_7.58.0-2ubuntu3.8_amd64.deb &#x2026;
+Unpacking libcurl4-nss-dev:amd64 (7.58.0-2ubuntu3.8) &#x2026;
+Selecting previously unselected package libevent-core-2.1-6:amd64.
+Preparing to unpack &#x2026;/16-libevent-core-2.1-6_2.1.8-stable-4build1_amd64.deb &#x2026;
+Unpacking libevent-core-2.1-6:amd64 (2.1.8-stable-4build1) &#x2026;
+Selecting previously unselected package libevent-extra-2.1-6:amd64.
+Preparing to unpack &#x2026;/17-libevent-extra-2.1-6_2.1.8-stable-4build1_amd64.deb &#x2026;
+Unpacking libevent-extra-2.1-6:amd64 (2.1.8-stable-4build1) &#x2026;
+Selecting previously unselected package libevent-pthreads-2.1-6:amd64.
+Preparing to unpack &#x2026;/18-libevent-pthreads-2.1-6_2.1.8-stable-4build1_amd64.deb &#x2026;
+Unpacking libevent-pthreads-2.1-6:amd64 (2.1.8-stable-4build1) &#x2026;
+Selecting previously unselected package libevent-openssl-2.1-6:amd64.
+Preparing to unpack &#x2026;/19-libevent-openssl-2.1-6_2.1.8-stable-4build1_amd64.deb &#x2026;
+Unpacking libevent-openssl-2.1-6:amd64 (2.1.8-stable-4build1) &#x2026;
+Selecting previously unselected package libevent-dev.
+Preparing to unpack &#x2026;/20-libevent-dev_2.1.8-stable-4build1_amd64.deb &#x2026;
+Unpacking libevent-dev (2.1.8-stable-4build1) &#x2026;
+Selecting previously unselected package libfile-fcntllock-perl.
+Preparing to unpack &#x2026;/21-libfile-fcntllock-perl_0.22-3build2_amd64.deb &#x2026;
+Unpacking libfile-fcntllock-perl (0.22-3build2) &#x2026;
+Selecting previously unselected package libfl2:amd64.
+Preparing to unpack &#x2026;/22-libfl2_2.6.4-6_amd64.deb &#x2026;
+Unpacking libfl2:amd64 (2.6.4-6) &#x2026;
+Selecting previously unselected package libfl-dev:amd64.
+Preparing to unpack &#x2026;/23-libfl-dev_2.6.4-6_amd64.deb &#x2026;
+Unpacking libfl-dev:amd64 (2.6.4-6) &#x2026;
+Selecting previously unselected package libnspr4-dev.
+Preparing to unpack &#x2026;/24-libnspr4-dev_2%3a4.18-1ubuntu1_amd64.deb &#x2026;
+Unpacking libnspr4-dev (2:4.18-1ubuntu1) &#x2026;
+Selecting previously unselected package libnss3-dev:amd64.
+Preparing to unpack &#x2026;/25-libnss3-dev_2%3a3.35-2ubuntu2.7_amd64.deb &#x2026;
+Unpacking libnss3-dev:amd64 (2:3.35-2ubuntu2.7) &#x2026;
+Selecting previously unselected package libnss3-tools.
+Preparing to unpack &#x2026;/26-libnss3-tools_2%3a3.35-2ubuntu2.7_amd64.deb &#x2026;
+Unpacking libnss3-tools (2:3.35-2ubuntu2.7) &#x2026;
+Selecting previously unselected package libpam0g-dev:amd64.
+Preparing to unpack &#x2026;/27-libpam0g-dev_1.1.8-3.6ubuntu2.18.04.1_amd64.deb &#x2026;
+Unpacking libpam0g-dev:amd64 (1.1.8-3.6ubuntu2.18.04.1) &#x2026;
+Selecting previously unselected package libpcre16-3:amd64.
+Preparing to unpack &#x2026;/28-libpcre16-3_2%3a8.39-9_amd64.deb &#x2026;
+Unpacking libpcre16-3:amd64 (2:8.39-9) &#x2026;
+Selecting previously unselected package libpcre32-3:amd64.
+Preparing to unpack &#x2026;/29-libpcre32-3_2%3a8.39-9_amd64.deb &#x2026;
+Unpacking libpcre32-3:amd64 (2:8.39-9) &#x2026;
+Selecting previously unselected package libpcrecpp0v5:amd64.
+Preparing to unpack &#x2026;/30-libpcrecpp0v5_2%3a8.39-9_amd64.deb &#x2026;
+Unpacking libpcrecpp0v5:amd64 (2:8.39-9) &#x2026;
+Selecting previously unselected package libpcre3-dev:amd64.
+Preparing to unpack &#x2026;/31-libpcre3-dev_2%3a8.39-9_amd64.deb &#x2026;
+Unpacking libpcre3-dev:amd64 (2:8.39-9) &#x2026;
+Selecting previously unselected package libsepol1-dev:amd64.
+Preparing to unpack &#x2026;/32-libsepol1-dev_2.7-1_amd64.deb &#x2026;
+Unpacking libsepol1-dev:amd64 (2.7-1) &#x2026;
+Selecting previously unselected package libselinux1-dev:amd64.
+Preparing to unpack &#x2026;/33-libselinux1-dev_2.7-2build2_amd64.deb &#x2026;
+Unpacking libselinux1-dev:amd64 (2.7-2build2) &#x2026;
+Selecting previously unselected package pkg-config.
+Preparing to unpack &#x2026;/34-pkg-config_0.29.1-0ubuntu2_amd64.deb &#x2026;
+Unpacking pkg-config (0.29.1-0ubuntu2) &#x2026;
+Selecting previously unselected package ppp.
+Preparing to unpack &#x2026;/35-ppp_2.4.7-2+2ubuntu1.2_amd64.deb &#x2026;
+Unpacking ppp (2.4.7-2+2ubuntu1.2) &#x2026;
+Selecting previously unselected package xl2tpd.
+Preparing to unpack &#x2026;/36-xl2tpd_1.3.10-1ubuntu1_amd64.deb &#x2026;
+Unpacking xl2tpd (1.3.10-1ubuntu1) &#x2026;
+Setting up libsepol1-dev:amd64 (2.7-1) &#x2026;
+Setting up libpam0g-dev:amd64 (1.1.8-3.6ubuntu2.18.04.1) &#x2026;
+Setting up libevent-core-2.1-6:amd64 (2.1.8-stable-4build1) &#x2026;
+Setting up ppp (2.4.7-2+2ubuntu1.2) &#x2026;
+Created symlink /etc/systemd/system/multi-user.target.wants/pppd-dns.service → /lib/systemd/system/pppd-dns.service.
+Setting up flex (2.6.4-6) &#x2026;
+Setting up libcap-ng-utils (0.7.7-3.1) &#x2026;
+Setting up libevent-openssl-2.1-6:amd64 (2.1.8-stable-4build1) &#x2026;
+Setting up libcap-ng-dev (0.7.7-3.1) &#x2026;
+Setting up libdpkg-perl (1.19.0.5ubuntu2.3) &#x2026;
+Setting up libnspr4-dev (2:4.18-1ubuntu1) &#x2026;
+Setting up libstdc++-7-dev:amd64 (7.5.0-3ubuntu1~18.04) &#x2026;
+Setting up libfile-fcntllock-perl (0.22-3build2) &#x2026;
+Setting up dpkg-dev (1.19.0.5ubuntu2.3) &#x2026;
+Setting up libevent-pthreads-2.1-6:amd64 (2.1.8-stable-4build1) &#x2026;
+Setting up libnss3-tools (2:3.35-2ubuntu2.7) &#x2026;
+Setting up libfakeroot:amd64 (1.22-2ubuntu1) &#x2026;
+Setting up libalgorithm-diff-perl (1.19.03-1) &#x2026;
+Setting up libfl2:amd64 (2.6.4-6) &#x2026;
+Setting up xl2tpd (1.3.10-1ubuntu1) &#x2026;
+Setting up libpcrecpp0v5:amd64 (2:8.39-9) &#x2026;
+Setting up libpcre32-3:amd64 (2:8.39-9) &#x2026;
+Setting up libpcre16-3:amd64 (2:8.39-9) &#x2026;
+Setting up libcurl3-nss:amd64 (7.58.0-2ubuntu3.8) &#x2026;
+Setting up libevent-extra-2.1-6:amd64 (2.1.8-stable-4build1) &#x2026;
+Setting up libpcre3-dev:amd64 (2:8.39-9) &#x2026;
+Setting up g++-7 (7.5.0-3ubuntu1~18.04) &#x2026;
+Setting up libnss3-dev:amd64 (2:3.35-2ubuntu2.7) &#x2026;
+Setting up fakeroot (1.22-2ubuntu1) &#x2026;
+update-alternatives: using /usr/bin/fakeroot-sysv to provide /usr/bin/fakeroot (fakeroot) in auto mode
+Setting up libfl-dev:amd64 (2.6.4-6) &#x2026;
+Setting up libalgorithm-merge-perl (0.08-3) &#x2026;
+Setting up pkg-config (0.29.1-0ubuntu2) &#x2026;
+Setting up libevent-dev (2.1.8-stable-4build1) &#x2026;
+Setting up libalgorithm-diff-xs-perl (0.04-5) &#x2026;
+Setting up libcurl4-nss-dev:amd64 (7.58.0-2ubuntu3.8) &#x2026;
+Setting up g++ (4:7.4.0-1ubuntu2.3) &#x2026;
+update-alternatives: using /usr/bin/g++ to provide /usr/bin/c++ (c++) in auto mode
+Setting up libselinux1-dev:amd64 (2.7-2build2) &#x2026;
+Setting up build-essential (12.4ubuntu1) &#x2026;
+Processing triggers for libc-bin (2.27-3ubuntu1) &#x2026;
+Processing triggers for systemd (237-3ubuntu10.40) &#x2026;
+Processing triggers for man-db (2.8.3-2ubuntu0.1) &#x2026;
+Processing triggers for ureadahead (0.100.0-21) &#x2026;
+Processing triggers for install-info (6.5.0.dfsg.1-2) &#x2026;
+</p>
+
+<p>
+## Installing Fail2Ban to protect SSH&#x2026;
+</p>
+
+<p>
+Reading package lists&#x2026;
+Building dependency tree&#x2026;
+Reading state information&#x2026;
+The following packages were automatically installed and are no longer required:
+  grub-pc-bin libnuma1
+Use 'sudo apt autoremove' to remove them.
+The following additional packages will be installed:
+  libpython-stdlib libpython2.7-minimal libpython2.7-stdlib python python-minimal python2.7 python2.7-minimal python3-pyinotify whois
+Suggested packages:
+  mailx monit sqlite3 python-doc python-tk python2.7-doc binfmt-support python-pyinotify-doc
+The following NEW packages will be installed:
+  fail2ban libpython-stdlib libpython2.7-minimal libpython2.7-stdlib python python-minimal python2.7 python2.7-minimal python3-pyinotify whois
+0 upgraded, 10 newly installed, 0 to remove and 7 not upgraded.
+Need to get 4365 kB of archives.
+After this operation, 18.9 MB of additional disk space will be used.
+Get:1 <a href="http://asia-east2-c.gce.clouds.archive.ubuntu.com/ubuntu">http://asia-east2-c.gce.clouds.archive.ubuntu.com/ubuntu</a> bionic-updates/main amd64 libpython2.7-minimal amd64 2.7.17-1~18.04ubuntu1 [335 kB]
+Get:2 <a href="http://asia-east2-c.gce.clouds.archive.ubuntu.com/ubuntu">http://asia-east2-c.gce.clouds.archive.ubuntu.com/ubuntu</a> bionic-updates/main amd64 python2.7-minimal amd64 2.7.17-1~18.04ubuntu1 [1294 kB]
+Get:3 <a href="http://asia-east2-c.gce.clouds.archive.ubuntu.com/ubuntu">http://asia-east2-c.gce.clouds.archive.ubuntu.com/ubuntu</a> bionic/main amd64 python-minimal amd64 2.7.15~rc1-1 [28.1 kB]
+Get:4 <a href="http://asia-east2-c.gce.clouds.archive.ubuntu.com/ubuntu">http://asia-east2-c.gce.clouds.archive.ubuntu.com/ubuntu</a> bionic-updates/main amd64 libpython2.7-stdlib amd64 2.7.17-1~18.04ubuntu1 [1915 kB]
+Get:5 <a href="http://asia-east2-c.gce.clouds.archive.ubuntu.com/ubuntu">http://asia-east2-c.gce.clouds.archive.ubuntu.com/ubuntu</a> bionic-updates/main amd64 python2.7 amd64 2.7.17-1~18.04ubuntu1 [248 kB]
+Get:6 <a href="http://asia-east2-c.gce.clouds.archive.ubuntu.com/ubuntu">http://asia-east2-c.gce.clouds.archive.ubuntu.com/ubuntu</a> bionic/main amd64 libpython-stdlib amd64 2.7.15~rc1-1 [7620 B]
+Get:7 <a href="http://asia-east2-c.gce.clouds.archive.ubuntu.com/ubuntu">http://asia-east2-c.gce.clouds.archive.ubuntu.com/ubuntu</a> bionic/main amd64 python amd64 2.7.15~rc1-1 [140 kB]
+Get:8 <a href="http://asia-east2-c.gce.clouds.archive.ubuntu.com/ubuntu">http://asia-east2-c.gce.clouds.archive.ubuntu.com/ubuntu</a> bionic/universe amd64 fail2ban all 0.10.2-2 [329 kB]
+Get:9 <a href="http://asia-east2-c.gce.clouds.archive.ubuntu.com/ubuntu">http://asia-east2-c.gce.clouds.archive.ubuntu.com/ubuntu</a> bionic/main amd64 python3-pyinotify all 0.9.6-1 [24.7 kB]
+Get:10 <a href="http://asia-east2-c.gce.clouds.archive.ubuntu.com/ubuntu">http://asia-east2-c.gce.clouds.archive.ubuntu.com/ubuntu</a> bionic/main amd64 whois amd64 5.3.0 [43.7 kB]
+Fetched 4365 kB in 2s (1772 kB/s)
+Selecting previously unselected package libpython2.7-minimal:amd64.
+(Reading database &#x2026; 73537 files and directories currently installed.)
+Preparing to unpack &#x2026;/0-libpython2.7-minimal_2.7.17-1~18.04ubuntu1_amd64.deb &#x2026;
+Unpacking libpython2.7-minimal:amd64 (2.7.17-1~18.04ubuntu1) &#x2026;
+Selecting previously unselected package python2.7-minimal.
+Preparing to unpack &#x2026;/1-python2.7-minimal_2.7.17-1~18.04ubuntu1_amd64.deb &#x2026;
+Unpacking python2.7-minimal (2.7.17-1~18.04ubuntu1) &#x2026;
+Selecting previously unselected package python-minimal.
+Preparing to unpack &#x2026;/2-python-minimal_2.7.15~rc1-1_amd64.deb &#x2026;
+Unpacking python-minimal (2.7.15~rc1-1) &#x2026;
+Selecting previously unselected package libpython2.7-stdlib:amd64.
+Preparing to unpack &#x2026;/3-libpython2.7-stdlib_2.7.17-1~18.04ubuntu1_amd64.deb &#x2026;
+Unpacking libpython2.7-stdlib:amd64 (2.7.17-1~18.04ubuntu1) &#x2026;
+Selecting previously unselected package python2.7.
+Preparing to unpack &#x2026;/4-python2.7_2.7.17-1~18.04ubuntu1_amd64.deb &#x2026;
+Unpacking python2.7 (2.7.17-1~18.04ubuntu1) &#x2026;
+Selecting previously unselected package libpython-stdlib:amd64.
+Preparing to unpack &#x2026;/5-libpython-stdlib_2.7.15~rc1-1_amd64.deb &#x2026;
+Unpacking libpython-stdlib:amd64 (2.7.15~rc1-1) &#x2026;
+Setting up libpython2.7-minimal:amd64 (2.7.17-1~18.04ubuntu1) &#x2026;
+Setting up python2.7-minimal (2.7.17-1~18.04ubuntu1) &#x2026;
+Setting up python-minimal (2.7.15~rc1-1) &#x2026;
+Selecting previously unselected package python.
+(Reading database &#x2026; 74285 files and directories currently installed.)
+Preparing to unpack &#x2026;/python_2.7.15~rc1-1_amd64.deb &#x2026;
+Unpacking python (2.7.15~rc1-1) &#x2026;
+Selecting previously unselected package fail2ban.
+Preparing to unpack &#x2026;/fail2ban_0.10.2-2_all.deb &#x2026;
+Unpacking fail2ban (0.10.2-2) &#x2026;
+Selecting previously unselected package python3-pyinotify.
+Preparing to unpack &#x2026;/python3-pyinotify_0.9.6-1_all.deb &#x2026;
+Unpacking python3-pyinotify (0.9.6-1) &#x2026;
+Selecting previously unselected package whois.
+Preparing to unpack &#x2026;/archives/whois_5.3.0_amd64.deb &#x2026;
+Unpacking whois (5.3.0) &#x2026;
+Setting up fail2ban (0.10.2-2) &#x2026;
+Created symlink /etc/systemd/system/multi-user.target.wants/fail2ban.service → /lib/systemd/system/fail2ban.service.
+Setting up whois (5.3.0) &#x2026;
+Setting up libpython2.7-stdlib:amd64 (2.7.17-1~18.04ubuntu1) &#x2026;
+Setting up python3-pyinotify (0.9.6-1) &#x2026;
+Setting up python2.7 (2.7.17-1~18.04ubuntu1) &#x2026;
+Setting up libpython-stdlib:amd64 (2.7.15~rc1-1) &#x2026;
+Setting up python (2.7.15~rc1-1) &#x2026;
+Processing triggers for ureadahead (0.100.0-21) &#x2026;
+Processing triggers for systemd (237-3ubuntu10.40) &#x2026;
+Processing triggers for man-db (2.8.3-2ubuntu0.1) &#x2026;
+Processing triggers for mime-support (3.60ubuntu1) &#x2026;
+</p>
+
+<p>
+## Compiling and installing Libreswan&#x2026;
+</p>
+
+<p>
+2020-05-25 12:02:42 URL:<a href="https://codeload.github.com/libreswan/libreswan/tar.gz/v3.32">https://codeload.github.com/libreswan/libreswan/tar.gz/v3.32</a> <code>[4141631/4141631]</code> -&gt; "libreswan-3.32.tar.gz" [1]
+Reading package lists&#x2026;
+Building dependency tree&#x2026;
+Reading state information&#x2026;
+The following packages were automatically installed and are no longer required:
+  grub-pc-bin libnuma1
+Use 'sudo apt autoremove' to remove them.
+The following additional packages will be installed:
+  libnss-systemd libpam-systemd libsystemd0 systemd
+Suggested packages:
+  systemd-container
+The following NEW packages will be installed:
+  libsystemd-dev
+The following packages will be upgraded:
+  libnss-systemd libpam-systemd libsystemd0 systemd
+4 upgraded, 1 newly installed, 0 to remove and 3 not upgraded.
+Need to get 3517 kB of archives.
+After this operation, 751 kB of additional disk space will be used.
+Get:1 <a href="http://asia-east2-c.gce.clouds.archive.ubuntu.com/ubuntu">http://asia-east2-c.gce.clouds.archive.ubuntu.com/ubuntu</a> bionic-updates/main amd64 libnss-systemd amd64 237-3ubuntu10.41 [105 kB]
+Get:2 <a href="http://asia-east2-c.gce.clouds.archive.ubuntu.com/ubuntu">http://asia-east2-c.gce.clouds.archive.ubuntu.com/ubuntu</a> bionic-updates/main amd64 libpam-systemd amd64 237-3ubuntu10.41 [107 kB]
+Get:3 <a href="http://asia-east2-c.gce.clouds.archive.ubuntu.com/ubuntu">http://asia-east2-c.gce.clouds.archive.ubuntu.com/ubuntu</a> bionic-updates/main amd64 systemd amd64 237-3ubuntu10.41 [2914 kB]
+Get:4 <a href="http://asia-east2-c.gce.clouds.archive.ubuntu.com/ubuntu">http://asia-east2-c.gce.clouds.archive.ubuntu.com/ubuntu</a> bionic-updates/main amd64 libsystemd0 amd64 237-3ubuntu10.41 [207 kB]
+Get:5 <a href="http://asia-east2-c.gce.clouds.archive.ubuntu.com/ubuntu">http://asia-east2-c.gce.clouds.archive.ubuntu.com/ubuntu</a> bionic-updates/main amd64 libsystemd-dev amd64 237-3ubuntu10.41 [184 kB]
+Fetched 3517 kB in 3s (1197 kB/s)
+(Reading database &#x2026; 74779 files and directories currently installed.)
+Preparing to unpack &#x2026;/libnss-systemd_237-3ubuntu10.41_amd64.deb &#x2026;
+Unpacking libnss-systemd:amd64 (237-3ubuntu10.41) over (237-3ubuntu10.40) &#x2026;
+Preparing to unpack &#x2026;/libpam-systemd_237-3ubuntu10.41_amd64.deb &#x2026;
+Unpacking libpam-systemd:amd64 (237-3ubuntu10.41) over (237-3ubuntu10.40) &#x2026;
+Preparing to unpack &#x2026;/systemd_237-3ubuntu10.41_amd64.deb &#x2026;
+Unpacking systemd (237-3ubuntu10.41) over (237-3ubuntu10.40) &#x2026;
+Preparing to unpack &#x2026;/libsystemd0_237-3ubuntu10.41_amd64.deb &#x2026;
+Unpacking libsystemd0:amd64 (237-3ubuntu10.41) over (237-3ubuntu10.40) &#x2026;
+Setting up libsystemd0:amd64 (237-3ubuntu10.41) &#x2026;
+Selecting previously unselected package libsystemd-dev:amd64.
+(Reading database &#x2026; 74779 files and directories currently installed.)
+Preparing to unpack &#x2026;/libsystemd-dev_237-3ubuntu10.41_amd64.deb &#x2026;
+Unpacking libsystemd-dev:amd64 (237-3ubuntu10.41) &#x2026;
+Setting up systemd (237-3ubuntu10.41) &#x2026;
+Setting up libsystemd-dev:amd64 (237-3ubuntu10.41) &#x2026;
+Setting up libnss-systemd:amd64 (237-3ubuntu10.41) &#x2026;
+Setting up libpam-systemd:amd64 (237-3ubuntu10.41) &#x2026;
+Processing triggers for libc-bin (2.27-3ubuntu1) &#x2026;
+Processing triggers for man-db (2.8.3-2ubuntu0.1) &#x2026;
+Processing triggers for dbus (1.12.2-1ubuntu1.1) &#x2026;
+Processing triggers for ureadahead (0.100.0-21) &#x2026;
+a - x509dn.o
+a - asn1.o
+a - oid.o
+a - constants.o
+a - alloc.o
+a - diag.o
+a - id.o
+a - initaddr.o
+a - initsubnet.o
+a - keyblobtoid.o
+a - lex.o
+a - lswconf.o
+a - lswfips.o
+a - rangetosubnet.o
+a - sameaddr.o
+a - secrets.o
+a - subnettypeof.o
+a - ttoaddr.o
+a - ttodata.o
+a - ttoprotoport.o
+a - ttosa.o
+a - ttosubnet.o
+a - ttoul.o
+a - secitem_chunk.o
+a - base64_pubkey.o
+a - lswnss.o
+a - lsw_passert_fail.o
+a - alg_byname.o
+a - nss_cert_load.o
+a - certs.o
+a - reqid.o
+a - addr_lookup.o
+a - kernel_xfrm_reply.o
+a - netlink_attrib.o
+a - log_ip.o
+a - fd.o
+a - kernel_alg.o
+a - kernel_sadb.o
+a - role.o
+a - addrtot.o
+a - addrtypeof.o
+a - anyaddr.o
+a - datatot.o
+a - ultot.o
+a - proposals.o
+a - v1_proposals.o
+a - v2_proposals.o
+a - esp_info.o
+a - ah_info.o
+a - ike_info.o
+a - ckaid.o
+a - chunk.o
+a - shunk.o
+a - ip_address.o
+a - ip_endpoint.o
+a - ip_info.o
+a - ip_protocol.o
+a - ip_range.o
+a - ip_said.o
+a - ip_subnet.o
+a - lmod.o
+a - lset.o
+a - deltatime.o
+a - realtime.o
+a - monotime.o
+a - refcnt.o
+a - debug.o
+a - impair.o
+a - keywords.o
+a - DBG_dump.o
+a - DBG_log.o
+a - libreswan_exit_log_errno.o
+a - libreswan_log_errno.o
+a - libreswan_bad_case.o
+a - libreswan_log.o
+a - libreswan_log_rc.o
+a - log_pexpect.o
+a - jambuf.o
+a - jam_bytes.o
+a - lswlog.o
+a - lswlog_nss_error.o
+a - lswlog_nss_ckm.o
+a - lswlog_nss_ckf.o
+a - lswlog_nss_cka.o
+a - lswlog_nss_secitem.o
+a - lswlog_enum_lset_short.o
+a - lswlog_to_file_stream.o
+a - lswlog_pexpect.o
+a - lswlog_passert.o
+a - ike_alg.o
+a - ike_alg_test.o
+a - ike_alg_dh_nss_ecp_ops.o
+a - ike_alg_dh_nss_modp_ops.o
+a - ike_alg_hash_nss_ops.o
+a - ike_alg_prf_mac_hmac_ops.o
+a - ike_alg_prf_mac_nss_ops.o
+a - ike_alg_prf_mac_xcbc_ops.o
+a - ike_alg_prf_ikev1_mac_ops.o
+a - ike_alg_prf_ikev2_mac_ops.o
+a - ike_alg_encrypt_chacha20_poly1305.o
+a - ike_alg_encrypt_nss_aead_ops.o
+a - ike_alg_encrypt_nss_cbc_ops.o
+a - ike_alg_encrypt_nss_ctr_ops.o
+a - ike_alg_encrypt_nss_gcm_ops.o
+a - ike_alg_desc.o
+a - ike_alg_3des.o
+a - ike_alg_aes.o
+a - ike_alg_camellia.o
+a - ike_alg_dh.o
+a - ike_alg_md5.o
+a - ike_alg_none.o
+a - ike_alg_serpent.o
+a - ike_alg_sha1.o
+a - ike_alg_sha2.o
+a - ike_alg_twofish.o
+a - crypt_mac.o
+a - nss_copies.o
+a - /opt/src/libreswan-3.32/OBJ.linux.x86_64/lib/libswan/version.o
+a - serpent.o
+a - serpent_cbc.o
+a - twofish.o
+a - twofish_cbc.o
+a - whacklib.o
+a - aliascomp.o
+a - confread.o
+a - confwrite.o
+a - starterwhack.o
+a - starterlog.o
+a - parser.tab.o
+a - lex.yy.o
+a - keywords.o
+a - interfaces.o
+a - lswlog.o
+a - libreswan_exit.o
+IN ipsec.conf.in -&gt; ../../OBJ.linux.x86_64/programs/configs/ipsec.conf
+IN ipsec.secrets.in -&gt; ../../OBJ.linux.x86_64/programs/configs/ipsec.secrets
+IN clear.in -&gt; ../../OBJ.linux.x86_64/programs/configs/clear
+IN clear-or-private.in -&gt; ../../OBJ.linux.x86_64/programs/configs/clear-or-private
+IN private-or-clear.in -&gt; ../../OBJ.linux.x86_64/programs/configs/private-or-clear
+IN private.in -&gt; ../../OBJ.linux.x86_64/programs/configs/private
+IN block.in -&gt; ../../OBJ.linux.x86_64/programs/configs/block
+IN portexcludes.conf.in -&gt; ../../OBJ.linux.x86_64/programs/configs/portexcludes.conf
+IN _plutorun.in -&gt; ../../OBJ.linux.x86_64/programs/_plutorun/_plutorun
+IN _stackmanager.in -&gt; ../../OBJ.linux.x86_64/programs/_stackmanager/_stackmanager
+IN _secretcensor.in -&gt; ../../OBJ.linux.x86_64/programs/_secretcensor/_secretcensor
+IN _updown.in -&gt; ../../OBJ.linux.x86_64/programs/_updown/_updown
+IN _unbound-hook.in -&gt; ../../OBJ.linux.x86_64/programs/_unbound-hook/_unbound-hook
+IN auto.in -&gt; ../../OBJ.linux.x86_64/programs/auto/auto
+IN barf.in -&gt; ../../OBJ.linux.x86_64/programs/barf/barf
+IN verify.in -&gt; ../../OBJ.linux.x86_64/programs/verify/verify
+IN show.in -&gt; ../../OBJ.linux.x86_64/programs/show/show
+IN ipsec.in -&gt; ../../OBJ.linux.x86_64/programs/ipsec/ipsec
+IN look.in -&gt; ../../OBJ.linux.x86_64/programs/look/look
+IN newhostkey.in -&gt; ../../OBJ.linux.x86_64/programs/newhostkey/newhostkey
+IN setup.in -&gt; ../../OBJ.linux.x86_64/programs/setup/setup
+IN letsencrypt.in -&gt; ../../OBJ.linux.x86_64/programs/letsencrypt/letsencrypt
+IN _updown.netkey.in -&gt; ../../OBJ.linux.x86_64/programs/_updown.netkey/_updown.netkey
+IN ipsec.service.in -&gt; ../../OBJ.linux.x86_64/initsystems/systemd/ipsec.service
+IN libreswan.conf.in -&gt; ../../OBJ.linux.x86_64/initsystems/systemd/libreswan.conf
+../../OBJ.linux.x86_64/programs/pluto/pluto -&gt; <i>usr/local/libexec/ipsec/pluto
+..</i>../OBJ.linux.x86_64/programs/whack/whack -&gt; <i>usr/local/libexec/ipsec/whack
+..</i>../OBJ.linux.x86_64/programs/addconn/addconn -&gt; <i>usr/local/libexec/ipsec/addconn
+..</i>../OBJ.linux.x86_64/programs/configs/ipsec.conf -&gt; <i>etc/ipsec.conf
+..</i>../OBJ.linux.x86_64/programs/configs/ipsec.secrets -&gt; <i>etc/ipsec.secrets
+..</i>../OBJ.linux.x86_64/programs/configs/ipsec.conf -&gt; <i>usr/local/share/doc/libreswan/ipsec.conf-sample
+..</i>../OBJ.linux.x86_64/programs/configs/ipsec.secrets -&gt; <i>usr/local/share/doc/libreswan/ipsec.secrets-sample
+..</i>../OBJ.linux.x86_64/programs/configs/clear -&gt; <i>etc/ipsec.d/policies/clear
+..</i>../OBJ.linux.x86_64/programs/configs/clear-or-private -&gt; <i>etc/ipsec.d/policies/clear-or-private
+..</i>../OBJ.linux.x86_64/programs/configs/private-or-clear -&gt; <i>etc/ipsec.d/policies/private-or-clear
+..</i>../OBJ.linux.x86_64/programs/configs/private -&gt; <i>etc/ipsec.d/policies/private
+..</i>../OBJ.linux.x86_64/programs/configs/block -&gt; <i>etc/ipsec.d/policies/block
+..</i>../OBJ.linux.x86_64/programs/configs/portexcludes.conf -&gt; <i>etc/ipsec.d/policies/portexcludes.conf
+..</i>../OBJ.linux.x86_64/programs/_plutorun/_plutorun -&gt; <i>usr/local/libexec/ipsec/_plutorun
+..</i>../OBJ.linux.x86_64/programs/_stackmanager/_stackmanager -&gt; <i>usr/local/libexec/ipsec/_stackmanager
+..</i>../OBJ.linux.x86_64/programs/_secretcensor/_secretcensor -&gt; <i>usr/local/libexec/ipsec/_secretcensor
+..</i>../OBJ.linux.x86_64/programs/_updown/_updown -&gt; <i>usr/local/libexec/ipsec/_updown
+..</i>../OBJ.linux.x86_64/programs/_unbound-hook/_unbound-hook -&gt; <i>usr/local/libexec/ipsec/_unbound-hook
+..</i>../OBJ.linux.x86_64/programs/auto/auto -&gt; <i>usr/local/libexec/ipsec/auto
+..</i>../OBJ.linux.x86_64/programs/barf/barf -&gt; <i>usr/local/libexec/ipsec/barf
+..</i>../OBJ.linux.x86_64/programs/verify/verify -&gt; <i>usr/local/libexec/ipsec/verify
+..</i>../OBJ.linux.x86_64/programs/show/show -&gt; <i>usr/local/libexec/ipsec/show
+..</i>../OBJ.linux.x86_64/programs/ipsec/ipsec -&gt; <i>usr/local/sbin/ipsec
+..</i>../OBJ.linux.x86_64/programs/look/look -&gt; <i>usr/local/libexec/ipsec/look
+..</i>../OBJ.linux.x86_64/programs/newhostkey/newhostkey -&gt; <i>usr/local/libexec/ipsec/newhostkey
+..</i>../OBJ.linux.x86_64/programs/rsasigkey/rsasigkey -&gt; <i>usr/local/libexec/ipsec/rsasigkey
+..</i>../OBJ.linux.x86_64/programs/setup/setup -&gt; <i>usr/local/libexec/ipsec/setup
+..</i>../OBJ.linux.x86_64/programs/showhostkey/showhostkey -&gt; <i>usr/local/libexec/ipsec/showhostkey
+..</i>../OBJ.linux.x86_64/programs/readwriteconf/readwriteconf -&gt; <i>usr/local/libexec/ipsec/readwriteconf
+..</i>../OBJ.linux.x86_64/programs/_import_crl/_import_crl -&gt; <i>usr/local/libexec/ipsec/_import_crl
+..</i>../OBJ.linux.x86_64/programs/algparse/algparse -&gt; <i>usr/local/libexec/ipsec/algparse
+..</i>../OBJ.linux.x86_64/programs/cavp/cavp -&gt; <i>usr/local/libexec/ipsec/cavp
+..</i>../OBJ.linux.x86_64/programs/letsencrypt/letsencrypt -&gt; <i>usr/local/libexec/ipsec/letsencrypt
+..</i>../OBJ.linux.x86_64/programs/_updown.netkey/_updown.netkey -&gt; /usr/local/libexec/ipsec/_updown.netkey
+running: systemctl &#x2013;system daemon-reload
+running: systemd-tmpfiles &#x2013;create /usr/lib/tmpfiles.d/libreswan.conf
+DESTDIR=''
+</p>
+<div id="outline-container-orge00af49" class="outline-2">
+<h2 id="orge00af49">WARNING <b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b>*</b></b></b></b></b></b></b></b></b></b></b></b></b></b></b></b></b></h2>
+<div class="outline-text-2" id="text-orge00af49">
+<p>
+The ipsec service is currently disabled. To enable this service issue:
+ systemctl enable ipsec.service
+<b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b>**</b></b></b></b></b></b></b></b></b></b></b></b></b></b></b></b></b></b></b></b></b></b></b></b></b></b></b></b></b></b></b></b></b></b>
+../../../OBJ.linux.x86_64/testing/check/enum/enumcheck -&gt; <i>usr/local/libexec/ipsec/enumcheck
+..</i>../../OBJ.linux.x86_64/testing/check/ip/ipcheck -&gt; <i>usr/local/libexec/ipsec/ipcheck
+..</i>../../OBJ.linux.x86_64/testing/check/jambuf/jambufcheck -&gt; <i>usr/local/libexec/ipsec/jambufcheck
+..</i>../../OBJ.linux.x86_64/testing/check/time/timecheck -&gt; <i>usr/local/libexec/ipsec/timecheck
+..</i>../../OBJ.linux.x86_64/testing/check/shunk/shunkcheck -&gt; <i>usr/local/libexec/ipsec/shunkcheck
+..</i>../../OBJ.linux.x86_64/testing/check/dn/dncheck -&gt; /usr/local/libexec/ipsec/dncheck
+</p>
+
+<p>
+## Creating VPN configuration&#x2026;
+</p>
+
+
+<p>
+## Updating sysctl settings&#x2026;
+</p>
+
+
+<p>
+## Updating IPTables rules&#x2026;
+</p>
+
+
+<p>
+## Enabling services on boot&#x2026;
+</p>
+
+
+<p>
+## Starting services&#x2026;
+</p>
+
+
+<p>
+<code>==============================================</code>
+</p>
+
+<p>
+IPsec VPN server is now ready for use!
+</p>
+
+<p>
+Connect to your new VPN with these details:
+</p>
+
+
+
+<p>
+Write these down. You'll need them to connect!
+</p>
+
+<p>
+Important notes:   <a href="https://git.io/vpnnotes">https://git.io/vpnnotes</a>
+Setup VPN clients: <a href="https://git.io/vpnclients">https://git.io/vpnclients</a>
+IKEv2 guide:       <a href="https://git.io/ikev2">https://git.io/ikev2</a>
+</p>
+
+<p>
+<code>==============================================</code>
+</p>
+
+<p>
+➜  ~
+#+END_SRC
+</p>
+</div>
+</div>
+</div>
+</body>
+</html>

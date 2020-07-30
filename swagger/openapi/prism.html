@@ -3,12 +3,12 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2020-04-15 Wed 09:55 -->
+<!-- 2020-07-30 Thu 16:13 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>prism</title>
 <meta name="generator" content="Org mode" />
-<meta name="author" content="yunlong zeng" />
+<meta name="author" content="a" />
 <link rel="stylesheet" title="Standard" href="/html/style/worg.css" type="text/css" />
 <link rel="alternate stylesheet" title="Zenburn" href="/html/style/worg-zenburn.css" type="text/css" />
 <link rel="alternate stylesheet" title="Classic" href="/html/style/worg-classic.css" type="text/css" />
@@ -98,15 +98,15 @@ fathom('trackPageview');
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#orgbf80dfc">install</a></li>
-<li><a href="#org5ff0568">prism start</a></li>
-<li><a href="#org4ea9437">注意 openapi 写法</a>
+<li><a href="#org728eb5f">install</a></li>
+<li><a href="#org391e7c4">prism start</a></li>
+<li><a href="#orgfa147e6">注意 openapi 写法</a>
 <ul>
-<li><a href="#org7d45d3b">swagger 2.0</a></li>
-<li><a href="#orgbc64231">openapi 3.0</a></li>
+<li><a href="#org3e59589">swagger 2.0</a></li>
+<li><a href="#org2a329c0">openapi 3.0</a></li>
 </ul>
 </li>
-<li><a href="#org3638c56">error     Violation: request Invalid security scheme used</a></li>
+<li><a href="#org4d750cb">error     Violation: request Invalid security scheme used</a></li>
 </ul>
 </div>
 </div>
@@ -122,9 +122,9 @@ fathom('trackPageview');
 <a href="https://stoplight.io/p/docs/gh/stoplightio/prism">https://stoplight.io/p/docs/gh/stoplightio/prism</a>
 </p>
 
-<div id="outline-container-orgbf80dfc" class="outline-2">
-<h2 id="orgbf80dfc">install</h2>
-<div class="outline-text-2" id="text-orgbf80dfc">
+<div id="outline-container-org728eb5f" class="outline-2">
+<h2 id="org728eb5f">install</h2>
+<div class="outline-text-2" id="text-org728eb5f">
 <div class="org-src-container">
 <pre class="src src-shell">npm install -g @stoplight/prism-cli
 </pre>
@@ -132,56 +132,56 @@ fathom('trackPageview');
 </div>
 </div>
 
-<div id="outline-container-org5ff0568" class="outline-2">
-<h2 id="org5ff0568">prism start</h2>
-<div class="outline-text-2" id="text-org5ff0568">
+<div id="outline-container-org391e7c4" class="outline-2">
+<h2 id="org391e7c4">prism start</h2>
+<div class="outline-text-2" id="text-org391e7c4">
 <div class="org-src-container">
-<pre class="src src-shell">prism mock -d ./openapi.yaml -h <span style="color: #a45bad;">192.168.168.137</span> -p <span style="color: #a45bad;">7020</span>
+<pre class="src src-shell">prism mock -d ./openapi.yaml -h 192.168.168.137 -p 7020
 </pre>
 </div>
 </div>
 </div>
 
-<div id="outline-container-org4ea9437" class="outline-2">
-<h2 id="org4ea9437">注意 openapi 写法</h2>
-<div class="outline-text-2" id="text-org4ea9437">
+<div id="outline-container-orgfa147e6" class="outline-2">
+<h2 id="orgfa147e6">注意 openapi 写法</h2>
+<div class="outline-text-2" id="text-orgfa147e6">
 </div>
-<div id="outline-container-org7d45d3b" class="outline-3">
-<h3 id="org7d45d3b">swagger 2.0</h3>
-<div class="outline-text-3" id="text-org7d45d3b">
+<div id="outline-container-org3e59589" class="outline-3">
+<h3 id="org3e59589">swagger 2.0</h3>
+<div class="outline-text-3" id="text-org3e59589">
 <p>
 来自 <a href="https://github.com/swagger-api/swagger-node/blob/master/docs/mock-mode.md#quick-example-mock-mode-in-action">https://github.com/swagger-api/swagger-node/blob/master/docs/mock-mode.md#quick-example-mock-mode-in-action</a> 的示例
 </p>
 
 <div class="org-src-container">
-<pre class="src src-yaml"><span style="color: #7590db;">swagger</span>: <span style="color: #daa520;">'2.0'</span>
-<span style="color: #7590db;">info</span>:
-  <span style="color: #7590db;">version</span>: <span style="color: #daa520;">"0.0.1"</span>
-  <span style="color: #7590db;">title</span>: Mock mode test
-<span style="color: #7590db;">host</span>: localhost
-<span style="color: #7590db;">basePath</span>: /
-<span style="color: #7590db;">schemes</span>:
+<pre class="src src-yaml">swagger: '2.0'
+info:
+  version: "0.0.1"
+  title: Mock mode test
+host: localhost
+basePath: /
+schemes:
   - http
-<span style="color: #7590db;">consumes</span>:
+consumes:
   - application/json
-<span style="color: #7590db;">produces</span>:
+produces:
   - application/json
-<span style="color: #7590db;">paths</span>:
-  <span style="color: #7590db;">/weather</span>:
-    <span style="color: #7590db;">x-swagger-router-controller</span>: weather
-    <span style="color: #7590db;">get</span>:
-      <span style="color: #7590db;">responses</span>:
-        <span style="color: #daa520;">"200"</span>:
-          <span style="color: #7590db;">description</span>: Success
-          <span style="color: #7590db;">schema</span>:
-            <span style="color: #7590db;">$ref</span>: <span style="color: #daa520;">"#/definitions/WeatherResponse"</span>
-<span style="color: #7590db;">definitions</span>:
-  <span style="color: #7590db;">WeatherResponse</span>:
-    <span style="color: #7590db;">required</span>:
+paths:
+  /weather:
+    x-swagger-router-controller: weather
+    get:
+      responses:
+        "200":
+          description: Success
+          schema:
+            $ref: "#/definitions/WeatherResponse"
+definitions:
+  WeatherResponse:
+    required:
       - message
-    <span style="color: #7590db;">properties</span>:
-      <span style="color: #7590db;">message</span>:
-        <span style="color: #7590db;">type</span>: string
+    properties:
+      message:
+        type: string
 </pre>
 </div>
 
@@ -201,39 +201,39 @@ curl -i http://localhost:4010/weather
 </div>
 </div>
 
-<div id="outline-container-orgbc64231" class="outline-3">
-<h3 id="orgbc64231">openapi 3.0</h3>
-<div class="outline-text-3" id="text-orgbc64231">
+<div id="outline-container-org2a329c0" class="outline-3">
+<h3 id="org2a329c0">openapi 3.0</h3>
+<div class="outline-text-3" id="text-org2a329c0">
 <p>
 改写上面的 swagger 2.0 为 openapi 3.0
 </p>
 
 <div class="org-src-container">
-<pre class="src src-yaml"><span style="color: #7590db;">openapi</span>: 3.0.0
-<span style="color: #7590db;">info</span>:
-  <span style="color: #7590db;">title</span>: weather
-  <span style="color: #7590db;">description</span>: weather project
-  <span style="color: #7590db;">version</span>: 0.0.1
+<pre class="src src-yaml">openapi: 3.0.0
+info:
+  title: weather
+  description: weather project
+  version: 0.0.1
 
-<span style="color: #7590db;">servers</span>:
-  - <span style="color: #7590db;">url</span>: http://192.168.168.165:7014
-    <span style="color: #7590db;">description</span>: Optional server description, e.g. Internal staging server for dev
+servers:
+  - url: http://192.168.168.165:7014
+    description: Optional server description, e.g. Internal staging server for dev
 
-<span style="color: #7590db;">paths</span>:
-  <span style="color: #7590db;">/string</span>:
-    <span style="color: #7590db;">x-swagger-router-controller</span>: weather
-    <span style="color: #7590db;">get</span>:
-      <span style="color: #7590db;">responses</span>:
-        <span style="color: #daa520;">'200'</span>:
-          <span style="color: #7590db;">description</span>: Success
-          <span style="color: #7590db;">content</span>:
-            <span style="color: #7590db;">application/json</span>:
-              <span style="color: #7590db;">schema</span>:
-                <span style="color: #7590db;">required</span>:
+paths:
+  /string:
+    x-swagger-router-controller: weather
+    get:
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                required:
                   - message
-                <span style="color: #7590db;">properties</span>:
-                  <span style="color: #7590db;">message</span>:
-                    <span style="color: #7590db;">type</span>: string
+                properties:
+                  message:
+                    type: string
 </pre>
 </div>
 
@@ -242,8 +242,8 @@ curl -i http://localhost:4010/weather
 </p>
 
 <div class="org-src-container">
-<pre class="src src-yaml"><span style="color: #7590db;">content</span>:
-  <span style="color: #7590db;">application/json</span>:
+<pre class="src src-yaml">content:
+  application/json:
 </pre>
 </div>
 
@@ -254,9 +254,9 @@ curl -i http://localhost:4010/weather
 </div>
 </div>
 
-<div id="outline-container-org3638c56" class="outline-2">
-<h2 id="org3638c56">error     Violation: request Invalid security scheme used</h2>
-<div class="outline-text-2" id="text-org3638c56">
+<div id="outline-container-org4d750cb" class="outline-2">
+<h2 id="org4d750cb">error     Violation: request Invalid security scheme used</h2>
+<div class="outline-text-2" id="text-org4d750cb">
 <div class="org-src-container">
 <pre class="src src-example">[11:59:59 AM] › [HTTP SERVER] post /user/passwordInit ℹ  info      Request received
 [11:59:59 AM] ›     [NEGOTIATOR] ℹ  info      Request contains an accept header: application/json

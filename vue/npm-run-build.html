@@ -1,0 +1,171 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<!-- 2020-07-30 Thu 16:14 -->
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>vue npm run build</title>
+<meta name="generator" content="Org mode" />
+<meta name="author" content="a" />
+<link rel="stylesheet" title="Standard" href="/html/style/worg.css" type="text/css" />
+<link rel="alternate stylesheet" title="Zenburn" href="/html/style/worg-zenburn.css" type="text/css" />
+<link rel="alternate stylesheet" title="Classic" href="/html/style/worg-classic.css" type="text/css" />
+<link rel="SHORTCUT ICON" href="/html/style/org-mode-unicorn.ico" type="image/x-icon" />
+<link rel="icon" href="/html/style/org-mode-unicorn.ico" type="image/ico" />
+<script type="text/javascript">
+/*
+@licstart  The following is the entire license notice for the
+JavaScript code in this tag.
+
+Copyright (C) 2012-2019 Free Software Foundation, Inc.
+
+The JavaScript code in this tag is free software: you can
+redistribute it and/or modify it under the terms of the GNU
+General Public License (GNU GPL) as published by the Free Software
+Foundation, either version 3 of the License, or (at your option)
+any later version.  The code is distributed WITHOUT ANY WARRANTY;
+without even the implied warranty of MERCHANTABILITY or FITNESS
+FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
+
+As additional permission under GNU GPL version 3 section 7, you
+may distribute non-source (e.g., minimized or compacted) forms of
+that code without the copy of the GNU GPL normally required by
+section 4, provided you include this license notice and a URL
+through which recipients can access the Corresponding Source.
+
+
+@licend  The above is the entire license notice
+for the JavaScript code in this tag.
+*/
+<!--/*--><![CDATA[/*><!--*/
+ function CodeHighlightOn(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(null != target) {
+     elem.cacheClassElem = elem.className;
+     elem.cacheClassTarget = target.className;
+     target.className = "code-highlighted";
+     elem.className   = "code-highlighted";
+   }
+ }
+ function CodeHighlightOff(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(elem.cacheClassElem)
+     elem.className = elem.cacheClassElem;
+   if(elem.cacheClassTarget)
+     target.className = elem.cacheClassTarget;
+ }
+/*]]>*///-->
+</script>
+</head>
+<body>
+<div id="preamble" class="status">
+<script type="text/javascript">
+  document.addEventListener('DOMContentLoaded',function() {
+      document.getElementById("table-of-contents").onclick = function() {
+          var elem = document.getElementById("text-table-of-contents");
+          elem.style.display = elem.style.display == "block" ? "none" : "block";
+      }
+  });
+
+  var url = document.location.href;
+  var orgsource = url.substring(0, url.lastIndexOf("."))+".org.html";
+  function show_org_source(){
+      document.location.href = orgsource;
+  }
+</script>
+
+<script>
+(function(f, a, t, h, o, m){
+	a[h]=a[h]||function(){
+		(a[h].q=a[h].q||[]).push(arguments)
+	};
+	o=f.createElement('script'),
+	m=f.getElementsByTagName('script')[0];
+	o.async=1; o.src=t; o.id='fathom-script';
+	m.parentNode.insertBefore(o,m)
+})(document, window, '//stats.orgmode.org/tracker.js', 'fathom');
+fathom('set', 'siteId', 'NWSQJ');
+fathom('trackPageview');
+</script>
+</div>
+<div id="content">
+<h1 class="title">vue npm run build</h1>
+<div id="table-of-contents">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#orgdcb37f7">error: Failed to resolve loader: worker-loader</a></li>
+<li><a href="#org55fb109">npm run build</a></li>
+</ul>
+</div>
+</div>
+<p>
+<a href="../index.html">{Back to site's index}</a>
+</p>
+
+<div id="outline-container-orgdcb37f7" class="outline-2">
+<h2 id="orgdcb37f7">error: Failed to resolve loader: worker-loader</h2>
+<div class="outline-text-2" id="text-orgdcb37f7">
+<div class="org-src-container">
+<pre class="src src-shell">deva@utuntu:~/fangyuan/local/fangyuan-web-7031$ npm run build
+
+&gt; fangyuan@1.0.0 build /home/deva/fangyuan/local/fangyuan-web-7031
+&gt; vue-cli-service build
+
+
+&#10255;  Building for production...
+
+ ERROR  Failed to compile with 1 errors                                                                                                                                                        4:58:22 PM
+
+Failed to resolve loader: worker-loader
+You may need to install it.
+ ERROR  Build failed with errors.
+npm ERR! code ELIFECYCLE
+npm ERR! errno 1
+npm ERR! fangyuan@1.0.0 build: <span style="color: #00cdcd; font-weight: bold;">`vue-cli-service build`</span>
+npm ERR! Exit status 1
+npm ERR!
+npm ERR! Failed at the fangyuan@1.0.0 build script.
+npm ERR! This is probably not a problem with npm. There is likely additional logging output above.
+
+npm ERR! A complete log of this run can be found<span style="color: #00bfff;"> in</span>:
+npm ERR!     /home/deva/.npm/_logs/2020-06-02T08_58_22_432Z-debug.log
+deva@utuntu:~/fangyuan/local/fangyuan-web-7031$ npm install -D worker-loader
+&#10004; Installed 1 packages
+&#10004; Linked 4 latest versions
+&#10004; Run 0 scripts
+&#10004; All packages installed (2 packages installed from npm registry, used 2s(network 2s), speed 20.35kB/s, json 5(33.54kB), tarball 9.92kB)
+deva@utuntu:~/fangyuan/local/fangyuan-web-7031$ cnpm run build
+</pre>
+</div>
+
+<p>
+参考了：
+</p>
+
+<p>
+<a href="https://blog.csdn.net/weixin_41411644/article/details/100742386">https://blog.csdn.net/weixin_41411644/article/details/100742386</a>
+</p>
+</div>
+</div>
+
+<div id="outline-container-org55fb109" class="outline-2">
+<h2 id="org55fb109">npm run build</h2>
+<div class="outline-text-2" id="text-org55fb109">
+<p>
+本机打包正确，但是服务器打包失败。可能的原因：
+</p>
+
+<ul class="org-ul">
+<li>删除 node_modules, 重安装</li>
+<li>vue 版本，vue2 与 vue3</li>
+</ul>
+</div>
+</div>
+</div>
+</body>
+</html>

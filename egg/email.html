@@ -3,12 +3,12 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2020-04-30 Thu 18:49 -->
+<!-- 2020-07-30 Thu 16:11 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>egg send email</title>
 <meta name="generator" content="Org mode" />
-<meta name="author" content="yunlong zeng" />
+<meta name="author" content="a" />
 <link rel="stylesheet" title="Standard" href="/html/style/worg.css" type="text/css" />
 <link rel="alternate stylesheet" title="Zenburn" href="/html/style/worg-zenburn.css" type="text/css" />
 <link rel="alternate stylesheet" title="Classic" href="/html/style/worg-classic.css" type="text/css" />
@@ -98,17 +98,17 @@ fathom('trackPageview');
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#org59010ce">egg-full-email</a>
+<li><a href="#orga840448">egg-full-email</a>
 <ul>
-<li><a href="#orgf521a7c">requirement</a></li>
-<li><a href="#orge530e89">configuration</a></li>
+<li><a href="#orgfaf945f">requirement</a></li>
+<li><a href="#org3f6cb08">configuration</a></li>
 </ul>
 </li>
-<li><a href="#org1567585">nodemailer</a>
+<li><a href="#orgbc5363c">nodemailer</a>
 <ul>
-<li><a href="#org4c75f12">service</a></li>
-<li><a href="#orgb53b7e2">controller</a></li>
-<li><a href="#org6259d74">good</a></li>
+<li><a href="#org4471c86">service</a></li>
+<li><a href="#org5e6774d">controller</a></li>
+<li><a href="#org0a9633c">good</a></li>
 </ul>
 </li>
 </ul>
@@ -122,17 +122,17 @@ fathom('trackPageview');
 egg上发送邮件
 </p>
 
-<div id="outline-container-org59010ce" class="outline-2">
-<h2 id="org59010ce">egg-full-email</h2>
-<div class="outline-text-2" id="text-org59010ce">
+<div id="outline-container-orga840448" class="outline-2">
+<h2 id="orga840448">egg-full-email</h2>
+<div class="outline-text-2" id="text-orga840448">
 <p>
 use the [egg-full-email][<a href="https://github.com/alex-my/egg-full-email/">https://github.com/alex-my/egg-full-email/</a>]
 </p>
 </div>
 
-<div id="outline-container-orgf521a7c" class="outline-3">
-<h3 id="orgf521a7c">requirement</h3>
-<div class="outline-text-3" id="text-orgf521a7c">
+<div id="outline-container-orgfaf945f" class="outline-3">
+<h3 id="orgfaf945f">requirement</h3>
+<div class="outline-text-3" id="text-orgfaf945f">
 <p>
 QQ邮箱开通 POP3/SMTP 服务.
 开通方式：
@@ -141,22 +141,22 @@ QQ邮箱开通 POP3/SMTP 服务.
 </div>
 </div>
 
-<div id="outline-container-orge530e89" class="outline-3">
-<h3 id="orge530e89">configuration</h3>
-<div class="outline-text-3" id="text-orge530e89">
+<div id="outline-container-org3f6cb08" class="outline-3">
+<h3 id="org3f6cb08">configuration</h3>
+<div class="outline-text-3" id="text-org3f6cb08">
 <p>
 参考文档的配置就行了
 </p>
 
 <div class="org-src-container">
 <pre class="src src-javascript">fullEmail: {
-  service: <span style="color: #daa520;">'QQ'</span>, <span style="color: #2aa1ae; background-color: #292e34;">// </span><span style="color: #2aa1ae; background-color: #292e34;">https://nodemailer.com/smtp/well-known/, eg: qiye.aliyun, 126, QQ&#65288;&#32780;&#19981;&#26159;qq&#65289;</span>
-  port: <span style="color: #daa520;">'465'</span>, <span style="color: #2aa1ae; background-color: #292e34;">// </span><span style="color: #2aa1ae; background-color: #292e34;">SMTP port</span>
-  ssl: <span style="color: #a45bad;">true</span>, <span style="color: #2aa1ae; background-color: #292e34;">// </span><span style="color: #2aa1ae; background-color: #292e34;">use ssl</span>
+  service: <span style="color: #daa520;">'QQ'</span>, <span style="color: #579C4C;">// </span><span style="color: #579C4C;">https://nodemailer.com/smtp/well-known/, eg: qiye.aliyun, 126, QQ&#65288;&#32780;&#19981;&#26159;qq&#65289;</span>
+  port: <span style="color: #daa520;">'465'</span>, <span style="color: #579C4C;">// </span><span style="color: #579C4C;">SMTP port</span>
+  ssl: <span style="color: #339CDB;">true</span>, <span style="color: #579C4C;">// </span><span style="color: #579C4C;">use ssl</span>
   user: <span style="color: #daa520;">'766529074@qq.com'</span>,
-  password: <span style="color: #daa520;">'qq-POP3/SMTP-&#25480;&#26435;&#30721;-&#19981;&#26159;QQ&#26412;&#36523;&#30340;&#23494;&#30721;'</span>, <span style="color: #2aa1ae; background-color: #292e34;">// </span><span style="color: #2aa1ae; background-color: #292e34;">POP3/SMTP&#26381;&#21153;&#25480;&#26435;&#30721;</span>
-  from: <span style="color: #daa520;">'766529074@qq.com'</span>, <span style="color: #2aa1ae; background-color: #292e34;">// </span><span style="color: #2aa1ae; background-color: #292e34;">eg: egg-full-email <a href="mailto:alex_my%40126.com">&lt;alex_my@126.com&gt;</a></span>
-  debug: <span style="color: #a45bad;">false</span>,
+  password: <span style="color: #daa520;">'qq-POP3/SMTP-&#25480;&#26435;&#30721;-&#19981;&#26159;QQ&#26412;&#36523;&#30340;&#23494;&#30721;'</span>, <span style="color: #579C4C;">// </span><span style="color: #579C4C;">POP3/SMTP&#26381;&#21153;&#25480;&#26435;&#30721;</span>
+  from: <span style="color: #daa520;">'766529074@qq.com'</span>, <span style="color: #579C4C;">// </span><span style="color: #579C4C;">eg: egg-full-email <a href="mailto:alex_my%40126.com">&lt;alex_my@126.com&gt;</a></span>
+  debug: <span style="color: #339CDB;">false</span>,
 },
 </pre>
 </div>
@@ -166,20 +166,20 @@ QQ邮箱开通 POP3/SMTP 服务.
 </p>
 
 <div class="org-src-container">
-<pre class="src src-javascript"><span style="color: #00bfff; font-weight: bold;">async</span> resetPassword() {
-  <span style="color: #2aa1ae; background-color: #292e34;">// </span><span style="color: #2aa1ae; background-color: #292e34;">After changed the password</span>
-  <span style="color: #00bfff; font-weight: bold;">const</span> { ctx, app } = <span style="color: #a45bad;">this</span>;
+<pre class="src src-javascript"><span style="color: #00bfff;">async</span> resetPassword() {
+  <span style="color: #579C4C;">// </span><span style="color: #579C4C;">After changed the password</span>
+  <span style="color: #00bfff;">const</span> { ctx, app } = <span style="color: #339CDB;">this</span>;
   ctx.logger.info(<span style="color: #daa520;">`start resetPassword!`</span>);
 
-  <span style="color: #00bfff; font-weight: bold;">const</span> <span style="color: #7590db;">to</span> = <span style="color: #daa520;">'273412935@qq.com'</span>;
-  <span style="color: #00bfff; font-weight: bold;">const</span> <span style="color: #7590db;">subject</span> = <span style="color: #daa520;">'reset password'</span>;
-  <span style="color: #00bfff; font-weight: bold;">const</span> <span style="color: #7590db;">html</span> = <span style="color: #daa520;">'&lt;p&gt;&lt;span style="color: red"&gt;You have now changed your password. &lt;/span&gt;&lt;/p&gt;'</span>;
+  <span style="color: #00bfff;">const</span> <span style="color: #d4d4d4;">to</span> = <span style="color: #daa520;">'273412935@qq.com'</span>;
+  <span style="color: #00bfff;">const</span> <span style="color: #d4d4d4;">subject</span> = <span style="color: #daa520;">'reset password'</span>;
+  <span style="color: #00bfff;">const</span> <span style="color: #d4d4d4;">html</span> = <span style="color: #daa520;">'&lt;p&gt;&lt;span style="color: red"&gt;You have now changed your password. &lt;/span&gt;&lt;/p&gt;'</span>;
 
-  <span style="color: #2aa1ae; background-color: #292e34;">// </span><span style="color: #2aa1ae; background-color: #292e34;">result: true if success, or false</span>
-  <span style="color: #00bfff; font-weight: bold;">const</span> <span style="color: #7590db;">result</span> = <span style="color: #00bfff; font-weight: bold;">await</span> app.fullEmail.sender(to, subject, html);
+  <span style="color: #579C4C;">// </span><span style="color: #579C4C;">result: true if success, or false</span>
+  <span style="color: #00bfff;">const</span> <span style="color: #d4d4d4;">result</span> = <span style="color: #00bfff;">await</span> app.fullEmail.sender(to, subject, html);
   ctx.logger.info(<span style="color: #daa520;">`result: ${result}`</span>);
 
-  <span style="color: #a45bad;">this</span>.ctx.body = <span style="color: #daa520;">'reset password success'</span>;
+  <span style="color: #339CDB;">this</span>.ctx.body = <span style="color: #daa520;">'reset password success'</span>;
 }
 </pre>
 </div>
@@ -187,56 +187,56 @@ QQ邮箱开通 POP3/SMTP 服务.
 </div>
 </div>
 
-<div id="outline-container-org1567585" class="outline-2">
-<h2 id="org1567585">nodemailer</h2>
-<div class="outline-text-2" id="text-org1567585">
+<div id="outline-container-orgbc5363c" class="outline-2">
+<h2 id="orgbc5363c">nodemailer</h2>
+<div class="outline-text-2" id="text-orgbc5363c">
 <p>
 <a href="https://blog.csdn.net/yueyezhongpaihuai/article/details/86626875">https://blog.csdn.net/yueyezhongpaihuai/article/details/86626875</a>
 </p>
 </div>
 
-<div id="outline-container-org4c75f12" class="outline-3">
-<h3 id="org4c75f12">service</h3>
-<div class="outline-text-3" id="text-org4c75f12">
+<div id="outline-container-org4471c86" class="outline-3">
+<h3 id="org4471c86">service</h3>
+<div class="outline-text-3" id="text-org4471c86">
 <div class="org-src-container">
-<pre class="src src-javascript"><span style="color: #2aa1ae; background-color: #292e34;">// </span><span style="color: #2aa1ae; background-color: #292e34;">app/service/tool.js</span>
+<pre class="src src-javascript"><span style="color: #579C4C;">// </span><span style="color: #579C4C;">app/service/tool.js</span>
 
 <span style="color: #daa520;">'use strict'</span>;
 
-<span style="color: #00bfff; font-weight: bold;">const</span> <span style="color: #7590db;">Service</span> = require(<span style="color: #daa520;">'egg'</span>).Service;
+<span style="color: #00bfff;">const</span> <span style="color: #d4d4d4;">Service</span> = require(<span style="color: #daa520;">'egg'</span>).Service;
 
-<span style="color: #00bfff; font-weight: bold;">const</span> <span style="color: #7590db;">nodemailer</span> = require(<span style="color: #daa520;">'nodemailer'</span>);
-<span style="color: #00bfff; font-weight: bold;">const</span> <span style="color: #7590db;">user_email</span> = <span style="color: #daa520;">'example@qq.com'</span>;
-<span style="color: #00bfff; font-weight: bold;">const</span> <span style="color: #7590db;">auth_code</span> = <span style="color: #daa520;">'xxxxxx'</span>;
+<span style="color: #00bfff;">const</span> <span style="color: #d4d4d4;">nodemailer</span> = require(<span style="color: #daa520;">'nodemailer'</span>);
+<span style="color: #00bfff;">const</span> <span style="color: #d4d4d4;">user_email</span> = <span style="color: #daa520;">'example@qq.com'</span>;
+<span style="color: #00bfff;">const</span> <span style="color: #d4d4d4;">auth_code</span> = <span style="color: #daa520;">'xxxxxx'</span>;
 
-<span style="color: #00bfff; font-weight: bold;">const</span> <span style="color: #7590db;">transporter</span> = nodemailer.createTransport({
+<span style="color: #00bfff;">const</span> <span style="color: #d4d4d4;">transporter</span> = nodemailer.createTransport({
   service: <span style="color: #daa520;">'qq'</span>,
-  secureConnection: <span style="color: #a45bad;">true</span>,
-  port: <span style="color: #a45bad;">465</span>,
+  secureConnection: <span style="color: #339CDB;">true</span>,
+  port: 465,
   auth: {
-    user: user_email, <span style="color: #2aa1ae; background-color: #292e34;">// </span><span style="color: #2aa1ae; background-color: #292e34;">&#36134;&#21495;</span>
-    pass: auth_code, <span style="color: #2aa1ae; background-color: #292e34;">// </span><span style="color: #2aa1ae; background-color: #292e34;">&#25480;&#26435;&#30721;</span>
+    user: user_email, <span style="color: #579C4C;">// </span><span style="color: #579C4C;">&#36134;&#21495;</span>
+    pass: auth_code, <span style="color: #579C4C;">// </span><span style="color: #579C4C;">&#25480;&#26435;&#30721;</span>
 
   },
 });
 
-<span style="color: #00bfff; font-weight: bold;">class</span> ToolService <span style="color: #00bfff; font-weight: bold;">extends</span> Service {
+<span style="color: #00bfff;">class</span> ToolService <span style="color: #00bfff;">extends</span> Service {
 
-  <span style="color: #00bfff; font-weight: bold;">async</span> sendMail(email, subject, text, html) {
+  <span style="color: #00bfff;">async</span> sendMail(email, subject, text, html) {
 
-    <span style="color: #00bfff; font-weight: bold;">const</span> <span style="color: #7590db;">mailOptions</span> = {
-      from: user_email, <span style="color: #2aa1ae; background-color: #292e34;">// </span><span style="color: #2aa1ae; background-color: #292e34;">&#21457;&#36865;&#32773;,&#19982;&#19978;&#38754;&#30340;user&#19968;&#33268;</span>
-      to: email,   <span style="color: #2aa1ae; background-color: #292e34;">// </span><span style="color: #2aa1ae; background-color: #292e34;">&#25509;&#25910;&#32773;,&#21487;&#20197;&#21516;&#26102;&#21457;&#36865;&#22810;&#20010;,&#20197;&#36887;&#21495;&#38548;&#24320;</span>
-      subject,   <span style="color: #2aa1ae; background-color: #292e34;">// </span><span style="color: #2aa1ae; background-color: #292e34;">&#26631;&#39064;</span>
-      text,   <span style="color: #2aa1ae; background-color: #292e34;">// </span><span style="color: #2aa1ae; background-color: #292e34;">&#25991;&#26412;</span>
+    <span style="color: #00bfff;">const</span> <span style="color: #d4d4d4;">mailOptions</span> = {
+      from: user_email, <span style="color: #579C4C;">// </span><span style="color: #579C4C;">&#21457;&#36865;&#32773;,&#19982;&#19978;&#38754;&#30340;user&#19968;&#33268;</span>
+      to: email,   <span style="color: #579C4C;">// </span><span style="color: #579C4C;">&#25509;&#25910;&#32773;,&#21487;&#20197;&#21516;&#26102;&#21457;&#36865;&#22810;&#20010;,&#20197;&#36887;&#21495;&#38548;&#24320;</span>
+      subject,   <span style="color: #579C4C;">// </span><span style="color: #579C4C;">&#26631;&#39064;</span>
+      text,   <span style="color: #579C4C;">// </span><span style="color: #579C4C;">&#25991;&#26412;</span>
       html,
     };
 
-    <span style="color: #00bfff; font-weight: bold;">try</span> {
-      <span style="color: #00bfff; font-weight: bold;">await</span> transporter.sendMail(mailOptions);
-      <span style="color: #00bfff; font-weight: bold;">return</span> <span style="color: #a45bad;">true</span>;
-    } <span style="color: #00bfff; font-weight: bold;">catch</span> (err) {
-      <span style="color: #00bfff; font-weight: bold;">return</span> <span style="color: #a45bad;">false</span>;
+    <span style="color: #00bfff;">try</span> {
+      <span style="color: #00bfff;">await</span> transporter.sendMail(mailOptions);
+      <span style="color: #00bfff;">return</span> <span style="color: #339CDB;">true</span>;
+    } <span style="color: #00bfff;">catch</span> (err) {
+      <span style="color: #00bfff;">return</span> <span style="color: #339CDB;">false</span>;
     }
   }
 
@@ -248,31 +248,31 @@ module.exports = ToolService;
 </div>
 </div>
 </div>
-<div id="outline-container-orgb53b7e2" class="outline-3">
-<h3 id="orgb53b7e2">controller</h3>
-<div class="outline-text-3" id="text-orgb53b7e2">
+<div id="outline-container-org5e6774d" class="outline-3">
+<h3 id="org5e6774d">controller</h3>
+<div class="outline-text-3" id="text-org5e6774d">
 <div class="org-src-container">
-<pre class="src src-javascript"><span style="color: #2aa1ae; background-color: #292e34;">// </span><span style="color: #2aa1ae; background-color: #292e34;">app/controller/test.js</span>
+<pre class="src src-javascript"><span style="color: #579C4C;">// </span><span style="color: #579C4C;">app/controller/test.js</span>
 <span style="color: #daa520;">'use strict'</span>;
 
-<span style="color: #00bfff; font-weight: bold;">const</span> <span style="color: #7590db;">Controller</span> = require(<span style="color: #daa520;">'egg'</span>).Controller;
+<span style="color: #00bfff;">const</span> <span style="color: #d4d4d4;">Controller</span> = require(<span style="color: #daa520;">'egg'</span>).Controller;
 
-<span style="color: #00bfff; font-weight: bold;">class</span> TestController <span style="color: #00bfff; font-weight: bold;">extends</span> Controller {
-  <span style="color: #00bfff; font-weight: bold;">async</span> testSendMail() {
-    <span style="color: #00bfff; font-weight: bold;">const</span> <span style="color: #7590db;">ctx</span> = <span style="color: #a45bad;">this</span>.ctx;
+<span style="color: #00bfff;">class</span> TestController <span style="color: #00bfff;">extends</span> Controller {
+  <span style="color: #00bfff;">async</span> testSendMail() {
+    <span style="color: #00bfff;">const</span> <span style="color: #d4d4d4;">ctx</span> = <span style="color: #339CDB;">this</span>.ctx;
 
-    <span style="color: #00bfff; font-weight: bold;">const</span> <span style="color: #7590db;">email</span> = <span style="color: #daa520;">'xxxxxx@163.com'</span>;  <span style="color: #2aa1ae; background-color: #292e34;">// </span><span style="color: #2aa1ae; background-color: #292e34;">&#25509;&#25910;&#32773;&#30340;&#37038;&#31665;</span>
-    <span style="color: #00bfff; font-weight: bold;">const</span> <span style="color: #7590db;">subject</span> = <span style="color: #daa520;">'&#27979;&#35797;&#37038;&#20214;'</span>;
-    <span style="color: #00bfff; font-weight: bold;">const</span> <span style="color: #7590db;">text</span> = <span style="color: #daa520;">'&#36825;&#26159;&#19968;&#23553;&#27979;&#35797;&#37038;&#20214;'</span>;
-    <span style="color: #00bfff; font-weight: bold;">const</span> <span style="color: #7590db;">html</span> = <span style="color: #daa520;">'&lt;h2&gt;&#27979;&#35797;&#19968;&#19979;::&lt;/h2&gt;&lt;a class="elem-a" href="https://baidu.com"&gt;&lt;span class="content-elem-span"&gt;&#27979;&#35797;&#38142;&#25509;&lt;/span&gt;&lt;/a&gt;'</span>;
+    <span style="color: #00bfff;">const</span> <span style="color: #d4d4d4;">email</span> = <span style="color: #daa520;">'xxxxxx@163.com'</span>;  <span style="color: #579C4C;">// </span><span style="color: #579C4C;">&#25509;&#25910;&#32773;&#30340;&#37038;&#31665;</span>
+    <span style="color: #00bfff;">const</span> <span style="color: #d4d4d4;">subject</span> = <span style="color: #daa520;">'&#27979;&#35797;&#37038;&#20214;'</span>;
+    <span style="color: #00bfff;">const</span> <span style="color: #d4d4d4;">text</span> = <span style="color: #daa520;">'&#36825;&#26159;&#19968;&#23553;&#27979;&#35797;&#37038;&#20214;'</span>;
+    <span style="color: #00bfff;">const</span> <span style="color: #d4d4d4;">html</span> = <span style="color: #daa520;">'&lt;h2&gt;&#27979;&#35797;&#19968;&#19979;::&lt;/h2&gt;&lt;a class="elem-a" href="https://baidu.com"&gt;&lt;span class="content-elem-span"&gt;&#27979;&#35797;&#38142;&#25509;&lt;/span&gt;&lt;/a&gt;'</span>;
 
-    <span style="color: #00bfff; font-weight: bold;">const</span> <span style="color: #7590db;">has_send</span> = <span style="color: #00bfff; font-weight: bold;">await</span> <span style="color: #a45bad;">this</span>.service.tool.sendMail(email, subject, html);
+    <span style="color: #00bfff;">const</span> <span style="color: #d4d4d4;">has_send</span> = <span style="color: #00bfff;">await</span> <span style="color: #339CDB;">this</span>.service.tool.sendMail(email, subject, html);
 
-    <span style="color: #00bfff; font-weight: bold;">if</span> (has_send) {
+    <span style="color: #00bfff;">if</span> (has_send) {
         ctx.body={
             message: <span style="color: #daa520;">'&#21457;&#36865;&#25104;&#21151;'</span>,
         };
-        <span style="color: #00bfff; font-weight: bold;">return</span>;
+        <span style="color: #00bfff;">return</span>;
     }
     ctx.body={
         message: <span style="color: #daa520;">'&#21457;&#36865;&#22833;&#36133;'</span>,
@@ -289,9 +289,9 @@ module.exports = TestController;
 </div>
 </div>
 
-<div id="outline-container-org6259d74" class="outline-3">
-<h3 id="org6259d74">good</h3>
-<div class="outline-text-3" id="text-org6259d74">
+<div id="outline-container-org0a9633c" class="outline-3">
+<h3 id="org0a9633c">good</h3>
+<div class="outline-text-3" id="text-org0a9633c">
 <p>
 这个方式，可以通过读取数据库中的email配置信息，从而使得发邮件人信息随着数据库中
 信息而变化。

@@ -3,12 +3,12 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2020-05-26 Tue 17:18 -->
+<!-- 2020-07-30 Thu 16:13 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>vpn server base docker</title>
 <meta name="generator" content="Org mode" />
-<meta name="author" content="yunlong zeng" />
+<meta name="author" content="a" />
 <link rel="stylesheet" title="Standard" href="/html/style/worg.css" type="text/css" />
 <link rel="alternate stylesheet" title="Zenburn" href="/html/style/worg-zenburn.css" type="text/css" />
 <link rel="alternate stylesheet" title="Classic" href="/html/style/worg-classic.css" type="text/css" />
@@ -98,9 +98,10 @@ fathom('trackPageview');
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#org6daa32f">logs</a>
+<li><a href="#org16c1f19">效果</a></li>
+<li><a href="#org14d8029">logs</a>
 <ul>
-<li><a href="#org167c51a">once, vpn client connect vpn server, then logs show:</a></li>
+<li><a href="#org61d037d">once, vpn client connect vpn server, then logs show:</a></li>
 </ul>
 </li>
 </ul>
@@ -114,9 +115,22 @@ fathom('trackPageview');
 <a href="https://github.com/hwdsl2/docker-ipsec-vpn-server">https://github.com/hwdsl2/docker-ipsec-vpn-server</a>
 </p>
 
-<div id="outline-container-org6daa32f" class="outline-2">
-<h2 id="org6daa32f">logs</h2>
-<div class="outline-text-2" id="text-org6daa32f">
+<div id="outline-container-org16c1f19" class="outline-2">
+<h2 id="org16c1f19">效果</h2>
+<div class="outline-text-2" id="text-org16c1f19">
+<div class="org-src-container">
+<pre class="src src-shell">&#10140;  ~ docker ps
+CONTAINER ID        IMAGE                     COMMAND             CREATED             STATUS              PORTS                                          NAMES
+e2ef1d6bfa41        hwdsl2/ipsec-vpn-server   <span style="color: #daa520;">"/opt/src/run.sh"</span>   13 days ago         Up 13 days          0.0.0.0:500-&gt;500/udp, 0.0.0.0:4500-&gt;4500/udp   ipsec-vpn-server
+&#10140;  ~
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org14d8029" class="outline-2">
+<h2 id="org14d8029">logs</h2>
+<div class="outline-text-2" id="text-org14d8029">
 <div class="org-src-container">
 <pre class="src src-shell">&#10140;  ~ docker logs -f ipsec-vpn-server
 
@@ -160,19 +174,19 @@ Write these down. You<span style="color: #daa520;">'ll need them to connect!</sp
 </div>
 
 
-<div id="outline-container-org167c51a" class="outline-3">
-<h3 id="org167c51a">once, vpn client connect vpn server, then logs show:</h3>
-<div class="outline-text-3" id="text-org167c51a">
+<div id="outline-container-org61d037d" class="outline-3">
+<h3 id="org61d037d">once, vpn client connect vpn server, then logs show:</h3>
+<div class="outline-text-3" id="text-org61d037d">
 <div class="org-src-container">
 <pre class="src src-shell">
 ...
-  xl2tpd[<span style="color: #339CDB;">1</span>]: Inherited by Jeff McAdams, (C) <span style="color: #339CDB;">2002</span>
-  xl2tpd[<span style="color: #339CDB;">1</span>]: Forked again by Xelerance (www.xelerance.com) (C) <span style="color: #339CDB;">2006-2016</span>
-  xl2tpd[<span style="color: #339CDB;">1</span>]: Listening on IP address <span style="color: #339CDB;">0.0.0.0,</span> port <span style="color: #339CDB;">1701</span>
+  xl2tpd[1]: Inherited by Jeff McAdams, (C) 2002
+  xl2tpd[1]: Forked again by Xelerance (www.xelerance.com) (C) 2006-2016
+  xl2tpd[1]: Listening on IP address 0.0.0.0, port 1701
 
 
-  xl2tpd[<span style="color: #339CDB;">1</span>]: Connection established to <span style="color: #339CDB;">112.97.54.7,</span> <span style="color: #339CDB;">63471.</span>  Local: <span style="color: #339CDB;">55261,</span> Remote: <span style="color: #339CDB;">20</span> (<span style="color: #d4d4d4;">ref</span>=<span style="color: #339CDB;">0/0</span>).  LNS session is <span style="color: #daa520;">'default'</span>
-  xl2tpd[<span style="color: #339CDB;">1</span>]: start_pppd: I<span style="color: #daa520;">'m running:</span>
+  xl2tpd[1]: Connection established to 112.97.54.7, 63471.  Local: 55261, Remote: 20 (<span style="color: #d4d4d4;">ref</span>=0/0).  LNS session is <span style="color: #daa520;">'default'</span>
+  xl2tpd[1]: start_pppd: I<span style="color: #daa520;">'m running:</span>
 <span style="color: #daa520;">  xl2tpd[1]: "/usr/sbin/pppd"</span>
 <span style="color: #daa520;">  xl2tpd[1]: "plugin"</span>
 <span style="color: #daa520;">  xl2tpd[1]: "pppol2tp.so"</span>

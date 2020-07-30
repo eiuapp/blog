@@ -3,12 +3,12 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2020-04-30 Thu 18:49 -->
+<!-- 2020-07-30 Thu 16:12 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>sequelize migrate</title>
 <meta name="generator" content="Org mode" />
-<meta name="author" content="yunlong zeng" />
+<meta name="author" content="a" />
 <link rel="stylesheet" title="Standard" href="/html/style/worg.css" type="text/css" />
 <link rel="alternate stylesheet" title="Zenburn" href="/html/style/worg-zenburn.css" type="text/css" />
 <link rel="alternate stylesheet" title="Classic" href="/html/style/worg-classic.css" type="text/css" />
@@ -98,23 +98,23 @@ fathom('trackPageview');
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#orga6b8e45">migrate to test env</a></li>
-<li><a href="#org62e9655">new project</a>
+<li><a href="#org8ea54bc">migrate to test env</a></li>
+<li><a href="#org372b6a0">new project</a>
 <ul>
-<li><a href="#org0650e44">use egg &amp;&amp; sequelize</a></li>
-<li><a href="#orgf39674a">Project bootstrapping</a></li>
+<li><a href="#org46c5ceb">use egg &amp;&amp; sequelize</a></li>
+<li><a href="#org0e585f5">Project bootstrapping</a></li>
 </ul>
 </li>
-<li><a href="#org5d82c2e">migrate 中使用原生sql语法</a></li>
-<li><a href="#orgb02a8ba">storage写入JSON</a></li>
-<li><a href="#orgf7a6e26">Undoing(单条) 指定单次的 Migrations</a></li>
-<li><a href="#org32cd0b0">Undoing(到达历史状态) 到指定单次的 Migrations</a></li>
-<li><a href="#orgce2870c">注意</a>
+<li><a href="#orgb33ec3e">migrate 中使用原生sql语法</a></li>
+<li><a href="#org6bd79fa">storage写入JSON</a></li>
+<li><a href="#org9025bd8">Undoing(单条) 指定单次的 Migrations</a></li>
+<li><a href="#org4250ceb">Undoing(到达历史状态) 到指定单次的 Migrations</a></li>
+<li><a href="#orgc85206d">注意</a>
 <ul>
-<li><a href="#org22fb196">删除掉 <code>*.js</code> 文件</a></li>
+<li><a href="#orga9de690">删除掉 <code>*.js</code> 文件</a></li>
 </ul>
 </li>
-<li><a href="#org5f676ce">Index columns during createTable</a></li>
+<li><a href="#orgb588ffd">Index columns during createTable</a></li>
 </ul>
 </div>
 </div>
@@ -134,9 +134,9 @@ sequelize migrate
 <a href="https://github.com/sequelize/cli">https://github.com/sequelize/cli</a>
 </p>
 
-<div id="outline-container-orga6b8e45" class="outline-2">
-<h2 id="orga6b8e45">migrate to test env</h2>
-<div class="outline-text-2" id="text-orga6b8e45">
+<div id="outline-container-org8ea54bc" class="outline-2">
+<h2 id="org8ea54bc">migrate to test env</h2>
+<div class="outline-text-2" id="text-org8ea54bc">
 <div class="org-src-container">
 <pre class="src src-shell">npx sequelize db:migrate --env test
 </pre>
@@ -144,13 +144,13 @@ sequelize migrate
 </div>
 </div>
 
-<div id="outline-container-org62e9655" class="outline-2">
-<h2 id="org62e9655">new project</h2>
-<div class="outline-text-2" id="text-org62e9655">
+<div id="outline-container-org372b6a0" class="outline-2">
+<h2 id="org372b6a0">new project</h2>
+<div class="outline-text-2" id="text-org372b6a0">
 </div>
-<div id="outline-container-org0650e44" class="outline-3">
-<h3 id="org0650e44">use egg &amp;&amp; sequelize</h3>
-<div class="outline-text-3" id="text-org0650e44">
+<div id="outline-container-org46c5ceb" class="outline-3">
+<h3 id="org46c5ceb">use egg &amp;&amp; sequelize</h3>
+<div class="outline-text-3" id="text-org46c5ceb">
 <p>
 脚手架
 <a href="https://eggjs.org/zh-cn/tutorials/sequelize.html#%E8%84%9A%E6%89%8B%E6%9E%B6">https://eggjs.org/zh-cn/tutorials/sequelize.html#%E8%84%9A%E6%89%8B%E6%9E%B6</a>
@@ -158,9 +158,9 @@ sequelize migrate
 </div>
 </div>
 
-<div id="outline-container-orgf39674a" class="outline-3">
-<h3 id="orgf39674a">Project bootstrapping</h3>
-<div class="outline-text-3" id="text-orgf39674a">
+<div id="outline-container-org0e585f5" class="outline-3">
+<h3 id="org0e585f5">Project bootstrapping</h3>
+<div class="outline-text-3" id="text-org0e585f5">
 <p>
 <a href="https://sequelize.org/master/manual/migrations.html">https://sequelize.org/master/manual/migrations.html</a> 在 project bootstrapping 有
 提到：
@@ -174,9 +174,9 @@ sequelize migrate
 </div>
 </div>
 
-<div id="outline-container-org5d82c2e" class="outline-2">
-<h2 id="org5d82c2e">migrate 中使用原生sql语法</h2>
-<div class="outline-text-2" id="text-org5d82c2e">
+<div id="outline-container-orgb33ec3e" class="outline-2">
+<h2 id="orgb33ec3e">migrate 中使用原生sql语法</h2>
+<div class="outline-text-2" id="text-orgb33ec3e">
 <p>
 <a href="https://github.com/sequelize/cli/blob/master/docs/README.md#the-migration-schema">https://github.com/sequelize/cli/blob/master/docs/README.md#the-migration-schema</a>
 </p>
@@ -193,29 +193,29 @@ sequelize migrate
 </div>
 </div>
 
-<div id="outline-container-orgb02a8ba" class="outline-2">
-<h2 id="orgb02a8ba">storage写入JSON</h2>
-<div class="outline-text-2" id="text-orgb02a8ba">
+<div id="outline-container-org6bd79fa" class="outline-2">
+<h2 id="org6bd79fa">storage写入JSON</h2>
+<div class="outline-text-2" id="text-org6bd79fa">
 <p>
 不写入数据库, 则 <code>database/config.json</code> 中配置
 </p>
 
 <div class="org-src-container">
 <pre class="src src-json">{
-  <span style="color: #00bfff; font-weight: bold;">"development"</span>: {
-    <span style="color: #00bfff; font-weight: bold;">"dialect"</span>: <span style="color: #daa520;">"postgres"</span>,
-    <span style="color: #00bfff; font-weight: bold;">"database"</span>: <span style="color: #daa520;">"esop_dev3"</span>,
-    <span style="color: #00bfff; font-weight: bold;">"host"</span>: "<span style="color: #a45bad;">192</span>.<span style="color: #a45bad;">168</span>.<span style="color: #a45bad;">168</span>.<span style="color: #a45bad;">158</span>",
-    <span style="color: #00bfff; font-weight: bold;">"port"</span>: "<span style="color: #a45bad;">5432</span>",
-    <span style="color: #00bfff; font-weight: bold;">"username"</span>: <span style="color: #daa520;">"esop"</span>,
-    <span style="color: #00bfff; font-weight: bold;">"password"</span>: <span style="color: #daa520;">"CwfhbsgL0RE7upUx"</span>,
-    <span style="color: #00bfff; font-weight: bold;">"timezone"</span>: "+<span style="color: #a45bad;">08</span>:<span style="color: #a45bad;">00</span>",
-    <span style="color: #00bfff; font-weight: bold;">"migrationStorage"</span>: <span style="color: #daa520;">"json"</span>,
-    <span style="color: #00bfff; font-weight: bold;">"migrationStoragePath"</span>: <span style="color: #daa520;">"database/storage/migrations/sequelizeMeta.json"</span>,
-    <span style="color: #00bfff; font-weight: bold;">"migrationStorageTableName"</span>: <span style="color: #daa520;">"sequelize_meta"</span>,
-    <span style="color: #00bfff; font-weight: bold;">"seederStorage"</span>: <span style="color: #daa520;">"json"</span>,
-    <span style="color: #00bfff; font-weight: bold;">"seederStoragePath"</span>: <span style="color: #daa520;">"database/storage/seed/sequelizeData.json"</span>,
-    <span style="color: #00bfff; font-weight: bold;">"seederStorageTableName"</span>: <span style="color: #daa520;">"sequelize_data"</span>
+  "development": {
+    "dialect": "postgres",
+    "database": "esop_dev3",
+    "host": "192.168.168.158",
+    "port": "5432",
+    "username": "esop",
+    "password": "CwfhbsgL0RE7upUx",
+    "timezone": "+08:00",
+    "migrationStorage": "json",
+    "migrationStoragePath": "database/storage/migrations/sequelizeMeta.json",
+    "migrationStorageTableName": "sequelize_meta",
+    "seederStorage": "json",
+    "seederStoragePath": "database/storage/seed/sequelizeData.json",
+    "seederStorageTableName": "sequelize_data"
   }
 }
 </pre>
@@ -223,9 +223,9 @@ sequelize migrate
 </div>
 </div>
 
-<div id="outline-container-orgf7a6e26" class="outline-2">
-<h2 id="orgf7a6e26">Undoing(单条) 指定单次的 Migrations</h2>
-<div class="outline-text-2" id="text-orgf7a6e26">
+<div id="outline-container-org9025bd8" class="outline-2">
+<h2 id="org9025bd8">Undoing(单条) 指定单次的 Migrations</h2>
+<div class="outline-text-2" id="text-org9025bd8">
 <p>
 <code>db:migrate:undo --name</code>
 </p>
@@ -236,10 +236,10 @@ sequelize_meta.json 是：
 
 <div class="org-src-container">
 <pre class="src src-json">[
-  "<span style="color: #a45bad;">20200416075347</span>-init-ums_user.js",
-  "<span style="color: #a45bad;">20200417015603</span>-create-person.js",
-  "<span style="color: #a45bad;">20200416113724</span>-init-ums_role.js",
-  "<span style="color: #a45bad;">20200417022557</span>-person-add-column-petname.js"
+  "20200416075347-init-ums_user.js",
+  "20200417015603-create-person.js",
+  "20200416113724-init-ums_role.js",
+  "20200417022557-person-add-column-petname.js"
 ]
 </pre>
 </div>
@@ -249,7 +249,7 @@ sequelize_meta.json 是：
 运行：
 </p>
 <div class="org-src-container">
-<pre class="src src-shell">npx sequelize db:migrate:undo --name <span style="color: #a45bad;">20200416113724-init-ums_role.js</span>
+<pre class="src src-shell">npx sequelize db:migrate:undo --name 20200416113724-init-ums_role.js
 </pre>
 </div>
 <p>
@@ -257,18 +257,18 @@ sequelize_meta.json 是：
 </p>
 <div class="org-src-container">
 <pre class="src src-json">[
-  "<span style="color: #a45bad;">20200416075347</span>-init-ums_user.js",
-  "<span style="color: #a45bad;">20200417015603</span>-create-person.js",
-  "<span style="color: #a45bad;">20200416113724</span>-init-ums_role.js",
-  "<span style="color: #a45bad;">20200417022557</span>-person-add-column-petname.js"
+  "20200416075347-init-ums_user.js",
+  "20200417015603-create-person.js",
+  "20200416113724-init-ums_role.js",
+  "20200417022557-person-add-column-petname.js"
 ]
 </pre>
 </div>
 </div>
 </div>
-<div id="outline-container-org32cd0b0" class="outline-2">
-<h2 id="org32cd0b0">Undoing(到达历史状态) 到指定单次的 Migrations</h2>
-<div class="outline-text-2" id="text-org32cd0b0">
+<div id="outline-container-org4250ceb" class="outline-2">
+<h2 id="org4250ceb">Undoing(到达历史状态) 到指定单次的 Migrations</h2>
+<div class="outline-text-2" id="text-org4250ceb">
 <p>
 <code>db:migrate:undo:all --to</code>
 </p>
@@ -279,10 +279,10 @@ sequelize_meta.json 是：
 
 <div class="org-src-container">
 <pre class="src src-json">[
-  "<span style="color: #a45bad;">20200416075347</span>-init-ums_user.js",
-  "<span style="color: #a45bad;">20200417015603</span>-create-person.js",
-  "<span style="color: #a45bad;">20200416113724</span>-init-ums_role.js",
-  "<span style="color: #a45bad;">20200417022557</span>-person-add-column-petname.js"
+  "20200416075347-init-ums_user.js",
+  "20200417015603-create-person.js",
+  "20200416113724-init-ums_role.js",
+  "20200417022557-person-add-column-petname.js"
 ]
 </pre>
 </div>
@@ -296,7 +296,7 @@ sequelize_meta.json 是：
 运行：
 </p>
 <div class="org-src-container">
-<pre class="src src-shell">npx sequelize db:migrate:undo:all --to <span style="color: #a45bad;">20200416113724-init-ums_role.js</span>
+<pre class="src src-shell">npx sequelize db:migrate:undo:all --to 20200416113724-init-ums_role.js
 </pre>
 </div>
 
@@ -305,21 +305,21 @@ sequelize_meta.json 是：
 </p>
 <div class="org-src-container">
 <pre class="src src-json">[
-  "<span style="color: #a45bad;">20200416075347</span>-init-ums_user.js",
-  "<span style="color: #a45bad;">20200417015603</span>-create-person.js",
+  "20200416075347-init-ums_user.js",
+  "20200417015603-create-person.js",
 ]
 </pre>
 </div>
 </div>
 </div>
 
-<div id="outline-container-orgce2870c" class="outline-2">
-<h2 id="orgce2870c">注意</h2>
-<div class="outline-text-2" id="text-orgce2870c">
+<div id="outline-container-orgc85206d" class="outline-2">
+<h2 id="orgc85206d">注意</h2>
+<div class="outline-text-2" id="text-orgc85206d">
 </div>
-<div id="outline-container-org22fb196" class="outline-3">
-<h3 id="org22fb196">删除掉 <code>*.js</code> 文件</h3>
-<div class="outline-text-3" id="text-org22fb196">
+<div id="outline-container-orga9de690" class="outline-3">
+<h3 id="orga9de690">删除掉 <code>*.js</code> 文件</h3>
+<div class="outline-text-3" id="text-orga9de690">
 <p>
 如果真要回到指定状态，则，要同时，删除掉 <code>*.js</code> 文件，否则，当你运行
 <code>npx sequelize db:migrate</code> 后，又会回到 删除前的状态。
@@ -335,9 +335,9 @@ sequelize_meta.json 是：
 </div>
 </div>
 </div>
-<div id="outline-container-org5f676ce" class="outline-2">
-<h2 id="org5f676ce">Index columns during createTable</h2>
-<div class="outline-text-2" id="text-org5f676ce">
+<div id="outline-container-orgb588ffd" class="outline-2">
+<h2 id="orgb588ffd">Index columns during createTable</h2>
+<div class="outline-text-2" id="text-orgb588ffd">
 <p>
 <a href="https://github.com/sequelize/cli/issues/410#issuecomment-523420333">https://github.com/sequelize/cli/issues/410#issuecomment-523420333</a>
 <a href="https://github.com/sequelize/sequelize/pull/9946/files">https://github.com/sequelize/sequelize/pull/9946/files</a>
@@ -349,12 +349,12 @@ sequelize_meta.json 是：
 </p>
 
 <div class="org-src-container">
-<pre class="src src-javascript"><span style="color: #00bfff; font-weight: bold;">await</span> queryInterface.addIndex(
+<pre class="src src-javascript"><span style="color: #00bfff;">await</span> queryInterface.addIndex(
   <span style="color: #daa520;">'Person'</span>,
   <span style="color: #daa520;">'petName'</span>,
   {
     fields: <span style="color: #daa520;">'petName'</span>,
-    unique: <span style="color: #a45bad;">true</span>,
+    unique: <span style="color: #339CDB;">true</span>,
     transaction,
   }
 );

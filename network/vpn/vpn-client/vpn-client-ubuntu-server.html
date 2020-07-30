@@ -3,12 +3,12 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2020-05-25 Mon 19:58 -->
+<!-- 2020-07-30 Thu 16:13 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>ubuntu server as vpn client connect vpn server</title>
 <meta name="generator" content="Org mode" />
-<meta name="author" content="yunlong zeng" />
+<meta name="author" content="a" />
 <link rel="stylesheet" title="Standard" href="/html/style/worg.css" type="text/css" />
 <link rel="alternate stylesheet" title="Zenburn" href="/html/style/worg-zenburn.css" type="text/css" />
 <link rel="alternate stylesheet" title="Classic" href="/html/style/worg-classic.css" type="text/css" />
@@ -98,10 +98,10 @@ fathom('trackPageview');
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#org7e7188d">使用命令行配置-linux-vpn-客户端</a></li>
-<li><a href="#orgc331e9f">env</a></li>
-<li><a href="#org2724ead">把部分配置写进shell</a></li>
-<li><a href="#org2e46ad8">error: 开始 L2TP 连接</a></li>
+<li><a href="#orga0c206a">使用命令行配置-linux-vpn-客户端</a></li>
+<li><a href="#orgdec5ef5">env</a></li>
+<li><a href="#org59af431">把部分配置写进shell</a></li>
+<li><a href="#org8ba3515">error: 开始 L2TP 连接</a></li>
 </ul>
 </div>
 </div>
@@ -113,18 +113,18 @@ fathom('trackPageview');
 ubuntu server connect vpn server
 </p>
 
-<div id="outline-container-org7e7188d" class="outline-2">
-<h2 id="org7e7188d">使用命令行配置-linux-vpn-客户端</h2>
-<div class="outline-text-2" id="text-org7e7188d">
+<div id="outline-container-orga0c206a" class="outline-2">
+<h2 id="orga0c206a">使用命令行配置-linux-vpn-客户端</h2>
+<div class="outline-text-2" id="text-orga0c206a">
 <p>
 主要是按 <a href="https://github.com/hwdsl2/setup-ipsec-vpn/blob/master/docs/clients-zh.md#%E4%BD%BF%E7%94%A8%E5%91%BD%E4%BB%A4%E8%A1%8C%E9%85%8D%E7%BD%AE-linux-vpn-%E5%AE%A2%E6%88%B7%E7%AB%AF">使用命令行配置 Linux VPN 客户端</a> 进行
 </p>
 </div>
 </div>
 
-<div id="outline-container-orgc331e9f" class="outline-2">
-<h2 id="orgc331e9f">env</h2>
-<div class="outline-text-2" id="text-orgc331e9f">
+<div id="outline-container-orgdec5ef5" class="outline-2">
+<h2 id="orgdec5ef5">env</h2>
+<div class="outline-text-2" id="text-orgdec5ef5">
 <ul class="org-ul">
 <li>cloud: tencent cloud</li>
 <li>os: ubuntu server 16.04</li>
@@ -132,13 +132,13 @@ ubuntu server connect vpn server
 </div>
 </div>
 
-<div id="outline-container-org2724ead" class="outline-2">
-<h2 id="org2724ead">把部分配置写进shell</h2>
-<div class="outline-text-2" id="text-org2724ead">
+<div id="outline-container-org59af431" class="outline-2">
+<h2 id="org59af431">把部分配置写进shell</h2>
+<div class="outline-text-2" id="text-org59af431">
 <div class="org-src-container">
 <pre class="src src-shell">&#10140;  ~ vi ./l2tp.env.sh
 &#10140;  ~ cat ./l2tp.env.sh
-<span style="color: #579C4C; background-color: #292e34;">#</span><span style="color: #579C4C; background-color: #292e34;">/bin/bash</span>
+<span style="color: #579C4C;">#</span><span style="color: #579C4C;">/bin/bash</span>
 
 <span style="color: #d4d4d4;">export</span> <span style="color: #d4d4d4;">VPN_SERVER_IP</span>=<span style="color: #daa520;">'1**.***.***.**5'</span>
 <span style="color: #d4d4d4;">export</span> <span style="color: #d4d4d4;">VPN_IPSEC_PSK</span>=<span style="color: #daa520;">'vpn'</span>
@@ -146,82 +146,82 @@ ubuntu server connect vpn server
 <span style="color: #d4d4d4;">export</span> <span style="color: #d4d4d4;">VPN_PASSWORD</span>=<span style="color: #daa520;">'z********1'</span>
 
 cat &gt; /etc/ipsec.conf &lt;&lt;EOF
-<span style="color: #ffff00; font-weight: bold;"># ipsec.conf - strongSwan IPsec configuration file</span>
+<span style="color: #daa520;"># ipsec.conf - strongSwan IPsec configuration file</span>
 
-<span style="color: #ffff00; font-weight: bold;"># basic configuration</span>
+<span style="color: #daa520;"># basic configuration</span>
 
-<span style="color: #ffff00; font-weight: bold;">config setup</span>
-<span style="color: #ffff00; font-weight: bold;">  # strictcrlpolicy=yes</span>
-<span style="color: #ffff00; font-weight: bold;">  # uniqueids = no</span>
+<span style="color: #daa520;">config setup</span>
+<span style="color: #daa520;">  # strictcrlpolicy=yes</span>
+<span style="color: #daa520;">  # uniqueids = no</span>
 
-<span style="color: #ffff00; font-weight: bold;"># Add connections here.</span>
+<span style="color: #daa520;"># Add connections here.</span>
 
-<span style="color: #ffff00; font-weight: bold;"># Sample VPN connections</span>
+<span style="color: #daa520;"># Sample VPN connections</span>
 
-<span style="color: #ffff00; font-weight: bold;">conn %default</span>
-<span style="color: #ffff00; font-weight: bold;">  ikelifetime=60m</span>
-<span style="color: #ffff00; font-weight: bold;">  keylife=20m</span>
-<span style="color: #ffff00; font-weight: bold;">  rekeymargin=3m</span>
-<span style="color: #ffff00; font-weight: bold;">  keyingtries=1</span>
-<span style="color: #ffff00; font-weight: bold;">  keyexchange=ikev1</span>
-<span style="color: #ffff00; font-weight: bold;">  authby=secret</span>
-<span style="color: #ffff00; font-weight: bold;">  ike=aes128-sha1-modp2048!</span>
-<span style="color: #ffff00; font-weight: bold;">  esp=aes128-sha1-modp2048!</span>
+<span style="color: #daa520;">conn %default</span>
+<span style="color: #daa520;">  ikelifetime=60m</span>
+<span style="color: #daa520;">  keylife=20m</span>
+<span style="color: #daa520;">  rekeymargin=3m</span>
+<span style="color: #daa520;">  keyingtries=1</span>
+<span style="color: #daa520;">  keyexchange=ikev1</span>
+<span style="color: #daa520;">  authby=secret</span>
+<span style="color: #daa520;">  ike=aes128-sha1-modp2048!</span>
+<span style="color: #daa520;">  esp=aes128-sha1-modp2048!</span>
 
-<span style="color: #ffff00; font-weight: bold;">conn myvpn</span>
-<span style="color: #ffff00; font-weight: bold;">  keyexchange=ikev1</span>
-<span style="color: #ffff00; font-weight: bold;">  left=%defaultroute</span>
-<span style="color: #ffff00; font-weight: bold;">  auto=add</span>
-<span style="color: #ffff00; font-weight: bold;">  authby=secret</span>
-<span style="color: #ffff00; font-weight: bold;">  type=transport</span>
-<span style="color: #ffff00; font-weight: bold;">  leftprotoport=17/1701</span>
-<span style="color: #ffff00; font-weight: bold;">  rightprotoport=17/1701</span>
-<span style="color: #ffff00; font-weight: bold;">  right=$VPN_SERVER_IP</span>
-<span style="color: #ffff00; font-weight: bold;">EOF</span>
+<span style="color: #daa520;">conn myvpn</span>
+<span style="color: #daa520;">  keyexchange=ikev1</span>
+<span style="color: #daa520;">  left=%defaultroute</span>
+<span style="color: #daa520;">  auto=add</span>
+<span style="color: #daa520;">  authby=secret</span>
+<span style="color: #daa520;">  type=transport</span>
+<span style="color: #daa520;">  leftprotoport=17/1701</span>
+<span style="color: #daa520;">  rightprotoport=17/1701</span>
+<span style="color: #daa520;">  right=$VPN_SERVER_IP</span>
+<span style="color: #daa520;">EOF</span>
 
 cat &gt; /etc/ipsec.secrets &lt;&lt;EOF
-<span style="color: #ffff00; font-weight: bold;">: PSK "$VPN_IPSEC_PSK"</span>
-<span style="color: #ffff00; font-weight: bold;">EOF</span>
+<span style="color: #daa520;">: PSK "$VPN_IPSEC_PSK"</span>
+<span style="color: #daa520;">EOF</span>
 
-chmod <span style="color: #339CDB;">600</span> /etc/ipsec.secrets
+chmod 600 /etc/ipsec.secrets
 
 
 
 cat &gt; /etc/xl2tpd/xl2tpd.conf &lt;&lt;EOF
-<span style="color: #ffff00; font-weight: bold;">[lac myvpn]</span>
-<span style="color: #ffff00; font-weight: bold;">lns = $VPN_SERVER_IP</span>
-<span style="color: #ffff00; font-weight: bold;">ppp debug = yes</span>
-<span style="color: #ffff00; font-weight: bold;">pppoptfile = /etc/ppp/options.l2tpd.client</span>
-<span style="color: #ffff00; font-weight: bold;">length bit = yes</span>
-<span style="color: #ffff00; font-weight: bold;">EOF</span>
+<span style="color: #daa520;">[lac myvpn]</span>
+<span style="color: #daa520;">lns = $VPN_SERVER_IP</span>
+<span style="color: #daa520;">ppp debug = yes</span>
+<span style="color: #daa520;">pppoptfile = /etc/ppp/options.l2tpd.client</span>
+<span style="color: #daa520;">length bit = yes</span>
+<span style="color: #daa520;">EOF</span>
 
 cat &gt; /etc/ppp/options.l2tpd.client &lt;&lt;EOF
-<span style="color: #ffff00; font-weight: bold;">ipcp-accept-local</span>
-<span style="color: #ffff00; font-weight: bold;">ipcp-accept-remote</span>
-<span style="color: #ffff00; font-weight: bold;">refuse-eap</span>
-<span style="color: #ffff00; font-weight: bold;">require-chap</span>
-<span style="color: #ffff00; font-weight: bold;">noccp</span>
-<span style="color: #ffff00; font-weight: bold;">noauth</span>
-<span style="color: #ffff00; font-weight: bold;">mtu 1280</span>
-<span style="color: #ffff00; font-weight: bold;">mru 1280</span>
-<span style="color: #ffff00; font-weight: bold;">noipdefault</span>
-<span style="color: #ffff00; font-weight: bold;">defaultroute</span>
-<span style="color: #ffff00; font-weight: bold;">usepeerdns</span>
-<span style="color: #ffff00; font-weight: bold;">connect-delay 5000</span>
-<span style="color: #ffff00; font-weight: bold;">name $VPN_USER</span>
-<span style="color: #ffff00; font-weight: bold;">password $VPN_PASSWORD</span>
-<span style="color: #ffff00; font-weight: bold;">EOF</span>
+<span style="color: #daa520;">ipcp-accept-local</span>
+<span style="color: #daa520;">ipcp-accept-remote</span>
+<span style="color: #daa520;">refuse-eap</span>
+<span style="color: #daa520;">require-chap</span>
+<span style="color: #daa520;">noccp</span>
+<span style="color: #daa520;">noauth</span>
+<span style="color: #daa520;">mtu 1280</span>
+<span style="color: #daa520;">mru 1280</span>
+<span style="color: #daa520;">noipdefault</span>
+<span style="color: #daa520;">defaultroute</span>
+<span style="color: #daa520;">usepeerdns</span>
+<span style="color: #daa520;">connect-delay 5000</span>
+<span style="color: #daa520;">name $VPN_USER</span>
+<span style="color: #daa520;">password $VPN_PASSWORD</span>
+<span style="color: #daa520;">EOF</span>
 
-chmod <span style="color: #339CDB;">600</span> /etc/ppp/options.l2tpd.client
+chmod 600 /etc/ppp/options.l2tpd.client
 
 </pre>
 </div>
 </div>
 </div>
 
-<div id="outline-container-org2e46ad8" class="outline-2">
-<h2 id="org2e46ad8">error: 开始 L2TP 连接</h2>
-<div class="outline-text-2" id="text-org2e46ad8">
+<div id="outline-container-org8ba3515" class="outline-2">
+<h2 id="org8ba3515">error: 开始 L2TP 连接</h2>
+<div class="outline-text-2" id="text-org8ba3515">
 <div class="org-src-container">
 <pre class="src src-example">开始 L2TP 连接：
 

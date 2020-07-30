@@ -3,12 +3,12 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2020-05-25 Mon 19:58 -->
+<!-- 2020-07-30 Thu 16:11 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>linux ssh</title>
 <meta name="generator" content="Org mode" />
-<meta name="author" content="yunlong zeng" />
+<meta name="author" content="a" />
 <link rel="stylesheet" title="Standard" href="/html/style/worg.css" type="text/css" />
 <link rel="alternate stylesheet" title="Zenburn" href="/html/style/worg-zenburn.css" type="text/css" />
 <link rel="alternate stylesheet" title="Classic" href="/html/style/worg-classic.css" type="text/css" />
@@ -98,12 +98,12 @@ fathom('trackPageview');
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#org1fdad3c">ssh 自动断线</a>
+<li><a href="#orgc67953a">ssh 自动断线</a>
 <ul>
-<li><a href="#org2bde6b8">更改服务器端，即在ssh远端。</a></li>
+<li><a href="#org051dd9a">更改服务器端，即在ssh远端。</a></li>
 </ul>
 </li>
-<li><a href="#org25decb5">restart sshd</a></li>
+<li><a href="#org185aaed">restart sshd</a></li>
 </ul>
 </div>
 </div>
@@ -115,32 +115,32 @@ fathom('trackPageview');
 Linux中的sshd服务
 </p>
 
-<div id="outline-container-org1fdad3c" class="outline-2">
-<h2 id="org1fdad3c">ssh 自动断线</h2>
-<div class="outline-text-2" id="text-org1fdad3c">
+<div id="outline-container-orgc67953a" class="outline-2">
+<h2 id="orgc67953a">ssh 自动断线</h2>
+<div class="outline-text-2" id="text-orgc67953a">
 <ul class="org-ul">
 <li><a href="https://www.coder4.com/archives/3751">https://www.coder4.com/archives/3751</a></li>
 <li><a href="https://blog.csdn.net/hustcw98/article/details/79325878">https://blog.csdn.net/hustcw98/article/details/79325878</a></li>
 </ul>
 </div>
-<div id="outline-container-org2bde6b8" class="outline-3">
-<h3 id="org2bde6b8">更改服务器端，即在ssh远端。</h3>
-<div class="outline-text-3" id="text-org2bde6b8">
+<div id="outline-container-org051dd9a" class="outline-3">
+<h3 id="org051dd9a">更改服务器端，即在ssh远端。</h3>
+<div class="outline-text-3" id="text-org051dd9a">
 <div class="org-src-container">
-<pre class="src src-shell"><span style="color: #579C4C; background-color: #292e34;"># </span><span style="color: #579C4C; background-color: #292e34;">&#25171;&#24320;</span>
+<pre class="src src-shell"><span style="color: #579C4C;"># </span><span style="color: #579C4C;">&#25171;&#24320;</span>
 sudo vim /etc/ssh/sshd_config
-<span style="color: #579C4C; background-color: #292e34;"># </span><span style="color: #579C4C; background-color: #292e34;">&#28155;&#21152;</span>
-ClientAliveInterval <span style="color: #339CDB;">30</span>
-ClientAliveCountMax <span style="color: #339CDB;">6</span>
+<span style="color: #579C4C;"># </span><span style="color: #579C4C;">&#28155;&#21152;</span>
+ClientAliveInterval 30
+ClientAliveCountMax 6
 </pre>
 </div>
 </div>
 </div>
 </div>
 
-<div id="outline-container-org25decb5" class="outline-2">
-<h2 id="org25decb5">restart sshd</h2>
-<div class="outline-text-2" id="text-org25decb5">
+<div id="outline-container-org185aaed" class="outline-2">
+<h2 id="org185aaed">restart sshd</h2>
+<div class="outline-text-2" id="text-org185aaed">
 <p>
 <a href="https://www.cnblogs.com/lvhongwei/p/8278640.html">https://www.cnblogs.com/lvhongwei/p/8278640.html</a>
 </p>
@@ -158,13 +158,13 @@ or
 </p>
 
 <div class="org-src-container">
-<pre class="src src-shell"><span style="color: #579C4C; background-color: #292e34;"># </span><span style="color: #579C4C; background-color: #292e34;">&#26597;&#30475;&#29366;&#24577;&#65306;</span>
+<pre class="src src-shell"><span style="color: #579C4C;"># </span><span style="color: #579C4C;">&#26597;&#30475;&#29366;&#24577;&#65306;</span>
 systemctl status sshd.service
-<span style="color: #579C4C; background-color: #292e34;"># </span><span style="color: #579C4C; background-color: #292e34;">&#21551;&#21160;&#26381;&#21153;&#65306;</span>
+<span style="color: #579C4C;"># </span><span style="color: #579C4C;">&#21551;&#21160;&#26381;&#21153;&#65306;</span>
 systemctl start sshd.service
-<span style="color: #579C4C; background-color: #292e34;"># </span><span style="color: #579C4C; background-color: #292e34;">&#37325;&#21551;&#26381;&#21153;&#65306;</span>
+<span style="color: #579C4C;"># </span><span style="color: #579C4C;">&#37325;&#21551;&#26381;&#21153;&#65306;</span>
 systemctl restart sshd.service
-<span style="color: #579C4C; background-color: #292e34;"># </span><span style="color: #579C4C; background-color: #292e34;">&#24320;&#26426;&#33258;&#21551;&#65306;</span>
+<span style="color: #579C4C;"># </span><span style="color: #579C4C;">&#24320;&#26426;&#33258;&#21551;&#65306;</span>
 systemctl enable sshd.service
 </pre>
 </div>

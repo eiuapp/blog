@@ -3,12 +3,12 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2020-05-26 Tue 17:18 -->
+<!-- 2020-07-30 Thu 16:13 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>network tcp</title>
 <meta name="generator" content="Org mode" />
-<meta name="author" content="yunlong zeng" />
+<meta name="author" content="a" />
 <link rel="stylesheet" title="Standard" href="/html/style/worg.css" type="text/css" />
 <link rel="alternate stylesheet" title="Zenburn" href="/html/style/worg-zenburn.css" type="text/css" />
 <link rel="alternate stylesheet" title="Classic" href="/html/style/worg-classic.css" type="text/css" />
@@ -98,8 +98,8 @@ fathom('trackPageview');
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#orgb255b6f">测试TCP和UDP端口的方法</a></li>
-<li><a href="#org9741ff7">nc -u test udp port</a></li>
+<li><a href="#org7abf084">测试TCP和UDP端口的方法</a></li>
+<li><a href="#org52fbde2">nc -u test udp port</a></li>
 </ul>
 </div>
 </div>
@@ -107,9 +107,9 @@ fathom('trackPageview');
 <a href="../index.html">{Back to site's index}</a>
 </p>
 
-<div id="outline-container-orgb255b6f" class="outline-2">
-<h2 id="orgb255b6f">测试TCP和UDP端口的方法</h2>
-<div class="outline-text-2" id="text-orgb255b6f">
+<div id="outline-container-org7abf084" class="outline-2">
+<h2 id="org7abf084">测试TCP和UDP端口的方法</h2>
+<div class="outline-text-2" id="text-org7abf084">
 <div class="org-src-container">
 <pre class="src src-shell">telnet ip port
 </pre>
@@ -117,16 +117,16 @@ fathom('trackPageview');
 </div>
 </div>
 
-<div id="outline-container-org9741ff7" class="outline-2">
-<h2 id="org9741ff7">nc -u test udp port</h2>
-<div class="outline-text-2" id="text-org9741ff7">
+<div id="outline-container-org52fbde2" class="outline-2">
+<h2 id="org52fbde2">nc -u test udp port</h2>
+<div class="outline-text-2" id="text-org52fbde2">
 <p>
 <a href="https://blog.csdn.net/iw1210/article/details/51603772">https://blog.csdn.net/iw1210/article/details/51603772</a>
 </p>
 
 <div class="org-src-container">
-<pre class="src src-shell">&#926; ~ git:(ubuntu) &#9654; nc -vuz <span style="color: #339CDB;">34.92.143.223</span> <span style="color: #339CDB;">500</span>
-Connection to <span style="color: #339CDB;">34.92.143.223</span> <span style="color: #339CDB;">500</span> port [udp/isakmp] succeeded!
+<pre class="src src-shell">&#926; ~ git:(ubuntu) &#9654; nc -vuz 34.92.143.223 500
+Connection to 34.92.143.223 500 port [udp/isakmp] succeeded!
 &#926; ~ git:(ubuntu) &#9654;
 </pre>
 </div>

@@ -3,12 +3,12 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2020-03-26 Thu 11:07 -->
+<!-- 2020-07-30 Thu 16:13 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>sequence</title>
 <meta name="generator" content="Org mode" />
-<meta name="author" content="yunlong zeng" />
+<meta name="author" content="a" />
 <link rel="stylesheet" title="Standard" href="/html/style/worg.css" type="text/css" />
 <link rel="alternate stylesheet" title="Zenburn" href="/html/style/worg-zenburn.css" type="text/css" />
 <link rel="alternate stylesheet" title="Classic" href="/html/style/worg-classic.css" type="text/css" />
@@ -98,12 +98,12 @@ fathom('trackPageview');
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#org5460c91">set new start number</a></li>
-<li><a href="#orgd30e301">bulk create sequence</a>
+<li><a href="#orgeb58323">set new start number</a></li>
+<li><a href="#orgf6c308f">bulk create sequence</a>
 <ul>
-<li><a href="#org20b4ab4">create template</a></li>
-<li><a href="#org0f8d96e">create bulk sequence</a></li>
-<li><a href="#orgea16b79">alter table nextval</a></li>
+<li><a href="#org756c729">create template</a></li>
+<li><a href="#org3b881dc">create bulk sequence</a></li>
+<li><a href="#org65ebb7f">alter table nextval</a></li>
 </ul>
 </li>
 </ul>
@@ -113,22 +113,22 @@ fathom('trackPageview');
 <a href="../index.html">{Back to site's index}</a>
 </p>
 
-<div id="outline-container-org5460c91" class="outline-2">
-<h2 id="org5460c91">set new start number</h2>
-<div class="outline-text-2" id="text-org5460c91">
+<div id="outline-container-orgeb58323" class="outline-2">
+<h2 id="orgeb58323">set new start number</h2>
+<div class="outline-text-2" id="text-orgeb58323">
 <pre class="example">
 SELECT setval('"public"."table_id_seq"', 101, true);
 </pre>
 </div>
 </div>
 
-<div id="outline-container-orgd30e301" class="outline-2">
-<h2 id="orgd30e301">bulk create sequence</h2>
-<div class="outline-text-2" id="text-orgd30e301">
+<div id="outline-container-orgf6c308f" class="outline-2">
+<h2 id="orgf6c308f">bulk create sequence</h2>
+<div class="outline-text-2" id="text-orgf6c308f">
 </div>
-<div id="outline-container-org20b4ab4" class="outline-3">
-<h3 id="org20b4ab4">create template</h3>
-<div class="outline-text-3" id="text-org20b4ab4">
+<div id="outline-container-org756c729" class="outline-3">
+<h3 id="org756c729">create template</h3>
+<div class="outline-text-3" id="text-org756c729">
 <p>
 example: set the table.id have a sequence.
 </p>
@@ -147,37 +147,37 @@ ALTER SEQUENCE "public"."table_id_seq" OWNER TO "esop";
 </div>
 </div>
 
-<div id="outline-container-org0f8d96e" class="outline-3">
-<h3 id="org0f8d96e">create bulk sequence</h3>
-<div class="outline-text-3" id="text-org0f8d96e">
+<div id="outline-container-org3b881dc" class="outline-3">
+<h3 id="org3b881dc">create bulk sequence</h3>
+<div class="outline-text-3" id="text-org3b881dc">
 <div class="org-src-container">
-<pre class="src src-shell"><span style="color: #75715E;">#</span><span style="color: #75715E; background-color: #292e34;">!/usr/bin/</span><span style="color: #F92672;">env</span><span style="color: #75715E; background-color: #292e34;"> bash</span>
-<span style="color: #F92672;">echo</span> <span style="color: #E6DB74;">""</span> &gt; ./sql.txt
-<span style="color: #F92672;">for</span> table<span style="color: #F92672;"> in</span> <span style="color: #AE81FF; font-weight: bold;">`cat ./table.txt`</span>; <span style="color: #F92672;">do</span>
-    <span style="color: #F92672;">echo</span> ${<span style="color: #FD971F;">table</span>}
-    <span style="color: #F92672;">echo</span> <span style="color: #E6DB74;">"CREATE SEQUENCE \"public\".\"${table}_id_seq\"  INCREMENT 1 MINVALUE  1 MAXVALUE 9223372036854775807 START 1 CACHE 1;"</span> &gt;&gt; ./sql.txt
-    <span style="color: #F92672;">echo</span> <span style="color: #E6DB74;">"ALTER SEQUENCE \"public\".\"${table}_id_seq\" OWNED BY \"public\".\"${table}\".\"id\";"</span> &gt;&gt; ./sql.txt
-    <span style="color: #F92672;">echo</span> <span style="color: #E6DB74;">"ALTER SEQUENCE \"public\".\"${table}_id_seq\" OWNER TO \"esop\";"</span> &gt;&gt; ./sql.txt
-    <span style="color: #F92672;">echo</span> <span style="color: #E6DB74;">"${table} is ok"</span>
-<span style="color: #F92672;">done</span>
-<span style="color: #F92672;">echo</span> <span style="color: #E6DB74;">"Game over!"</span>
+<pre class="src src-shell"><span style="color: #579C4C;">#</span><span style="color: #579C4C;">!/usr/bin/</span><span style="color: #00bfff;">env</span><span style="color: #579C4C;"> bash</span>
+<span style="color: #d4d4d4;">echo</span> <span style="color: #daa520;">""</span> &gt; ./sql.txt
+<span style="color: #00bfff;">for</span> table<span style="color: #00bfff;"> in</span> <span style="color: #00cdcd; font-weight: bold;">`cat ./table.txt`</span>; <span style="color: #00bfff;">do</span>
+    <span style="color: #d4d4d4;">echo</span> ${<span style="color: #d4d4d4;">table</span>}
+    <span style="color: #d4d4d4;">echo</span> <span style="color: #daa520;">"CREATE SEQUENCE \"public\".\"${table}_id_seq\"  INCREMENT 1 MINVALUE  1 MAXVALUE 9223372036854775807 START 1 CACHE 1;"</span> &gt;&gt; ./sql.txt
+    <span style="color: #d4d4d4;">echo</span> <span style="color: #daa520;">"ALTER SEQUENCE \"public\".\"${table}_id_seq\" OWNED BY \"public\".\"${table}\".\"id\";"</span> &gt;&gt; ./sql.txt
+    <span style="color: #d4d4d4;">echo</span> <span style="color: #daa520;">"ALTER SEQUENCE \"public\".\"${table}_id_seq\" OWNER TO \"esop\";"</span> &gt;&gt; ./sql.txt
+    <span style="color: #d4d4d4;">echo</span> <span style="color: #daa520;">"${table} is ok"</span>
+<span style="color: #00bfff;">done</span>
+<span style="color: #d4d4d4;">echo</span> <span style="color: #daa520;">"Game over!"</span>
 </pre>
 </div>
 </div>
 </div>
 
-<div id="outline-container-orgea16b79" class="outline-3">
-<h3 id="orgea16b79">alter table nextval</h3>
-<div class="outline-text-3" id="text-orgea16b79">
+<div id="outline-container-org65ebb7f" class="outline-3">
+<h3 id="org65ebb7f">alter table nextval</h3>
+<div class="outline-text-3" id="text-org65ebb7f">
 <div class="org-src-container">
-<pre class="src src-shell"><span style="color: #75715E;">#</span><span style="color: #75715E; background-color: #292e34;">!/usr/bin/</span><span style="color: #F92672;">env</span><span style="color: #75715E; background-color: #292e34;"> bash</span>
-<span style="color: #F92672;">echo</span> <span style="color: #E6DB74;">""</span> &gt; ./sql.txt
-<span style="color: #F92672;">for</span> table<span style="color: #F92672;"> in</span> <span style="color: #AE81FF; font-weight: bold;">`cat ./table.txt`</span>; <span style="color: #F92672;">do</span>
-    <span style="color: #F92672;">echo</span> ${<span style="color: #FD971F;">table</span>}
-    <span style="color: #F92672;">echo</span> <span style="color: #E6DB74;">"ALTER table ${table} alter column id set default nextval('${table}_id_seq');"</span> &gt;&gt; ./sql.txt
-    <span style="color: #F92672;">echo</span> <span style="color: #E6DB74;">"${table} is ok"</span>
-<span style="color: #F92672;">done</span>
-<span style="color: #F92672;">echo</span> <span style="color: #E6DB74;">"Game over!"</span>
+<pre class="src src-shell"><span style="color: #579C4C;">#</span><span style="color: #579C4C;">!/usr/bin/</span><span style="color: #00bfff;">env</span><span style="color: #579C4C;"> bash</span>
+<span style="color: #d4d4d4;">echo</span> <span style="color: #daa520;">""</span> &gt; ./sql.txt
+<span style="color: #00bfff;">for</span> table<span style="color: #00bfff;"> in</span> <span style="color: #00cdcd; font-weight: bold;">`cat ./table.txt`</span>; <span style="color: #00bfff;">do</span>
+    <span style="color: #d4d4d4;">echo</span> ${<span style="color: #d4d4d4;">table</span>}
+    <span style="color: #d4d4d4;">echo</span> <span style="color: #daa520;">"ALTER table ${table} alter column id set default nextval('${table}_id_seq');"</span> &gt;&gt; ./sql.txt
+    <span style="color: #d4d4d4;">echo</span> <span style="color: #daa520;">"${table} is ok"</span>
+<span style="color: #00bfff;">done</span>
+<span style="color: #d4d4d4;">echo</span> <span style="color: #daa520;">"Game over!"</span>
 </pre>
 </div>
 

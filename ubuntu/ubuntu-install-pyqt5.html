@@ -1,0 +1,194 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<!-- 2020-07-30 Thu 16:10 -->
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>ubuntu apt 安装 PyQt5</title>
+<meta name="generator" content="Org mode" />
+<meta name="author" content="a" />
+<link rel="stylesheet" title="Standard" href="/html/style/worg.css" type="text/css" />
+<link rel="alternate stylesheet" title="Zenburn" href="/html/style/worg-zenburn.css" type="text/css" />
+<link rel="alternate stylesheet" title="Classic" href="/html/style/worg-classic.css" type="text/css" />
+<link rel="SHORTCUT ICON" href="/html/style/org-mode-unicorn.ico" type="image/x-icon" />
+<link rel="icon" href="/html/style/org-mode-unicorn.ico" type="image/ico" />
+<script type="text/javascript">
+/*
+@licstart  The following is the entire license notice for the
+JavaScript code in this tag.
+
+Copyright (C) 2012-2019 Free Software Foundation, Inc.
+
+The JavaScript code in this tag is free software: you can
+redistribute it and/or modify it under the terms of the GNU
+General Public License (GNU GPL) as published by the Free Software
+Foundation, either version 3 of the License, or (at your option)
+any later version.  The code is distributed WITHOUT ANY WARRANTY;
+without even the implied warranty of MERCHANTABILITY or FITNESS
+FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
+
+As additional permission under GNU GPL version 3 section 7, you
+may distribute non-source (e.g., minimized or compacted) forms of
+that code without the copy of the GNU GPL normally required by
+section 4, provided you include this license notice and a URL
+through which recipients can access the Corresponding Source.
+
+
+@licend  The above is the entire license notice
+for the JavaScript code in this tag.
+*/
+<!--/*--><![CDATA[/*><!--*/
+ function CodeHighlightOn(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(null != target) {
+     elem.cacheClassElem = elem.className;
+     elem.cacheClassTarget = target.className;
+     target.className = "code-highlighted";
+     elem.className   = "code-highlighted";
+   }
+ }
+ function CodeHighlightOff(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(elem.cacheClassElem)
+     elem.className = elem.cacheClassElem;
+   if(elem.cacheClassTarget)
+     target.className = elem.cacheClassTarget;
+ }
+/*]]>*///-->
+</script>
+</head>
+<body>
+<div id="preamble" class="status">
+<script type="text/javascript">
+  document.addEventListener('DOMContentLoaded',function() {
+      document.getElementById("table-of-contents").onclick = function() {
+          var elem = document.getElementById("text-table-of-contents");
+          elem.style.display = elem.style.display == "block" ? "none" : "block";
+      }
+  });
+
+  var url = document.location.href;
+  var orgsource = url.substring(0, url.lastIndexOf("."))+".org.html";
+  function show_org_source(){
+      document.location.href = orgsource;
+  }
+</script>
+
+<script>
+(function(f, a, t, h, o, m){
+	a[h]=a[h]||function(){
+		(a[h].q=a[h].q||[]).push(arguments)
+	};
+	o=f.createElement('script'),
+	m=f.getElementsByTagName('script')[0];
+	o.async=1; o.src=t; o.id='fathom-script';
+	m.parentNode.insertBefore(o,m)
+})(document, window, '//stats.orgmode.org/tracker.js', 'fathom');
+fathom('set', 'siteId', 'NWSQJ');
+fathom('trackPageview');
+</script>
+</div>
+<div id="content">
+<h1 class="title">ubuntu apt 安装 PyQt5</h1>
+<div id="table-of-contents">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#orgdf70891">Ubuntu18.04 安装 PyQt5</a>
+<ul>
+<li><a href="#org9cb9d70">安装pip3</a></li>
+<li><a href="#orgf3f014e">首先更新pip3：</a></li>
+<li><a href="#org7440581">安装pyqt5</a></li>
+<li><a href="#org9c56693">安装图形设计工具</a></li>
+<li><a href="#orgc025669">验证安装成功</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+<p>
+<a href="../index.html">{Back to site's index}</a>
+</p>
+
+<div id="outline-container-orgdf70891" class="outline-2">
+<h2 id="orgdf70891">Ubuntu18.04 安装 PyQt5</h2>
+<div class="outline-text-2" id="text-orgdf70891">
+<p>
+<a href="https://zhuanlan.zhihu.com/p/137571552">https://zhuanlan.zhihu.com/p/137571552</a>
+</p>
+</div>
+
+<div id="outline-container-org9cb9d70" class="outline-3">
+<h3 id="org9cb9d70">安装pip3</h3>
+<div class="outline-text-3" id="text-org9cb9d70">
+<p>
+没有对应的pip3，于是执行命令 <code>sudo apt-get install python3-pip</code> ，即可成功安装pip3
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgf3f014e" class="outline-3">
+<h3 id="orgf3f014e">首先更新pip3：</h3>
+<div class="outline-text-3" id="text-orgf3f014e">
+<p>
+sudo python3 -m pip install &#x2013;upgrade pip
+</p>
+</div>
+</div>
+
+<div id="outline-container-org7440581" class="outline-3">
+<h3 id="org7440581">安装pyqt5</h3>
+<div class="outline-text-3" id="text-org7440581">
+<p>
+sudo pip3 install pyqt5==5.12.0
+</p>
+
+<p>
+如果pyqt5后面没有指定版本，将安装最新版本5.14.1，但是这个版本太新，出现兼容性问题，缺少libqsqlmysql.so，不支持连接mysql数据库，而5.12.0则可支持mysql。
+5.14.1支持odbc，sqlite，psql；5.12.0可支持sqlite，mysql，psql。故放弃5.14采用5.12。
+</p>
+</div>
+</div>
+
+<div id="outline-container-org9c56693" class="outline-3">
+<h3 id="org9c56693">安装图形设计工具</h3>
+<div class="outline-text-3" id="text-org9c56693">
+<p>
+sudo apt install pyqt5-dev pyqt5-dev-tools *安装pyqt5的依赖项
+sudo apt install qt5-default qttools5-dev-tools * 安装qtdesigner
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgc025669" class="outline-3">
+<h3 id="orgc025669">验证安装成功</h3>
+<div class="outline-text-3" id="text-orgc025669">
+<p>
+<a href="https://blog.csdn.net/weixin_42528089/article/details/90579245">https://blog.csdn.net/weixin_42528089/article/details/90579245</a>
+</p>
+
+<p>
+查看python 所有的安装包
+</p>
+
+
+<p>
+&gt;&gt;&gt; import sys
+&gt;&gt;&gt; sys.modules.keys()
+dict_keys(['problem_report', '_bz2', 'email.feedparser', 'email.mime', 'base64', 'select', 'tarfile', '<span class="underline"><span class="underline">future</span></span>', '_compat_pickle', 'importlib.util', 'mpl_toolkits', 'json.scanner', 'signal', 'json', 're', 'subprocess', 'ipaddress', 'configparser', '_functools', 'bz2', 'uu', 'pyexpat', 'copyreg', '<span class="underline"><span class="underline">main</span></span>', 'selectors', 'apt.package', 'PyQt5', 'xml', 'pyexpat.errors', '_json', '_thread', 'email.message', 'apt.cdrom', 'calendar', 'importlib.abc', 'textwrap', 'random', 'email.mime.text', 'email._encoded_words', 'email._parseaddr', 'shutil', 'atexit', 'sre_parse', '_frozen_importlib_external', 'importlib.machinery', '_compression', 'zlib', 'copy', 'fcntl', '_weakref', 'sitecustomize', 'collections.abc', 'apport_python_hook', 'email.header', 'email.errors', '_io', '_operator', 'email.encoders', '_string', 'contextlib', '_frozen_importlib', '_pickle', 'apt.cache', 'token', '_signal', '_collections_abc', 'email._policybase', 'apt.progress', 'encodings.utf_8', 'genericpath', '_hashlib', 'heapq', '_socket', '_stat', 'site', 'sysconfig', 'xml.dom.minicompat', 'socket', '_struct', 'string', 'email.charset', 'importlib', 'pyexpat.model', 'gzip', 'codecs', '_warnings', 'apport.packaging_impl', 'threading', 'encodings', 'builtins', 'enum', 'binascii', 'http', 'itertools', 'operator', '_ssl', 'xml.parsers.expat', '_datetime', 'glob', '_locale', '_random', 'apport.fileutils', 'xml.dom.NodeFilter', '_posixsubprocess', 'abc', 'urllib.error', 'datetime', 'sre_constants', 'json.encoder', 'encodings.aliases', 'reprlib', '_weakrefset', 'json.decoder', 'importlib._bootstrap_external', 'sre_compile', 'email.mime.base', 'email.parser', 'math', 'keyword', 'encodings.latin_1', 'linecache', '_heapq', 'urllib', 'apport', 'tokenize', 'importlib._bootstrap', 'urllib.response', 'xml.parsers.expat.errors', 'apport.report', 'apport.packaging', 'posixpath', 'gettext', 'xml.dom.xmlbuilder', 'xml.dom', 'pwd', 'os', '_sysconfigdata_m', '_sitebuiltins', 'errno', 'xml.parsers.expat.model', 'os.path', '_sysconfigdata', '_sre', 'email.mime.multipart', 'collections', 'apt.progress.base', 'traceback', 'apt', 'io', 'weakref', 'urllib.request', 'hashlib', 'email.iterators', 'quopri', 'http.client', 'zipimport', '_imp', 'sys', 'rlcompleter', '_bootlocale', 'locale', 'urllib.parse', 'fnmatch', 'tempfile', 'xml.dom.domreg', '_codecs', 'bisect', 'email.utils', 'email.mime.nonmultipart', '_bisect', 'stat', 'warnings', 'ssl', 'functools', 'email', 'grp', '_lzma', 'email.quoprimime', 'struct', 'apt.progress.text', 'time', 'xml.parsers', 'email.base64mime', 'apt_pkg', 'pickle', 'imp', 'types', 'xml.dom.minidom', 'lzma', 'marshal', '_collections', 'readline', 'posix'])
+&gt;&gt;&gt;
+</p>
+
+<p>
+这其中，如果没有 PyQt5 则表示没有安装成功。
+</p>
+</div>
+</div>
+</div>
+</div>
+</body>
+</html>

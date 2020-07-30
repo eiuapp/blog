@@ -3,12 +3,12 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2020-03-26 Thu 11:07 -->
+<!-- 2020-07-30 Thu 16:11 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>code</title>
 <meta name="generator" content="Org mode" />
-<meta name="author" content="yunlong zeng" />
+<meta name="author" content="a" />
 <link rel="stylesheet" title="Standard" href="/html/style/worg.css" type="text/css" />
 <link rel="alternate stylesheet" title="Zenburn" href="/html/style/worg-zenburn.css" type="text/css" />
 <link rel="alternate stylesheet" title="Classic" href="/html/style/worg-classic.css" type="text/css" />
@@ -98,15 +98,16 @@ fathom('trackPageview');
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#org9536eab">amazon how to develop</a></li>
-<li><a href="#org6711eda">软件开发的一点思考</a></li>
-<li><a href="#orge4ec18f">软件开发过程中的其它点</a>
+<li><a href="#orgeb62c2e">amazon how to develop</a></li>
+<li><a href="#org2406eea">软件开发的一点思考</a></li>
+<li><a href="#org4cc3849">软件开发过程中的其它点</a>
 <ul>
-<li><a href="#org61c8d8c">swagger unit test</a></li>
-<li><a href="#orga27bb8a">cncf</a></li>
-<li><a href="#orge5b3207">k8s</a></li>
+<li><a href="#org9d9c1e2">swagger unit test</a></li>
+<li><a href="#orgf7a4bcb">cncf</a></li>
+<li><a href="#org1c3bf01">k8s</a></li>
 </ul>
 </li>
+<li><a href="#orgd3baaa9">架构流程图</a></li>
 </ul>
 </div>
 </div>
@@ -114,18 +115,18 @@ fathom('trackPageview');
 <a href="../index.html">{Back to site's index}</a>
 </p>
 
-<div id="outline-container-org9536eab" class="outline-2">
-<h2 id="org9536eab">amazon how to develop</h2>
-<div class="outline-text-2" id="text-org9536eab">
+<div id="outline-container-orgeb62c2e" class="outline-2">
+<h2 id="orgeb62c2e">amazon how to develop</h2>
+<div class="outline-text-2" id="text-orgeb62c2e">
 <ul class="org-ul">
 <li><a href="https://www.infoq.cn/article/dvqJ4XfiwF-zQupQ7UR9">亚马逊是如何进行软件开发的</a></li>
 </ul>
 </div>
 </div>
 
-<div id="outline-container-org6711eda" class="outline-2">
-<h2 id="org6711eda">软件开发的一点思考</h2>
-<div class="outline-text-2" id="text-org6711eda">
+<div id="outline-container-org2406eea" class="outline-2">
+<h2 id="org2406eea">软件开发的一点思考</h2>
+<div class="outline-text-2" id="text-org2406eea">
 <ul class="org-ul">
 <li>不能由前端工程师来主定义项目内部字段:
 <ul class="org-ul">
@@ -135,9 +136,9 @@ fathom('trackPageview');
 </div>
 </div>
 
-<div id="outline-container-orge4ec18f" class="outline-2">
-<h2 id="orge4ec18f">软件开发过程中的其它点</h2>
-<div class="outline-text-2" id="text-orge4ec18f">
+<div id="outline-container-org4cc3849" class="outline-2">
+<h2 id="org4cc3849">软件开发过程中的其它点</h2>
+<div class="outline-text-2" id="text-org4cc3849">
 <ul class="org-ul">
 <li>安全(安全)</li>
 <li>权限控制(安全,研发)</li>
@@ -171,21 +172,21 @@ fathom('trackPageview');
 <li></li>
 </ul>
 </div>
-<div id="outline-container-org61c8d8c" class="outline-3">
-<h3 id="org61c8d8c">swagger unit test</h3>
-<div class="outline-text-3" id="text-org61c8d8c">
+<div id="outline-container-org9d9c1e2" class="outline-3">
+<h3 id="org9d9c1e2">swagger unit test</h3>
+<div class="outline-text-3" id="text-org9d9c1e2">
 <p>
 Overview
 In microservices architecture, it is important to document and publish the public API. Swagger provides a framework to help you. Introducing Swagger means there are (at least) two descriptions of the API: the Swagger specification and the definition implicit in the implementation of your service. This gives a choice: get your code correct and then create a Swagger specification or create your Swagger definition and then write your code to match. I have tried each method concluding the latter works better for me. Your mileage may vary.
 </p>
 <div class="org-src-container">
-<pre class="src src-markdown"><span style="color: #FD971F;">The steps are</span><span style="color: #75715E;">:</span>
-<span style="color: #75715E;">1.</span> Write Swagger specification
-<span style="color: #75715E;">2.</span> Validate Swagger specification
-<span style="color: #75715E;">3.</span> Write Swagger tests
-<span style="color: #75715E;">4.</span> Run Swagger tests.
-<span style="color: #75715E;">5.</span> Write service implementation.
-<span style="color: #75715E;">6.</span> Iterate until happy.
+<pre class="src src-markdown"><span style="color: #ff6c6b;">The steps are</span>:
+<span style="color: #daa520;">1. Write Swagger specification</span>
+<span style="color: #daa520;">2. Validate Swagger specification</span>
+<span style="color: #daa520;">3. Write Swagger tests</span>
+<span style="color: #daa520;">4. Run Swagger tests.</span>
+<span style="color: #daa520;">5. Write service implementation.</span>
+<span style="color: #daa520;">6. Iterate until happy.</span>
 </pre>
 </div>
 
@@ -199,12 +200,21 @@ In microservices architecture, it is important to document and publish the publi
 </div>
 </div>
 
-<div id="outline-container-orga27bb8a" class="outline-3">
-<h3 id="orga27bb8a">cncf</h3>
+<div id="outline-container-orgf7a4bcb" class="outline-3">
+<h3 id="orgf7a4bcb">cncf</h3>
 </div>
 
-<div id="outline-container-orge5b3207" class="outline-3">
-<h3 id="orge5b3207">k8s</h3>
+<div id="outline-container-org1c3bf01" class="outline-3">
+<h3 id="org1c3bf01">k8s</h3>
+</div>
+</div>
+
+<div id="outline-container-orgd3baaa9" class="outline-2">
+<h2 id="orgd3baaa9">架构流程图</h2>
+<div class="outline-text-2" id="text-orgd3baaa9">
+<ul class="org-ul">
+<li><a href="https://cloudcraft.co/">https://cloudcraft.co/</a></li>
+</ul>
 </div>
 </div>
 </div>

@@ -3,12 +3,12 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2020-04-15 Wed 09:55 -->
+<!-- 2020-07-30 Thu 16:11 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>egg router</title>
 <meta name="generator" content="Org mode" />
-<meta name="author" content="yunlong zeng" />
+<meta name="author" content="a" />
 <link rel="stylesheet" title="Standard" href="/html/style/worg.css" type="text/css" />
 <link rel="alternate stylesheet" title="Zenburn" href="/html/style/worg-zenburn.css" type="text/css" />
 <link rel="alternate stylesheet" title="Classic" href="/html/style/worg-classic.css" type="text/css" />
@@ -98,8 +98,14 @@ fathom('trackPageview');
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#org73cf19f">router 字符错误</a></li>
-<li><a href="#org9f60be6">router &amp;&amp; middleware</a></li>
+<li><a href="#org0752007">router 字符错误</a></li>
+<li><a href="#orgc46a264">router &amp;&amp; middleware</a></li>
+<li><a href="#org2b6876b">子路由</a>
+<ul>
+<li><a href="#org97d20de">app 添加子路由</a></li>
+<li><a href="#orgad52992">this.router.namespace is not a function</a></li>
+</ul>
+</li>
 </ul>
 </div>
 </div>
@@ -107,9 +113,9 @@ fathom('trackPageview');
 <a href="../index.html">{Back to site's index}</a>
 </p>
 
-<div id="outline-container-org73cf19f" class="outline-2">
-<h2 id="org73cf19f">router 字符错误</h2>
-<div class="outline-text-2" id="text-org73cf19f">
+<div id="outline-container-org0752007" class="outline-2">
+<h2 id="org0752007">router 字符错误</h2>
+<div class="outline-text-2" id="text-org0752007">
 <p>
 居然有遇到一次，错误的隐藏字符。这个问题，搞了大半天。
 </p>
@@ -120,24 +126,24 @@ fathom('trackPageview');
 
 <div class="org-src-container">
 <pre class="src src-javascript">module.exports = app =&gt; {
-  <span style="color: #00bfff; font-weight: bold;">const</span> { router, controller } = app;
-  <span style="color: #00bfff; font-weight: bold;">const</span> { ums, tms, bms, cms, ems, sms, pms, rms, utils } = controller;
-  <span style="color: #9f8766;">/**</span>
-<span style="color: #9f8766;">   * &#31995;&#32479;&#37197;&#32622;&#31649;&#29702;</span>
-<span style="color: #9f8766;">   */</span>
+  <span style="color: #00bfff;">const</span> { router, controller } = app;
+  <span style="color: #00bfff;">const</span> { ums, tms, bms, cms, ems, sms, pms, rms, utils } = controller;
+  <span style="color: #999999;">/**</span>
+<span style="color: #999999;">   * &#31995;&#32479;&#37197;&#32622;&#31649;&#29702;</span>
+<span style="color: #999999;">   */</span>
   router.get(<span style="color: #daa520;">'/sysconfig/list'</span>, sms.smsConfig.getListAndCountAll);
   router.get(<span style="color: #daa520;">'&lt;200b&gt;/loginStrategy/list'</span>, sms.smsConfig.loginStrategyList);
-  <span style="color: #2aa1ae; background-color: #292e34;">// </span><span style="color: #2aa1ae; background-color: #292e34;">router.post('/loginStrategy&lt;200b&gt;/delete/:ids', sms.smsConfig.updateDeleteStatus);</span>
-  <span style="color: #2aa1ae; background-color: #292e34;">// </span><span style="color: #2aa1ae; background-color: #292e34;">router.post('/loginStrategy&lt;200b&gt;/create', sms.smsConfig.saveNew);</span>
+  <span style="color: #579C4C;">// </span><span style="color: #579C4C;">router.post('/loginStrategy&lt;200b&gt;/delete/:ids', sms.smsConfig.updateDeleteStatus);</span>
+  <span style="color: #579C4C;">// </span><span style="color: #579C4C;">router.post('/loginStrategy&lt;200b&gt;/create', sms.smsConfig.saveNew);</span>
 };
 </pre>
 </div>
 </div>
 </div>
 
-<div id="outline-container-org9f60be6" class="outline-2">
-<h2 id="org9f60be6">router &amp;&amp; middleware</h2>
-<div class="outline-text-2" id="text-org9f60be6">
+<div id="outline-container-orgc46a264" class="outline-2">
+<h2 id="orgc46a264">router &amp;&amp; middleware</h2>
+<div class="outline-text-2" id="text-orgc46a264">
 <p>
 <a href="https://github.com/eiuapp/tl-fangyuan-server/commit/bfe645f8ff2e69917da9e7716b386b238954d5a0">https://github.com/eiuapp/tl-fangyuan-server/commit/bfe645f8ff2e69917da9e7716b386b238954d5a0</a>
 </p>
@@ -152,7 +158,58 @@ fathom('trackPageview');
 
 
 <p>
-const isAdmin = app.middleware.isAdmin({}, app);</p>
+const isAdmin = app.middleware.isAdmin({}, app);
+</p>
+</div>
+</div>
+
+<div id="outline-container-org2b6876b" class="outline-2">
+<h2 id="org2b6876b">子路由</h2>
+<div class="outline-text-2" id="text-org2b6876b">
+<p>
+子路由可以使得api使用不同版本, /api/v1, /api/v2, /api/v3.
+</p>
+
+<ul class="org-ul">
+<li><a href="https://github.com/klren0312/ironInfoWeapp">https://github.com/klren0312/ironInfoWeapp</a></li>
+</ul>
+</div>
+
+<div id="outline-container-org97d20de" class="outline-3">
+<h3 id="org97d20de">app 添加子路由</h3>
+<div class="outline-text-3" id="text-org97d20de">
+<p>
+app/extends/application.js
+</p>
+
+<div class="org-src-container">
+<pre class="src src-javascript"><span style="color: #999999;">/**</span>
+<span style="color: #999999;"> * &#23376;&#36335;&#30001;</span>
+<span style="color: #999999;"> */</span>
+get apiV1Router() {
+  <span style="color: #00bfff;">return</span> <span style="color: #339CDB;">this</span>.router.namespace(<span style="color: #daa520;">'/api/v1'</span>)
+},
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgad52992" class="outline-3">
+<h3 id="orgad52992">this.router.namespace is not a function</h3>
+<div class="outline-text-3" id="text-orgad52992">
+<p>
+因为没有安装和加载　egg-router-plus
+</p>
+
+<div class="org-src-container">
+<pre class="src src-javascript"><span style="color: #579C4C;">// </span><span style="color: #579C4C;">&#23376;&#36335;&#30001;</span>
+exports.routerPlus = {
+  enable: <span style="color: #339CDB;">true</span>,
+  <span style="color: #00bfff;">package</span>: <span style="color: #daa520;">'egg-router-plus'</span>
+}
+</pre>
+</div>
+</div>
 </div>
 </div>
 </div>

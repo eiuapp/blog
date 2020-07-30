@@ -1,0 +1,176 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<!-- 2020-07-30 Thu 16:13 -->
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>vscode 常见问题</title>
+<meta name="generator" content="Org mode" />
+<meta name="author" content="a" />
+<link rel="stylesheet" title="Standard" href="/html/style/worg.css" type="text/css" />
+<link rel="alternate stylesheet" title="Zenburn" href="/html/style/worg-zenburn.css" type="text/css" />
+<link rel="alternate stylesheet" title="Classic" href="/html/style/worg-classic.css" type="text/css" />
+<link rel="SHORTCUT ICON" href="/html/style/org-mode-unicorn.ico" type="image/x-icon" />
+<link rel="icon" href="/html/style/org-mode-unicorn.ico" type="image/ico" />
+<script type="text/javascript">
+/*
+@licstart  The following is the entire license notice for the
+JavaScript code in this tag.
+
+Copyright (C) 2012-2019 Free Software Foundation, Inc.
+
+The JavaScript code in this tag is free software: you can
+redistribute it and/or modify it under the terms of the GNU
+General Public License (GNU GPL) as published by the Free Software
+Foundation, either version 3 of the License, or (at your option)
+any later version.  The code is distributed WITHOUT ANY WARRANTY;
+without even the implied warranty of MERCHANTABILITY or FITNESS
+FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
+
+As additional permission under GNU GPL version 3 section 7, you
+may distribute non-source (e.g., minimized or compacted) forms of
+that code without the copy of the GNU GPL normally required by
+section 4, provided you include this license notice and a URL
+through which recipients can access the Corresponding Source.
+
+
+@licend  The above is the entire license notice
+for the JavaScript code in this tag.
+*/
+<!--/*--><![CDATA[/*><!--*/
+ function CodeHighlightOn(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(null != target) {
+     elem.cacheClassElem = elem.className;
+     elem.cacheClassTarget = target.className;
+     target.className = "code-highlighted";
+     elem.className   = "code-highlighted";
+   }
+ }
+ function CodeHighlightOff(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(elem.cacheClassElem)
+     elem.className = elem.cacheClassElem;
+   if(elem.cacheClassTarget)
+     target.className = elem.cacheClassTarget;
+ }
+/*]]>*///-->
+</script>
+</head>
+<body>
+<div id="preamble" class="status">
+<script type="text/javascript">
+  document.addEventListener('DOMContentLoaded',function() {
+      document.getElementById("table-of-contents").onclick = function() {
+          var elem = document.getElementById("text-table-of-contents");
+          elem.style.display = elem.style.display == "block" ? "none" : "block";
+      }
+  });
+
+  var url = document.location.href;
+  var orgsource = url.substring(0, url.lastIndexOf("."))+".org.html";
+  function show_org_source(){
+      document.location.href = orgsource;
+  }
+</script>
+
+<script>
+(function(f, a, t, h, o, m){
+	a[h]=a[h]||function(){
+		(a[h].q=a[h].q||[]).push(arguments)
+	};
+	o=f.createElement('script'),
+	m=f.getElementsByTagName('script')[0];
+	o.async=1; o.src=t; o.id='fathom-script';
+	m.parentNode.insertBefore(o,m)
+})(document, window, '//stats.orgmode.org/tracker.js', 'fathom');
+fathom('set', 'siteId', 'NWSQJ');
+fathom('trackPageview');
+</script>
+</div>
+<div id="content">
+<h1 class="title">vscode 常见问题</h1>
+<div id="table-of-contents">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#org1ced7d2">Remote-ssh服务器端vscode-server安装失败</a></li>
+<li><a href="#org201115d">getPlatformForHost was canceled</a></li>
+<li><a href="#orge078bdc">杀掉VSCODE server 重开即可</a></li>
+<li><a href="#org91bdbb9">remotePlatform</a></li>
+</ul>
+</div>
+</div>
+<p>
+<a href="../index.html">{Back to site's index}</a>
+</p>
+
+<div id="outline-container-org1ced7d2" class="outline-2">
+<h2 id="org1ced7d2">Remote-ssh服务器端vscode-server安装失败</h2>
+<div class="outline-text-2" id="text-org1ced7d2">
+<ul class="org-ul">
+<li><a href="https://blog.csdn.net/wyg1997/article/details/101460961">https://blog.csdn.net/wyg1997/article/details/101460961</a></li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org201115d" class="outline-2">
+<h2 id="org201115d">getPlatformForHost was canceled</h2>
+<div class="outline-text-2" id="text-org201115d">
+<p>
+[12:23:33.295] Running script with connection command: ssh -T -D 34469 -o ConnectTimeout=15 tlservera bash
+[12:23:33.473] &gt; 914371f7c00d: running
+[12:23:33.474] Got some output, clearing connection timeout
+[12:23:33.490] &gt; Acquiring lock on <i>home/ubuntu</i>.vscode-server/bin/a5d1cc28bb5da32ec67e86cc50f84c67cc690321/vscode-remote-lock.ubuntu.a5d1cc28bb5da32ec67e86cc50f84c67cc690321
+&gt; ln <i>home/ubuntu</i>.vscode-server/bin/a5d1cc28bb5da32ec67e86cc50f84c67cc690321/vscode-remote-lock.ubuntu.a5d1cc28bb5da32ec67e86cc50f84c67cc690321.target <i>home/ubuntu</i>.vscode-server/bin/a5d1cc28bb5da32ec67e86cc50f84c67cc690321/vscode-remote-lock.ubuntu.a5d1cc28bb5da32ec67e86cc50f84c67cc690321
+</p>
+
+<p>
+去对应的　/home/ubuntu/.vscode-server/bin/a5d1cc28bb5da32ec67e86cc50f84c67cc690321/　文件夹中，把　快捷方式　删除再重启vscode
+</p>
+
+<div class="org-src-container">
+<pre class="src src-shell">ubuntu@utuntu:~/.vscode-server/bin/a5d1cc28bb5da32ec67e86cc50f84c67cc690321$ rm vscode-remote-lock.ubuntu.a5d1cc28bb5da32ec67e86cc50f84c67cc690321
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orge078bdc" class="outline-2">
+<h2 id="orge078bdc">杀掉VSCODE server 重开即可</h2>
+<div class="outline-text-2" id="text-orge078bdc">
+<div class="org-src-container">
+<pre class="src src-shell">$ pgrep -f <span style="color: #daa520;">"vscode"</span> | xargs kill&#12288;
+</pre>
+</div>
+</div>
+</div>
+
+
+<div id="outline-container-org91bdbb9" class="outline-2">
+<h2 id="org91bdbb9">remotePlatform</h2>
+<div class="outline-text-2" id="text-org91bdbb9">
+<ul class="org-ul">
+<li><a href="https://blog.csdn.net/qq_41058526/article/details/105291284">https://blog.csdn.net/qq_41058526/article/details/105291284</a></li>
+</ul>
+
+<p>
+perferences/setting
+</p>
+
+<div class="org-src-container">
+<pre class="src src-example">
+"remote.SSH.remotePlatform": {
+    "tlservera":"linux"
+},
+</pre>
+</div>
+</div>
+</div>
+</div>
+</body>
+</html>

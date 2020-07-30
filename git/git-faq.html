@@ -3,12 +3,12 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2020-03-26 Thu 11:07 -->
+<!-- 2020-07-30 Thu 16:11 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>git faq</title>
 <meta name="generator" content="Org mode" />
-<meta name="author" content="yunlong zeng" />
+<meta name="author" content="a" />
 <link rel="stylesheet" title="Standard" href="/html/style/worg.css" type="text/css" />
 <link rel="alternate stylesheet" title="Zenburn" href="/html/style/worg-zenburn.css" type="text/css" />
 <link rel="alternate stylesheet" title="Classic" href="/html/style/worg-classic.css" type="text/css" />
@@ -98,9 +98,9 @@ fathom('trackPageview');
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#org8c4695b">make-git-ignore-file-mode-chmod-changes</a></li>
-<li><a href="#org8b6cb3a">error: cannot pull with rebase: You have unstaged changes.</a></li>
-<li><a href="#org2916b7b">error: shallow update not allowed</a></li>
+<li><a href="#orge34df2f">make-git-ignore-file-mode-chmod-changes</a></li>
+<li><a href="#org91dab5e">error: cannot pull with rebase: You have unstaged changes.</a></li>
+<li><a href="#orgeaa043b">error: shallow update not allowed</a></li>
 </ul>
 </div>
 </div>
@@ -108,9 +108,9 @@ fathom('trackPageview');
 <a href="../index.html">{Back to site's index}</a>
 </p>
 
-<div id="outline-container-org8c4695b" class="outline-2">
-<h2 id="org8c4695b">make-git-ignore-file-mode-chmod-changes</h2>
-<div class="outline-text-2" id="text-org8c4695b">
+<div id="outline-container-orge34df2f" class="outline-2">
+<h2 id="orge34df2f">make-git-ignore-file-mode-chmod-changes</h2>
+<div class="outline-text-2" id="text-orge34df2f">
 <p>
 <a href="https://stackoverflow.com/questions/1580596/how-do-i-make-git-ignore-file-mode-chmod-changes">https://stackoverflow.com/questions/1580596/how-do-i-make-git-ignore-file-mode-chmod-changes</a>
 </p>
@@ -122,32 +122,32 @@ fathom('trackPageview');
 </div>
 </div>
 
-<div id="outline-container-org8b6cb3a" class="outline-2">
-<h2 id="org8b6cb3a">error: cannot pull with rebase: You have unstaged changes.</h2>
-<div class="outline-text-2" id="text-org8b6cb3a">
+<div id="outline-container-org91dab5e" class="outline-2">
+<h2 id="org91dab5e">error: cannot pull with rebase: You have unstaged changes.</h2>
+<div class="outline-text-2" id="text-org91dab5e">
 <p>
 in <code>vscode</code>, offen <code>error: cannot pull with rebase: You have unstaged changes.</code>
 </p>
 </div>
 </div>
 
-<div id="outline-container-org2916b7b" class="outline-2">
-<h2 id="org2916b7b">error: shallow update not allowed</h2>
-<div class="outline-text-2" id="text-org2916b7b">
+<div id="outline-container-orgeaa043b" class="outline-2">
+<h2 id="orgeaa043b">error: shallow update not allowed</h2>
+<div class="outline-text-2" id="text-orgeaa043b">
 <div class="org-src-container">
 <pre class="src src-shell">DESKTOP-APB1HCJ% git push github master
-Enumerating objects: <span style="color: #AE81FF;">1944,</span> done.
-Counting objects: <span style="color: #AE81FF;">100%</span> (<span style="color: #AE81FF;">1944/1944</span>), done.
-Delta compression using up to <span style="color: #AE81FF;">6</span> threads
-Compressing objects: <span style="color: #AE81FF;">100%</span> (<span style="color: #AE81FF;">1766/1766</span>), done.
-Writing objects: <span style="color: #AE81FF;">100%</span> (<span style="color: #AE81FF;">1944/1944</span>), <span style="color: #AE81FF;">393.91</span> KiB | <span style="color: #AE81FF;">2.13</span> MiB/s, done.
-Total <span style="color: #AE81FF;">1944</span> (delta <span style="color: #AE81FF;">1489</span>), reused <span style="color: #AE81FF;">228</span> (delta <span style="color: #AE81FF;">142</span>)
-remote: Resolving deltas: <span style="color: #AE81FF;">100%</span> (<span style="color: #AE81FF;">1489/1489</span>), done.
+Enumerating objects: 1944, done.
+Counting objects: 100% (1944/1944), done.
+Delta compression using up to 6 threads
+Compressing objects: 100% (1766/1766), done.
+Writing objects: 100% (1944/1944), 393.91 KiB | 2.13 MiB/s, done.
+Total 1944 (delta 1489), reused 228 (delta 142)
+remote: Resolving deltas: 100% (1489/1489), done.
 To github.com:eiuapp/tl-fangyuan-server.git
- <span style="color: #E6DB74; font-weight: bold;">!</span> [remote rejected] master -&gt; master (shallow update not allowed)
-error: failed to push some refs to <span style="color: #E6DB74;">'git@github.com:eiuapp/tl-fangyuan-server.git'</span>
+ <span style="color: #339CDB; font-weight: bold;">!</span> [remote rejected] master -&gt; master (shallow update not allowed)
+error: failed to push some refs to <span style="color: #daa520;">'git@github.com:eiuapp/tl-fangyuan-server.git'</span>
 DESKTOP-APB1HCJ% git fetch --unshallow upstream
-fatal: <span style="color: #E6DB74;">'upstream'</span> does not appear to be a git repository
+fatal: <span style="color: #daa520;">'upstream'</span> does not appear to be a git repository
 fatal: Could not read from remote repository.
 
 Please make sure you have the correct access rights

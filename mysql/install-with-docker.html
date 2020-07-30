@@ -3,12 +3,12 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2020-03-26 Thu 11:07 -->
+<!-- 2020-07-30 Thu 16:13 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>install with docker</title>
 <meta name="generator" content="Org mode" />
-<meta name="author" content="yunlong zeng" />
+<meta name="author" content="a" />
 <link rel="stylesheet" title="Standard" href="/html/style/worg.css" type="text/css" />
 <link rel="alternate stylesheet" title="Zenburn" href="/html/style/worg-zenburn.css" type="text/css" />
 <link rel="alternate stylesheet" title="Classic" href="/html/style/worg-classic.css" type="text/css" />
@@ -98,13 +98,13 @@ fathom('trackPageview');
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#orgfa934f1">mysql 8.0.18</a>
+<li><a href="#org3ea644b">mysql 8.0.18</a>
 <ul>
-<li><a href="#org5ad7542">创建一个新的container</a></li>
-<li><a href="#orgbff8be0">进入container, 把配置文件copy出来.</a></li>
-<li><a href="#orgff7ad7d">创建container</a></li>
-<li><a href="#orge6328f4">修改root密码</a></li>
-<li><a href="#orga410d14">reference</a></li>
+<li><a href="#org5a7cbe5">创建一个新的container</a></li>
+<li><a href="#orgc303f30">进入container, 把配置文件copy出来.</a></li>
+<li><a href="#org87da629">创建container</a></li>
+<li><a href="#orgc694b12">修改root密码</a></li>
+<li><a href="#org6f84c27">reference</a></li>
 </ul>
 </li>
 </ul>
@@ -113,67 +113,67 @@ fathom('trackPageview');
 <p>
 <a href="../index.html">{Back to site's index}</a>
 </p>
-<div id="outline-container-orgfa934f1" class="outline-2">
-<h2 id="orgfa934f1">mysql 8.0.18</h2>
-<div class="outline-text-2" id="text-orgfa934f1">
+<div id="outline-container-org3ea644b" class="outline-2">
+<h2 id="org3ea644b">mysql 8.0.18</h2>
+<div class="outline-text-2" id="text-org3ea644b">
 <p>
 8.0.18 difference from 5.7, so i do record about the installation process.
 </p>
 </div>
-<div id="outline-container-org5ad7542" class="outline-3">
-<h3 id="org5ad7542">创建一个新的container</h3>
-<div class="outline-text-3" id="text-org5ad7542">
+<div id="outline-container-org5a7cbe5" class="outline-3">
+<h3 id="org5a7cbe5">创建一个新的container</h3>
+<div class="outline-text-3" id="text-org5a7cbe5">
 <p>
 我们只要一个 8.0.18 的配置文件, 所以后面要删除掉这个container
 </p>
 
 <div class="org-src-container">
-<pre class="src src-shell">sudo docker run -it -p <span style="color: #AE81FF;">3307:3306</span> --name mysql-8.0.18-b <span style="color: #E6DB74; font-weight: bold;">\</span>
-   -v /home/ubuntu/docker/container/mysql8.0.18/mysql-8.0.18-a/root:/root <span style="color: #E6DB74; font-weight: bold;">\</span>
-   -e <span style="color: #FD971F;">MYSQL_ROOT_PASSWORD</span>=<span style="color: #AE81FF;">123456</span>  mysql:8.0.18
+<pre class="src src-shell">sudo docker run -it -p 3307:3306 --name mysql-8.0.18-b <span style="color: #daa520;">\</span>
+   -v /home/ubuntu/docker/container/mysql8.0.18/mysql-8.0.18-a/root:/root <span style="color: #daa520;">\</span>
+   -e <span style="color: #d4d4d4;">MYSQL_ROOT_PASSWORD</span>=123456  mysql:8.0.18
 </pre>
 </div>
 </div>
 </div>
 
-<div id="outline-container-orgbff8be0" class="outline-3">
-<h3 id="orgbff8be0">进入container, 把配置文件copy出来.</h3>
-<div class="outline-text-3" id="text-orgbff8be0">
+<div id="outline-container-orgc303f30" class="outline-3">
+<h3 id="orgc303f30">进入container, 把配置文件copy出来.</h3>
+<div class="outline-text-3" id="text-orgc303f30">
 <div class="org-src-container">
-<pre class="src src-shell">DESKTOP-APB1HCJ% docker exec -it <span style="color: #AE81FF;">979</span> bash
-root@<span style="color: #AE81FF;">979a592ddabe:/#</span> pwd
+<pre class="src src-shell">DESKTOP-APB1HCJ% docker exec -it 979 bash
+root@979a592ddabe:/# pwd
 /
-root@<span style="color: #AE81FF;">979a592ddabe:/#</span> cd /root/
-root@<span style="color: #AE81FF;">979a592ddabe:~#</span> mkdir -p etc
-root@<span style="color: #AE81FF;">979a592ddabe:~#</span> cp -a /etc/mysql/ /root/etc/mysql
-root@<span style="color: #AE81FF;">979a592ddabe:~#</span> ls /var/lib/mysql/
-<span style="color: #75715E;">#</span><span style="color: #75715E; background-color: #292e34;">innodb_temp      auto.cnf       binlog.000002  ca-key.pem  client-cert.pem  ib_buffer_pool  ib_logfile1  ibtmp1  mysql.ibd</span>
+root@979a592ddabe:/# cd /root/
+root@979a592ddabe:~# mkdir -p etc
+root@979a592ddabe:~# cp -a /etc/mysql/ /root/etc/mysql
+root@979a592ddabe:~# ls /var/lib/mysql/
+<span style="color: #579C4C;">#</span><span style="color: #579C4C;">innodb_temp      auto.cnf       binlog.000002  ca-key.pem  client-cert.pem  ib_buffer_pool  ib_logfile1  ibtmp1  mysql.ibd</span>
      private_key.pem  server-cert.pem   sys       undo_002
-<span style="color: #AE81FF;">979a592ddabe.err</span>  binlog.000001  binlog.index   ca.pem      client-key.pem   ib_logfile0     ibdata1
+979a592ddabe.err  binlog.000001  binlog.index   ca.pem      client-key.pem   ib_logfile0     ibdata1
  mysql   performance_schema  public_key.pem   server-key.pem    undo_001
-root@<span style="color: #AE81FF;">979a592ddabe:~#</span> mkdir -p ./var/lib/
-root@<span style="color: #AE81FF;">979a592ddabe:~#</span> cp -a /var/lib/mysql/ /root/var/lib/mysql
-root@<span style="color: #AE81FF;">979a592ddabe:~#</span> exit
+root@979a592ddabe:~# mkdir -p ./var/lib/
+root@979a592ddabe:~# cp -a /var/lib/mysql/ /root/var/lib/mysql
+root@979a592ddabe:~# exit
 </pre>
 </div>
 </div>
 </div>
-<div id="outline-container-orgff7ad7d" class="outline-3">
-<h3 id="orgff7ad7d">创建container</h3>
-<div class="outline-text-3" id="text-orgff7ad7d">
+<div id="outline-container-org87da629" class="outline-3">
+<h3 id="org87da629">创建container</h3>
+<div class="outline-text-3" id="text-org87da629">
 <div class="org-src-container">
-<pre class="src src-shell">sudo docker run  --restart always -p <span style="color: #AE81FF;">3307:3306</span> --name mysql-8.0.18-20191212 <span style="color: #E6DB74; font-weight: bold;">\</span>
- -v /home/ubuntu/docker/container/mysql8.0.18/mysql-8.0.18-a/root:/root <span style="color: #E6DB74; font-weight: bold;">\</span>
- -v /home/ubuntu/docker/container/mysql8.0.18/mysql-8.0.18-a/var/lib/mysql:/var/lib/mysql <span style="color: #E6DB74; font-weight: bold;">\</span>
- -v /home/ubuntu/docker/container/mysql8.0.18/mysql-8.0.18-a/etc/mysql:/etc/mysql <span style="color: #E6DB74; font-weight: bold;">\</span>
+<pre class="src src-shell">sudo docker run  --restart always -p 3307:3306 --name mysql-8.0.18-20191212 <span style="color: #daa520;">\</span>
+ -v /home/ubuntu/docker/container/mysql8.0.18/mysql-8.0.18-a/root:/root <span style="color: #daa520;">\</span>
+ -v /home/ubuntu/docker/container/mysql8.0.18/mysql-8.0.18-a/var/lib/mysql:/var/lib/mysql <span style="color: #daa520;">\</span>
+ -v /home/ubuntu/docker/container/mysql8.0.18/mysql-8.0.18-a/etc/mysql:/etc/mysql <span style="color: #daa520;">\</span>
  -d mysql:8.0.18
 </pre>
 </div>
 </div>
 </div>
-<div id="outline-container-orge6328f4" class="outline-3">
-<h3 id="orge6328f4">修改root密码</h3>
-<div class="outline-text-3" id="text-orge6328f4">
+<div id="outline-container-orgc694b12" class="outline-3">
+<h3 id="orgc694b12">修改root密码</h3>
+<div class="outline-text-3" id="text-orgc694b12">
 <div class="org-src-container">
 <pre class="src src-mysql">&gt; alter user 'root'@'%' identified with mysql_native_password by '********';
 &gt; flush privileges;
@@ -189,22 +189,22 @@ bin  boot  dev  docker-entrypoint-initdb.d  entrypoint.sh  etc  home  lib  lib64
 root@c104c048b11e:/# mysql -uroot -p
 Enter password:
 Welcome to the MySQL monitor.  Commands end with ; or \g.
-Your MySQL connection id is <span style="color: #AE81FF;">8</span>
-Server version: <span style="color: #AE81FF;">8.0.18</span> MySQL Community Server - GPL
+Your MySQL connection id is 8
+Server version: 8.0.18 MySQL Community Server - GPL
 
-<span style="color: #A6E22E; font-weight: bold;">Copyright</span> (c) <span style="color: #AE81FF;">2000,</span> <span style="color: #AE81FF;">2019,</span> Oracle and/or its affiliates. All rights reserved.
+<span style="color: #F94949;">Copyright</span> (c) 2000, 2019, Oracle and/or its affiliates. All rights reserved.
 
 Oracle is a registered trademark of Oracle Corporation and/or its
 affiliates. Other names may be trademarks of their respective
 owners.
 
-Type <span style="color: #E6DB74;">'help;'</span> or <span style="color: #E6DB74;">'\h'</span> for help. Type <span style="color: #E6DB74;">'\c'</span> to clear the current input statement.
+Type <span style="color: #daa520;">'help;'</span> or <span style="color: #daa520;">'\h'</span> for help. Type <span style="color: #daa520;">'\c'</span> to clear the current input statement.
 
-mysql&gt; alter user <span style="color: #E6DB74;">'root'</span>@<span style="color: #E6DB74;">'%'</span> identified with mysql_native_password by <span style="color: #E6DB74;">'********'</span>;
-Query OK, <span style="color: #AE81FF;">0</span> rows affected (<span style="color: #AE81FF;">0.01</span> sec)
+mysql&gt; alter user <span style="color: #daa520;">'root'</span>@<span style="color: #daa520;">'%'</span> identified with mysql_native_password by <span style="color: #daa520;">'********'</span>;
+Query OK, 0 rows affected (0.01 sec)
 
 mysql&gt; flush privileges;
-Query OK, <span style="color: #AE81FF;">0</span> rows affected (<span style="color: #AE81FF;">0.01</span> sec)
+Query OK, 0 rows affected (0.01 sec)
 
 </pre>
 </div>
@@ -212,17 +212,17 @@ Query OK, <span style="color: #AE81FF;">0</span> rows affected (<span style="col
 同样的,修改其它用户的密码,也是这样的
 </p>
 <div class="org-src-container">
-<pre class="src src-shell">create user <span style="color: #E6DB74;">'dev'</span>@<span style="color: #E6DB74;">'%'</span> IDENTIFIED BY <span style="color: #E6DB74;">'********'</span>;
-grant all on permission_demo.* to <span style="color: #E6DB74;">'dev'</span>@<span style="color: #E6DB74;">'%'</span> identified by <span style="color: #E6DB74;">'********'</span>;
-alter user <span style="color: #E6DB74;">'dev'</span>@<span style="color: #E6DB74;">'%'</span> identified with mysql_native_password by <span style="color: #E6DB74;">'********'</span>;
+<pre class="src src-shell">create user <span style="color: #daa520;">'dev'</span>@<span style="color: #daa520;">'%'</span> IDENTIFIED BY <span style="color: #daa520;">'********'</span>;
+grant all on permission_demo.* to <span style="color: #daa520;">'dev'</span>@<span style="color: #daa520;">'%'</span> identified by <span style="color: #daa520;">'********'</span>;
+alter user <span style="color: #daa520;">'dev'</span>@<span style="color: #daa520;">'%'</span> identified with mysql_native_password by <span style="color: #daa520;">'********'</span>;
 flush privileges;
 </pre>
 </div>
 </div>
 </div>
-<div id="outline-container-orga410d14" class="outline-3">
-<h3 id="orga410d14">reference</h3>
-<div class="outline-text-3" id="text-orga410d14">
+<div id="outline-container-org6f84c27" class="outline-3">
+<h3 id="org6f84c27">reference</h3>
+<div class="outline-text-3" id="text-org6f84c27">
 <ul class="org-ul">
 <li><a href="https://www.jianshu.com/p/d297b0be4157">https://www.jianshu.com/p/d297b0be4157</a></li>
 </ul>

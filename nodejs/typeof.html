@@ -3,12 +3,12 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2020-04-03 Fri 17:01 -->
+<!-- 2020-07-30 Thu 16:11 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>javascript typeof</title>
 <meta name="generator" content="Org mode" />
-<meta name="author" content="yunlong zeng" />
+<meta name="author" content="a" />
 <link rel="stylesheet" title="Standard" href="/html/style/worg.css" type="text/css" />
 <link rel="alternate stylesheet" title="Zenburn" href="/html/style/worg-zenburn.css" type="text/css" />
 <link rel="alternate stylesheet" title="Classic" href="/html/style/worg-classic.css" type="text/css" />
@@ -98,8 +98,8 @@ fathom('trackPageview');
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#org73d66f7">ES6中的基本数据类型</a></li>
-<li><a href="#org545bec7">js判断一个变量是否为字符串类型</a></li>
+<li><a href="#org3c9f8d8">ES6中的基本数据类型</a></li>
+<li><a href="#org907bac6">js判断一个变量是否为字符串类型</a></li>
 </ul>
 </div>
 </div>
@@ -108,9 +108,9 @@ fathom('trackPageview');
 </p>
 
 
-<div id="outline-container-org73d66f7" class="outline-2">
-<h2 id="org73d66f7">ES6中的基本数据类型</h2>
-<div class="outline-text-2" id="text-org73d66f7">
+<div id="outline-container-org3c9f8d8" class="outline-2">
+<h2 id="org3c9f8d8">ES6中的基本数据类型</h2>
+<div class="outline-text-2" id="text-org3c9f8d8">
 <p>
 Number,String, Null, Undefined, Symbol, Boolean
 </p>
@@ -123,24 +123,24 @@ Number,String, Null, Undefined, Symbol, Boolean
 ES6新增数据类型Symbol: 表示独一无二的值
 </p>
 <div class="org-src-container">
-<pre class="src src-javascript"><span style="color: #00bfff; font-weight: bold;">typeof</span> Symbol() <span style="color: #2aa1ae; background-color: #292e34;">// </span><span style="color: #2aa1ae; background-color: #292e34;">'symbol'</span>
-<span style="color: #00bfff; font-weight: bold;">typeof</span> Number() <span style="color: #2aa1ae; background-color: #292e34;">// </span><span style="color: #2aa1ae; background-color: #292e34;">'number'</span>
-<span style="color: #00bfff; font-weight: bold;">typeof</span> Sring() <span style="color: #2aa1ae; background-color: #292e34;">// </span><span style="color: #2aa1ae; background-color: #292e34;">'string'</span>
-<span style="color: #00bfff; font-weight: bold;">typeof</span> Function() <span style="color: #2aa1ae; background-color: #292e34;">// </span><span style="color: #2aa1ae; background-color: #292e34;">'function'</span>
-<span style="color: #00bfff; font-weight: bold;">typeof</span> Objecr() <span style="color: #2aa1ae; background-color: #292e34;">// </span><span style="color: #2aa1ae; background-color: #292e34;">'object'</span>
-<span style="color: #00bfff; font-weight: bold;">typeof</span> Boolean() <span style="color: #2aa1ae; background-color: #292e34;">// </span><span style="color: #2aa1ae; background-color: #292e34;">'boolean'</span>
-<span style="color: #00bfff; font-weight: bold;">typeof</span> <span style="color: #a45bad;">null</span>() <span style="color: #2aa1ae; background-color: #292e34;">// </span><span style="color: #2aa1ae; background-color: #292e34;">'object'</span>
-<span style="color: #00bfff; font-weight: bold;">typeof</span> <span style="color: #a45bad;">undefined</span>() <span style="color: #2aa1ae; background-color: #292e34;">// </span><span style="color: #2aa1ae; background-color: #292e34;">'undefined'</span>
+<pre class="src src-javascript"><span style="color: #00bfff;">typeof</span> Symbol() <span style="color: #579C4C;">// </span><span style="color: #579C4C;">'symbol'</span>
+<span style="color: #00bfff;">typeof</span> Number() <span style="color: #579C4C;">// </span><span style="color: #579C4C;">'number'</span>
+<span style="color: #00bfff;">typeof</span> Sring() <span style="color: #579C4C;">// </span><span style="color: #579C4C;">'string'</span>
+<span style="color: #00bfff;">typeof</span> Function() <span style="color: #579C4C;">// </span><span style="color: #579C4C;">'function'</span>
+<span style="color: #00bfff;">typeof</span> Objecr() <span style="color: #579C4C;">// </span><span style="color: #579C4C;">'object'</span>
+<span style="color: #00bfff;">typeof</span> Boolean() <span style="color: #579C4C;">// </span><span style="color: #579C4C;">'boolean'</span>
+<span style="color: #00bfff;">typeof</span> <span style="color: #339CDB;">null</span>() <span style="color: #579C4C;">// </span><span style="color: #579C4C;">'object'</span>
+<span style="color: #00bfff;">typeof</span> <span style="color: #339CDB;">undefined</span>() <span style="color: #579C4C;">// </span><span style="color: #579C4C;">'undefined'</span>
 </pre>
 </div>
 </div>
 </div>
-<div id="outline-container-org545bec7" class="outline-2">
-<h2 id="org545bec7">js判断一个变量是否为字符串类型</h2>
-<div class="outline-text-2" id="text-org545bec7">
+<div id="outline-container-org907bac6" class="outline-2">
+<h2 id="org907bac6">js判断一个变量是否为字符串类型</h2>
+<div class="outline-text-2" id="text-org907bac6">
 <div class="org-src-container">
-<pre class="src src-javascript"><span style="color: #00bfff; font-weight: bold;">function</span> <span style="color: #bc6ec5; font-weight: bold;">isString</span>(<span style="color: #7590db;">str</span>){
-  <span style="color: #00bfff; font-weight: bold;">return</span> (<span style="color: #00bfff; font-weight: bold;">typeof</span> str==<span style="color: #daa520;">'string'</span>)&amp;&amp;str.constructor==String;
+<pre class="src src-javascript"><span style="color: #00bfff;">function</span> <span style="color: #F94949;">isString</span>(<span style="color: #d4d4d4;">str</span>){
+  <span style="color: #00bfff;">return</span> (<span style="color: #00bfff;">typeof</span> str==<span style="color: #daa520;">'string'</span>)&amp;&amp;str.constructor==String;
 }
 </pre>
 </div>

@@ -3,12 +3,12 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2020-03-26 Thu 11:07 -->
+<!-- 2020-07-30 Thu 16:11 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>webdav</title>
 <meta name="generator" content="Org mode" />
-<meta name="author" content="yunlong zeng" />
+<meta name="author" content="a" />
 <link rel="stylesheet" title="Standard" href="/html/style/worg.css" type="text/css" />
 <link rel="alternate stylesheet" title="Zenburn" href="/html/style/worg-zenburn.css" type="text/css" />
 <link rel="alternate stylesheet" title="Classic" href="/html/style/worg-classic.css" type="text/css" />
@@ -98,27 +98,27 @@ fathom('trackPageview');
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#orgb331257">server</a>
+<li><a href="#org6772f35">server</a>
 <ul>
-<li><a href="#orgfe70c2b">webdav with docker</a>
+<li><a href="#orgb820845">webdav with docker</a>
 <ul>
-<li><a href="#org30e32e0">bytemark/webdav</a></li>
+<li><a href="#orgbb9b89a">bytemark/webdav</a></li>
 </ul>
 </li>
-<li><a href="#org35f499d">(not try) webdav with nginx</a></li>
-<li><a href="#org05163f6">(not try) webdav with ubuntu</a></li>
+<li><a href="#org2f0d096">(not try) webdav with nginx</a></li>
+<li><a href="#org1afa4f5">(not try) webdav with ubuntu</a></li>
 </ul>
 </li>
-<li><a href="#org52cfbef">client</a>
+<li><a href="#orgd2ed083">client</a>
 <ul>
-<li><a href="#org6dc92dd">(windows) WinSCP</a></li>
-<li><a href="#orge60d5b2">(iphone) MobileOrg</a>
+<li><a href="#orgdadf811">(windows) WinSCP</a></li>
+<li><a href="#orgbbf2cc4">(iphone) MobileOrg</a>
 <ul>
-<li><a href="#org92cdeaf">Settings/WebDAV</a></li>
-<li><a href="#orgd64f3c7">use</a></li>
+<li><a href="#org1fc1fcf">Settings/WebDAV</a></li>
+<li><a href="#orgda7345b">use</a></li>
 </ul>
 </li>
-<li><a href="#orgf2e4a53">(android) ES文件浏览器</a></li>
+<li><a href="#org25ce59b">(android) ES文件浏览器</a></li>
 </ul>
 </li>
 </ul>
@@ -127,25 +127,25 @@ fathom('trackPageview');
 <p>
 <a href="../index.html">{Back to site's index}</a>
 </p>
-<div id="outline-container-orgb331257" class="outline-2">
-<h2 id="orgb331257">server</h2>
-<div class="outline-text-2" id="text-orgb331257">
+<div id="outline-container-org6772f35" class="outline-2">
+<h2 id="org6772f35">server</h2>
+<div class="outline-text-2" id="text-org6772f35">
 </div>
-<div id="outline-container-orgfe70c2b" class="outline-3">
-<h3 id="orgfe70c2b">webdav with docker</h3>
-<div class="outline-text-3" id="text-orgfe70c2b">
+<div id="outline-container-orgb820845" class="outline-3">
+<h3 id="orgb820845">webdav with docker</h3>
+<div class="outline-text-3" id="text-orgb820845">
 </div>
-<div id="outline-container-org30e32e0" class="outline-4">
-<h4 id="org30e32e0">bytemark/webdav</h4>
-<div class="outline-text-4" id="text-org30e32e0">
+<div id="outline-container-orgbb9b89a" class="outline-4">
+<h4 id="orgbb9b89a">bytemark/webdav</h4>
+<div class="outline-text-4" id="text-orgbb9b89a">
 <p>
 <a href="https://github.com/BytemarkHosting/docker-webdav">https://github.com/BytemarkHosting/docker-webdav</a>
 </p>
 
 <div class="org-src-container">
-<pre class="src src-shell">docker run --restart always -v /home/ubuntu/webdav/bytemark/dav:/var/lib/dav <span style="color: #E6DB74; font-weight: bold;">\</span>
-     -e <span style="color: #FD971F;">AUTH_TYPE</span>=Digest -e <span style="color: #FD971F;">USERNAME</span>=your_username -e <span style="color: #FD971F;">PASSWORD</span>=your_password <span style="color: #E6DB74; font-weight: bold;">\</span>
-     --publish <span style="color: #AE81FF;">8080:80</span> -d bytemark/webdav
+<pre class="src src-shell">docker run --restart always -v /home/ubuntu/webdav/bytemark/dav:/var/lib/dav <span style="color: #daa520;">\</span>
+     -e <span style="color: #d4d4d4;">AUTH_TYPE</span>=Digest -e <span style="color: #d4d4d4;">USERNAME</span>=your_username -e <span style="color: #d4d4d4;">PASSWORD</span>=your_password <span style="color: #daa520;">\</span>
+     --publish 8080:80 -d bytemark/webdav
 </pre>
 </div>
 
@@ -156,9 +156,9 @@ fathom('trackPageview');
 </div>
 </div>
 
-<div id="outline-container-org35f499d" class="outline-3">
-<h3 id="org35f499d">(not try) webdav with nginx</h3>
-<div class="outline-text-3" id="text-org35f499d">
+<div id="outline-container-org2f0d096" class="outline-3">
+<h3 id="org2f0d096">(not try) webdav with nginx</h3>
+<div class="outline-text-3" id="text-org2f0d096">
 <p>
 <a href="https://github.com/binss/docker-nginx-webdav">https://github.com/binss/docker-nginx-webdav</a>
 <a href="https://www.binss.me/blog/build-webdav-server-by-nginx/">https://www.binss.me/blog/build-webdav-server-by-nginx/</a>
@@ -170,22 +170,22 @@ Here is a method to use to install with nginx and docker, great, but I did not g
 </div>
 </div>
 
-<div id="outline-container-org05163f6" class="outline-3">
-<h3 id="org05163f6">(not try) webdav with ubuntu</h3>
-<div class="outline-text-3" id="text-org05163f6">
+<div id="outline-container-org1afa4f5" class="outline-3">
+<h3 id="org1afa4f5">(not try) webdav with ubuntu</h3>
+<div class="outline-text-3" id="text-org1afa4f5">
 <p>
 <a href="https://www.jianshu.com/p/de82c5c7d75a">https://www.jianshu.com/p/de82c5c7d75a</a>
 </p>
 </div>
 </div>
 </div>
-<div id="outline-container-org52cfbef" class="outline-2">
-<h2 id="org52cfbef">client</h2>
-<div class="outline-text-2" id="text-org52cfbef">
+<div id="outline-container-orgd2ed083" class="outline-2">
+<h2 id="orgd2ed083">client</h2>
+<div class="outline-text-2" id="text-orgd2ed083">
 </div>
-<div id="outline-container-org6dc92dd" class="outline-3">
-<h3 id="org6dc92dd">(windows) WinSCP</h3>
-<div class="outline-text-3" id="text-org6dc92dd">
+<div id="outline-container-orgdadf811" class="outline-3">
+<h3 id="orgdadf811">(windows) WinSCP</h3>
+<div class="outline-text-3" id="text-orgdadf811">
 <p>
 <a href="https://winscp.net/eng/download.ph">WinSCP</a>
 </p>
@@ -196,13 +196,13 @@ Here is a method to use to install with nginx and docker, great, but I did not g
 </div>
 </div>
 
-<div id="outline-container-orge60d5b2" class="outline-3">
-<h3 id="orge60d5b2">(iphone) MobileOrg</h3>
-<div class="outline-text-3" id="text-orge60d5b2">
+<div id="outline-container-orgbbf2cc4" class="outline-3">
+<h3 id="orgbbf2cc4">(iphone) MobileOrg</h3>
+<div class="outline-text-3" id="text-orgbbf2cc4">
 </div>
-<div id="outline-container-org92cdeaf" class="outline-4">
-<h4 id="org92cdeaf">Settings/WebDAV</h4>
-<div class="outline-text-4" id="text-org92cdeaf">
+<div id="outline-container-org1fc1fcf" class="outline-4">
+<h4 id="org1fc1fcf">Settings/WebDAV</h4>
+<div class="outline-text-4" id="text-org1fc1fcf">
 <ul class="org-ul">
 <li>URL: <a href="http://123.234.345.456:8080/blog/abc.org">http://123.234.345.456:8080/blog/abc.org</a></li>
 <li>Username: your_username</li>
@@ -210,9 +210,9 @@ Here is a method to use to install with nginx and docker, great, but I did not g
 </ul>
 </div>
 </div>
-<div id="outline-container-orgd64f3c7" class="outline-4">
-<h4 id="orgd64f3c7">use</h4>
-<div class="outline-text-4" id="text-orgd64f3c7">
+<div id="outline-container-orgda7345b" class="outline-4">
+<h4 id="orgda7345b">use</h4>
+<div class="outline-text-4" id="text-orgda7345b">
 <p>
 Once set up, it will display the contents of this Outlines of the org file.
 </p>
@@ -225,9 +225,9 @@ sync to the webdav server.
 </div>
 </div>
 
-<div id="outline-container-orgf2e4a53" class="outline-3">
-<h3 id="orgf2e4a53">(android) ES文件浏览器</h3>
-<div class="outline-text-3" id="text-orgf2e4a53">
+<div id="outline-container-org25ce59b" class="outline-3">
+<h3 id="org25ce59b">(android) ES文件浏览器</h3>
+<div class="outline-text-3" id="text-org25ce59b">
 <p>
 软件为安卓文件管理终极神器 ES文件浏览器
 </p>

@@ -3,12 +3,12 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2020-04-15 Wed 09:55 -->
+<!-- 2020-07-30 Thu 16:11 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>moment</title>
 <meta name="generator" content="Org mode" />
-<meta name="author" content="yunlong zeng" />
+<meta name="author" content="a" />
 <link rel="stylesheet" title="Standard" href="/html/style/worg.css" type="text/css" />
 <link rel="alternate stylesheet" title="Zenburn" href="/html/style/worg-zenburn.css" type="text/css" />
 <link rel="alternate stylesheet" title="Classic" href="/html/style/worg-classic.css" type="text/css" />
@@ -98,7 +98,7 @@ fathom('trackPageview');
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#org6e57d70">between</a></li>
+<li><a href="#org27e94e9">between</a></li>
 </ul>
 </div>
 </div>
@@ -106,28 +106,28 @@ fathom('trackPageview');
 <a href="../index.html">{Back to site's index}</a>
 </p>
 
-<div id="outline-container-org6e57d70" class="outline-2">
-<h2 id="org6e57d70">between</h2>
-<div class="outline-text-2" id="text-org6e57d70">
+<div id="outline-container-org27e94e9" class="outline-2">
+<h2 id="org27e94e9">between</h2>
+<div class="outline-text-2" id="text-org27e94e9">
 <div class="org-src-container">
-<pre class="src src-javascript"><span style="color: #00bfff; font-weight: bold;">const</span> <span style="color: #7590db;">moment</span> = require(<span style="color: #daa520;">'moment'</span>);
-<span style="color: #2aa1ae; background-color: #292e34;">// </span><span style="color: #2aa1ae; background-color: #292e34;">let a = moment('2010-10-20').isBetween('2010-10-19', '2010-10-25'); // true</span>
-<span style="color: #2aa1ae; background-color: #292e34;">// </span><span style="color: #2aa1ae; background-color: #292e34;">console.log(`a: ${a}`)</span>
-<span style="color: #2aa1ae; background-color: #292e34;">// </span><span style="color: #2aa1ae; background-color: #292e34;">let b = moment('2010-10-20').isBetween('2010-10-19', undefined);</span>
-<span style="color: #2aa1ae; background-color: #292e34;">// </span><span style="color: #2aa1ae; background-color: #292e34;">console.log(`b: ${b}`)</span>
-<span style="color: #2aa1ae; background-color: #292e34;">// </span><span style="color: #2aa1ae; background-color: #292e34;">let c = moment('08:30:00').isBetween('08:00:00', '09:00:00');</span>
-<span style="color: #2aa1ae; background-color: #292e34;">// </span><span style="color: #2aa1ae; background-color: #292e34;">console.log(`c: ${c}`)</span>
+<pre class="src src-javascript"><span style="color: #00bfff;">const</span> <span style="color: #d4d4d4;">moment</span> = require(<span style="color: #daa520;">'moment'</span>);
+<span style="color: #579C4C;">// </span><span style="color: #579C4C;">let a = moment('2010-10-20').isBetween('2010-10-19', '2010-10-25'); // true</span>
+<span style="color: #579C4C;">// </span><span style="color: #579C4C;">console.log(`a: ${a}`)</span>
+<span style="color: #579C4C;">// </span><span style="color: #579C4C;">let b = moment('2010-10-20').isBetween('2010-10-19', undefined);</span>
+<span style="color: #579C4C;">// </span><span style="color: #579C4C;">console.log(`b: ${b}`)</span>
+<span style="color: #579C4C;">// </span><span style="color: #579C4C;">let c = moment('08:30:00').isBetween('08:00:00', '09:00:00');</span>
+<span style="color: #579C4C;">// </span><span style="color: #579C4C;">console.log(`c: ${c}`)</span>
 
-<span style="color: #00bfff; font-weight: bold;">let</span> <span style="color: #7590db;">now</span> = moment();
-<span style="color: #00bfff; font-weight: bold;">let</span> <span style="color: #7590db;">date</span> = moment().format(<span style="color: #daa520;">'YYYY-MM-DD'</span>);
-<span style="color: #00bfff; font-weight: bold;">let</span> <span style="color: #7590db;">time</span> = moment().format(<span style="color: #daa520;">'h:mm:ss'</span>);
+<span style="color: #00bfff;">let</span> <span style="color: #d4d4d4;">now</span> = moment();
+<span style="color: #00bfff;">let</span> <span style="color: #d4d4d4;">date</span> = moment().format(<span style="color: #daa520;">'YYYY-MM-DD'</span>);
+<span style="color: #00bfff;">let</span> <span style="color: #d4d4d4;">time</span> = moment().format(<span style="color: #daa520;">'h:mm:ss'</span>);
 console.log(<span style="color: #daa520;">`date: ${date}, time: ${time}`</span>);
-<span style="color: #00bfff; font-weight: bold;">let</span> <span style="color: #7590db;">startTime</span> = <span style="color: #daa520;">'08:00:00'</span>;
-<span style="color: #00bfff; font-weight: bold;">let</span> <span style="color: #7590db;">endTime</span> = <span style="color: #daa520;">'20:00:00'</span>;
-<span style="color: #00bfff; font-weight: bold;">let</span> <span style="color: #7590db;">start</span> = date + <span style="color: #daa520;">' '</span> + startTime;
-<span style="color: #00bfff; font-weight: bold;">let</span> <span style="color: #7590db;">end</span> = date + <span style="color: #daa520;">' '</span> + endTime;
+<span style="color: #00bfff;">let</span> <span style="color: #d4d4d4;">startTime</span> = <span style="color: #daa520;">'08:00:00'</span>;
+<span style="color: #00bfff;">let</span> <span style="color: #d4d4d4;">endTime</span> = <span style="color: #daa520;">'20:00:00'</span>;
+<span style="color: #00bfff;">let</span> <span style="color: #d4d4d4;">start</span> = date + <span style="color: #daa520;">' '</span> + startTime;
+<span style="color: #00bfff;">let</span> <span style="color: #d4d4d4;">end</span> = date + <span style="color: #daa520;">' '</span> + endTime;
 console.log(<span style="color: #daa520;">`start: ${start}, end: ${end}`</span>)
-<span style="color: #00bfff; font-weight: bold;">let</span> <span style="color: #7590db;">c</span> = now.isBetween(moment(start), moment(end));
+<span style="color: #00bfff;">let</span> <span style="color: #d4d4d4;">c</span> = now.isBetween(moment(start), moment(end));
 console.log(<span style="color: #daa520;">`c: ${c}`</span>)
 </pre>
 </div>

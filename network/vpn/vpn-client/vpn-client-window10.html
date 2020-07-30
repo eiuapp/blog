@@ -3,12 +3,12 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2020-05-26 Tue 17:18 -->
+<!-- 2020-07-30 Thu 16:13 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>vpn client base windows10</title>
 <meta name="generator" content="Org mode" />
-<meta name="author" content="yunlong zeng" />
+<meta name="author" content="a" />
 <link rel="stylesheet" title="Standard" href="/html/style/worg.css" type="text/css" />
 <link rel="alternate stylesheet" title="Zenburn" href="/html/style/worg-zenburn.css" type="text/css" />
 <link rel="alternate stylesheet" title="Classic" href="/html/style/worg-classic.css" type="text/css" />
@@ -98,11 +98,21 @@ fathom('trackPageview');
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#org6cb8d88">配置</a></li>
-<li><a href="#orga483a1c">修改注册表</a></li>
-<li><a href="#org4097c64">ipchicken</a></li>
-<li><a href="#org80583e9">connect vpn server, but can't google</a></li>
-<li><a href="#org6a573ea">Ref</a></li>
+<li><a href="#org420a6b7">配置</a></li>
+<li><a href="#org89eae93">修改注册表</a></li>
+<li><a href="#orge0d2cc8">ipchicken</a></li>
+<li><a href="#org865bc43">error</a>
+<ul>
+<li><a href="#org9ade952">error: connect vpn server, but can't google</a></li>
+<li><a href="#org8179e0f">error: L2TP连接尝试失败:因为安全层在初始化与远程计算机的协商时遇到了一个处理错误</a>
+<ul>
+<li><a href="#orgbd9881e">确认是否启动服务</a></li>
+<li><a href="#orgd6102c8">修改注册表</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#org7970f77">Ref</a></li>
 </ul>
 </div>
 </div>
@@ -114,15 +124,15 @@ fathom('trackPageview');
 <a href="https://github.com/hwdsl2/setup-ipsec-vpn/blob/master/docs/clients-zh.md#windows">https://github.com/hwdsl2/setup-ipsec-vpn/blob/master/docs/clients-zh.md#windows</a>
 </p>
 
-<div id="outline-container-org6cb8d88" class="outline-2">
-<h2 id="org6cb8d88">配置</h2>
-<div class="outline-text-2" id="text-org6cb8d88">
+<div id="outline-container-org420a6b7" class="outline-2">
+<h2 id="org420a6b7">配置</h2>
+<div class="outline-text-2" id="text-org420a6b7">
 <div class="org-src-container">
-<pre class="src src-shell"><span style="color: #579C4C; background-color: #292e34;"># </span><span style="color: #579C4C; background-color: #292e34;">&#19981;&#20445;&#23384;&#21629;&#20196;&#34892;&#21382;&#21490;&#35760;&#24405;</span>
+<pre class="src src-shell"><span style="color: #579C4C;"># </span><span style="color: #579C4C;">&#19981;&#20445;&#23384;&#21629;&#20196;&#34892;&#21382;&#21490;&#35760;&#24405;</span>
 Set-PSReadlineOption -HistorySaveStyle SaveNothing
-<span style="color: #579C4C; background-color: #292e34;"># </span><span style="color: #579C4C; background-color: #292e34;">&#21019;&#24314; VPN &#36830;&#25509;</span>
+<span style="color: #579C4C;"># </span><span style="color: #579C4C;">&#21019;&#24314; VPN &#36830;&#25509;</span>
 Add-VpnConnection -Name <span style="color: #daa520;">'My IPsec VPN'</span> -ServerAddress <span style="color: #daa520;">'&#20320;&#30340; VPN &#26381;&#21153;&#22120; IP'</span> -L2tpPsk <span style="color: #daa520;">'&#20320;&#30340; VPN IPsec PSK'</span> -TunnelType L2tp -EncryptionLevel Required -AuthenticationMethod Chap,MSChapv2 -Force -RememberCredential -PassThru
-<span style="color: #579C4C; background-color: #292e34;"># </span><span style="color: #579C4C; background-color: #292e34;">&#24573;&#30053; data encryption &#35686;&#21578;&#65288;&#25968;&#25454;&#22312; IPsec &#38567;&#36947;&#20013;&#24050;&#34987;&#21152;&#23494;&#65289;</span>
+<span style="color: #579C4C;"># </span><span style="color: #579C4C;">&#24573;&#30053; data encryption &#35686;&#21578;&#65288;&#25968;&#25454;&#22312; IPsec &#38567;&#36947;&#20013;&#24050;&#34987;&#21152;&#23494;&#65289;</span>
 </pre>
 </div>
 
@@ -164,9 +174,9 @@ PS C:\Users\a&gt;
 </div>
 </div>
 
-<div id="outline-container-orga483a1c" class="outline-2">
-<h2 id="orga483a1c">修改注册表</h2>
-<div class="outline-text-2" id="text-orga483a1c">
+<div id="outline-container-org89eae93" class="outline-2">
+<h2 id="org89eae93">修改注册表</h2>
+<div class="outline-text-2" id="text-org89eae93">
 <p>
 下一步就是文章提到的 <code>修改注册表</code>
 </p>
@@ -185,9 +195,9 @@ C:\Windows\system32&gt;
 </div>
 </div>
 
-<div id="outline-container-org4097c64" class="outline-2">
-<h2 id="org4097c64">ipchicken</h2>
-<div class="outline-text-2" id="text-org4097c64">
+<div id="outline-container-orge0d2cc8" class="outline-2">
+<h2 id="orge0d2cc8">ipchicken</h2>
+<div class="outline-text-2" id="text-orge0d2cc8">
 <p>
 连接上后，访问
 <a href="https://www.ipchicken.com/">https://www.ipchicken.com/</a>
@@ -196,9 +206,13 @@ C:\Windows\system32&gt;
 </div>
 </div>
 
-<div id="outline-container-org80583e9" class="outline-2">
-<h2 id="org80583e9">connect vpn server, but can't google</h2>
-<div class="outline-text-2" id="text-org80583e9">
+<div id="outline-container-org865bc43" class="outline-2">
+<h2 id="org865bc43">error</h2>
+<div class="outline-text-2" id="text-org865bc43">
+</div>
+<div id="outline-container-org9ade952" class="outline-3">
+<h3 id="org9ade952">error: connect vpn server, but can't google</h3>
+<div class="outline-text-3" id="text-org9ade952">
 <p>
 <a href="https://github.com/hwdsl2/setup-ipsec-vpn/issues/280#issuecomment-356046169">https://github.com/hwdsl2/setup-ipsec-vpn/issues/280#issuecomment-356046169</a>
 </p>
@@ -214,10 +228,32 @@ I change my Windows Internet profile 's TCP/ICvP4:
 </p>
 </div>
 </div>
+<div id="outline-container-org8179e0f" class="outline-3">
+<h3 id="org8179e0f">error: L2TP连接尝试失败:因为安全层在初始化与远程计算机的协商时遇到了一个处理错误</h3>
+<div class="outline-text-3" id="text-org8179e0f">
+</div>
+<div id="outline-container-orgbd9881e" class="outline-4">
+<h4 id="orgbd9881e">确认是否启动服务</h4>
+<div class="outline-text-4" id="text-orgbd9881e">
+<p>
+<a href="https://www.cnblogs.com/xphhh/p/12398994.html">https://www.cnblogs.com/xphhh/p/12398994.html</a>
+</p>
+</div>
+</div>
 
-<div id="outline-container-org6a573ea" class="outline-2">
-<h2 id="org6a573ea">Ref</h2>
-<div class="outline-text-2" id="text-org6a573ea">
+<div id="outline-container-orgd6102c8" class="outline-4">
+<h4 id="orgd6102c8">修改注册表</h4>
+<div class="outline-text-4" id="text-orgd6102c8">
+<p>
+<a href="https://my.oschina.net/kefy/blog/2050511">https://my.oschina.net/kefy/blog/2050511</a>
+</p>
+</div>
+</div>
+</div>
+</div>
+<div id="outline-container-org7970f77" class="outline-2">
+<h2 id="org7970f77">Ref</h2>
+<div class="outline-text-2" id="text-org7970f77">
 <ul class="org-ul">
 <li><a href="https://support.microsoft.com/zh-cn/help/20510/windows-10-connect-to-vpn">https://support.microsoft.com/zh-cn/help/20510/windows-10-connect-to-vpn</a></li>
 </ul>

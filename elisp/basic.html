@@ -3,12 +3,12 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2020-03-26 Thu 11:07 -->
+<!-- 2020-07-30 Thu 16:13 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>elisp basic usage</title>
 <meta name="generator" content="Org mode" />
-<meta name="author" content="yunlong zeng" />
+<meta name="author" content="a" />
 <link rel="stylesheet" title="Standard" href="/html/style/worg.css" type="text/css" />
 <link rel="alternate stylesheet" title="Zenburn" href="/html/style/worg-zenburn.css" type="text/css" />
 <link rel="alternate stylesheet" title="Classic" href="/html/style/worg-classic.css" type="text/css" />
@@ -98,23 +98,23 @@ fathom('trackPageview');
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#org4d33aeb">Converting Between Symbols and Strings</a></li>
-<li><a href="#org4118e64">Emacs Lisp - 声明具有变量/变量名称的函数</a></li>
+<li><a href="#orgba5a936">Converting Between Symbols and Strings</a></li>
+<li><a href="#orge7d4948">Emacs Lisp - 声明具有变量/变量名称的函数</a></li>
 </ul>
 </div>
 </div>
-<div id="outline-container-org4d33aeb" class="outline-2">
-<h2 id="org4d33aeb">Converting Between Symbols and Strings</h2>
-<div class="outline-text-2" id="text-org4d33aeb">
+<div id="outline-container-orgba5a936" class="outline-2">
+<h2 id="orgba5a936">Converting Between Symbols and Strings</h2>
+<div class="outline-text-2" id="text-orgba5a936">
 <p>
 Sometimes you might need to convert a symbol to string (or vice versa) in Emacs Lisp. You start looking for functions like symbol-to-string and string-to-symbol but, alas, they do not seem exist. Do not despair! Such functions do actually exist, although their names are likely to surprise you:
 </p>
 
 <div class="org-src-container">
 <pre class="src src-emacs-lisp">(symbol-name 'some-symbol)
-<span style="color: #75715E;">; </span><span style="color: #75715E; background-color: #292e34;">=&gt; "some-symbol"</span>
-(intern-soft <span style="color: #E6DB74;">"some-symbol"</span>)
-<span style="color: #75715E;">; </span><span style="color: #75715E; background-color: #292e34;">=&gt; some-symbol</span>
+<span style="color: #579C4C;">; </span><span style="color: #579C4C;">=&gt; "some-symbol"</span>
+(intern-soft <span style="color: #daa520;">"some-symbol"</span>)
+<span style="color: #579C4C;">; </span><span style="color: #579C4C;">=&gt; some-symbol</span>
 </pre>
 </div>
 
@@ -125,9 +125,9 @@ Sometimes you might need to convert a symbol to string (or vice versa) in Emacs 
 </div>
 </div>
 
-<div id="outline-container-org4118e64" class="outline-2">
-<h2 id="org4118e64">Emacs Lisp - 声明具有变量/变量名称的函数</h2>
-<div class="outline-text-2" id="text-org4118e64">
+<div id="outline-container-orge7d4948" class="outline-2">
+<h2 id="orge7d4948">Emacs Lisp - 声明具有变量/变量名称的函数</h2>
+<div class="outline-text-2" id="text-orge7d4948">
 <p>
 转载自 <a href="http://www.uwenku.com/question/p-qqsirkgg-ec.html">http://www.uwenku.com/question/p-qqsirkgg-ec.html</a>
 </p>
@@ -142,7 +142,7 @@ Sometimes you might need to convert a symbol to string (or vice versa) in Emacs 
 
 <div class="org-src-container">
 <pre class="src src-emacs-lisp">(def exec (cmd)
-    (async-shell-command cmd <span style="color: #E6DB74;">"buffer"</span>))
+    (async-shell-command cmd <span style="color: #daa520;">"buffer"</span>))
 </pre>
 </div>
 <p>
@@ -150,7 +150,7 @@ Sometimes you might need to convert a symbol to string (or vice versa) in Emacs 
 </p>
 
 <div class="org-src-container">
-<pre class="src src-emacs-lisp">(<span style="color: #E6DB74;">"a"</span> <span style="color: #E6DB74;">"b"</span> <span style="color: #E6DB74;">"c"</span>)
+<pre class="src src-emacs-lisp">(<span style="color: #daa520;">"a"</span> <span style="color: #daa520;">"b"</span> <span style="color: #daa520;">"c"</span>)
 </pre>
 </div>
 
@@ -168,9 +168,9 @@ PS。 exec命令本身已经足够好了 - 它使用completing-read以及提供�
 </p>
 
 <div class="org-src-container">
-<pre class="src src-emacs-lisp">(<span style="color: #F92672;">dolist</span> (name name-list)
-    (<span style="color: #F92672;">defalias</span> (intern (concat <span style="color: #E6DB74;">"exec-"</span> name))
-    `(<span style="color: #F92672;">lambda</span>() ,(format <span style="color: #E6DB74;">"Run %s via `</span><span style="color: #AE81FF;">exec</span><span style="color: #E6DB74;">'."</span> name) (<span style="color: #F92672;">interactive</span>) (exec ,name))))
+<pre class="src src-emacs-lisp">(<span style="color: #00bfff;">dolist</span> (name name-list)
+    (<span style="color: #00bfff;">defalias</span> (intern (concat <span style="color: #daa520;">"exec-"</span> name))
+    `(<span style="color: #00bfff;">lambda</span>() ,(format <span style="color: #daa520;">"Run %s via `</span><span style="color: #339CDB;">exec</span><span style="color: #daa520;">'."</span> name) (<span style="color: #00bfff;">interactive</span>) (exec ,name))))
 </pre>
 </div>
 </div>

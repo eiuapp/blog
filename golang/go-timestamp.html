@@ -1,0 +1,178 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<!-- 2020-07-30 Thu 16:12 -->
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>go timestamp</title>
+<meta name="generator" content="Org mode" />
+<meta name="author" content="a" />
+<link rel="stylesheet" title="Standard" href="/html/style/worg.css" type="text/css" />
+<link rel="alternate stylesheet" title="Zenburn" href="/html/style/worg-zenburn.css" type="text/css" />
+<link rel="alternate stylesheet" title="Classic" href="/html/style/worg-classic.css" type="text/css" />
+<link rel="SHORTCUT ICON" href="/html/style/org-mode-unicorn.ico" type="image/x-icon" />
+<link rel="icon" href="/html/style/org-mode-unicorn.ico" type="image/ico" />
+<script type="text/javascript">
+/*
+@licstart  The following is the entire license notice for the
+JavaScript code in this tag.
+
+Copyright (C) 2012-2019 Free Software Foundation, Inc.
+
+The JavaScript code in this tag is free software: you can
+redistribute it and/or modify it under the terms of the GNU
+General Public License (GNU GPL) as published by the Free Software
+Foundation, either version 3 of the License, or (at your option)
+any later version.  The code is distributed WITHOUT ANY WARRANTY;
+without even the implied warranty of MERCHANTABILITY or FITNESS
+FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
+
+As additional permission under GNU GPL version 3 section 7, you
+may distribute non-source (e.g., minimized or compacted) forms of
+that code without the copy of the GNU GPL normally required by
+section 4, provided you include this license notice and a URL
+through which recipients can access the Corresponding Source.
+
+
+@licend  The above is the entire license notice
+for the JavaScript code in this tag.
+*/
+<!--/*--><![CDATA[/*><!--*/
+ function CodeHighlightOn(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(null != target) {
+     elem.cacheClassElem = elem.className;
+     elem.cacheClassTarget = target.className;
+     target.className = "code-highlighted";
+     elem.className   = "code-highlighted";
+   }
+ }
+ function CodeHighlightOff(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(elem.cacheClassElem)
+     elem.className = elem.cacheClassElem;
+   if(elem.cacheClassTarget)
+     target.className = elem.cacheClassTarget;
+ }
+/*]]>*///-->
+</script>
+</head>
+<body>
+<div id="preamble" class="status">
+<script type="text/javascript">
+  document.addEventListener('DOMContentLoaded',function() {
+      document.getElementById("table-of-contents").onclick = function() {
+          var elem = document.getElementById("text-table-of-contents");
+          elem.style.display = elem.style.display == "block" ? "none" : "block";
+      }
+  });
+
+  var url = document.location.href;
+  var orgsource = url.substring(0, url.lastIndexOf("."))+".org.html";
+  function show_org_source(){
+      document.location.href = orgsource;
+  }
+</script>
+
+<script>
+(function(f, a, t, h, o, m){
+	a[h]=a[h]||function(){
+		(a[h].q=a[h].q||[]).push(arguments)
+	};
+	o=f.createElement('script'),
+	m=f.getElementsByTagName('script')[0];
+	o.async=1; o.src=t; o.id='fathom-script';
+	m.parentNode.insertBefore(o,m)
+})(document, window, '//stats.orgmode.org/tracker.js', 'fathom');
+fathom('set', 'siteId', 'NWSQJ');
+fathom('trackPageview');
+</script>
+</div>
+<div id="content">
+<h1 class="title">go timestamp</h1>
+<div id="table-of-contents">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#org4b8ac5e">timestamp to string, print</a></li>
+<li><a href="#org74ce433">timestamp 2 string 将字符串格式化返回本地时区时间</a></li>
+<li><a href="#org3c048c2">golang 时间戳 时间格式化 获取当前时间 timestamp 计算时间差</a></li>
+<li><a href="#org5ed7faf">golang获取当前时间、时间戳和时间字符串及它们之间的相互转换</a></li>
+</ul>
+</div>
+</div>
+<p>
+<a href="../index.html">{Back to site's index}</a>
+</p>
+
+<div id="outline-container-org4b8ac5e" class="outline-2">
+<h2 id="org4b8ac5e">timestamp to string, print</h2>
+<div class="outline-text-2" id="text-org4b8ac5e">
+<p>
+The <code>time.Parse</code> function does not do Unix timestamps. Instead you can use <code>strconv.ParseInt</code> to parse the string to int64 and create the timestamp with time.Unix:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-golang">package main
+
+import (
+    "fmt"
+    "time"
+    "strconv"
+)
+
+func main() {
+    i, err := strconv.ParseInt("1405544146", 10, 64)
+    if err != nil {
+        panic(err)
+    }
+    tm := time.Unix(i, 0)
+    fmt.Println(tm)
+}
+</pre>
+</div>
+
+<p>
+Output:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-example">2014-07-16 20:55:46 +0000 UTC
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org74ce433" class="outline-2">
+<h2 id="org74ce433">timestamp 2 string 将字符串格式化返回本地时区时间</h2>
+<div class="outline-text-2" id="text-org74ce433">
+<p>
+<a href="https://www.cnblogs.com/nyist-xsk/p/11448348.html">https://www.cnblogs.com/nyist-xsk/p/11448348.html</a>
+</p>
+</div>
+</div>
+
+<div id="outline-container-org3c048c2" class="outline-2">
+<h2 id="org3c048c2">golang 时间戳 时间格式化 获取当前时间 timestamp 计算时间差</h2>
+<div class="outline-text-2" id="text-org3c048c2">
+<p>
+<a href="https://www.cnblogs.com/Denny_Yang/p/8983715.html">https://www.cnblogs.com/Denny_Yang/p/8983715.html</a>
+</p>
+</div>
+</div>
+
+<div id="outline-container-org5ed7faf" class="outline-2">
+<h2 id="org5ed7faf">golang获取当前时间、时间戳和时间字符串及它们之间的相互转换</h2>
+<div class="outline-text-2" id="text-org5ed7faf">
+<p>
+<a href="https://www.cnblogs.com/xuange306/p/11168216.html">https://www.cnblogs.com/xuange306/p/11168216.html</a>
+</p>
+</div>
+</div>
+</div>
+</body>
+</html>

@@ -3,12 +3,12 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2020-03-26 Thu 11:07 -->
+<!-- 2020-07-30 Thu 16:13 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>use $ref to pass a reusable defined parameter</title>
 <meta name="generator" content="Org mode" />
-<meta name="author" content="yunlong zeng" />
+<meta name="author" content="a" />
 <link rel="stylesheet" title="Standard" href="/html/style/worg.css" type="text/css" />
 <link rel="alternate stylesheet" title="Zenburn" href="/html/style/worg-zenburn.css" type="text/css" />
 <link rel="alternate stylesheet" title="Classic" href="/html/style/worg-classic.css" type="text/css" />
@@ -98,10 +98,10 @@ fathom('trackPageview');
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#orgb274a35">pass a reusable defined parameter</a>
+<li><a href="#org7439496">pass a reusable defined parameter</a>
 <ul>
-<li><a href="#orga0eafad">openapi 3.0</a></li>
-<li><a href="#org8f2e7d4">swagger 2</a></li>
+<li><a href="#org12a20f9">openapi 3.0</a></li>
+<li><a href="#org00ab994">swagger 2</a></li>
 </ul>
 </li>
 </ul>
@@ -111,74 +111,74 @@ fathom('trackPageview');
 <a href="../index.html">{Back to site's index}</a>
 </p>
 
-<div id="outline-container-orgb274a35" class="outline-2">
-<h2 id="orgb274a35">pass a reusable defined parameter</h2>
-<div class="outline-text-2" id="text-orgb274a35">
+<div id="outline-container-org7439496" class="outline-2">
+<h2 id="org7439496">pass a reusable defined parameter</h2>
+<div class="outline-text-2" id="text-org7439496">
 <ul class="org-ul">
 <li><a href="https://stackoverflow.com/questions/27005105/swagger-openapi-use-ref-to-pass-a-reusable-defined-parameter?r=SearchResults">https://stackoverflow.com/questions/27005105/swagger-openapi-use-ref-to-pass-a-reusable-defined-parameter?r=SearchResults</a></li>
 </ul>
 </div>
 
-<div id="outline-container-orga0eafad" class="outline-3">
-<h3 id="orga0eafad">openapi 3.0</h3>
-<div class="outline-text-3" id="text-orga0eafad">
+<div id="outline-container-org12a20f9" class="outline-3">
+<h3 id="org12a20f9">openapi 3.0</h3>
+<div class="outline-text-3" id="text-org12a20f9">
 <div class="org-src-container">
-<pre class="src src-yaml"><span style="color: #FD971F;">openapi</span>: <span style="color: #E6DB74;">"3.0.0"</span>
-<span style="color: #FD971F;">servers</span>:
-    - <span style="color: #FD971F;">url</span>: /v1
-      <span style="color: #FD971F;">description</span>: local server
+<pre class="src src-yaml">openapi: "3.0.0"
+servers:
+    - url: /v1
+      description: local server
 
-<span style="color: #FD971F;">paths</span>:
-   <span style="color: #FD971F;">/path</span>:
-      <span style="color: #FD971F;">get</span>:
-         <span style="color: #FD971F;">parameters</span>:
-            - <span style="color: #FD971F;">$ref</span>: <span style="color: #E6DB74;">"#/components/parameters/limitParam"</span>
+paths:
+   /path:
+      get:
+         parameters:
+            - $ref: "#/components/parameters/limitParam"
 
-<span style="color: #FD971F;">components</span>:
-   <span style="color: #FD971F;">parameters</span>:
-      <span style="color: #FD971F;">limitParam</span>:
-         <span style="color: #FD971F;">name</span>: limit
-         <span style="color: #FD971F;">in</span>: query
-         <span style="color: #FD971F;">description</span>: Limits the number of returned results
-         <span style="color: #FD971F;">required</span>: <span style="color: #AE81FF;">false</span>
-         <span style="color: #FD971F;">schema</span>:
-            <span style="color: #FD971F;">type</span>: integer
-            <span style="color: #FD971F;">minimum</span>: 10
-            <span style="color: #FD971F;">default</span>: 10
-            <span style="color: #FD971F;">multipleOf</span>: 10 <span style="color: #75715E;"># </span><span style="color: #75715E; background-color: #292e34;">matches 10, 20, ...</span>
-            <span style="color: #FD971F;">format</span>: int32
+components:
+   parameters:
+      limitParam:
+         name: limit
+         in: query
+         description: Limits the number of returned results
+         required: false
+         schema:
+            type: integer
+            minimum: 10
+            default: 10
+            multipleOf: 10 # matches 10, 20, ...
+            format: int32
 </pre>
 </div>
 </div>
 </div>
 
-<div id="outline-container-org8f2e7d4" class="outline-3">
-<h3 id="org8f2e7d4">swagger 2</h3>
-<div class="outline-text-3" id="text-org8f2e7d4">
+<div id="outline-container-org00ab994" class="outline-3">
+<h3 id="org00ab994">swagger 2</h3>
+<div class="outline-text-3" id="text-org00ab994">
 <div class="org-src-container">
-<pre class="src src-yaml"><span style="color: #75715E;"># </span><span style="color: #75715E; background-color: #292e34;">define a path with parameter reference</span>
-<span style="color: #FD971F;">/path</span>:
-   <span style="color: #FD971F;">get</span>:
-      <span style="color: #FD971F;">parameters</span>:
-         - <span style="color: #FD971F;">$ref</span>: <span style="color: #E6DB74;">"#/parameters/limitParam"</span>
-         - <span style="color: #FD971F;">$ref</span>: <span style="color: #E6DB74;">"#/parameters/offsetParam"</span>
+<pre class="src src-yaml"># define a path with parameter reference
+/path:
+   get:
+      parameters:
+         - $ref: "#/parameters/limitParam"
+         - $ref: "#/parameters/offsetParam"
 
-<span style="color: #75715E;"># </span><span style="color: #75715E; background-color: #292e34;">define reusable parameters:</span>
-<span style="color: #FD971F;">parameters</span>:
-   <span style="color: #FD971F;">limitParam</span>:
-      <span style="color: #FD971F;">name</span>: limit
-      <span style="color: #FD971F;">in</span>: query
-      <span style="color: #FD971F;">description</span>: Limits the number of returned results
-      <span style="color: #FD971F;">required</span>: <span style="color: #AE81FF;">false</span>
-      <span style="color: #FD971F;">type</span>: integer
-      <span style="color: #FD971F;">format</span>: int32
-   <span style="color: #FD971F;">offsetParam</span>:
-      <span style="color: #FD971F;">name</span>: offset
-      <span style="color: #FD971F;">in</span>: query
-      <span style="color: #FD971F;">description</span>: Offset from which start returned results
-      <span style="color: #FD971F;">required</span>: <span style="color: #AE81FF;">false</span>
-      <span style="color: #FD971F;">type</span>: integer
-      <span style="color: #FD971F;">format</span>: int32
+# define reusable parameters:
+parameters:
+   limitParam:
+      name: limit
+      in: query
+      description: Limits the number of returned results
+      required: false
+      type: integer
+      format: int32
+   offsetParam:
+      name: offset
+      in: query
+      description: Offset from which start returned results
+      required: false
+      type: integer
+      format: int32
 </pre>
 </div>
 </div>

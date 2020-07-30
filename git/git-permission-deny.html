@@ -1,0 +1,271 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<!-- 2020-07-30 Thu 16:11 -->
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>git 出现　gitlab-shell: No such file or directory</title>
+<meta name="generator" content="Org mode" />
+<meta name="author" content="a" />
+<link rel="stylesheet" title="Standard" href="/html/style/worg.css" type="text/css" />
+<link rel="alternate stylesheet" title="Zenburn" href="/html/style/worg-zenburn.css" type="text/css" />
+<link rel="alternate stylesheet" title="Classic" href="/html/style/worg-classic.css" type="text/css" />
+<link rel="SHORTCUT ICON" href="/html/style/org-mode-unicorn.ico" type="image/x-icon" />
+<link rel="icon" href="/html/style/org-mode-unicorn.ico" type="image/ico" />
+<script type="text/javascript">
+/*
+@licstart  The following is the entire license notice for the
+JavaScript code in this tag.
+
+Copyright (C) 2012-2019 Free Software Foundation, Inc.
+
+The JavaScript code in this tag is free software: you can
+redistribute it and/or modify it under the terms of the GNU
+General Public License (GNU GPL) as published by the Free Software
+Foundation, either version 3 of the License, or (at your option)
+any later version.  The code is distributed WITHOUT ANY WARRANTY;
+without even the implied warranty of MERCHANTABILITY or FITNESS
+FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
+
+As additional permission under GNU GPL version 3 section 7, you
+may distribute non-source (e.g., minimized or compacted) forms of
+that code without the copy of the GNU GPL normally required by
+section 4, provided you include this license notice and a URL
+through which recipients can access the Corresponding Source.
+
+
+@licend  The above is the entire license notice
+for the JavaScript code in this tag.
+*/
+<!--/*--><![CDATA[/*><!--*/
+ function CodeHighlightOn(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(null != target) {
+     elem.cacheClassElem = elem.className;
+     elem.cacheClassTarget = target.className;
+     target.className = "code-highlighted";
+     elem.className   = "code-highlighted";
+   }
+ }
+ function CodeHighlightOff(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(elem.cacheClassElem)
+     elem.className = elem.cacheClassElem;
+   if(elem.cacheClassTarget)
+     target.className = elem.cacheClassTarget;
+ }
+/*]]>*///-->
+</script>
+</head>
+<body>
+<div id="preamble" class="status">
+<script type="text/javascript">
+  document.addEventListener('DOMContentLoaded',function() {
+      document.getElementById("table-of-contents").onclick = function() {
+          var elem = document.getElementById("text-table-of-contents");
+          elem.style.display = elem.style.display == "block" ? "none" : "block";
+      }
+  });
+
+  var url = document.location.href;
+  var orgsource = url.substring(0, url.lastIndexOf("."))+".org.html";
+  function show_org_source(){
+      document.location.href = orgsource;
+  }
+</script>
+
+<script>
+(function(f, a, t, h, o, m){
+	a[h]=a[h]||function(){
+		(a[h].q=a[h].q||[]).push(arguments)
+	};
+	o=f.createElement('script'),
+	m=f.getElementsByTagName('script')[0];
+	o.async=1; o.src=t; o.id='fathom-script';
+	m.parentNode.insertBefore(o,m)
+})(document, window, '//stats.orgmode.org/tracker.js', 'fathom');
+fathom('set', 'siteId', 'NWSQJ');
+fathom('trackPageview');
+</script>
+</div>
+<div id="content">
+<h1 class="title">git 出现　gitlab-shell: No such file or directory</h1>
+<div id="table-of-contents">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#org40fd9b8">gitlab-shell: No such file or directory</a>
+<ul>
+<li><a href="#org77901b4">现象</a>
+<ul>
+<li><a href="#org2d5292a">使用当前机器的另一用户尝试</a></li>
+</ul>
+</li>
+<li><a href="#orgf87943b">(可跳过)</a></li>
+<li><a href="#org816e62c">ssh -vT git@192.168.168.137</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+<p>
+<a href="../index.html">{Back to site's index}</a>
+</p>
+
+<div id="outline-container-org40fd9b8" class="outline-2">
+<h2 id="org40fd9b8">gitlab-shell: No such file or directory</h2>
+<div class="outline-text-2" id="text-org40fd9b8">
+</div>
+<div id="outline-container-org77901b4" class="outline-3">
+<h3 id="org77901b4">现象</h3>
+<div class="outline-text-3" id="text-org77901b4">
+<div class="org-src-container">
+<pre class="src src-shell">&#9581;&#9472;a at a<span style="color: #00bfff;"> in</span> ~/sda3/Users/a/Desktop/tianluo/fangyuan/src/fangyuan-server on dev&#10004; using
+&#9584;&#9472;&#177; git pull -v origin dev
+bash: /opt/gitlab/embedded/service/gitlab-shell/bin/gitlab-shell: No such file or directory
+fatal: Could not read from remote repository.
+
+Please make sure you have the correct access rights
+and the repository exists.
+</pre>
+</div>
+</div>
+
+<div id="outline-container-org2d5292a" class="outline-4">
+<h4 id="org2d5292a">使用当前机器的另一用户尝试</h4>
+<div class="outline-text-4" id="text-org2d5292a">
+<p>
+把 ~/.ssh/id_rsa* 放在客户端机器的其它的用户(另创test用户)下，则 git clone 成功, 说明:
+</p>
+<ul class="org-ul">
+<li>与 key（~/.ssh/id_rsa*）　无关。</li>
+<li>与　服务端　无关，只与客户端本机相关。</li>
+<li>只与客户端本机的当前用户相关。</li>
+</ul>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgf87943b" class="outline-3">
+<h3 id="orgf87943b">(可跳过)</h3>
+<div class="outline-text-3" id="text-orgf87943b">
+<ul class="org-ul">
+<li><a href="https://wiki.shileizcc.com/confluence/display/gitlab/Gitlab+Update+Version">https://wiki.shileizcc.com/confluence/display/gitlab/Gitlab+Update+Version</a> 搜索 <code>gitlab-shell</code></li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org816e62c" class="outline-3">
+<h3 id="org816e62c">ssh -vT git@192.168.168.137</h3>
+<div class="outline-text-3" id="text-org816e62c">
+<ul class="org-ul">
+<li><a href="https://stackoverflow.com/questions/9471124/git-permission-denied">https://stackoverflow.com/questions/9471124/git-permission-denied</a></li>
+</ul>
+
+<div class="org-src-container">
+<pre class="src src-shell">a@a:~$ ssh -vT git@192.168.168.137
+OpenSSH_7.6p1 Ubuntu-4ubuntu0.4, OpenSSL 1.0.2n  7 Dec 2017
+debug1: Reading configuration data /home/a/.ssh/config
+debug1: /home/a/.ssh/config line 27: Applying options for 192.168.168.137
+debug1: Reading configuration data /etc/ssh/ssh_config
+debug1: /etc/ssh/ssh_config line 19: Applying options for *
+debug1: Connecting to 192.168.168.137 [192.168.168.137] port 2222.
+debug1: Connection established.
+debug1: identity file /home/a/.ssh/id_rsa type 0
+debug1: key_load_public: No such file or directory
+debug1: identity file /home/a/.ssh/id_rsa-cert type -1
+debug1: key_load_public: No such file or directory
+debug1: identity file /home/a/.ssh/id_dsa type -1
+debug1: key_load_public: No such file or directory
+debug1: identity file /home/a/.ssh/id_dsa-cert type -1
+debug1: key_load_public: No such file or directory
+debug1: identity file /home/a/.ssh/id_ecdsa type -1
+debug1: key_load_public: No such file or directory
+debug1: identity file /home/a/.ssh/id_ecdsa-cert type -1
+debug1: key_load_public: No such file or directory
+debug1: identity file /home/a/.ssh/id_ed25519 type -1
+debug1: key_load_public: No such file or directory
+debug1: identity file /home/a/.ssh/id_ed25519-cert type -1
+debug1: Local version string SSH-2.0-OpenSSH_7.6p1 Ubuntu-4ubuntu0.4
+debug1: Remote protocol version 2.0, remote software version OpenSSH_7.6p1 Ubuntu-4ubuntu0.3
+debug1: match: OpenSSH_7.6p1 Ubuntu-4ubuntu0.3 pat OpenSSH* compat 0x04000000
+debug1: Authenticating to 192.168.168.137:2222 as <span style="color: #daa520;">'git'</span>
+debug1: SSH2_MSG_KEXINIT sent
+debug1: SSH2_MSG_KEXINIT received
+debug1: kex: algorithm: curve25519-sha256
+debug1: kex: host key algorithm: ecdsa-sha2-nistp256
+debug1: kex: server-&gt;client cipher: chacha20-poly1305@openssh.com MAC: &lt;implicit&gt; compression: none
+debug1: kex: client-&gt;server cipher: chacha20-poly1305@openssh.com MAC: &lt;implicit&gt; compression: none
+debug1: expecting SSH2_MSG_KEX_ECDH_REPLY
+debug1: Server host key: ecdsa-sha2-nistp256 SHA256:Z6kCGedIGKdSeJ0vRWzMEWuyga8T69IEkfUYn12GmxY
+debug1: Host <span style="color: #daa520;">'[192.168.168.137]:2222'</span> is known and matches the ECDSA host key.
+debug1: Found key<span style="color: #00bfff;"> in</span> /home/a/.ssh/known_hosts:1
+debug1: rekey after 134217728 blocks
+debug1: SSH2_MSG_NEWKEYS sent
+debug1: expecting SSH2_MSG_NEWKEYS
+debug1: SSH2_MSG_NEWKEYS received
+debug1: rekey after 134217728 blocks
+debug1: SSH2_MSG_EXT_INFO received
+debug1: kex_input_ext_info: server-sig-algs=&lt;ssh-ed25519,ssh-rsa,rsa-sha2-256,rsa-sha2-512,ssh-dss,ecdsa-sha2-nistp256,ecdsa-sha2-nistp384,ecdsa-sha2-nistp521&gt;
+debug1: SSH2_MSG_SERVICE_ACCEPT received
+debug1: Authentications that can continue: publickey,password
+debug1: Next authentication method: publickey
+debug1: Offering public key: RSA SHA256:Dd8cc1RVMKvuW/Ihnt1QmKF3fb7MiWyYv2xPJd8lLx0 /home/a/.ssh/id_rsa
+debug1: Server accepts key: pkalg rsa-sha2-512 blen 279
+debug1: Authentication succeeded (publickey).
+Authenticated to 192.168.168.137 ([192.168.168.137]:2222).
+debug1: channel 0: new [client-session]
+debug1: Requesting no-more-sessions@openssh.com
+debug1: Entering interactive session.
+debug1: pledge: network
+debug1: client_input_global_request: rtype hostkeys-00@openssh.com want_reply 0
+debug1: Remote: Forced command.
+debug1: Remote: Port forwarding disabled.
+debug1: Remote: X11 forwarding disabled.
+debug1: Remote: Agent forwarding disabled.
+debug1: Remote: PTY allocation disabled.
+debug1: Remote: Forced command.
+debug1: Remote: Port forwarding disabled.
+debug1: Remote: X11 forwarding disabled.
+debug1: Remote: Agent forwarding disabled.
+debug1: Remote: PTY allocation disabled.
+debug1: Sending environment.
+debug1: Sending env <span style="color: #d4d4d4;">LC_MEASUREMENT</span> = en_US.UTF-8
+debug1: Sending env <span style="color: #d4d4d4;">LC_PAPER</span> = en_US.UTF-8
+debug1: Sending env <span style="color: #d4d4d4;">LC_MONETARY</span> = en_US.UTF-8
+debug1: Sending env <span style="color: #d4d4d4;">LANG</span> = en_US.UTF-8
+debug1: Sending env <span style="color: #d4d4d4;">LC_NAME</span> = en_US.UTF-8
+debug1: Sending env <span style="color: #d4d4d4;">LC_ADDRESS</span> = en_US.UTF-8
+debug1: Sending env <span style="color: #d4d4d4;">LC_NUMERIC</span> = en_US.UTF-8
+debug1: Sending env <span style="color: #d4d4d4;">LC_TELEPHONE</span> = en_US.UTF-8
+debug1: Sending env <span style="color: #d4d4d4;">LC_IDENTIFICATION</span> = en_US.UTF-8
+debug1: Sending env <span style="color: #d4d4d4;">LC_TIME</span> = en_US.UTF-8
+bash: /opt/gitlab/embedded/service/gitlab-shell/bin/gitlab-shell: No such file or directory
+debug1: client_input_channel_req: channel 0 rtype exit-status reply 0
+debug1: client_input_channel_req: channel 0 rtype eow@openssh.com reply 0
+debug1: channel 0: free: client-session, nchannels 1
+Transferred: sent 3188, received 3128 bytes,<span style="color: #00bfff;"> in</span> 0.1 seconds
+Bytes per second: sent 60088.5, received 58957.6
+debug1: Exit status 127
+a@a:~$
+</pre>
+</div>
+
+<p>
+所以，会加载　~/home/a/.ssh/config line 27: Applying options for 192.168.168.137~ .
+</p>
+
+<p>
+修改 <code>/home/a/.ssh/config</code> 就成功了。
+因为我这里是重复了，直接删除掉一个就可以了。
+</p>
+</div>
+</div>
+</div>
+</div>
+</body>
+</html>

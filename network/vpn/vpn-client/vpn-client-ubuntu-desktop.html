@@ -3,12 +3,12 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2020-05-25 Mon 19:58 -->
+<!-- 2020-07-30 Thu 16:13 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>ubuntu desktop as vpn client connect vpn server</title>
 <meta name="generator" content="Org mode" />
-<meta name="author" content="yunlong zeng" />
+<meta name="author" content="a" />
 <link rel="stylesheet" title="Standard" href="/html/style/worg.css" type="text/css" />
 <link rel="alternate stylesheet" title="Zenburn" href="/html/style/worg-zenburn.css" type="text/css" />
 <link rel="alternate stylesheet" title="Classic" href="/html/style/worg-classic.css" type="text/css" />
@@ -98,19 +98,19 @@ fathom('trackPageview');
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#orgbc256c3">ubuntu desktop connect vpn server</a>
+<li><a href="#org19c8037">ubuntu desktop connect vpn server</a>
 <ul>
-<li><a href="#org64dd196">vpn Identity</a></li>
-<li><a href="#orgf67269c">IPsec Settings</a>
+<li><a href="#org9a3dc67">vpn Identity</a></li>
+<li><a href="#orga4a5022">IPsec Settings</a>
 <ul>
-<li><a href="#org03dda9d"><code>General</code> 下</a></li>
-<li><a href="#org55f849c"><code>Advanced</code> 下</a></li>
+<li><a href="#org8cfe319"><code>General</code> 下</a></li>
+<li><a href="#org0c14020"><code>Advanced</code> 下</a></li>
 </ul>
 </li>
-<li><a href="#orgf8c9e2a">PPP Settings</a>
+<li><a href="#orgd3c6ffb">PPP Settings</a>
 <ul>
-<li><a href="#orge0aca30"><code>Authentication</code> 下</a></li>
-<li><a href="#org499a3c1"><code>Security and Compression</code> 下</a></li>
+<li><a href="#orge4563cc"><code>Authentication</code> 下</a></li>
+<li><a href="#org2ab712a"><code>Security and Compression</code> 下</a></li>
 </ul>
 </li>
 </ul>
@@ -122,13 +122,13 @@ fathom('trackPageview');
 <a href="../index.html">{Back to site's index}</a>
 </p>
 
-<div id="outline-container-orgbc256c3" class="outline-2">
-<h2 id="orgbc256c3">ubuntu desktop connect vpn server</h2>
-<div class="outline-text-2" id="text-orgbc256c3">
+<div id="outline-container-org19c8037" class="outline-2">
+<h2 id="org19c8037">ubuntu desktop connect vpn server</h2>
+<div class="outline-text-2" id="text-org19c8037">
 </div>
-<div id="outline-container-org64dd196" class="outline-3">
-<h3 id="org64dd196">vpn Identity</h3>
-<div class="outline-text-3" id="text-org64dd196">
+<div id="outline-container-org9a3dc67" class="outline-3">
+<h3 id="org9a3dc67">vpn Identity</h3>
+<div class="outline-text-3" id="text-org9a3dc67">
 <p>
 settings =&gt; network =&gt; vpn =&gt; + =&gt; select "Layer 2 Tunneling Protocol(L2TP)"
 </p>
@@ -151,26 +151,26 @@ NT Domain: 空
 </div>
 </div>
 
-<div id="outline-container-orgf67269c" class="outline-3">
-<h3 id="orgf67269c">IPsec Settings</h3>
-<div class="outline-text-3" id="text-orgf67269c">
+<div id="outline-container-orga4a5022" class="outline-3">
+<h3 id="orga4a5022">IPsec Settings</h3>
+<div class="outline-text-3" id="text-orga4a5022">
 <p>
 click "IPsec Settings", show "IPsec tunnel to L2TP host" window,
 勾选 "Enable IPsec tunnel to L2TP host"(前面打勾),
 </p>
 </div>
-<div id="outline-container-org03dda9d" class="outline-4">
-<h4 id="org03dda9d"><code>General</code> 下</h4>
-<div class="outline-text-4" id="text-org03dda9d">
+<div id="outline-container-org8cfe319" class="outline-4">
+<h4 id="org8cfe319"><code>General</code> 下</h4>
+<div class="outline-text-4" id="text-org8cfe319">
 <p>
 <code>Gateway ID</code> 为空,
 <code>Pre-shared key</code> 写入共享密码，比如服务端设置共享密码是"vpn", 那这里就写上"vpn"
 </p>
 </div>
 </div>
-<div id="outline-container-org55f849c" class="outline-4">
-<h4 id="org55f849c"><code>Advanced</code> 下</h4>
-<div class="outline-text-4" id="text-org55f849c">
+<div id="outline-container-org0c14020" class="outline-4">
+<h4 id="org0c14020"><code>Advanced</code> 下</h4>
+<div class="outline-text-4" id="text-org0c14020">
 <p>
 <code>Phase1 Algorithms:</code> 写 <code>3des-sha1-modp 1024</code>
 <code>Phase2 Algorithms:</code> 写 <code>3des-sha1</code>
@@ -178,16 +178,16 @@ click "IPsec Settings", show "IPsec tunnel to L2TP host" window,
 </div>
 </div>
 </div>
-<div id="outline-container-orgf8c9e2a" class="outline-3">
-<h3 id="orgf8c9e2a">PPP Settings</h3>
-<div class="outline-text-3" id="text-orgf8c9e2a">
+<div id="outline-container-orgd3c6ffb" class="outline-3">
+<h3 id="orgd3c6ffb">PPP Settings</h3>
+<div class="outline-text-3" id="text-orgd3c6ffb">
 <p>
 click "PPP Settings", show "L2TP PPP Options" window,
 </p>
 </div>
-<div id="outline-container-orge0aca30" class="outline-4">
-<h4 id="orge0aca30"><code>Authentication</code> 下</h4>
-<div class="outline-text-4" id="text-orge0aca30">
+<div id="outline-container-orge4563cc" class="outline-4">
+<h4 id="orge4563cc"><code>Authentication</code> 下</h4>
+<div class="outline-text-4" id="text-orge4563cc">
 <p>
 勾选(前面打勾),
 </p>
@@ -199,9 +199,9 @@ click "PPP Settings", show "L2TP PPP Options" window,
 </div>
 </div>
 
-<div id="outline-container-org499a3c1" class="outline-4">
-<h4 id="org499a3c1"><code>Security and Compression</code> 下</h4>
-<div class="outline-text-4" id="text-org499a3c1">
+<div id="outline-container-org2ab712a" class="outline-4">
+<h4 id="org2ab712a"><code>Security and Compression</code> 下</h4>
+<div class="outline-text-4" id="text-org2ab712a">
 <p>
 勾选(前面打勾),
 </p>

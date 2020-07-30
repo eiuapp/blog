@@ -3,12 +3,12 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2020-05-13 Wed 19:57 -->
+<!-- 2020-07-30 Thu 16:13 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>postgresql</title>
 <meta name="generator" content="Org mode" />
-<meta name="author" content="yunlong zeng" />
+<meta name="author" content="a" />
 <link rel="stylesheet" title="Standard" href="/html/style/worg.css" type="text/css" />
 <link rel="alternate stylesheet" title="Zenburn" href="/html/style/worg-zenburn.css" type="text/css" />
 <link rel="alternate stylesheet" title="Classic" href="/html/style/worg-classic.css" type="text/css" />
@@ -98,30 +98,30 @@ fathom('trackPageview');
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#orgd123398">start up</a></li>
-<li><a href="#org8f1cf37">Enter postgresql</a></li>
-<li><a href="#orgd8ae59a">备份：</a>
+<li><a href="#orgae041cb">start up</a></li>
+<li><a href="#org17bd8e1">Enter postgresql</a></li>
+<li><a href="#orga396b79">备份：</a>
 <ul>
-<li><a href="#orga68a2a1">备份单个表</a></li>
+<li><a href="#orga340868">备份单个表</a></li>
 </ul>
 </li>
-<li><a href="#orgff8f45e">还原：</a>
+<li><a href="#orga16ce0f">还原：</a>
 <ul>
-<li><a href="#org0736dfd">psql</a></li>
-<li><a href="#org4125104">pg_restore</a></li>
+<li><a href="#orga98f37a">psql</a></li>
+<li><a href="#org8a930c2">pg_restore</a></li>
 </ul>
 </li>
-<li><a href="#org94d3c6d">create DATABASE &amp;&amp; GRANT</a>
+<li><a href="#org6112165">create DATABASE &amp;&amp; GRANT</a>
 <ul>
-<li><a href="#org59e3dde">m1 shell</a></li>
-<li><a href="#org772404a">m2 into pg</a></li>
+<li><a href="#orga9470f2">m1 shell</a></li>
+<li><a href="#org1b9d56a">m2 into pg</a></li>
 </ul>
 </li>
-<li><a href="#orgc3974d9">create user &amp;&amp; GRANT</a></li>
-<li><a href="#org6c58943">commands</a></li>
-<li><a href="#org34b9ab6">version</a></li>
-<li><a href="#orgcf48235">ERROR: column p.proisagg does not exist</a></li>
-<li><a href="#org56ea048"><span class="todo TODO">TODO</span> ERROR: permission deny</a></li>
+<li><a href="#org1e9f2ec">create user &amp;&amp; GRANT</a></li>
+<li><a href="#org9fe0a19">commands</a></li>
+<li><a href="#org6f0bcd1">version</a></li>
+<li><a href="#orgb39de38">ERROR: column p.proisagg does not exist</a></li>
+<li><a href="#org18d9243"><span class="todo TODO">TODO</span> ERROR: permission deny</a></li>
 </ul>
 </div>
 </div>
@@ -129,9 +129,9 @@ fathom('trackPageview');
 <a href="../index.html">{Back to site's index}</a>
 </p>
 
-<div id="outline-container-orgd123398" class="outline-2">
-<h2 id="orgd123398">start up</h2>
-<div class="outline-text-2" id="text-orgd123398">
+<div id="outline-container-orgae041cb" class="outline-2">
+<h2 id="orgae041cb">start up</h2>
+<div class="outline-text-2" id="text-orgae041cb">
 <p>
 <a href="https://www.jianshu.com/p/1caf8e5768af">https://www.jianshu.com/p/1caf8e5768af</a>
 </p>
@@ -172,9 +172,9 @@ mac@macdeMacBook-Pro ~ %
 </div>
 </div>
 
-<div id="outline-container-org8f1cf37" class="outline-2">
-<h2 id="org8f1cf37">Enter postgresql</h2>
-<div class="outline-text-2" id="text-org8f1cf37">
+<div id="outline-container-org17bd8e1" class="outline-2">
+<h2 id="org17bd8e1">Enter postgresql</h2>
+<div class="outline-text-2" id="text-org17bd8e1">
 <div class="org-src-container">
 <pre class="src src-shell">psql -U user -d esop
 </pre>
@@ -182,9 +182,9 @@ mac@macdeMacBook-Pro ~ %
 </div>
 </div>
 
-<div id="outline-container-orgd8ae59a" class="outline-2">
-<h2 id="orgd8ae59a">备份：</h2>
-<div class="outline-text-2" id="text-orgd8ae59a">
+<div id="outline-container-orga396b79" class="outline-2">
+<h2 id="orga396b79">备份：</h2>
+<div class="outline-text-2" id="text-orga396b79">
 <div class="org-src-container">
 <pre class="src src-shell">pg_dump -U postgres -d myDBname -f dump.sql
 </pre>
@@ -201,9 +201,9 @@ mac@macdeMacBook-Pro ~ %
 </ul>
 </div>
 
-<div id="outline-container-orga68a2a1" class="outline-3">
-<h3 id="orga68a2a1">备份单个表</h3>
-<div class="outline-text-3" id="text-orga68a2a1">
+<div id="outline-container-orga340868" class="outline-3">
+<h3 id="orga340868">备份单个表</h3>
+<div class="outline-text-3" id="text-orga340868">
 <div class="org-src-container">
 <pre class="src src-example">pg_dump --host 127.0.0.1 --port 5432 --username "postgres" --role "postgres"  --file "sms_template.sql" --table "public.sms_template" "esop_dev7"
 pg_dump --host 127.0.0.1 --port 5432 --username "postgres" --role "postgres"  --file "sms_template.sql" --table "public.sms_template" "esop_dev7" --inserts -x -a --no-comments --column-inserts -O --lock-wait-timeout=10
@@ -214,13 +214,13 @@ pg_dump --host 127.0.0.1 --port 5432 --username "postgres" --role "postgres"  --
 </div>
 
 
-<div id="outline-container-orgff8f45e" class="outline-2">
-<h2 id="orgff8f45e">还原：</h2>
-<div class="outline-text-2" id="text-orgff8f45e">
+<div id="outline-container-orga16ce0f" class="outline-2">
+<h2 id="orga16ce0f">还原：</h2>
+<div class="outline-text-2" id="text-orga16ce0f">
 </div>
-<div id="outline-container-org0736dfd" class="outline-3">
-<h3 id="org0736dfd">psql</h3>
-<div class="outline-text-3" id="text-org0736dfd">
+<div id="outline-container-orga98f37a" class="outline-3">
+<h3 id="orga98f37a">psql</h3>
+<div class="outline-text-3" id="text-orga98f37a">
 <p>
 createdb newDBname
 </p>
@@ -244,9 +244,9 @@ psql -d newDBname -U postgres -f dump.sql -b
 </div>
 
 
-<div id="outline-container-org4125104" class="outline-3">
-<h3 id="org4125104">pg_restore</h3>
-<div class="outline-text-3" id="text-org4125104">
+<div id="outline-container-org8a930c2" class="outline-3">
+<h3 id="org8a930c2">pg_restore</h3>
+<div class="outline-text-3" id="text-org8a930c2">
 <p>
 ```
 pg_restore -U postgres -d esop_dev33 a.sql &gt; a.txt
@@ -256,13 +256,13 @@ pg_restore -U postgres -d esop_dev33 a.sql &gt; a.txt
 </div>
 </div>
 
-<div id="outline-container-org94d3c6d" class="outline-2">
-<h2 id="org94d3c6d">create DATABASE &amp;&amp; GRANT</h2>
-<div class="outline-text-2" id="text-org94d3c6d">
+<div id="outline-container-org6112165" class="outline-2">
+<h2 id="org6112165">create DATABASE &amp;&amp; GRANT</h2>
+<div class="outline-text-2" id="text-org6112165">
 </div>
-<div id="outline-container-org59e3dde" class="outline-3">
-<h3 id="org59e3dde">m1 shell</h3>
-<div class="outline-text-3" id="text-org59e3dde">
+<div id="outline-container-orga9470f2" class="outline-3">
+<h3 id="orga9470f2">m1 shell</h3>
+<div class="outline-text-3" id="text-orga9470f2">
 <div class="org-src-container">
 <pre class="src src-shell">createdb -O esop esop_dev31
 </pre>
@@ -270,28 +270,28 @@ pg_restore -U postgres -d esop_dev33 a.sql &gt; a.txt
 </div>
 </div>
 
-<div id="outline-container-org772404a" class="outline-3">
-<h3 id="org772404a">m2 into pg</h3>
-<div class="outline-text-3" id="text-org772404a">
+<div id="outline-container-org1b9d56a" class="outline-3">
+<h3 id="org1b9d56a">m2 into pg</h3>
+<div class="outline-text-3" id="text-org1b9d56a">
 <div class="org-src-container">
 <pre class="src src-shell">mac@macdeMacBook-Pro ~ % psql -U postgres -d esop
-<span style="color: #bc6ec5; font-weight: bold;">psql</span> (<span style="color: #a45bad;">11.5</span>)
+<span style="color: #F94949;">psql</span> (11.5)
 Type <span style="color: #daa520;">"help"</span> for help.
 
-<span style="color: #7590db;">esop</span>=# CREATE DATABASE database1;
+<span style="color: #d4d4d4;">esop</span>=# CREATE DATABASE database1;
 CREATE DATABASE
-<span style="color: #7590db;">esop</span>=# GRANT ALL PRIVILEGES ON DATABASE database1 to user1;
+<span style="color: #d4d4d4;">esop</span>=# GRANT ALL PRIVILEGES ON DATABASE database1 to user1;
 GRANT
-<span style="color: #7590db;">esop</span>=&gt; exit
+<span style="color: #d4d4d4;">esop</span>=&gt; exit
 </pre>
 </div>
 </div>
 </div>
 </div>
 
-<div id="outline-container-orgc3974d9" class="outline-2">
-<h2 id="orgc3974d9">create user &amp;&amp; GRANT</h2>
-<div class="outline-text-2" id="text-orgc3974d9">
+<div id="outline-container-org1e9f2ec" class="outline-2">
+<h2 id="org1e9f2ec">create user &amp;&amp; GRANT</h2>
+<div class="outline-text-2" id="text-org1e9f2ec">
 <div class="org-src-container">
 <pre class="src src-shell">CREATE USER user1 WITH PASSWORD <span style="color: #daa520;">'PASSWORD1'</span>;
 GRANT ALL PRIVILEGES ON DATABASE database1 to user1;
@@ -300,9 +300,9 @@ GRANT ALL PRIVILEGES ON DATABASE database1 to user1;
 </div>
 </div>
 
-<div id="outline-container-org6c58943" class="outline-2">
-<h2 id="org6c58943">commands</h2>
-<div class="outline-text-2" id="text-org6c58943">
+<div id="outline-container-org9fe0a19" class="outline-2">
+<h2 id="org9fe0a19">commands</h2>
+<div class="outline-text-2" id="text-org9fe0a19">
 <div class="org-src-container">
 <pre class="src src-shell">\l               ---show databases
 \dt            ---show tables
@@ -311,19 +311,19 @@ GRANT ALL PRIVILEGES ON DATABASE database1 to user1;
 </div>
 </div>
 </div>
-<div id="outline-container-org34b9ab6" class="outline-2">
-<h2 id="org34b9ab6">version</h2>
-<div class="outline-text-2" id="text-org34b9ab6">
+<div id="outline-container-org6f0bcd1" class="outline-2">
+<h2 id="org6f0bcd1">version</h2>
+<div class="outline-text-2" id="text-org6f0bcd1">
 <div class="org-src-container">
 <pre class="src src-shell">mac@macdeMacBook-Pro ~ % psql --version
-<span style="color: #bc6ec5; font-weight: bold;">psql</span> (PostgreSQL) <span style="color: #a45bad;">11.5</span>
+<span style="color: #F94949;">psql</span> (PostgreSQL) 11.5
 </pre>
 </div>
 </div>
 </div>
-<div id="outline-container-orgcf48235" class="outline-2">
-<h2 id="orgcf48235">ERROR: column p.proisagg does not exist</h2>
-<div class="outline-text-2" id="text-orgcf48235">
+<div id="outline-container-orgb39de38" class="outline-2">
+<h2 id="orgb39de38">ERROR: column p.proisagg does not exist</h2>
+<div class="outline-text-2" id="text-orgb39de38">
 <ul class="org-ul">
 <li><a href="https://github.com/schemaspy/schemaspy/issues/537">https://github.com/schemaspy/schemaspy/issues/537</a></li>
 <li><a href="https://blog.csdn.net/weixin_44671994/article/details/87935656">https://blog.csdn.net/weixin_44671994/article/details/87935656</a></li>
@@ -331,9 +331,9 @@ GRANT ALL PRIVILEGES ON DATABASE database1 to user1;
 </div>
 </div>
 
-<div id="outline-container-org56ea048" class="outline-2">
-<h2 id="org56ea048"><span class="todo TODO">TODO</span> ERROR: permission deny</h2>
-<div class="outline-text-2" id="text-org56ea048">
+<div id="outline-container-org18d9243" class="outline-2">
+<h2 id="org18d9243"><span class="todo TODO">TODO</span> ERROR: permission deny</h2>
+<div class="outline-text-2" id="text-org18d9243">
 <div class="org-src-container">
 <pre class="src src-shell">CREATE USER dev1 WITH PASSWORD <span style="color: #daa520;">'***********'</span>;
 GRANT ALL PRIVILEGES ON DATABASE adb to dev1;

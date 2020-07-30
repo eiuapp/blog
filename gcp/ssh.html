@@ -3,12 +3,12 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2020-05-26 Tue 17:18 -->
+<!-- 2020-07-30 Thu 16:11 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>gcp ssh login</title>
 <meta name="generator" content="Org mode" />
-<meta name="author" content="yunlong zeng" />
+<meta name="author" content="a" />
 <link rel="stylesheet" title="Standard" href="/html/style/worg.css" type="text/css" />
 <link rel="alternate stylesheet" title="Zenburn" href="/html/style/worg-zenburn.css" type="text/css" />
 <link rel="alternate stylesheet" title="Classic" href="/html/style/worg-classic.css" type="text/css" />
@@ -98,10 +98,10 @@ fathom('trackPageview');
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#org1238811">复制公钥</a></li>
-<li><a href="#orgbb10d06">导入公钥</a></li>
-<li><a href="#org1ef06cc">本地通过私钥登录</a></li>
-<li><a href="#orgcfe1cc4">ref</a></li>
+<li><a href="#org30a9e64">复制公钥</a></li>
+<li><a href="#org7b5786a">导入公钥</a></li>
+<li><a href="#org62834e7">本地通过私钥登录</a></li>
+<li><a href="#orgf881535">ref</a></li>
 </ul>
 </div>
 </div>
@@ -113,15 +113,15 @@ fathom('trackPageview');
 公钥 ssh login gcp 实例
 </p>
 
-<div id="outline-container-org1238811" class="outline-2">
-<h2 id="org1238811">复制公钥</h2>
-<div class="outline-text-2" id="text-org1238811">
+<div id="outline-container-org30a9e64" class="outline-2">
+<h2 id="org30a9e64">复制公钥</h2>
+<div class="outline-text-2" id="text-org30a9e64">
 <div class="org-src-container">
 <pre class="src src-shell">$ cat myKey.pub
 ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQCjHKPaeglRVJzAhNq+W
 &#20013;&#38388;&#37096;&#20998;&#30465;&#30053;&#12290;&#12290;&#12290;
 dKx8sJ0Rw4kUqm2eU2vo8S5IEA0Nk2f7BtVGE8VOCHgmDbv2tLp9845UVp1 user@computer-name.local
-<span style="color: #579C4C; background-color: #292e34;"># </span><span style="color: #579C4C; background-color: #292e34;">&#25226;&#36825;&#38271;&#38271;&#30340;&#19968;&#27573;&#22797;&#21046;&#19979;&#26469;&#65292;&#25226;&#20854;&#20013;&#30340; user@computer-name.local &#25913;&#20026;&#20320;&#22312;&#27983;&#35272;&#22120; SSH &#30331;&#20837;&#20043;&#21518;&#30340;&#24403;&#21069;&#29992;&#25143;&#21517; ${whoami}</span>
+<span style="color: #579C4C;"># </span><span style="color: #579C4C;">&#25226;&#36825;&#38271;&#38271;&#30340;&#19968;&#27573;&#22797;&#21046;&#19979;&#26469;&#65292;&#25226;&#20854;&#20013;&#30340; user@computer-name.local &#25913;&#20026;&#20320;&#22312;&#27983;&#35272;&#22120; SSH &#30331;&#20837;&#20043;&#21518;&#30340;&#24403;&#21069;&#29992;&#25143;&#21517; ${whoami}</span>
 </pre>
 </div>
 
@@ -130,9 +130,9 @@ dKx8sJ0Rw4kUqm2eU2vo8S5IEA0Nk2f7BtVGE8VOCHgmDbv2tLp9845UVp1 user@computer-name.l
 </p>
 </div>
 </div>
-<div id="outline-container-orgbb10d06" class="outline-2">
-<h2 id="orgbb10d06">导入公钥</h2>
-<div class="outline-text-2" id="text-orgbb10d06">
+<div id="outline-container-org7b5786a" class="outline-2">
+<h2 id="org7b5786a">导入公钥</h2>
+<div class="outline-text-2" id="text-org7b5786a">
 <div class="org-src-container">
 <pre class="src src-example"># 进入谷歌云平台页面 -&gt; 计算引擎 -&gt; 元数据 -&gt; SSH 密钥，粘贴保存
 # 谷歌就会把上面这段 public key 写入到 ~/.ssh/authorized_keys
@@ -153,19 +153,19 @@ metadata url: <a href="https://console.cloud.google.com/compute/metadata/sshKeys
 </div>
 </div>
 
-<div id="outline-container-org1ef06cc" class="outline-2">
-<h2 id="org1ef06cc">本地通过私钥登录</h2>
-<div class="outline-text-2" id="text-org1ef06cc">
+<div id="outline-container-org62834e7" class="outline-2">
+<h2 id="org62834e7">本地通过私钥登录</h2>
+<div class="outline-text-2" id="text-org62834e7">
 <div class="org-src-container">
-<pre class="src src-shell">$ ssh -i myKey user@<span style="color: #339CDB;">35.189.175.199</span>
+<pre class="src src-shell">$ ssh -i myKey user@35.189.175.199
 </pre>
 </div>
 </div>
 </div>
 
-<div id="outline-container-orgcfe1cc4" class="outline-2">
-<h2 id="orgcfe1cc4">ref</h2>
-<div class="outline-text-2" id="text-orgcfe1cc4">
+<div id="outline-container-orgf881535" class="outline-2">
+<h2 id="orgf881535">ref</h2>
+<div class="outline-text-2" id="text-orgf881535">
 <ul class="org-ul">
 <li><a href="https://www.jianshu.com/p/57e85cf3e50b">https://www.jianshu.com/p/57e85cf3e50b</a></li>
 </ul>

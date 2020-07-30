@@ -3,12 +3,12 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2020-03-26 Thu 11:07 -->
+<!-- 2020-07-30 Thu 16:13 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>swagger for nodejs</title>
 <meta name="generator" content="Org mode" />
-<meta name="author" content="yunlong zeng" />
+<meta name="author" content="a" />
 <link rel="stylesheet" title="Standard" href="/html/style/worg.css" type="text/css" />
 <link rel="alternate stylesheet" title="Zenburn" href="/html/style/worg-zenburn.css" type="text/css" />
 <link rel="alternate stylesheet" title="Classic" href="/html/style/worg-classic.css" type="text/css" />
@@ -98,28 +98,28 @@ fathom('trackPageview');
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#org74943d1">egg-swagger-doc</a>
+<li><a href="#org1ab4d4f">egg-swagger-doc</a>
 <ul>
-<li><a href="#org7016672">good</a></li>
-<li><a href="#org91043c1">bad</a></li>
+<li><a href="#org58da752">good</a></li>
+<li><a href="#orgb974d74">bad</a></li>
 </ul>
 </li>
-<li><a href="#org9207718">代码自动生成~swagger-ui~</a>
+<li><a href="#orgaad944f">代码自动生成~swagger-ui~</a>
 <ul>
-<li><a href="#orgbff2139">bad</a></li>
-<li><a href="#orgb5451c1">good</a></li>
-<li><a href="#org8879b90">example</a></li>
+<li><a href="#org1ae76de">bad</a></li>
+<li><a href="#orga5b319c">good</a></li>
+<li><a href="#orgc147dfc">example</a></li>
 </ul>
 </li>
-<li><a href="#orgbf926b6">unittest</a>
+<li><a href="#org517ab6f">unittest</a>
 <ul>
-<li><a href="#org9bf489e">example</a></li>
-<li><a href="#org782481d">swagger-mocha</a></li>
-<li><a href="#orgab8a185">google oatts</a></li>
+<li><a href="#org0ee594f">example</a></li>
+<li><a href="#orgce7d746">swagger-mocha</a></li>
+<li><a href="#org5e408cf">google oatts</a></li>
 </ul>
 </li>
-<li><a href="#org5bbf6cf">get started</a></li>
-<li><a href="#org00fe4ef">swagger, typeson, docson 结合使用</a></li>
+<li><a href="#org21d6055">get started</a></li>
+<li><a href="#org1120fde">swagger, typeson, docson 结合使用</a></li>
 </ul>
 </div>
 </div>
@@ -127,26 +127,26 @@ fathom('trackPageview');
 <a href="../index.html">{Back to site's index}</a>
 </p>
 
-<div id="outline-container-org74943d1" class="outline-2">
-<h2 id="org74943d1">egg-swagger-doc</h2>
-<div class="outline-text-2" id="text-org74943d1">
+<div id="outline-container-org1ab4d4f" class="outline-2">
+<h2 id="org1ab4d4f">egg-swagger-doc</h2>
+<div class="outline-text-2" id="text-org1ab4d4f">
 <p>
 <a href="https://github.com/Yanshijie-EL/egg-swagger-doc">https://github.com/Yanshijie-EL/egg-swagger-doc</a>
 </p>
 </div>
 
-<div id="outline-container-org7016672" class="outline-3">
-<h3 id="org7016672">good</h3>
-<div class="outline-text-3" id="text-org7016672">
+<div id="outline-container-org58da752" class="outline-3">
+<h3 id="org58da752">good</h3>
+<div class="outline-text-3" id="text-org58da752">
 <ul class="org-ul">
 <li>在代码中写注释,可自动生成 <code>swagger-ui</code></li>
 </ul>
 </div>
 </div>
 
-<div id="outline-container-org91043c1" class="outline-3">
-<h3 id="org91043c1">bad</h3>
-<div class="outline-text-3" id="text-org91043c1">
+<div id="outline-container-orgb974d74" class="outline-3">
+<h3 id="orgb974d74">bad</h3>
+<div class="outline-text-3" id="text-orgb974d74">
 <ul class="org-ul">
 <li>only <code>egg</code> project</li>
 <li>can not 集成 unit test</li>
@@ -156,36 +156,36 @@ fathom('trackPageview');
 </div>
 </div>
 
-<div id="outline-container-org9207718" class="outline-2">
-<h2 id="org9207718">代码自动生成~swagger-ui~</h2>
-<div class="outline-text-2" id="text-org9207718">
+<div id="outline-container-orgaad944f" class="outline-2">
+<h2 id="orgaad944f">代码自动生成~swagger-ui~</h2>
+<div class="outline-text-2" id="text-orgaad944f">
 </div>
 
-<div id="outline-container-orgbff2139" class="outline-3">
-<h3 id="orgbff2139">bad</h3>
-<div class="outline-text-3" id="text-orgbff2139">
+<div id="outline-container-org1ae76de" class="outline-3">
+<h3 id="org1ae76de">bad</h3>
+<div class="outline-text-3" id="text-org1ae76de">
 <ul class="org-ul">
 <li>与代码相关. 服务不启动, 就看不到对应的~swagger-ui~</li>
 <li>代码启动后, 如果服务对外开放, 就要对这个 URL 专门进行处理(比如:禁止访
-问~swagger-ui~对应的地址)</li>
+  问~swagger-ui~对应的地址)</li>
 <li>与代码相关. 代码背后是一种语言, 那么, 就失去了语言迁移.</li>
 <li>代码注释更多, 代码量显得多.</li>
 </ul>
 </div>
 </div>
 
-<div id="outline-container-orgb5451c1" class="outline-3">
-<h3 id="orgb5451c1">good</h3>
-<div class="outline-text-3" id="text-orgb5451c1">
+<div id="outline-container-orga5b319c" class="outline-3">
+<h3 id="orga5b319c">good</h3>
+<div class="outline-text-3" id="text-orga5b319c">
 <ul class="org-ul">
 <li>代码注释更多, 理解代码更容易.</li>
 </ul>
 </div>
 </div>
 
-<div id="outline-container-org8879b90" class="outline-3">
-<h3 id="org8879b90">example</h3>
-<div class="outline-text-3" id="text-org8879b90">
+<div id="outline-container-orgc147dfc" class="outline-3">
+<h3 id="orgc147dfc">example</h3>
+<div class="outline-text-3" id="text-orgc147dfc">
 <p>
 <a href="https://itnext.io/setting-up-swagger-in-a-node-js-application-d3c4d7aa56d4">https://itnext.io/setting-up-swagger-in-a-node-js-application-d3c4d7aa56d4</a>
 <a href="https://github.com/Yanshijie-EL/egg-swagger-doc">https://github.com/Yanshijie-EL/egg-swagger-doc</a>
@@ -194,23 +194,23 @@ fathom('trackPageview');
 </div>
 </div>
 
-<div id="outline-container-orgbf926b6" class="outline-2">
-<h2 id="orgbf926b6">unittest</h2>
-<div class="outline-text-2" id="text-orgbf926b6">
+<div id="outline-container-org517ab6f" class="outline-2">
+<h2 id="org517ab6f">unittest</h2>
+<div class="outline-text-2" id="text-org517ab6f">
 </div>
 
-<div id="outline-container-org9bf489e" class="outline-3">
-<h3 id="org9bf489e">example</h3>
-<div class="outline-text-3" id="text-org9bf489e">
+<div id="outline-container-org0ee594f" class="outline-3">
+<h3 id="org0ee594f">example</h3>
+<div class="outline-text-3" id="text-org0ee594f">
 <p>
 <a href="https://itnext.io/openapi-swagger-specifications-that-write-your-tests-for-you-sort-of-82276a491c68">https://itnext.io/openapi-swagger-specifications-that-write-your-tests-for-you-sort-of-82276a491c68</a>
 </p>
 </div>
 </div>
 
-<div id="outline-container-org782481d" class="outline-3">
-<h3 id="org782481d">swagger-mocha</h3>
-<div class="outline-text-3" id="text-org782481d">
+<div id="outline-container-orgce7d746" class="outline-3">
+<h3 id="orgce7d746">swagger-mocha</h3>
+<div class="outline-text-3" id="text-orgce7d746">
 <p>
 Automatic validation of Swagger schemas and responses
 <a href="https://github.com/omninews/swagger-mocha">https://github.com/omninews/swagger-mocha</a>
@@ -218,9 +218,9 @@ Automatic validation of Swagger schemas and responses
 </div>
 </div>
 
-<div id="outline-container-orgab8a185" class="outline-3">
-<h3 id="orgab8a185">google oatts</h3>
-<div class="outline-text-3" id="text-orgab8a185">
+<div id="outline-container-org5e408cf" class="outline-3">
+<h3 id="org5e408cf">google oatts</h3>
+<div class="outline-text-3" id="text-org5e408cf">
 <p>
 <a href="https://github.com/google/oatts">https://github.com/google/oatts</a>
 </p>
@@ -228,9 +228,9 @@ Automatic validation of Swagger schemas and responses
 </div>
 </div>
 
-<div id="outline-container-org5bbf6cf" class="outline-2">
-<h2 id="org5bbf6cf">get started</h2>
-<div class="outline-text-2" id="text-org5bbf6cf">
+<div id="outline-container-org21d6055" class="outline-2">
+<h2 id="org21d6055">get started</h2>
+<div class="outline-text-2" id="text-org21d6055">
 <p>
 <a href="https://blog.csdn.net/luanpeng825485697/article/details/82819977">https://blog.csdn.net/luanpeng825485697/article/details/82819977</a>
 <a href="https://www.zhihu.com/question/33516911">https://www.zhihu.com/question/33516911</a>
@@ -242,9 +242,9 @@ Automatic validation of Swagger schemas and responses
 </div>
 </div>
 
-<div id="outline-container-org00fe4ef" class="outline-2">
-<h2 id="org00fe4ef">swagger, typeson, docson 结合使用</h2>
-<div class="outline-text-2" id="text-org00fe4ef">
+<div id="outline-container-org1120fde" class="outline-2">
+<h2 id="org1120fde">swagger, typeson, docson 结合使用</h2>
+<div class="outline-text-2" id="text-org1120fde">
 <p>
 这个比较老
 <a href="https://yq.aliyun.com/articles/773">https://yq.aliyun.com/articles/773</a>

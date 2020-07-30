@@ -3,12 +3,12 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2020-05-26 Tue 17:18 -->
+<!-- 2020-07-30 Thu 16:13 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>ubuntu install docker</title>
 <meta name="generator" content="Org mode" />
-<meta name="author" content="yunlong zeng" />
+<meta name="author" content="a" />
 <link rel="stylesheet" title="Standard" href="/html/style/worg.css" type="text/css" />
 <link rel="alternate stylesheet" title="Zenburn" href="/html/style/worg-zenburn.css" type="text/css" />
 <link rel="alternate stylesheet" title="Classic" href="/html/style/worg-classic.css" type="text/css" />
@@ -98,8 +98,8 @@ fathom('trackPageview');
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#org824e37c">install</a></li>
-<li><a href="#org6b36f50">Step 2 — Executing the Docker Command Without Sudo (Optional)</a></li>
+<li><a href="#orgb2d543c">install</a></li>
+<li><a href="#orgf37c54c">Step 2 — Executing the Docker Command Without Sudo (Optional)</a></li>
 </ul>
 </div>
 </div>
@@ -107,41 +107,41 @@ fathom('trackPageview');
 <a href="../index.html">{Back to site's index}</a>
 </p>
 
-<div id="outline-container-org824e37c" class="outline-2">
-<h2 id="org824e37c">install</h2>
-<div class="outline-text-2" id="text-org824e37c">
+<div id="outline-container-orgb2d543c" class="outline-2">
+<h2 id="orgb2d543c">install</h2>
+<div class="outline-text-2" id="text-orgb2d543c">
 <p>
 <a href="https://docs.docker.com/engine/install/ubuntu/">https://docs.docker.com/engine/install/ubuntu/</a>
 </p>
 </div>
 </div>
 
-<div id="outline-container-org6b36f50" class="outline-2">
-<h2 id="org6b36f50">Step 2 — Executing the Docker Command Without Sudo (Optional)</h2>
-<div class="outline-text-2" id="text-org6b36f50">
+<div id="outline-container-orgf37c54c" class="outline-2">
+<h2 id="orgf37c54c">Step 2 — Executing the Docker Command Without Sudo (Optional)</h2>
+<div class="outline-text-2" id="text-orgf37c54c">
 <p>
 <a href="https://www.digitalocean.com/community/tutorials/how-to-install-and-use-docker-on-ubuntu-18-04">https://www.digitalocean.com/community/tutorials/how-to-install-and-use-docker-on-ubuntu-18-04</a>
 </p>
 
 <div class="org-src-container">
-<pre class="src src-shell"><span style="color: #579C4C; background-color: #292e34;"># </span><span style="color: #579C4C; background-color: #292e34;">If you want to avoid typing sudo whenever you run the docker command, add your username to the docker group:</span>
+<pre class="src src-shell"><span style="color: #579C4C;"># </span><span style="color: #579C4C;">If you want to avoid typing sudo whenever you run the docker command, add your username to the docker group:</span>
 
 sudo usermod -aG docker ${<span style="color: #d4d4d4;">USER</span>}
 
-<span style="color: #579C4C; background-color: #292e34;"># </span><span style="color: #579C4C; background-color: #292e34;">To apply the new group membership, log out of the server and back in, or type the following:</span>
+<span style="color: #579C4C;"># </span><span style="color: #579C4C;">To apply the new group membership, log out of the server and back in, or type the following:</span>
 
 su - ${<span style="color: #d4d4d4;">USER</span>}
-<span style="color: #579C4C; background-color: #292e34;"># </span><span style="color: #579C4C; background-color: #292e34;">You will be prompted to enter your user&#8217;s password to continue.</span>
+<span style="color: #579C4C;"># </span><span style="color: #579C4C;">You will be prompted to enter your user&#8217;s password to continue.</span>
 
-<span style="color: #579C4C; background-color: #292e34;"># </span><span style="color: #579C4C; background-color: #292e34;">Confirm that your user is now added to the docker group by typing:</span>
+<span style="color: #579C4C;"># </span><span style="color: #579C4C;">Confirm that your user is now added to the docker group by typing:</span>
 
 id -nG
 
-<span style="color: #579C4C; background-color: #292e34;"># </span><span style="color: #579C4C; background-color: #292e34;">Output</span>
+<span style="color: #579C4C;"># </span><span style="color: #579C4C;">Output</span>
 
 sammy sudo docker
 
-<span style="color: #579C4C; background-color: #292e34;"># </span><span style="color: #579C4C; background-color: #292e34;">If you need to add a user to the docker group that you&#8217;re not logged in as, declare that username explicitly using:</span>
+<span style="color: #579C4C;"># </span><span style="color: #579C4C;">If you need to add a user to the docker group that you&#8217;re not logged in as, declare that username explicitly using:</span>
 
 sudo usermod -aG docker username
 </pre>

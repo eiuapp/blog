@@ -3,12 +3,12 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2020-05-13 Wed 19:57 -->
+<!-- 2020-07-30 Thu 16:11 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>egg data type</title>
 <meta name="generator" content="Org mode" />
-<meta name="author" content="yunlong zeng" />
+<meta name="author" content="a" />
 <link rel="stylesheet" title="Standard" href="/html/style/worg.css" type="text/css" />
 <link rel="alternate stylesheet" title="Zenburn" href="/html/style/worg-zenburn.css" type="text/css" />
 <link rel="alternate stylesheet" title="Classic" href="/html/style/worg-classic.css" type="text/css" />
@@ -98,13 +98,17 @@ fathom('trackPageview');
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#org3e1419c">enum</a></li>
-<li><a href="#org819568c">DATE</a>
+<li><a href="#org5f543cb">enum</a>
 <ul>
-<li><a href="#orgf9d6660">自定义 DATE 输出的格式</a>
+<li><a href="#orgd2973e2">validate</a></li>
+</ul>
+</li>
+<li><a href="#org7966861">DATE</a>
 <ul>
-<li><a href="#orgd94cf0c">目标</a></li>
-<li><a href="#org428c26d">step</a></li>
+<li><a href="#orga559dad">自定义 DATE 输出的格式</a>
+<ul>
+<li><a href="#org5f8856b">目标</a></li>
+<li><a href="#orgf51053e">step</a></li>
 </ul>
 </li>
 </ul>
@@ -116,9 +120,9 @@ fathom('trackPageview');
 <a href="../index.html">{Back to site's index}</a>
 </p>
 
-<div id="outline-container-org3e1419c" class="outline-2">
-<h2 id="org3e1419c">enum</h2>
-<div class="outline-text-2" id="text-org3e1419c">
+<div id="outline-container-org5f543cb" class="outline-2">
+<h2 id="org5f543cb">enum</h2>
+<div class="outline-text-2" id="text-org5f543cb">
 <p>
 里面的item, 只能是 string类型
 </p>
@@ -150,28 +154,42 @@ Using environment "development".
 ERROR: type "public.enum_ums_users_enable_status" does not exist
 </p>
 </div>
+
+<div id="outline-container-orgd2973e2" class="outline-3">
+<h3 id="orgd2973e2">validate</h3>
+<div class="outline-text-3" id="text-orgd2973e2">
+<div class="org-src-container">
+<pre class="src src-javascript"><span style="color: #00bfff;">const</span> <span style="color: #d4d4d4;">rule</span> = {
+  audit_status: { type: <span style="color: #daa520;">'enum'</span>, values: [<span style="color: #daa520;">'nonexistent'</span>, <span style="color: #daa520;">'pending'</span>, <span style="color: #daa520;">'resolved'</span>, <span style="color: #daa520;">'rejected'</span>, <span style="color: #daa520;">'canceled'</span>] },
+};
+ctx.validate(rule);
+<span style="color: #00bfff;">const</span> { audit_status } = ctx.request.body;
+</pre>
+</div>
+</div>
+</div>
 </div>
 
-<div id="outline-container-org819568c" class="outline-2">
-<h2 id="org819568c">DATE</h2>
-<div class="outline-text-2" id="text-org819568c">
+<div id="outline-container-org7966861" class="outline-2">
+<h2 id="org7966861">DATE</h2>
+<div class="outline-text-2" id="text-org7966861">
 </div>
-<div id="outline-container-orgf9d6660" class="outline-3">
-<h3 id="orgf9d6660">自定义 DATE 输出的格式</h3>
-<div class="outline-text-3" id="text-orgf9d6660">
+<div id="outline-container-orga559dad" class="outline-3">
+<h3 id="orga559dad">自定义 DATE 输出的格式</h3>
+<div class="outline-text-3" id="text-orga559dad">
 </div>
-<div id="outline-container-orgd94cf0c" class="outline-4">
-<h4 id="orgd94cf0c">目标</h4>
-<div class="outline-text-4" id="text-orgd94cf0c">
+<div id="outline-container-org5f8856b" class="outline-4">
+<h4 id="org5f8856b">目标</h4>
+<div class="outline-text-4" id="text-org5f8856b">
 <p>
 在 egg/app.js 中，转换一下输出的形式为： <code>YYYY-MM-DD HH: mm:ss</code>
 </p>
 </div>
 </div>
 
-<div id="outline-container-org428c26d" class="outline-4">
-<h4 id="org428c26d">step</h4>
-<div class="outline-text-4" id="text-org428c26d">
+<div id="outline-container-orgf51053e" class="outline-4">
+<h4 id="orgf51053e">step</h4>
+<div class="outline-text-4" id="text-orgf51053e">
 <p>
 当在 schema 环节，定义了数据类型为 DATE 时，
 </p>
@@ -182,16 +200,16 @@ ERROR: type "public.enum_ums_users_enable_status" does not exist
 <div class="org-src-container">
 <pre class="src src-javascript">module.exports = {
   up: (queryInterface, Sequelize) =&gt; {
-    <span style="color: #2aa1ae; background-color: #292e34;">/*</span>
-<span style="color: #2aa1ae; background-color: #292e34;">      Add altering commands here.</span>
-<span style="color: #2aa1ae; background-color: #292e34;">      Return a promise to correctly handle asynchronicity.</span>
+    <span style="color: #579C4C;">/*</span>
+<span style="color: #579C4C;">      Add altering commands here.</span>
+<span style="color: #579C4C;">      Return a promise to correctly handle asynchronicity.</span>
 
-<span style="color: #2aa1ae; background-color: #292e34;">      Example:</span>
-<span style="color: #2aa1ae; background-color: #292e34;">      return queryInterface.createTable('users', { id: Sequelize.INTEGER });</span>
-<span style="color: #2aa1ae; background-color: #292e34;">    */</span>
+<span style="color: #579C4C;">      Example:</span>
+<span style="color: #579C4C;">      return queryInterface.createTable('users', { id: Sequelize.INTEGER });</span>
+<span style="color: #579C4C;">    */</span>
 
-    <span style="color: #00bfff; font-weight: bold;">const</span> { STRING, INTEGER, DATE, ENUM, CHAR } = Sequelize;
-    <span style="color: #00bfff; font-weight: bold;">return</span> queryInterface.createTable(<span style="color: #daa520;">'sms_calendar'</span>, {
+    <span style="color: #00bfff;">const</span> { STRING, INTEGER, DATE, ENUM, CHAR } = Sequelize;
+    <span style="color: #00bfff;">return</span> queryInterface.createTable(<span style="color: #daa520;">'sms_calendar'</span>, {
       schedule_date: {
         type: DATE,
         comment: <span style="color: #daa520;">'&#26085;&#21382;&#20013;&#25351;&#23450;&#30340;&#35745;&#21010;&#26085;&#26399;'</span>,
@@ -208,22 +226,22 @@ ERROR: type "public.enum_ums_users_enable_status" does not exist
 
 <div class="org-src-container">
 <pre class="src src-javascript"><span style="color: #daa520;">'use strict'</span>;
-<span style="color: #00bfff; font-weight: bold;">const</span> <span style="color: #7590db;">start</span> = Date.now();
+<span style="color: #00bfff;">const</span> <span style="color: #d4d4d4;">start</span> = Date.now();
 module.exports = app =&gt; {
   app.logger.debug(<span style="color: #daa520;">'debug info'</span>);
   app.logger.info(<span style="color: #daa520;">'&#21551;&#21160;&#32791;&#26102; %d ms'</span>, Date.now() - start);
   app.logger.warn(<span style="color: #daa520;">'warning!'</span>);
-  app.beforeStart(<span style="color: #00bfff; font-weight: bold;">async</span> () =&gt; {
-    <span style="color: #00bfff; font-weight: bold;">const</span> <span style="color: #7590db;">pg</span> = require(<span style="color: #daa520;">'pg'</span>);
+  app.beforeStart(<span style="color: #00bfff;">async</span> () =&gt; {
+    <span style="color: #00bfff;">const</span> <span style="color: #d4d4d4;">pg</span> = require(<span style="color: #daa520;">'pg'</span>);
 
-    <span style="color: #2aa1ae; background-color: #292e34;">// </span><span style="color: #2aa1ae; background-color: #292e34;">date or datetime</span>
-    pg.types.setTypeParser(<span style="color: #a45bad;">1184</span>, <span style="color: #00bfff; font-weight: bold;">function</span>(<span style="color: #7590db;">value</span>) {
-      <span style="color: #00bfff; font-weight: bold;">return</span> app.formatToDayTime(value);
+    <span style="color: #579C4C;">// </span><span style="color: #579C4C;">date or datetime</span>
+    pg.types.setTypeParser(1184, <span style="color: #00bfff;">function</span>(<span style="color: #d4d4d4;">value</span>) {
+      <span style="color: #00bfff;">return</span> app.formatToDayTime(value);
     });
 
-    <span style="color: #2aa1ae; background-color: #292e34;">// </span><span style="color: #2aa1ae; background-color: #292e34;">timestramp</span>
-    pg.types.setTypeParser(<span style="color: #a45bad;">1114</span>, <span style="color: #00bfff; font-weight: bold;">function</span>(<span style="color: #7590db;">value</span>) {
-      <span style="color: #00bfff; font-weight: bold;">return</span> app.formatToDayTime(value);
+    <span style="color: #579C4C;">// </span><span style="color: #579C4C;">timestramp</span>
+    pg.types.setTypeParser(1114, <span style="color: #00bfff;">function</span>(<span style="color: #d4d4d4;">value</span>) {
+      <span style="color: #00bfff;">return</span> app.formatToDayTime(value);
     });
   });
   app.logger.info(<span style="color: #daa520;">'parent execArgv: '</span> + process.execArgv);
@@ -239,9 +257,9 @@ module.exports = app =&gt; {
 </p>
 
 <div class="org-src-container">
-<pre class="src src-javascript">formatToDayTime(date = <span style="color: #00bfff; font-weight: bold;">new</span> <span style="color: #ce537a; font-weight: bold;">Date</span>()) {
-  date = <span style="color: #00bfff; font-weight: bold;">new</span> <span style="color: #ce537a; font-weight: bold;">Date</span>(date)
-  <span style="color: #00bfff; font-weight: bold;">return</span> fecha.format(date, <span style="color: #daa520;">'YYYY-MM-DD HH: mm:ss'</span>);
+<pre class="src src-javascript">formatToDayTime(date = <span style="color: #00bfff;">new</span> <span style="color: #d4d4d4;">Date</span>()) {
+  date = <span style="color: #00bfff;">new</span> <span style="color: #d4d4d4;">Date</span>(date)
+  <span style="color: #00bfff;">return</span> fecha.format(date, <span style="color: #daa520;">'YYYY-MM-DD HH: mm:ss'</span>);
 },
 </pre>
 </div>

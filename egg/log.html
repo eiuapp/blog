@@ -1,0 +1,197 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<!-- 2020-07-30 Thu 16:11 -->
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>egg 配置 log 中间件</title>
+<meta name="generator" content="Org mode" />
+<meta name="author" content="a" />
+<link rel="stylesheet" title="Standard" href="/html/style/worg.css" type="text/css" />
+<link rel="alternate stylesheet" title="Zenburn" href="/html/style/worg-zenburn.css" type="text/css" />
+<link rel="alternate stylesheet" title="Classic" href="/html/style/worg-classic.css" type="text/css" />
+<link rel="SHORTCUT ICON" href="/html/style/org-mode-unicorn.ico" type="image/x-icon" />
+<link rel="icon" href="/html/style/org-mode-unicorn.ico" type="image/ico" />
+<script type="text/javascript">
+/*
+@licstart  The following is the entire license notice for the
+JavaScript code in this tag.
+
+Copyright (C) 2012-2019 Free Software Foundation, Inc.
+
+The JavaScript code in this tag is free software: you can
+redistribute it and/or modify it under the terms of the GNU
+General Public License (GNU GPL) as published by the Free Software
+Foundation, either version 3 of the License, or (at your option)
+any later version.  The code is distributed WITHOUT ANY WARRANTY;
+without even the implied warranty of MERCHANTABILITY or FITNESS
+FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
+
+As additional permission under GNU GPL version 3 section 7, you
+may distribute non-source (e.g., minimized or compacted) forms of
+that code without the copy of the GNU GPL normally required by
+section 4, provided you include this license notice and a URL
+through which recipients can access the Corresponding Source.
+
+
+@licend  The above is the entire license notice
+for the JavaScript code in this tag.
+*/
+<!--/*--><![CDATA[/*><!--*/
+ function CodeHighlightOn(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(null != target) {
+     elem.cacheClassElem = elem.className;
+     elem.cacheClassTarget = target.className;
+     target.className = "code-highlighted";
+     elem.className   = "code-highlighted";
+   }
+ }
+ function CodeHighlightOff(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(elem.cacheClassElem)
+     elem.className = elem.cacheClassElem;
+   if(elem.cacheClassTarget)
+     target.className = elem.cacheClassTarget;
+ }
+/*]]>*///-->
+</script>
+</head>
+<body>
+<div id="preamble" class="status">
+<script type="text/javascript">
+  document.addEventListener('DOMContentLoaded',function() {
+      document.getElementById("table-of-contents").onclick = function() {
+          var elem = document.getElementById("text-table-of-contents");
+          elem.style.display = elem.style.display == "block" ? "none" : "block";
+      }
+  });
+
+  var url = document.location.href;
+  var orgsource = url.substring(0, url.lastIndexOf("."))+".org.html";
+  function show_org_source(){
+      document.location.href = orgsource;
+  }
+</script>
+
+<script>
+(function(f, a, t, h, o, m){
+	a[h]=a[h]||function(){
+		(a[h].q=a[h].q||[]).push(arguments)
+	};
+	o=f.createElement('script'),
+	m=f.getElementsByTagName('script')[0];
+	o.async=1; o.src=t; o.id='fathom-script';
+	m.parentNode.insertBefore(o,m)
+})(document, window, '//stats.orgmode.org/tracker.js', 'fathom');
+fathom('set', 'siteId', 'NWSQJ');
+fathom('trackPageview');
+</script>
+</div>
+<div id="content">
+<h1 class="title">egg 配置 log 中间件</h1>
+<div id="table-of-contents">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#org387bc15">code</a></li>
+<li><a href="#org44d9593">middleware/log.js</a></li>
+<li><a href="#orgcd3c9bb">req.headers['x-forwarded-for']</a>
+<ul>
+<li><a href="#org5071a74">req.headers['x-forwarded-for']</a></li>
+</ul>
+</li>
+<li><a href="#org30863f3">nginx配置　X-Forwarded-For</a></li>
+</ul>
+</div>
+</div>
+<p>
+<a href="../index.html">{Back to site's index}</a>
+</p>
+
+<p>
+egg 配置 log 中间件
+</p>
+
+<div id="outline-container-org387bc15" class="outline-2">
+<h2 id="org387bc15">code</h2>
+<div class="outline-text-2" id="text-org387bc15">
+<ul class="org-ul">
+<li><a href="https://github.com/klren0312/ironInfoWeapp/blob/master/ApiServer/app/middleware/log.js">https://github.com/klren0312/ironInfoWeapp/blob/master/ApiServer/app/middleware/log.js</a></li>
+<li><a href="https://github.com/klren0312/ironInfoWeapp/blob/master/ApiServer/app/service/log.js">https://github.com/klren0312/ironInfoWeapp/blob/master/ApiServer/app/service/log.js</a></li>
+<li><a href="https://github.com/klren0312/ironInfoWeapp/blob/master/ApiServer/app/model/log.js">https://github.com/klren0312/ironInfoWeapp/blob/master/ApiServer/app/model/log.js</a></li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org44d9593" class="outline-2">
+<h2 id="org44d9593">middleware/log.js</h2>
+<div class="outline-text-2" id="text-org44d9593">
+<div class="org-src-container">
+<pre class="src src-javascript">log.addLog({
+  admin: res.username,
+  ip: req.headers[<span style="color: #daa520;">'x-forwarded-for'</span>] || req.connection.remoteAddress,
+  time: moment().format(<span style="color: #daa520;">'YYYY-MM-DD HH:mm:ss'</span>),
+  comment: request.method + <span style="color: #daa520;">' '</span> + request.path,
+  user_id: res.id,
+});
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgcd3c9bb" class="outline-2">
+<h2 id="orgcd3c9bb">req.headers['x-forwarded-for']</h2>
+<div class="outline-text-2" id="text-orgcd3c9bb">
+<p>
+这里使用了 req.headers['x-forwarded-for'] ,　所以　nginx配置　X-Forwarded-For 防止伪造ip
+</p>
+</div>
+
+<div id="outline-container-org5071a74" class="outline-3">
+<h3 id="org5071a74">req.headers['x-forwarded-for']</h3>
+<div class="outline-text-3" id="text-org5071a74">
+<p>
+这里nginx的配置，X-Real-IP，　X-Forwarded-For，会加到 ctx.req.headers 中去 req.headers['x-real-ip'], req.headers['x-forwarded-for']
+</p>
+</div>
+</div>
+</div>
+<div id="outline-container-org30863f3" class="outline-2">
+<h2 id="org30863f3">nginx配置　X-Forwarded-For</h2>
+<div class="outline-text-2" id="text-org30863f3">
+<ul class="org-ul">
+<li><a href="https://www.cnblogs.com/wulm/p/9817319.html">https://www.cnblogs.com/wulm/p/9817319.html</a></li>
+</ul>
+
+<p>
+nginx配置
+</p>
+
+<div class="org-src-container">
+<pre class="src src-example">server {
+    listen 7031;
+    server_name 192.168.168.137;
+    index index.html index.htm index.jsp; # 设定访问的默认首页地址
+
+    location /api/v1/ {
+        proxy_set_header X-Real-IP $remote_addr;
+        proxy_set_header X-Forwarded-For $remote_addr;
+
+        proxy_pass http://127.0.0.1:7020/;
+        proxy_buffer_size          128k;
+        proxy_buffers              4 256k;
+        proxy_busy_buffers_size    256k;
+    }
+}
+</pre>
+</div>
+</div>
+</div>
+</div>
+</body>
+</html>

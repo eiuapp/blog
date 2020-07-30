@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<!-- 2020-07-30 Thu 16:13 -->
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>npm lodash</title>
+<meta name="generator" content="Org mode" />
+<meta name="author" content="a" />
+<link rel="stylesheet" title="Standard" href="/html/style/worg.css" type="text/css" />
+<link rel="alternate stylesheet" title="Zenburn" href="/html/style/worg-zenburn.css" type="text/css" />
+<link rel="alternate stylesheet" title="Classic" href="/html/style/worg-classic.css" type="text/css" />
+<link rel="SHORTCUT ICON" href="/html/style/org-mode-unicorn.ico" type="image/x-icon" />
+<link rel="icon" href="/html/style/org-mode-unicorn.ico" type="image/ico" />
+<script type="text/javascript">
+/*
+@licstart  The following is the entire license notice for the
+JavaScript code in this tag.
+
+Copyright (C) 2012-2019 Free Software Foundation, Inc.
+
+The JavaScript code in this tag is free software: you can
+redistribute it and/or modify it under the terms of the GNU
+General Public License (GNU GPL) as published by the Free Software
+Foundation, either version 3 of the License, or (at your option)
+any later version.  The code is distributed WITHOUT ANY WARRANTY;
+without even the implied warranty of MERCHANTABILITY or FITNESS
+FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
+
+As additional permission under GNU GPL version 3 section 7, you
+may distribute non-source (e.g., minimized or compacted) forms of
+that code without the copy of the GNU GPL normally required by
+section 4, provided you include this license notice and a URL
+through which recipients can access the Corresponding Source.
+
+
+@licend  The above is the entire license notice
+for the JavaScript code in this tag.
+*/
+<!--/*--><![CDATA[/*><!--*/
+ function CodeHighlightOn(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(null != target) {
+     elem.cacheClassElem = elem.className;
+     elem.cacheClassTarget = target.className;
+     target.className = "code-highlighted";
+     elem.className   = "code-highlighted";
+   }
+ }
+ function CodeHighlightOff(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(elem.cacheClassElem)
+     elem.className = elem.cacheClassElem;
+   if(elem.cacheClassTarget)
+     target.className = elem.cacheClassTarget;
+ }
+/*]]>*///-->
+</script>
+</head>
+<body>
+<div id="preamble" class="status">
+<script type="text/javascript">
+  document.addEventListener('DOMContentLoaded',function() {
+      document.getElementById("table-of-contents").onclick = function() {
+          var elem = document.getElementById("text-table-of-contents");
+          elem.style.display = elem.style.display == "block" ? "none" : "block";
+      }
+  });
+
+  var url = document.location.href;
+  var orgsource = url.substring(0, url.lastIndexOf("."))+".org.html";
+  function show_org_source(){
+      document.location.href = orgsource;
+  }
+</script>
+
+<script>
+(function(f, a, t, h, o, m){
+	a[h]=a[h]||function(){
+		(a[h].q=a[h].q||[]).push(arguments)
+	};
+	o=f.createElement('script'),
+	m=f.getElementsByTagName('script')[0];
+	o.async=1; o.src=t; o.id='fathom-script';
+	m.parentNode.insertBefore(o,m)
+})(document, window, '//stats.orgmode.org/tracker.js', 'fathom');
+fathom('set', 'siteId', 'NWSQJ');
+fathom('trackPageview');
+</script>
+</div>
+<div id="content">
+<h1 class="title">npm lodash</h1>
+<div id="table-of-contents">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#org6b80dc5">判断是否为空</a></li>
+<li><a href="#orgfae09d1">Lodash中十个常用的工具函数</a></li>
+</ul>
+</div>
+</div>
+<p>
+<a href="../index.html">{Back to site's index}</a>
+</p>
+
+<div id="outline-container-org6b80dc5" class="outline-2">
+<h2 id="org6b80dc5">判断是否为空</h2>
+<div class="outline-text-2" id="text-org6b80dc5">
+<ul class="org-ul">
+<li><a href="https://www.hangge.com/blog/cache/detail_2580.html">https://www.hangge.com/blog/cache/detail_2580.html</a></li>
+
+<li>isEmpty</li>
+<li>isNaN</li>
+<li>isUndefined</li>
+<li>isNull</li>
+<li>isNil（同时检查 null 或者 undefined）</li>
+</ul>
+
+<div class="org-src-container">
+<pre class="src src-javascript"><span style="color: #00bfff;">const</span> { isNull, isEmpty } = require(<span style="color: #daa520;">'lodash'</span>);
+console.log(isNull(<span style="color: #339CDB;">null</span>));
+console.log(isNull(12));
+console.log(isEmpty({}));
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgfae09d1" class="outline-2">
+<h2 id="orgfae09d1">Lodash中十个常用的工具函数</h2>
+<div class="outline-text-2" id="text-orgfae09d1">
+<ul class="org-ul">
+<li><a href="https://www.iteye.com/news/31130">https://www.iteye.com/news/31130</a></li>
+
+<li>循环N次</li>
+<li>迭代数组并返回每一项中深度嵌套的属性</li>
+<li>创建一个大小为N的数组，并且为他们添加相同的前缀</li>
+<li>避免使用.bind(null,&#x2026;)</li>
+<li>深度克隆JavaScript对象</li>
+<li>在指定范围内获取一个随机值</li>
+<li>扩展对象</li>
+<li>去掉对象的某些属性</li>
+<li>从某个对象中选择部分属性组成新的对象</li>
+<li>从列表中随机的选择列表项</li>
+<li>JSON.parse的错误处理</li>
+</ul>
+</div>
+</div>
+</div>
+</body>
+</html>

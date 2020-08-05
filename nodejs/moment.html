@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2020-07-30 Thu 16:11 -->
+<!-- 2020-08-05 Wed 18:10 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>moment</title>
@@ -98,7 +98,14 @@ fathom('trackPageview');
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#org27e94e9">between</a></li>
+<li><a href="#org7959bc9">between</a></li>
+<li><a href="#orgd5d275a">moment.js获取当月、当周、当天、n天前、n天后的时间</a>
+<ul>
+<li><a href="#org1e3b354">根据 moment.js 获取开始结束时间段</a></li>
+<li><a href="#org4b37a28">根据 moment.js 计算时间</a></li>
+<li><a href="#orgefee08f">example</a></li>
+</ul>
+</li>
 </ul>
 </div>
 </div>
@@ -106,9 +113,9 @@ fathom('trackPageview');
 <a href="../index.html">{Back to site's index}</a>
 </p>
 
-<div id="outline-container-org27e94e9" class="outline-2">
-<h2 id="org27e94e9">between</h2>
-<div class="outline-text-2" id="text-org27e94e9">
+<div id="outline-container-org7959bc9" class="outline-2">
+<h2 id="org7959bc9">between</h2>
+<div class="outline-text-2" id="text-org7959bc9">
 <div class="org-src-container">
 <pre class="src src-javascript"><span style="color: #00bfff;">const</span> <span style="color: #d4d4d4;">moment</span> = require(<span style="color: #daa520;">'moment'</span>);
 <span style="color: #579C4C;">// </span><span style="color: #579C4C;">let a = moment('2010-10-20').isBetween('2010-10-19', '2010-10-25'); // true</span>
@@ -130,6 +137,107 @@ console.log(<span style="color: #daa520;">`start: ${start}, end: ${end}`</span>)
 <span style="color: #00bfff;">let</span> <span style="color: #d4d4d4;">c</span> = now.isBetween(moment(start), moment(end));
 console.log(<span style="color: #daa520;">`c: ${c}`</span>)
 </pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgd5d275a" class="outline-2">
+<h2 id="orgd5d275a">moment.js获取当月、当周、当天、n天前、n天后的时间</h2>
+<div class="outline-text-2" id="text-orgd5d275a">
+<ul class="org-ul">
+<li><a href="https://www.jianshu.com/p/e085152c38f9">https://www.jianshu.com/p/e085152c38f9</a></li>
+</ul>
+</div>
+
+<div id="outline-container-org1e3b354" class="outline-3">
+<h3 id="org1e3b354">根据 moment.js 获取开始结束时间段</h3>
+<div class="outline-text-3" id="text-org1e3b354">
+<p>
+moment().startOf(String)  <i>/  开始时间
+moment().endOf(String)  /</i>  结束时间
+</p>
+</div>
+</div>
+<div id="outline-container-org4b37a28" class="outline-3">
+<h3 id="org4b37a28">根据 moment.js 计算时间</h3>
+<div class="outline-text-3" id="text-org4b37a28">
+<p>
+moment().add(Number, String);  <i>/  加法
+moment().subtract(Number, String);  /</i>  减法
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgefee08f" class="outline-3">
+<h3 id="orgefee08f">example</h3>
+<div class="outline-text-3" id="text-orgefee08f">
+<div class="org-src-container">
+<pre class="src src-javascript"><span style="color: #579C4C;">// </span><span style="color: #579C4C;">&#33719;&#21462;&#24403;&#22825;&#30340;&#24320;&#22987;&#32467;&#26463;&#26102;&#38388;</span>
+<span style="color: #00bfff;">function</span> <span style="color: #F94949;">getCurrentDays</span>() {
+  <span style="color: #00bfff;">const</span> <span style="color: #d4d4d4;">startDate</span> = moment().startOf(<span style="color: #daa520;">"days"</span>).format(<span style="color: #daa520;">"YYYY-MM-DD"</span>);
+  <span style="color: #00bfff;">const</span> <span style="color: #d4d4d4;">endDate</span> = moment().endOf(<span style="color: #daa520;">"days"</span>).format(<span style="color: #daa520;">"YYYY-MM-DD"</span>);
+  <span style="color: #00bfff;">return</span> [startDate, endDate];
+}
+
+<span style="color: #579C4C;">// </span><span style="color: #579C4C;">&#33719;&#21462;&#24403;&#21608;&#30340;&#24320;&#22987;&#32467;&#26463;&#26102;&#38388;&#65292;&#21608;&#26085;&#33267;&#21608;&#19968;</span>
+<span style="color: #00bfff;">function</span> <span style="color: #F94949;">getCurrentWeekdays</span>() {
+  <span style="color: #00bfff;">const</span> <span style="color: #d4d4d4;">startDate</span> = moment().startOf(<span style="color: #daa520;">"weeks"</span>).format(<span style="color: #daa520;">"YYYY-MM-DD"</span>);
+  <span style="color: #00bfff;">const</span> <span style="color: #d4d4d4;">endDate</span> = moment().endOf(<span style="color: #daa520;">"weeks"</span>).format(<span style="color: #daa520;">"YYYY-MM-DD"</span>);
+  <span style="color: #00bfff;">return</span> [startDate, endDate];
+}
+
+<span style="color: #579C4C;">// </span><span style="color: #579C4C;">&#33719;&#21462;&#24403;&#26376;&#30340;&#24320;&#22987;&#32467;&#26463;&#26102;&#38388;</span>
+<span style="color: #00bfff;">function</span> <span style="color: #F94949;">getCurrentMonth</span>() {
+  <span style="color: #00bfff;">const</span> <span style="color: #d4d4d4;">startDate</span> = moment().startOf(<span style="color: #daa520;">"month"</span>).format(<span style="color: #daa520;">"YYYY-MM-DD"</span>);
+  <span style="color: #00bfff;">const</span> <span style="color: #d4d4d4;">endDate</span> = moment().endOf(<span style="color: #daa520;">"month"</span>).format(<span style="color: #daa520;">"YYYY-MM-DD"</span>);
+  <span style="color: #00bfff;">return</span> [startDate, endDate];
+}
+
+<span style="color: #579C4C;">// </span><span style="color: #579C4C;">&#33719;&#21462;&#19978;&#21608;&#30340;&#24320;&#22987;&#32467;&#26463;&#26102;&#38388;</span>
+<span style="color: #00bfff;">function</span> <span style="color: #F94949;">getLastWeekdays</span>() {
+  <span style="color: #00bfff;">const</span> <span style="color: #d4d4d4;">startDate</span> = moment().week(moment().week() - 1).startOf(<span style="color: #daa520;">"weeks"</span>).format(<span style="color: #daa520;">"YYYY-MM-DD"</span>);
+  <span style="color: #00bfff;">const</span> <span style="color: #d4d4d4;">endDate</span> = moment().week(moment().week() - 1).endOf(<span style="color: #daa520;">"weeks"</span>).format(<span style="color: #daa520;">"YYYY-MM-DD"</span>);
+  <span style="color: #00bfff;">return</span> [startDate, endDate];
+}
+
+<span style="color: #579C4C;">// </span><span style="color: #579C4C;">&#33719;&#21462;&#19978;&#26376;&#30340;&#24320;&#22987;&#32467;&#26463;&#26102;&#38388;</span>
+<span style="color: #00bfff;">function</span> <span style="color: #F94949;">getLastMonth</span>() {
+  <span style="color: #00bfff;">const</span> <span style="color: #d4d4d4;">startDate</span> = moment().month(moment().month() - 1).startOf(<span style="color: #daa520;">"month"</span>).format(<span style="color: #daa520;">"YYYY-MM-DD"</span>);
+  <span style="color: #00bfff;">const</span> <span style="color: #d4d4d4;">endDate</span> = moment().month(moment().month() - 1).endOf(<span style="color: #daa520;">"month"</span>).format(<span style="color: #daa520;">"YYYY-MM-DD"</span>);
+  <span style="color: #00bfff;">return</span> [startDate, endDate];
+}
+
+<span style="color: #579C4C;">// </span><span style="color: #579C4C;">&#33719;&#21462;&#19979;&#21608;&#30340;&#24320;&#22987;&#32467;&#26463;&#26102;&#38388;</span>
+<span style="color: #00bfff;">function</span> <span style="color: #F94949;">getNextWeekdays</span>() {
+  <span style="color: #00bfff;">const</span> <span style="color: #d4d4d4;">startDate</span> = moment().week(moment().week() + 1).startOf(<span style="color: #daa520;">"weeks"</span>).format(<span style="color: #daa520;">"YYYY-MM-DD"</span>);
+  <span style="color: #00bfff;">const</span> <span style="color: #d4d4d4;">endDate</span> = moment().week(moment().week() + 1).endOf(<span style="color: #daa520;">"weeks"</span>).format(<span style="color: #daa520;">"YYYY-MM-DD"</span>);
+  <span style="color: #00bfff;">return</span> [startDate, endDate];
+}
+
+<span style="color: #579C4C;">// </span><span style="color: #579C4C;">&#33719;&#21462;&#19979;&#26376;&#30340;&#24320;&#22987;&#32467;&#26463;&#26102;&#38388;</span>
+<span style="color: #00bfff;">function</span> <span style="color: #F94949;">getNextMonth</span>() {
+  <span style="color: #00bfff;">const</span> <span style="color: #d4d4d4;">startDate</span> = moment().month(moment().month() + 1).startOf(<span style="color: #daa520;">"month"</span>).format(<span style="color: #daa520;">"YYYY-MM-DD"</span>);
+  <span style="color: #00bfff;">const</span> <span style="color: #d4d4d4;">endDate</span> = moment().month(moment().month() + 1).endOf(<span style="color: #daa520;">"month"</span>).format(<span style="color: #daa520;">"YYYY-MM-DD"</span>);
+  <span style="color: #00bfff;">return</span> [startDate, endDate];
+}
+
+<span style="color: #579C4C;">// </span><span style="color: #579C4C;">&#33719;&#21462;n&#22825;&#21069;&#30340;&#24320;&#22987;&#32467;&#26463;&#26102;&#38388;</span>
+<span style="color: #00bfff;">function</span> <span style="color: #F94949;">getBefore3days</span>() {
+  <span style="color: #579C4C;">// </span><span style="color: #579C4C;">&#20943;&#27861; moment.subtract(number, String)</span>
+  <span style="color: #00bfff;">const</span> <span style="color: #d4d4d4;">startDate</span> = moment().subtract(3, <span style="color: #daa520;">'days'</span>).format(<span style="color: #daa520;">"YYYY-MM-DD"</span>);
+  <span style="color: #00bfff;">const</span> <span style="color: #d4d4d4;">endDate</span> = moment().subtract(3, <span style="color: #daa520;">'days'</span>).format(<span style="color: #daa520;">"YYYY-MM-DD"</span>);
+  <span style="color: #00bfff;">return</span> [startDate, endDate];
+}
+
+<span style="color: #579C4C;">// </span><span style="color: #579C4C;">&#33719;&#21462;n&#22825;&#21518;&#30340;&#24320;&#22987;&#32467;&#26463;&#26102;&#38388;</span>
+<span style="color: #00bfff;">function</span> <span style="color: #F94949;">getAfter3days</span>() {
+  <span style="color: #579C4C;">// </span><span style="color: #579C4C;">&#20943;&#27861; moment.add(number, String)</span>
+  <span style="color: #00bfff;">const</span> <span style="color: #d4d4d4;">startDate</span> = moment().add(3, <span style="color: #daa520;">'days'</span>).format(<span style="color: #daa520;">"YYYY-MM-DD"</span>);
+  <span style="color: #00bfff;">const</span> <span style="color: #d4d4d4;">endDate</span> = moment().add(3, <span style="color: #daa520;">'days'</span>).format(<span style="color: #daa520;">"YYYY-MM-DD"</span>);
+  <span style="color: #00bfff;">return</span> [startDate, endDate];
+}
+</pre>
+</div>
 </div>
 </div>
 </div>

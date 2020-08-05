@@ -6,7 +6,7 @@
 <!-- 2020-08-05 Wed 18:11 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>dotnet plugins</title>
+<title>emacs load path</title>
 <meta name="generator" content="Org mode" />
 <meta name="author" content="a" />
 <link rel="stylesheet" title="Standard" href="/html/style/worg.css" type="text/css" />
@@ -93,12 +93,13 @@ fathom('trackPageview');
 </script>
 </div>
 <div id="content">
-<h1 class="title">dotnet plugins</h1>
+<h1 class="title">emacs load path</h1>
 <div id="table-of-contents">
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#org7b405c7">NPOI - 纯.NET实现的Office文件读写组件</a></li>
+<li><a href="#org0481328">让某个目录和它所有的子目录都加入到load-path</a></li>
+<li><a href="#orgb737eb4">load-path</a></li>
 </ul>
 </div>
 </div>
@@ -106,8 +107,33 @@ fathom('trackPageview');
 <a href="../index.html">{Back to site's index}</a>
 </p>
 
-<div id="outline-container-org7b405c7" class="outline-2">
-<h2 id="org7b405c7">NPOI - 纯.NET实现的Office文件读写组件</h2>
+<div id="outline-container-org0481328" class="outline-2">
+<h2 id="org0481328">让某个目录和它所有的子目录都加入到load-path</h2>
+<div class="outline-text-2" id="text-org0481328">
+<div class="org-src-container">
+<pre class="src src-elisp"><span style="color: #579C4C;">;; </span><span style="color: #579C4C;">&#23450;&#20041;&#19968;&#20123;&#21551;&#21160;&#30446;&#24405;&#65292;&#26041;&#20415;&#19979;&#27425;&#36801;&#31227;&#20462;&#25913;</span>
+(<span style="color: #00bfff;">defvar</span> <span style="color: #d4d4d4;">addition-lazycat-emacs-root-dir</span> (file-truename <span style="color: #daa520;">"~/lazycat-emacs/self/site-lisp"</span>))
+
+<span style="color: #579C4C;">;; </span><span style="color: #579C4C;">&#35753;&#26576;&#20010;&#30446;&#24405;&#21644;&#23427;&#25152;&#26377;&#30340;&#23376;&#30446;&#24405;&#37117;&#21152;&#20837;&#21040;load-path(&#24050;&#32463;&#22312;lazycat-emacs/site-start.el&#20013;&#20351;&#29992;)</span>
+(<span style="color: #00bfff;">defun</span> <span style="color: #F94949;">add-subdirs-to-load-path</span> (dir)
+   <span style="color: #999999;">"Recursive add directories to `</span><span style="color: #339CDB;">load-path</span><span style="color: #999999;">'."</span>
+   (<span style="color: #00bfff;">let</span> ((default-directory (file-name-as-directory dir)))
+     (add-to-list 'load-path dir)
+     (normal-top-level-add-subdirs-to-load-path)))
+(add-subdirs-to-load-path addition-lazycat-emacs-root-dir)
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgb737eb4" class="outline-2">
+<h2 id="orgb737eb4">load-path</h2>
+<div class="outline-text-2" id="text-orgb737eb4">
+<div class="org-src-container">
+<pre class="src src-elisp">(add-to-list 'load-path <span style="color: #daa520;">"/a/path/"</span>)
+</pre>
+</div>
+</div>
 </div>
 </div>
 </body>

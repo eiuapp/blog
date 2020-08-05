@@ -3,10 +3,10 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2020-08-05 Wed 18:11 -->
+<!-- 2020-08-05 Wed 18:12 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>dotnet plugins</title>
+<title>Postman Faq</title>
 <meta name="generator" content="Org mode" />
 <meta name="author" content="a" />
 <link rel="stylesheet" title="Standard" href="/html/style/worg.css" type="text/css" />
@@ -93,12 +93,17 @@ fathom('trackPageview');
 </script>
 </div>
 <div id="content">
-<h1 class="title">dotnet plugins</h1>
+<h1 class="title">Postman Faq</h1>
 <div id="table-of-contents">
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#org7b405c7">NPOI - 纯.NET实现的Office文件读写组件</a></li>
+<li><a href="#org2150f12">could not open Postman</a>
+<ul>
+<li><a href="#org89358d7">ubuntu</a></li>
+<li><a href="#org757d0a5">windows</a></li>
+</ul>
+</li>
 </ul>
 </div>
 </div>
@@ -106,8 +111,41 @@ fathom('trackPageview');
 <a href="../index.html">{Back to site's index}</a>
 </p>
 
-<div id="outline-container-org7b405c7" class="outline-2">
-<h2 id="org7b405c7">NPOI - 纯.NET实现的Office文件读写组件</h2>
+<div id="outline-container-org2150f12" class="outline-2">
+<h2 id="org2150f12">could not open Postman</h2>
+<div class="outline-text-2" id="text-org2150f12">
+<p>
+Could not open Postman
+AdapterError : Malformed error from adapter : Should always be an Error instance ,but instead , got :
+&#x2014;
+[OpenFailedError:UpgradeError Dexie specification of currently installed DB version is missing]
+&#x2014;
+Please try restarting the app. If the issue persists, please refer to
+</p>
+</div>
+
+<div id="outline-container-org89358d7" class="outline-3">
+<h3 id="org89358d7">ubuntu</h3>
+<div class="outline-text-3" id="text-org89358d7">
+<p>
+<a href="https://blog.csdn.net/sinat_30254575/article/details/79552769">https://blog.csdn.net/sinat_30254575/article/details/79552769</a> kown, the postman local config files in <code>$HOME/.config/Postman</code>.
+</p>
+
+<p>
+so run <code>mv $HOME/.config/Postman $HOME/.config/Postman.bak</code>.
+</p>
+</div>
+</div>
+
+<div id="outline-container-org757d0a5" class="outline-3">
+<h3 id="org757d0a5">windows</h3>
+<div class="outline-text-3" id="text-org757d0a5">
+<ul class="org-ul">
+<li><a href="https://www.skyfinder.cc/2019/05/07/postmanexception">https://www.skyfinder.cc/2019/05/07/postmanexception</a></li>
+<li><a href="https://www.cnblogs.com/ziyue7575/p/13384111.html">https://www.cnblogs.com/ziyue7575/p/13384111.html</a></li>
+</ul>
+</div>
+</div>
 </div>
 </div>
 </body>

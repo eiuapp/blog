@@ -1,0 +1,268 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<!-- 2020-08-05 Wed 18:11 -->
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>emacs org roam exclude some files</title>
+<meta name="generator" content="Org mode" />
+<meta name="author" content="a" />
+<link rel="stylesheet" title="Standard" href="/html/style/worg.css" type="text/css" />
+<link rel="alternate stylesheet" title="Zenburn" href="/html/style/worg-zenburn.css" type="text/css" />
+<link rel="alternate stylesheet" title="Classic" href="/html/style/worg-classic.css" type="text/css" />
+<link rel="SHORTCUT ICON" href="/html/style/org-mode-unicorn.ico" type="image/x-icon" />
+<link rel="icon" href="/html/style/org-mode-unicorn.ico" type="image/ico" />
+<script type="text/javascript">
+/*
+@licstart  The following is the entire license notice for the
+JavaScript code in this tag.
+
+Copyright (C) 2012-2019 Free Software Foundation, Inc.
+
+The JavaScript code in this tag is free software: you can
+redistribute it and/or modify it under the terms of the GNU
+General Public License (GNU GPL) as published by the Free Software
+Foundation, either version 3 of the License, or (at your option)
+any later version.  The code is distributed WITHOUT ANY WARRANTY;
+without even the implied warranty of MERCHANTABILITY or FITNESS
+FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
+
+As additional permission under GNU GPL version 3 section 7, you
+may distribute non-source (e.g., minimized or compacted) forms of
+that code without the copy of the GNU GPL normally required by
+section 4, provided you include this license notice and a URL
+through which recipients can access the Corresponding Source.
+
+
+@licend  The above is the entire license notice
+for the JavaScript code in this tag.
+*/
+<!--/*--><![CDATA[/*><!--*/
+ function CodeHighlightOn(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(null != target) {
+     elem.cacheClassElem = elem.className;
+     elem.cacheClassTarget = target.className;
+     target.className = "code-highlighted";
+     elem.className   = "code-highlighted";
+   }
+ }
+ function CodeHighlightOff(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(elem.cacheClassElem)
+     elem.className = elem.cacheClassElem;
+   if(elem.cacheClassTarget)
+     target.className = elem.cacheClassTarget;
+ }
+/*]]>*///-->
+</script>
+</head>
+<body>
+<div id="preamble" class="status">
+<script type="text/javascript">
+  document.addEventListener('DOMContentLoaded',function() {
+      document.getElementById("table-of-contents").onclick = function() {
+          var elem = document.getElementById("text-table-of-contents");
+          elem.style.display = elem.style.display == "block" ? "none" : "block";
+      }
+  });
+
+  var url = document.location.href;
+  var orgsource = url.substring(0, url.lastIndexOf("."))+".org.html";
+  function show_org_source(){
+      document.location.href = orgsource;
+  }
+</script>
+
+<script>
+(function(f, a, t, h, o, m){
+	a[h]=a[h]||function(){
+		(a[h].q=a[h].q||[]).push(arguments)
+	};
+	o=f.createElement('script'),
+	m=f.getElementsByTagName('script')[0];
+	o.async=1; o.src=t; o.id='fathom-script';
+	m.parentNode.insertBefore(o,m)
+})(document, window, '//stats.orgmode.org/tracker.js', 'fathom');
+fathom('set', 'siteId', 'NWSQJ');
+fathom('trackPageview');
+</script>
+</div>
+<div id="content">
+<h1 class="title">emacs org roam exclude some files</h1>
+<div id="table-of-contents">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#org259daee">m1: Having More Than One Org-roam Directory</a>
+<ul>
+<li><a href="#orgf008b4b">ref</a></li>
+<li><a href="#org854bfa0">目标</a></li>
+<li><a href="#org0b05f15">step</a>
+<ul>
+<li><a href="#orga432fba">.dir-locals.el</a></li>
+<li><a href="#org95e979c">C-h v org-roam-directory</a></li>
+<li><a href="#org9d5d0d9">M-x org-roam-find-file</a></li>
+<li><a href="#org703eed9">M-x org-roam-db-build-cache</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#org275df13">m2: change <code>org-roam-directory</code> in emacs</a>
+<ul>
+<li><a href="#org1bbcb96">bad</a></li>
+<li><a href="#org185c7e6">good</a></li>
+</ul>
+</li>
+<li><a href="#orgb2710ac">m9: exclude <code>index.org</code> and <code>sitemap.org</code></a></li>
+</ul>
+</div>
+</div>
+<p>
+when i set the <code>(setq org-roam-directory "~/install/git/wiki")</code>, the <code>index.org</code> and <code>sitemap.org</code> will let <a href="http://localhost:9090/">http://localhost:9090/</a> be mess.
+</p>
+
+<div id="outline-container-org259daee" class="outline-2">
+<h2 id="org259daee">m1: Having More Than One Org-roam Directory</h2>
+<div class="outline-text-2" id="text-org259daee">
+</div>
+<div id="outline-container-orgf008b4b" class="outline-3">
+<h3 id="orgf008b4b">ref</h3>
+<div class="outline-text-3" id="text-orgf008b4b">
+<ul class="org-ul">
+<li><a href="https://org-roam.readthedocs.io/en/master/configuration/">https://org-roam.readthedocs.io/en/master/configuration/</a></li>
+<li><a href="https://github.com/org-roam/org-roam/issues/394">https://github.com/org-roam/org-roam/issues/394</a></li>
+<li><a href="https://github.com/org-roam/org-roam/issues/80">https://github.com/org-roam/org-roam/issues/80</a></li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org854bfa0" class="outline-3">
+<h3 id="org854bfa0">目标</h3>
+<div class="outline-text-3" id="text-org854bfa0">
+<ul class="org-ul">
+<li>配置文件中的 org-roam-directory 是 "~/install/git/wiki/note"</li>
+<li>第二个 org-roam-directory 是 "~/install/git/wiki/emacs"</li>
+</ul>
+
+<p>
+如何把 "~/install/git/wiki/note" 和 "~/install/git/wiki/emacs" 中的内容，合并到一个 org-roam.db 中，这样在 <a href="http://localhost:9090/">http://localhost:9090/</a> 中可以显示关联。
+</p>
+</div>
+</div>
+
+<div id="outline-container-org0b05f15" class="outline-3">
+<h3 id="org0b05f15">step</h3>
+<div class="outline-text-3" id="text-org0b05f15">
+<ul class="org-ul">
+<li><a href="https://github.com/org-roam/org-roam/issues/394#issuecomment-610123877">https://github.com/org-roam/org-roam/issues/394#issuecomment-610123877</a></li>
+</ul>
+</div>
+
+<div id="outline-container-orga432fba" class="outline-4">
+<h4 id="orga432fba">.dir-locals.el</h4>
+<div class="outline-text-4" id="text-orga432fba">
+<p>
+在 第二个 org-roam-directory 中创建 .dir-locals.el 文件，内容如下：
+</p>
+
+<p>
+```
+((nil . ((eval . (setq-local org-roam-directory (expand-file-name "./"))))))
+;; ((nil . ((org-roam-directory . "~/install/git/wiki/emacs"))))
+```
+</p>
+</div>
+</div>
+<div id="outline-container-org95e979c" class="outline-4">
+<h4 id="org95e979c">C-h v org-roam-directory</h4>
+<div class="outline-text-4" id="text-org95e979c">
+<p>
+然后在 第二个 org-roam-directory 中创建或打开org文件，运行 <code>C-h v org-roam-directory</code>,则 org-roam-directory 的变量值 会显示的是 第二个 org-roam-directory 。
+同时 gives me an <code>org-roam.db</code> file in the second directory.
+</p>
+</div>
+</div>
+
+<div id="outline-container-org9d5d0d9" class="outline-4">
+<h4 id="org9d5d0d9">M-x org-roam-find-file</h4>
+<div class="outline-text-4" id="text-org9d5d0d9">
+<p>
+当你运行 <code>M-x org-roam-find-file</code> to create or open file, 这时，会create在 第二个 org-roam-directory 的，这样还是比较方便的。
+</p>
+</div>
+</div>
+
+<div id="outline-container-org703eed9" class="outline-4">
+<h4 id="org703eed9">M-x org-roam-db-build-cache</h4>
+<div class="outline-text-4" id="text-org703eed9">
+<p>
+running <code>M-x org-roam-db-build-cache</code> ， <a href="http://localhost:9090/">http://localhost:9090/</a> 中并没有显示 emacs 的图。
+</p>
+
+<p>
+但是，怎么样才能让 <a href="http://localhost:9090/">http://localhost:9090/</a> 中并没有显示 emacs 的图呢？
+</p>
+
+<p>
+(看下文)
+</p>
+
+<p>
+```
+(setq org-roam-directory (concat wiki-root-dir "/emacs"))
+```
+</p>
+
+<p>
+emacs <code>C-c C-e</code>, then ~M-x org-roam-db-build-cache~，then open <a href="http://localhost:9090/">http://localhost:9090/</a> will show the directory's org roam.
+</p>
+</div>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org275df13" class="outline-2">
+<h2 id="org275df13">m2: change <code>org-roam-directory</code> in emacs</h2>
+<div class="outline-text-2" id="text-org275df13">
+<p>
+```
+(setq org-roam-directory (concat wiki-root-dir "/notes"))
+(setq org-roam-directory (concat wiki-root-dir "/emacs"))
+(setq org-roam-directory (concat wiki-root-dir "/dotnet"))
+```
+</p>
+
+<p>
+emacs <code>C-c C-e</code>, then ~M-x org-roam-db-build-cache~，then open <a href="http://localhost:9090/">http://localhost:9090/</a> will show the directory's org roam.
+</p>
+</div>
+
+<div id="outline-container-org1bbcb96" class="outline-3">
+<h3 id="org1bbcb96">bad</h3>
+<div class="outline-text-3" id="text-org1bbcb96">
+<ul class="org-ul">
+<li>can not 跨文件夹。</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org185c7e6" class="outline-3">
+<h3 id="org185c7e6">good</h3>
+<div class="outline-text-3" id="text-org185c7e6">
+<ul class="org-ul">
+<li>每一个文件夹就是一个subject, 不会那么乱。</li>
+</ul>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgb2710ac" class="outline-2">
+<h2 id="orgb2710ac">m9: exclude <code>index.org</code> and <code>sitemap.org</code></h2>
+</div>
+</div>
+</body>
+</html>

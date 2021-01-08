@@ -1,0 +1,466 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<!-- 2021-01-08 Fri 14:58 -->
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>frp</title>
+<meta name="generator" content="Org mode" />
+<link rel="stylesheet" title="Standard" href="/html/style/worg.css" type="text/css" />
+<link rel="alternate stylesheet" title="Zenburn" href="/html/style/worg-zenburn.css" type="text/css" />
+<link rel="alternate stylesheet" title="Classic" href="/html/style/worg-classic.css" type="text/css" />
+<link rel="SHORTCUT ICON" href="/html/style/org-mode-unicorn.ico" type="image/x-icon" />
+<link rel="icon" href="/html/style/org-mode-unicorn.ico" type="image/ico" />
+<script type="text/javascript">
+/*
+@licstart  The following is the entire license notice for the
+JavaScript code in this tag.
+
+Copyright (C) 2012-2019 Free Software Foundation, Inc.
+
+The JavaScript code in this tag is free software: you can
+redistribute it and/or modify it under the terms of the GNU
+General Public License (GNU GPL) as published by the Free Software
+Foundation, either version 3 of the License, or (at your option)
+any later version.  The code is distributed WITHOUT ANY WARRANTY;
+without even the implied warranty of MERCHANTABILITY or FITNESS
+FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
+
+As additional permission under GNU GPL version 3 section 7, you
+may distribute non-source (e.g., minimized or compacted) forms of
+that code without the copy of the GNU GPL normally required by
+section 4, provided you include this license notice and a URL
+through which recipients can access the Corresponding Source.
+
+
+@licend  The above is the entire license notice
+for the JavaScript code in this tag.
+*/
+<!--/*--><![CDATA[/*><!--*/
+ function CodeHighlightOn(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(null != target) {
+     elem.cacheClassElem = elem.className;
+     elem.cacheClassTarget = target.className;
+     target.className = "code-highlighted";
+     elem.className   = "code-highlighted";
+   }
+ }
+ function CodeHighlightOff(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(elem.cacheClassElem)
+     elem.className = elem.cacheClassElem;
+   if(elem.cacheClassTarget)
+     target.className = elem.cacheClassTarget;
+ }
+/*]]>*///-->
+</script>
+</head>
+<body>
+<div id="preamble" class="status">
+<script type="text/javascript">
+  document.addEventListener('DOMContentLoaded',function() {
+      document.getElementById("table-of-contents").onclick = function() {
+          var elem = document.getElementById("text-table-of-contents");
+          elem.style.display = elem.style.display == "block" ? "none" : "block";
+      }
+  });
+
+  var url = document.location.href;
+  var orgsource = url.substring(0, url.lastIndexOf("."))+".org.html";
+  function show_org_source(){
+      document.location.href = orgsource;
+  }
+</script>
+
+<script>
+(function(f, a, t, h, o, m){
+	a[h]=a[h]||function(){
+		(a[h].q=a[h].q||[]).push(arguments)
+	};
+	o=f.createElement('script'),
+	m=f.getElementsByTagName('script')[0];
+	o.async=1; o.src=t; o.id='fathom-script';
+	m.parentNode.insertBefore(o,m)
+})(document, window, '//stats.orgmode.org/tracker.js', 'fathom');
+fathom('set', 'siteId', 'NWSQJ');
+fathom('trackPageview');
+</script>
+</div>
+<div id="content">
+<h1 class="title">frp</h1>
+<div id="table-of-contents">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#org83df8c7">Post</a>
+<ul>
+<li><a href="#orgf8766a8">frp</a>
+<ul>
+<li><a href="#orgd5fc6a6">frp(笔记)</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org83df8c7" class="outline-2">
+<h2 id="org83df8c7">Post</h2>
+<div class="outline-text-2" id="text-org83df8c7">
+</div>
+<div id="outline-container-orgf8766a8" class="outline-3">
+<h3 id="orgf8766a8">frp&#xa0;&#xa0;&#xa0;<span class="tag"><span class="_frp">@frp</span>&#xa0;<span class="frp">frp</span></span></h3>
+<div class="outline-text-3" id="text-orgf8766a8">
+</div>
+<div id="outline-container-orgd5fc6a6" class="outline-4">
+<h4 id="orgd5fc6a6">frp(笔记)</h4>
+<div class="outline-text-4" id="text-orgd5fc6a6">
+</div>
+
+<ul class="org-ul">
+<li><a id="orgf68e47f"></a>env<br />
+<ul class="org-ul">
+<li><a id="orgae31f55"></a>frp服务端, 云端server<br />
+<div class="outline-text-6" id="text-orgae31f55">
+<ul class="org-ul">
+<li>机器: 腾讯云主机一台</li>
+<li>OS: ubuntu server 16.04.1</li>
+</ul>
+</div>
+</li>
+
+<li><a id="org979f279"></a>frp客户端, 本地server<br />
+<div class="outline-text-6" id="text-org979f279">
+<p>
+用于本地测试的server机
+</p>
+
+<ul class="org-ul">
+<li>IP: 192.168.1.103</li>
+<li>OS: ubuntu desktop 16.04.3</li>
+</ul>
+
+<p>
+本地启动
+</p>
+
+<ul class="org-ul">
+<li>port: 22</li>
+<li>port: 80 端口的 web 服务</li>
+</ul>
+
+<div class="org-src-container">
+<pre class="src src-shell">$ docker run -v /usr/share/nginx/html --name www_data busybox true
+$ docker run --rm --volumes-from www_data busybox /bin/sh -c <span style="color: #daa520;">'echo "&lt;h1&gt;Yo&lt;/h1&gt;" &gt; /usr/share/nginx/html/index.html'</span>
+$ docker run -d -p 80:80 --volumes-from www_data --name www nginx
+$ curl $(docker port www 80)
+&lt;h1&gt;Yo&lt;/h1&gt;
+</pre>
+</div>
+</div>
+</li>
+
+<li><a id="orga595b15"></a>frp客户端, 本地开发<br />
+<div class="outline-text-6" id="text-orga595b15">
+<ul class="org-ul">
+<li>IP: 192.168.1.106</li>
+<li>OS: mac</li>
+</ul>
+</div>
+</li>
+</ul>
+</li>
+
+<li><a id="orgf900950"></a>tips<br />
+<div class="outline-text-5" id="text-orgf900950">
+<p>
+注意，配置的过程中，记得，开启相应的端口或安全组。
+</p>
+</div>
+</li>
+
+<li><a id="org08cbd36"></a>step<br />
+<ul class="org-ul">
+<li><a id="org2fbbe1a"></a>通过 ssh 访问公司内网机器<br />
+<div class="outline-text-6" id="text-org2fbbe1a">
+<p>
+直接看官网
+</p>
+</div>
+</li>
+
+<li><a id="org479c9f7"></a>通过自定义域名访问部署于内网的 web 服务<br />
+<div class="outline-text-6" id="text-org479c9f7">
+<p>
+使用http
+</p>
+
+<div class="org-src-container">
+<pre class="src src-shell">&#10140;  frp_0.23.3_linux_amd64 docker ps
+CONTAINER ID        IMAGE               COMMAND                  CREATED             STATUS              PORTS                     NAMES
+9cf18a6cebb0        nginx               <span style="color: #daa520;">"nginx -g 'daemon of&#8230;"</span>   3 hours ago         Up 3 hours          0.0.0.0:80-&gt;80/tcp        www
+e7c2fbe6ca01        wernight/ngrok      <span style="color: #daa520;">"/entrypoint.sh"</span>         4 hours ago         Up 4 hours          0.0.0.0:32769-&gt;4040/tcp   www_ngrok
+&#10140;  frp_0.23.3_linux_amd64 curl 127.0.0.1:80
+&lt;h1&gt;Yo&lt;/h1&gt;
+&#10140;  frp_0.23.3_linux_amd64 curl 192.168.1.103:80
+&lt;h1&gt;Yo&lt;/h1&gt;
+&#10140;  frp_0.23.3_linux_amd64
+</pre>
+</div>
+
+<p>
+frp server 配置
+</p>
+<div class="org-src-container">
+<pre class="src src-shell">ubuntu@VM-0-12-ubuntu:~/frp/frp_0.23.3_linux_amd64$ cat frps.ini
+[common]
+<span style="color: #d4d4d4;">bind_port</span> = 7000
+<span style="color: #d4d4d4;">vhost_http_port</span> = 8080
+</pre>
+</div>
+
+<p>
+frp client 配置
+</p>
+<div class="org-src-container">
+<pre class="src src-shell">&#10140;  frp_0.23.3_linux_amd64 cat frpc.ini
+[common]
+<span style="color: #d4d4d4;">server_addr</span> = XXXXXXXX
+<span style="color: #d4d4d4;">server_port</span> = XXXXXXXX
+<span style="color: #d4d4d4;">admin_addr</span> = 127.0.0.1
+<span style="color: #d4d4d4;">admin_port</span> = 7400
+
+[secret_ssh]
+<span style="color: #d4d4d4;">type</span> = stcp
+<span style="color: #579C4C;"># </span><span style="color: #579C4C;">&#21482;&#26377; sk &#19968;&#33268;&#30340;&#29992;&#25143;&#25165;&#33021;&#35775;&#38382;&#21040;&#27492;&#26381;&#21153;</span>
+<span style="color: #d4d4d4;">sk</span> = XXXXXXXX
+<span style="color: #d4d4d4;">local_ip</span> = 127.0.0.1
+<span style="color: #d4d4d4;">local_port</span> = 22
+
+[web]
+<span style="color: #d4d4d4;">type</span> = http
+<span style="color: #d4d4d4;">local_port</span> = 80
+<span style="color: #d4d4d4;">custom_domains</span> = www.yours.com
+&#10140;  frp_0.23.3_linux_amd64
+</pre>
+</div>
+
+<p>
+注意，这个时候访问应该是域名，而不是IP
+</p>
+
+<div class="org-src-container">
+<pre class="src src-shell">&#10140;  ~ git:(master) &#10007; curl http://111.230.153.251:5080
+&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+&lt;title&gt;Not Found&lt;/title&gt;
+&lt;style&gt;
+body {
+    width: 35em;
+    margin: 0 auto;
+    font-family: Tahoma, Verdana, Arial, sans-serif;
+}
+&lt;/style&gt;
+&lt;/head&gt;
+&lt;body&gt;
+&lt;h1&gt;The page you visit not found.&lt;/h1&gt;
+&lt;p&gt;Sorry, the page you are looking for is currently unavailable.&lt;br/&gt;
+Please try again later.&lt;/p&gt;
+&lt;p&gt;The server is powered by &lt;a <span style="color: #d4d4d4;">href</span>=<span style="color: #daa520;">"https://github.com/fatedier/frp"</span>&gt;frp&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;Faithfully yours, frp.&lt;/em&gt;&lt;/p&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+&#10140;  ~ git:(master) &#10007; curl http://www.hkshop.club:5080/
+&lt;h1&gt;Yo&lt;/h1&gt;
+&#10140;  ~ git:(master) &#10007;
+</pre>
+</div>
+</div>
+</li>
+
+<li><a id="orgc286b80"></a>安全地暴露内网服务<br />
+<div class="outline-text-6" id="text-orgc286b80">
+<p>
+如果报了下面的错误，怎么办？
+</p>
+<div class="org-src-container">
+<pre class="src src-shell">&#10140;  frp_0.23.3_linux_amd64 git:(master) &#10007; ./frpc -c ./frpc.ini
+zsh: exec format error: ./frpc
+&#10140;  frp_0.23.3_linux_amd64 git:(master)
+</pre>
+</div>
+<p>
+哈哈，是因为下载的包，不对，因为我们是 Mac ,不是 linux
+</p>
+<div class="org-src-container">
+<pre class="src src-shell">&#10140;  frp git:(master) &#10007; wget https://github.com/fatedier/frp/releases/download/v0.23.3/frp_0.23.3_darwin_amd64.tar.gz
+</pre>
+</div>
+<p>
+最后 mac 的配置如下：
+</p>
+<div class="org-src-container">
+<pre class="src src-shell">&#10140;  frp_0.23.3_darwin_amd64 git:(master) &#10007; cat frpc.ini
+<span style="color: #579C4C;"># </span><span style="color: #579C4C;">frpc.ini</span>
+[common]
+<span style="color: #d4d4d4;">server_addr</span> = XXXXXXXX
+<span style="color: #d4d4d4;">server_port</span> = XXXXXXXX
+
+[secret_ssh_visitor]
+<span style="color: #d4d4d4;">type</span> = stcp
+<span style="color: #579C4C;"># </span><span style="color: #579C4C;">stcp &#30340;&#35775;&#38382;&#32773;</span>
+<span style="color: #d4d4d4;">role</span> = visitor
+<span style="color: #579C4C;"># </span><span style="color: #579C4C;">&#35201;&#35775;&#38382;&#30340; stcp &#20195;&#29702;&#30340;&#21517;&#23383;</span>
+<span style="color: #d4d4d4;">server_name</span> = secret_ssh
+<span style="color: #d4d4d4;">sk</span> = XXXXXXXX
+<span style="color: #579C4C;"># </span><span style="color: #579C4C;">&#32465;&#23450;&#26412;&#22320;&#31471;&#21475;&#29992;&#20110;&#35775;&#38382; ssh &#26381;&#21153;</span>
+<span style="color: #d4d4d4;">bind_addr</span> = 127.0.0.1
+<span style="color: #d4d4d4;">bind_port</span> = 6000
+&#10140;  frp_0.23.3_darwin_amd64 git:(master) &#10007;
+</pre>
+</div>
+<p>
+登陆一下
+</p>
+<div class="org-src-container">
+<pre class="src src-shell">&#10140;  ~ git:(master) &#10007; ssh -oPort=6000 tom@127.0.0.1
+Welcome to Ubuntu 16.04.1 LTS (GNU/Linux 4.4.0-31-generic x86_64)
+
+* Documentation:  https://help.ubuntu.com
+* Management:     https://landscape.canonical.com
+* Support:        https://ubuntu.com/advantage
+
+120 packages can be updated.
+10 updates are security updates.
+
+New release <span style="color: #daa520;">'18.04.1 LTS'</span> available.
+Run <span style="color: #daa520;">'do-release-upgrade'</span> to upgrade to it.
+
+
+Last login: Sat Feb  2 18:11:51 2019 from 127.0.0.1
+&#10140;  ~ ls
+</pre>
+</div>
+<p>
+成功
+</p>
+</div>
+</li>
+</ul>
+</li>
+
+<li><a id="orgc8add5d"></a>to be service<br />
+<ul class="org-ul">
+<li><a id="org0606859"></a>frp server<br />
+<div class="outline-text-6" id="text-org0606859">
+<div class="org-src-container">
+<pre class="src src-shell">ubuntu@VM-0-12-ubuntu:~/frp/frp-private.draft$ cat /etc/systemd/system/frps.service
+[Unit]
+<span style="color: #d4d4d4;">Description</span>=OpenBSD Secure Shell server
+<span style="color: #d4d4d4;">After</span>=network.target auditd.service sshd.service
+<span style="color: #579C4C;">#</span><span style="color: #579C4C;">ConditionPathExists=!/etc/ssh/sshd_not_to_be_run</span>
+
+[Service]
+<span style="color: #579C4C;">#</span><span style="color: #579C4C;">EnvironmentFile=-/etc/default/ssh</span>
+<span style="color: #579C4C;">#</span><span style="color: #579C4C;">ExecStartPre=/usr/sbin/sshd -t</span>
+<span style="color: #d4d4d4;">ExecStart</span>=/home/ubuntu/frp/frp_0.23.3_linux_amd64/frps -c /home/ubuntu/frp/frp_0.23.3_linux_amd64/frps.ini
+<span style="color: #579C4C;">#</span><span style="color: #579C4C;">ExecReload=/usr/sbin/sshd -t</span>
+<span style="color: #579C4C;">#</span><span style="color: #579C4C;">ExecReload=/bin/kill -HUP $MAINPID</span>
+<span style="color: #579C4C;">#</span><span style="color: #579C4C;">KillMode=process</span>
+<span style="color: #579C4C;">#</span><span style="color: #579C4C;">Restart=on-failure</span>
+<span style="color: #579C4C;">#</span><span style="color: #579C4C;">RestartPreventExitStatus=255</span>
+<span style="color: #579C4C;">#</span><span style="color: #579C4C;">Type=notify</span>
+
+[Install]
+<span style="color: #d4d4d4;">WantedBy</span>=multi-user.target
+<span style="color: #d4d4d4;">Alias</span>=frps.service
+ubuntu@VM-0-12-ubuntu:~/frp/frp-private.draft$ sudo systemctl daemon-reload
+ubuntu@VM-0-12-ubuntu:~/frp/frp-private.draft$  sudo systemctl start frps.service
+ubuntu@VM-0-12-ubuntu:~/frp/frp-private.draft$  sudo systemctl status frps.service
+&#9679; frps.service - OpenBSD Secure Shell server
+   Loaded: loaded (/etc/systemd/system/frps.service; disabled; vendor preset: enabled)
+   Active: active (running) since Sat 2019-02-02 22:09:21 CST; 1s ago
+ Main PID: 22111 (frps)
+    Tasks: 4
+   Memory: 11.5M
+      CPU: 41ms
+   CGroup: /system.slice/frps.service
+           &#9492;&#9472;22111 /home/ubuntu/frp/frp_0.23.3_linux_amd64/frps -c /home/ubuntu/frp/frp_0.23.3_linux_amd64/frps.ini
+
+Feb 02 22:09:21 VM-0-12-ubuntu systemd[1]: Started OpenBSD Secure Shell server.
+ubuntu@VM-0-12-ubuntu:~/frp/frp-private.draft$
+</pre>
+</div>
+</div>
+</li>
+
+<li><a id="org23699f0"></a>frp client<br />
+<div class="outline-text-6" id="text-org23699f0">
+<div class="org-src-container">
+<pre class="src src-shell">&#10140;  ~ cat /etc/systemd/system/frpc.service
+[Unit]
+<span style="color: #d4d4d4;">Description</span>=OpenBSD Secure Shell server
+<span style="color: #d4d4d4;">After</span>=network.target auditd.service sshd.service
+<span style="color: #579C4C;">#</span><span style="color: #579C4C;">ConditionPathExists=!/etc/ssh/sshd_not_to_be_run</span>
+
+[Service]
+<span style="color: #579C4C;">#</span><span style="color: #579C4C;">EnvironmentFile=-/etc/default/ssh</span>
+<span style="color: #579C4C;">#</span><span style="color: #579C4C;">ExecStartPre=/usr/sbin/sshd -t</span>
+<span style="color: #d4d4d4;">ExecStart</span>=/home/tom/frp/frp_0.23.3_linux_amd64/frpc -c /home/tom/frp/frp_0.23.3_linux_amd64/frpc.ini
+<span style="color: #579C4C;">#</span><span style="color: #579C4C;">ExecReload=/usr/sbin/sshd -t</span>
+<span style="color: #579C4C;">#</span><span style="color: #579C4C;">ExecReload=/bin/kill -HUP $MAINPID</span>
+<span style="color: #579C4C;">#</span><span style="color: #579C4C;">KillMode=process</span>
+<span style="color: #579C4C;">#</span><span style="color: #579C4C;">Restart=on-failure</span>
+<span style="color: #579C4C;">#</span><span style="color: #579C4C;">RestartPreventExitStatus=255</span>
+<span style="color: #579C4C;">#</span><span style="color: #579C4C;">Type=notify</span>
+
+[Install]
+<span style="color: #d4d4d4;">WantedBy</span>=multi-user.target
+<span style="color: #d4d4d4;">Alias</span>=frps.service
+&#10140;  ~ sudo systemctl daemon-reload
+&#10140;  ~ sudo systemctl start frpc.service
+&#10140;  ~ sudo systemctl status frpc.service
+&#9679; frpc.service - OpenBSD Secure Shell server
+   Loaded: loaded (/etc/systemd/system/frpc.service; disabled; vendor preset: enabled)
+   Active: active (running) since Sat 2019-02-02 23:35:42 CST; 5s ago
+ Main PID: 10160 (frpc)
+    Tasks: 7
+   Memory: 4.3M
+      CPU: 10ms
+   CGroup: /system.slice/frpc.service
+           &#9492;&#9472;10160 /home/tom/frp/frp_0.23.3_linux_amd64/frpc -c /home/tom/frp/frp_0.23.3_linux_amd64/
+
+Feb 02 23:35:42 ubuntu systemd[1]: Started OpenBSD Secure Shell server.
+Feb 02 23:35:43 ubuntu frpc[10160]: 2019/02/02 23:35:43 [I] [service.go:206] login to server success,
+Feb 02 23:35:43 ubuntu frpc[10160]: 2019/02/02 23:35:43 [I] [proxy_manager.go:137] [311d016d118b9d6d]
+Feb 02 23:35:43 ubuntu frpc[10160]: 2019/02/02 23:35:43 [I] [control.go:143] [web01] start proxy succ
+Feb 02 23:35:43 ubuntu frpc[10160]: 2019/02/02 23:35:43 [I] [control.go:143] [secret_ssh] start proxy
+&#10140;  ~
+</pre>
+</div>
+</div>
+</li>
+</ul>
+</li>
+
+<li><a id="orgd3bb188"></a>Ref<br />
+<div class="outline-text-5" id="text-orgd3bb188">
+<ul class="org-ul">
+<li><a href="https://github.com/fatedier/frp/blob/master/README_zh.md">https://github.com/fatedier/frp/blob/master/README_zh.md</a></li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+</body>
+</html>

@@ -1,0 +1,199 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<!-- 2021-01-08 Fri 15:30 -->
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>swift</title>
+<meta name="generator" content="Org mode" />
+<link rel="stylesheet" title="Standard" href="/html/style/worg.css" type="text/css" />
+<link rel="alternate stylesheet" title="Zenburn" href="/html/style/worg-zenburn.css" type="text/css" />
+<link rel="alternate stylesheet" title="Classic" href="/html/style/worg-classic.css" type="text/css" />
+<link rel="SHORTCUT ICON" href="/html/style/org-mode-unicorn.ico" type="image/x-icon" />
+<link rel="icon" href="/html/style/org-mode-unicorn.ico" type="image/ico" />
+<script type="text/javascript">
+/*
+@licstart  The following is the entire license notice for the
+JavaScript code in this tag.
+
+Copyright (C) 2012-2019 Free Software Foundation, Inc.
+
+The JavaScript code in this tag is free software: you can
+redistribute it and/or modify it under the terms of the GNU
+General Public License (GNU GPL) as published by the Free Software
+Foundation, either version 3 of the License, or (at your option)
+any later version.  The code is distributed WITHOUT ANY WARRANTY;
+without even the implied warranty of MERCHANTABILITY or FITNESS
+FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
+
+As additional permission under GNU GPL version 3 section 7, you
+may distribute non-source (e.g., minimized or compacted) forms of
+that code without the copy of the GNU GPL normally required by
+section 4, provided you include this license notice and a URL
+through which recipients can access the Corresponding Source.
+
+
+@licend  The above is the entire license notice
+for the JavaScript code in this tag.
+*/
+<!--/*--><![CDATA[/*><!--*/
+ function CodeHighlightOn(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(null != target) {
+     elem.cacheClassElem = elem.className;
+     elem.cacheClassTarget = target.className;
+     target.className = "code-highlighted";
+     elem.className   = "code-highlighted";
+   }
+ }
+ function CodeHighlightOff(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(elem.cacheClassElem)
+     elem.className = elem.cacheClassElem;
+   if(elem.cacheClassTarget)
+     target.className = elem.cacheClassTarget;
+ }
+/*]]>*///-->
+</script>
+</head>
+<body>
+<div id="preamble" class="status">
+<script type="text/javascript">
+  document.addEventListener('DOMContentLoaded',function() {
+      document.getElementById("table-of-contents").onclick = function() {
+          var elem = document.getElementById("text-table-of-contents");
+          elem.style.display = elem.style.display == "block" ? "none" : "block";
+      }
+  });
+
+  var url = document.location.href;
+  var orgsource = url.substring(0, url.lastIndexOf("."))+".org.html";
+  function show_org_source(){
+      document.location.href = orgsource;
+  }
+</script>
+
+<script>
+(function(f, a, t, h, o, m){
+	a[h]=a[h]||function(){
+		(a[h].q=a[h].q||[]).push(arguments)
+	};
+	o=f.createElement('script'),
+	m=f.getElementsByTagName('script')[0];
+	o.async=1; o.src=t; o.id='fathom-script';
+	m.parentNode.insertBefore(o,m)
+})(document, window, '//stats.orgmode.org/tracker.js', 'fathom');
+fathom('set', 'siteId', 'NWSQJ');
+fathom('trackPageview');
+</script>
+</div>
+<div id="content">
+<h1 class="title">swift</h1>
+<div id="table-of-contents">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#org88702d1">Post</a>
+<ul>
+<li><a href="#orga3e6651">swift</a>
+<ul>
+<li><a href="#orgfbd2274">官方中文文档 openstack swift overview reaper</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org88702d1" class="outline-2">
+<h2 id="org88702d1">Post</h2>
+<div class="outline-text-2" id="text-org88702d1">
+</div>
+<div id="outline-container-orga3e6651" class="outline-3">
+<h3 id="orga3e6651">swift&#xa0;&#xa0;&#xa0;<span class="tag"><span class="_swift">@swift</span>&#xa0;<span class="swift">swift</span>&#xa0;<span class="transilation">transilation</span></span></h3>
+<div class="outline-text-3" id="text-orga3e6651">
+</div>
+<div id="outline-container-orgfbd2274" class="outline-4">
+<h4 id="orgfbd2274">官方中文文档 openstack swift overview reaper</h4>
+<div class="outline-text-4" id="text-orgfbd2274">
+<p>
+<a href="https://docs.openstack.org/swift/queens/overview_reaper.html">https://docs.openstack.org/swift/queens/overview_reaper.html</a>
+</p>
+
+<p>
+账户收割者
+</p>
+
+<p>
+更新时间：2019-01-15 02:30
+</p>
+
+<p>
+帐户收割者在后台删除已删除帐户中的数据。
+</p>
+
+<p>
+如果reseller在帐户的存储URL上发出DELETE请求，则会将帐户标记为删除。这只是将
+DELETED值放入帐户数据库（和副本）account_stat表的状态列中，说明稍后应删除该帐户的数据。
+</p>
+
+<p>
+通常没有设定的保留时间且没有取消删除; 假设reseller将实施此类功能，并且只有在真正希望删除帐户的数据时才在帐户上调用DELETE。但是，为了保护Swift群集帐户免受不正确或错误删除请求的影响，您可以在account-server.conf的[account-reaper]部分设置delay_reaping值，以延迟实际删除数据。目前，取消删除帐户没有任何效用; 必须直接更新帐户数据库副本，将status列设置为空字符串并将put_timestamp更新为大于delete_timestamp。（在TODO列表上正在编写一个实用程序来执行此任务，最好是通过REST调用。）
+</p>
+
+<p>
+帐户收割机在每个帐户服务器上运行，并偶尔扫描服务器以查找标记为删除的帐户数据库。它只会在服务器是主节点的帐户上触发，因此多个帐户服务器并非都在尝试同时执行相同的工作。使用多个服务器删除一个帐户可能会提高删除速度，但需要协调，因此不会重复工作。速度确实不是数据删除所关注的问题，并且通常不会删除大型帐户。
+</p>
+
+<p>
+帐户本身的删除过程非常简单。对于帐户中的每个容器，将删除每个对象，然后删除容器。
+任何失败的删除请求都不会停止整个过程，但会导致整个过程最终失败（例如，如果对象删
+除超时，则以后无法删除容器，因此帐户也无法删除）。整个过程即使在发生故障时也会继
+续，因此不会因为一个麻烦的地点而无法收回集群空间。帐户收割者将继续尝试删除帐户，
+直到它最终变为空，此时db_replicator中的数据库回收进程最终将删除数据库文件。
+</p>
+
+<p>
+有时，持久性错误状态可能会阻止某些对象或容器被删除。如果发生这种情况，您将在日志中看到诸如“Account &lt;name&gt; has not been reaped since &lt;date&gt;”的消息。您可以使用account-server.conf文件的[account-reaper]部分中的reap_warn_after值来控制何时记录此值。默认情况下，是30天。
+</p>
+</div>
+
+<ul class="org-ul">
+<li><a id="org1ab57ce"></a>历史<br />
+<div class="outline-text-5" id="text-org1ab57ce">
+<p>
+首先，考虑通过完全外部调用删除帐户的简单方法，因为它不需要对系统进行任何更改。所有数据都将通过公共REST API以与实际用户相同的方式删除。但是，缺点是它会使用代理资源并在不需要时记录所有内容。此外，它可能需要一个或两个专用服务器，仅用于发出删除请求。
+</p>
+
+<p>
+还考虑了一种完全自下而上的方法，其中对象和容器服务器偶尔会扫描它们所持有的数据并
+检查帐户是否被删除，如果是，则删除数据。好处是回收的速度，对代理或日志记录没有影
+响，但缺点是几乎100％的扫描都会导致无缘无故地创建大量I/O负载。
+</p>
+
+<p>
+还考虑了更多以容器服务器为中心的方法，其中帐户服务器将所有容器标记为删除，容器服
+务器将删除每个容器中的对象然后删除自己。这对于拥有大量容器的帐户仍然可以快速回收，
+但具有相当大的负载峰值的缺点。可以减慢这个过程以减轻负载峰值的可能性，但是就会失
+去快速回收的好处，而剩下的只是一个更复杂的过程。此外，扫描所有容器以查找标记为删
+除的容器，而大多数容器似乎不会浪费。db_replicator可以在执行复制扫描时执行此操作，
+但它必须生成并跟踪看起来不必要复杂的删除过程。
+</p>
+
+<p>
+最后，如上所述，以帐户服务器为中心的方法似乎是最好的。
+</p>
+</div>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+</body>
+</html>

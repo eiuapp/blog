@@ -1,0 +1,389 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<!-- 2021-01-07 Thu 11:11 -->
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>&lrm;</title>
+<meta name="generator" content="Org mode" />
+<meta name="author" content="a" />
+<link rel="stylesheet" title="Standard" href="/html/style/worg.css" type="text/css" />
+<link rel="alternate stylesheet" title="Zenburn" href="/html/style/worg-zenburn.css" type="text/css" />
+<link rel="alternate stylesheet" title="Classic" href="/html/style/worg-classic.css" type="text/css" />
+<link rel="SHORTCUT ICON" href="/html/style/org-mode-unicorn.ico" type="image/x-icon" />
+<link rel="icon" href="/html/style/org-mode-unicorn.ico" type="image/ico" />
+<script type="text/javascript">
+/*
+@licstart  The following is the entire license notice for the
+JavaScript code in this tag.
+
+Copyright (C) 2012-2019 Free Software Foundation, Inc.
+
+The JavaScript code in this tag is free software: you can
+redistribute it and/or modify it under the terms of the GNU
+General Public License (GNU GPL) as published by the Free Software
+Foundation, either version 3 of the License, or (at your option)
+any later version.  The code is distributed WITHOUT ANY WARRANTY;
+without even the implied warranty of MERCHANTABILITY or FITNESS
+FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
+
+As additional permission under GNU GPL version 3 section 7, you
+may distribute non-source (e.g., minimized or compacted) forms of
+that code without the copy of the GNU GPL normally required by
+section 4, provided you include this license notice and a URL
+through which recipients can access the Corresponding Source.
+
+
+@licend  The above is the entire license notice
+for the JavaScript code in this tag.
+*/
+<!--/*--><![CDATA[/*><!--*/
+ function CodeHighlightOn(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(null != target) {
+     elem.cacheClassElem = elem.className;
+     elem.cacheClassTarget = target.className;
+     target.className = "code-highlighted";
+     elem.className   = "code-highlighted";
+   }
+ }
+ function CodeHighlightOff(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(elem.cacheClassElem)
+     elem.className = elem.cacheClassElem;
+   if(elem.cacheClassTarget)
+     target.className = elem.cacheClassTarget;
+ }
+/*]]>*///-->
+</script>
+</head>
+<body>
+<div id="preamble" class="status">
+<script type="text/javascript">
+  document.addEventListener('DOMContentLoaded',function() {
+      document.getElementById("table-of-contents").onclick = function() {
+          var elem = document.getElementById("text-table-of-contents");
+          elem.style.display = elem.style.display == "block" ? "none" : "block";
+      }
+  });
+
+  var url = document.location.href;
+  var orgsource = url.substring(0, url.lastIndexOf("."))+".org.html";
+  function show_org_source(){
+      document.location.href = orgsource;
+  }
+</script>
+
+<script>
+(function(f, a, t, h, o, m){
+	a[h]=a[h]||function(){
+		(a[h].q=a[h].q||[]).push(arguments)
+	};
+	o=f.createElement('script'),
+	m=f.getElementsByTagName('script')[0];
+	o.async=1; o.src=t; o.id='fathom-script';
+	m.parentNode.insertBefore(o,m)
+})(document, window, '//stats.orgmode.org/tracker.js', 'fathom');
+fathom('set', 'siteId', 'NWSQJ');
+fathom('trackPageview');
+</script>
+</div>
+<div id="content">
+<div id="table-of-contents">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#org35d8cf1">切换 major-mode 的命令</a></li>
+<li><a href="#org96d6965">show-region 可选择区域也可不选择区域的命令</a></li>
+<li><a href="#orgb09c045">标记整个S表达式</a></li>
+<li><a href="#org6e1d9b7">OpenOffice to emacs, oowriter 表格转换</a>
+<ul>
+<li><a href="#org0e81f59">一行一行移动，删除回车，替换成制表符</a></li>
+<li><a href="#org2c2b435">用 subst-char-in-region 函数直接替换</a></li>
+<li><a href="#orgf01b3d2">用 re-search-forward 和 replace-match 查找替</a></li>
+</ul>
+</li>
+<li><a href="#orge09eac6">文件更详细的信息</a></li>
+<li><a href="#orgf48ebdd">写一个函数返回当前目录包括子目录中所有文件名。</a></li>
+<li><a href="#org36a56fe">手工高亮代码</a></li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org35d8cf1" class="outline-2">
+<h2 id="org35d8cf1">切换 major-mode 的命令</h2>
+<div class="outline-text-2" id="text-org35d8cf1">
+<div class="org-src-container">
+<pre class="src src-elisp">(<span style="color: #00bfff;">defvar</span> <span style="color: #d4d4d4;">switch-major-mode-history</span> nil)
+(<span style="color: #00bfff;">defun</span> <span style="color: #F94949;">switch-major-mode</span> (mode)
+  (<span style="color: #00bfff;">interactive</span>
+   (list
+    (intern
+     (completing-read <span style="color: #daa520;">"Switch to mode: "</span>
+                      obarray (<span style="color: #00bfff;">lambda</span> (s)
+                                (<span style="color: #00bfff;">and</span> (fboundp s)
+                                     (string-match <span style="color: #daa520;">"-mode$"</span> (symbol-name s))))
+                      t nil 'switch-major-mode-history))))
+  (<span style="color: #00bfff;">setq</span> switch-major-mode-history
+        (cons (symbol-name major-mode) switch-major-mode-history))
+  (funcall mode))
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org96d6965" class="outline-2">
+<h2 id="org96d6965">show-region 可选择区域也可不选择区域的命令</h2>
+<div class="outline-text-2" id="text-org96d6965">
+<p>
+写一个命令，对于使用 transient-mark-mode 时，当选中一个区域时显示区域 的起点和终点，否则显示 point-min 和 point-max 的位置。如果不使用 transient-mark-mode，则显示 point 和 mark 的位置。
+</p>
+
+<div class="org-src-container">
+<pre class="src src-elisp">(<span style="color: #00bfff;">defun</span> <span style="color: #F94949;">show-region</span> (beg end)
+  (<span style="color: #00bfff;">interactive</span>
+   (<span style="color: #00bfff;">if</span> (<span style="color: #00bfff;">or</span> (null transient-mark-mode)
+           mark-active)
+       (list (region-beginning) (region-end))
+     (list (point-min) (point-max))))
+  (message <span style="color: #daa520;">"Region start from %d to %d"</span> beg end))
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgb09c045" class="outline-2">
+<h2 id="orgb09c045">标记整个S表达式</h2>
+<div class="outline-text-2" id="text-orgb09c045">
+<div class="org-src-container">
+<pre class="src src-elisp">(<span style="color: #00bfff;">defun</span> <span style="color: #F94949;">mark-whole-sexp</span> ()
+  (<span style="color: #00bfff;">interactive</span>)
+  (<span style="color: #00bfff;">let</span> ((bound (bounds-of-thing-at-point 'sexp)))
+    (<span style="color: #00bfff;">if</span> bound
+        (<span style="color: #00bfff;">progn</span>
+          (goto-char (car bound))
+          (set-mark (point))
+          (goto-char (cdr bound)))
+      (message <span style="color: #daa520;">"No sexp found at point!"</span>))))
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org6e1d9b7" class="outline-2">
+<h2 id="org6e1d9b7">OpenOffice to emacs, oowriter 表格转换</h2>
+<div class="outline-text-2" id="text-org6e1d9b7">
+<p>
+从 OpenOffice 字处理程序里拷贝到 emacs 里的表格通常都是每一个单元格就是一行的。写一个命令，让用户输入表格的列数，把选中区域转换成用制表符分隔的表格。
+</p>
+
+<p>
+实现这个目的有多种方法：
+</p>
+</div>
+
+<div id="outline-container-org0e81f59" class="outline-3">
+<h3 id="org0e81f59">一行一行移动，删除回车，替换成制表符</h3>
+<div class="outline-text-3" id="text-org0e81f59">
+<div class="org-src-container">
+<pre class="src src-elisp">(<span style="color: #00bfff;">defun</span> <span style="color: #F94949;">oowrite-table-convert</span> (col beg end)
+  (<span style="color: #00bfff;">interactive</span> <span style="color: #daa520;">"nColumns of table: \nr"</span>)
+  (<span style="color: #00bfff;">setq</span> col (1- col))
+  (<span style="color: #00bfff;">save-excursion</span>
+    (<span style="color: #00bfff;">save-restriction</span>
+      (narrow-to-region beg end)
+      (goto-char (point-min))
+      (<span style="color: #00bfff;">while</span> (not (eobp))
+        (<span style="color: #00bfff;">dotimes</span> (i col)
+          (forward-line 1)
+          (backward-delete-char 1)
+          (insert-char ?\t 1))
+        (forward-line 1)))))
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-org2c2b435" class="outline-3">
+<h3 id="org2c2b435">用 subst-char-in-region 函数直接替换</h3>
+<div class="outline-text-3" id="text-org2c2b435">
+<div class="org-src-container">
+<pre class="src src-elisp">(<span style="color: #00bfff;">defun</span> <span style="color: #F94949;">oowrite-table-convert</span> (col beg end)
+  (<span style="color: #00bfff;">interactive</span> <span style="color: #daa520;">"nColumns of table: \nr"</span>)
+  (<span style="color: #00bfff;">save-excursion</span>
+    (<span style="color: #00bfff;">save-restriction</span>
+      (narrow-to-region beg end)
+      (goto-char (point-min))
+      (<span style="color: #00bfff;">while</span> (not (eobp))
+        (subst-char-in-region
+         (point) (<span style="color: #00bfff;">progn</span> (forward-line col) (1- (point)))
+         ?\n ?\t)))))
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-orgf01b3d2" class="outline-3">
+<h3 id="orgf01b3d2">用 re-search-forward 和 replace-match 查找替</h3>
+<div class="outline-text-3" id="text-orgf01b3d2">
+<div class="org-src-container">
+<pre class="src src-elisp">(<span style="color: #00bfff;">defun</span> <span style="color: #F94949;">oowrite-table-convert</span> (col beg end)
+  (<span style="color: #00bfff;">interactive</span> <span style="color: #daa520;">"nColumns of table: \nr"</span>)
+  (<span style="color: #00bfff;">let</span> (start bound)
+    (<span style="color: #00bfff;">save-excursion</span>
+      (<span style="color: #00bfff;">save-restriction</span>
+        (narrow-to-region beg end)
+        (goto-char (point-min))
+        (<span style="color: #00bfff;">while</span> (not (eobp))
+          (<span style="color: #00bfff;">setq</span> start (point))
+          (forward-line col)
+          (<span style="color: #00bfff;">setq</span> bound (copy-marker (1- (point))))
+          (goto-char start)
+          (<span style="color: #00bfff;">while</span> (re-search-forward <span style="color: #daa520;">"\n"</span> bound t)
+            (replace-match <span style="color: #daa520;">"\t"</span>))
+          (goto-char (1+ bound)))))))
+</pre>
+</div>
+
+<p>
+之所以要给出这三种方法，是想借此说明 elisp 编程其实要实现一个目的通常有 很多种方法，选择一种适合的方法。
+比如这个问题较好的方法是使用第二种方法.   To print a value as an integer, use ‘%d’ in the same way as ‘%s’.
+For example, to print a message in the echo area that states the value
+of the ‘fill-column’, evaluate the following:
+</p>
+</div>
+</div>
+</div>
+<div id="outline-container-orge09eac6" class="outline-2">
+<h2 id="orge09eac6">文件更详细的信息</h2>
+<div class="outline-text-2" id="text-orge09eac6">
+<div class="org-src-container">
+<pre class="src src-elisp">(<span style="color: #00bfff;">defun</span> <span style="color: #F94949;">file-stat-type</span> (file <span style="color: #d4d4d4;">&amp;optional</span> id-format)
+  (car (file-attributes file id-format)))
+(<span style="color: #00bfff;">defun</span> <span style="color: #F94949;">file-stat-name-number</span> (file <span style="color: #d4d4d4;">&amp;optional</span> id-format)
+  (cadr (file-attributes file id-format)))
+(<span style="color: #00bfff;">defun</span> <span style="color: #F94949;">file-stat-uid</span> (file <span style="color: #d4d4d4;">&amp;optional</span> id-format)
+  (nth 2 (file-attributes file id-format)))
+(<span style="color: #00bfff;">defun</span> <span style="color: #F94949;">file-stat-gid</span> (file <span style="color: #d4d4d4;">&amp;optional</span> id-format)
+  (nth 3 (file-attributes file id-format)))
+(<span style="color: #00bfff;">defun</span> <span style="color: #F94949;">file-stat-atime</span> (file <span style="color: #d4d4d4;">&amp;optional</span> id-format)
+  (nth 4 (file-attributes file id-format)))
+(<span style="color: #00bfff;">defun</span> <span style="color: #F94949;">file-stat-mtime</span> (file <span style="color: #d4d4d4;">&amp;optional</span> id-format)
+  (nth 5 (file-attributes file id-format)))
+(<span style="color: #00bfff;">defun</span> <span style="color: #F94949;">file-stat-ctime</span> (file <span style="color: #d4d4d4;">&amp;optional</span> id-format)
+  (nth 6 (file-attributes file id-format)))
+(<span style="color: #00bfff;">defun</span> <span style="color: #F94949;">file-stat-size</span> (file <span style="color: #d4d4d4;">&amp;optional</span> id-format)
+  (nth 7 (file-attributes file id-format)))
+(<span style="color: #00bfff;">defun</span> <span style="color: #F94949;">file-stat-modes</span> (file <span style="color: #d4d4d4;">&amp;optional</span> id-format)
+  (nth 8 (file-attributes file id-format)))
+(<span style="color: #00bfff;">defun</span> <span style="color: #F94949;">file-stat-guid-changep</span> (file <span style="color: #d4d4d4;">&amp;optional</span> id-format)
+  (nth 9 (file-attributes file id-format)))
+(<span style="color: #00bfff;">defun</span> <span style="color: #F94949;">file-stat-inode-number</span> (file <span style="color: #d4d4d4;">&amp;optional</span> id-format)
+  (nth 10 (file-attributes file id-format)))
+(<span style="color: #00bfff;">defun</span> <span style="color: #F94949;">file-stat-system-number</span> (file <span style="color: #d4d4d4;">&amp;optional</span> id-format)
+  (nth 11 (file-attributes file id-format)))
+(<span style="color: #00bfff;">defun</span> <span style="color: #F94949;">file-attr-type</span> (attr)
+  (car attr))
+(<span style="color: #00bfff;">defun</span> <span style="color: #F94949;">file-attr-name-number</span> (attr)
+  (cadr attr))
+(<span style="color: #00bfff;">defun</span> <span style="color: #F94949;">file-attr-uid</span> (attr)
+  (nth 2 attr))
+(<span style="color: #00bfff;">defun</span> <span style="color: #F94949;">file-attr-gid</span> (attr)
+  (nth 3 attr))
+(<span style="color: #00bfff;">defun</span> <span style="color: #F94949;">file-attr-atime</span> (attr)
+  (nth 4 attr))
+(<span style="color: #00bfff;">defun</span> <span style="color: #F94949;">file-attr-mtime</span> (attr)
+  (nth 5 attr))
+(<span style="color: #00bfff;">defun</span> <span style="color: #F94949;">file-attr-ctime</span> (attr)
+  (nth 6 attr))
+(<span style="color: #00bfff;">defun</span> <span style="color: #F94949;">file-attr-size</span> (attr)
+  (nth 7 attr))
+(<span style="color: #00bfff;">defun</span> <span style="color: #F94949;">file-attr-modes</span> (attr)
+  (nth 8 attr))
+(<span style="color: #00bfff;">defun</span> <span style="color: #F94949;">file-attr-guid-changep</span> (attr)
+  (nth 9 attr))
+(<span style="color: #00bfff;">defun</span> <span style="color: #F94949;">file-attr-inode-number</span> (attr)
+  (nth 10 attr))
+(<span style="color: #00bfff;">defun</span> <span style="color: #F94949;">file-attr-system-number</span> (attr)
+  (nth 11 attr))
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgf48ebdd" class="outline-2">
+<h2 id="orgf48ebdd">写一个函数返回当前目录包括子目录中所有文件名。</h2>
+<div class="outline-text-2" id="text-orgf48ebdd">
+<p>
+为了让这个函数更类似 directory-files 函数，我把参数设置为和它一样的：
+</p>
+
+<div class="org-src-container">
+<pre class="src src-elisp">(<span style="color: #00bfff;">defun</span> <span style="color: #F94949;">my-directory-all-files</span> (dir <span style="color: #d4d4d4;">&amp;optional</span> full match nosort)
+  (apply 'append
+   (delq nil
+    (mapcar
+     (<span style="color: #00bfff;">lambda</span> (file)
+       (<span style="color: #00bfff;">if</span> (<span style="color: #00bfff;">and</span> (not (string-match <span style="color: #daa520;">"^[.]+$"</span> (file-name-nondirectory file)))
+                (file-directory-p (expand-file-name file dir)))
+           (<span style="color: #00bfff;">if</span> full
+               (my-directory-all-files file full match nosort)
+             (mapcar (<span style="color: #00bfff;">lambda</span> (f)
+                       (concat (file-name-as-directory file) f))
+                     (my-directory-all-files (expand-file-name file dir)
+                                             full match nosort)))
+         (<span style="color: #00bfff;">if</span> (string-match match file)
+             (list file))))
+     (directory-files dir full nil nosort)))))
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org36a56fe" class="outline-2">
+<h2 id="org36a56fe">手工高亮代码</h2>
+<div class="outline-text-2" id="text-org36a56fe">
+<p>
+写一个命令，可在 text-mode 里用指定模式给选中的文本添加高亮。
+</p>
+
+<div class="org-src-container">
+<pre class="src src-elisp">(<span style="color: #00bfff;">defun</span> <span style="color: #F94949;">my-fontify-region</span> (beg end mode)
+  (<span style="color: #00bfff;">interactive</span>
+   (list (region-beginning)
+         (region-end)
+         (intern
+          (completing-read <span style="color: #daa520;">"Which mode to use: "</span>
+                           obarray (<span style="color: #00bfff;">lambda</span> (s)
+                                     (<span style="color: #00bfff;">and</span> (fboundp s)
+                                          (string-match <span style="color: #daa520;">"-mode$"</span> (symbol-name s))))
+                           t))))
+  (<span style="color: #00bfff;">let</span> ((buf (current-buffer))
+        (font-lock-verbose nil)
+        (start 1) face face-list)
+    (set-text-properties beg end '(face nil))
+    (<span style="color: #00bfff;">with-temp-buffer</span>
+      (goto-char (point-min))
+      (insert-buffer-substring buf beg end)
+      (funcall mode)
+      (font-lock-fontify-buffer)
+      (<span style="color: #00bfff;">or</span> (get-text-property start 'face)
+          (<span style="color: #00bfff;">setq</span> start (next-single-property-change start 'face)))
+      (<span style="color: #00bfff;">while</span> (<span style="color: #00bfff;">and</span> start (&lt; start (point-max)))
+        (<span style="color: #00bfff;">setq</span> end (<span style="color: #00bfff;">or</span> (next-single-property-change start 'face)
+                      (point-max))
+              face (get-text-property start 'face))
+        (<span style="color: #00bfff;">and</span> face end (<span style="color: #00bfff;">setq</span> face-list (cons (list (1- start) (1- end) face) face-list)))
+        (<span style="color: #00bfff;">setq</span> start end)))
+    (<span style="color: #00bfff;">when</span> face-list
+      (<span style="color: #00bfff;">dolist</span> (f (nreverse face-list))
+        (put-text-property (+ beg (car f)) (+ beg (cadr f))
+                           'face (nth 2 f))))))
+</pre>
+</div>
+</div>
+</div>
+</div>
+</body>
+</html>

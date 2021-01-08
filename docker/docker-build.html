@@ -1,0 +1,191 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<!-- 2021-01-08 Fri 15:30 -->
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>docker</title>
+<meta name="generator" content="Org mode" />
+<link rel="stylesheet" title="Standard" href="/html/style/worg.css" type="text/css" />
+<link rel="alternate stylesheet" title="Zenburn" href="/html/style/worg-zenburn.css" type="text/css" />
+<link rel="alternate stylesheet" title="Classic" href="/html/style/worg-classic.css" type="text/css" />
+<link rel="SHORTCUT ICON" href="/html/style/org-mode-unicorn.ico" type="image/x-icon" />
+<link rel="icon" href="/html/style/org-mode-unicorn.ico" type="image/ico" />
+<script type="text/javascript">
+/*
+@licstart  The following is the entire license notice for the
+JavaScript code in this tag.
+
+Copyright (C) 2012-2019 Free Software Foundation, Inc.
+
+The JavaScript code in this tag is free software: you can
+redistribute it and/or modify it under the terms of the GNU
+General Public License (GNU GPL) as published by the Free Software
+Foundation, either version 3 of the License, or (at your option)
+any later version.  The code is distributed WITHOUT ANY WARRANTY;
+without even the implied warranty of MERCHANTABILITY or FITNESS
+FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
+
+As additional permission under GNU GPL version 3 section 7, you
+may distribute non-source (e.g., minimized or compacted) forms of
+that code without the copy of the GNU GPL normally required by
+section 4, provided you include this license notice and a URL
+through which recipients can access the Corresponding Source.
+
+
+@licend  The above is the entire license notice
+for the JavaScript code in this tag.
+*/
+<!--/*--><![CDATA[/*><!--*/
+ function CodeHighlightOn(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(null != target) {
+     elem.cacheClassElem = elem.className;
+     elem.cacheClassTarget = target.className;
+     target.className = "code-highlighted";
+     elem.className   = "code-highlighted";
+   }
+ }
+ function CodeHighlightOff(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(elem.cacheClassElem)
+     elem.className = elem.cacheClassElem;
+   if(elem.cacheClassTarget)
+     target.className = elem.cacheClassTarget;
+ }
+/*]]>*///-->
+</script>
+</head>
+<body>
+<div id="preamble" class="status">
+<script type="text/javascript">
+  document.addEventListener('DOMContentLoaded',function() {
+      document.getElementById("table-of-contents").onclick = function() {
+          var elem = document.getElementById("text-table-of-contents");
+          elem.style.display = elem.style.display == "block" ? "none" : "block";
+      }
+  });
+
+  var url = document.location.href;
+  var orgsource = url.substring(0, url.lastIndexOf("."))+".org.html";
+  function show_org_source(){
+      document.location.href = orgsource;
+  }
+</script>
+
+<script>
+(function(f, a, t, h, o, m){
+	a[h]=a[h]||function(){
+		(a[h].q=a[h].q||[]).push(arguments)
+	};
+	o=f.createElement('script'),
+	m=f.getElementsByTagName('script')[0];
+	o.async=1; o.src=t; o.id='fathom-script';
+	m.parentNode.insertBefore(o,m)
+})(document, window, '//stats.orgmode.org/tracker.js', 'fathom');
+fathom('set', 'siteId', 'NWSQJ');
+fathom('trackPageview');
+</script>
+</div>
+<div id="content">
+<h1 class="title">docker</h1>
+<div id="table-of-contents">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#orge22fcfa">Post</a>
+<ul>
+<li><a href="#org926b9dd">docker build</a>
+<ul>
+<li><a href="#orgd0ccfb6">docker build时运行 COPY 时报no such file or directory 错误</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-orge22fcfa" class="outline-2">
+<h2 id="orge22fcfa">Post</h2>
+<div class="outline-text-2" id="text-orge22fcfa">
+</div>
+<div id="outline-container-org926b9dd" class="outline-3">
+<h3 id="org926b9dd">docker build&#xa0;&#xa0;&#xa0;<span class="tag"><span class="_docker">@docker</span>&#xa0;<span class="docker">docker</span></span></h3>
+<div class="outline-text-3" id="text-org926b9dd">
+</div>
+<div id="outline-container-orgd0ccfb6" class="outline-4">
+<h4 id="orgd0ccfb6">docker build时运行 COPY 时报no such file or directory 错误&#xa0;&#xa0;&#xa0;<span class="tag"><span class="faq">faq</span></span></h4>
+<div class="outline-text-4" id="text-orgd0ccfb6">
+</div>
+
+<ul class="org-ul">
+<li><a id="org4941d64"></a>env<br />
+<div class="outline-text-5" id="text-org4941d64">
+<p>
+Expected behavior
+COPY command to copy a file from local to image
+</p>
+
+<p>
+Actual behavior
+doing a simple COPY command in Dockerfile is throwing this error when the file is in a folder (not same level as Dockerfile file)
+</p>
+
+<p>
+Description
+</p>
+
+<p>
+I have a Dockerfile that has the line:
+</p>
+
+<p>
+COPY MyAgSourceAPI/conf/php/testsql.php <i>var/www</i>
+</p>
+
+<p>
+But it causes the error:
+</p>
+
+<p>
+COPY failed: stat /var/lib/docker/tmp/docker-builder918577595/MyAgSourceAPI/conf/php/testsql.php: no such file or directory
+</p>
+</div>
+</li>
+
+<li><a id="org03f50d8"></a>step<br />
+<div class="outline-text-5" id="text-org03f50d8">
+<p>
+有一些解决方案在  <a href="https://github.com/docker/for-mac/issues/1922">https://github.com/docker/for-mac/issues/1922</a> 提出来。
+</p>
+
+<p>
+我这里的解决方案是：指定 Dockerfile 路径(-f). 具体如下：
+</p>
+
+<div class="org-src-container">
+<pre class="src src-shell">docker build . -f /home/ubuntu/tmp/docker-ide-ud-v3/Dockerfile -t tomtsang/ide-ok
+</pre>
+</div>
+</div>
+</li>
+
+<li><a id="org6464b93"></a>Ref<br />
+<div class="outline-text-5" id="text-org6464b93">
+<ul class="org-ul">
+<li><a href="https://github.com/docker/for-mac/issues/1922">https://github.com/docker/for-mac/issues/1922</a></li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+</body>
+</html>

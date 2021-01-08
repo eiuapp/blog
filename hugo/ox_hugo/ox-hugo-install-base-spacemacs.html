@@ -1,0 +1,239 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<!-- 2021-01-07 Thu 16:31 -->
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>在spacemacs中安装ox-hugo</title>
+<meta name="generator" content="Org mode" />
+<meta name="author" content="a" />
+<meta name="description" content="Short description"
+ />
+<link rel="stylesheet" title="Standard" href="/html/style/worg.css" type="text/css" />
+<link rel="alternate stylesheet" title="Zenburn" href="/html/style/worg-zenburn.css" type="text/css" />
+<link rel="alternate stylesheet" title="Classic" href="/html/style/worg-classic.css" type="text/css" />
+<link rel="SHORTCUT ICON" href="/html/style/org-mode-unicorn.ico" type="image/x-icon" />
+<link rel="icon" href="/html/style/org-mode-unicorn.ico" type="image/ico" />
+<script type="text/javascript">
+/*
+@licstart  The following is the entire license notice for the
+JavaScript code in this tag.
+
+Copyright (C) 2012-2019 Free Software Foundation, Inc.
+
+The JavaScript code in this tag is free software: you can
+redistribute it and/or modify it under the terms of the GNU
+General Public License (GNU GPL) as published by the Free Software
+Foundation, either version 3 of the License, or (at your option)
+any later version.  The code is distributed WITHOUT ANY WARRANTY;
+without even the implied warranty of MERCHANTABILITY or FITNESS
+FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
+
+As additional permission under GNU GPL version 3 section 7, you
+may distribute non-source (e.g., minimized or compacted) forms of
+that code without the copy of the GNU GPL normally required by
+section 4, provided you include this license notice and a URL
+through which recipients can access the Corresponding Source.
+
+
+@licend  The above is the entire license notice
+for the JavaScript code in this tag.
+*/
+<!--/*--><![CDATA[/*><!--*/
+ function CodeHighlightOn(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(null != target) {
+     elem.cacheClassElem = elem.className;
+     elem.cacheClassTarget = target.className;
+     target.className = "code-highlighted";
+     elem.className   = "code-highlighted";
+   }
+ }
+ function CodeHighlightOff(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(elem.cacheClassElem)
+     elem.className = elem.cacheClassElem;
+   if(elem.cacheClassTarget)
+     target.className = elem.cacheClassTarget;
+ }
+/*]]>*///-->
+</script>
+</head>
+<body>
+<div id="preamble" class="status">
+<script type="text/javascript">
+  document.addEventListener('DOMContentLoaded',function() {
+      document.getElementById("table-of-contents").onclick = function() {
+          var elem = document.getElementById("text-table-of-contents");
+          elem.style.display = elem.style.display == "block" ? "none" : "block";
+      }
+  });
+
+  var url = document.location.href;
+  var orgsource = url.substring(0, url.lastIndexOf("."))+".org.html";
+  function show_org_source(){
+      document.location.href = orgsource;
+  }
+</script>
+
+<script>
+(function(f, a, t, h, o, m){
+	a[h]=a[h]||function(){
+		(a[h].q=a[h].q||[]).push(arguments)
+	};
+	o=f.createElement('script'),
+	m=f.getElementsByTagName('script')[0];
+	o.async=1; o.src=t; o.id='fathom-script';
+	m.parentNode.insertBefore(o,m)
+})(document, window, '//stats.orgmode.org/tracker.js', 'fathom');
+fathom('set', 'siteId', 'NWSQJ');
+fathom('trackPageview');
+</script>
+</div>
+<div id="content">
+<h1 class="title">在spacemacs中安装ox-hugo</h1>
+<div id="table-of-contents">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#orgf791241">Env</a></li>
+<li><a href="#org54eded3">Step</a>
+<ul>
+<li><a href="#orgb25a4d1">安装在 自己的layers中</a>
+<ul>
+<li><a href="#org13abe9b"><span class="todo TODO">TODO</span> 避免删除后重新安装</a></li>
+</ul>
+</li>
+<li><a href="#orgd51b238">安装在 ~/.spacemacs.d/init.el 中</a></li>
+</ul>
+</li>
+<li><a href="#orgb632ec0">Ref</a></li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-orgf791241" class="outline-2">
+<h2 id="orgf791241">Env</h2>
+<div class="outline-text-2" id="text-orgf791241">
+<ul class="org-ul">
+<li>spacemacs: 25+</li>
+<li>hugo: v0.26+</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org54eded3" class="outline-2">
+<h2 id="org54eded3">Step</h2>
+<div class="outline-text-2" id="text-org54eded3">
+</div>
+<div id="outline-container-orgb25a4d1" class="outline-3">
+<h3 id="orgb25a4d1">安装在 自己的layers中</h3>
+<div class="outline-text-3" id="text-orgb25a4d1">
+<p>
+yourlayername
+</p>
+
+<p>
+在yourlayername/packages.el中加入
+</p>
+
+<div class="org-src-container">
+<pre class="src src-Emacs-lisp">
+(defconst yourlayername-packages
+  '(
+    (org :location built-in)
+    ox-hugo
+    )
+  )
+
+(defun yourlayername/pre-init-org ()
+  (setq org-enable-hugo-support t)      ; 这个参数，放在 post-init-org 下，是失效的。
+  )
+
+(defun yourlayername/init-ox-hugo ()
+  ;; ox-hugo config
+  (use-package ox-hugo
+    :ensure t                    ;Auto-install the package from Melpa (optional)
+    :after ox
+    :init
+    )
+  )
+</pre>
+</div>
+
+<p>
+这样做，是生效的。但是有缺点。
+</p>
+
+<ol class="org-ol">
+<li>重启spacemacs时，会提示删除orphan package(s),</li>
+</ol>
+
+<div class="org-src-container">
+<pre class="src src-emacs-lisp">
+Found 1 orphan package(s) to delete...
+--&gt; deleting ox-hugo.
+
+</pre>
+</div>
+
+
+<p>
+删除完了后，又会再次安装 ox-hugo 至 ~/.emacs.d/elpa/ox-hugo-xxxxxxxx.xxxx 中（这样子，明显没有必要，且降低开启spacemacs的速度哟！）
+</p>
+</div>
+
+<div id="outline-container-org13abe9b" class="outline-4">
+<h4 id="org13abe9b"><span class="todo TODO">TODO</span> 避免删除后重新安装</h4>
+<div class="outline-text-4" id="text-org13abe9b">
+<p>
+查资料
+</p>
+
+<ul class="org-ul">
+<li><a href="https://github.com/syl20bnr/spacemacs/blob/master/doc/FAQ.org#why-are-packages-installed-with-package-install-automatically-deleted-by-spacemacs-when-it-boots">https://github.com/syl20bnr/spacemacs/blob/master/doc/FAQ.org#why-are-packages-installed-with-package-install-automatically-deleted-by-spacemacs-when-it-boots</a></li>
+<li></li>
+</ul>
+</div>
+</div>
+</div>
+
+
+
+<div id="outline-container-orgd51b238" class="outline-3">
+<h3 id="orgd51b238">安装在 ~/.spacemacs.d/init.el 中</h3>
+<div class="outline-text-3" id="text-orgd51b238">
+<p>
+在~/.spacemacs.d/init.el 中的 dotspacemacs/layers 中添加
+</p>
+
+<div class="org-src-container">
+<pre class="src src-emacs-lisp">(org <span style="color: #d4d4d4;">:variables</span>
+     org-enable-hugo-support t)
+</pre>
+</div>
+
+<p>
+就可以了
+</p>
+</div>
+</div>
+</div>
+
+
+
+<div id="outline-container-orgb632ec0" class="outline-2">
+<h2 id="orgb632ec0">Ref</h2>
+<div class="outline-text-2" id="text-orgb632ec0">
+<ul class="org-ul">
+<li><a href="https://www.shanesveller.com/blog/2018/02/13/blogging-with-org-mode-and-ox-hugo/">https://www.shanesveller.com/blog/2018/02/13/blogging-with-org-mode-and-ox-hugo/</a></li>
+</ul>
+</div>
+</div>
+</div>
+</body>
+</html>

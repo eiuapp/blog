@@ -1,0 +1,1880 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<!-- 2021-01-08 Fri 14:57 -->
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>&lrm;</title>
+<meta name="generator" content="Org mode" />
+<meta name="author" content="Bryce" />
+<link rel="stylesheet" title="Standard" href="/html/style/worg.css" type="text/css" />
+<link rel="alternate stylesheet" title="Zenburn" href="/html/style/worg-zenburn.css" type="text/css" />
+<link rel="alternate stylesheet" title="Classic" href="/html/style/worg-classic.css" type="text/css" />
+<link rel="SHORTCUT ICON" href="/html/style/org-mode-unicorn.ico" type="image/x-icon" />
+<link rel="icon" href="/html/style/org-mode-unicorn.ico" type="image/ico" />
+<script type="text/javascript">
+/*
+@licstart  The following is the entire license notice for the
+JavaScript code in this tag.
+
+Copyright (C) 2012-2019 Free Software Foundation, Inc.
+
+The JavaScript code in this tag is free software: you can
+redistribute it and/or modify it under the terms of the GNU
+General Public License (GNU GPL) as published by the Free Software
+Foundation, either version 3 of the License, or (at your option)
+any later version.  The code is distributed WITHOUT ANY WARRANTY;
+without even the implied warranty of MERCHANTABILITY or FITNESS
+FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
+
+As additional permission under GNU GPL version 3 section 7, you
+may distribute non-source (e.g., minimized or compacted) forms of
+that code without the copy of the GNU GPL normally required by
+section 4, provided you include this license notice and a URL
+through which recipients can access the Corresponding Source.
+
+
+@licend  The above is the entire license notice
+for the JavaScript code in this tag.
+*/
+<!--/*--><![CDATA[/*><!--*/
+ function CodeHighlightOn(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(null != target) {
+     elem.cacheClassElem = elem.className;
+     elem.cacheClassTarget = target.className;
+     target.className = "code-highlighted";
+     elem.className   = "code-highlighted";
+   }
+ }
+ function CodeHighlightOff(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(elem.cacheClassElem)
+     elem.className = elem.cacheClassElem;
+   if(elem.cacheClassTarget)
+     target.className = elem.cacheClassTarget;
+ }
+/*]]>*///-->
+</script>
+</head>
+<body>
+<div id="preamble" class="status">
+<script type="text/javascript">
+  document.addEventListener('DOMContentLoaded',function() {
+      document.getElementById("table-of-contents").onclick = function() {
+          var elem = document.getElementById("text-table-of-contents");
+          elem.style.display = elem.style.display == "block" ? "none" : "block";
+      }
+  });
+
+  var url = document.location.href;
+  var orgsource = url.substring(0, url.lastIndexOf("."))+".org.html";
+  function show_org_source(){
+      document.location.href = orgsource;
+  }
+</script>
+
+<script>
+(function(f, a, t, h, o, m){
+	a[h]=a[h]||function(){
+		(a[h].q=a[h].q||[]).push(arguments)
+	};
+	o=f.createElement('script'),
+	m=f.getElementsByTagName('script')[0];
+	o.async=1; o.src=t; o.id='fathom-script';
+	m.parentNode.insertBefore(o,m)
+})(document, window, '//stats.orgmode.org/tracker.js', 'fathom');
+fathom('set', 'siteId', 'NWSQJ');
+fathom('trackPageview');
+</script>
+</div>
+<div id="content">
+<div id="table-of-contents">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#orgcbcd6ba">Post</a>
+<ul>
+<li><a href="#org625e8b9">spacemacs rocks season 1 notes github README.org  youku</a>
+<ul>
+<li><a href="#orgdb37e99"><span class="todo TODO">TODO</span> Post Title</a></li>
+<li><a href="#orgfcd9a05"><span class="todo TODO">TODO</span> Draft Post Title</a></li>
+<li><a href="#org5b4f570">Spacemacs Rocks Day 0, Intro</a></li>
+<li><a href="#org8ffe937">Spacemacs Rocks Day 1, Features &amp; Workflow</a></li>
+<li><a href="#orgb041fa0">Spacemacs Rocks Day 2, Use Org-mode to Management Your Time</a></li>
+<li><a href="#orgf9f666a">Spacemacs Rocks Day 3, Emacs as a C/C++ IDE</a></li>
+<li><a href="#orgc49a2ad">Spacemacs Rocks Day 4, Magit workflow</a></li>
+<li><a href="#org8fe4e4f">Spacemacs Rocks Day 5, Find, Search and replace</a></li>
+<li><a href="#org3be01f1">Spacemacs Rocks Day 6, Org-mode as a blogging engine</a></li>
+<li><a href="#org5629557">Spacemacs Rocks Day 7, Spacemacs buffer, file, project and layout management</a></li>
+<li><a href="#org3503b8b">Spacemacs Rocks Day 8, Spacemacs as a JavaScript/Node.js IDE</a></li>
+<li><a href="#org094ff80">Spacemacs Rocks Day 9, spacemacs as a life style</a></li>
+<li><a href="#org1c722c7">Spacemacs Rocks Day 10, spacemacs tutor</a></li>
+<li><a href="#org0829676">Spacemacs Rocks Day 11, spacemacs use daily</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-orgcbcd6ba" class="outline-2">
+<h2 id="orgcbcd6ba">Post</h2>
+<div class="outline-text-2" id="text-orgcbcd6ba">
+</div>
+<div id="outline-container-org625e8b9" class="outline-3">
+<h3 id="org625e8b9">spacemacs rocks season 1 notes <a href="https://github.com/emacs-china/Spacemacs-rocks/tree/master/Season1">github README.org</a>  <a href="http://list.youku.com/albumlist/show?id=26137579&amp;ascending=1&amp;page=1">youku</a>&#xa0;&#xa0;&#xa0;<span class="tag"><span class="_spacemacs">@spacemacs</span>&#xa0;<span class="emacs">emacs</span>&#xa0;<span class="spacemacs">spacemacs</span></span></h3>
+<div class="outline-text-3" id="text-org625e8b9">
+</div>
+<div id="outline-container-orgdb37e99" class="outline-4">
+<h4 id="orgdb37e99"><span class="todo TODO">TODO</span> Post Title&#xa0;&#xa0;&#xa0;<span class="tag"><span class="post">post</span>&#xa0;<span class="tags">tags</span></span></h4>
+<div class="outline-text-4" id="text-orgdb37e99">
+</div>
+<ul class="org-ul">
+<li><a id="org74d1d1e"></a>Post Sub-Heading<br />
+<div class="outline-text-5" id="text-org74d1d1e">
+<p>
+This is another section within the post.
+</p>
+</div>
+</li>
+</ul>
+</div>
+
+<div id="outline-container-orgfcd9a05" class="outline-4">
+<h4 id="orgfcd9a05"><span class="todo TODO">TODO</span> Draft Post Title</h4>
+<div class="outline-text-4" id="text-orgfcd9a05">
+<p>
+This article <b>will</b> be exported but will be marked <code>draft = true</code> in the front matter.
+</p>
+</div>
+</div>
+
+<div id="outline-container-org5b4f570" class="outline-4">
+<h4 id="org5b4f570">Spacemacs Rocks Day 0, Intro</h4>
+<div class="outline-text-4" id="text-org5b4f570">
+<p>
+本spacemacs rocks day系列是针对子龙山人的 spacemacs rocks season 1 的 <a href="http://list.youku.com/albumlist/show?id=26137579&amp;ascending=1&amp;page=1">11个优酷视频教程</a>而整理的笔记。
+相应的子龙山人的本人对教程的介绍，请看：<a href="https://zilongshanren.com/blog/2015-12-06-spacemacs-rocks.html">https://zilongshanren.com/blog/2015-12-06-spacemacs-rocks.html</a>
+</p>
+
+<p>
+因为我本人之前已有相关的spacemacs的使用经历，所以，我在看的时候，次序有点不对。
+新人可以按下面的次序观看视频。
+</p>
+<ul class="org-ul">
+<li>了解: 10, 11, 9</li>
+<li>入门: 1, 2, 3, 4, 5, 6, 7, 8</li>
+</ul>
+
+<p>
+注意：视频中的很多命令，早已不能再使用，且有一些我也没有摸索出来，如有知道的请留言探讨。
+</p>
+</div>
+</div>
+<div id="outline-container-org8ffe937" class="outline-4">
+<h4 id="org8ffe937">Spacemacs Rocks Day 1, Features &amp; Workflow</h4>
+<div class="outline-text-4" id="text-org8ffe937">
+<p>
+<a href="http://v.youku.com/v_show/id_XMTM1Njc3MzU4MA==.html?spm=a2h0j.11185381.listitem_page1.5!30~A">spacemacs-rocks(1)</a>
+</p>
+</div>
+<ul class="org-ul">
+<li><a id="orgbcf3836"></a>跳到函数定义，并返回<br />
+<div class="outline-text-5" id="text-orgbcf3836">
+<p>
+&gt; , g g 然后 C-o
+</p>
+</div>
+</li>
+<li><a id="org4542d08"></a>Navigation functions in current file<br />
+<div class="outline-text-5" id="text-org4542d08">
+<p>
+&gt; SPC s l （已经失效，因为没有找到这个快捷键）
+</p>
+
+<p>
+替换成
+</p>
+
+<p>
+&gt; M-x helm-jump-in-buffer
+</p>
+
+<p>
+这样，就可以把它们绑定一下。
+</p>
+</div>
+</li>
+</ul>
+</div>
+
+<div id="outline-container-orgb041fa0" class="outline-4">
+<h4 id="orgb041fa0">Spacemacs Rocks Day 2, Use Org-mode to Management Your Time</h4>
+<div class="outline-text-4" id="text-orgb041fa0">
+<p>
+进入 agenda
+</p>
+
+<p>
+&gt; C-c a
+</p>
+
+<p>
+进入天，再进入周，再返回至天
+</p>
+
+<p>
+&gt; C-c a a 选中项目 Rtn w d
+</p>
+
+<p>
+这样，就可以把它们绑定一下。那怎么绑定呢？
+</p>
+
+<p>
+子龙山人的 `org-agenda-dir` 相关配置，在`~/.spacemacs.d/layers/zilongshanren/config.el`
+</p>
+
+<div class="org-src-container">
+<pre class="src src-Emacs-lisp">org-agenda-dir "~/org-notes"
+deft-dir "~/org-notes"
+blog-admin-dir "~/zilongshanren.com"))
+</pre>
+</div>
+
+<p>
+所以，这里要替换成自己的。
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgf9f666a" class="outline-4">
+<h4 id="orgf9f666a">Spacemacs Rocks Day 3, Emacs as a C/C++ IDE</h4>
+<div class="outline-text-4" id="text-orgf9f666a">
+<p>
+<a href="http://v.youku.com/v_show/id_XMTM2OTM3MDkwMA==.html?spm=a2h0j.11185381.listitem_page1.5!28~A">emacs-as-c-ide(youku)</a>
+</p>
+
+<p>
+先看 github的 README.org
+</p>
+
+<p>
+因为我并没有开发C/C++, 所以我这里只记录一下。
+</p>
+</div>
+
+<ul class="org-ul">
+<li><a id="org186c04c"></a>代码跳转<br />
+<div class="outline-text-5" id="text-org186c04c">
+<p>
+tag 跳转
+</p>
+
+<p>
+&gt; , g d
+</p>
+
+<p>
+精确 跳转
+</p>
+
+<p>
+&gt; , g g
+</p>
+
+<p>
+还有一个
+</p>
+
+<p>
+&gt; , g a
+</p>
+
+<p>
+返回到跳转前
+</p>
+
+<p>
+&gt; C-o
+</p>
+</div>
+</li>
+
+<li><a id="org3fafc1b"></a>生成 .ycm_extra_conf.py 文件<br />
+<ul class="org-ul">
+<li><a id="orgda9bfa2"></a><span class="todo TODO">TODO</span> 自动生成.ycm_extra_conf.py 文件的程序，会在其github中放出<br />
+<div class="outline-text-6" id="text-orgda9bfa2">
+<div class="org-src-container">
+<pre class="src src-bash">python config_gen.py ~/Github/Spacemacs-rocks/c++-project
+</pre>
+</div>
+</div>
+</li>
+</ul>
+</li>
+
+<li><a id="orgfc21a54"></a>安装ycmd<br />
+<div class="outline-text-5" id="text-orgfc21a54">
+<ul class="org-ul">
+<li><a href="https://github.com/Valloric/ycmd">https://github.com/Valloric/ycmd</a></li>
+</ul>
+</div>
+</li>
+
+<li><a id="org4860da2"></a>Compile??<br />
+<div class="outline-text-5" id="text-org4860da2">
+<p>
+推荐使用shell
+</p>
+</div>
+</li>
+<li><a id="org2e6eba6"></a>Debugging??<br />
+<div class="outline-text-5" id="text-org2e6eba6">
+<p>
+推荐使用 shell + lldb
+</p>
+</div>
+</li>
+</ul>
+</div>
+<div id="outline-container-orgc49a2ad" class="outline-4">
+<h4 id="orgc49a2ad">Spacemacs Rocks Day 4, Magit workflow&#xa0;&#xa0;&#xa0;<span class="tag"><span class="magit">magit</span></span></h4>
+<div class="outline-text-4" id="text-orgc49a2ad">
+<p>
+如果magit状态下，不知道按键，则 SPC g s 后按 ? 号，查看。
+</p>
+</div>
+
+<ul class="org-ul">
+<li><a id="org5f9fffa"></a>Magit init, commit and commit messages<br />
+<div class="outline-text-5" id="text-org5f9fffa">
+<ol class="org-ol">
+<li>SPC g i(magit-init)</li>
+<li>SPC u S(所有文件加入版本库)</li>
+<li>按TAB查看文件的修改</li>
+<li>SPC g s(magit-status)</li>
+<li>s-1 (goto unstaged section)</li>
+<li>press tab to view diffs(code review)</li>
+<li>s to stage all changes</li>
+<li>c c -&gt;  c-c c-c to commit</li>
+<li>editing the commit message and the diff on the right</li>
+</ol>
+</div>
+</li>
+<li><a id="org02b05e1"></a>Commits in Action<br />
+<div class="outline-text-5" id="text-org02b05e1">
+<ol class="org-ol">
+<li>Ammend ( c a)  就是把之前的commit作修改。把最近的修改，加入到上一次的
+        commit 之中。</li>
+<li>write good commit messages</li>
+<li>squash unpushed commits (r l)</li>
+<li>reset commits (l l #)</li>
+<li>select a few line to commits</li>
+<li>discard changes, file wide or line wide</li>
+<li>revert commits</li>
+</ol>
+</div>
+
+
+<ul class="org-ul">
+<li><a id="org18d577c"></a>git push<br />
+<div class="outline-text-6" id="text-org18d577c">
+<ol class="org-ol">
+<li>SPC g s</li>
+<li>M a(remote name, remote url)</li>
+<li>P</li>
+<li>第一次的话，按 - u(git push)</li>
+<li>按提示，一般是 p或u</li>
+</ol>
+</div>
+</li>
+<li><a id="orge1faf94"></a>git rebase squash 把2个或者多个 commit ，合并成一个。<br />
+<div class="outline-text-6" id="text-orge1faf94">
+<ol class="org-ol">
+<li>SPC g s</li>
+<li>多个commit, 但是没有 push</li>
+<li>找到最前的一个commit(commit 1)</li>
+<li>按r i，进入一个commit 列表。</li>
+<li>C-c, C-c</li>
+<li>按 r 再按s , 表示进入到 squash 状态</li>
+<li>按 , c 进入最终的commit Message 编辑</li>
+<li>C-c C-c 退出。这时，观察到，2个commit已经合并成一个了。</li>
+<li>git push 吧。</li>
+</ol>
+</div>
+</li>
+<li><a id="orgc580767"></a>git reset<br />
+<div class="outline-text-6" id="text-orgc580767">
+<ul class="org-ul">
+<li><a href="https://magit.vc/manual/magit/Resetting.html">https://magit.vc/manual/magit/Resetting.html</a></li>
+</ul>
+<p>
+SPC h d f 查找 magit-reset 函数, 知道，是在 git status状态下, 光标到希望reset 的
+commit 的地方，然后按 o ，然后回车或者另选择。
+</p>
+</div>
+</li>
+
+<li><a id="org5c32783"></a>discard unstaged changes<br />
+<div class="outline-text-6" id="text-org5c32783">
+<ul class="org-ul">
+<li>discard 整个修改过的文件，直接在文件处按 x</li>
+<li>discard 文件中的部分修改，TAB后，按v选中，按x</li>
+</ul>
+
+<p>
+总之就是先选中，然后按x,然后确认。
+</p>
+</div>
+</li>
+<li><a id="orgcbc16b4"></a>select a few line to commits<br />
+<div class="outline-text-6" id="text-orgcbc16b4">
+<ol class="org-ol">
+<li>press tab to view diffs(code review)</li>
+<li>v 选中修改的行</li>
+<li>s stage</li>
+</ol>
+<p>
+这样就只选择部分进行 commit . 注意，有些应该是要删除原来的语句的哟。
+</p>
+</div>
+</li>
+<li><a id="org49a5b8e"></a>revert commits<br />
+<div class="outline-text-6" id="text-org49a5b8e">
+<p>
+按 -
+</p>
+</div>
+</li>
+</ul>
+</li>
+
+<li><a id="orgdb0d3fe"></a>Branching basics<br />
+<div class="outline-text-5" id="text-orgdb0d3fe">
+<ol class="org-ol">
+<li>b B to create branch</li>
+<li>m m to merge</li>
+<li>b b to switch branch</li>
+</ol>
+</div>
+
+<ul class="org-ul">
+<li><a id="orgcd5bc34"></a>create a new branch<br />
+<div class="outline-text-6" id="text-orgcd5bc34">
+<p>
+好像 b B 已经失效
+</p>
+
+<p>
+&gt; SPC g s b c
+</p>
+</div>
+</li>
+
+<li><a id="org853a36b"></a>merge develop branch<br />
+<div class="outline-text-6" id="text-org853a36b">
+<p>
+&gt; SPC g s m m
+</p>
+</div>
+</li>
+</ul>
+</li>
+
+
+<li><a id="org58ee480"></a>Rebase<br />
+<div class="outline-text-5" id="text-org58ee480">
+<ol class="org-ol">
+<li>squash unpushed</li>
+<li>rebase to other branch</li>
+<li>interactive rebase</li>
+</ol>
+</div>
+</li>
+
+<li><a id="orga31785c"></a>pull, push &amp; send Pull request<br />
+<div class="outline-text-5" id="text-orga31785c">
+<ol class="org-ol">
+<li>P P</li>
+<li>f f / f o to fetch branch</li>
+<li>F to pull</li>
+<li>s-g to send pull request</li>
+</ol>
+</div>
+</li>
+
+<li><a id="org6cf9cee"></a>Misc<br />
+<div class="outline-text-5" id="text-org6cf9cee">
+<ol class="org-ol">
+<li>cherry pick</li>
+<li>view github files</li>
+</ol>
+</div>
+</li>
+</ul>
+</div>
+<div id="outline-container-org8fe4e4f" class="outline-4">
+<h4 id="org8fe4e4f">Spacemacs Rocks Day 5, Find, Search and replace&#xa0;&#xa0;&#xa0;<span class="tag"><span class="search">search</span></span></h4>
+<div class="outline-text-4" id="text-org8fe4e4f">
+</div>
+
+
+<ul class="org-ul">
+<li><a id="orgd7533e1"></a>Evil search<br />
+<div class="outline-text-5" id="text-orgd7533e1">
+<ol class="org-ol">
+<li>Use / and * to start search.</li>
+<li>Use n &amp; N to search forward and backward</li>
+</ol>
+</div>
+<ul class="org-ul">
+<li><a id="org3bc4586"></a>进入 iedit 批量修改<br />
+<div class="outline-text-6" id="text-org3bc4586">
+<p>
+&gt; * e
+</p>
+
+<p>
+修改的时候，按S则删除原单词，修改完成后，按ESC，2次，退出iedit模式回到Normal模式。
+</p>
+</div>
+</li>
+
+<li><a id="orgd7bdd68"></a>选择匹配范围。<br />
+<div class="outline-text-6" id="text-orgd7bdd68">
+<p>
+多次按 r 切换匹配区域（当前buffer, 当前屏幕，当前函数）
+</p>
+
+<p>
+&gt; * r
+</p>
+
+<p>
+按 e 进入编辑模式，按 f 进入函数区域，按S开始修改。
+</p>
+</div>
+</li>
+
+<li><a id="org9fc6038"></a>清除搜索下的高亮：evil-search-clear-highlight<br />
+<div class="outline-text-6" id="text-org9fc6038">
+<p>
+&gt; SPC s c
+</p>
+</div>
+</li>
+</ul>
+</li>
+
+<li><a id="org14d6500"></a>Swiper<br />
+<div class="outline-text-5" id="text-org14d6500">
+<ol class="org-ol">
+<li>C-s to start search.</li>
+</ol>
+<p>
+搜索到结果后，C-j, C-k, C-n, C-p 可以跳转
+</p>
+<ol class="org-ol">
+<li>C-c C-o to enter ivy-occur</li>
+</ol>
+<p>
+可以把当前的搜索项，罗列在另一个buffer中。
+</p>
+</div>
+</li>
+
+<li><a id="org7e49d93"></a>Helm-swoop<br />
+<div class="outline-text-5" id="text-org7e49d93">
+<p>
+SPC s s/S to search search
+C-c C-e to enter edit mode
+SPC h l(helm-resume)
+</p>
+</div>
+
+<ul class="org-ul">
+<li><a id="org508aaac"></a>直接搜索光标处的单词<br />
+<div class="outline-text-6" id="text-org508aaac">
+<p>
+&gt; SPC s S
+</p>
+</div>
+</li>
+<li><a id="org0051358"></a>批量修改<br />
+<div class="outline-text-6" id="text-org0051358">
+<p>
+&gt; 搜索后，C-c C-e
+</p>
+
+<p>
+只是打开另一个buffer, 没有做到 批量修改，至于后面提到的 C-x
+C-s 保存修改结果，更无从谈起了。
+</p>
+
+<p>
+正确的是什么方式？
+</p>
+</div>
+</li>
+<li><a id="org1cf11c3"></a>开启上一次搜索项目，查询上一次搜索结果<br />
+<div class="outline-text-6" id="text-org1cf11c3">
+<p>
+修正：
+</p>
+
+<p>
+SPC h l runs the command ivy-spacemacs-help-layers, 查询layers help文档。不是视
+频说的：开启上一次搜索项目，查询上一次搜索结果。
+</p>
+</div>
+</li>
+</ul>
+</li>
+
+
+
+<li><a id="org9d661a5"></a>Helm-imenu-or-semantic<br />
+<div class="outline-text-5" id="text-org9d661a5">
+<p>
+To search structured word.
+SPC s l
+</p>
+</div>
+</li>
+<li><a id="org2850bc1"></a>Occur to search and multiple editing<br />
+<div class="outline-text-5" id="text-org2850bc1">
+<p>
+M-s o to use occur and e to enter edit mode. C-c to finish editing.
+Edit search result one by one.
+Edit search result with iedit and multiple cursor.
+</p>
+</div>
+</li>
+<li><a id="org8769fa5"></a>Helm -ag<br />
+<div class="outline-text-5" id="text-org8769fa5">
+<p>
+F3 to save search result, SPC s L to open last save search buffer.
+</p>
+
+<p>
+这里的 F3 to save search result, SPC s L to open last save search buffer. 没有做到,谁知道呀？
+</p>
+</div>
+</li>
+<li><a id="org13ba466"></a>SPC s p to search project wide<br />
+<div class="outline-text-5" id="text-org13ba466">
+<p>
+C-c c-e
+</p>
+</div>
+</li>
+<li><a id="orga4d3dac"></a>SPC s f to search for files and certain suffix files.<br />
+<ul class="org-ul">
+<li><a id="orgd1e52ee"></a>指定搜索某单个文件<br />
+<div class="outline-text-6" id="text-orgd1e52ee">
+<p>
+&gt; SPC s f 选择某文件
+</p>
+</div>
+</li>
+<li><a id="org20c6381"></a>指定搜索某类型文件<br />
+<div class="outline-text-6" id="text-org20c6381">
+<p>
+&gt; SPC u SPC s f 选择某文件夹，选择某文件类型
+</p>
+</div>
+</li>
+</ul>
+</li>
+
+<li><a id="org85e7fc7"></a>SPC s b to search all the open buffer<br /></li>
+
+<li><a id="org98345e0"></a>SPC n f to narrow to function, SPC n w to restore<br />
+<div class="outline-text-5" id="text-org98345e0">
+<p>
+After narrowing, you could use :%s/old/new/g to replace
+</p>
+</div>
+
+<ul class="org-ul">
+<li><a id="orge79f31f"></a>方法1<br />
+<div class="outline-text-6" id="text-orge79f31f">
+<p>
+标记搜索内容后，搜索buffer
+</p>
+
+<p>
+&gt; SPC s E
+</p>
+
+<p>
+再按 F ,缩小到只有当前函数。再按S,进行编辑。
+</p>
+</div>
+</li>
+
+<li><a id="orgcb69486"></a>方法2<br />
+<div class="outline-text-6" id="text-orgcb69486">
+<p>
+&gt; SPC n f
+</p>
+<ul class="org-ul">
+<li>替换1</li>
+</ul>
+<p>
+&gt; %s/A/B/g
+</p>
+<ul class="org-ul">
+<li>替换1</li>
+</ul>
+<p>
+&gt; 光标处，* e S, 编辑完成后，ESC ESC，返回到 normal 模式
+</p>
+
+<p>
+替换完成后，
+</p>
+
+<p>
+&gt; SPC n w
+</p>
+</div>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+<div id="outline-container-org3be01f1" class="outline-4">
+<h4 id="org3be01f1">Spacemacs Rocks Day 6, Org-mode as a blogging engine</h4>
+<div class="outline-text-4" id="text-org3be01f1">
+<p>
+<a href="http://v.youku.com/v_show/id_XMTM4NzIyMTc0MA==.html?spm=a2h1n.8251843.playList.5!7~5~A&amp;f=26137579&amp;o=1">youku</a>
+</p>
+</div>
+<ul class="org-ul">
+<li><a id="orgbaef89b"></a>Start to blogging any place and any time.<br />
+<div class="outline-text-5" id="text-orgbaef89b">
+<p>
+Press F1 to launch a menu and type <code>blog</code> to choose.
+Navigation all the blog posts
+</p>
+
+<p>
+<a href="https://github.com/CodeFalling/blog-admin">https://github.com/CodeFalling/blog-admin</a>
+</p>
+
+<p>
+这里的配置，主要是针对 hexo
+</p>
+</div>
+</li>
+<li><a id="orgfd16d0a"></a>Press W to new post<br />
+<div class="outline-text-5" id="text-orgfd16d0a">
+<p>
+Enter the title of your new post
+</p>
+
+<p>
+快速生成一个draft blog
+</p>
+</div>
+
+<ul class="org-ul">
+<li><a id="org475af8e"></a>下面这个在另一篇博文中已经提过。<br />
+<div class="outline-text-6" id="text-org475af8e">
+<p>
+&gt; C-c t h
+</p>
+</div>
+</li>
+
+<li><a id="orgc74686d"></a>使用 yasnippet 模板，快速生成一个draft<br />
+<div class="outline-text-6" id="text-orgc74686d">
+<p>
+hugo 文章信息模板
+</p>
+</div>
+</li>
+</ul>
+</li>
+
+<li><a id="orge31f1dd"></a>Start writing<br />
+<div class="outline-text-5" id="text-orge31f1dd">
+<p>
+You could use all the Org syntax here. But org table is not well supported.
+</p>
+<ol class="org-ol">
+<li>Headings.</li>
+<li>Insert links.</li>
+<li>Insert Images</li>
+<li>Insert Code(We can even execute the code in the documents, oh my!)</li>
+</ol>
+</div>
+
+<ul class="org-ul">
+<li><a id="orgd8ccbb5"></a>Insert links:<br />
+<ul class="org-ul">
+<li><a id="org54dbeef"></a>zilongshanren/insert-chrome-current-tab-url<br />
+<div class="outline-text-7" id="text-org54dbeef">
+<p>
+&gt; C-c l
+</p>
+</div>
+</li>
+</ul>
+</li>
+
+<li><a id="org9fa6af2"></a>Insert Images<br />
+<ul class="org-ul">
+<li><a id="org9fdb1f4"></a>截图<br />
+<div class="outline-text-7" id="text-org9fdb1f4">
+<p>
+&gt; M-x zilongshanren/capture-screenshot
+</p>
+
+<p>
+这里，子龙山人的操作，使得截图自动生成 <img src="http://图床地址/%E5%9B%BE%E7%89%87%E5%90%8D.png" alt="%E5%9B%BE%E7%89%87%E5%90%8D.png" /> ，其中图片名格式
+为：日期-博文名-图片名.png, 且放置在了博客的一个图片文件夹中。
+再通过一个 zilongshanren/octopress-upimg 函数，把这个图片上传到七牛云存储中，这
+时回车，就可以通过浏览器访问到此图片。
+</p>
+
+<p>
+这2步，他是怎么做到的呢？
+</p>
+</div>
+</li>
+</ul>
+</li>
+
+<li><a id="orga06e3a6"></a>Insert Code<br />
+<div class="outline-text-6" id="text-orga06e3a6">
+<p>
+&gt; C-c i s
+</p>
+
+<p>
+runs the command zilongshanren/org-insert-src-block ，插入完成后，
+然后可以直接执行这一段代码。这个功能，还是蛮好的。
+</p>
+
+<p>
+怎么执行的呢？
+</p>
+
+<p>
+按 `C-c` 后，还按了什么键，出现了
+`Evaluate this C++ code block on your system? (y or n)`
+</p>
+
+<p>
+就是没有找到按的是什么键
+</p>
+
+<p>
+但是我发现，只要把光标，移动到 `#+BEGIN_SRC`这个地方，minibuffer处，会自动提示出
+`:results :exports :tangle` 这些，然后，直接回车，就是上面这个询问。
+</p>
+
+<div class="org-src-container">
+<pre class="src src-sh"><span style="color: #d4d4d4;">echo</span> <span style="color: #daa520;">"hello world"</span>
+</pre>
+</div>
+
+<pre class="example">
+hello world
+
+</pre>
+</div>
+</li>
+</ul>
+</li>
+
+<li><a id="org8953c05"></a>Preview and publish<br />
+<ul class="org-ul">
+<li><a id="orge1bb200"></a>Preview<br />
+<ul class="org-ul">
+<li><a id="org0074841"></a>runs the command prodigy to preview<br />
+<div class="outline-text-7" id="text-org0074841">
+<p>
+&gt; SPC a S
+</p>
+
+<p>
+然后按 s 启动 hugo server 就可以了。
+</p>
+
+<ul class="org-ul">
+<li>s 开启服务</li>
+<li>S 关闭服务</li>
+<li>r 重启服务</li>
+</ul>
+</div>
+</li>
+
+<li><a id="org30d7e16"></a>prodigy的快捷键，参考这里<br />
+<div class="outline-text-7" id="text-org30d7e16">
+<ul class="org-ul">
+<li><a href="https://segmentfault.com/a/1190000000452049">https://segmentfault.com/a/1190000000452049</a></li>
+<li><a href="https://github.com/rejeep/prodigy.el">https://github.com/rejeep/prodigy.el</a></li>
+</ul>
+</div>
+</li>
+
+<li><a id="org553ca16"></a>这里的前提是配置了hugo server 相关的 prodigy<br />
+<div class="outline-text-7" id="text-org553ca16">
+<p>
+参考 -
+<a href="https://www.shanesveller.com/blog/2018/02/13/blogging-with-org-mode-and-ox-hugo/">https://www.shanesveller.com/blog/2018/02/13/blogging-with-org-mode-and-ox-hugo/</a>
+或者子龙的hexo的配置就可以了。我的配置如下：
+</p>
+
+<div class="org-src-container">
+<pre class="src src-emacs-lisp">(prodigy-define-service
+  <span style="color: #d4d4d4;">:name</span> <span style="color: #daa520;">"Hugo Server beautifulhugo"</span>
+  <span style="color: #d4d4d4;">:command</span> <span style="color: #daa520;">"/usr/local/bin/hugo"</span>
+  <span style="color: #d4d4d4;">:args</span> '(<span style="color: #daa520;">"server"</span> <span style="color: #daa520;">"-D"</span> <span style="color: #daa520;">"--navigateToChanged"</span> <span style="color: #daa520;">"-t"</span> <span style="color: #daa520;">"beautifulhugo"</span>)
+  <span style="color: #d4d4d4;">:cwd</span> <span style="color: #daa520;">"~/******jc-hugo"</span>
+  <span style="color: #d4d4d4;">:tags</span> '(hugo server)
+  <span style="color: #d4d4d4;">:stop-signal</span> 'sigkill
+  <span style="color: #d4d4d4;">:init</span> (<span style="color: #00bfff;">lambda</span> () (browse-url <span style="color: #daa520;">"http://localhost:1313"</span>))
+  <span style="color: #d4d4d4;">:kill-process-buffer-on-stop</span> t)
+
+(prodigy-define-service
+  <span style="color: #d4d4d4;">:name</span> <span style="color: #daa520;">"Hugo Server"</span>
+  <span style="color: #d4d4d4;">:command</span> <span style="color: #daa520;">"hugo"</span>
+  <span style="color: #d4d4d4;">:args</span> '(<span style="color: #daa520;">"server"</span>)
+  <span style="color: #d4d4d4;">:cwd</span> <span style="color: #daa520;">"~/******jc-hugo"</span>
+  <span style="color: #d4d4d4;">:tags</span> '(hugo server)
+  <span style="color: #d4d4d4;">:kill-signal</span> 'sigkill
+  <span style="color: #d4d4d4;">:kill-process-buffer-on-stop</span> t)
+
+</pre>
+</div>
+
+<p>
+这里的 args 参数里的内容，可以自己先在 shell 下尝试，并了解清楚含义。比如 -t beautifulhugo指
+的是theme主题名为beautifulhugo
+</p>
+
+<div class="org-src-container">
+<pre class="src src-bash">&#10140;  hugo git:(master) &#10007; /usr/local/bin/hugo server -D --navigateToChanged -t beautifulhugo
+
+                                                       | EN
+                                                       +------------------+-----+
+                                                       Pages            | 930
+                                                       Paginator pages  |  66
+                                                       Non-page files   |   0
+                                                       Static files     |  28
+                                                       Processed images |   0
+                                                       Aliases          | 314
+                                                       Sitemaps         |   1
+                                                       Cleaned          |   0
+
+                                                       Total<span style="color: #00bfff;"> in</span> 632 ms
+</pre>
+</div>
+</div>
+</li>
+</ul>
+</li>
+
+<li><a id="org41455eb"></a>deploy<br /></li>
+</ul>
+</li>
+</ul>
+</div>
+<div id="outline-container-org5629557" class="outline-4">
+<h4 id="org5629557">Spacemacs Rocks Day 7, Spacemacs buffer, file, project and layout management</h4>
+<div class="outline-text-4" id="text-org5629557">
+<p>
+<a href="http://v.youku.com/v_show/id_XMTM5NDI3NjQxMg==.html?spm=a2h1n.8251843.playList.5!9~5~A&amp;f=26137579&amp;o=1">youku</a>
+</p>
+</div>
+
+<ul class="org-ul">
+<li><a id="org9f4e024"></a>SPC f  &#x2014;&gt;    file related operations<br />
+<div class="outline-text-5" id="text-org9f4e024">
+<div class="org-src-container">
+<pre class="src src-markdown">SPC f f  --&gt; helm-find-file
+SPC f r  --&gt; open recent file
+SPC f R  --&gt; rename file
+SPC f c  --&gt; copy file
+SPC f j  --&gt; jump to dired
+SPC f t  --&gt; open neo tree
+SPC f o  --&gt; open in external application
+</pre>
+</div>
+
+<p>
+在 SPC f f的时候，可以通过 TAB 和 C-h 补充和回退文件夹名。
+</p>
+</div>
+</li>
+
+<li><a id="orgd50f7cb"></a>SPC b &#x2014;&gt;  buffer related operations<br />
+<div class="outline-text-5" id="text-orgd50f7cb">
+<div class="org-src-container">
+<pre class="src src-markdown">SPC b b &amp; SPC b B(i)
+SPC b h (spacemacs home buffer)
+SPC b s (scratch buffer)
+SPC b f (reveal in finder)
+SPC b w in dired buffer.
+SPC b n/p (previous or next buffer)
+SPC b TAB to switch back and forth.
+</pre>
+</div>
+
+
+<p>
+SPC b w in dired buffer.从而实现对文件名的修改, 多行编辑等操作。
+</p>
+</div>
+</li>
+
+<li><a id="org8da43ea"></a>SPC p  &#x2014;&gt; project related operations<br />
+<div class="outline-text-5" id="text-org8da43ea">
+<div class="org-src-container">
+<pre class="src src-markdown">SPC p f  and SPC p b
+</pre>
+</div>
+</div>
+</li>
+<li><a id="org5885068"></a>SPC l &#x2014;&gt; layout replated operations<br />
+<div class="outline-text-5" id="text-org5885068">
+<div class="org-src-container">
+<pre class="src src-markdown">SPC l o  --&gt; custom layout
+SPC l L/s --&gt; load or save layout
+SPC l l --&gt; switch bewteen layout
+SPC l TAB --&gt; quick way to switch
+SPC l ?  --&gt; open up the help.
+SPC p l --&gt; switch to project and create a layout
+</pre>
+</div>
+</div>
+</li>
+
+<li><a id="orge560b8b"></a>dired related operations<br />
+<div class="outline-text-5" id="text-orge560b8b">
+<div class="org-src-container">
+<pre class="src src-markdown">new file/delete file/rename file
+new folder/delete folder/rename folder
+</pre>
+</div>
+
+<p>
+`+`号,新建文件夹。
+在文件夹上，f 新建文件。
+</p>
+</div>
+
+<ul class="org-ul">
+<li><a id="org6cb1919"></a>标记并删除<br />
+<div class="outline-text-6" id="text-org6cb1919">
+<p>
+在 dired 模式下，m 标记，D 删除。
+</p>
+</div>
+</li>
+</ul>
+</li>
+<li><a id="orge6c38a4"></a>Ranger<br />
+<div class="outline-text-5" id="text-orge6c38a4">
+<div class="org-src-container">
+<pre class="src src-markdown">SPC a r
+h l to navigate folder
+j k to preview file
+</pre>
+</div>
+</div>
+</li>
+</ul>
+</div>
+<div id="outline-container-org3503b8b" class="outline-4">
+<h4 id="org3503b8b">Spacemacs Rocks Day 8, Spacemacs as a JavaScript/Node.js IDE</h4>
+<div class="outline-text-4" id="text-org3503b8b">
+</div>
+<ul class="org-ul">
+<li><a id="org5a34240"></a>Autocompletion<br />
+<div class="outline-text-5" id="text-org5a34240">
+<ol class="org-ol">
+<li>company-etags vs company-tern</li>
+<li>hippie-expand</li>
+</ol>
+
+<p>
+&gt; M-x hippie-expand
+</p>
+
+<p>
+或者
+</p>
+
+<p>
+&gt; M-/
+</p>
+</div>
+</li>
+
+<li><a id="orgd3f3ba6"></a>Jump to definition<br />
+<div class="outline-text-5" id="text-orgd3f3ba6">
+<ol class="org-ol">
+<li>SPC s l to jump to function definitions.  ctags.</li>
+<li>SPC m g d/ etags-select</li>
+<li>SPC s p / SPC o s to search keywords</li>
+<li>SPC m g g if use tern.js</li>
+</ol>
+</div>
+
+<ul class="org-ul">
+<li><a id="org4006368"></a>jump to function definitions.  ctags&gt; SPC s l<br />
+<div class="outline-text-6" id="text-org4006368">
+<p>
+已经失效了
+</p>
+</div>
+</li>
+<li><a id="org027e4a8"></a>etags-select<br />
+<div class="outline-text-6" id="text-org027e4a8">
+<p>
+etags, 基于正则表达式的补全
+&gt; SPC m g d
+和
+&gt; , g d
+相同
+</p>
+</div>
+</li>
+<li><a id="org7423abe"></a>tern<br />
+<div class="outline-text-6" id="text-org7423abe">
+<p>
+精确补全
+&gt; SPC m g g 也就是 &gt; , g g
+</p>
+</div>
+</li>
+</ul>
+</li>
+<li><a id="orgcb9911a"></a>Syntax check<br />
+<div class="outline-text-5" id="text-orgcb9911a">
+<ol class="org-ol">
+<li>flycheck with jshint / eslint</li>
+<li>js2-mode checking</li>
+</ol>
+</div>
+
+<ul class="org-ul">
+<li><a id="orgf60a628"></a>开启语法检查<br />
+<div class="outline-text-6" id="text-orgf60a628">
+<p>
+&gt; SPC t s
+</p>
+</div>
+</li>
+
+<li><a id="org5f80fa0"></a>查看语法错误信息<br />
+<div class="outline-text-6" id="text-org5f80fa0">
+<p>
+&gt; SPC e l
+</p>
+</div>
+</li>
+</ul>
+</li>
+
+<li><a id="org63f8312"></a>REPL<br />
+<div class="outline-text-5" id="text-org63f8312">
+<ol class="org-ol">
+<li>jscomint</li>
+</ol>
+<p>
+jscomint has better ES6 support. But the keybinding are not perfect
+</p>
+
+<ol class="org-ol">
+<li>nodejs repl</li>
+</ol>
+<p>
+ES6 support is not good, but has better keybinding.
+</p>
+</div>
+
+<ul class="org-ul">
+<li><a id="org45cb35b"></a>nodejs repl<br />
+<div class="outline-text-6" id="text-org45cb35b">
+<p>
+开启
+</p>
+
+<p>
+&gt; M-x nodejs-repl
+</p>
+
+<p>
+关闭 nodejs-repl
+</p>
+
+<p>
+&gt; .exit
+</p>
+
+
+<p>
+去 nodejs-repl buffer执行当前行
+</p>
+
+<p>
+&gt; , e d
+</p>
+
+<p>
+已修改成
+</p>
+
+<p>
+&gt; , s d
+</p>
+
+<p>
+具体其它命令，可以搜索文档
+</p>
+
+<p>
+&gt; C-h o nodejs-repl-command
+</p>
+
+<p>
+然后，查看 nodejs-repl-mode 文档
+</p>
+</div>
+</li>
+</ul>
+</li>
+
+<li><a id="orgafefe05"></a>Format code<br />
+<div class="outline-text-5" id="text-orgafefe05">
+<ol class="org-ol">
+<li>js beautify</li>
+</ol>
+
+<p>
+&gt; , =
+</p>
+
+<p>
+运行前，需要先安装 js-beautify
+</p>
+<div class="org-src-container">
+<pre class="src src-bash">$ npm install -g js-beautify
+</pre>
+</div>
+
+<p>
+其中js-beautify的配置文件是 `~/.jsbeautifyrc`.
+</p>
+
+<p>
+如果不想安装，则使用：
+</p>
+
+<p>
+&gt; SPC j =
+</p>
+
+<p>
+runs the command spacemacs/indent-region-or-buffer.
+</p>
+</div>
+</li>
+</ul>
+</div>
+<div id="outline-container-org094ff80" class="outline-4">
+<h4 id="org094ff80">Spacemacs Rocks Day 9, spacemacs as a life style</h4>
+<div class="outline-text-4" id="text-org094ff80">
+<p>
+<a href="http://v.youku.com/v_show/id_XMTQwNTg2NTkzMg==.html">spacemacs as a life style</a>
+视频中的命令，还没有找到
+</p>
+
+<p>
+进入不同的项目，使用layer切换：
+</p>
+
+<p>
+&gt; SPC l l
+</p>
+
+<p>
+一般先进入 @org 查看当天的任务
+</p>
+
+<p>
+只有单你，确切地需要功能时，才去写elisp函数，实现自动化。
+</p>
+</div>
+
+
+<ul class="org-ul">
+<li><a id="org859dbfb"></a><span class="todo TODO">TODO</span> 在 day 周期下，如何把任务设置成 done?<br />
+<div class="outline-text-5" id="text-org859dbfb">
+</div>
+</li>
+
+<li><a id="orgeaf8ab4"></a><span class="todo TODO">TODO</span> 开启ERC<br />
+<div class="outline-text-5" id="text-orgeaf8ab4">
+<p>
+在 SPC f e d 中安装 erc layer.
+</p>
+</div>
+</li>
+
+
+
+<li><a id="orgec57000"></a><span class="todo TODO">TODO</span> 通过 ispell 语法检查<br />
+<div class="outline-text-5" id="text-orgec57000">
+<p>
+experience
+</p>
+</div>
+</li>
+
+<li><a id="org766feda"></a><a href="https://github.com/xuchunyang/osx-dictionary.el">osx-dictionary</a> 英英翻译<br />
+<ul class="org-ul">
+<li><a id="orge236f08"></a>光标处翻译<br />
+<div class="outline-text-6" id="text-orge236f08">
+<p>
+比如，我们现在有ball这个单词，把光标放在ball上（b,l上都可以）,然后
+</p>
+
+<p>
+&gt; M-x osx-dictionary-search-word-at-point
+</p>
+
+<p>
+或者
+</p>
+
+<p>
+&gt; SPC x w d
+</p>
+
+<p>
+然后，就给出了英文翻译，这时在这个临时buffer中有 s, o, r, q 提示，我们按r就有发音了。
+</p>
+</div>
+</li>
+
+<li><a id="org4629845"></a>翻译一个输入的单词<br />
+<div class="outline-text-6" id="text-org4629845">
+<p>
+&gt; M-x osx-dictionary-search-input
+</p>
+</div>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+<div id="outline-container-org1c722c7" class="outline-4">
+<h4 id="org1c722c7">Spacemacs Rocks Day 10, spacemacs tutor&#xa0;&#xa0;&#xa0;<span class="tag"><span class="tutor">tutor</span></span></h4>
+<div class="outline-text-4" id="text-org1c722c7">
+<p>
+<a href="http://v.youku.com/v_show/id_XMTI4MjY5ODIyOA==.html?spm=a2h0j.11185381.listitem_page1.5!5~A&amp;&amp;f=26137579">youku spacemacs tutor</a>
+</p>
+</div>
+<ul class="org-ul">
+<li><a id="org4b98058"></a>安装<br /></li>
+<li><a id="orgf1d6f4d"></a>各文件夹功能<br />
+<ul class="org-ul">
+<li><a id="orge92f4a0"></a>core<br />
+<div class="outline-text-6" id="text-orge92f4a0">
+<p>
+方便加载layer的配置
+</p>
+</div>
+</li>
+</ul>
+</li>
+
+<li><a id="org59a213d"></a>使用 proxychains4 打开 emacs<br />
+<div class="outline-text-5" id="text-org59a213d">
+<div class="org-src-container">
+<pre class="src src-bash">$ proxychains4 open /Applications/Emacs.app
+</pre>
+</div>
+<p>
+这样的话，就会让emacs翻墙，这样下载melpa.org中的packages就会比较快。
+</p>
+</div>
+</li>
+
+<li><a id="org76377ed"></a>介绍 spacemacs home page<br /></li>
+<li><a id="org2ec3bf7"></a>change-log<br /></li>
+<li><a id="org5206d6d"></a>Evil tutor<br />
+<div class="outline-text-5" id="text-org5206d6d">
+<p>
+&gt; SPC h T
+</p>
+</div>
+</li>
+<li><a id="org113fbbf"></a>universal arguments<br />
+<div class="outline-text-5" id="text-org113fbbf">
+<p>
+&gt; SPC u
+</p>
+</div>
+</li>
+
+<li><a id="orgcd6b89a"></a>配置启动全屏<br /></li>
+<li><a id="org5358634"></a>在buffer中快速跳转<br />
+<div class="outline-text-5" id="text-org5358634">
+<p>
+&gt; M-x jump-in-buffer
+</p>
+
+<p>
+现在有2种
+</p>
+
+<p>
+&gt; M-x helm-jump-in-buffer
+</p>
+
+<p>
+和
+</p>
+
+<p>
+&gt; M-x counsel-jump-in-buffer
+</p>
+</div>
+</li>
+
+<li><a id="org828be9a"></a>不需要安装layer，只单独安装某package<br />
+<div class="outline-text-5" id="text-org828be9a">
+<p>
+在 ~/.spacemacs.d/init.el 中的
+</p>
+
+<p>
+dotspacemacs-additional-packages 中添加packages名就可以了。
+</p>
+</div>
+</li>
+
+<li><a id="org11b05fd"></a>行号<br />
+<div class="outline-text-5" id="text-org11b05fd">
+<p>
+&gt; SPC t n
+</p>
+
+<p>
+相对行号
+</p>
+
+<p>
+&gt; SPC t r
+</p>
+
+<p>
+这时，向下跳转9行，则只要：
+</p>
+
+<p>
+&gt; 9 j 或者 &gt; C-u 9 j
+</p>
+
+<p>
+同理，向上跳转9行，则只要：
+</p>
+
+<p>
+&gt; 9 k 或者 &gt; C-u 9 k
+</p>
+</div>
+</li>
+
+<li><a id="org1501d22"></a>中文输入法，chinese layer<br />
+<div class="outline-text-5" id="text-org1501d22">
+<p>
+启动或退出（第一次运行时，要选择输入法）
+</p>
+
+<p>
+&gt; C-\
+</p>
+
+<p>
+切换输入法
+</p>
+
+<p>
+&gt; M-x set-input-method
+</p>
+
+<p>
+查询输入法
+</p>
+
+<p>
+&gt; M-x list-input-method
+</p>
+</div>
+</li>
+
+<li><a id="orgf5e3fe0"></a>跳转至 中文<br />
+<div class="outline-text-5" id="text-orgf5e3fe0">
+<p>
+文中有 “东西” 2字，此时，想跳转到这里，则：
+</p>
+
+<p>
+&gt; M-x ace-pinyin-jump-word RTN dx RTN
+</p>
+</div>
+</li>
+
+<li><a id="orgf2a7320"></a>创建layer<br />
+<div class="outline-text-5" id="text-orgf2a7320">
+<p>
+&gt; SPC : configuration-layer/create-layer
+</p>
+
+<p>
+会选择一个目录地址，比如layer名为abc, 那直接回车，则会在
+</p>
+
+<p>
+~/.spacemacs.d/layers/abc/ 下 自动生成 packages.el 文件
+</p>
+</div>
+</li>
+
+<li><a id="org3b4d77c"></a>跳转到 layer 的文档或其中的某个package<br />
+<div class="outline-text-5" id="text-org3b4d77c">
+<p>
+视频中的
+</p>
+
+<p>
+&gt; SPC f e h
+</p>
+
+<p>
+修改成：
+</p>
+
+<p>
+&gt; SPC h SPC
+</p>
+</div>
+</li>
+
+<li><a id="orge026a61"></a>layer中配置package<br />
+<div class="outline-text-5" id="text-orge026a61">
+<p>
+下以配置 zilongshanren-misc/packages.el 中的 helm-github-stats 为例子。
+</p>
+
+<div class="org-src-container">
+<pre class="src src-emacs-lisp">(<span style="color: #00bfff;">defun</span> <span style="color: #F94949;">zilongshanren-misc/init-helm-github-stars</span> ()
+  (use-package helm-github-stars
+    <span style="color: #d4d4d4;">:commands</span> (helm-github-stars)
+    <span style="color: #d4d4d4;">:init</span>
+    &#65288;progn
+      (<span style="color: #00bfff;">setq</span> helm-github-stars-username <span style="color: #daa520;">"secretrobots"</span>)
+      (evil-leader/set-key
+        <span style="color: #daa520;">"og"</span> 'helm-github-stars) &#65289;
+    ))
+</pre>
+</div>
+
+<p>
+其中，包括介绍了绑定leader-key。
+</p>
+</div>
+</li>
+</ul>
+</div>
+
+<div id="outline-container-org0829676" class="outline-4">
+<h4 id="org0829676">Spacemacs Rocks Day 11, spacemacs use daily</h4>
+<div class="outline-text-4" id="text-org0829676">
+<p>
+<a href="http://v.youku.com/v_show/id_XMTI1NzQxMzkzNg==.html?f=26137579">youku spacemacs</a>
+</p>
+</div>
+
+<ul class="org-ul">
+<li><a id="orgb8ad4fb"></a>开启 org-pomodoro<br />
+<div class="outline-text-5" id="text-orgb8ad4fb">
+<p>
+&gt; M-x org-pomodoro
+</p>
+
+<p>
+或者
+</p>
+
+<p>
+&gt; , C p
+</p>
+</div>
+</li>
+
+<li><a id="org0fe7fbd"></a>插入chrome tab 且有title<br />
+<div class="outline-text-5" id="text-org0fe7fbd">
+<p>
+无title可以使用
+</p>
+
+<p>
+&gt; C-c l
+</p>
+
+<p>
+但是视频中的是有title的，命令
+</p>
+
+<p>
+&gt; C-c G c
+</p>
+
+<p>
+已经失效。
+</p>
+</div>
+</li>
+
+<li><a id="orga5ff5f0"></a>记笔记主要用 deft<br /></li>
+
+<li><a id="org4421d87"></a>代码跳转至定义<br />
+<div class="outline-text-5" id="text-org4421d87">
+<p>
+&gt; , g
+</p>
+
+<p>
+返回到跳转前
+</p>
+
+<p>
+&gt; C-o
+</p>
+</div>
+</li>
+
+<li><a id="org4e3aad0"></a>python 语法检查错误列表<br />
+<div class="outline-text-5" id="text-org4e3aad0">
+<p>
+&gt; SPC e L
+</p>
+</div>
+</li>
+
+<li><a id="org5be1ea6"></a>查看函数文件<br />
+<div class="outline-text-5" id="text-org5be1ea6">
+<p>
+&gt; , h h
+</p>
+</div>
+</li>
+
+<li><a id="org1084bb7"></a>REPL环境<br />
+<ul class="org-ul">
+<li><a id="org6a8c42f"></a>打开<br />
+<div class="outline-text-6" id="text-org6a8c42f">
+<p>
+&gt; , s i
+</p>
+</div>
+</li>
+
+<li><a id="org3ae2a01"></a>发送选中区块代码至 REPL环境<br />
+<div class="outline-text-6" id="text-org3ae2a01">
+<p>
+&gt; , s r
+</p>
+</div>
+</li>
+</ul>
+</li>
+
+<li><a id="org7446628"></a>在emacs中直接调用搜索引擎进行搜索<br />
+<div class="outline-text-5" id="text-org7446628">
+<p>
+&gt; SPC a /
+</p>
+
+<p>
+输入 bing 就是bing搜索，google就是google搜索
+</p>
+</div>
+</li>
+
+<li><a id="orgafee24b"></a>lispy<br />
+<div class="outline-text-5" id="text-orgafee24b">
+<p>
+这一小节的具体内容，还是直接看 spacemacs-rocks season2 的第17节视频吧
+</p>
+</div>
+
+<ul class="org-ul">
+<li><a id="org52de1e0"></a>代码块内部跳转<br />
+<div class="outline-text-6" id="text-org52de1e0">
+<p>
+跳转至开头
+</p>
+
+<p>
+&gt; M-a
+</p>
+
+<p>
+向下跳转
+</p>
+
+<p>
+&gt; M-f
+</p>
+</div>
+</li>
+</ul>
+</li>
+
+<li><a id="orga8a1f44"></a>hotspots<br />
+<div class="outline-text-5" id="text-orga8a1f44">
+<p>
+&gt; M-x helm-hotspots 或者 SPC o o
+</p>
+
+<p>
+这里的 github 指的是 github.com上的star的仓库，选中，回车，浏览器就会打开这个仓
+库。
+</p>
+</div>
+</li>
+
+<li><a id="org09593c0"></a>markdown<br />
+<ul class="org-ul">
+<li><a id="org2a29c07"></a>markdown-toc<br />
+<div class="outline-text-6" id="text-org2a29c07">
+<p>
+自动生成文档目录
+</p>
+
+<p>
+&gt; M-x markdown-toc-generate-toc 或者 , i t
+</p>
+
+<p>
+但是，发现有问题：
+</p>
+
+<ul class="org-ul">
+<li>有时生成出来的toc有时层级不对。</li>
+<li>preview的时候，要去除前后两行删除行。</li>
+</ul>
+</div>
+</li>
+</ul>
+</li>
+
+<li><a id="orgf166ef1"></a>emacs中启动markdown preview&#xa0;&#xa0;&#xa0;<span class="tag"><span class="preview">preview</span></span><br />
+<div class="outline-text-5" id="text-orgf166ef1">
+</div>
+<ul class="org-ul">
+<li><a id="org3e4d872"></a>zilongshanren/markdown-to-html<br />
+<div class="outline-text-6" id="text-org3e4d872">
+<p>
+开启
+</p>
+
+<p>
+&gt; , p
+</p>
+
+<p>
+使用 grip 程序preview markdown-to-html 文件。子龙说，这里的预览效果与
+github上的md文件的效果是一模一样的。
+</p>
+</div>
+
+<ul class="org-ul">
+<li><a id="org2992f76"></a>grip安装<br />
+<div class="outline-text-7" id="text-org2992f76">
+<p>
+<a href="https://github.com/joeyespo/grip">https://github.com/joeyespo/grip</a>
+</p>
+
+<div class="org-src-container">
+<pre class="src src-bash">brew install grip
+</pre>
+</div>
+</div>
+</li>
+</ul>
+</li>
+
+<li><a id="orgcbc9201"></a>Ref<br />
+<div class="outline-text-6" id="text-orgcbc9201">
+<ul class="org-ul">
+<li><a href="https://emacs-china.org/t/topic/1549/17">https://emacs-china.org/t/topic/1549/17</a></li>
+</ul>
+</div>
+</li>
+</ul>
+</li>
+
+
+
+<li><a id="org8266dc4"></a>打开PDF文件<br />
+<div class="outline-text-5" id="text-org8266dc4">
+<p>
+dired buffer 下
+</p>
+
+<p>
+&gt; &amp; RTN
+</p>
+</div>
+</li>
+<li><a id="org72c0c82"></a>2048 game<br /></li>
+<li><a id="orgbad3f6b"></a>播放音乐<br /></li>
+<li><a id="org1d4afad"></a>magit<br />
+<div class="outline-text-5" id="text-org1d4afad">
+<p>
+Untrack
+</p>
+
+<p>
+&gt; S-k
+</p>
+</div>
+</li>
+<li><a id="orga1734fe"></a>建议<br />
+<div class="outline-text-5" id="text-orga1734fe">
+<ul class="org-ul">
+<li>使用spacemacs的develop分支，而不是master分支，因为master分支bug很多</li>
+<li>对使用的Layer下的packages的文档，应当了解，查看。从而把没有必要的package
+       exclude掉，从而加速emacs,</li>
+<li>dotspacemacs/config 函数是所有启动后，最后一个被调用的。但是，依然不建议这么做，
+       而是新建立一个自己的layer.</li>
+<li>QQ群 59134186(已失效)</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+</body>
+</html>

@@ -1,0 +1,320 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<!-- 2021-01-08 Fri 15:30 -->
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>&lrm;</title>
+<meta name="generator" content="Org mode" />
+<meta name="author" content="a" />
+<link rel="stylesheet" title="Standard" href="/html/style/worg.css" type="text/css" />
+<link rel="alternate stylesheet" title="Zenburn" href="/html/style/worg-zenburn.css" type="text/css" />
+<link rel="alternate stylesheet" title="Classic" href="/html/style/worg-classic.css" type="text/css" />
+<link rel="SHORTCUT ICON" href="/html/style/org-mode-unicorn.ico" type="image/x-icon" />
+<link rel="icon" href="/html/style/org-mode-unicorn.ico" type="image/ico" />
+<script type="text/javascript">
+/*
+@licstart  The following is the entire license notice for the
+JavaScript code in this tag.
+
+Copyright (C) 2012-2019 Free Software Foundation, Inc.
+
+The JavaScript code in this tag is free software: you can
+redistribute it and/or modify it under the terms of the GNU
+General Public License (GNU GPL) as published by the Free Software
+Foundation, either version 3 of the License, or (at your option)
+any later version.  The code is distributed WITHOUT ANY WARRANTY;
+without even the implied warranty of MERCHANTABILITY or FITNESS
+FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
+
+As additional permission under GNU GPL version 3 section 7, you
+may distribute non-source (e.g., minimized or compacted) forms of
+that code without the copy of the GNU GPL normally required by
+section 4, provided you include this license notice and a URL
+through which recipients can access the Corresponding Source.
+
+
+@licend  The above is the entire license notice
+for the JavaScript code in this tag.
+*/
+<!--/*--><![CDATA[/*><!--*/
+ function CodeHighlightOn(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(null != target) {
+     elem.cacheClassElem = elem.className;
+     elem.cacheClassTarget = target.className;
+     target.className = "code-highlighted";
+     elem.className   = "code-highlighted";
+   }
+ }
+ function CodeHighlightOff(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(elem.cacheClassElem)
+     elem.className = elem.cacheClassElem;
+   if(elem.cacheClassTarget)
+     target.className = elem.cacheClassTarget;
+ }
+/*]]>*///-->
+</script>
+</head>
+<body>
+<div id="preamble" class="status">
+<script type="text/javascript">
+  document.addEventListener('DOMContentLoaded',function() {
+      document.getElementById("table-of-contents").onclick = function() {
+          var elem = document.getElementById("text-table-of-contents");
+          elem.style.display = elem.style.display == "block" ? "none" : "block";
+      }
+  });
+
+  var url = document.location.href;
+  var orgsource = url.substring(0, url.lastIndexOf("."))+".org.html";
+  function show_org_source(){
+      document.location.href = orgsource;
+  }
+</script>
+
+<script>
+(function(f, a, t, h, o, m){
+	a[h]=a[h]||function(){
+		(a[h].q=a[h].q||[]).push(arguments)
+	};
+	o=f.createElement('script'),
+	m=f.getElementsByTagName('script')[0];
+	o.async=1; o.src=t; o.id='fathom-script';
+	m.parentNode.insertBefore(o,m)
+})(document, window, '//stats.orgmode.org/tracker.js', 'fathom');
+fathom('set', 'siteId', 'NWSQJ');
+fathom('trackPageview');
+</script>
+</div>
+<div id="content">
+<div id="table-of-contents">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#code-settings-sync">code-settings-sync</a></li>
+<li><a href="#安装">安装</a>
+<ul>
+<li><a href="#configure-settings-sync">Configure Settings Sync</a></li>
+<li><a href="#可跳过如果英文不好">（可跳过）如果英文不好</a></li>
+</ul>
+</li>
+<li><a href="#同步的内容">同步的内容</a>
+<ul>
+<li><a href="#哪里看同步了哪些内容">哪里看同步了哪些内容？</a>
+<ul>
+<li><a href="#vscode-输出">vscode 输出</a></li>
+<li><a href="#gist的revisions">gist的revisions</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#问题">问题</a>
+<ul>
+<li><a href="#如何使用历史某次vscode配置">如何使用历史某次vscode配置</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org882829e" class="outline-2">
+<h2 id="code-settings-sync">code-settings-sync</h2>
+<div class="outline-text-2" id="text-code-settings-sync">
+<ul class="org-ul">
+<li><a href="https://github.com/shanalikhan/code-settings-sync">https://github.com/shanalikhan/code-settings-sync</a></li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-orgc6363c3" class="outline-2">
+<h2 id="安装">安装</h2>
+<div class="outline-text-2" id="text-安装">
+<p>
+其实只要 简单浏览一下 <a href="https://github.com/shanalikhan/code-settings-sync">https://github.com/shanalikhan/code-settings-sync</a>
+的 README.md 文件就可以知道安装了。
+</p>
+
+<p>
+重复摘抄如下
+</p>
+</div>
+
+<div id="outline-container-org48159fe" class="outline-3">
+<h3 id="configure-settings-sync">Configure Settings Sync</h3>
+<div class="outline-text-3" id="text-configure-settings-sync">
+<p>
+Settings Sync Configuration page will be opened automatically on code
+start and requires two things to setup:
+</p>
+
+<ol class="org-ol">
+<li>Github Token</li>
+<li>Github Gist Id</li>
+</ol>
+
+<p>
+Github Token needs to be retrived by your Github account while Settings
+Sync creates GIST if you are first time user.
+</p>
+
+<p>
+Following are the steps you need to perform to configure.
+</p>
+
+<ul class="org-ul">
+<li>Click on <code>Login with Github</code> .</li>
+<li>Login Github on Browser and close the browser tab once you get
+   Success message.</li>
+<li>If you are using Settings Sync first time GIST will be created
+   automatically when you upload your settings.</li>
+<li>If you already have Github Gist, new window will be opened to allow
+   you to select the Github Gist or <code>Skip</code> to create new Gist.</li>
+</ul>
+
+
+<div class="figure">
+<p><img src="https://shanalikhan.github.io/img/login-with-github.png" alt="login-with-github.png" />
+</p>
+<p><span class="figure-number">Figure 1: </span>Login with GitHub</p>
+</div>
+
+
+<div class="figure">
+<p><img src="https://shanalikhan.github.io/img/existing-gist.png" alt="existing-gist.png" />
+</p>
+<p><span class="figure-number">Figure 2: </span>Existing Gist</p>
+</div>
+
+<p>
+You can always <b>verify created gist</b> by going to
+<code>https://gist.github.com</code> and checking for a gist named <code>cloudSettings</code>
+</p>
+
+<hr />
+
+<p>
+有点像
+<a href="https://www.whidy.net/visual-studio-code-settings-sync-introduction.html">https://www.whidy.net/visual-studio-code-settings-sync-introduction.html</a>
+这里的程序。
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgf62bfd2" class="outline-3">
+<h3 id="可跳过如果英文不好">（可跳过）如果英文不好</h3>
+<div class="outline-text-3" id="text-可跳过如果英文不好">
+<p>
+先简单看浏览下面的网站，实际操作，不同
+</p>
+
+<p>
+<a href="https://gitee.com/hjm100/codes/oi5nuevyl82zp3hdtc19g18">https://gitee.com/hjm100/codes/oi5nuevyl82zp3hdtc19g18</a>
+</p>
+
+<p>
+<a href="https://www.cnblogs.com/kenz520/p/7416836.html">https://www.cnblogs.com/kenz520/p/7416836.html</a>
+</p>
+
+<p>
+<a href="https://www.jianshu.com/p/a08219737291">https://www.jianshu.com/p/a08219737291</a>
+</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org149bfd1" class="outline-2">
+<h2 id="同步的内容">同步的内容</h2>
+<div class="outline-text-2" id="text-同步的内容">
+<p>
+通过去查看 <a href="https://gist.github.com/$%7BgithubAccountName%7D/">https://gist.github.com/$%7BgithubAccountName%7D/</a> 知道 会有一个
+cloudSettings 的 gist. 这个gist就是我们的vscode配置啦！
+</p>
+
+<p>
+在 extensions.json 部分，通过搜索=metadata=, 得知，显示的只是 Enable
+状态的 extensions.
+</p>
+
+<p>
+如果您安装了extensions, 但是，并没有 Enable, 则不会上传。
+</p>
+</div>
+
+<div id="outline-container-org44cb67d" class="outline-3">
+<h3 id="哪里看同步了哪些内容">哪里看同步了哪些内容？</h3>
+<div class="outline-text-3" id="text-哪里看同步了哪些内容">
+</div>
+
+<div id="outline-container-orge0ec4c5" class="outline-4">
+<h4 id="vscode-输出">vscode 输出</h4>
+<div class="outline-text-4" id="text-vscode-输出">
+<p>
+来一个示例：
+</p>
+
+<pre class="example">
+CODE SETTINGS SYNC UPLOAD SUMMARY
+Version: 3.4.1
+--------------------
+GitHub Token: GitHubTTTTTTTTTTTTTTTTTTTTTTTToken
+GitHub Gist: GitHubGGGGGGGGGGGGGGGist =&gt; 这个就是 gist的编号 https://gist.github.com/zhangsan/GitHubGGGGGGGGGGGGGGGist
+GitHub Gist Type: Secret
+
+Restarting Visual Studio Code may be required to apply color and file icon theme.
+--------------------
+Files Uploaded:
+  extensions.json &gt; extensions.json
+  settings.json &gt; settings.json
+
+Extensions Ignored:
+  No extensions ignored.
+
+Extensions Removed:
+  No extensions removed.
+
+Extensions Added:
+  remote-ssh v0.45.4
+  remote-ssh-edit v0.45.4
+  remote-ssh-explorer v0.45.4
+  remote-wsl v0.39.2
+--------------------
+Done.
+</pre>
+</div>
+</div>
+
+<div id="outline-container-orga929166" class="outline-4">
+<h4 id="gist的revisions">gist的revisions</h4>
+<div class="outline-text-4" id="text-gist的revisions">
+<ol class="org-ol">
+<li>找开 gist 后点击 <code>Code</code> 边上的 <code>Revisions</code> 。或者</li>
+<li>在 gist url 地址后 手工加上 <code>/revisions</code>, 回车。即，形如：
+   <a href="https://gist.github.com/$account/$gistHash/revisions">https://gist.github.com/$account/$gistHash/revisions</a></li>
+</ol>
+</div>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgda12ec5" class="outline-2">
+<h2 id="问题">问题</h2>
+<div class="outline-text-2" id="text-问题">
+</div>
+
+<div id="outline-container-org7a94c51" class="outline-3">
+<h3 id="如何使用历史某次vscode配置">如何使用历史某次vscode配置</h3>
+<div class="outline-text-3" id="text-如何使用历史某次vscode配置">
+<p>
+多次上传后，如果我想使用某一次commit的gist下的vscode配置，应该怎么办？
+</p>
+</div>
+</div>
+</div>
+</div>
+</body>
+</html>

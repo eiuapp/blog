@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2020-07-30 Thu 16:10 -->
+<!-- 2021-01-07 Thu 11:02 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>ubuntu ufw</title>
@@ -98,7 +98,8 @@ fathom('trackPageview');
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#org40567c3">basic</a></li>
+<li><a href="#org1c407a0">basic</a></li>
+<li><a href="#org1e93caf">ufw show number and delete</a></li>
 </ul>
 </div>
 </div>
@@ -106,12 +107,23 @@ fathom('trackPageview');
 <a href="../index.html">{Back to site's index}</a>
 </p>
 
-<div id="outline-container-org40567c3" class="outline-2">
-<h2 id="org40567c3">basic</h2>
-<div class="outline-text-2" id="text-org40567c3">
+<div id="outline-container-org1c407a0" class="outline-2">
+<h2 id="org1c407a0">basic</h2>
+<div class="outline-text-2" id="text-org1c407a0">
 <div class="org-src-container">
 <pre class="src src-shell">sudo ufw allow from 192.168.168.165 to any port 8443 proto tcp
 sudo ufw allow from 192.168.0.0/16 to any port 3001 proto tcp
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org1e93caf" class="outline-2">
+<h2 id="org1e93caf">ufw show number and delete</h2>
+<div class="outline-text-2" id="text-org1e93caf">
+<div class="org-src-container">
+<pre class="src src-shell">sudo ufw status numbered
+sudo ufw delete 23
 </pre>
 </div>
 </div>

@@ -1,0 +1,197 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<!-- 2021-01-08 Fri 15:30 -->
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>&lrm;</title>
+<meta name="generator" content="Org mode" />
+<meta name="author" content="a" />
+<link rel="stylesheet" title="Standard" href="/html/style/worg.css" type="text/css" />
+<link rel="alternate stylesheet" title="Zenburn" href="/html/style/worg-zenburn.css" type="text/css" />
+<link rel="alternate stylesheet" title="Classic" href="/html/style/worg-classic.css" type="text/css" />
+<link rel="SHORTCUT ICON" href="/html/style/org-mode-unicorn.ico" type="image/x-icon" />
+<link rel="icon" href="/html/style/org-mode-unicorn.ico" type="image/ico" />
+<script type="text/javascript">
+/*
+@licstart  The following is the entire license notice for the
+JavaScript code in this tag.
+
+Copyright (C) 2012-2019 Free Software Foundation, Inc.
+
+The JavaScript code in this tag is free software: you can
+redistribute it and/or modify it under the terms of the GNU
+General Public License (GNU GPL) as published by the Free Software
+Foundation, either version 3 of the License, or (at your option)
+any later version.  The code is distributed WITHOUT ANY WARRANTY;
+without even the implied warranty of MERCHANTABILITY or FITNESS
+FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
+
+As additional permission under GNU GPL version 3 section 7, you
+may distribute non-source (e.g., minimized or compacted) forms of
+that code without the copy of the GNU GPL normally required by
+section 4, provided you include this license notice and a URL
+through which recipients can access the Corresponding Source.
+
+
+@licend  The above is the entire license notice
+for the JavaScript code in this tag.
+*/
+<!--/*--><![CDATA[/*><!--*/
+ function CodeHighlightOn(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(null != target) {
+     elem.cacheClassElem = elem.className;
+     elem.cacheClassTarget = target.className;
+     target.className = "code-highlighted";
+     elem.className   = "code-highlighted";
+   }
+ }
+ function CodeHighlightOff(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(elem.cacheClassElem)
+     elem.className = elem.cacheClassElem;
+   if(elem.cacheClassTarget)
+     target.className = elem.cacheClassTarget;
+ }
+/*]]>*///-->
+</script>
+</head>
+<body>
+<div id="preamble" class="status">
+<script type="text/javascript">
+  document.addEventListener('DOMContentLoaded',function() {
+      document.getElementById("table-of-contents").onclick = function() {
+          var elem = document.getElementById("text-table-of-contents");
+          elem.style.display = elem.style.display == "block" ? "none" : "block";
+      }
+  });
+
+  var url = document.location.href;
+  var orgsource = url.substring(0, url.lastIndexOf("."))+".org.html";
+  function show_org_source(){
+      document.location.href = orgsource;
+  }
+</script>
+
+<script>
+(function(f, a, t, h, o, m){
+	a[h]=a[h]||function(){
+		(a[h].q=a[h].q||[]).push(arguments)
+	};
+	o=f.createElement('script'),
+	m=f.getElementsByTagName('script')[0];
+	o.async=1; o.src=t; o.id='fathom-script';
+	m.parentNode.insertBefore(o,m)
+})(document, window, '//stats.orgmode.org/tracker.js', 'fathom');
+fathom('set', 'siteId', 'NWSQJ');
+fathom('trackPageview');
+</script>
+</div>
+<div id="content">
+<div id="table-of-contents">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#org9e6502c">brew 安装 软件 非常缓慢</a>
+<ul>
+<li><a href="#org380be0a">更换为中科院的镜像</a></li>
+<li><a href="#orgc832bcf">把homebrew-core的镜像地址也设为中科院的国内镜像</a></li>
+<li><a href="#orgd8a08e6">更新</a></li>
+</ul>
+</li>
+<li><a href="#orga4f1fe1">brew update 提示 homebrew-core fetch &#x2013;unshallow</a></li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org9e6502c" class="outline-2">
+<h2 id="org9e6502c">brew 安装 软件 非常缓慢</h2>
+<div class="outline-text-2" id="text-org9e6502c">
+<ul class="org-ul">
+<li><a href="https://my.oschina.net/rubble/blog/3296556">https://my.oschina.net/rubble/blog/3296556</a></li>
+</ul>
+</div>
+
+<div id="outline-container-org380be0a" class="outline-3">
+<h3 id="org380be0a">更换为中科院的镜像</h3>
+<div class="outline-text-3" id="text-org380be0a">
+<div class="org-src-container">
+<pre class="src src-shell">git clone git://mirrors.ustc.edu.cn/homebrew-core.git/ /usr/local/Homebrew/Library/Taps/homebrew/homebrew-core --depth=1
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgc832bcf" class="outline-3">
+<h3 id="orgc832bcf">把homebrew-core的镜像地址也设为中科院的国内镜像</h3>
+<div class="outline-text-3" id="text-orgc832bcf">
+<div class="org-src-container">
+<pre class="src src-shell"><span style="color: #d4d4d4;">cd</span> <span style="color: #daa520;">"$(brew --repo)"</span>
+
+git remote set-url origin https://mirrors.ustc.edu.cn/brew.git
+
+<span style="color: #d4d4d4;">cd</span> <span style="color: #daa520;">"$(brew --repo)/Library/Taps/homebrew/homebrew-core"</span>
+
+git remote set-url origin https://mirrors.ustc.edu.cn/homebrew-core.git
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgd8a08e6" class="outline-3">
+<h3 id="orgd8a08e6">更新</h3>
+<div class="outline-text-3" id="text-orgd8a08e6">
+<div class="org-src-container">
+<pre class="src src-shell">brew update
+</pre>
+</div>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orga4f1fe1" class="outline-2">
+<h2 id="orga4f1fe1">brew update 提示 homebrew-core fetch &#x2013;unshallow</h2>
+<div class="outline-text-2" id="text-orga4f1fe1">
+<ul class="org-ul">
+<li><a href="https://github.com/Homebrew/brew/issues/9420">https://github.com/Homebrew/brew/issues/9420</a></li>
+<li><a href="https://stackoverflow.com/questions/65160625/cant-update-or-upgrade-homebrew">https://stackoverflow.com/questions/65160625/cant-update-or-upgrade-homebrew</a></li>
+</ul>
+
+<div class="org-src-container">
+<pre class="src src-shell">tomtsang@toms-MacBook-Pro:~/Library/Caches/Homebrew% git -C /usr/local/Homebrew/Library/Taps/homebrew/homebrew-core fetch --unshallow
+remote: Enumerating objects: 702709, done.
+remote: Counting objects: 100% (702520/702520), done.
+remote: Compressing objects: 100% (236313/236313), done.
+error: RPC failed; curl 56 LibreSSL SSL_read: SSL_ERROR_SYSCALL, errno 54
+fatal: the remote end hung up unexpectedly
+fatal: early EOF
+fatal: index-pack failed
+tomtsang@toms-MacBook-Pro:~/Library/Caches/Homebrew%
+tomtsang@toms-MacBook-Pro:~/Library/Caches/Homebrew% cd
+tomtsang@toms-MacBook-Pro:~% git -C /usr/local/Homebrew/Library/Taps/homebrew/homebrew-core fetch --unshallow
+remote: Enumerating objects: 702709, done.
+remote: Counting objects: 100% (702520/702520), done.
+remote: Compressing objects: 100% (236308/236308), done.
+error: RPC failed; curl 18 transfer closed with outstanding read data remaining
+fatal: the remote end hung up unexpectedly
+fatal: early EOF
+fatal: index-pack failed
+tomtsang@toms-MacBook-Pro:~%
+</pre>
+</div>
+<p>
+然而，此时，会非常慢，始终 failed .
+</p>
+
+<p>
+参考 brew update 慢的解决方案。
+</p>
+</div>
+</div>
+</div>
+</body>
+</html>

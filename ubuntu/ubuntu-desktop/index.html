@@ -1,0 +1,445 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<!-- 2021-01-08 Fri 14:57 -->
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>ubuntu</title>
+<meta name="generator" content="Org mode" />
+<link rel="stylesheet" title="Standard" href="/html/style/worg.css" type="text/css" />
+<link rel="alternate stylesheet" title="Zenburn" href="/html/style/worg-zenburn.css" type="text/css" />
+<link rel="alternate stylesheet" title="Classic" href="/html/style/worg-classic.css" type="text/css" />
+<link rel="SHORTCUT ICON" href="/html/style/org-mode-unicorn.ico" type="image/x-icon" />
+<link rel="icon" href="/html/style/org-mode-unicorn.ico" type="image/ico" />
+<script type="text/javascript">
+/*
+@licstart  The following is the entire license notice for the
+JavaScript code in this tag.
+
+Copyright (C) 2012-2019 Free Software Foundation, Inc.
+
+The JavaScript code in this tag is free software: you can
+redistribute it and/or modify it under the terms of the GNU
+General Public License (GNU GPL) as published by the Free Software
+Foundation, either version 3 of the License, or (at your option)
+any later version.  The code is distributed WITHOUT ANY WARRANTY;
+without even the implied warranty of MERCHANTABILITY or FITNESS
+FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
+
+As additional permission under GNU GPL version 3 section 7, you
+may distribute non-source (e.g., minimized or compacted) forms of
+that code without the copy of the GNU GPL normally required by
+section 4, provided you include this license notice and a URL
+through which recipients can access the Corresponding Source.
+
+
+@licend  The above is the entire license notice
+for the JavaScript code in this tag.
+*/
+<!--/*--><![CDATA[/*><!--*/
+ function CodeHighlightOn(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(null != target) {
+     elem.cacheClassElem = elem.className;
+     elem.cacheClassTarget = target.className;
+     target.className = "code-highlighted";
+     elem.className   = "code-highlighted";
+   }
+ }
+ function CodeHighlightOff(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(elem.cacheClassElem)
+     elem.className = elem.cacheClassElem;
+   if(elem.cacheClassTarget)
+     target.className = elem.cacheClassTarget;
+ }
+/*]]>*///-->
+</script>
+</head>
+<body>
+<div id="preamble" class="status">
+<script type="text/javascript">
+  document.addEventListener('DOMContentLoaded',function() {
+      document.getElementById("table-of-contents").onclick = function() {
+          var elem = document.getElementById("text-table-of-contents");
+          elem.style.display = elem.style.display == "block" ? "none" : "block";
+      }
+  });
+
+  var url = document.location.href;
+  var orgsource = url.substring(0, url.lastIndexOf("."))+".org.html";
+  function show_org_source(){
+      document.location.href = orgsource;
+  }
+</script>
+
+<script>
+(function(f, a, t, h, o, m){
+	a[h]=a[h]||function(){
+		(a[h].q=a[h].q||[]).push(arguments)
+	};
+	o=f.createElement('script'),
+	m=f.getElementsByTagName('script')[0];
+	o.async=1; o.src=t; o.id='fathom-script';
+	m.parentNode.insertBefore(o,m)
+})(document, window, '//stats.orgmode.org/tracker.js', 'fathom');
+fathom('set', 'siteId', 'NWSQJ');
+fathom('trackPageview');
+</script>
+</div>
+<div id="content">
+<h1 class="title">ubuntu</h1>
+<div id="table-of-contents">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#org0563edf">Post</a>
+<ul>
+<li><a href="#org9f3a473">ubuntu desktop</a>
+<ul>
+<li><a href="#orgd50e4b8">set apt source</a></li>
+<li><a href="#orgaaf4f55">Ubuntu Desktop 环境安装</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org0563edf" class="outline-2">
+<h2 id="org0563edf">Post</h2>
+<div class="outline-text-2" id="text-org0563edf">
+</div>
+<div id="outline-container-org9f3a473" class="outline-3">
+<h3 id="org9f3a473">ubuntu desktop&#xa0;&#xa0;&#xa0;<span class="tag"><span class="_ubuntu">@ubuntu</span>&#xa0;<span class="desktop">desktop</span>&#xa0;<span class="ubuntu">ubuntu</span></span></h3>
+<div class="outline-text-3" id="text-org9f3a473">
+</div>
+<div id="outline-container-orgd50e4b8" class="outline-4">
+<h4 id="orgd50e4b8">set apt source&#xa0;&#xa0;&#xa0;<span class="tag"><span class="apt">apt</span></span></h4>
+<div class="outline-text-4" id="text-orgd50e4b8">
+</div>
+</div>
+<div id="outline-container-orgaaf4f55" class="outline-4">
+<h4 id="orgaaf4f55">Ubuntu Desktop 环境安装&#xa0;&#xa0;&#xa0;<span class="tag"><span class="setup">setup</span></span></h4>
+<div class="outline-text-4" id="text-orgaaf4f55">
+</div>
+
+
+<ul class="org-ul">
+<li><a id="安装ubuntu"></a>安装Ubuntu<br />
+<div class="outline-text-5" id="text-安装ubuntu">
+<p>
+<b>全部安装流程：</b>
+</p>
+
+
+<div class="figure">
+<p><img src="http://cdn.sinacloud.net/vnpydoc/ubuntuinstall/21flowinstall.png" alt="21flowinstall.png" />
+</p>
+<p><span class="figure-number">Figure 1: </span>安装流程</p>
+</div>
+
+<p>
+推荐的Ubuntu环境：
+</p>
+
+<ul class="org-ul">
+<li>版本：Ubuntu 16.04 LTS</li>
+<li>语言：简体中文</li>
+<li>时区：Shanghai</li>
+<li>硬件：64位，4G内存以上</li>
+</ul>
+
+<blockquote>
+<p>
+引用官方安装教程：<a href="https://www.ubuntu.com/download/desktop/install-ubuntu-desktop">点击查看</a>
+</p>
+</blockquote>
+</div>
+</li>
+
+<li><a id="更新软件源"></a>更新软件源<br />
+<div class="outline-text-5" id="text-更新软件源">
+<p>
+<b>apt源</b>
+</p>
+
+<p>
+操作步骤如下：
+</p>
+
+
+<div class="figure">
+<p><img src="http://cdn.sinacloud.net/vnpydoc/ubuntuinstall/21211flowaptupdatesource.png" alt="21211flowaptupdatesource.png" />
+</p>
+<p><span class="figure-number">Figure 2: </span>apt源设置</p>
+</div>
+
+
+<div class="figure">
+<p><img src="http://cdn.sinacloud.net/vnpydoc/ubuntuinstall/21212setting.png" alt="21212setting.png" />
+</p>
+<p><span class="figure-number">Figure 3: </span>设置</p>
+</div>
+
+
+<div class="figure">
+<p><img src="http://cdn.sinacloud.net/vnpydoc/ubuntuinstall/21213softandupdate.png" alt="21213softandupdate.png" />
+</p>
+<p><span class="figure-number">Figure 4: </span>软件和更新</p>
+</div>
+
+
+<div class="figure">
+<p><img src="http://cdn.sinacloud.net/vnpydoc/ubuntuinstall/21214othersites.png" alt="21214othersites.png" />
+</p>
+<p><span class="figure-number">Figure 5: </span>其他站点</p>
+</div>
+
+
+<div class="figure">
+<p><img src="http://cdn.sinacloud.net/vnpydoc/ubuntuinstall/21215bestserver.png" alt="21215bestserver.png" />
+</p>
+<p><span class="figure-number">Figure 6: </span>选择最佳服务器</p>
+</div>
+
+<p>
+进行上述操作之后，系统会花几分钟时间进行服务器速度的测试。测试完毕之后，点击『选择服务器』，后面根据提示输入密码和重新载入软件信息即可。
+</p>
+
+<p>
+<b>pip源</b>
+</p>
+
+<p>
+创建pip的配置文件，在终端中执行如下命令创建.pip文件夹
+</p>
+
+<div class="org-src-container">
+<pre class="src src-sh">mkdir ~/.pip/
+</pre>
+</div>
+
+<p>
+再执行如下命令创建pip.conf文件并编辑
+</p>
+
+<div class="org-src-container">
+<pre class="src src-sh">vim ~/.pip/pip.conf
+</pre>
+</div>
+
+<p>
+这时候会出现pip.conf的编辑窗口，按字母键a进入到编辑模式，这时候内容为空，并把如下内容输入到编辑框里面
+</p>
+
+<div class="org-src-container">
+<pre class="src src-sh">[global]
+index-url = https://pypi.tuna.tsinghua.edu.cn/simple
+</pre>
+</div>
+
+
+<div class="figure">
+<p><img src="http://cdn.sinacloud.net/vnpydoc/ubuntuinstall/21221vimpipconfig.png" alt="21221vimpipconfig.png" />
+</p>
+<p><span class="figure-number">Figure 7: </span>vim编辑pip.config</p>
+</div>
+
+<p>
+编辑完后保存并退出vim： <b>ESC</b> -&gt; <b>shift+;</b> -&gt; <b>x</b> -&gt; <b>Enter</b>
+</p>
+</div>
+</li>
+
+<li><a id="安装python"></a>安装Python<br />
+<div class="outline-text-5" id="text-安装python">
+<p>
+下载Anaconda2并安装，在终端中顺序执行下面3行命令
+</p>
+
+<div class="org-src-container">
+<pre class="src src-sh">wget https://repo.continuum.io/archive/Anaconda2-4.0.0-Linux-x86_64.sh
+</pre>
+</div>
+
+<div class="org-src-container">
+<pre class="src src-sh">chmod +x Anaconda2-4.0.0-Linux-x86_64.sh
+</pre>
+</div>
+
+<div class="org-src-container">
+<pre class="src src-sh">./Anaconda2-4.0.0-Linux-x86_64.sh
+</pre>
+</div>
+
+<p>
+然后开始进行安装：
+</p>
+
+
+<div class="figure">
+<p><img src="http://cdn.sinacloud.net/vnpydoc/ubuntuinstall/2131anacondainstall.png" alt="2131anacondainstall.png" />
+</p>
+<p><span class="figure-number">Figure 8: </span>Anaconda 安装中</p>
+</div>
+
+<p>
+后面根据提示按回车或者输入yes即可，要注意一下在提示是否要在.bashrc文件中更新PATH变量时，一定要输入Yes：
+</p>
+
+
+<div class="figure">
+<p><img src="http://cdn.sinacloud.net/vnpydoc/ubuntuinstall/2132recommandyes.png" alt="2132recommandyes.png" />
+</p>
+<p><span class="figure-number">Figure 9: </span>输入yes</p>
+</div>
+
+<p>
+安装完毕之后执行如下命令让bash的配置文件即时生效
+</p>
+
+<div class="org-src-container">
+<pre class="src src-sh"><span style="color: #d4d4d4;">source</span> ~/.bashrc
+</pre>
+</div>
+
+<p>
+执行完之后执行python命令进行验证，如果安装成功会出现 Anaconda 4.0.0
+的字样：
+</p>
+
+
+<div class="figure">
+<p><img src="http://cdn.sinacloud.net/vnpydoc/ubuntuinstall/2133verifyifsuccess.png" alt="2133verifyifsuccess.png" />
+</p>
+<p><span class="figure-number">Figure 10: </span>Python环境安装成功</p>
+</div>
+
+<p>
+由于vnpy最近对python3的兼容，需要安装future模块，<a href="https://github.com/vnpy/vnpy/issues/639">ImportError:
+No module named 'Queue'</a>
+</p>
+
+<div class="org-src-container">
+<pre class="src src-sh">pip install future
+</pre>
+</div>
+</div>
+</li>
+
+<li><a id="安装依赖项"></a>安装依赖项<br />
+<div class="outline-text-5" id="text-安装依赖项">
+<p>
+执行如下两行命令分别安装应用软件和pip的库
+</p>
+
+<div class="org-src-container">
+<pre class="src src-sh">sudo apt-get install mongodb
+sudo apt-get install libboost-all-dev
+sudo apt-get install cmake
+sudo apt-get install git
+sudo apt-get install libsnappy-dev
+sudo apt-get install python-snappy
+</pre>
+</div>
+
+<p>
+最后两个包的原因请看 <a href="https://github.com/vnpy/vnpy/issues/639">https://github.com/vnpy/vnpy/issues/639</a>
+如果安装的时候报找不到mongodb，就更新一下apt的源文件信息 sudo apt-get
+update
+</p>
+</div>
+</li>
+
+<li><a id="安装和配置mongodb"></a>安装和配置MongoDB<br />
+<div class="outline-text-5" id="text-安装和配置mongodb">
+<p>
+安装MongoDB
+</p>
+
+<div class="org-src-container">
+<pre class="src src-sh">sudo apt-get install mongodb
+</pre>
+</div>
+
+<p>
+经过测试发现在ubuntu16.04
+LTS下安装MongoDB后默认就安装为了自启动的系统服务。
+</p>
+
+<p>
+如果大家想查看MongoDB的数据文件和日志文件的具体位置，可以用如下命令进行查看：
+</p>
+
+<div class="org-src-container">
+<pre class="src src-sh">head /etc/mongodb.conf
+</pre>
+</div>
+
+<p>
+会显示如下内容：
+</p>
+
+<pre class="example">
+# mongodb.conf
+
+# Where to store the data.
+dbpath=/var/lib/mongodb
+
+#where to log
+logpath=/var/log/mongodb/mongodb.log
+</pre>
+
+<p>
+dbpath 是数据文件存储路径，logpath 是日志文件存储路径。
+</p>
+
+<p>
+MongoDB客户端方面推荐使用Robomongo，下载<a href="https://robomongo.org/">官方压缩包</a>，解压后进入到bin目录，双击robomongo即可。
+</p>
+</div>
+</li>
+
+<li><a id="准备编译工具"></a>准备编译工具<br />
+<div class="outline-text-5" id="text-准备编译工具">
+<div class="org-src-container">
+<pre class="src src-sh">apt-get install build-essential
+apt-get install python-dev
+</pre>
+</div>
+</div>
+</li>
+
+<li><a id="中文字体安装如果使用的是英文版ubuntu-linux"></a>中文字体安装（如果使用的是英文版ubuntu Linux）<br />
+<div class="outline-text-5" id="text-中文字体安装如果使用的是英文版ubuntu-linux">
+<p>
+如果系统中没有安装中文字体，图形界面中的中文就会显示为方块。解决方案：
+</p>
+
+<div class="org-src-container">
+<pre class="src src-sh">sudo apt install fonts-wqy-zenhei
+</pre>
+</div>
+</div>
+</li>
+
+<li><a id="orgcd9c550"></a>Ref<br />
+<div class="outline-text-5" id="text-orgcd9c550">
+<ul class="org-ul">
+<li><a href="https://github.com/vnpy/vnpy/wiki/Ubuntu%E7%8E%AF%E5%A2%83%E5%AE%89%E8%A3%85">https://github.com/vnpy/vnpy/wiki/Ubuntu%E7%8E%AF%E5%A2%83%E5%AE%89%E8%A3%85</a></li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+</body>
+</html>

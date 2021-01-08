@@ -1,0 +1,165 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<!-- 2021-01-08 Fri 14:59 -->
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>shell</title>
+<meta name="generator" content="Org mode" />
+<link rel="stylesheet" title="Standard" href="/html/style/worg.css" type="text/css" />
+<link rel="alternate stylesheet" title="Zenburn" href="/html/style/worg-zenburn.css" type="text/css" />
+<link rel="alternate stylesheet" title="Classic" href="/html/style/worg-classic.css" type="text/css" />
+<link rel="SHORTCUT ICON" href="/html/style/org-mode-unicorn.ico" type="image/x-icon" />
+<link rel="icon" href="/html/style/org-mode-unicorn.ico" type="image/ico" />
+<script type="text/javascript">
+/*
+@licstart  The following is the entire license notice for the
+JavaScript code in this tag.
+
+Copyright (C) 2012-2019 Free Software Foundation, Inc.
+
+The JavaScript code in this tag is free software: you can
+redistribute it and/or modify it under the terms of the GNU
+General Public License (GNU GPL) as published by the Free Software
+Foundation, either version 3 of the License, or (at your option)
+any later version.  The code is distributed WITHOUT ANY WARRANTY;
+without even the implied warranty of MERCHANTABILITY or FITNESS
+FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
+
+As additional permission under GNU GPL version 3 section 7, you
+may distribute non-source (e.g., minimized or compacted) forms of
+that code without the copy of the GNU GPL normally required by
+section 4, provided you include this license notice and a URL
+through which recipients can access the Corresponding Source.
+
+
+@licend  The above is the entire license notice
+for the JavaScript code in this tag.
+*/
+<!--/*--><![CDATA[/*><!--*/
+ function CodeHighlightOn(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(null != target) {
+     elem.cacheClassElem = elem.className;
+     elem.cacheClassTarget = target.className;
+     target.className = "code-highlighted";
+     elem.className   = "code-highlighted";
+   }
+ }
+ function CodeHighlightOff(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(elem.cacheClassElem)
+     elem.className = elem.cacheClassElem;
+   if(elem.cacheClassTarget)
+     target.className = elem.cacheClassTarget;
+ }
+/*]]>*///-->
+</script>
+</head>
+<body>
+<div id="preamble" class="status">
+<script type="text/javascript">
+  document.addEventListener('DOMContentLoaded',function() {
+      document.getElementById("table-of-contents").onclick = function() {
+          var elem = document.getElementById("text-table-of-contents");
+          elem.style.display = elem.style.display == "block" ? "none" : "block";
+      }
+  });
+
+  var url = document.location.href;
+  var orgsource = url.substring(0, url.lastIndexOf("."))+".org.html";
+  function show_org_source(){
+      document.location.href = orgsource;
+  }
+</script>
+
+<script>
+(function(f, a, t, h, o, m){
+	a[h]=a[h]||function(){
+		(a[h].q=a[h].q||[]).push(arguments)
+	};
+	o=f.createElement('script'),
+	m=f.getElementsByTagName('script')[0];
+	o.async=1; o.src=t; o.id='fathom-script';
+	m.parentNode.insertBefore(o,m)
+})(document, window, '//stats.orgmode.org/tracker.js', 'fathom');
+fathom('set', 'siteId', 'NWSQJ');
+fathom('trackPageview');
+</script>
+</div>
+<div id="content">
+<h1 class="title">shell</h1>
+<div id="table-of-contents">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#orga45aa8c">Post</a>
+<ul>
+<li><a href="#orgbfb3d70">shell</a>
+<ul>
+<li><a href="#orgfb549b5">Shell(Bash)中如何判断是否存在某个命令</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-orga45aa8c" class="outline-2">
+<h2 id="orga45aa8c">Post</h2>
+<div class="outline-text-2" id="text-orga45aa8c">
+</div>
+<div id="outline-container-orgbfb3d70" class="outline-3">
+<h3 id="orgbfb3d70">shell&#xa0;&#xa0;&#xa0;<span class="tag"><span class="_shell">@shell</span>&#xa0;<span class="shell">shell</span></span></h3>
+<div class="outline-text-3" id="text-orgbfb3d70">
+</div>
+<div id="outline-container-orgfb549b5" class="outline-4">
+<h4 id="orgfb549b5">Shell(Bash)中如何判断是否存在某个命令&#xa0;&#xa0;&#xa0;<span class="tag"><span class="check">check</span></span></h4>
+<div class="outline-text-4" id="text-orgfb549b5">
+<p>
+在编写bash时，如果要判断某条命令是否存在，应该如何写呢？
+下面以 foo 代表某个命令（如：wget）.
+我尝试了如下的写法，
+</p>
+
+<div class="org-src-container">
+<pre class="src src-bash"><span style="color: #d4d4d4;">which</span> foo &gt; /dev/null 2&gt;&amp;1
+<span style="color: #00bfff;">if</span> [ $<span style="color: #d4d4d4;">?</span> == 0 ]; <span style="color: #00bfff;">then</span>
+    <span style="color: #d4d4d4;">echo</span> <span style="color: #daa520;">"exist"</span>
+<span style="color: #00bfff;">else</span>
+    <span style="color: #d4d4d4;">echo</span> <span style="color: #daa520;">"dose not exist"</span>
+<span style="color: #00bfff;">fi</span>
+</pre>
+</div>
+
+<p>
+但是：
+最好避免使用 which，做为一个外部的工具，并不一定存在，在发行版之间也会有区别，有的系统的 which 命令不会设置有效的 exit status，存在一定的不确定性。
+</p>
+
+<p>
+Bash 有提供一些内建命令如 hash、type、command 也能达到要求。
+</p>
+
+<div class="org-src-container">
+<pre class="src src-bash">$ command -v foo &gt;/dev/null 2&gt;&amp;1 || { <span style="color: #d4d4d4;">echo</span> &gt;&amp;2 <span style="color: #daa520;">"I require foo but it's not installed.  Aborting."</span>; <span style="color: #00bfff;">exit</span> 1; }
+$ type foo &gt;/dev/null 2&gt;&amp;1 || { <span style="color: #d4d4d4;">echo</span> &gt;&amp;2 <span style="color: #daa520;">"I require foo but it's not installed.  Aborting."</span>; <span style="color: #00bfff;">exit</span> 1; }
+$ hash foo 2&gt;/dev/null || { <span style="color: #d4d4d4;">echo</span> &gt;&amp;2 <span style="color: #daa520;">"I require foo but it's not installed.  Aborting."</span>; <span style="color: #00bfff;">exit</span> 1; }
+</pre>
+</div>
+
+<p>
+详见 <a href="https://stackoverflow.com/questions/592620/how-to-check-if-a-program-exists-from-a-bash-script">https://stackoverflow.com/questions/592620/how-to-check-if-a-program-exists-from-a-bash-script</a>
+</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</body>
+</html>

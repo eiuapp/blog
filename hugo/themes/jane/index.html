@@ -1,0 +1,385 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<!-- 2021-01-08 Fri 14:59 -->
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>hugo</title>
+<meta name="generator" content="Org mode" />
+<link rel="stylesheet" title="Standard" href="/html/style/worg.css" type="text/css" />
+<link rel="alternate stylesheet" title="Zenburn" href="/html/style/worg-zenburn.css" type="text/css" />
+<link rel="alternate stylesheet" title="Classic" href="/html/style/worg-classic.css" type="text/css" />
+<link rel="SHORTCUT ICON" href="/html/style/org-mode-unicorn.ico" type="image/x-icon" />
+<link rel="icon" href="/html/style/org-mode-unicorn.ico" type="image/ico" />
+<script type="text/javascript">
+/*
+@licstart  The following is the entire license notice for the
+JavaScript code in this tag.
+
+Copyright (C) 2012-2019 Free Software Foundation, Inc.
+
+The JavaScript code in this tag is free software: you can
+redistribute it and/or modify it under the terms of the GNU
+General Public License (GNU GPL) as published by the Free Software
+Foundation, either version 3 of the License, or (at your option)
+any later version.  The code is distributed WITHOUT ANY WARRANTY;
+without even the implied warranty of MERCHANTABILITY or FITNESS
+FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
+
+As additional permission under GNU GPL version 3 section 7, you
+may distribute non-source (e.g., minimized or compacted) forms of
+that code without the copy of the GNU GPL normally required by
+section 4, provided you include this license notice and a URL
+through which recipients can access the Corresponding Source.
+
+
+@licend  The above is the entire license notice
+for the JavaScript code in this tag.
+*/
+<!--/*--><![CDATA[/*><!--*/
+ function CodeHighlightOn(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(null != target) {
+     elem.cacheClassElem = elem.className;
+     elem.cacheClassTarget = target.className;
+     target.className = "code-highlighted";
+     elem.className   = "code-highlighted";
+   }
+ }
+ function CodeHighlightOff(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(elem.cacheClassElem)
+     elem.className = elem.cacheClassElem;
+   if(elem.cacheClassTarget)
+     target.className = elem.cacheClassTarget;
+ }
+/*]]>*///-->
+</script>
+</head>
+<body>
+<div id="preamble" class="status">
+<script type="text/javascript">
+  document.addEventListener('DOMContentLoaded',function() {
+      document.getElementById("table-of-contents").onclick = function() {
+          var elem = document.getElementById("text-table-of-contents");
+          elem.style.display = elem.style.display == "block" ? "none" : "block";
+      }
+  });
+
+  var url = document.location.href;
+  var orgsource = url.substring(0, url.lastIndexOf("."))+".org.html";
+  function show_org_source(){
+      document.location.href = orgsource;
+  }
+</script>
+
+<script>
+(function(f, a, t, h, o, m){
+	a[h]=a[h]||function(){
+		(a[h].q=a[h].q||[]).push(arguments)
+	};
+	o=f.createElement('script'),
+	m=f.getElementsByTagName('script')[0];
+	o.async=1; o.src=t; o.id='fathom-script';
+	m.parentNode.insertBefore(o,m)
+})(document, window, '//stats.orgmode.org/tracker.js', 'fathom');
+fathom('set', 'siteId', 'NWSQJ');
+fathom('trackPageview');
+</script>
+</div>
+<div id="content">
+<h1 class="title">hugo</h1>
+<div id="table-of-contents">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#org3701203">Post</a>
+<ul>
+<li><a href="#orgd984e41">jane</a>
+<ul>
+<li><a href="#org57ab615">使用hugo的jane主题时，categories 书写不规范</a></li>
+<li><a href="#org68cf1de">jane主题中安装百度统计</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org3701203" class="outline-2">
+<h2 id="org3701203">Post</h2>
+<div class="outline-text-2" id="text-org3701203">
+</div>
+<div id="outline-container-orgd984e41" class="outline-3">
+<h3 id="orgd984e41">jane&#xa0;&#xa0;&#xa0;<span class="tag"><span class="_hugo">@hugo</span>&#xa0;<span class="jane">jane</span>&#xa0;<span class="hugo">hugo</span>&#xa0;<span class="jane">jane</span></span></h3>
+<div class="outline-text-3" id="text-orgd984e41">
+</div>
+<div id="outline-container-org57ab615" class="outline-4">
+<h4 id="org57ab615">使用hugo的jane主题时，categories 书写不规范&#xa0;&#xa0;&#xa0;<span class="tag"><span class="categories">categories</span></span></h4>
+<div class="outline-text-4" id="text-org57ab615">
+<p>
+&lt;!&#x2013;more&#x2013;&gt;
+</p>
+</div>
+
+<ul class="org-ul">
+<li><a id="orga2bb0c3"></a>categories 不是列表<br />
+<div class="outline-text-5" id="text-orga2bb0c3">
+<div class="org-src-container">
+<pre class="src src-shell">&#10140;  tomtsang-rootsongjc-hugo git:(master) &#10007; hugo server
+Building sites &#8230; ERROR 2018/11/26 01:07:40 Error while rendering <span style="color: #daa520;">"page"</span><span style="color: #00bfff;"> in</span> <span style="color: #daa520;">"posts/"</span>: template: _default/single.html:11:5: executing <span style="color: #daa520;">"_default/single.html"</span> at &lt;partial <span style="color: #daa520;">"head.html"</span> ...&gt;: error calling partial: template: partials/head.html:28:16: executing <span style="color: #daa520;">"partials/head.html"</span> at &lt;index ($.Site.Data.a...&gt;: error calling index: value has type []string; should be string
+                                                                                                                                                                                                                                                                                              ERROR 2018/11/26 01:07:40 Error while rendering <span style="color: #daa520;">"page"</span><span style="color: #00bfff;"> in</span> <span style="color: #daa520;">"post/"</span>: template: post/single.html:14:21: executing <span style="color: #daa520;">"content"</span> at &lt;.&gt;: range can<span style="color: #daa520;">'t iterate over cloud-native</span>
+<span style="color: #daa520;">ERROR 2018/11/26 01:07:40 in .Render: Failed to execute template "post/summary.html": template: post/summary.html:11:19: executing "post/summary.html" at &lt;.&gt;: range can'</span>t iterate over cloud-native
+                                                                                                                                                                                                                                                                                              Total<span style="color: #00bfff;"> in</span> 687 ms
+                                                                                                                                                                                                                                                                                              Error: Error building site: logged 3 error(s)
+                                                                                                                                                                                                                                                                                              &#10140;  tomtsang-rootsongjc-hugo git:(master) &#10007;
+</pre>
+</div>
+
+<p>
+看上面的提示，知道，是与：
+</p>
+
+<ul class="org-ul">
+<li>某一个在 content/post 文件夹下的 page 相关</li>
+<li>文档内容中包含了 "cloud-native" 字符串</li>
+</ul>
+
+<p>
+所以搜索，知道，是在 文档的 header 部分
+</p>
+
+<pre class="example">
+---
+categories: "cloud-native"
+---
+</pre>
+
+<p>
+而不是
+</p>
+
+<pre class="example">
+---
+categories: ["cloud-native"]
+---
+</pre>
+
+<p>
+所以，出错了。
+</p>
+
+<p>
+现在这个看起来，好像没有问题了
+</p>
+</div>
+
+<ul class="org-ul">
+<li><a id="org2ff164f"></a>批量处理<br />
+<div class="outline-text-6" id="text-org2ff164f">
+<div class="org-src-container">
+<pre class="src src-shell">&#10140;  tomtsang-rootsongjc-hugo git:(master) &#10007; grep <span style="color: #daa520;">"categories: \""</span> -rn ./content/
+</pre>
+</div>
+
+<p>
+把所有出现的 categories 放在 categories.txt 中，执行下面shell，就可以了。
+</p>
+
+<div class="org-src-container">
+<pre class="src src-shell"><span style="color: #00bfff;">for</span> str<span style="color: #00bfff;"> in</span> <span style="color: #00cdcd; font-weight: bold;">`cat categories.txt`</span>
+<span style="color: #00bfff;">do</span>
+    <span style="color: #d4d4d4;">echo</span> ${<span style="color: #d4d4d4;">str</span>}
+    sed -i <span style="color: #daa520;">"s/categories: \"${str}\"/categories: \[\"${str}\"\]/g"</span> <span style="color: #00cdcd; font-weight: bold;">`grep "categories: \"${str}\""  -rl ./../content/post/`</span>
+<span style="color: #00bfff;">done</span>
+</pre>
+</div>
+</div>
+</li>
+</ul>
+</li>
+
+
+<li><a id="org09920fc"></a>author 要为 字符串<br />
+<div class="outline-text-5" id="text-org09920fc">
+<p>
+但是，过一会，又出错了
+</p>
+
+<div class="org-src-container">
+<pre class="src src-shell">&#10140;  tomtsang-rootsongjc-hugo git:(master) &#10007; hugo serve
+
+                                       | ZH-CN
+                                       +------------------+-------+
+                                       Pages            |   336
+                                       Paginator pages  |     0
+                                       Non-page files   |     0
+                                       Static files     |    19
+                                       Processed images |     0
+                                       Aliases          |   122
+                                       Sitemaps         |     1
+                                       Cleaned          |     0
+
+                                       Total<span style="color: #00bfff;"> in</span> 321 ms
+                                       Watching for changes<span style="color: #00bfff;"> in</span> /Users/tomtsang/bitbucket/qqbb/tomtsang-rootsongjc-hugo/{content,static,themes}
+                                       Watching for config changes<span style="color: #00bfff;"> in</span> /Users/tomtsang/bitbucket/qqbb/tomtsang-rootsongjc-hugo/config.toml
+                                       Serving pages from memory
+                                       Running<span style="color: #00bfff;"> in</span> Fast Render Mode. For full rebuilds on change: hugo server --disableFastRender
+                                       Web Server is available at http://localhost:1313/ (bind address 127.0.0.1)
+                                       Press Ctrl+C to stop
+
+                                       Change detected, rebuilding site
+                                       2018-11-26 16:36:04.511 +0800
+                                       Source changed <span style="color: #daa520;">"/Users/tomtsang/bitbucket/qqbb/tomtsang-rootsongjc-hugo/content/posts/test-aa-topic-post-title.md"</span>: WRITE
+                                       ERROR 2018/11/26 16:36:04 Error while rendering <span style="color: #daa520;">"page"</span><span style="color: #00bfff;"> in</span> <span style="color: #daa520;">"posts/"</span>: template: _default/single.html:11:5: executing <span style="color: #daa520;">"_default/single.html"</span> at &lt;partial <span style="color: #daa520;">"head.html"</span> ...&gt;: error calling partial: template: partials/head.html:28:16: executing <span style="color: #daa520;">"partials/head.html"</span> at &lt;index ($.Site.Data.a...&gt;: error calling index: value has type []string; should be string
+                                                                                                                                                                                                                                                                                                                    Total<span style="color: #00bfff;"> in</span> 23 ms
+                                                                                                                                                                                                                                                                                                                    ERROR 2018/11/26 16:36:04 Failed to rebuild site: logged 1 error(s)
+
+</pre>
+</div>
+
+<p>
+这下发现，只要一加入这个新的.md文件就出错了。
+</p>
+
+<p>
+看*.md文件，知道, header部分是这样的：
+</p>
+
+<pre class="example">
++++
+title = "Post Title"
+author = ["Bryce"]
+date = 2017-12-19T17:00:00+08:00
+lastmod = 2018-11-26T16:36:03+08:00
+tags = ["post", "tags"]
+categories = ["topic"]
+draft = false
++++
+</pre>
+
+<p>
+其中categories格式正确，但是，这个 author 渲染不了。
+如果此时，修改 author = ["Bryce"] 为 author = "Bryce" ，则能够正常渲染。
+</p>
+
+<p>
+那怎么办？
+</p>
+
+<ol class="org-ol">
+<li>修改 author ，去除中括号</li>
+<li>去除 author 。</li>
+</ol>
+
+<p>
+思路1。不容易，原因：
+这个中括号，是由 ox-hugo 自动生成的，且，不容易修改 ox-hugo 的配置文件 `~/.emacs.d/elpa/develop/org-plus-contrib-20181029/ox.el`。
+</p>
+
+<p>
+思路2。可以在 一级标题下的 PROPERTIES 中 加入 `:EXPORT_HUGO_CUSTOM_FRONT_MATTER:
+:noauthor true` ，我们看一下效果。在不修改 ox-hugo 配置的情况下，会使用
+`author = ["tom tsang"] ` 。所以还是没有效果。
+</p>
+
+<p>
+经过查询ox-hugo官方文档，得知，要在 org 文档的头部添加：
+</p>
+
+<pre class="example">
+#+author:
+#+hugo_custom_front_matter: :author "Bryce"
+</pre>
+
+<p>
+这个时候，export得到的 .md文件，会有 `author = "Bryce"` 。
+如果不想要author, 则直接写成下面这样：
+</p>
+<pre class="example">
+#+author:
+#+hugo_custom_front_matter: :author ""
+</pre>
+
+<p>
+这个时候，导出的.md文件就没有author。
+</p>
+</div>
+</li>
+
+<li><a id="org3b4d368"></a>Ref<br />
+<div class="outline-text-5" id="text-org3b4d368">
+<ul class="org-ul">
+<li><a href="https://ox-hugo.scripter.co/doc/author/#forcing-author-to-be-a-string--alternative">https://ox-hugo.scripter.co/doc/author/#forcing-author-to-be-a-string--alternative</a></li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+<div id="outline-container-org68cf1de" class="outline-4">
+<h4 id="org68cf1de">jane主题中安装百度统计&#xa0;&#xa0;&#xa0;<span class="tag"><span class="baidu">baidu</span></span></h4>
+<div class="outline-text-4" id="text-org68cf1de">
+</div>
+<ul class="org-ul">
+<li><a id="org88b942a"></a>获取百度统计代码<br />
+<div class="outline-text-5" id="text-org88b942a">
+<p>
+登陆百度统计/管理/自有网站/获取代码, 得到形如
+</p>
+
+<pre class="example">
+&lt;script&gt;
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?9dd8aaaaaaaaaaa7a8bde80b13fe8eaf";
+  var s = document.getElementsByTagName("script")[0];
+  s.parentNode.insertBefore(hm, s);
+})();
+&lt;/script&gt;
+</pre>
+
+<p>
+我们要的就是 "<a href="https://hm.baidu.com/hm.js?9dd8aaaaaaaaaaa7a8bde80b13fe8eaf">https://hm.baidu.com/hm.js?9dd8aaaaaaaaaaa7a8bde80b13fe8eaf</a>" 中的
+9dd8aaaaaaaaaaa7a8bde80b13fe8eaf
+</p>
+</div>
+</li>
+
+<li><a id="org1cfe7c5"></a>放入config.toml 文件中<br />
+<div class="outline-text-5" id="text-org1cfe7c5">
+<pre class="example">
+[params]
+  baidu_push = false        # baidu push                  # 百度
+  baidu_analytics = "9dd8aaaaaaaaaaa7a8bde80b13fe8eaf"      # Baidu Analytics
+  baidu_verification = ""   # Baidu Verification
+</pre>
+</div>
+</li>
+
+<li><a id="org7bd8fd6"></a>代码安装检查<br />
+<div class="outline-text-5" id="text-org7bd8fd6">
+<p>
+登陆百度统计/管理/自有网站/代码检查, 得到形如：
+</p>
+
+<pre class="example">
+页面代码安装状态：代码安装正确
+</pre>
+<p>
+表示已经加入了百度统计。
+</p>
+</div>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+</body>
+</html>

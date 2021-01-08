@@ -3,10 +3,10 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2020-08-05 Wed 18:11 -->
+<!-- 2021-01-07 Thu 11:10 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>&lrm;</title>
+<title>emacs function</title>
 <meta name="generator" content="Org mode" />
 <meta name="author" content="a" />
 <link rel="stylesheet" title="Standard" href="/html/style/worg.css" type="text/css" />
@@ -93,26 +93,33 @@ fathom('trackPageview');
 </script>
 </div>
 <div id="content">
+<h1 class="title">emacs function</h1>
 <div id="table-of-contents">
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#orgc8fb940">basic</a></li>
-<li><a href="#orgb94475f">frame</a></li>
-<li><a href="#orgcabd6d9">buffer</a></li>
-<li><a href="#org0557b85">input-method</a></li>
-<li><a href="#orgad3bfb7">dired</a></li>
-<li><a href="#orgb896ea7">theme</a></li>
+<li><a href="#org59c27eb">basic</a></li>
+<li><a href="#orgc0eb17d">frame</a></li>
+<li><a href="#orgcbc776a">buffer</a></li>
+<li><a href="#orga3c2f78">input-method</a></li>
+<li><a href="#org5c3524a">dired</a></li>
+<li><a href="#org5bb5da1">theme</a></li>
+<li><a href="#org041d305">mark</a></li>
+<li><a href="#org8687e11">toggle</a></li>
 </ul>
 </div>
 </div>
 <p>
+<a href="../index.html">{Back to upper level}</a>
+</p>
+
+<p>
 <code>M-x function</code>
 </p>
 
-<div id="outline-container-orgc8fb940" class="outline-2">
-<h2 id="orgc8fb940">basic</h2>
-<div class="outline-text-2" id="text-orgc8fb940">
+<div id="outline-container-org59c27eb" class="outline-2">
+<h2 id="org59c27eb">basic</h2>
+<div class="outline-text-2" id="text-org59c27eb">
 <ul class="org-ul">
 <li>next-line</li>
 <li>previous-line</li>
@@ -122,40 +129,46 @@ fathom('trackPageview');
 </div>
 </div>
 
-<div id="outline-container-orgb94475f" class="outline-2">
-<h2 id="orgb94475f">frame</h2>
-<div class="outline-text-2" id="text-orgb94475f">
+<div id="outline-container-orgc0eb17d" class="outline-2">
+<h2 id="orgc0eb17d">frame</h2>
+<div class="outline-text-2" id="text-orgc0eb17d">
 <ul class="org-ul">
 <li>toggle-frame-fullscreen</li>
 </ul>
 </div>
 </div>
 
-<div id="outline-container-orgcabd6d9" class="outline-2">
-<h2 id="orgcabd6d9">buffer</h2>
-<div class="outline-text-2" id="text-orgcabd6d9">
+<div id="outline-container-orgcbc776a" class="outline-2">
+<h2 id="orgcbc776a">buffer</h2>
+<div class="outline-text-2" id="text-orgcbc776a">
 <ul class="org-ul">
 <li>find-file-read-only</li>
 <li>read-only-mode</li>
+<li>C-h v buffer-file-name</li>
 </ul>
 </div>
 </div>
 
-<div id="outline-container-org0557b85" class="outline-2">
-<h2 id="org0557b85">input-method</h2>
-<div class="outline-text-2" id="text-org0557b85">
+<div id="outline-container-orga3c2f78" class="outline-2">
+<h2 id="orga3c2f78">input-method</h2>
+<div class="outline-text-2" id="text-orga3c2f78">
 <ul class="org-ul">
 <li>set-input-method</li>
 </ul>
 </div>
 </div>
 
-<div id="outline-container-orgad3bfb7" class="outline-2">
-<h2 id="orgad3bfb7">dired</h2>
-<div class="outline-text-2" id="text-orgad3bfb7">
+<div id="outline-container-org5c3524a" class="outline-2">
+<h2 id="org5c3524a">dired</h2>
+<div class="outline-text-2" id="text-org5c3524a">
+<p>
+<a href="https://www.emacswiki.org/emacs/wdired.el">https://www.emacswiki.org/emacs/wdired.el</a>
+</p>
+
 <ul class="org-ul">
 <li>dired</li>
 <li>revert-buffer || g</li>
+<li>wdired-change-to-wdired-mode</li>
 </ul>
 
 <p>
@@ -164,12 +177,32 @@ fathom('trackPageview');
 </div>
 </div>
 
-<div id="outline-container-orgb896ea7" class="outline-2">
-<h2 id="orgb896ea7">theme</h2>
-<div class="outline-text-2" id="text-orgb896ea7">
+<div id="outline-container-org5bb5da1" class="outline-2">
+<h2 id="org5bb5da1">theme</h2>
+<div class="outline-text-2" id="text-org5bb5da1">
 <ul class="org-ul">
 <li>load-theme</li>
 <li>describe-theme</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org041d305" class="outline-2">
+<h2 id="org041d305">mark</h2>
+<div class="outline-text-2" id="text-org041d305">
+<ul class="org-ul">
+<li>(mark-line) C-x u</li>
+<li>(mark-whole-buffer) C-x u</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org8687e11" class="outline-2">
+<h2 id="org8687e11">toggle</h2>
+<div class="outline-text-2" id="text-org8687e11">
+<ul class="org-ul">
+<li>(toggle-truncate-lines)</li>
+<li>toggle-frame-fullscreen</li>
 </ul>
 </div>
 </div>

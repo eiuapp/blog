@@ -1,0 +1,478 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<!-- 2021-01-07 Thu 11:03 -->
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>&lrm;</title>
+<meta name="generator" content="Org mode" />
+<meta name="author" content="a" />
+<link rel="stylesheet" title="Standard" href="/html/style/worg.css" type="text/css" />
+<link rel="alternate stylesheet" title="Zenburn" href="/html/style/worg-zenburn.css" type="text/css" />
+<link rel="alternate stylesheet" title="Classic" href="/html/style/worg-classic.css" type="text/css" />
+<link rel="SHORTCUT ICON" href="/html/style/org-mode-unicorn.ico" type="image/x-icon" />
+<link rel="icon" href="/html/style/org-mode-unicorn.ico" type="image/ico" />
+<script type="text/javascript">
+/*
+@licstart  The following is the entire license notice for the
+JavaScript code in this tag.
+
+Copyright (C) 2012-2019 Free Software Foundation, Inc.
+
+The JavaScript code in this tag is free software: you can
+redistribute it and/or modify it under the terms of the GNU
+General Public License (GNU GPL) as published by the Free Software
+Foundation, either version 3 of the License, or (at your option)
+any later version.  The code is distributed WITHOUT ANY WARRANTY;
+without even the implied warranty of MERCHANTABILITY or FITNESS
+FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
+
+As additional permission under GNU GPL version 3 section 7, you
+may distribute non-source (e.g., minimized or compacted) forms of
+that code without the copy of the GNU GPL normally required by
+section 4, provided you include this license notice and a URL
+through which recipients can access the Corresponding Source.
+
+
+@licend  The above is the entire license notice
+for the JavaScript code in this tag.
+*/
+<!--/*--><![CDATA[/*><!--*/
+ function CodeHighlightOn(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(null != target) {
+     elem.cacheClassElem = elem.className;
+     elem.cacheClassTarget = target.className;
+     target.className = "code-highlighted";
+     elem.className   = "code-highlighted";
+   }
+ }
+ function CodeHighlightOff(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(elem.cacheClassElem)
+     elem.className = elem.cacheClassElem;
+   if(elem.cacheClassTarget)
+     target.className = elem.cacheClassTarget;
+ }
+/*]]>*///-->
+</script>
+</head>
+<body>
+<div id="preamble" class="status">
+<script type="text/javascript">
+  document.addEventListener('DOMContentLoaded',function() {
+      document.getElementById("table-of-contents").onclick = function() {
+          var elem = document.getElementById("text-table-of-contents");
+          elem.style.display = elem.style.display == "block" ? "none" : "block";
+      }
+  });
+
+  var url = document.location.href;
+  var orgsource = url.substring(0, url.lastIndexOf("."))+".org.html";
+  function show_org_source(){
+      document.location.href = orgsource;
+  }
+</script>
+
+<script>
+(function(f, a, t, h, o, m){
+	a[h]=a[h]||function(){
+		(a[h].q=a[h].q||[]).push(arguments)
+	};
+	o=f.createElement('script'),
+	m=f.getElementsByTagName('script')[0];
+	o.async=1; o.src=t; o.id='fathom-script';
+	m.parentNode.insertBefore(o,m)
+})(document, window, '//stats.orgmode.org/tracker.js', 'fathom');
+fathom('set', 'siteId', 'NWSQJ');
+fathom('trackPageview');
+</script>
+</div>
+<div id="content">
+<div id="table-of-contents">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#env">env</a></li>
+<li><a href="#step">step</a></li>
+<li><a href="#验证">验证</a></li>
+<li><a href="#查看-version-status">查看 version, status</a></li>
+<li><a href="#使用">使用</a>
+<ul>
+<li><a href="#error-port-80-connection-refused">error: <code>port 80: Connection refused</code></a></li>
+<li><a href="#pending">pending</a></li>
+<li><a href="#gitlab-runner-permission-deny">gitlab runner permission deny</a></li>
+</ul>
+</li>
+<li><a href="#section"></a></li>
+<li><a href="#说明">说明</a>
+<ul>
+<li><a href="#install-example">install example</a>
+<ul>
+<li><a href="#install-gitlab-ci">install gitlab-ci</a></li>
+<li><a href="#gitlab-runner-docker">gitlab-runner-docker</a></li>
+<li><a href="#gitlab-runner-shell">gitlab-runner-shell</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+<p>
+gitlab-runner安装与使用
+</p>
+
+<div id="outline-container-orgf8c913e" class="outline-2">
+<h2 id="env">env</h2>
+<div class="outline-text-2" id="text-env">
+<ul class="org-ul">
+<li>env-1 tl-lan-server-a</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-orgd025c8e" class="outline-2">
+<h2 id="step">step</h2>
+<div class="outline-text-2" id="text-step">
+<div class="org-src-container">
+<pre class="src src-sh">sudo docker run -d --name gitlab-runner --restart always -v /var/run/docker.sock:/var/run/docker.sock -v /srv/gitlab-runner/config:/etc/gitlab-runner gitlab/gitlab-runner:ubuntu-v11.11.1
+ubuntu@utuntu:~/lcnx/aliyun/tomcat-data$ docker ps
+CONTAINER ID        IMAGE                                  COMMAND                  CREATED             STATUS                  PORTS                                                               NAMES
+640f0e0c3642        gitlab/gitlab-runner:ubuntu-v11.11.1   <span style="color: #daa520;">"/usr/bin/dumb-init &#8230;"</span>   27 hours ago        Up 27 hours                                                                                 gitlab-runner
+b4c4ccdd3baa        gitlab/gitlab-ce:11.9.1-ce.0           <span style="color: #daa520;">"/assets/wrapper"</span>        33 hours ago        Up 33 hours (healthy)   0.0.0.0:22-&gt;22/tcp, 0.0.0.0:12280-&gt;80/tcp, 0.0.0.0:12443-&gt;443/tcp   gitlab-ce-11.9.1-2
+</pre>
+</div>
+
+<ul class="org-ul">
+<li><a href="http://walterinsh.github.io/2016/04/18/using-gitlab-ci.html">http://walterinsh.github.io/2016/04/18/using-gitlab-ci.html</a></li>
+<li><a href="https://www.cnblogs.com/xishuai/p/ubuntu-install-gitlab-runner-with-docker.html">https://www.cnblogs.com/xishuai/p/ubuntu-install-gitlab-runner-with-docker.html</a></li>
+</ul>
+
+<div class="org-src-container">
+<pre class="src src-sh">ubuntu@utuntu:~/lcnx/aliyun/tomcat-data$ docker exec -it gitlab-runner gitlab-runner register
+Runtime platform                                    <span style="color: #d4d4d4;">arch</span>=amd64 <span style="color: #d4d4d4;">os</span>=linux <span style="color: #d4d4d4;">pid</span>=121 <span style="color: #d4d4d4;">revision</span>=5a147c92 <span style="color: #d4d4d4;">version</span>=11.11.1
+Running<span style="color: #00bfff;"> in</span> system-mode.
+
+Please enter the gitlab-ci coordinator URL (e.g. https://gitlab.com/):
+http://192.168.168.137:12280/
+Please enter the gitlab-ci token for this runner:
+5nnXzbP4cYe3qPUvgJ_z
+Please enter the gitlab-ci description for this runner:
+[640f0e0c3642]: my-runner
+Please enter the gitlab-ci tags for this runner (comma separated):
+my-tag
+Registering runner... succeeded                     <span style="color: #d4d4d4;">runner</span>=5nnXzbP4
+Please enter the executor: docker-windows, docker-ssh, shell, virtualbox, docker-ssh+machine, docker, ssh, docker+machine, kubernetes, parallels:
+docker
+Please enter the default Docker image (e.g. ruby:2.1):
+node:11.15.0
+Runner registered successfully. Feel free to start it, but if it<span style="color: #daa520;">'s running already the config should be automatically reloaded!</span>
+<span style="color: #daa520;">ubuntu@utuntu:~/lcnx/aliyun/tomcat-data$</span>
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orga0dd92f" class="outline-2">
+<h2 id="验证">验证</h2>
+<div class="outline-text-2" id="text-验证">
+<p>
+chrome: <a href="http://192.168.168.137:12280/admin/runners">http://192.168.168.137:12280/admin/runners</a> 应该能看到 gitlab
+runners 就是成功了.
+</p>
+</div>
+</div>
+
+<div id="outline-container-org6a94dde" class="outline-2">
+<h2 id="查看-version-status">查看 version, status</h2>
+<div class="outline-text-2" id="text-查看-version-status">
+<div class="org-src-container">
+<pre class="src src-sh">ubuntu@utuntu:~/lcnx/local$ docker exec -it gitlab-runner gitlab-runner --version
+Version:      11.11.1
+Git revision: 5a147c92
+Git branch:   11-11-stable
+GO version:   go1.8.7
+Built:        2019-05-24T12:32:58+0000
+OS/Arch:      linux/amd64
+ubuntu@utuntu:~/lcnx/local$ docker exec -it gitlab-runner gitlab-runner status
+Runtime platform                                    <span style="color: #d4d4d4;">arch</span>=amd64 <span style="color: #d4d4d4;">os</span>=linux <span style="color: #d4d4d4;">pid</span>=165 <span style="color: #d4d4d4;">revision</span>=5a147c92 <span style="color: #d4d4d4;">version</span>=11.11.1
+gitlab-runner: Service is not running.
+ubuntu@utuntu:~/lcnx/local$
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orga70b39d" class="outline-2">
+<h2 id="使用">使用</h2>
+<div class="outline-text-2" id="text-使用">
+</div>
+
+<div id="outline-container-orgb0987a1" class="outline-3">
+<h3 id="error-port-80-connection-refused">error: <code>port 80: Connection refused</code></h3>
+<div class="outline-text-3" id="text-error-port-80-connection-refused">
+<p>
+报错如下:
+</p>
+
+<pre class="example">
+Running with gitlab-runner 11.11.1 (5a147c92)
+  on my-runner kj6xC-zB
+Using Docker executor with image node:latest ...
+Pulling docker image node:latest ...
+Using docker image sha256:6be2fabd419658c51f44d7c2a1a4a6fd172125c11e718a7eb989e74b8b2f9e5a for node:latest ...
+Running on runner-kj6xC-zB-project-2-concurrent-0 via 640f0e0c3642...
+Reinitialized existing Git repository in /builds/FED/lvchuang-web/.git/
+Fetching changes...
+fatal: unable to access 'http://gitlab-ci-token:xxxxxxxxxxxxxxxxxxxx@192.168.168.137/FED/lvchuang-web.git/': Failed to connect to 192.168.168.137 port 80: Connection refused
+ERROR: Job failed: exit code 1
+</pre>
+
+<p>
+<a href="https://gitlab.com/gitlab-org/gitlab-runner/issues/3091">https://gitlab.com/gitlab-org/gitlab-runner/issues/3091</a>
+</p>
+
+<p>
+因为这里,我们的 gitlab url 是 192.168.168.137:12080, 但是这里报的是 80:
+Connection refused 所以先尝试解决这个 port 不一致的问题.
+</p>
+
+<p>
+我这里,先简单处理, 把gitlab dokcer 直接使用 80 端口.
+</p>
+
+<p>
+然后,发现,可以使用了.
+</p>
+</div>
+</div>
+
+<div id="outline-container-org610a51b" class="outline-3">
+<h3 id="pending">pending</h3>
+<div class="outline-text-3" id="text-pending">
+<pre class="example">
+This job is stuck because you don't have any active runners online with any of these tags assigned to them: my-tag
+Go to Runners page
+</pre>
+
+<p>
+因为我的配置与官网是相同的,还是要回到官网来看一下日志
+</p>
+
+<p>
+<a href="https://docs.gitlab.com/runner/install/docker.html#reading-gitlab-runner-logs">https://docs.gitlab.com/runner/install/docker.html#reading-gitlab-runner-logs</a>
+</p>
+
+<p>
+For example, if GitLab Runner was started with the following command:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-sh">docker run -d --name gitlab-runner --restart always <span style="color: #daa520;">\</span>
+  -v /var/run/docker.sock:/var/run/docker.sock <span style="color: #daa520;">\</span>
+  -v /srv/gitlab-runner/config:/etc/gitlab-runner <span style="color: #daa520;">\</span>
+  gitlab/gitlab-runner:latest
+</pre>
+</div>
+
+<p>
+you may get the logs with:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-sh">docker logs gitlab-runner
+</pre>
+</div>
+
+<p>
+输出信息:
+</p>
+
+<pre class="example">
+WARNING: Checking for jobs... failed                runner=VE3S_jfp status=couldn't execute POST against http://192.168.168.137/api/v4/jobs/request: Post http://192.168.168.137/api/v4/jobs/request: dial tcp 192.168.168.137:80: i/o timeout
+WARNING: Checking for jobs... failed                runner=VE3S_jfp status=couldn't execute POST against http://192.168.168.137/api/v4/jobs/request: Post http://192.168.168.137/api/v4/jobs/request: dial tcp 192.168.168.137:80: i/o timeout
+WARNING: Checking for jobs... failed                runner=VE3S_jfp status=couldn't execute POST against http://192.168.168.137/api/v4/jobs/request: Post http://192.168.168.137/api/v4/jobs/request: dial tcp 192.168.168.137:80: i/o timeout
+</pre>
+
+<p>
+说明是 container 到达不了 192.168.168.137:80, 那么, 先检查一下 防火墙.
+果然,就是这个问题.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-sh">sudo ufw allow from 172.17.0.1/16  to any port 80
+</pre>
+</div>
+
+<p>
+重试. 成功.
+</p>
+</div>
+</div>
+
+<div id="outline-container-org9a44cd7" class="outline-3">
+<h3 id="gitlab-runner-permission-deny">gitlab runner permission deny</h3>
+<div class="outline-text-3" id="text-gitlab-runner-permission-deny">
+<p>
+可能是: - 电脑重启了 - docker 的数据盘放在了其它硬盘
+</p>
+
+<p>
+导致:
+</p>
+
+<pre class="example">
+root@utuntu:/home/ubuntu/fangyuan/local/fs.delete.20191230# docker ps | grep gitlab-runner
+65fa431b0ec1        gitlab/gitlab-runner:ubuntu-v11.11.1   "/usr/bin/dumb-init …"   6 months ago        Up 6 hours                                                                              gitlab-runner-shell
+be6755a2746c        gitlab/gitlab-runner:ubuntu-v11.11.1   "/usr/bin/dumb-init …"   7 months ago        Up 6 hours                                                                              gitlab-runner
+root@utuntu:/home/ubuntu/fangyuan/local/fs.delete.20191230# docker logs -f gitlab-runner
+...
+WARNING: Checking for jobs... failed                runner=VE3S_jfp status=couldn't execute POST against http://192.168.168.137/api/v4/jobs/request: Post http://192.168.168.137/api/v4/jobs/request: read tcp 172.17.0.3:59338-&gt;192.168.168.137:80: read: connection reset by peer
+WARNING: Checking for jobs... failed                runner=2K7oPJtf status=couldn't execute POST against http://192.168.168.137/api/v4/jobs/request: Post http://192.168.168.137/api/v4/jobs/request: read tcp 172.17.0.3:59346-&gt;192.168.168.137:80: read: connection reset by peer
+WARNING: Checking for jobs... failed                runner=VE3S_jfp status=502 Bad Gateway
+WARNING: Checking for jobs... failed                runner=2K7oPJtf status=502 Bad Gateway
+</pre>
+
+<p>
+jobs 中会显示对 某个文件夹 <code>permission deny</code>, 如:
+</p>
+
+<pre class="example">
+Running with gitlab-runner 10.5.0 (10.5.0)
+  on api-deploy-runner obhhKvSY
+Using Shell executor...
+Running on utuntu...
+Fetching changes...
+HEAD is now at 8bd0543 fix pms_grant_option_stage_detail saveNewBulk
+From http://192.168.168.137/fangyuan/fangyuan-server
+   8bd0543..749e544  dev        -&gt; origin/dev
+Checking out 749e5449 as dev...
+Skipping Git submodules setup
+$ echo "hello fangyuan-server"
+hello fangyuan-server
+$ echo "deploy_test"
+deploy_test
+$ echo $PWD &amp;&amp; ls ~
+/home/ubuntu/gitlabRunner/builds/obhhKvSY/0/fangyuan/fangyuan-server
+logs
+$ bash /home/ubuntu/lcnx/local/scripts/fangyuan-server/deploy/deploy-test.sh
+Mon Dec 30 15:08:24 CST 2019
+20191230150824
+fatal: Unable to create '/home/ubuntu/fangyuan/local/fangyuan-server-run-start/.git/index.lock': Permission denied
+Cannot save the current index state
+error: cannot open .git/FETCH_HEAD: Permission denied
+cp: cannot create regular file 'config/config.prod.js': Permission denied
+...
+...
+...
+npm ERR! A complete log of this run can be found in:
+npm ERR!     /var/lib/gitlab-runner/.npm/_logs/2019-12-30T07_08_29_657Z-debug.log
+docker
+Job succeeded
+</pre>
+
+<p>
+但是,后来,又时不时 没有这个 <code>permission denied</code>.
+</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgd048daf" class="outline-2">
+<h2 id="section"></h2>
+<div class="outline-text-2" id="text-section">
+</div>
+</div>
+
+<div id="outline-container-org637e261" class="outline-2">
+<h2 id="说明">说明</h2>
+<div class="outline-text-2" id="text-说明">
+</div>
+
+<div id="outline-container-orge98a596" class="outline-3">
+<h3 id="install-example">install example</h3>
+<div class="outline-text-3" id="text-install-example">
+</div>
+
+<div id="outline-container-orgf128589" class="outline-4">
+<h4 id="install-gitlab-ci">install gitlab-ci</h4>
+<div class="outline-text-4" id="text-install-gitlab-ci">
+<div class="org-src-container">
+<pre class="src src-sh">sudo docker run --detach <span style="color: #daa520;">\</span>
+  --restart always <span style="color: #daa520;">\</span>
+  --hostname 192.168.168.137 <span style="color: #daa520;">\</span>
+  --publish 12443:443 --publish 80:80 --publish 22:22 <span style="color: #daa520;">\</span>
+  --name gitlab-ce-11.9.1-2 <span style="color: #daa520;">\</span>
+  --volume /srv/gitlab9.1/config:/etc/gitlab <span style="color: #daa520;">\</span>
+  --volume /srv/gitlab9.1/logs:/var/log/gitlab <span style="color: #daa520;">\</span>
+  --volume /srv/gitlab9.1/data:/var/opt/gitlab <span style="color: #daa520;">\</span>
+  gitlab/gitlab-ce:11.9.1-ce.0
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org077ae78" class="outline-4">
+<h4 id="gitlab-runner-docker">gitlab-runner-docker</h4>
+<div class="outline-text-4" id="text-gitlab-runner-docker">
+<div class="org-src-container">
+<pre class="src src-sh">sudo docker run -d --name gitlab-runner --restart always -v /var/run/docker.sock:/var/run/docker.sock -v /srv/gitlab-runner/config:/etc/gitlab-runner gitlab/gitlab-runner:ubuntu-v11.11.1
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org2ac2cb4" class="outline-4">
+<h4 id="gitlab-runner-shell">gitlab-runner-shell</h4>
+<div class="outline-text-4" id="text-gitlab-runner-shell">
+<div class="org-src-container">
+<pre class="src src-sh">sudo docker run -d --name gitlab-runner-shell --restart always -v /var/run/docker.sock:/var/run/docker.sock -v /srv/gitlab-runner-ubuntu-v11/shell/config:/etc/gitlab-runner gitlab/gitlab-runner:ubuntu-v11.11.1
+</pre>
+</div>
+</div>
+
+<ul class="org-ul">
+<li><a id="runner-token"></a>runner token<br />
+<div class="outline-text-5" id="text-runner-token">
+<p>
+启动后看一下
+</p>
+
+<div class="org-src-container">
+<pre class="src src-sh">root@utuntu:/srv/gitlab-runner-ubuntu-v11/shell/config# cat config.toml
+<span style="color: #d4d4d4;">concurrent</span> = 1
+<span style="color: #d4d4d4;">check_interval</span> = 0
+
+[session_server]
+  <span style="color: #d4d4d4;">session_timeout</span> = 1800
+
+[[runners]]
+  <span style="color: #d4d4d4;">name</span> = <span style="color: #daa520;">"shell-runner"</span>
+  <span style="color: #d4d4d4;">url</span> = <span style="color: #daa520;">"http://192.168.168.137/"</span>
+  <span style="color: #d4d4d4;">token</span> = <span style="color: #daa520;">"S-j8EMnmzTbxRNPyCpad"</span>
+  <span style="color: #d4d4d4;">executor</span> = <span style="color: #daa520;">"shell"</span>
+  [runners.custom_build_dir]
+  [runners.cache]
+    [runners.cache.s3]
+    [runners.cache.gcs]
+root@utuntu:/srv/gitlab-runner-ubuntu-v11/shell/config#
+</pre>
+</div>
+
+<p>
+上面的这个token值=S-j8EMnmzTbxRNPyCpad=会显示在=docker logs -f gitlab-runner-shell=的输出中.
+</p>
+</div>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+</body>
+</html>

@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2020-07-30 Thu 16:11 -->
+<!-- 2021-01-07 Thu 11:04 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>git lfs</title>
@@ -98,15 +98,9 @@ fathom('trackPageview');
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#orgb327120">install</a>
+<li><a href="#org7e6bac6">install</a>
 <ul>
-<li><a href="#org885522b">ubuntu</a></li>
-</ul>
-</li>
-<li><a href="#orge17e2bb">error</a>
-<ul>
-<li><a href="#org0bc02e5">error: git-lfs filter-process: 1: git-lfs filter-process: git-lfs: not found</a></li>
-<li><a href="#orgd31f4bb">error: Remote "origin" does not support the LFS locking API</a></li>
+<li><a href="#orga7d441f">ubuntu</a></li>
 </ul>
 </li>
 </ul>
@@ -116,9 +110,9 @@ fathom('trackPageview');
 <a href="../index.html">{Back to site's index}</a>
 </p>
 
-<div id="outline-container-orgb327120" class="outline-2">
-<h2 id="orgb327120">install</h2>
-<div class="outline-text-2" id="text-orgb327120">
+<div id="outline-container-org7e6bac6" class="outline-2">
+<h2 id="org7e6bac6">install</h2>
+<div class="outline-text-2" id="text-org7e6bac6">
 <p>
 git lfs install
 </p>
@@ -128,9 +122,9 @@ git lfs install
 </p>
 </div>
 
-<div id="outline-container-org885522b" class="outline-3">
-<h3 id="org885522b">ubuntu</h3>
-<div class="outline-text-3" id="text-org885522b">
+<div id="outline-container-orga7d441f" class="outline-3">
+<h3 id="orga7d441f">ubuntu</h3>
+<div class="outline-text-3" id="text-orga7d441f">
 <div class="org-src-container">
 <pre class="src src-shell">[14:24:43] a:~ git:(ubuntu*) $ curl -s https://packagecloud.io/install/repositories/github/git-lfs/script.deb.sh | sudo bash
 [sudo] password for a:
@@ -171,47 +165,6 @@ Git LFS initialized.
 
 </pre>
 </div>
-</div>
-</div>
-</div>
-<div id="outline-container-orge17e2bb" class="outline-2">
-<h2 id="orge17e2bb">error</h2>
-<div class="outline-text-2" id="text-orge17e2bb">
-</div>
-<div id="outline-container-org0bc02e5" class="outline-3">
-<h3 id="org0bc02e5">error: git-lfs filter-process: 1: git-lfs filter-process: git-lfs: not found</h3>
-<div class="outline-text-3" id="text-org0bc02e5">
-<p>
-如果出现:
-  git-lfs filter-process: 1: git-lfs filter-process: git-lfs: not found
-</p>
-
-<p>
-则说明,系统未安装 `git lfs`, 安装后，则 git clone后, git status会显示正常.
-</p>
-</div>
-</div>
-<div id="outline-container-orgd31f4bb" class="outline-3">
-<h3 id="orgd31f4bb">error: Remote "origin" does not support the LFS locking API</h3>
-<div class="outline-text-3" id="text-orgd31f4bb">
-<div class="org-src-container">
-<pre class="src src-shell">~ [ git push origin ubuntu                                                                                                                                                                      ubuntu * ] 3:48 PM
-Remote <span style="color: #daa520;">"origin"</span> does not support the LFS locking API. Consider disabling it with:
-  $ git config lfs.https://github.com/eiuapp/dotfiles-win10-tl.git/info/lfs.locksverify false
-Post https://lfs.github.com/eiuapp/dotfiles-win10-tl/locks/verify: dial tcp 13.250.168.23:443: connect: connection refused
-error: failed to push some refs to <span style="color: #daa520;">'git@github.com:eiuapp/dotfiles-win10-tl.git'</span>
-~ [ git config lfs.https://github.com/eiuapp/dotfiles-win10-tl.git/info/lfs.locksverify false                                                                                                   ubuntu * ] 3:48 PM
-~ [ git push origin ubuntu
-</pre>
-</div>
-
-<p>
-<a href="https://github.com/git-lfs/git-lfs/issues/3400#issuecomment-588287568">https://github.com/git-lfs/git-lfs/issues/3400#issuecomment-588287568</a>
-</p>
-
-<p>
-Installed 2.25 problem disapearded.
-</p>
 </div>
 </div>
 </div>

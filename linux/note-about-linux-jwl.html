@@ -1,0 +1,336 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<!-- 2021-01-08 Fri 14:58 -->
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>linux</title>
+<meta name="generator" content="Org mode" />
+<link rel="stylesheet" title="Standard" href="/html/style/worg.css" type="text/css" />
+<link rel="alternate stylesheet" title="Zenburn" href="/html/style/worg-zenburn.css" type="text/css" />
+<link rel="alternate stylesheet" title="Classic" href="/html/style/worg-classic.css" type="text/css" />
+<link rel="SHORTCUT ICON" href="/html/style/org-mode-unicorn.ico" type="image/x-icon" />
+<link rel="icon" href="/html/style/org-mode-unicorn.ico" type="image/ico" />
+<script type="text/javascript">
+/*
+@licstart  The following is the entire license notice for the
+JavaScript code in this tag.
+
+Copyright (C) 2012-2019 Free Software Foundation, Inc.
+
+The JavaScript code in this tag is free software: you can
+redistribute it and/or modify it under the terms of the GNU
+General Public License (GNU GPL) as published by the Free Software
+Foundation, either version 3 of the License, or (at your option)
+any later version.  The code is distributed WITHOUT ANY WARRANTY;
+without even the implied warranty of MERCHANTABILITY or FITNESS
+FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
+
+As additional permission under GNU GPL version 3 section 7, you
+may distribute non-source (e.g., minimized or compacted) forms of
+that code without the copy of the GNU GPL normally required by
+section 4, provided you include this license notice and a URL
+through which recipients can access the Corresponding Source.
+
+
+@licend  The above is the entire license notice
+for the JavaScript code in this tag.
+*/
+<!--/*--><![CDATA[/*><!--*/
+ function CodeHighlightOn(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(null != target) {
+     elem.cacheClassElem = elem.className;
+     elem.cacheClassTarget = target.className;
+     target.className = "code-highlighted";
+     elem.className   = "code-highlighted";
+   }
+ }
+ function CodeHighlightOff(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(elem.cacheClassElem)
+     elem.className = elem.cacheClassElem;
+   if(elem.cacheClassTarget)
+     target.className = elem.cacheClassTarget;
+ }
+/*]]>*///-->
+</script>
+</head>
+<body>
+<div id="preamble" class="status">
+<script type="text/javascript">
+  document.addEventListener('DOMContentLoaded',function() {
+      document.getElementById("table-of-contents").onclick = function() {
+          var elem = document.getElementById("text-table-of-contents");
+          elem.style.display = elem.style.display == "block" ? "none" : "block";
+      }
+  });
+
+  var url = document.location.href;
+  var orgsource = url.substring(0, url.lastIndexOf("."))+".org.html";
+  function show_org_source(){
+      document.location.href = orgsource;
+  }
+</script>
+
+<script>
+(function(f, a, t, h, o, m){
+	a[h]=a[h]||function(){
+		(a[h].q=a[h].q||[]).push(arguments)
+	};
+	o=f.createElement('script'),
+	m=f.getElementsByTagName('script')[0];
+	o.async=1; o.src=t; o.id='fathom-script';
+	m.parentNode.insertBefore(o,m)
+})(document, window, '//stats.orgmode.org/tracker.js', 'fathom');
+fathom('set', 'siteId', 'NWSQJ');
+fathom('trackPageview');
+</script>
+</div>
+<div id="content">
+<h1 class="title">linux</h1>
+<div id="table-of-contents">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#orgf9f0b70">Post</a>
+<ul>
+<li><a href="#org4af8400">linux</a>
+<ul>
+<li><a href="#orgdd54c44">linux 关闭SSH 连接用户</a></li>
+<li><a href="#orgaa781df">linux 软连接 不能加/号</a></li>
+<li><a href="#org6828e49">ubuntu 获取 系统版本信息</a></li>
+<li><a href="#orgdf8fdf4">ssh登录时如何直接在参数中加入登录密码</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-orgf9f0b70" class="outline-2">
+<h2 id="orgf9f0b70">Post</h2>
+<div class="outline-text-2" id="text-orgf9f0b70">
+</div>
+<div id="outline-container-org4af8400" class="outline-3">
+<h3 id="org4af8400">linux&#xa0;&#xa0;&#xa0;<span class="tag"><span class="_linux">@linux</span>&#xa0;<span class="linux">linux</span></span></h3>
+<div class="outline-text-3" id="text-org4af8400">
+</div>
+<div id="outline-container-orgdd54c44" class="outline-4">
+<h4 id="orgdd54c44">linux 关闭SSH 连接用户&#xa0;&#xa0;&#xa0;<span class="tag"><span class="ssh">ssh</span></span></h4>
+<div class="outline-text-4" id="text-orgdd54c44">
+<p>
+1.查明登陆端口；
+</p>
+<div class="org-src-container">
+<pre class="src src-shell">$ who
+root pts/1 Apr 8 00:06 (172.29.0.29)
+root pts/2 Apr 8 04:15 (172.29.0.21)
+</pre>
+</div>
+
+<p>
+2.通知该用户将要关闭他：
+</p>
+<div class="org-src-container">
+<pre class="src src-shell">$ echo <span style="color: #daa520;">"I will close your connection"</span> &gt; /dev/pts/2
+</pre>
+</div>
+<p>
+这样他的终端将显示该信息。
+</p>
+
+<p>
+3.关闭用户连接
+</p>
+<div class="org-src-container">
+<pre class="src src-shell">$ fuser -k /dev/pts/2
+</pre>
+</div>
+
+<p>
+这个在某些命令，导致ssh后续无法操作时，我们就可以使用这个方式。
+</p>
+
+
+<div class="figure">
+<p><img src="https://res.cloudinary.com/dmtixvmgt/image/upload/v1548146143/linux-who-pts-fuser_w5fvlm.png" alt="linux-who-pts-fuser_w5fvlm.png" />
+</p>
+</div>
+
+<p>
+疑问：当有多个ssh 连接时，那怎么知道我们要kill 的是哪个 pts 呢？
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgaa781df" class="outline-4">
+<h4 id="orgaa781df">linux 软连接 不能加/号</h4>
+<div class="outline-text-4" id="text-orgaa781df">
+<p>
+对某个目录创建符号连接
+</p>
+
+<p>
+[root@A home]# ln -s /home/kk /home/abc
+</p>
+
+<p>
+此命令表示在/home目录下创建一个链接到/home/kk目录的名字为abc的符号连接。
+</p>
+
+<p>
+注意：
+</p>
+
+<ul class="org-ul">
+<li>目标是一个软连接符号，所以不要带上 / 号。带上后，就是指把 软连接放在这个目录下</li>
+</ul>
+
+
+<div class="org-src-container">
+<pre class="src src-shell">&#10140;  org git:(master) &#10007; ln -s /home/ubuntu/tom/jinweilai/blog-jwl/org-jwl/org/ ~/org
+&#10140;  org git:(master) &#10007; ln -s /home/ubuntu/tom/jinweilai/blog-jwl/org-jwl/org/ ~/org/
+&#10140;  org git:(master) &#10007; ls ~/org
+gtd.org  org
+&#10140;  org git:(master) &#10007;
+</pre>
+</div>
+</div>
+
+<ul class="org-ul">
+<li><a id="org91287e8"></a>Ref<br />
+<div class="outline-text-5" id="text-org91287e8">
+<ul class="org-ul">
+<li><a href="https://blog.csdn.net/liuzhenwen/article/details/8152764">https://blog.csdn.net/liuzhenwen/article/details/8152764</a></li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+
+<div id="outline-container-org6828e49" class="outline-4">
+<h4 id="org6828e49">ubuntu 获取 系统版本信息</h4>
+<div class="outline-text-4" id="text-org6828e49">
+<div class="org-src-container">
+<pre class="src src-shell">(oscar) &#10140;  proxy-os git:(master) &#10007; lsb_release --help
+Usage: lsb_release [options]
+
+Options:
+-h, --help         show this help message and exit
+-v, --version      show LSB modules this system supports
+-i, --id           show distributor ID
+-d, --description  show description of this distribution
+-r, --release      show release number of this distribution
+-c, --codename     show code name of this distribution
+-a, --all          show all of the above information
+-s, --short        show requested information<span style="color: #00bfff;"> in</span> short format
+(oscar) &#10140;  proxy-os git:(master) &#10007; lsb_release -a
+No LSB modules are available.
+Distributor ID: Ubuntu
+Description:    Ubuntu 16.04.5 LTS
+Release:        16.04
+Codename:       xenial
+(oscar) &#10140;  proxy-os git:(master) &#10007; lsb_release -s -c
+xenial
+(oscar) &#10140;  proxy-os git:(master) &#10007;
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgdf8fdf4" class="outline-4">
+<h4 id="orgdf8fdf4">ssh登录时如何直接在参数中加入登录密码&#xa0;&#xa0;&#xa0;<span class="tag"><span class="ssh">ssh</span></span></h4>
+<div class="outline-text-4" id="text-orgdf8fdf4">
+<p>
+sshpass: 用于非交互的ssh 密码验证
+</p>
+
+<p>
+　　ssh登陆不能在命令行中指定密码，也不能以shell中随处可见的，sshpass 的出现，解决了这一问题。它允许你用 -p 参数指定明文密码，然后直接登录远程服务器。 它支持密码从命令行,文件,环境变量中读取。
+</p>
+
+<p>
+　　办法找到了，现在先在自己机器上安装。
+</p>
+
+<p>
+　　对于debian/ubuntu系统来说，安装方式很简单：
+</p>
+<div class="org-src-container">
+<pre class="src src-shell">sudo apt-get install sshpass
+</pre>
+</div>
+
+<p>
+　　对于其他系统来说，可以通过编译源码：
+</p>
+<div class="org-src-container">
+<pre class="src src-shell">wget http://sourceforge.net/projects/sshpass/files/sshpass/1.05/sshpass-1.05.tar.gz
+tar xvzf sshpass-1.05.tar.gz
+./configure
+make
+sudo make install
+</pre>
+</div>
+
+
+<p>
+　　./configure 后可以添加参数指定安装目录，比如：
+</p>
+
+<div class="org-src-container">
+<pre class="src src-shell">./configure --prefix=/usr/local/Cellar/sshpass/1.05
+</pre>
+</div>
+
+<p>
+　　来把sshpass安装到自己喜欢的位置，如果没有这个参数，则安装到默认位置。
+</p>
+
+<p>
+　　安装好了后，输入sshpass来查看是否安装好了：
+</p>
+
+<div class="org-src-container">
+<pre class="src src-shell">&#10140;  ~ git:(master) &#10007; sshpass -V
+sshpass 1.05 (C) 2006-2011 Lingnu Open Source Consulting Ltd.
+This program is free software, and can be distributed under the terms of the GPL
+See the COPYING file for more information.
+&#10140;  ~ git:(master) &#10007;
+</pre>
+</div>
+
+
+<p>
+　　这样就可以通过：
+</p>
+
+<div class="org-src-container">
+<pre class="src src-shell">sshpass -p [passwd] ssh -p [port] root@192.168.X.X
+</pre>
+</div>
+<p>
+　　来登录远程主机了。
+</p>
+</div>
+<ul class="org-ul">
+<li><a id="orgabab231"></a>Ref<br />
+<div class="outline-text-5" id="text-orgabab231">
+<ul class="org-ul">
+<li><a href="https://www.cnblogs.com/linxiong945/p/4226211.html">https://www.cnblogs.com/linxiong945/p/4226211.html</a></li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+</body>
+</html>

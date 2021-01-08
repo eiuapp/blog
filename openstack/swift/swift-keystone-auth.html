@@ -1,0 +1,710 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<!-- 2021-01-08 Fri 15:30 -->
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>openstack</title>
+<meta name="generator" content="Org mode" />
+<link rel="stylesheet" title="Standard" href="/html/style/worg.css" type="text/css" />
+<link rel="alternate stylesheet" title="Zenburn" href="/html/style/worg-zenburn.css" type="text/css" />
+<link rel="alternate stylesheet" title="Classic" href="/html/style/worg-classic.css" type="text/css" />
+<link rel="SHORTCUT ICON" href="/html/style/org-mode-unicorn.ico" type="image/x-icon" />
+<link rel="icon" href="/html/style/org-mode-unicorn.ico" type="image/ico" />
+<script type="text/javascript">
+/*
+@licstart  The following is the entire license notice for the
+JavaScript code in this tag.
+
+Copyright (C) 2012-2019 Free Software Foundation, Inc.
+
+The JavaScript code in this tag is free software: you can
+redistribute it and/or modify it under the terms of the GNU
+General Public License (GNU GPL) as published by the Free Software
+Foundation, either version 3 of the License, or (at your option)
+any later version.  The code is distributed WITHOUT ANY WARRANTY;
+without even the implied warranty of MERCHANTABILITY or FITNESS
+FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
+
+As additional permission under GNU GPL version 3 section 7, you
+may distribute non-source (e.g., minimized or compacted) forms of
+that code without the copy of the GNU GPL normally required by
+section 4, provided you include this license notice and a URL
+through which recipients can access the Corresponding Source.
+
+
+@licend  The above is the entire license notice
+for the JavaScript code in this tag.
+*/
+<!--/*--><![CDATA[/*><!--*/
+ function CodeHighlightOn(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(null != target) {
+     elem.cacheClassElem = elem.className;
+     elem.cacheClassTarget = target.className;
+     target.className = "code-highlighted";
+     elem.className   = "code-highlighted";
+   }
+ }
+ function CodeHighlightOff(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(elem.cacheClassElem)
+     elem.className = elem.cacheClassElem;
+   if(elem.cacheClassTarget)
+     target.className = elem.cacheClassTarget;
+ }
+/*]]>*///-->
+</script>
+</head>
+<body>
+<div id="preamble" class="status">
+<script type="text/javascript">
+  document.addEventListener('DOMContentLoaded',function() {
+      document.getElementById("table-of-contents").onclick = function() {
+          var elem = document.getElementById("text-table-of-contents");
+          elem.style.display = elem.style.display == "block" ? "none" : "block";
+      }
+  });
+
+  var url = document.location.href;
+  var orgsource = url.substring(0, url.lastIndexOf("."))+".org.html";
+  function show_org_source(){
+      document.location.href = orgsource;
+  }
+</script>
+
+<script>
+(function(f, a, t, h, o, m){
+	a[h]=a[h]||function(){
+		(a[h].q=a[h].q||[]).push(arguments)
+	};
+	o=f.createElement('script'),
+	m=f.getElementsByTagName('script')[0];
+	o.async=1; o.src=t; o.id='fathom-script';
+	m.parentNode.insertBefore(o,m)
+})(document, window, '//stats.orgmode.org/tracker.js', 'fathom');
+fathom('set', 'siteId', 'NWSQJ');
+fathom('trackPageview');
+</script>
+</div>
+<div id="content">
+<h1 class="title">openstack</h1>
+<div id="table-of-contents">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#orgdf57917">Post</a>
+<ul>
+<li><a href="#org710a1e3">openstack</a>
+<ul>
+<li><a href="#org33493b5">SWIFt 通过 keystone 认证，并实现调用swift接口</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-orgdf57917" class="outline-2">
+<h2 id="orgdf57917">Post</h2>
+<div class="outline-text-2" id="text-orgdf57917">
+</div>
+
+<div id="outline-container-org710a1e3" class="outline-3">
+<h3 id="org710a1e3">openstack&#xa0;&#xa0;&#xa0;<span class="tag"><span class="_openstack">@openstack</span>&#xa0;<span class="openstack">openstack</span>&#xa0;<span class="swift">swift</span></span></h3>
+<div class="outline-text-3" id="text-org710a1e3">
+</div>
+<div id="outline-container-org33493b5" class="outline-4">
+<h4 id="org33493b5">SWIFt 通过 keystone 认证，并实现调用swift接口</h4>
+<div class="outline-text-4" id="text-org33493b5">
+</div>
+<ul class="org-ul">
+<li><a id="orgd5306a2"></a>总体<br />
+<div class="outline-text-5" id="text-orgd5306a2">
+<ol class="org-ol">
+<li>安装 keystone 认证</li>
+<li>调用swift接口
+<ol class="org-ol">
+<li>向keystone发送请求。得到X-Auth-Token</li>
+<li>带X-Auth-Token向swift服务发出请求</li>
+</ol></li>
+</ol>
+</div>
+</li>
+
+<li><a id="orgab8c886"></a>env<br />
+<div class="outline-text-5" id="text-orgab8c886">
+<ol class="org-ol">
+<li>controller node 上安装了 keystone, swift-proxy 服务。</li>
+<li>storage node 安装 account, container, object 服务。</li>
+</ol>
+
+<p>
+ip:
+</p>
+
+<ul class="org-ul">
+<li>controller node:
+<ul class="org-ul">
+<li>192.168.0.50</li>
+</ul></li>
+<li>storage node:
+<ul class="org-ul">
+<li>192.168.0.198</li>
+<li>192.168.0.134</li>
+<li>192.168.0.135</li>
+</ul></li>
+</ul>
+</div>
+</li>
+
+<li><a id="org3e8d12d"></a>安装 keystone 认证<br />
+<div class="outline-text-5" id="text-org3e8d12d">
+<p>
+swift 与 keystone 结合的配置文档在
+<a href="https://docs.openstack.org/swift/latest/overview_auth.html">https://docs.openstack.org/swift/latest/overview_auth.html</a>
+</p>
+
+<p>
+文档最后
+<a href="https://docs.openstack.org/swift/latest/overview_auth.html#troubleshooting-tips-for-keystoneauth-deployment">https://docs.openstack.org/swift/latest/overview_auth.html#troubleshooting-tips-for-keystoneauth-deployment</a>
+指出了一个验证方式
+</p>
+
+
+<div class="org-src-container">
+<pre class="src src-shell">swift --os-auth-url https://api.example.com/v3 --auth-version 3<span style="color: #daa520;">\</span>
+     --os-project-name project1 --os-project-domain-name domain1 <span style="color: #daa520;">\</span>
+     --os-username user --os-user-domain-name domain1 <span style="color: #daa520;">\</span>
+     --os-password password list
+</pre>
+</div>
+
+
+<p>
+当然这个是按照配置来的。因为，我这里面swift对应的password是 openstack, 所以，我这里的验证如下：
+</p>
+
+<div class="org-src-container">
+<pre class="src src-shell">root@controller:~# openstack --os-identity-api-version=3 --os-auth-url=http://keystonehost:5000/     --os-username=swift --os-user-domain-id=default     --os-project-name=service --os-project-domain-id=default     --os-password=openstack catalog show object-store
++-----------+-----------------------------------------------------------------------------+
+| Field     | Value                                                                       |
++-----------+-----------------------------------------------------------------------------+
+| endpoints | RegionOne                                                                   |
+|           |   public: http://controller:8080/v1/AUTH_a640c74e595c44c4902d1c5ebc3afa8a   |
+|           | RegionOne                                                                   |
+|           |   admin: http://controller:8080/v1                                          |
+|           | RegionOne                                                                   |
+|           |   internal: http://controller:8080/v1/AUTH_a640c74e595c44c4902d1c5ebc3afa8a |
+|           |                                                                             |
+| id        | e929673efa1a4acb9adc4a06e4f56a31                                            |
+| name      | swift                                                                       |
+| <span style="color: #d4d4d4;">type</span>      | object-store                                                                |
++-----------+-----------------------------------------------------------------------------+
+root@controller:~#
+</pre>
+</div>
+
+<p>
+这里看出，配置是没有问题的。
+</p>
+</div>
+</li>
+
+<li><a id="orgf4b6412"></a>调用swift接口<br />
+<ul class="org-ul">
+<li><a id="org9e52672"></a>准备工作<br />
+<ul class="org-ul">
+<li><a id="org7fb27fa"></a>endpoint<br />
+<div class="outline-text-7" id="text-org7fb27fa">
+<div class="org-src-container">
+<pre class="src src-shell">root@controller:~# openstack endpoint list
+Missing value auth-url required for auth plugin password
+root@controller:~# . admin-openrc
+root@controller:~# openstack endpoint list
++----------------------------------+-----------+--------------+--------------+---------+-----------+-----------------------------------------------+
+| ID                               | Region    | Service Name | Service Type | Enabled | Interface | URL                                           |
++----------------------------------+-----------+--------------+--------------+---------+-----------+-----------------------------------------------+
+| 014c4ed5c42042c394d62a1194bf07ce | RegionOne | keystone     | identity     | True    | internal  | http://controller:5000/v3/                    |
+| 0b3dc5788cac4f2cb66edc3efacf10c0 | RegionOne | keystone     | identity     | True    | public    | http://controller:5000/v3/                    |
+| 19e727c1668c4e8aae4315e13057fbbd | RegionOne | cinderv2     | volumev2     | True    | public    | http://controller:8776/v2/%(project_id)s      |
+| 216d8d8f353a49f78aa4421ff6e8c27b | RegionOne | swift        | object-store | True    | public    | http://controller:8080/v1/AUTH_%(project_id)s |
+| 2548787f06524287b6a27d0a562da375 | RegionOne | glance       | image        | True    | internal  | http://controller:9292                        |
+| 295cfee33ff04ab7890a84b47e95bc3f | RegionOne | keystone     | identity     | True    | admin     | http://controller:5000/v3/                    |
+| 50d3b61b60654a65bda26584b4fe0896 | RegionOne | neutron      | network      | True    | admin     | http://controller:9696                        |
+| 55367bdc8db6438da3a4ed82b1a1b04c | RegionOne | glance       | image        | True    | public    | http://controller:9292                        |
+| 5b60dcd8e374410f83e675201d76f06f | RegionOne | placement    | placement    | True    | admin     | http://controller:8778                        |
+| 610f89fa29764f7eb5c91e737ad0110e | RegionOne | swift        | object-store | True    | admin     | http://controller:8080/v1                     |
+| 76d61f360fc140a58b4258c344ea9ae5 | RegionOne | nova         | compute      | True    | internal  | http://controller:8774/v2.1                   |
+| 7eece3971f9f4105b031214666940d54 | RegionOne | placement    | placement    | True    | public    | http://controller:8778                        |
+| 8237211a85314e0c914ea34851e324b7 | RegionOne | cinderv2     | volumev2     | True    | admin     | http://controller:8776/v2/%(project_id)s      |
+| 99b6673fda7f48bb8b6ae11a87ba0e1b | RegionOne | glance       | image        | True    | admin     | http://controller:9292                        |
+| a39982358d3041e0aebd7a1a1fb691bb | RegionOne | swift        | object-store | True    | internal  | http://controller:8080/v1/AUTH_%(project_id)s |
+| a61cbe1448284dd482725fb3067fa25c | RegionOne | nova         | compute      | True    | public    | http://controller:8774/v2.1                   |
+| cfb1df03d1bd42719dd506e0fbee7e5a | RegionOne | cinderv3     | volumev3     | True    | internal  | http://controller:8776/v3/%(project_id)s      |
+| cfe6b374e86048c98951d079a3cdaa42 | RegionOne | placement    | placement    | True    | internal  | http://controller:8778                        |
+| d9bb0785c23143ed855d0bb74dfe53bb | RegionOne | cinderv3     | volumev3     | True    | public    | http://controller:8776/v3/%(project_id)s      |
+| e1f98d0e79f549a5bc46bcf05705c4b1 | RegionOne | neutron      | network      | True    | public    | http://controller:9696                        |
+| f089ebe1cb5040319e942dbc607e9930 | RegionOne | cinderv3     | volumev3     | True    | admin     | http://controller:8776/v3/%(project_id)s      |
+| f3350a1d66fa4813a091beef3782b6fd | RegionOne | neutron      | network      | True    | internal  | http://controller:9696                        |
+| f5460d92ef8b428b9dc354628acdb289 | RegionOne | cinderv2     | volumev2     | True    | internal  | http://controller:8776/v2/%(project_id)s      |
+| fb5c30679ed14e078646041e75e77294 | RegionOne | nova         | compute      | True    | admin     | http://controller:8774/v2.1                   |
++----------------------------------+-----------+--------------+--------------+---------+-----------+-----------------------------------------------+
+root@controller:~#
+</pre>
+</div>
+
+
+<p>
+从 openstack endpoint 拿到 swift 的 URL 是： <a href="http://controller:8080/v1">http://controller:8080/v1</a>
+</p>
+</div>
+</li>
+
+<li><a id="org298faeb"></a>试验swift 状态<br />
+<div class="outline-text-7" id="text-org298faeb">
+<div class="org-src-container">
+<pre class="src src-shell">root@controller:~# swift stat -v
+                     StorageURL: http://controller:8080/v1/AUTH_f04ec0abf3d1460dad82608bb03af589
+                     Auth Token: gAAAAABcQUnrEMgo3fTeFVMWrYcA6-6t6XNAGljTzPNdH111cbawcBjozo0DUvHhsOY4hucyfzhBAzwMlzsigyj1jOqdQndn_6cO5k8JTrQtyYGzLxJ5weEdHnV6HVszgQBtyxq17ut1_RTu_DhVT-m5MLKpMGcglszF-XCcC-Ua9I2NHTLicCg
+                        Account: AUTH_f04ec0abf3d1460dad82608bb03af589
+                     Containers: 1
+                        Objects: 1
+                          Bytes: 26262280
+Containers<span style="color: #00bfff;"> in</span> policy <span style="color: #daa520;">"policy-0"</span>: 1
+   Objects<span style="color: #00bfff;"> in</span> policy <span style="color: #daa520;">"policy-0"</span>: 1
+     Bytes<span style="color: #00bfff;"> in</span> policy <span style="color: #daa520;">"policy-0"</span>: 26262280
+    X-Account-Project-Domain-Id: default
+         X-Openstack-Request-Id: tx753c958eb6ad4bd5b2ef0-005c4149eb
+                    X-Timestamp: 1547641627.86782
+                     X-Trans-Id: tx753c958eb6ad4bd5b2ef0-005c4149eb
+                   Content-Type: application/json; <span style="color: #d4d4d4;">charset</span>=utf-8
+                  Accept-Ranges: bytes
+root@controller:~#
+</pre>
+</div>
+
+<p>
+从 swift stat -v 的返回可以看到 Auth Token 且状态正常。
+所以，是可以使用 curl, python 通过RESTFUL API调用swift服务的。
+</p>
+</div>
+</li>
+
+<li><a id="orge404439"></a>通过swift命令，获得请求参数<br />
+<div class="outline-text-7" id="text-orge404439">
+<div class="org-src-container">
+<pre class="src src-shell">root@controller:~# swift stat -v
+                     StorageURL: http://controller:8080/v1/AUTH_f04ec0abf3d1460dad82608bb03af589
+                     Auth Token: gAAAAABcQUnrEMgo3fTeFVMWrYcA6-6t6XNAGljTzPNdH111cbawcBjozo0DUvHhsOY4hucyfzhBAzwMlzsigyj1jOqdQndn_6cO5k8JTrQtyYGzLxJ5weEdHnV6HVszgQBtyxq17ut1_RTu_DhVT-m5MLKpMGcglszF-XCcC-Ua9I2NHTLicCg
+                        Account: AUTH_f04ec0abf3d1460dad82608bb03af589
+                     Containers: 1
+                        Objects: 1
+                          Bytes: 26262280
+Containers<span style="color: #00bfff;"> in</span> policy <span style="color: #daa520;">"policy-0"</span>: 1
+   Objects<span style="color: #00bfff;"> in</span> policy <span style="color: #daa520;">"policy-0"</span>: 1
+     Bytes<span style="color: #00bfff;"> in</span> policy <span style="color: #daa520;">"policy-0"</span>: 26262280
+    X-Account-Project-Domain-Id: default
+         X-Openstack-Request-Id: tx753c958eb6ad4bd5b2ef0-005c4149eb
+                    X-Timestamp: 1547641627.86782
+                     X-Trans-Id: tx753c958eb6ad4bd5b2ef0-005c4149eb
+                   Content-Type: application/json; <span style="color: #d4d4d4;">charset</span>=utf-8
+                  Accept-Ranges: bytes
+root@controller:~# swift --help
+usage: swift [--version] [--help] [--os-help] [--snet] [--verbose]
+
+Command-line interface to the OpenStack Swift API.
+
+Positional arguments:
+
+Examples:
+  swift download --help
+
+  swift -A https://api.example.com/v1.0 <span style="color: #daa520;">\</span>
+      -U user -K api_key stat -v
+
+  swift --os-auth-url https://api.example.com/v2.0 <span style="color: #daa520;">\</span>
+      --os-tenant-name tenant <span style="color: #daa520;">\</span>
+      --os-username user --os-password password list
+
+  swift --os-auth-url https://api.example.com/v3 --auth-version 3<span style="color: #daa520;">\</span>
+      --os-project-name project1 --os-project-domain-name domain1 <span style="color: #daa520;">\</span>
+      --os-username user --os-user-domain-name domain1 <span style="color: #daa520;">\</span>
+      --os-password password list
+
+  swift --os-auth-url https://api.example.com/v3 --auth-version 3<span style="color: #daa520;">\</span>
+      --os-project-id 0123456789abcdef0123456789abcdef <span style="color: #daa520;">\</span>
+      --os-user-id abcdef0123456789abcdef0123456789 <span style="color: #daa520;">\</span>
+      --os-password password list
+
+  swift --os-auth-token 6ee5eb33efad4e45ab46806eac010566 <span style="color: #daa520;">\</span>
+      --os-storage-url https://10.1.5.2:8080/v1/AUTH_ced809b6a4baea7aeab61a <span style="color: #daa520;">\</span>
+      list
+
+  swift list --lh
+
+optional arguments:
+root@controller:~#
+</pre>
+</div>
+
+<p>
+通过这个example 可以看到，原来之前的 swift stat -v 就是因为使用了 . admin-openrc 中的参数。
+</p>
+
+<p>
+因为，后续，我们是不会使用 admin 这个帐号的，所以，现在起我们切换成 demo 帐号。
+</p>
+
+<div class="org-src-container">
+<pre class="src src-shell">root@controller:~# . demo-openrc
+root@controller:~# openstack endpoint list
+You are not authorized to perform the requested action: identity:list_endpoints. (HTTP 403) (Request-ID: req-b7efc3d8-0046-4847-b4ed-2e99d53d9e35)
+root@controller:~# swift stat -v
+                     StorageURL: http://controller:8080/v1/AUTH_7d6eaa90d74a4f239963933c3a744df3
+                     Auth Token: gAAAAABcQUz9FSJBIUSo2DC5sOCFLcytonKVdX6MOf6m9KY4-IcGlTztCZkULlkUKhaiRzCdYKJeNE06MblaIjArbb-VASeMelaKL3SBRWTdRn2Qb3TygrmRt3CFuU2bRQGitjuxp4m8WY7hYroL97cSyrDKTpCHKYhfz9X05F2yFlQ-gLZqC7w
+                        Account: AUTH_7d6eaa90d74a4f239963933c3a744df3
+                     Containers: 6
+                        Objects: 29
+                          Bytes: 7319499838
+Containers<span style="color: #00bfff;"> in</span> policy <span style="color: #daa520;">"policy-0"</span>: 6
+   Objects<span style="color: #00bfff;"> in</span> policy <span style="color: #daa520;">"policy-0"</span>: 29
+     Bytes<span style="color: #00bfff;"> in</span> policy <span style="color: #daa520;">"policy-0"</span>: 7319499838
+    X-Account-Project-Domain-Id: default
+         X-Openstack-Request-Id: tx85bf81afca4b40bdbd431-005c414cfd
+                    X-Timestamp: 1546928904.74292
+                     X-Trans-Id: tx85bf81afca4b40bdbd431-005c414cfd
+                   Content-Type: application/json; <span style="color: #d4d4d4;">charset</span>=utf-8
+                  Accept-Ranges: bytes
+root@controller:~#
+</pre>
+</div>
+
+<p>
+从上面的结果看到，demo 用户是不能访问 endpoint 的。但是，可以访问到 swift 服务。
+</p>
+</div>
+</li>
+
+<li><a id="orgfcec0ec"></a>构造 swift example<br />
+<div class="outline-text-7" id="text-orgfcec0ec">
+<p>
+看一下 demo-openrc 中的内容。
+</p>
+
+<div class="org-src-container">
+<pre class="src src-shell">root@controller:~# cat demo-openrc
+<span style="color: #d4d4d4;">export</span> <span style="color: #d4d4d4;">OS_PROJECT_DOMAIN_NAME</span>=Default
+<span style="color: #d4d4d4;">export</span> <span style="color: #d4d4d4;">OS_USER_DOMAIN_NAME</span>=Default
+<span style="color: #d4d4d4;">export</span> <span style="color: #d4d4d4;">OS_PROJECT_NAME</span>=demo
+<span style="color: #d4d4d4;">export</span> <span style="color: #d4d4d4;">OS_USERNAME</span>=demo
+<span style="color: #d4d4d4;">export</span> <span style="color: #d4d4d4;">OS_PASSWORD</span>=openstack
+<span style="color: #d4d4d4;">export</span> <span style="color: #d4d4d4;">OS_AUTH_URL</span>=http://controller:5000/v3
+<span style="color: #d4d4d4;">export</span> <span style="color: #d4d4d4;">OS_IDENTITY_API_VERSION</span>=3
+<span style="color: #d4d4d4;">export</span> <span style="color: #d4d4d4;">OS_IMAGE_API_VERSION</span>=2
+root@controller:~#
+</pre>
+</div>
+
+<p>
+按 swift example 的方式配置如下。
+</p>
+
+<p>
+注意了：下面的这个命令，是可以不预先运行`. demo-openrc`命令的。
+</p>
+
+<div class="org-src-container">
+<pre class="src src-shell">ubuntu@controller:~$  swift --os-auth-url http://controller:5000/v3 --auth-version 3<span style="color: #daa520;">\</span>
+&gt;       --os-project-name demo --os-project-domain-name Default <span style="color: #daa520;">\</span>
+&gt;       --os-username demo --os-user-domain-name Default <span style="color: #daa520;">\</span>
+&gt;       --os-password openstack list
+container1
+container1_segments
+container2
+jinweilai-work
+pub1
+test3
+ubuntu@controller:~$
+</pre>
+</div>
+
+<p>
+如果像下面的这样，把project 的信息去除，则会报错
+</p>
+
+<div class="org-src-container">
+<pre class="src src-shell">ubuntu@controller:~$  swift --os-auth-url http://controller:5000/v3 --auth-version 3<span style="color: #daa520;">\</span>
+&gt;       --os-username demo --os-user-domain-name Default <span style="color: #daa520;">\</span>
+&gt;       --os-password openstack list
+No project name or project id specified.
+ubuntu@controller:~$
+</pre>
+</div>
+
+<p>
+说明每一个地方的设置，都要加到请求参数中去。
+</p>
+
+<p>
+也就是这个 demo-openrc 是有scope 的。
+</p>
+</div>
+</li>
+
+<li><a id="org09b9244"></a>分析swift example<br />
+<div class="outline-text-7" id="text-org09b9244">
+<p>
+那么，上面的命令是如何实现查看出 demo 这个帐号的 container 信息的呢？
+</p>
+
+<p>
+根据文档知道，是先向 keystone 拿到 X-Auth-Token, 然后拿上这个X-Auth-Token 向swift 请求的。
+</p>
+
+<p>
+那这样子说，我们可以用 `swift stat -v` 中的 `Auth Token` 直接向swift请求，试一下，是不是有效。（其实通过keystone日志/var/log/keystone/keystone-wsgi-public.log 和 swift日志（存放在系统日志）/var/log/syslog , 可以知道，就是这样的。）
+</p>
+
+<p>
+让我们试一下。
+</p>
+
+<p>
+在 controller node 中 使用 `swift stat -v`再来一次。
+</p>
+
+<div class="org-src-container">
+<pre class="src src-shell">root@controller:~# swift stat -v
+                     StorageURL: http://controller:8080/v1/AUTH_7d6eaa90d74a4f239963933c3a744df3
+                     Auth Token: gAAAAABcQVk7Q6QgnbTmTobnt36rLZmifbCMow4W-MWfQ9txcRyHEYOPXWRKAcc2r7bAVG0uS_VNC5GyIPw6FjQx3Bb-mofESZDEPs5AHe8m2Pg1Nwfmhrd8lg_4VqWZRffUQIrrRiNH1JSViBXFRZJn0zwSdwUREoskIuetQ0uZ5FWXuQOz240
+                        Account: AUTH_7d6eaa90d74a4f239963933c3a744df3
+                     Containers: 6
+                        Objects: 29
+                          Bytes: 7319499838
+Containers<span style="color: #00bfff;"> in</span> policy <span style="color: #daa520;">"policy-0"</span>: 6
+   Objects<span style="color: #00bfff;"> in</span> policy <span style="color: #daa520;">"policy-0"</span>: 29
+     Bytes<span style="color: #00bfff;"> in</span> policy <span style="color: #daa520;">"policy-0"</span>: 7319499838
+    X-Account-Project-Domain-Id: default
+         X-Openstack-Request-Id: txb40ee72900e8487a8e5ec-005c41593b
+                    X-Timestamp: 1546928904.74292
+                     X-Trans-Id: txb40ee72900e8487a8e5ec-005c41593b
+                   Content-Type: application/json; <span style="color: #d4d4d4;">charset</span>=utf-8
+                  Accept-Ranges: bytes
+root@controller:~#
+</pre>
+</div>
+
+<p>
+然后根据
+<a href="https://developer.openstack.org/api-ref/object-store/index.html?expanded=show-account-details-and-list-containers-detail#show-container-details-and-list-objects">https://developer.openstack.org/api-ref/object-store/index.html?expanded=show-account-details-and-list-containers-detail#show-container-details-and-list-objects</a>
+去任何一台公网机器上
+</p>
+
+<div class="org-src-container">
+<pre class="src src-shell">&#10140;  swift curl -i <span style="color: #daa520;">"http://192.168.0.50:8080/v1/AUTH_7d6eaa90d74a4f239963933c3a744df3?format=json"</span> -X GET -H <span style="color: #daa520;">"X-Auth-Token: gAAAAABcQVk7Q6QgnbTmTobnt36rLZmifbCMow4W-MWfQ9txcRyHEYOPXWRKAcc2r7bAVG0uS_VNC5GyIPw6FjQx3Bb-mofESZDEPs5AHe8m2Pg1Nwfmhrd8lg_4VqWZRffUQIrrRiNH1JSViBXFRZJn0zwSdwUREoskIuetQ0uZ5FWXuQOz240"</span>
+HTTP/1.1 200 OK
+Content-Length: 337
+X-Account-Object-Count: 29
+X-Account-Storage-Policy-Policy-0-Bytes-Used: 7319499838
+X-Account-Storage-Policy-Policy-0-Container-Count: 6
+X-Timestamp: 1546928904.74292
+X-Account-Storage-Policy-Policy-0-Object-Count: 29
+X-Account-Bytes-Used: 7319499838
+X-Account-Container-Count: 6
+Content-Type: application/json; <span style="color: #d4d4d4;">charset</span>=utf-8
+Accept-Ranges: bytes
+x-account-project-domain-id: default
+X-Trans-Id: txcd8c653a027b4a5d9a9a0-005c415a1d
+X-Openstack-Request-Id: txcd8c653a027b4a5d9a9a0-005c415a1d
+Date: Fri, 18 Jan 2019 04:46:21 GMT
+
+[{<span style="color: #daa520;">"count"</span>: 9, <span style="color: #daa520;">"bytes"</span>: 506788650, <span style="color: #daa520;">"name"</span>: <span style="color: #daa520;">"container1"</span>}, {<span style="color: #daa520;">"count"</span>: 4, <span style="color: #daa520;">"bytes"</span>: 3460191876, <span style="color: #daa520;">"name"</span>: <span style="color: #daa520;">"container1_segments"</span>}, {<span style="color: #daa520;">"count"</span>: 1, <span style="color: #daa520;">"bytes"</span>: 18290688, <span style="color: #daa520;">"name"</span>: <span style="color: #daa520;">"container2"</span>}, {<span style="color: #daa520;">"count"</span>: 1, <span style="color: #daa520;">"bytes"</span>: 375626779, <span style="color: #daa520;">"name"</span>: <span style="color: #daa520;">"jinweilai-work"</span>}, {<span style="color: #daa520;">"count"</span>: 1, <span style="color: #daa520;">"bytes"</span>: 399336, <span style="color: #daa520;">"name"</span>: <span style="color: #daa520;">"pub1"</span>}, {<span style="color: #daa520;">"count"</span>: 13, <span style="color: #daa520;">"bytes"</span>: 2958202509, <span style="color: #daa520;">"name"</span>: <span style="color: #daa520;">"test3"</span>}]%
+&#10140;  swift
+</pre>
+</div>
+
+<p>
+得到结果了。哈哈。
+</p>
+
+<p>
+那这样子说，我们只要得到正确的`X-Auth-Token`，就一定能调用swift服务了。
+</p>
+
+<p>
+下面就是依据我们现有的材料，向keystone发送请求, 得到我们要的 X-Auth-Token 了。
+</p>
+</div>
+</li>
+</ul>
+</li>
+
+<li><a id="org1401b2e"></a>向keystone发送请求。得到X-Auth-Token<br />
+<div class="outline-text-6" id="text-org1401b2e">
+<p>
+根据下面文档
+<a href="https://developer.openstack.org/api-ref/identity/v3/index.html?expanded=password-authentication-with-scoped-authorization-detail#identity-api-operations">https://developer.openstack.org/api-ref/identity/v3/index.html?expanded=password-authentication-with-scoped-authorization-detail#identity-api-operations</a>
+</p>
+
+<p>
+结合我们 demo-openrc 和 刚刚的 swift example, 我们得到
+</p>
+
+<p>
+生成JSON格式请求body:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-json">{
+    "auth": {
+        "identity": {
+            "methods": [
+                "password"
+            ],
+            "password": {
+                "user": {
+                "name": "demo",
+                "domain": {
+                "name": "Default"
+                },
+                "password": "openstack"
+                }
+            }
+        },
+        "scope": {
+            "project": {
+                "domain": {
+                    "name": "Default"
+                },
+                "name": "demo"
+            }
+        }
+    }
+}
+</pre>
+</div>
+
+<p>
+向 keystone 的 endpoint
+</p>
+
+<div class="org-src-container">
+<pre class="src src-text">| 0b3dc5788cac4f2cb66edc3efacf10c0 | RegionOne | keystone     | identity     | True    | public    | http://controller:5000/v3/                    |
+</pre>
+</div>
+
+<p>
+URL: <a href="http://controller:5000/v3/">http://controller:5000/v3/</a>
+</p>
+
+<p>
+发送请求。得到response. 其中响应 headers 中的 'X-Subject-Token', 就是 X-Auth-Token 了。
+</p>
+</div>
+</li>
+
+<li><a id="org148bdde"></a>带X-Auth-Token向swift服务发出请求<br />
+<div class="outline-text-6" id="text-org148bdde">
+<p>
+这一步就是重复刚刚讲过的内容，向swift请求了.
+然后根据
+<a href="https://developer.openstack.org/api-ref/object-store/index.html?expanded=show-account-details-and-list-containers-detail#show-container-details-and-list-objects">https://developer.openstack.org/api-ref/object-store/index.html?expanded=show-account-details-and-list-containers-detail#show-container-details-and-list-objects</a>
+去任何一台公网机器上
+</p>
+
+<div class="org-src-container">
+<pre class="src src-shell">&#10140;  swift curl -i <span style="color: #daa520;">"http://192.168.0.50:8080/v1/AUTH_7d6eaa90d74a4f239963933c3a744df3?format=json"</span> -X GET -H <span style="color: #daa520;">"X-Auth-Token: gAAAAABcQVk7Q6QgnbTmTobnt36rLZmifbCMow4W-MWfQ9txcRyHEYOPXWRKAcc2r7bAVG0uS_VNC5GyIPw6FjQx3Bb-mofESZDEPs5AHe8m2Pg1Nwfmhrd8lg_4VqWZRffUQIrrRiNH1JSViBXFRZJn0zwSdwUREoskIuetQ0uZ5FWXuQOz240"</span>
+HTTP/1.1 200 OK
+Content-Length: 337
+X-Account-Object-Count: 29
+X-Account-Storage-Policy-Policy-0-Bytes-Used: 7319499838
+X-Account-Storage-Policy-Policy-0-Container-Count: 6
+X-Timestamp: 1546928904.74292
+X-Account-Storage-Policy-Policy-0-Object-Count: 29
+X-Account-Bytes-Used: 7319499838
+X-Account-Container-Count: 6
+Content-Type: application/json; <span style="color: #d4d4d4;">charset</span>=utf-8
+Accept-Ranges: bytes
+x-account-project-domain-id: default
+X-Trans-Id: txcd8c653a027b4a5d9a9a0-005c415a1d
+X-Openstack-Request-Id: txcd8c653a027b4a5d9a9a0-005c415a1d
+Date: Fri, 18 Jan 2019 04:46:21 GMT
+
+[{<span style="color: #daa520;">"count"</span>: 9, <span style="color: #daa520;">"bytes"</span>: 506788650, <span style="color: #daa520;">"name"</span>: <span style="color: #daa520;">"container1"</span>}, {<span style="color: #daa520;">"count"</span>: 4, <span style="color: #daa520;">"bytes"</span>: 3460191876, <span style="color: #daa520;">"name"</span>: <span style="color: #daa520;">"container1_segments"</span>}, {<span style="color: #daa520;">"count"</span>: 1, <span style="color: #daa520;">"bytes"</span>: 18290688, <span style="color: #daa520;">"name"</span>: <span style="color: #daa520;">"container2"</span>}, {<span style="color: #daa520;">"count"</span>: 1, <span style="color: #daa520;">"bytes"</span>: 375626779, <span style="color: #daa520;">"name"</span>: <span style="color: #daa520;">"jinweilai-work"</span>}, {<span style="color: #daa520;">"count"</span>: 1, <span style="color: #daa520;">"bytes"</span>: 399336, <span style="color: #daa520;">"name"</span>: <span style="color: #daa520;">"pub1"</span>}, {<span style="color: #daa520;">"count"</span>: 13, <span style="color: #daa520;">"bytes"</span>: 2958202509, <span style="color: #daa520;">"name"</span>: <span style="color: #daa520;">"test3"</span>}]%
+&#10140;  swift
+</pre>
+</div>
+
+<p>
+得到结果了。哈哈。
+</p>
+</div>
+</li>
+
+<li><a id="org27f6c65"></a>利用 python 来访问swift<br />
+<div class="outline-text-6" id="text-org27f6c65">
+<p>
+直接上代码了。
+</p>
+
+<div class="org-src-container">
+<pre class="src src-python"><span style="color: #00bfff;">import</span> requests
+<span style="color: #00bfff;">import</span> json
+<span style="color: #d4d4d4;">URL</span> = <span style="color: #daa520;">'http://192.168.0.50:5000/v3/auth/tokens'</span>
+<span style="color: #d4d4d4;">body</span> = {
+        <span style="color: #daa520;">"auth"</span>: {
+                    <span style="color: #daa520;">"identity"</span>: {
+                                    <span style="color: #daa520;">"methods"</span>: [
+                                                        <span style="color: #daa520;">"password"</span>
+                                    ],
+                                    <span style="color: #daa520;">"password"</span>: {
+                                                        <span style="color: #daa520;">"user"</span>: {
+                                                            <span style="color: #daa520;">"name"</span>: <span style="color: #daa520;">"demo"</span>,
+                                            <span style="color: #daa520;">"domain"</span>: {
+                            <span style="color: #daa520;">"name"</span>: <span style="color: #daa520;">"Default"</span>
+                                            },
+                                            <span style="color: #daa520;">"password"</span>: <span style="color: #daa520;">"openstack"</span>
+                                                        }
+                                    }
+                    },
+                    <span style="color: #daa520;">"scope"</span>: {
+                                    <span style="color: #daa520;">"project"</span>: {
+                                                        <span style="color: #daa520;">"domain"</span>: {
+                                                                                <span style="color: #daa520;">"name"</span>: <span style="color: #daa520;">"Default"</span>
+                                                        },
+                                                        <span style="color: #daa520;">"name"</span>: <span style="color: #daa520;">"demo"</span>
+                                    }
+                    }
+        }
+}
+<span style="color: #d4d4d4;">body</span> = json.dumps(body)
+<span style="color: #00bfff;">print</span>(body)
+<span style="color: #d4d4d4;">headers</span> = {<span style="color: #daa520;">'Content-Type'</span>:<span style="color: #daa520;">'application/json'</span>}
+<span style="color: #d4d4d4;">res</span> = requests.post(URL,data=body,headers=headers)
+<span style="color: #d4d4d4;">token</span> = res.headers[<span style="color: #daa520;">'X-Subject-Token'</span>]
+<span style="color: #00bfff;">print</span>(token)
+
+<span style="color: #d4d4d4;">URL</span> = <span style="color: #daa520;">'http://192.168.0.50:8080/v1/AUTH_7d6eaa90d74a4f239963933c3a744df3'</span>
+<span style="color: #d4d4d4;">headers</span> = {<span style="color: #daa520;">'X-Auth-Token'</span>:token,<span style="color: #daa520;">"Content-Type"</span>: <span style="color: #daa520;">'application/json'</span>}
+<span style="color: #d4d4d4;">res</span> = requests.get(URL,headers=headers)
+<span style="color: #00bfff;">print</span>(res.text)
+<span style="color: #00bfff;">print</span>(res.status_code)
+</pre>
+</div>
+</div>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+</body>
+</html>

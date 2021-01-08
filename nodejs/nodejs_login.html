@@ -1,0 +1,227 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<!-- 2021-01-07 Thu 11:07 -->
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>&lrm;</title>
+<meta name="generator" content="Org mode" />
+<meta name="author" content="a" />
+<link rel="stylesheet" title="Standard" href="/html/style/worg.css" type="text/css" />
+<link rel="alternate stylesheet" title="Zenburn" href="/html/style/worg-zenburn.css" type="text/css" />
+<link rel="alternate stylesheet" title="Classic" href="/html/style/worg-classic.css" type="text/css" />
+<link rel="SHORTCUT ICON" href="/html/style/org-mode-unicorn.ico" type="image/x-icon" />
+<link rel="icon" href="/html/style/org-mode-unicorn.ico" type="image/ico" />
+<script type="text/javascript">
+/*
+@licstart  The following is the entire license notice for the
+JavaScript code in this tag.
+
+Copyright (C) 2012-2019 Free Software Foundation, Inc.
+
+The JavaScript code in this tag is free software: you can
+redistribute it and/or modify it under the terms of the GNU
+General Public License (GNU GPL) as published by the Free Software
+Foundation, either version 3 of the License, or (at your option)
+any later version.  The code is distributed WITHOUT ANY WARRANTY;
+without even the implied warranty of MERCHANTABILITY or FITNESS
+FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
+
+As additional permission under GNU GPL version 3 section 7, you
+may distribute non-source (e.g., minimized or compacted) forms of
+that code without the copy of the GNU GPL normally required by
+section 4, provided you include this license notice and a URL
+through which recipients can access the Corresponding Source.
+
+
+@licend  The above is the entire license notice
+for the JavaScript code in this tag.
+*/
+<!--/*--><![CDATA[/*><!--*/
+ function CodeHighlightOn(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(null != target) {
+     elem.cacheClassElem = elem.className;
+     elem.cacheClassTarget = target.className;
+     target.className = "code-highlighted";
+     elem.className   = "code-highlighted";
+   }
+ }
+ function CodeHighlightOff(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(elem.cacheClassElem)
+     elem.className = elem.cacheClassElem;
+   if(elem.cacheClassTarget)
+     target.className = elem.cacheClassTarget;
+ }
+/*]]>*///-->
+</script>
+</head>
+<body>
+<div id="preamble" class="status">
+<script type="text/javascript">
+  document.addEventListener('DOMContentLoaded',function() {
+      document.getElementById("table-of-contents").onclick = function() {
+          var elem = document.getElementById("text-table-of-contents");
+          elem.style.display = elem.style.display == "block" ? "none" : "block";
+      }
+  });
+
+  var url = document.location.href;
+  var orgsource = url.substring(0, url.lastIndexOf("."))+".org.html";
+  function show_org_source(){
+      document.location.href = orgsource;
+  }
+</script>
+
+<script>
+(function(f, a, t, h, o, m){
+	a[h]=a[h]||function(){
+		(a[h].q=a[h].q||[]).push(arguments)
+	};
+	o=f.createElement('script'),
+	m=f.getElementsByTagName('script')[0];
+	o.async=1; o.src=t; o.id='fathom-script';
+	m.parentNode.insertBefore(o,m)
+})(document, window, '//stats.orgmode.org/tracker.js', 'fathom');
+fathom('set', 'siteId', 'NWSQJ');
+fathom('trackPageview');
+</script>
+</div>
+<div id="content">
+<div id="table-of-contents">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#org74cd87a">user login</a></li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org74cd87a" class="outline-2">
+<h2 id="org74cd87a">user login</h2>
+<div class="outline-text-2" id="text-org74cd87a">
+<div class="org-src-container">
+<pre class="src src-javascript"><span style="color: #daa520;">'use strict'</span>;
+
+module.exports = {
+  SUCCESS_CODE: 0, <span style="color: #579C4C;">// </span><span style="color: #579C4C;">&#25104;&#21151;</span>
+  NO_LOGIN_CODE: 100, <span style="color: #579C4C;">// </span><span style="color: #579C4C;">&#26410;&#30331;&#24405;</span>
+  UNIQUE_CODE: 200, <span style="color: #579C4C;">// </span><span style="color: #579C4C;">&#21807;&#19968;&#24615;&#20914;&#31361;</span>
+  ERROR_CODE: 500, <span style="color: #579C4C;">// </span><span style="color: #579C4C;">&#22833;&#36133;</span>
+
+  <span style="color: #579C4C;">// </span><span style="color: #579C4C;">&#33719;&#21462;token</span>
+  getAccessToken() {
+    <span style="color: #579C4C;">// </span><span style="color: #579C4C;">&#24403; token &#23384;&#25918;&#33267; cookie &#26102;</span>
+    <span style="color: #579C4C;">// </span><span style="color: #579C4C;">return this.cookies.get('token', { signed: false });</span>
+
+    <span style="color: #579C4C;">// </span><span style="color: #579C4C;">&#24403; token &#23384;&#25918;&#33267; header.Authorization &#26102;</span>
+    <span style="color: #00bfff;">let</span> <span style="color: #d4d4d4;">bearerToken</span> = <span style="color: #daa520;">'Bearer '</span>;
+    <span style="color: #00bfff;">if</span> (<span style="color: #339CDB;">this</span>.request.get(<span style="color: #daa520;">'authorization'</span>)) {
+      bearerToken = <span style="color: #339CDB;">this</span>.request.get(<span style="color: #daa520;">'authorization'</span>);
+    }
+    <span style="color: #00bfff;">const</span> <span style="color: #d4d4d4;">token</span> = bearerToken.substring(7) || <span style="color: #daa520;">''</span>;
+    <span style="color: #00bfff;">return</span> token;
+  },
+  <span style="color: #579C4C;">// </span><span style="color: #579C4C;">&#35774;&#32622;token</span>
+  setToken(data = {}) {
+    <span style="color: #00bfff;">const</span> { app } = <span style="color: #339CDB;">this</span>;
+    <span style="color: #00bfff;">let</span> { name, id, username, user_type, company_id, broker_id, trust_id, role, menuName } = data;
+
+    <span style="color: #579C4C;">// </span><span style="color: #579C4C;">&#22914;&#26524;&#38656;&#35201;&#24471;&#21040;&#31934;&#30830;&#30340;&#32467;&#26524;&#65292;&#38656;&#35201;&#33258;&#24049;&#21478;&#21152;&#39069;&#22806;&#30340;&#25511;&#21046;&#26631;&#24535;&#20301;</span>
+    <span style="color: #00bfff;">if</span> (decodeURI(name) === name) {
+      name = encodeURI(name);
+    }
+
+    <span style="color: #579C4C;">// </span><span style="color: #579C4C;">const token = app.jwt.sign(data, app.config.jwt.secret, { expiresIn: '120000ms' });</span>
+    <span style="color: #00bfff;">const</span> <span style="color: #d4d4d4;">token</span> = app.jwt.sign(data, app.config.jwt.secret, { expiresIn: app.config.jwt.expiresInTime });
+
+    <span style="color: #579C4C;">// </span><span style="color: #579C4C;">&#22914;&#26524;&#24819;&#30475;&#19968;&#19979; jwt token &#32463; decoded &#20986;&#26469;&#30340;&#20869;&#23481;&#65292;&#36825;&#26679;&#25171;&#21360;&#19968;&#19979;&#21543;</span>
+    app.jwt.verify(token, app.config.jwt.secret, (err, decoded) =&gt; {
+      app.logger.debug(<span style="color: #daa520;">'jwt verify decoded: '</span>, decoded);
+    });
+
+    <span style="color: #00bfff;">const</span> <span style="color: #d4d4d4;">cookieConfig</span> = { maxAge: 1000 * 3600 * 24 * 7, httpOnly: <span style="color: #339CDB;">false</span>, overwrite: <span style="color: #339CDB;">true</span>, signed: <span style="color: #339CDB;">false</span> };
+
+    <span style="color: #579C4C;">// </span><span style="color: #579C4C;">&#23384;&#25918; token</span>
+    <span style="color: #579C4C;">// </span><span style="color: #579C4C;">&#24403; token &#23384;&#25918;&#33267; header.Authorization &#26102;</span>
+    <span style="color: #339CDB;">this</span>.response.set(<span style="color: #daa520;">'Authorization'</span>, <span style="color: #daa520;">'Bearer '</span> + token);
+
+    <span style="color: #339CDB;">this</span>.cookies.set(<span style="color: #daa520;">'name'</span>, name, cookieConfig);
+    <span style="color: #339CDB;">this</span>.cookies.set(<span style="color: #daa520;">'id'</span>, id, cookieConfig); <span style="color: #579C4C;">// </span><span style="color: #579C4C;">&#27492;id&#22312;&#39564;&#35777;tokenExpiredError&#26102;&#65292;&#35201;&#20351;&#29992;&#12290;</span>
+    <span style="color: #339CDB;">this</span>.cookies.set(<span style="color: #daa520;">'username'</span>, username, cookieConfig);
+    <span style="color: #339CDB;">this</span>.cookies.set(<span style="color: #daa520;">'user_type'</span>, user_type, cookieConfig);
+
+    <span style="color: #579C4C;">// </span><span style="color: #579C4C;">&#22914;&#26524;&#26377;&#36825;&#20010;&#29992;&#25143;&#65292;&#20445;&#23384;session</span>
+    <span style="color: #00bfff;">const</span> { role_id } = data;
+    <span style="color: #339CDB;">this</span>.session.userInfo = { name, id, username, user_type, role_id, menuName };
+  },
+  removeToken() {
+    <span style="color: #579C4C;">// </span><span style="color: #579C4C;">&#24403; token &#23384;&#25918;&#33267; cookie &#26102;</span>
+    <span style="color: #339CDB;">this</span>.cookies.set(<span style="color: #daa520;">'token'</span>, <span style="color: #339CDB;">null</span>);
+    <span style="color: #579C4C;">// </span><span style="color: #579C4C;">&#24403; token &#23384;&#25918;&#33267; header.Authorization &#26102;. &#26410;&#25214;&#21040;&#19968;&#20010;&#21512;&#36866;&#30340;&#27880;&#38144;token&#26041;&#24335;</span>
+    <span style="color: #339CDB;">this</span>.response.set(<span style="color: #daa520;">'Authorization'</span>, <span style="color: #daa520;">'Bearer '</span>);
+  },
+  <span style="color: #579C4C;">// </span><span style="color: #579C4C;">&#26657;&#39564;token</span>
+  <span style="color: #00bfff;">async</span> verifyToken() {
+    <span style="color: #00bfff;">const</span> { app } = <span style="color: #339CDB;">this</span>;
+    <span style="color: #00bfff;">const</span> <span style="color: #d4d4d4;">name</span> = <span style="color: #339CDB;">this</span>.cookies.get(<span style="color: #daa520;">'name'</span>, { signed: <span style="color: #339CDB;">false</span> });
+    <span style="color: #00bfff;">const</span> <span style="color: #d4d4d4;">id</span> = <span style="color: #339CDB;">this</span>.cookies.get(<span style="color: #daa520;">'id'</span>, { signed: <span style="color: #339CDB;">false</span> });
+    <span style="color: #00bfff;">const</span> <span style="color: #d4d4d4;">username</span> = <span style="color: #339CDB;">this</span>.cookies.get(<span style="color: #daa520;">'username'</span>, { signed: <span style="color: #339CDB;">false</span> });
+    <span style="color: #00bfff;">const</span> <span style="color: #d4d4d4;">user_type</span> = <span style="color: #339CDB;">this</span>.cookies.get(<span style="color: #daa520;">'user_type'</span>, { signed: <span style="color: #339CDB;">false</span> });
+    <span style="color: #00bfff;">const</span> <span style="color: #d4d4d4;">token</span> = <span style="color: #339CDB;">this</span>.getAccessToken(<span style="color: #339CDB;">this</span>);
+    <span style="color: #00bfff;">const</span> <span style="color: #d4d4d4;">verifyResult</span> = <span style="color: #00bfff;">await</span> <span style="color: #00bfff;">new</span> <span style="color: #d4d4d4;">Promise</span>(resolve =&gt; {
+      app.jwt.verify(token, app.config.jwt.secret, (err, decoded) =&gt; {
+        <span style="color: #00bfff;">if</span> (err) {
+          app.logger.debug(<span style="color: #daa520;">'app.jwt.verify token err'</span>, err);
+          <span style="color: #00bfff;">if</span> (err.name === <span style="color: #daa520;">'TokenExpiredError'</span> &amp;&amp; id) {
+            resolve({ verify: <span style="color: #339CDB;">false</span>, message: <span style="color: #daa520;">'token expired'</span> });
+          } <span style="color: #00bfff;">else</span> {
+            resolve({ verify: <span style="color: #339CDB;">false</span>, message: err.message });
+          }
+        } <span style="color: #00bfff;">else</span> {
+          app.logger.debug(<span style="color: #daa520;">'app.jwt.verify token is ok'</span>);
+          <span style="color: #579C4C;">// </span><span style="color: #579C4C;">&#26159;&#21542; refresh token</span>
+          <span style="color: #00bfff;">const</span> <span style="color: #d4d4d4;">now</span> = <span style="color: #00bfff;">new</span> <span style="color: #d4d4d4;">Date</span>().getTime() / 1000;
+          <span style="color: #00bfff;">if</span> ((decoded.exp - now) &lt; app.config.jwt.nearDeath) {
+            <span style="color: #579C4C;">// </span><span style="color: #579C4C;">&#26410;&#36807;&#26399;&#65292;&#20294;&#26159;&#65292;&#31163;&#36807;&#26399;&#24050;&#19981;&#36828;&#20102;&#65292;&#31163;&#36807;&#26399;&#24050;&#19981;&#36229;&#36807;&#19968;&#23450;&#26102;&#38388;&#65288;&#27604;&#22914;10&#20998;&#38047;&#65289;, &#21047;&#26032;token</span>
+            <span style="color: #579C4C;">// </span><span style="color: #579C4C;">&#36807;&#26399;&#65292;&#36229;&#36807;&#19968;&#23450;&#26102;&#38388;&#65288;&#27604;&#22914;10&#20998;&#38047;&#65289;, &#27880;&#38144; token</span>
+            <span style="color: #339CDB;">this</span>.setToken({ name, id, username, user_type }); <span style="color: #579C4C;">// </span><span style="color: #579C4C;">&#21047;&#26032;token</span>
+            resolve({ verify: <span style="color: #339CDB;">true</span>, message: decoded });
+          } <span style="color: #00bfff;">else</span> {
+            app.logger.debug(<span style="color: #daa520;">'do not refresh token, will resolve message'</span>);
+            resolve({ verify: <span style="color: #339CDB;">true</span>, message: decoded });
+          }
+        }
+      });
+    });
+
+    <span style="color: #00bfff;">if</span> (!verifyResult.verify) {
+      <span style="color: #339CDB;">this</span>.verifyFail(401, verifyResult.message);
+      <span style="color: #00bfff;">return</span> <span style="color: #339CDB;">false</span>;
+    }
+    <span style="color: #00bfff;">if</span> (<span style="color: #daa520;">''</span> + id !== <span style="color: #daa520;">''</span> + verifyResult.message.id) {
+      <span style="color: #339CDB;">this</span>.verifyFail(401, <span style="color: #daa520;">'&#29992;&#25143; UUID &#19982; Token &#19981;&#19968;&#33268;'</span>);
+      <span style="color: #00bfff;">return</span> <span style="color: #339CDB;">false</span>;
+    }
+    <span style="color: #339CDB;">this</span>.request.body[<span style="color: #daa520;">'my_token_data_'</span> + app.config.jwt.secret ] = verifyResult.message;
+    <span style="color: #579C4C;">// </span><span style="color: #579C4C;">&#23558;get&#35831;&#27714;&#30340;ctx.query&#21512;&#24182;&#21040;ctx.request.body&#65292;&#36825;&#37324;&#36825;&#20040;&#20570;&#26159;&#26242;&#26102;&#30340;&#24819;&#27861;&#65292;&#25105;&#20877;&#32771;&#34385;&#19979;</span>
+    <span style="color: #339CDB;">this</span>.request.body = { ...<span style="color: #339CDB;">this</span>.request.body, ...<span style="color: #339CDB;">this</span>.query };
+    <span style="color: #00bfff;">return</span> <span style="color: #339CDB;">true</span>;
+  },
+  <span style="color: #579C4C;">// </span><span style="color: #579C4C;">&#26657;&#39564;token&#22833;&#36133;</span>
+  verifyFail(code, message) {
+    <span style="color: #339CDB;">this</span>.body = { code, message };
+    <span style="color: #339CDB;">this</span>.status = code;
+  },
+};
+</pre>
+</div>
+</div>
+</div>
+</div>
+</body>
+</html>

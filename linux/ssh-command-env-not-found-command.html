@@ -1,0 +1,188 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<!-- 2021-01-07 Thu 11:09 -->
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>&lrm;</title>
+<meta name="generator" content="Org mode" />
+<meta name="author" content="a" />
+<link rel="stylesheet" title="Standard" href="/html/style/worg.css" type="text/css" />
+<link rel="alternate stylesheet" title="Zenburn" href="/html/style/worg-zenburn.css" type="text/css" />
+<link rel="alternate stylesheet" title="Classic" href="/html/style/worg-classic.css" type="text/css" />
+<link rel="SHORTCUT ICON" href="/html/style/org-mode-unicorn.ico" type="image/x-icon" />
+<link rel="icon" href="/html/style/org-mode-unicorn.ico" type="image/ico" />
+<script type="text/javascript">
+/*
+@licstart  The following is the entire license notice for the
+JavaScript code in this tag.
+
+Copyright (C) 2012-2019 Free Software Foundation, Inc.
+
+The JavaScript code in this tag is free software: you can
+redistribute it and/or modify it under the terms of the GNU
+General Public License (GNU GPL) as published by the Free Software
+Foundation, either version 3 of the License, or (at your option)
+any later version.  The code is distributed WITHOUT ANY WARRANTY;
+without even the implied warranty of MERCHANTABILITY or FITNESS
+FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
+
+As additional permission under GNU GPL version 3 section 7, you
+may distribute non-source (e.g., minimized or compacted) forms of
+that code without the copy of the GNU GPL normally required by
+section 4, provided you include this license notice and a URL
+through which recipients can access the Corresponding Source.
+
+
+@licend  The above is the entire license notice
+for the JavaScript code in this tag.
+*/
+<!--/*--><![CDATA[/*><!--*/
+ function CodeHighlightOn(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(null != target) {
+     elem.cacheClassElem = elem.className;
+     elem.cacheClassTarget = target.className;
+     target.className = "code-highlighted";
+     elem.className   = "code-highlighted";
+   }
+ }
+ function CodeHighlightOff(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(elem.cacheClassElem)
+     elem.className = elem.cacheClassElem;
+   if(elem.cacheClassTarget)
+     target.className = elem.cacheClassTarget;
+ }
+/*]]>*///-->
+</script>
+</head>
+<body>
+<div id="preamble" class="status">
+<script type="text/javascript">
+  document.addEventListener('DOMContentLoaded',function() {
+      document.getElementById("table-of-contents").onclick = function() {
+          var elem = document.getElementById("text-table-of-contents");
+          elem.style.display = elem.style.display == "block" ? "none" : "block";
+      }
+  });
+
+  var url = document.location.href;
+  var orgsource = url.substring(0, url.lastIndexOf("."))+".org.html";
+  function show_org_source(){
+      document.location.href = orgsource;
+  }
+</script>
+
+<script>
+(function(f, a, t, h, o, m){
+	a[h]=a[h]||function(){
+		(a[h].q=a[h].q||[]).push(arguments)
+	};
+	o=f.createElement('script'),
+	m=f.getElementsByTagName('script')[0];
+	o.async=1; o.src=t; o.id='fathom-script';
+	m.parentNode.insertBefore(o,m)
+})(document, window, '//stats.orgmode.org/tracker.js', 'fathom');
+fathom('set', 'siteId', 'NWSQJ');
+fathom('trackPageview');
+</script>
+</div>
+<div id="content">
+<div id="table-of-contents">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#org9ae9d11">解决SSH远程执行命令找不到环境变量的问题</a>
+<ul>
+<li><a href="#env">env</a></li>
+<li><a href="#实践">实践</a></li>
+<li><a href="#ssh-客户端-查看所使用的-ssh服务端环境">ssh 客户端 查看所使用的 ssh服务端环境</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org9ae9d11" class="outline-2">
+<h2 id="org9ae9d11">解决SSH远程执行命令找不到环境变量的问题</h2>
+<div class="outline-text-2" id="text-org9ae9d11">
+</div>
+<div id="outline-container-org8c4b153" class="outline-3">
+<h3 id="env">env</h3>
+<div class="outline-text-3" id="text-env">
+<ul class="org-ul">
+<li>ssh ## 原理</li>
+</ul>
+
+<p>
+<a href="https://blog.csdn.net/whitehack/article/details/51705889">https://blog.csdn.net/whitehack/article/details/51705889</a> (这个写得最好)
+<a href="https://www.jianshu.com/p/77ebeb27a2dc">https://www.jianshu.com/p/77ebeb27a2dc</a> (简单)
+<a href="https://www.cnblogs.com/zhenyuyaodidiao/p/9287497.html">https://www.cnblogs.com/zhenyuyaodidiao/p/9287497.html</a>
+</p>
+</div>
+</div>
+
+<div id="outline-container-org4991059" class="outline-3">
+<h3 id="实践">实践</h3>
+<div class="outline-text-3" id="text-实践">
+<p>
+在 ssh 服务端 找到 <code># If not running interactively, don't do anything</code> ,
+(在这一行下面,一般会有一句=return=之类的), 在这一行下面,
+加入我们需要的环境变量. 但是, 也不能加多了, 加多了, scp 会失效.
+</p>
+
+<p>
+如下面,就是加多了, 如果报错, 则导致 远程scp不了文件.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-sh">$ vi /home/lcnx/.bashrc
+<span style="color: #579C4C;"># </span><span style="color: #579C4C;">If not running interactively, don't do anything</span>
+<span style="color: #d4d4d4;">export</span> <span style="color: #d4d4d4;">NVM_DIR</span>=<span style="color: #daa520;">"$HOME/.nvm"</span>
+[ -s <span style="color: #daa520;">"$NVM_DIR/nvm.sh"</span> ] &amp;&amp; <span style="color: #daa520;">\.</span> <span style="color: #daa520;">"$NVM_DIR/nvm.sh"</span>  <span style="color: #579C4C;"># </span><span style="color: #579C4C;">This loads nvm</span>
+[ -s <span style="color: #daa520;">"$NVM_DIR/bash_completion"</span> ] &amp;&amp; <span style="color: #daa520;">\.</span> <span style="color: #daa520;">"$NVM_DIR/bash_completion"</span>  <span style="color: #579C4C;"># </span><span style="color: #579C4C;">This loads nvm bash_completion</span>
+nvm use v11.14.0
+<span style="color: #d4d4d4;">export</span> <span style="color: #d4d4d4;">PATH</span>=$<span style="color: #d4d4d4;">PATH</span>:/home/lcnx/.nvm/versions/node/v11.14.0/bin
+[ -z <span style="color: #daa520;">"$PS1"</span> ] &amp;&amp; <span style="color: #00bfff;">return</span>
+</pre>
+</div>
+
+<p>
+应该修改成
+</p>
+
+<div class="org-src-container">
+<pre class="src src-sh">$ vi /home/lcnx/.bashrc
+<span style="color: #579C4C;"># </span><span style="color: #579C4C;">If not running interactively, don't do anything</span>
+<span style="color: #d4d4d4;">export</span> <span style="color: #d4d4d4;">PATH</span>=$<span style="color: #d4d4d4;">PATH</span>:/home/lcnx/.nvm/versions/node/v11.14.0/bin
+[ -z <span style="color: #daa520;">"$PS1"</span> ] &amp;&amp; <span style="color: #00bfff;">return</span>
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org6893582" class="outline-3">
+<h3 id="ssh-客户端-查看所使用的-ssh服务端环境">ssh 客户端 查看所使用的 ssh服务端环境</h3>
+<div class="outline-text-3" id="text-ssh-客户端-查看所使用的-ssh服务端环境">
+<pre class="example">
+ssh lcnx@120.77.39.189 ". /home/lcnx/.bashrc; env"
+ssh lcnx@120.77.39.189 "env"
+</pre>
+
+<p>
+但是下面的 %HOME 取的是 ssh 客户端 的用户,所以无效.
+</p>
+
+<pre class="example">
+ssh lcnx@120.77.39.189 ". $HOME/.bashrc; env"
+</pre>
+</div>
+</div>
+</div>
+</div>
+</body>
+</html>

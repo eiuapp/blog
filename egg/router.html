@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2020-07-30 Thu 16:11 -->
+<!-- 2021-01-07 Thu 11:05 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>egg router</title>
@@ -98,12 +98,11 @@ fathom('trackPageview');
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#org0752007">router 字符错误</a></li>
-<li><a href="#orgc46a264">router &amp;&amp; middleware</a></li>
-<li><a href="#org2b6876b">子路由</a>
+<li><a href="#orgd55d338">router 字符错误</a></li>
+<li><a href="#org557fedd">子路由</a>
 <ul>
-<li><a href="#org97d20de">app 添加子路由</a></li>
-<li><a href="#orgad52992">this.router.namespace is not a function</a></li>
+<li><a href="#org1e44fcf">app 添加子路由</a></li>
+<li><a href="#org541317d">this.router.namespace is not a function</a></li>
 </ul>
 </li>
 </ul>
@@ -113,9 +112,9 @@ fathom('trackPageview');
 <a href="../index.html">{Back to site's index}</a>
 </p>
 
-<div id="outline-container-org0752007" class="outline-2">
-<h2 id="org0752007">router 字符错误</h2>
-<div class="outline-text-2" id="text-org0752007">
+<div id="outline-container-orgd55d338" class="outline-2">
+<h2 id="orgd55d338">router 字符错误</h2>
+<div class="outline-text-2" id="text-orgd55d338">
 <p>
 居然有遇到一次，错误的隐藏字符。这个问题，搞了大半天。
 </p>
@@ -141,31 +140,9 @@ fathom('trackPageview');
 </div>
 </div>
 
-<div id="outline-container-orgc46a264" class="outline-2">
-<h2 id="orgc46a264">router &amp;&amp; middleware</h2>
-<div class="outline-text-2" id="text-orgc46a264">
-<p>
-<a href="https://github.com/eiuapp/tl-fangyuan-server/commit/bfe645f8ff2e69917da9e7716b386b238954d5a0">https://github.com/eiuapp/tl-fangyuan-server/commit/bfe645f8ff2e69917da9e7716b386b238954d5a0</a>
-</p>
-
-<p>
-启发来自于：
-</p>
-
-<p>
-<a href="https://www.jianshu.com/p/a6f9e6b47b9f">https://www.jianshu.com/p/a6f9e6b47b9f</a>
-</p>
-
-
-<p>
-const isAdmin = app.middleware.isAdmin({}, app);
-</p>
-</div>
-</div>
-
-<div id="outline-container-org2b6876b" class="outline-2">
-<h2 id="org2b6876b">子路由</h2>
-<div class="outline-text-2" id="text-org2b6876b">
+<div id="outline-container-org557fedd" class="outline-2">
+<h2 id="org557fedd">子路由</h2>
+<div class="outline-text-2" id="text-org557fedd">
 <p>
 子路由可以使得api使用不同版本, /api/v1, /api/v2, /api/v3.
 </p>
@@ -175,9 +152,9 @@ const isAdmin = app.middleware.isAdmin({}, app);
 </ul>
 </div>
 
-<div id="outline-container-org97d20de" class="outline-3">
-<h3 id="org97d20de">app 添加子路由</h3>
-<div class="outline-text-3" id="text-org97d20de">
+<div id="outline-container-org1e44fcf" class="outline-3">
+<h3 id="org1e44fcf">app 添加子路由</h3>
+<div class="outline-text-3" id="text-org1e44fcf">
 <p>
 app/extends/application.js
 </p>
@@ -194,9 +171,9 @@ get apiV1Router() {
 </div>
 </div>
 
-<div id="outline-container-orgad52992" class="outline-3">
-<h3 id="orgad52992">this.router.namespace is not a function</h3>
-<div class="outline-text-3" id="text-orgad52992">
+<div id="outline-container-org541317d" class="outline-3">
+<h3 id="org541317d">this.router.namespace is not a function</h3>
+<div class="outline-text-3" id="text-org541317d">
 <p>
 因为没有安装和加载　egg-router-plus
 </p>

@@ -1,0 +1,308 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<!-- 2021-01-08 Fri 14:59 -->
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>eslint</title>
+<meta name="generator" content="Org mode" />
+<link rel="stylesheet" title="Standard" href="/html/style/worg.css" type="text/css" />
+<link rel="alternate stylesheet" title="Zenburn" href="/html/style/worg-zenburn.css" type="text/css" />
+<link rel="alternate stylesheet" title="Classic" href="/html/style/worg-classic.css" type="text/css" />
+<link rel="SHORTCUT ICON" href="/html/style/org-mode-unicorn.ico" type="image/x-icon" />
+<link rel="icon" href="/html/style/org-mode-unicorn.ico" type="image/ico" />
+<script type="text/javascript">
+/*
+@licstart  The following is the entire license notice for the
+JavaScript code in this tag.
+
+Copyright (C) 2012-2019 Free Software Foundation, Inc.
+
+The JavaScript code in this tag is free software: you can
+redistribute it and/or modify it under the terms of the GNU
+General Public License (GNU GPL) as published by the Free Software
+Foundation, either version 3 of the License, or (at your option)
+any later version.  The code is distributed WITHOUT ANY WARRANTY;
+without even the implied warranty of MERCHANTABILITY or FITNESS
+FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
+
+As additional permission under GNU GPL version 3 section 7, you
+may distribute non-source (e.g., minimized or compacted) forms of
+that code without the copy of the GNU GPL normally required by
+section 4, provided you include this license notice and a URL
+through which recipients can access the Corresponding Source.
+
+
+@licend  The above is the entire license notice
+for the JavaScript code in this tag.
+*/
+<!--/*--><![CDATA[/*><!--*/
+ function CodeHighlightOn(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(null != target) {
+     elem.cacheClassElem = elem.className;
+     elem.cacheClassTarget = target.className;
+     target.className = "code-highlighted";
+     elem.className   = "code-highlighted";
+   }
+ }
+ function CodeHighlightOff(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(elem.cacheClassElem)
+     elem.className = elem.cacheClassElem;
+   if(elem.cacheClassTarget)
+     target.className = elem.cacheClassTarget;
+ }
+/*]]>*///-->
+</script>
+</head>
+<body>
+<div id="preamble" class="status">
+<script type="text/javascript">
+  document.addEventListener('DOMContentLoaded',function() {
+      document.getElementById("table-of-contents").onclick = function() {
+          var elem = document.getElementById("text-table-of-contents");
+          elem.style.display = elem.style.display == "block" ? "none" : "block";
+      }
+  });
+
+  var url = document.location.href;
+  var orgsource = url.substring(0, url.lastIndexOf("."))+".org.html";
+  function show_org_source(){
+      document.location.href = orgsource;
+  }
+</script>
+
+<script>
+(function(f, a, t, h, o, m){
+	a[h]=a[h]||function(){
+		(a[h].q=a[h].q||[]).push(arguments)
+	};
+	o=f.createElement('script'),
+	m=f.getElementsByTagName('script')[0];
+	o.async=1; o.src=t; o.id='fathom-script';
+	m.parentNode.insertBefore(o,m)
+})(document, window, '//stats.orgmode.org/tracker.js', 'fathom');
+fathom('set', 'siteId', 'NWSQJ');
+fathom('trackPageview');
+</script>
+</div>
+<div id="content">
+<h1 class="title">eslint</h1>
+<div id="table-of-contents">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#org7d171be">Post</a>
+<ul>
+<li><a href="#org38a1a9e">eslint</a>
+<ul>
+<li><a href="#orgc0fc9cc">eslint入门</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org7d171be" class="outline-2">
+<h2 id="org7d171be">Post</h2>
+<div class="outline-text-2" id="text-org7d171be">
+</div>
+<div id="outline-container-org38a1a9e" class="outline-3">
+<h3 id="org38a1a9e">eslint&#xa0;&#xa0;&#xa0;<span class="tag"><span class="_eslint">@eslint</span>&#xa0;<span class="eslint">eslint</span></span></h3>
+<div class="outline-text-3" id="text-org38a1a9e">
+</div>
+<div id="outline-container-orgc0fc9cc" class="outline-4">
+<h4 id="orgc0fc9cc">eslint入门&#xa0;&#xa0;&#xa0;<span class="tag"><span class="install">install</span></span></h4>
+<div class="outline-text-4" id="text-orgc0fc9cc">
+</div>
+
+<ul class="org-ul">
+<li><a id="orgec0299a"></a>安装<br />
+<div class="outline-text-5" id="text-orgec0299a">
+<div class="org-src-container">
+<pre class="src src-shell">npm install -g eslint babel-eslint eslint-plugin-react eslint-config-airbnb
+</pre>
+</div>
+
+<p>
+在安装的时候得注意一点，eslint与eslint-config-airbnb要么都执行全局安装，要么都本地安装，必须相同哟。
+</p>
+
+<p>
+然后，把 <a href="https://github.com/airbnb/javascript/blob/master/linters/.eslintrc">https://github.com/airbnb/javascript/blob/master/linters/.eslintrc</a> 下载到Project 中就可以了。
+</p>
+</div>
+</li>
+
+<li><a id="org01999c6"></a>使用<br />
+<div class="outline-text-5" id="text-org01999c6">
+<p>
+配置完相关信息后，就可以切到项目目录内然后执行检测啦：
+</p>
+
+<p>
+我们新建一个test.js进行检测
+</p>
+
+<div class="org-src-container">
+<pre class="src src-shell">$ eslint test.js
+</pre>
+</div>
+</div>
+</li>
+
+<li><a id="org5038c5f"></a>JavaScript Style Guide<br />
+<div class="outline-text-5" id="text-org5038c5f">
+<p>
+关于 JavaScript Style Guide 可以直接参考
+</p>
+<ul class="org-ul">
+<li><a href="https://github.com/airbnb/javascript">https://github.com/airbnb/javascript</a></li>
+</ul>
+</div>
+</li>
+<li><a id="orgf91ccc9"></a>react eslint<br />
+<div class="outline-text-5" id="text-orgf91ccc9">
+<p>
+优先查看：
+</p>
+
+<p>
+在React+Babel+Webpack环境中使用ESLint
+</p>
+<ul class="org-ul">
+<li><a href="https://www.cnblogs.com/le0zh/p/5619350.html">https://www.cnblogs.com/le0zh/p/5619350.html</a></li>
+<li><a href="https://www.bbsmax.com/A/obzbX0j65E/">https://www.bbsmax.com/A/obzbX0j65E/</a></li>
+</ul>
+<p>
+React-native ESLint &amp; Airbnb 配置
+</p>
+<ul class="org-ul">
+<li><a href="https://www.jianshu.com/p/1d66a10466d2">https://www.jianshu.com/p/1d66a10466d2</a></li>
+</ul>
+</div>
+
+<ul class="org-ul">
+<li><a id="org46c2989"></a>npm run lint 检查所有js文件<br />
+<div class="outline-text-6" id="text-org46c2989">
+<p>
+在根目录的 package.json文件下修改如下:
+</p>
+<div class="org-src-container">
+<pre class="src src-json">"scripts": {
+    "lint": "eslint --ext .js ./src --fix"
+}
+</pre>
+</div>
+
+<p>
+根目录下运行:
+</p>
+<div class="org-src-container">
+<pre class="src src-shell">npm run lint
+</pre>
+</div>
+</div>
+</li>
+
+
+<li><a id="orgcb39311"></a>再webpack配置中使用eslint加载器<br />
+<div class="outline-text-6" id="text-orgcb39311">
+<p>
+添加 到：webpack.cofnig.js
+</p>
+
+<div class="org-src-container">
+<pre class="src src-shell">...
+eslint: {
+    configFile: <span style="color: #daa520;">'./.eslintrc'</span>
+},
+...
+</pre>
+</div>
+</div>
+</li>
+
+
+<li><a id="org798b2e2"></a>pre-commit钩子<br />
+<div class="outline-text-6" id="text-org798b2e2">
+<p>
+如果项目使用了git,可以通过使用pre-commit钩子在每次提交前检测，如果检测失败则禁止提交。可以在很大一定程度上保证代码质量。
+</p>
+
+<p>
+这里我们使用了pre-commitgit包来帮助我们实现这一目标。
+</p>
+
+<p>
+首先在package.json中添加script命令：
+</p>
+
+<div class="org-src-container">
+<pre class="src src-json">"scripts": {
+    "eslint": "eslint --ext .js src"
+}
+</pre>
+</div>
+<p>
+其次，安装pre-commit
+</p>
+<div class="org-src-container">
+<pre class="src src-shell">npm install pre-commit --save-dev
+</pre>
+</div>
+<p>
+最后，在package.json中配置pre-commit需要运行的命令：
+</p>
+<div class="org-src-container">
+<pre class="src src-json">"pre-commit": [
+    "eslint"
+]
+</pre>
+</div>
+<p>
+完成之后，在每次提交之前，都会运行eslint命令进行检测，如果检测到有违反代码规则的情况，则会返回1，导致git commit失败。
+</p>
+</div>
+</li>
+
+
+<li><a id="org9937598"></a>airbnb eslint<br />
+<div class="outline-text-6" id="text-org9937598">
+<p>
+使用airbnb的eslint
+<a href="https://www.bbsmax.com/A/Ae5RYomYJQ/">https://www.bbsmax.com/A/Ae5RYomYJQ/</a>
+<a href="https://www.cnblogs.com/samwu/p/5772778.html">https://www.cnblogs.com/samwu/p/5772778.html</a>
+</p>
+</div>
+</li>
+</ul>
+</li>
+
+<li><a id="orgfc2071b"></a>Ref<br />
+<div class="outline-text-5" id="text-orgfc2071b">
+<ul class="org-ul">
+<li><a href="https://segmentfault.com/a/1190000004965396">https://segmentfault.com/a/1190000004965396</a></li>
+<li><a href="https://github.com/airbnb/javascript">https://github.com/airbnb/javascript</a></li>
+<li><a href="http://spacemacs.org/layers/+frameworks/react/README.html">http://spacemacs.org/layers/+frameworks/react/README.html</a></li>
+<li><a href="https://eslint.org/docs/user-guide/configuring">https://eslint.org/docs/user-guide/configuring</a></li>
+<li><a href="https://csspod.com/getting-started-with-eslint/">https://csspod.com/getting-started-with-eslint/</a></li>
+<li><a href="https://www.jianshu.com/p/ad6784d028aa">https://www.jianshu.com/p/ad6784d028aa</a></li>
+<li><a href="http://eslint.cn/docs/user-guide/configuring">http://eslint.cn/docs/user-guide/configuring</a></li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+</body>
+</html>

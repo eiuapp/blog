@@ -1,0 +1,236 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<!-- 2021-01-08 Fri 14:58 -->
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>git</title>
+<meta name="generator" content="Org mode" />
+<link rel="stylesheet" title="Standard" href="/html/style/worg.css" type="text/css" />
+<link rel="alternate stylesheet" title="Zenburn" href="/html/style/worg-zenburn.css" type="text/css" />
+<link rel="alternate stylesheet" title="Classic" href="/html/style/worg-classic.css" type="text/css" />
+<link rel="SHORTCUT ICON" href="/html/style/org-mode-unicorn.ico" type="image/x-icon" />
+<link rel="icon" href="/html/style/org-mode-unicorn.ico" type="image/ico" />
+<script type="text/javascript">
+/*
+@licstart  The following is the entire license notice for the
+JavaScript code in this tag.
+
+Copyright (C) 2012-2019 Free Software Foundation, Inc.
+
+The JavaScript code in this tag is free software: you can
+redistribute it and/or modify it under the terms of the GNU
+General Public License (GNU GPL) as published by the Free Software
+Foundation, either version 3 of the License, or (at your option)
+any later version.  The code is distributed WITHOUT ANY WARRANTY;
+without even the implied warranty of MERCHANTABILITY or FITNESS
+FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
+
+As additional permission under GNU GPL version 3 section 7, you
+may distribute non-source (e.g., minimized or compacted) forms of
+that code without the copy of the GNU GPL normally required by
+section 4, provided you include this license notice and a URL
+through which recipients can access the Corresponding Source.
+
+
+@licend  The above is the entire license notice
+for the JavaScript code in this tag.
+*/
+<!--/*--><![CDATA[/*><!--*/
+ function CodeHighlightOn(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(null != target) {
+     elem.cacheClassElem = elem.className;
+     elem.cacheClassTarget = target.className;
+     target.className = "code-highlighted";
+     elem.className   = "code-highlighted";
+   }
+ }
+ function CodeHighlightOff(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(elem.cacheClassElem)
+     elem.className = elem.cacheClassElem;
+   if(elem.cacheClassTarget)
+     target.className = elem.cacheClassTarget;
+ }
+/*]]>*///-->
+</script>
+</head>
+<body>
+<div id="preamble" class="status">
+<script type="text/javascript">
+  document.addEventListener('DOMContentLoaded',function() {
+      document.getElementById("table-of-contents").onclick = function() {
+          var elem = document.getElementById("text-table-of-contents");
+          elem.style.display = elem.style.display == "block" ? "none" : "block";
+      }
+  });
+
+  var url = document.location.href;
+  var orgsource = url.substring(0, url.lastIndexOf("."))+".org.html";
+  function show_org_source(){
+      document.location.href = orgsource;
+  }
+</script>
+
+<script>
+(function(f, a, t, h, o, m){
+	a[h]=a[h]||function(){
+		(a[h].q=a[h].q||[]).push(arguments)
+	};
+	o=f.createElement('script'),
+	m=f.getElementsByTagName('script')[0];
+	o.async=1; o.src=t; o.id='fathom-script';
+	m.parentNode.insertBefore(o,m)
+})(document, window, '//stats.orgmode.org/tracker.js', 'fathom');
+fathom('set', 'siteId', 'NWSQJ');
+fathom('trackPageview');
+</script>
+</div>
+<div id="content">
+<h1 class="title">git</h1>
+<div id="table-of-contents">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#orgad77083">Post</a>
+<ul>
+<li><a href="#org718af47">git</a>
+<ul>
+<li><a href="#org95e7395">配置公私钥别名</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-orgad77083" class="outline-2">
+<h2 id="orgad77083">Post</h2>
+<div class="outline-text-2" id="text-orgad77083">
+</div>
+<div id="outline-container-org718af47" class="outline-3">
+<h3 id="org718af47">git&#xa0;&#xa0;&#xa0;<span class="tag"><span class="_git">@git</span>&#xa0;<span class="git">git</span></span></h3>
+<div class="outline-text-3" id="text-org718af47">
+</div>
+<div id="outline-container-org95e7395" class="outline-4">
+<h4 id="org95e7395">配置公私钥别名</h4>
+<div class="outline-text-4" id="text-org95e7395">
+</div>
+
+
+<ul class="org-ul">
+<li><a id="orgfb8c32b"></a>配置公私钥别名<br />
+<ul class="org-ul">
+<li><a id="org82aa51d"></a>私钥权限不是600<br />
+<div class="outline-text-6" id="text-org82aa51d">
+<div class="org-src-container">
+<pre class="src src-shell">&#10140;  tom-finsoftinfo git:(master) &#10007; ssh-add id_rsa_finsoftinfo
+@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+@         WARNING: UNPROTECTED PRIVATE KEY FILE!          @
+@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+Permissions 0644 for <span style="color: #daa520;">'id_rsa_finsoftinfo'</span> are too open.
+It is required that your private key files are NOT accessible by others.
+This private key will be ignored.
+&#10140;  tom-finsoftinfo git:(master) &#10007;
+
+</pre>
+</div>
+
+<p>
+看提示，就知道是权限不对了。修改为600，就可以了。
+</p>
+
+<div class="org-src-container">
+<pre class="src src-shell">&#10140;  tom-finsoftinfo git:(master) &#10007; l
+total 16K
+drwxr-xr-x 6 tomtsang  192 Nov 13 22:56 .
+drwx--x--x 7 tomtsang  224 Oct 15 11:20 ..
+-rw-r--r-- 1 tomtsang 1.7K Nov 13 22:56 id_rsa_finsoftinfo
+-rw-r--r-- 1 tomtsang  399 Nov 13 22:56 id_rsa_finsoftinfo.pub
+&#10140;  tom-finsoftinfo git:(master) &#10007; chmod 600 id_rsa_finsoftinfo
+&#10140;  tom-finsoftinfo git:(master) &#10007; l
+total 16K
+drwxr-xr-x 6 tomtsang  192 Nov 13 22:56 .
+drwx--x--x 7 tomtsang  224 Oct 15 11:20 ..
+-rw------- 1 tomtsang 1.7K Nov 13 22:56 id_rsa_finsoftinfo
+-rw-r--r-- 1 tomtsang  399 Nov 13 22:56 id_rsa_finsoftinfo.pub
+&#10140;  tom-finsoftinfo git:(master) &#10007; ssh-add id_rsa_finsoftinfo
+Identity added: id_rsa_finsoftinfo (id_rsa_finsoftinfo)
+&#10140;  tom-finsoftinfo git:(master) &#10007; ssh-add -l
+2048 SHA256:KnwSrbgqEaN9EZdTrfME/KJCDvMdATgdzS9GVHV9wBY id_rsa_finsoftinfo (RSA)
+&#10140;  tom-finsoftinfo git:(master) &#10007; ssh -T finsoftinfo
+Hi finsoftinfo! You<span style="color: #daa520;">'ve successfully authenticated, but GitHub does not provide shell access.</span>
+<span style="color: #daa520;">&#10140;</span>
+</pre>
+</div>
+
+
+<div class="org-src-container">
+<pre class="src src-shell">&#10140;  .ssh git:(master) &#10007; cd /Users/tomtsang/github/finsoftinfo/finsoftinfo.github.io
+&#10140;  finsoftinfo.github.io git:(master) g pull finsoftinfo master
+ERROR: Repository not found.
+fatal: Could not read from remote repository.
+
+Please make sure you have the correct access rights
+and the repository exists.
+&#10140;  finsoftinfo.github.io git:(master) g remote -v
+finsoftinfo finsoftinfo:finsoftinfo.github.io (fetch)
+finsoftinfo finsoftinfo:finsoftinfo.github.io (push)
+&#10140;  finsoftinfo.github.io git:(master)
+
+</pre>
+</div>
+</div>
+</li>
+</ul>
+</li>
+
+<li><a id="org858255b"></a>Could not read from remote repository<br />
+<ul class="org-ul">
+<li><a id="orgfe9edf2"></a>别名的仓库url 不对<br />
+<div class="outline-text-6" id="text-orgfe9edf2">
+<div class="org-src-container">
+<pre class="src src-shell">&#10140;  finsoftinfo.github.io git:(master) <span style="color: #d4d4d4;">pwd</span>
+/Users/tomtsang/github/finsoftinfo/finsoftinfo.github.io
+&#10140;  finsoftinfo.github.io git:(master) g pull finsoftinfo master
+ERROR: Repository not found.
+fatal: Could not read from remote repository.
+
+Please make sure you have the correct access rights
+and the repository exists.
+&#10140;  finsoftinfo.github.io git:(master)
+</pre>
+</div>
+
+<p>
+注意看一下仓库名，修改正确就行了。这里特别注意一下，总共出现了三次的`finsoftinfo`
+</p>
+
+<div class="org-src-container">
+<pre class="src src-shell">&#10140;  finsoftinfo.github.io git:(master) g remote -v
+finsoftinfo finsoftinfo:finsoftinfo.github.io (fetch)
+finsoftinfo finsoftinfo:finsoftinfo.github.io (push)
+&#10140;  finsoftinfo.github.io git:(master) g remote set-url finsoftinfo finsoftinfo:finsoftinfo/finsoftinfo.github.io
+&#10140;  finsoftinfo.github.io git:(master) g remote -v
+finsoftinfo finsoftinfo:finsoftinfo/finsoftinfo.github.io (fetch)
+finsoftinfo finsoftinfo:finsoftinfo/finsoftinfo.github.io (push)
+&#10140;  finsoftinfo.github.io git:(master)
+</pre>
+</div>
+</div>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+</body>
+</html>

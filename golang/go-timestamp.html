@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2020-07-30 Thu 16:12 -->
+<!-- 2021-01-07 Thu 11:18 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>go timestamp</title>
@@ -98,10 +98,11 @@ fathom('trackPageview');
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#org4b8ac5e">timestamp to string, print</a></li>
-<li><a href="#org74ce433">timestamp 2 string 将字符串格式化返回本地时区时间</a></li>
-<li><a href="#org3c048c2">golang 时间戳 时间格式化 获取当前时间 timestamp 计算时间差</a></li>
-<li><a href="#org5ed7faf">golang获取当前时间、时间戳和时间字符串及它们之间的相互转换</a></li>
+<li><a href="#org76fca61">timestamp to string, print</a></li>
+<li><a href="#orga9d4d46">timestamp 2 string 将字符串格式化返回本地时区时间</a></li>
+<li><a href="#orgfa1114a">golang 时间戳 时间格式化 获取当前时间 timestamp 计算时间差</a></li>
+<li><a href="#orga8a1a88">golang获取当前时间、时间戳和时间字符串及它们之间的相互转换</a></li>
+<li><a href="#orga60fdce">golang timestamp to time</a></li>
 </ul>
 </div>
 </div>
@@ -109,9 +110,9 @@ fathom('trackPageview');
 <a href="../index.html">{Back to site's index}</a>
 </p>
 
-<div id="outline-container-org4b8ac5e" class="outline-2">
-<h2 id="org4b8ac5e">timestamp to string, print</h2>
-<div class="outline-text-2" id="text-org4b8ac5e">
+<div id="outline-container-org76fca61" class="outline-2">
+<h2 id="org76fca61">timestamp to string, print</h2>
+<div class="outline-text-2" id="text-org76fca61">
 <p>
 The <code>time.Parse</code> function does not do Unix timestamps. Instead you can use <code>strconv.ParseInt</code> to parse the string to int64 and create the timestamp with time.Unix:
 </p>
@@ -147,30 +148,40 @@ Output:
 </div>
 </div>
 
-<div id="outline-container-org74ce433" class="outline-2">
-<h2 id="org74ce433">timestamp 2 string 将字符串格式化返回本地时区时间</h2>
-<div class="outline-text-2" id="text-org74ce433">
+<div id="outline-container-orga9d4d46" class="outline-2">
+<h2 id="orga9d4d46">timestamp 2 string 将字符串格式化返回本地时区时间</h2>
+<div class="outline-text-2" id="text-orga9d4d46">
 <p>
 <a href="https://www.cnblogs.com/nyist-xsk/p/11448348.html">https://www.cnblogs.com/nyist-xsk/p/11448348.html</a>
 </p>
 </div>
 </div>
 
-<div id="outline-container-org3c048c2" class="outline-2">
-<h2 id="org3c048c2">golang 时间戳 时间格式化 获取当前时间 timestamp 计算时间差</h2>
-<div class="outline-text-2" id="text-org3c048c2">
+<div id="outline-container-orgfa1114a" class="outline-2">
+<h2 id="orgfa1114a">golang 时间戳 时间格式化 获取当前时间 timestamp 计算时间差</h2>
+<div class="outline-text-2" id="text-orgfa1114a">
 <p>
 <a href="https://www.cnblogs.com/Denny_Yang/p/8983715.html">https://www.cnblogs.com/Denny_Yang/p/8983715.html</a>
 </p>
 </div>
 </div>
 
-<div id="outline-container-org5ed7faf" class="outline-2">
-<h2 id="org5ed7faf">golang获取当前时间、时间戳和时间字符串及它们之间的相互转换</h2>
-<div class="outline-text-2" id="text-org5ed7faf">
+<div id="outline-container-orga8a1a88" class="outline-2">
+<h2 id="orga8a1a88">golang获取当前时间、时间戳和时间字符串及它们之间的相互转换</h2>
+<div class="outline-text-2" id="text-orga8a1a88">
 <p>
 <a href="https://www.cnblogs.com/xuange306/p/11168216.html">https://www.cnblogs.com/xuange306/p/11168216.html</a>
 </p>
+</div>
+</div>
+
+
+<div id="outline-container-orga60fdce" class="outline-2">
+<h2 id="orga60fdce">golang timestamp to time</h2>
+<div class="outline-text-2" id="text-orga60fdce">
+<ul class="org-ul">
+<li><a href="https://stackoverflow.com/questions/24987131/how-to-parse-unix-timestamp-to-time-time">https://stackoverflow.com/questions/24987131/how-to-parse-unix-timestamp-to-time-time</a></li>
+</ul>
 </div>
 </div>
 </div>

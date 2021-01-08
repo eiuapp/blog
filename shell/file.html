@@ -1,0 +1,268 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<!-- 2021-01-08 Fri 14:59 -->
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>shell</title>
+<meta name="generator" content="Org mode" />
+<meta name="author" content="Bryce" />
+<link rel="stylesheet" title="Standard" href="/html/style/worg.css" type="text/css" />
+<link rel="alternate stylesheet" title="Zenburn" href="/html/style/worg-zenburn.css" type="text/css" />
+<link rel="alternate stylesheet" title="Classic" href="/html/style/worg-classic.css" type="text/css" />
+<link rel="SHORTCUT ICON" href="/html/style/org-mode-unicorn.ico" type="image/x-icon" />
+<link rel="icon" href="/html/style/org-mode-unicorn.ico" type="image/ico" />
+<script type="text/javascript">
+/*
+@licstart  The following is the entire license notice for the
+JavaScript code in this tag.
+
+Copyright (C) 2012-2019 Free Software Foundation, Inc.
+
+The JavaScript code in this tag is free software: you can
+redistribute it and/or modify it under the terms of the GNU
+General Public License (GNU GPL) as published by the Free Software
+Foundation, either version 3 of the License, or (at your option)
+any later version.  The code is distributed WITHOUT ANY WARRANTY;
+without even the implied warranty of MERCHANTABILITY or FITNESS
+FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
+
+As additional permission under GNU GPL version 3 section 7, you
+may distribute non-source (e.g., minimized or compacted) forms of
+that code without the copy of the GNU GPL normally required by
+section 4, provided you include this license notice and a URL
+through which recipients can access the Corresponding Source.
+
+
+@licend  The above is the entire license notice
+for the JavaScript code in this tag.
+*/
+<!--/*--><![CDATA[/*><!--*/
+ function CodeHighlightOn(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(null != target) {
+     elem.cacheClassElem = elem.className;
+     elem.cacheClassTarget = target.className;
+     target.className = "code-highlighted";
+     elem.className   = "code-highlighted";
+   }
+ }
+ function CodeHighlightOff(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(elem.cacheClassElem)
+     elem.className = elem.cacheClassElem;
+   if(elem.cacheClassTarget)
+     target.className = elem.cacheClassTarget;
+ }
+/*]]>*///-->
+</script>
+</head>
+<body>
+<div id="preamble" class="status">
+<script type="text/javascript">
+  document.addEventListener('DOMContentLoaded',function() {
+      document.getElementById("table-of-contents").onclick = function() {
+          var elem = document.getElementById("text-table-of-contents");
+          elem.style.display = elem.style.display == "block" ? "none" : "block";
+      }
+  });
+
+  var url = document.location.href;
+  var orgsource = url.substring(0, url.lastIndexOf("."))+".org.html";
+  function show_org_source(){
+      document.location.href = orgsource;
+  }
+</script>
+
+<script>
+(function(f, a, t, h, o, m){
+	a[h]=a[h]||function(){
+		(a[h].q=a[h].q||[]).push(arguments)
+	};
+	o=f.createElement('script'),
+	m=f.getElementsByTagName('script')[0];
+	o.async=1; o.src=t; o.id='fathom-script';
+	m.parentNode.insertBefore(o,m)
+})(document, window, '//stats.orgmode.org/tracker.js', 'fathom');
+fathom('set', 'siteId', 'NWSQJ');
+fathom('trackPageview');
+</script>
+</div>
+<div id="content">
+<h1 class="title">shell</h1>
+<div id="table-of-contents">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#orga85ce60">Post</a>
+<ul>
+<li><a href="#org221c5b1">file</a>
+<ul>
+<li><a href="#orgb69e291">Shell获取某目录下所有文件夹的名称</a></li>
+<li><a href="#orga1f7275">shell批量替换文件扩展名</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-orga85ce60" class="outline-2">
+<h2 id="orga85ce60">Post</h2>
+<div class="outline-text-2" id="text-orga85ce60">
+</div>
+<div id="outline-container-org221c5b1" class="outline-3">
+<h3 id="org221c5b1">file&#xa0;&#xa0;&#xa0;<span class="tag"><span class="_shell">@shell</span>&#xa0;<span class="shell">shell</span></span></h3>
+<div class="outline-text-3" id="text-org221c5b1">
+</div>
+<div id="outline-container-orgb69e291" class="outline-4">
+<h4 id="orgb69e291">Shell获取某目录下所有文件夹的名称&#xa0;&#xa0;&#xa0;<span class="tag"><span class="file_name">file_name</span></span></h4>
+<div class="outline-text-4" id="text-orgb69e291">
+<ul class="org-ul">
+<li>方法一</li>
+</ul>
+<div class="org-src-container">
+<pre class="src src-bash"><span style="color: #579C4C;">#</span><span style="color: #579C4C;">!/bin/</span><span style="color: #00bfff;">bash</span>
+<span style="color: #d4d4d4;">dir</span>=$(ls -l D:/temp/ |awk <span style="color: #daa520;">'/^d/ {print $NF}'</span>)
+<span style="color: #00bfff;">for</span> i<span style="color: #00bfff;"> in</span> $<span style="color: #d4d4d4;">dir</span>
+<span style="color: #00bfff;">do</span>
+    <span style="color: #d4d4d4;">echo</span> $<span style="color: #d4d4d4;">i</span>
+<span style="color: #00bfff;">done</span>
+</pre>
+</div>
+
+<ul class="org-ul">
+<li>方法二</li>
+</ul>
+<div class="org-src-container">
+<pre class="src src-bash"><span style="color: #579C4C;">#</span><span style="color: #579C4C;">!/bin/</span><span style="color: #00bfff;">bash</span>
+<span style="color: #00bfff;">for</span> dir<span style="color: #00bfff;"> in</span> $(ls D:/tmep/)
+<span style="color: #00bfff;">do</span>
+    [ -d $<span style="color: #d4d4d4;">dir</span> ] &amp;&amp; <span style="color: #d4d4d4;">echo</span> $<span style="color: #d4d4d4;">dir</span>
+<span style="color: #00bfff;">done</span>
+</pre>
+</div>
+
+<ul class="org-ul">
+<li>方法三</li>
+</ul>
+<div class="org-src-container">
+<pre class="src src-bash"><span style="color: #579C4C;">#</span><span style="color: #579C4C;">!/bin/</span><span style="color: #00bfff;">bash</span>
+ls -l D:/temp/ |awk <span style="color: #daa520;">'/^d/ {print $NF}'</span>   <span style="color: #579C4C;">## </span><span style="color: #579C4C;">&#20854;&#23454;&#21516;&#26041;&#27861;&#19968;&#65292;&#30452;&#25509;&#23601;&#21487;&#20197;&#26174;&#31034;&#19981;&#29992;for&#24490;&#29615;</span>
+</pre>
+</div>
+
+<ul class="org-ul">
+<li>方法四</li>
+</ul>
+<div class="org-src-container">
+<pre class="src src-bash"><span style="color: #579C4C;">#</span><span style="color: #579C4C;">!/bin/</span><span style="color: #00bfff;">bash</span>
+ls -l  |awk <span style="color: #daa520;">'/^d/ {print $NF}'</span>
+<span style="color: #579C4C;">## </span><span style="color: #579C4C;">get file *.rst name</span>
+ls -l *.rst |awk <span style="color: #daa520;">'/^-/ {print $NF}'</span>
+</pre>
+</div>
+</div>
+
+<ul class="org-ul">
+<li><a id="orgd02569e"></a>Ref<br />
+<div class="outline-text-5" id="text-orgd02569e">
+<ul class="org-ul">
+<li><a href="https://blog.csdn.net/sidely/article/details/40426725">https://blog.csdn.net/sidely/article/details/40426725</a></li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+
+<div id="outline-container-orga1f7275" class="outline-4">
+<h4 id="orga1f7275">shell批量替换文件扩展名&#xa0;&#xa0;&#xa0;<span class="tag"><span class="file_name">file_name</span></span></h4>
+<div class="outline-text-4" id="text-orga1f7275">
+<p>
+早上本想将一些照片上传到相册中，但是由于所有照片的扩展名都是JPG而不是小写的jpg，因此造成了“格式不正确”而不能上传照片。此刻就产生了这样一个问题：使用shell脚本如何批量将所有文件的扩展名JPG都改成小写的jpg？
+</p>
+
+<p>
+既然要批量替换文件名，那么肯定得用一个for循环依次遍历指定目录下的每个文件。对于每个文件，假如该文件的名称为name.oldext，那么我们必须原始文件名中挖出name，再将它与新的文件扩展名newext拼接形成新的文件名name.newext。依照这样的思路，就诞生了下面的脚本：
+</p>
+
+<div class="org-src-container">
+<pre class="src src-bash"><span style="color: #579C4C;">#</span><span style="color: #579C4C;">!/bin/</span><span style="color: #00bfff;">bash</span>
+<span style="color: #d4d4d4;">oldext</span>=<span style="color: #daa520;">"JPG"</span>
+<span style="color: #d4d4d4;">newext</span>=<span style="color: #daa520;">"jpg"</span>
+
+<span style="color: #d4d4d4;">dir</span>=<span style="color: #daa520;">"/home/edsionte/mypic"</span>
+<span style="color: #d4d4d4;">cd</span> $<span style="color: #d4d4d4;">dir</span>
+
+<span style="color: #00bfff;">for</span> file<span style="color: #00bfff;"> in</span> $(ls $<span style="color: #d4d4d4;">dir</span> | grep .$<span style="color: #d4d4d4;">oldext</span>)
+
+<span style="color: #00bfff;">do</span>
+    <span style="color: #d4d4d4;">name</span>=$(ls $<span style="color: #d4d4d4;">file</span> | cut -d. -f1)
+    mv $<span style="color: #d4d4d4;">file</span> ${<span style="color: #d4d4d4;">name</span>}.$<span style="color: #d4d4d4;">newext</span>
+<span style="color: #00bfff;">done</span>
+</pre>
+</div>
+
+<p>
+下面对针对这个程序作简单说明：
+</p>
+
+<p>
+1.变量oldext和newext分别指定旧的扩展名和新的扩展名。dir指定文件所在目录；
+</p>
+
+<p>
+2.“ls $dir | grep .$oldext”用来在指定目录dir中获取扩展名为旧扩展名的所有文件；
+</p>
+
+<p>
+3.在循环体内先利用cut命令将文件名中“.”之前的字符串剪切出来，并赋值给name变量；接着将当前的文件名重命名为新的文件名。
+</p>
+
+<p>
+通过这个脚本，所有照片的扩展名都成功修改。为了使这个脚本更具有通用型，我们可以增加几条read命令实现脚本和用户之间的交互。改进版的脚本如下：
+</p>
+<div class="org-src-container">
+<pre class="src src-bash"><span style="color: #579C4C;">#</span><span style="color: #579C4C;">!/bin/</span><span style="color: #00bfff;">bash</span>
+
+<span style="color: #d4d4d4;">read</span> -p <span style="color: #daa520;">"old extension:"</span> oldext
+<span style="color: #d4d4d4;">read</span> -p <span style="color: #daa520;">"new extension:"</span> newext
+<span style="color: #d4d4d4;">read</span> -p <span style="color: #daa520;">"The directory:"</span> dir
+<span style="color: #d4d4d4;">cd</span> $<span style="color: #d4d4d4;">dir</span>
+
+<span style="color: #00bfff;">for</span> file<span style="color: #00bfff;"> in</span> $(ls $<span style="color: #d4d4d4;">dir</span> | grep .$<span style="color: #d4d4d4;">oldext</span>)
+
+<span style="color: #00bfff;">do</span>
+    <span style="color: #d4d4d4;">name</span>=$(ls $<span style="color: #d4d4d4;">file</span> | cut -d. -f1)
+    mv $<span style="color: #d4d4d4;">file</span> ${<span style="color: #d4d4d4;">name</span>}.$<span style="color: #d4d4d4;">newext</span>
+    <span style="color: #d4d4d4;">echo</span> <span style="color: #daa520;">"$name.$oldext ====&gt; $name.$newext"</span>
+<span style="color: #00bfff;">done</span>
+<span style="color: #d4d4d4;">echo</span> <span style="color: #daa520;">"all files has been modified."</span>
+</pre>
+</div>
+
+<p>
+修改后的脚本可以批量修改任意扩展名。done。
+</p>
+</div>
+
+<ul class="org-ul">
+<li><a id="orgca21fbe"></a>Ref<br />
+<div class="outline-text-5" id="text-orgca21fbe">
+<ul class="org-ul">
+<li><a href="https://note.youdao.com/web/#/file/recent/note/wcp1542961015800180/">https://note.youdao.com/web/#/file/recent/note/wcp1542961015800180/</a></li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+</body>
+</html>

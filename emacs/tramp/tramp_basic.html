@@ -1,0 +1,233 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<!-- 2021-01-07 Thu 11:12 -->
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>tramp basic</title>
+<meta name="generator" content="Org mode" />
+<meta name="author" content="a" />
+<link rel="stylesheet" title="Standard" href="/html/style/worg.css" type="text/css" />
+<link rel="alternate stylesheet" title="Zenburn" href="/html/style/worg-zenburn.css" type="text/css" />
+<link rel="alternate stylesheet" title="Classic" href="/html/style/worg-classic.css" type="text/css" />
+<link rel="SHORTCUT ICON" href="/html/style/org-mode-unicorn.ico" type="image/x-icon" />
+<link rel="icon" href="/html/style/org-mode-unicorn.ico" type="image/ico" />
+<script type="text/javascript">
+/*
+@licstart  The following is the entire license notice for the
+JavaScript code in this tag.
+
+Copyright (C) 2012-2019 Free Software Foundation, Inc.
+
+The JavaScript code in this tag is free software: you can
+redistribute it and/or modify it under the terms of the GNU
+General Public License (GNU GPL) as published by the Free Software
+Foundation, either version 3 of the License, or (at your option)
+any later version.  The code is distributed WITHOUT ANY WARRANTY;
+without even the implied warranty of MERCHANTABILITY or FITNESS
+FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
+
+As additional permission under GNU GPL version 3 section 7, you
+may distribute non-source (e.g., minimized or compacted) forms of
+that code without the copy of the GNU GPL normally required by
+section 4, provided you include this license notice and a URL
+through which recipients can access the Corresponding Source.
+
+
+@licend  The above is the entire license notice
+for the JavaScript code in this tag.
+*/
+<!--/*--><![CDATA[/*><!--*/
+ function CodeHighlightOn(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(null != target) {
+     elem.cacheClassElem = elem.className;
+     elem.cacheClassTarget = target.className;
+     target.className = "code-highlighted";
+     elem.className   = "code-highlighted";
+   }
+ }
+ function CodeHighlightOff(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(elem.cacheClassElem)
+     elem.className = elem.cacheClassElem;
+   if(elem.cacheClassTarget)
+     target.className = elem.cacheClassTarget;
+ }
+/*]]>*///-->
+</script>
+</head>
+<body>
+<div id="preamble" class="status">
+<script type="text/javascript">
+  document.addEventListener('DOMContentLoaded',function() {
+      document.getElementById("table-of-contents").onclick = function() {
+          var elem = document.getElementById("text-table-of-contents");
+          elem.style.display = elem.style.display == "block" ? "none" : "block";
+      }
+  });
+
+  var url = document.location.href;
+  var orgsource = url.substring(0, url.lastIndexOf("."))+".org.html";
+  function show_org_source(){
+      document.location.href = orgsource;
+  }
+</script>
+
+<script>
+(function(f, a, t, h, o, m){
+	a[h]=a[h]||function(){
+		(a[h].q=a[h].q||[]).push(arguments)
+	};
+	o=f.createElement('script'),
+	m=f.getElementsByTagName('script')[0];
+	o.async=1; o.src=t; o.id='fathom-script';
+	m.parentNode.insertBefore(o,m)
+})(document, window, '//stats.orgmode.org/tracker.js', 'fathom');
+fathom('set', 'siteId', 'NWSQJ');
+fathom('trackPageview');
+</script>
+</div>
+<div id="content">
+<h1 class="title">tramp basic</h1>
+<div id="table-of-contents">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#org3b3e68d">tramp ssh host with a special port</a></li>
+<li><a href="#orgf435401">Connecting to a remote host using multiple hops</a>
+<ul>
+<li><a href="#org3d78e79">m1</a>
+<ul>
+<li><a href="#org6ed4612">m1.1 add-to-list 'tramp-default-proxies-alist</a></li>
+<li><a href="#orgf9369b8">m1.2 add-to-list 'tramp-default-proxies-alist</a></li>
+</ul>
+</li>
+<li><a href="#org2122f12">m2</a></li>
+<li><a href="#orgee7dc4f">m3 use the ssh_proxy command available in ssh_config</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+<p>
+<a href="../index.html">{Back to site's index}</a>
+</p>
+
+<div id="outline-container-org3b3e68d" class="outline-2">
+<h2 id="org3b3e68d">tramp ssh host with a special port</h2>
+<div class="outline-text-2" id="text-org3b3e68d">
+<div class="org-src-container">
+<pre class="src src-example">/ssh:ubuntu@192.168.168.137#2222:/home/ubuntu/bak/a.test
+</pre>
+</div>
+
+<p>
+<code>#2222</code>
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgf435401" class="outline-2">
+<h2 id="orgf435401">Connecting to a remote host using multiple hops</h2>
+<div class="outline-text-2" id="text-orgf435401">
+</div>
+<div id="outline-container-org3d78e79" class="outline-3">
+<h3 id="org3d78e79">m1</h3>
+<div class="outline-text-3" id="text-org3d78e79">
+</div>
+<div id="outline-container-org6ed4612" class="outline-4">
+<h4 id="org6ed4612">m1.1 add-to-list 'tramp-default-proxies-alist</h4>
+<div class="outline-text-4" id="text-org6ed4612">
+<ul class="org-ul">
+<li><a href="https://stackoverflow.com/questions/715855/how-can-i-use-emacs-tramp-to-double-hop-ssh">https://stackoverflow.com/questions/715855/how-can-i-use-emacs-tramp-to-double-hop-ssh</a></li>
+<li><a href="https://www.gnu.org/software/tramp/#Multi_002dhops">https://www.gnu.org/software/tramp/#Multi_002dhops</a></li>
+</ul>
+
+<div class="org-src-container">
+<pre class="src src-elisp">(add-to-list 'tramp-default-proxies-alist
+                 '(<span style="color: #daa520;">"HOSTB"</span> nil <span style="color: #daa520;">"/ssh:USERA@HOSTA:"</span>))
+</pre>
+</div>
+
+<p>
+Where HOSTB is the destination host behind HOSTA.
+</p>
+
+<p>
+Then type <code>/ssh:USERB@HOSTB:</code> and emacs will prompt for the HOSTA password then the HOSTB password.
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgf9369b8" class="outline-4">
+<h4 id="orgf9369b8">m1.2 add-to-list 'tramp-default-proxies-alist</h4>
+<div class="outline-text-4" id="text-orgf9369b8">
+<ul class="org-ul">
+<li><p>
+<a href="https://stackoverflow.com/questions/5847814/emacs-tramp-ssh-double-hop">https://stackoverflow.com/questions/5847814/emacs-tramp-ssh-double-hop</a>
+</p>
+
+<p>
+I want to work on <code>machine2.abc.def.edu</code> to which I can connect only through <code>machine1.abc.def.edu</code>. My username is myname, on both machines same.
+</p></li>
+</ul>
+
+<div class="org-src-container">
+<pre class="src src-elisp">(add-to-list 'tramp-default-proxies-alist
+             '(<span style="color: #daa520;">"\\`</span><span style="color: #339CDB;">machine2\\</span><span style="color: #daa520;">'"</span>
+               nil
+               <span style="color: #daa520;">"/ssh:%u@machine1.abc.def.edu:"</span>))
+</pre>
+</div>
+
+<p>
+Then I do: <code>C-x C-f /ssh:machine2.abc.def.edu</code> or: <code>C-x C-f /ssh:rsuhada@machine2.abc.def.edu</code>
+</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org2122f12" class="outline-3">
+<h3 id="org2122f12">m2</h3>
+<div class="outline-text-3" id="text-org2122f12">
+<ul class="org-ul">
+<li><a href="https://www.gnu.org/software/tramp/#Ad_002dhoc-multi_002dhops">https://www.gnu.org/software/tramp/#Ad_002dhoc-multi_002dhops</a></li>
+</ul>
+
+<p>
+<code>C-x C-f /ssh:bird@bastion|ssh:you@remotehost:/path RET</code>
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgee7dc4f" class="outline-3">
+<h3 id="orgee7dc4f">m3 use the ssh_proxy command available in ssh_config</h3>
+<div class="outline-text-3" id="text-orgee7dc4f">
+<ul class="org-ul">
+<li><a href="https://stackoverflow.com/questions/5847814/emacs-tramp-ssh-double-hop">https://stackoverflow.com/questions/5847814/emacs-tramp-ssh-double-hop</a></li>
+</ul>
+
+<div class="org-src-container">
+<pre class="src src-example">Host endpoint2
+     User myusername
+     HostName mysite.com
+     Port 3000
+     ProxyCommand ssh endpoint1 nc -w300 %h %p
+
+Host endpoint1
+     User somename
+     HostName otherdomainorip.com
+     Port 6893
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+</body>
+</html>

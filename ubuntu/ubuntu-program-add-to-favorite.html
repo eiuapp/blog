@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2020-07-30 Thu 16:11 -->
+<!-- 2021-01-07 Thu 11:02 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>ubuntu program add to favorite</title>
@@ -98,8 +98,9 @@ fathom('trackPageview');
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#org29d25b6">添加图标to applications</a></li>
-<li><a href="#org9d243da">add to favorites</a></li>
+<li><a href="#org4e3a39f">添加图标to applications</a></li>
+<li><a href="#org6293b17">add to favorites</a></li>
+<li><a href="#org7b3c7fc">把多个版本emacs图标加入到 favorite</a></li>
 </ul>
 </div>
 </div>
@@ -111,9 +112,9 @@ fathom('trackPageview');
 添加emacs图标至Favorite
 </p>
 
-<div id="outline-container-org29d25b6" class="outline-2">
-<h2 id="org29d25b6">添加图标to applications</h2>
-<div class="outline-text-2" id="text-org29d25b6">
+<div id="outline-container-org4e3a39f" class="outline-2">
+<h2 id="org4e3a39f">添加图标to applications</h2>
+<div class="outline-text-2" id="text-org4e3a39f">
 <div class="org-src-container">
 <pre class="src src-shell">$ cat /usr/share/applications/emacs.desktop
 [Desktop Entry]
@@ -136,11 +137,45 @@ Icon 可以是任意一张可访问到的图片.
 </div>
 </div>
 
-<div id="outline-container-org9d243da" class="outline-2">
-<h2 id="org9d243da">add to favorites</h2>
-<div class="outline-text-2" id="text-org9d243da">
+<div id="outline-container-org6293b17" class="outline-2">
+<h2 id="org6293b17">add to favorites</h2>
+<div class="outline-text-2" id="text-org6293b17">
 <p>
 Super+A：显示应用程序菜单, 找到对应程序, 右鍵, <code>Add to Favorites</code> .
+</p>
+</div>
+</div>
+
+<div id="outline-container-org7b3c7fc" class="outline-2">
+<h2 id="org7b3c7fc">把多个版本emacs图标加入到 favorite&#xa0;&#xa0;&#xa0;<span class="tag"><span class="favorite">favorite</span></span></h2>
+<div class="outline-text-2" id="text-org7b3c7fc">
+<div class="org-src-container">
+<pre class="src src-shell">$ cat /usr/share/applications/emacs.desktop
+[Desktop Entry]
+<span style="color: #d4d4d4;">Name</span> = emacs
+<span style="color: #d4d4d4;">Comment</span>= emacs
+<span style="color: #d4d4d4;">Exec</span>=/usr/local/bin/emacs
+<span style="color: #d4d4d4;">Icon</span>=/home/a/Desktop/e.png
+<span style="color: #d4d4d4;">Terminal</span>=false
+<span style="color: #d4d4d4;">Type</span>=Application
+
+$ cat /usr/share/applications/emacs270.desktop
+[Desktop Entry]
+<span style="color: #d4d4d4;">Name</span> = emacs270
+<span style="color: #d4d4d4;">Comment</span>= emacs270
+<span style="color: #d4d4d4;">Exec</span>=/usr/local/bin/emacs270
+<span style="color: #d4d4d4;">Icon</span>=/home/a/Desktop/e270.png
+<span style="color: #d4d4d4;">Terminal</span>=false
+<span style="color: #d4d4d4;">Type</span>=Application
+
+$
+</pre>
+</div>
+
+<p>
+如果，只是在 <code>/usr/share/applications/emacs.desktop</code> 中修改 <code>Exec</code>, 那么，点 favorite 会另外弹出一个emacs窗口，而不是在 favorite 位置出emacs窗口，那么这时，会使用 emacs 的默认图标。
+所以，要同时修改 Icon, Name, Comment. 最好的做法是： <code>sudo cp /usr/share/applications/emacs.desktop /usr/share/applications/emacs270.desktop</code> 然后，修改成上面的样子。
+尝试一下，会达到之前的效果。然后再删除 favorite 和 <code>/usr/share/applications/emacs.desktop</code>
 </p>
 </div>
 </div>

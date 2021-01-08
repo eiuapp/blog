@@ -1,0 +1,286 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<!-- 2021-01-07 Thu 11:09 -->
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>&lrm;</title>
+<meta name="generator" content="Org mode" />
+<meta name="author" content="a" />
+<link rel="stylesheet" title="Standard" href="/html/style/worg.css" type="text/css" />
+<link rel="alternate stylesheet" title="Zenburn" href="/html/style/worg-zenburn.css" type="text/css" />
+<link rel="alternate stylesheet" title="Classic" href="/html/style/worg-classic.css" type="text/css" />
+<link rel="SHORTCUT ICON" href="/html/style/org-mode-unicorn.ico" type="image/x-icon" />
+<link rel="icon" href="/html/style/org-mode-unicorn.ico" type="image/ico" />
+<script type="text/javascript">
+/*
+@licstart  The following is the entire license notice for the
+JavaScript code in this tag.
+
+Copyright (C) 2012-2019 Free Software Foundation, Inc.
+
+The JavaScript code in this tag is free software: you can
+redistribute it and/or modify it under the terms of the GNU
+General Public License (GNU GPL) as published by the Free Software
+Foundation, either version 3 of the License, or (at your option)
+any later version.  The code is distributed WITHOUT ANY WARRANTY;
+without even the implied warranty of MERCHANTABILITY or FITNESS
+FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
+
+As additional permission under GNU GPL version 3 section 7, you
+may distribute non-source (e.g., minimized or compacted) forms of
+that code without the copy of the GNU GPL normally required by
+section 4, provided you include this license notice and a URL
+through which recipients can access the Corresponding Source.
+
+
+@licend  The above is the entire license notice
+for the JavaScript code in this tag.
+*/
+<!--/*--><![CDATA[/*><!--*/
+ function CodeHighlightOn(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(null != target) {
+     elem.cacheClassElem = elem.className;
+     elem.cacheClassTarget = target.className;
+     target.className = "code-highlighted";
+     elem.className   = "code-highlighted";
+   }
+ }
+ function CodeHighlightOff(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(elem.cacheClassElem)
+     elem.className = elem.cacheClassElem;
+   if(elem.cacheClassTarget)
+     target.className = elem.cacheClassTarget;
+ }
+/*]]>*///-->
+</script>
+</head>
+<body>
+<div id="preamble" class="status">
+<script type="text/javascript">
+  document.addEventListener('DOMContentLoaded',function() {
+      document.getElementById("table-of-contents").onclick = function() {
+          var elem = document.getElementById("text-table-of-contents");
+          elem.style.display = elem.style.display == "block" ? "none" : "block";
+      }
+  });
+
+  var url = document.location.href;
+  var orgsource = url.substring(0, url.lastIndexOf("."))+".org.html";
+  function show_org_source(){
+      document.location.href = orgsource;
+  }
+</script>
+
+<script>
+(function(f, a, t, h, o, m){
+	a[h]=a[h]||function(){
+		(a[h].q=a[h].q||[]).push(arguments)
+	};
+	o=f.createElement('script'),
+	m=f.getElementsByTagName('script')[0];
+	o.async=1; o.src=t; o.id='fathom-script';
+	m.parentNode.insertBefore(o,m)
+})(document, window, '//stats.orgmode.org/tracker.js', 'fathom');
+fathom('set', 'siteId', 'NWSQJ');
+fathom('trackPageview');
+</script>
+</div>
+<div id="content">
+<div id="table-of-contents">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#orgdf03d2b">记一次网页验证码失效的问题</a>
+<ul>
+<li>
+<ul>
+<li><a href="#找log">找log</a></li>
+<li><a href="#google">google</a></li>
+<li><a href="#java_opts">JAVA\_OPTS</a></li>
+<li><a href="#启动前加了个环境变量">启动前加了个环境变量</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orgdf03d2b" class="outline-2">
+<h2 id="orgdf03d2b">记一次网页验证码失效的问题</h2>
+<div class="outline-text-2" id="text-orgdf03d2b">
+<p>
+<a href="http://www.szeecp.com">http://www.szeecp.com</a>
+</p>
+
+<p>
+F12, <a href="http://www.szeecp.com/common/login/0/yzm">http://www.szeecp.com/common/login/0/yzm</a> 报500或502
+</p>
+
+<p>
+说明是服务端问题
+</p>
+
+<p>
+先找到 nginx , 找到 conmon 请求,来出 9080 端口.
+</p>
+
+<p>
+去 ~/server/ 找到服务在 tomcat-web 下, 配置在
+~/server/tomcat-web/conf/server.xml 中.
+</p>
+
+<p>
+有重定向到 8443 端口.
+</p>
+</div>
+
+<div id="outline-container-org372b55b" class="outline-4">
+<h4 id="找log">找log</h4>
+<div class="outline-text-4" id="text-找log">
+<p>
+找到 logs/localhost.2019-04-29.log 中有相关内容.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-sh">org.apache.jasper.JasperException: javax.servlet.ServletException: java.lang.NoClassDefFoundError: Could not initialize
+class java.awt.image.BufferedImage
+        at org.apache.jasper.servlet.JspServletWrapper.handleJspException(JspServletWrapper.java:549)
+</pre>
+</div>
+
+<div class="org-src-container">
+<pre class="src src-sh">grep <span style="color: #daa520;">"NoClassDefFoundError: Could not initialize"</span> -rn ./
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgcdd0a9f" class="outline-4">
+<h4 id="google">google</h4>
+<div class="outline-text-4" id="text-google">
+<p>
+<a href="https://stackoverflow.com/questions/18099614/java-lang-noclassdeffounderror-could-not-initialize-class-java-awt-toolkit">https://stackoverflow.com/questions/18099614/java-lang-noclassdeffounderror-could-not-initialize-class-java-awt-toolkit</a>
+</p>
+
+<div class="org-src-container">
+<pre class="src src-sh">sudo apt-get install libxtst6
+</pre>
+</div>
+
+<p>
+因为要 <code>ldd jdk1.7.0_25_x86/jre/lib/i386/xawt/libmawt.so</code>
+所以,全局找一下 =libmawt.so=文件.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-sh">lcnx@iZwz95dxhc92qtibd4f399Z:~/server/tomcat-web$ sudo find / -name libmawt.so
+/alidata/server/java-1.7.0/jre/lib/amd64/headless/libmawt.so
+/alidata/server/java-1.7.0/jre/lib/amd64/xawt/libmawt.so
+lcnx@iZwz95dxhc92qtibd4f399Z:~/server/tomcat-web$
+</pre>
+</div>
+
+<p>
+<a href="http://www.man7.org/linux/man-pages/man1/ldd.1.html">ldd</a> 一下
+</p>
+
+<div class="org-src-container">
+<pre class="src src-sh">lcnx@iZwz95dxhc92qtibd4f399Z:~/server/tomcat-web$ sudo ldd /alidata/server/java-1.7.0/jre/lib/amd64/headless/libmawt.so
+    linux-vdso.so.1 =&gt;  (0x00007fff37c97000)
+    libjvm.so =&gt; not found
+    libawt.so =&gt; /alidata/server/java-1.7.0/jre/lib/amd64/headless/../libawt.so (0x00007f35430ec000)
+    libm.so.6 =&gt; /lib/x86_64-linux-gnu/libm.so.6 (0x00007f3542df0000)
+    libdl.so.2 =&gt; /lib/x86_64-linux-gnu/libdl.so.2 (0x00007f3542bec000)
+    libjava.so =&gt; /alidata/server/java-1.7.0/jre/lib/amd64/headless/../libjava.so (0x00007f35429c0000)
+    libc.so.6 =&gt; /lib/x86_64-linux-gnu/libc.so.6 (0x00007f3542600000)
+    /lib64/ld-linux-x86-64.so.2 (0x00007f35435cf000)
+    libjvm.so =&gt; not found
+    libjvm.so =&gt; not found
+    libverify.so =&gt; /alidata/server/java-1.7.0/jre/lib/amd64/headless/../libverify.so (0x00007f35423f1000)
+    libjvm.so =&gt; not found
+lcnx@iZwz95dxhc92qtibd4f399Z:~/server/tomcat-web$
+</pre>
+</div>
+
+<p>
+这里有提示 <code>libjvm.so</code> not found, 那么找一下
+</p>
+
+<div class="org-src-container">
+<pre class="src src-sh">sudo find / -name libjvm.so
+</pre>
+</div>
+
+<p>
+同样地,也ldd了一下. 但是,这个问题怎么处理,不知道呀.
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgecd2cd5" class="outline-4">
+<h4 id="java_opts">JAVA\_OPTS</h4>
+<div class="outline-text-4" id="text-java_opts">
+<p>
+因为java程序启动时,有一些常用的启动参数配置
+</p>
+
+<p>
+<code>JAVA_OPTS</code>"-server -Xms800m -Xmx800m -XX:PermSize=64M -XX:MaxNewSize=256m -XX:MaxPermSize=128m -Djava.awt.headless=true "=
+</p>
+
+<p>
+这里,我们启动后通过 <code>ps -ef | grep java</code>
+没有看到,所以,我们觉得这个地方,要调整一下.
+</p>
+</div>
+</div>
+
+<div id="outline-container-org78bb9b3" class="outline-4">
+<h4 id="启动前加了个环境变量">启动前加了个环境变量</h4>
+<div class="outline-text-4" id="text-启动前加了个环境变量">
+<p>
+<b>注意</b> 如果以后有人设置，或调试, 所以要把 <code>${JAVA_OPTS}</code> 加上
+</p>
+
+<p>
+所加的环境变量的意思是:调用awt 时不用X支持, 调用headless 目录下so.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-sh">lcnx@iZwz95dxhc92qtibd4f399Z:~/server/tomcat-web/bin$ export <span style="color: #d4d4d4;">JAVA_OPTS</span>=<span style="color: #daa520;">"${JAVA_OPTS} -Djava.awt.headless=true"</span>
+lcnx@iZwz95dxhc92qtibd4f399Z:~/server/tomcat-web/bin$ echo $<span style="color: #d4d4d4;">JAVA_OPTS</span>
+-Djava.awt.headless=true
+lcnx@iZwz95dxhc92qtibd4f399Z:~/server/tomcat-web/bin$
+</pre>
+</div>
+
+<p>
+或者
+</p>
+
+<p>
+把 <code>export JAVA_OPTS</code>"${JAVA_OPTS} -Djava.awt.headless=true"= 写入到
+启动文件中. 这样, 下次启动时,会自动加载这个变量了.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-sh">lcnx@iZwz95dxhc92qtibd4f399Z:~/server/tomcat-web/bin$ vi catalina.sh
+</pre>
+</div>
+
+<p>
+重新启动一下,OK了.
+</p>
+</div>
+</div>
+</div>
+</div>
+</body>
+</html>

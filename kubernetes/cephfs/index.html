@@ -1,0 +1,2149 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<!-- 2021-01-08 Fri 14:58 -->
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>k8s</title>
+<meta name="generator" content="Org mode" />
+<meta name="author" content="Bryce" />
+<link rel="stylesheet" title="Standard" href="/html/style/worg.css" type="text/css" />
+<link rel="alternate stylesheet" title="Zenburn" href="/html/style/worg-zenburn.css" type="text/css" />
+<link rel="alternate stylesheet" title="Classic" href="/html/style/worg-classic.css" type="text/css" />
+<link rel="SHORTCUT ICON" href="/html/style/org-mode-unicorn.ico" type="image/x-icon" />
+<link rel="icon" href="/html/style/org-mode-unicorn.ico" type="image/ico" />
+<script type="text/javascript">
+/*
+@licstart  The following is the entire license notice for the
+JavaScript code in this tag.
+
+Copyright (C) 2012-2019 Free Software Foundation, Inc.
+
+The JavaScript code in this tag is free software: you can
+redistribute it and/or modify it under the terms of the GNU
+General Public License (GNU GPL) as published by the Free Software
+Foundation, either version 3 of the License, or (at your option)
+any later version.  The code is distributed WITHOUT ANY WARRANTY;
+without even the implied warranty of MERCHANTABILITY or FITNESS
+FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
+
+As additional permission under GNU GPL version 3 section 7, you
+may distribute non-source (e.g., minimized or compacted) forms of
+that code without the copy of the GNU GPL normally required by
+section 4, provided you include this license notice and a URL
+through which recipients can access the Corresponding Source.
+
+
+@licend  The above is the entire license notice
+for the JavaScript code in this tag.
+*/
+<!--/*--><![CDATA[/*><!--*/
+ function CodeHighlightOn(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(null != target) {
+     elem.cacheClassElem = elem.className;
+     elem.cacheClassTarget = target.className;
+     target.className = "code-highlighted";
+     elem.className   = "code-highlighted";
+   }
+ }
+ function CodeHighlightOff(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(elem.cacheClassElem)
+     elem.className = elem.cacheClassElem;
+   if(elem.cacheClassTarget)
+     target.className = elem.cacheClassTarget;
+ }
+/*]]>*///-->
+</script>
+</head>
+<body>
+<div id="preamble" class="status">
+<script type="text/javascript">
+  document.addEventListener('DOMContentLoaded',function() {
+      document.getElementById("table-of-contents").onclick = function() {
+          var elem = document.getElementById("text-table-of-contents");
+          elem.style.display = elem.style.display == "block" ? "none" : "block";
+      }
+  });
+
+  var url = document.location.href;
+  var orgsource = url.substring(0, url.lastIndexOf("."))+".org.html";
+  function show_org_source(){
+      document.location.href = orgsource;
+  }
+</script>
+
+<script>
+(function(f, a, t, h, o, m){
+	a[h]=a[h]||function(){
+		(a[h].q=a[h].q||[]).push(arguments)
+	};
+	o=f.createElement('script'),
+	m=f.getElementsByTagName('script')[0];
+	o.async=1; o.src=t; o.id='fathom-script';
+	m.parentNode.insertBefore(o,m)
+})(document, window, '//stats.orgmode.org/tracker.js', 'fathom');
+fathom('set', 'siteId', 'NWSQJ');
+fathom('trackPageview');
+</script>
+</div>
+<div id="content">
+<h1 class="title">k8s</h1>
+<div id="table-of-contents">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#org73b1994">Post</a>
+<ul>
+<li><a href="#org217e72e">kubernetes与cephfs</a>
+<ul>
+<li><a href="#org4f66994">kubernetes cephfs intro</a></li>
+<li><a href="#k8s-cephfs-readme">kubernetes cephfs README</a></li>
+<li><a href="#使用-cephfs-完成-statefulset-的练习">使用 cephfs 完成 statefulset 的练习</a></li>
+<li><a href="#cephfs-k8s-make-by-go-get">kubernetes-cephfs-make-by-go-get</a></li>
+<li><a href="#org5a8af96">kubernetes中cephfs的deployment的FAQ</a></li>
+<li><a href="#k8s-中-cephfs-成功的-yaml-文件">k8s 中 cephfs 成功的 yaml 文件</a></li>
+<li><a href="#cephfs-k8s-中的-make">cephfs-k8s 中的 make</a></li>
+<li><a href="#k8s-与-cephfs-相关的faq">k8s 与 cephfs 相关的FAQ</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org73b1994" class="outline-2">
+<h2 id="org73b1994">Post</h2>
+<div class="outline-text-2" id="text-org73b1994">
+</div>
+<div id="outline-container-org217e72e" class="outline-3">
+<h3 id="org217e72e">kubernetes与cephfs&#xa0;&#xa0;&#xa0;<span class="tag"><span class="_kubernetes">@kubernetes</span>&#xa0;<span class="ceph">ceph</span>&#xa0;<span class="cephfs">cephfs</span>&#xa0;<span class="kubernetes">kubernetes</span></span></h3>
+<div class="outline-text-3" id="text-org217e72e">
+</div>
+<div id="outline-container-org4f66994" class="outline-4">
+<h4 id="org4f66994">kubernetes cephfs intro&#xa0;&#xa0;&#xa0;<span class="tag"><span class="intro">intro</span></span></h4>
+<div class="outline-text-4" id="text-org4f66994">
+<p>
+REAEME
+cephfs-stateful
+cephfs-k8s-make-by-go-get
+cephfs-k8s-deployment-faq
+cephfs-k8s-yaml
+cephfs-k8s-make
+cephfs-k8s-faq
+</p>
+</div>
+</div>
+
+<div id="outline-container-org5da2cc4" class="outline-4">
+<h4 id="k8s-cephfs-readme">kubernetes cephfs README&#xa0;&#xa0;&#xa0;<span class="tag"><span class="readme">readme</span></span></h4>
+<div class="outline-text-4" id="text-k8s-cephfs-readme">
+<p>
+本次, k8s cephfs 结合, 前前后后, 花了差不多1个月的时间, 终于是有结果了.
+</p>
+
+<p>
+主要大过程是:
+</p>
+
+<pre class="example">
+安装 k8s.v1.7.3
+    flannel 网络 成功
+安装 ceph
+安装 cephfs
+然后 k8s + cephfs
+    make &amp;&amp; make push
+    deployment.yaml 失败
+    docker 成功
+    test-pod 成功
+    检查 SUCCESS 失败
+    Input/Output Error 发现不对, 升级内核
+升级 k8s.v1.7.3 至 k8s.v1.8.3
+    升级失败
+科学上网
+    XX-net 失败
+    加速度 成功
+全新安装 k8s.v1.8.4
+    remove kube* 成功
+    install kube* 成功
+    init 成功
+    apply -f kube-flannel.yml
+然后 k8s + cephfs
+    docker 成功, 关闭
+    重新设置 cni0
+    secret 成功
+    configmap.yaml 成功
+    deployment.yaml 成功
+    class.yaml 成功
+    claim.yaml 成功
+    test-pod.yaml 成功
+检查 mount
+    mount , ceph-client 失败
+    mount , kn1 成功
+Game over!
+</pre>
+</div>
+</div>
+
+<div id="outline-container-orgd51f981" class="outline-4">
+<h4 id="使用-cephfs-完成-statefulset-的练习">使用 cephfs 完成 statefulset 的练习&#xa0;&#xa0;&#xa0;<span class="tag"><span class="statefulset">statefulset</span></span></h4>
+<div class="outline-text-4" id="text-使用-cephfs-完成-statefulset-的练习">
+</div>
+
+<ul class="org-ul">
+<li><a id="环境"></a>环境<br />
+<div class="outline-text-5" id="text-环境">
+<pre class="example">
+k8s-master 192.168.31.120 km master
+k8s-node1 192.168.31.119 kn1 node1
+k8s-node2 192.168.31.118 kn2 node2
+
+cephfs-admin 192.168.31.115
+cephfs-monitor 192.168.31.114
+cephfs-client 192.168.31.172
+</pre>
+
+<p>
+各 k8s-node 安装完 ceph-common(sudo apt install ceph-common -y)
+</p>
+</div>
+</li>
+
+<li><a id="准备"></a>准备<br />
+<div class="outline-text-5" id="text-准备">
+<p>
+在进行操作前，请完成下面的操作：
+</p>
+
+<p>
+1）阅读
+</p>
+
+<p>
+<a href="http://www.cnblogs.com/iiiiher/p/7159810.html">http://www.cnblogs.com/iiiiher/p/7159810.html</a>
+</p>
+
+<p>
+<a href="https://github.com/kubernetes-incubator/external-storage/tree/master/nfs-client">https://github.com/kubernetes-incubator/external-storage/tree/master/nfs-client</a>
+</p>
+
+<p>
+注意：
+</p>
+
+<p>
+<a href="https://github.com/kubernetes-incubator/external-storage">https://github.com/kubernetes-incubator/external-storage</a>
+这个仓库，是官方提供之外的 External storage plugins, provisioners, and
+helper libraries ，因为我们在[官方文档 中看到了 nfs 是不支持
+provisioners
+](<a href="https://kubernetes.io/docs/concepts/storage/persistent-volumes/#provisioner)%E7%9A%84%EF%BC%8C%E6%89%80%E4%BB%A5%E8%A6%81%E6%9D%A5%E8%BF%99%E9%87%8C%E4%BA%86%E5%93%9F">https://kubernetes.io/docs/concepts/storage/persistent-volumes/#provisioner)%E7%9A%84%EF%BC%8C%E6%89%80%E4%BB%A5%E8%A6%81%E6%9D%A5%E8%BF%99%E9%87%8C%E4%BA%86%E5%93%9F</a>。
+</p>
+
+<p>
+2）git clone
+</p>
+
+<blockquote>
+<p>
+git clone <a href="https://github.com/kubernetes-incubator/external-storage">https://github.com/kubernetes-incubator/external-storage</a>
+</p>
+
+<p>
+cd external-storage/nfs-client/deploy/
+</p>
+</blockquote>
+
+<p>
+3）按步骤来进行。
+</p>
+
+<p>
+现在打开
+<a href="https://github.com/kubernetes-incubator/external-storage/tree/master/ceph/cephfs">https://github.com/kubernetes-incubator/external-storage/tree/master/ceph/cephfs</a>
+</p>
+
+<p>
+开始动手了
+</p>
+</div>
+</li>
+
+<li><a id="step"></a>step<br />
+<div class="outline-text-5" id="text-step">
+</div>
+
+<ul class="org-ul">
+<li><a id="compile-the-provisioner"></a>Compile the provisioner<br />
+<div class="outline-text-6" id="text-compile-the-provisioner">
+<p>
+见 cephfs-k8s-make-by-go-get.rst
+</p>
+
+<p>
+这个地方，请参看
+<a href="http://blogtt.readthedocs.io/en/latest/k8s/cephfs/cephfs-k8s-make-by-go-get.html">http://blogtt.readthedocs.io/en/latest/k8s/cephfs/cephfs-k8s-make-by-go-get.html</a>
+</p>
+</div>
+</li>
+
+<li><a id="make-the-container-image-and-push-to-the-registry"></a>Make the container image and push to the registry<br />
+<div class="outline-text-6" id="text-make-the-container-image-and-push-to-the-registry">
+<p>
+这个地方，看公司情况。主要是 把 docker image 放到仓库去，然后让
+k8s各个节点机，docker pull 这个make 后的 image.
+</p>
+</div>
+</li>
+
+<li><a id="start-kubernetes-local-cluster"></a>Start Kubernetes local cluster<br />
+<div class="outline-text-6" id="text-start-kubernetes-local-cluster">
+<p>
+略
+</p>
+</div>
+</li>
+
+<li><a id="配置-configmap"></a>配置 configmap<br />
+<div class="outline-text-6" id="text-配置-configmap">
+<p>
+这个小步骤，<a href="https://github.com/kubernetes-incubator/external-storage/tree/master/ceph/cephfs">https://github.com/kubernetes-incubator/external-storage/tree/master/ceph/cephfs</a>
+并没有写。但是确实是要走的。
+</p>
+
+<pre class="example">
+jlch@km:~/cephfs$ ls
+cephfs_provisioner  cephfs-provisioner.go  ceph-secret-admin.yaml  CHANGELOG.md  claim.yaml  class.yaml  configmap.yaml  deployment.yaml  Dockerfile  local-start.sh  Makefile  OWNERS  README.md  test-pod.yaml
+jlch@km:~/cephfs$ k apply -f configmap.yaml
+jlch@km:~/cephfs$ k get cm
+NAME                 DATA      AGE
+cephfs-provisioner   1         23h
+jlch@km:~/cephfs$
+</pre>
+</div>
+</li>
+
+<li><a id="create-a-ceph-admin-secret"></a>Create a Ceph admin secret<br />
+<div class="outline-text-6" id="text-create-a-ceph-admin-secret">
+<p>
+在 cephfs-admin 下
+</p>
+
+<pre class="example">
+ceph auth get client.admin 2&gt;&amp;1 |grep "key = " |awk '{print  $3'} |xargs echo -n &gt; /tmp/secret
+</pre>
+
+<p>
+把这个/tmp/secret 弄到 k8s-master 的 /tmp/secret
+</p>
+
+<p>
+在 k8s-master 下
+</p>
+
+<pre class="example">
+kubectl create secret generic ceph-secret-admin --from-file=/tmp/secret --namespace=kube-system
+</pre>
+</div>
+</li>
+
+<li><a id="start-cephfs-provisioner"></a>Start CephFS provisioner<br />
+<div class="outline-text-6" id="text-start-cephfs-provisioner">
+</div>
+
+<ul class="org-ul">
+<li><a id="方法1-deployment.yaml"></a>方法1 deployment.yaml<br />
+<div class="outline-text-7" id="text-方法1-deployment.yaml">
+<p>
+此方法的具体细节见
+<a href="http://blogtt.readthedocs.io/en/latest/k8s/cephfs/cephfs-k8s-deployment-faq.html">cephfs-k8s-deployment-faq.rst</a>
+</p>
+
+<pre class="example">
+kubectl create -f deployment.yaml
+</pre>
+</div>
+</li>
+
+<li><a id="方法2-docker"></a>方法2 docker<br />
+<div class="outline-text-7" id="text-方法2-docker">
+<pre class="example">
+docker run -ti -v /root/.kube:/kube -v /var/run/kubernetes:/var/run/kubernetes --privileged --net=host  cephfs-provisioner /usr/local/bin/cephfs-provisioner -master=http://127.0.0.1:8080 -kubeconfig=/kube/config -id=cephfs-provisioner-1
+</pre>
+
+<p>
+这个官方的配置肯定与我们的实际不同，修改一下配置哟。
+</p>
+
+<ol class="org-ol">
+<li>kube配置文件</li>
+</ol>
+
+<p>
+因为我们的机器是 /root/admin.conf 了哈, 所以直接修改名字成 config
+</p>
+
+<pre class="example">
+root@km:~# cat k8.export.sh
+sudo cp /etc/kubernetes/admin.conf $HOME/
+sudo chown $(id -u):$(id -g) $HOME/admin.conf
+export KUBECONFIG=$HOME/admin.conf
+root@km:~# cp admin.conf config
+root@km:~#
+</pre>
+
+<ol class="org-ol">
+<li>image</li>
+</ol>
+
+<p>
+我们 make 后的 image 是
+quay.io/external_storage/cephfs-provisioner:latest
+</p>
+
+<ol class="org-ol">
+<li>ceph参数 -master</li>
+</ol>
+
+<p>
+看一下service
+</p>
+
+<pre class="example">
+root@km:~/cephfs# k get svc --all-namespaces | grep default | grep kubernetes
+default       kubernetes             10.96.0.1        &lt;none&gt;        443/TCP                        71d
+root@km:~/cephfs#
+</pre>
+
+<p>
+所以我们这里是 -master=<a href="https://10.96.0.1/">https://10.96.0.1/</a> 或者
+-master=<a href="https://10.96.0.1/">https://10.96.0.1/</a>
+</p>
+
+<p>
+综合一下，我们的操作应该是：
+</p>
+
+<pre class="example">
+root@km:~# docker run -ti -v  /root/:/kube -v /var/run/kubernetes:/var/run/kubernetes --privileged --net=host  quay.io/external_storage/cephfs-provisioner /usr/local/bin/cephfs-provisioner -master=https://10.96.0.1/  -kubeconfig=/kube/config -id=cephfs-provisioner-1
+</pre>
+
+<p>
+好了，基于 docker 方式的 pv 应该是跑起来了。
+</p>
+</div>
+</li>
+
+<li><a id="方法1-deployment.yaml-与-方法2-docker-的对应关系"></a>方法1 deployment.yaml 与 方法2 docker 的对应关系<br />
+<div class="outline-text-7" id="text-方法1-deployment.yaml-与-方法2-docker-的对应关系">
+<p>
+方法2 docker
+</p>
+
+<pre class="example">
+docker run -ti -v  /home/jlch:/kube -v /var/run/kubernetes:/var/run/kubernetes --privileged --net=host  quay.io/external_storage/cephfs-provisioner /usr/local/bin/cephfs-provisioner -master=https://10.96.0.1/  -kubeconfig=/kube/admin.conf -id=cephfs-provisioner-1
+</pre>
+
+<p>
+对应于 方法1 deployment.yaml
+</p>
+
+<pre class="example">
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+    name: cephfs-provisioner
+spec:
+    replicas: 1
+    strategy:
+        type: Recreate
+    template:
+        metadata:
+            labels:
+                app: cephfs-provisioner
+        spec:
+            containers:
+            - name: cephfs-provisioner
+                image: "quay.io/external_storage/cephfs-provisioner:latest" # 对应 镜像
+                imagePullPolicy: IfNotPresent
+                env:
+                - name: PROVISIONER_NAME
+                    valueFrom:
+                        configMapKeyRef:
+                            key: provisioner.name
+                            name: cephfs-provisioner
+                command: # 这里对应 命令
+                    - "/usr/local/bin/cephfs-provisioner"
+                args: # 这里对应三个参数
+                    - "-id=cephfs-provisioner-1"
+                    - "-master=https://10.96.0.1/"
+                    - "-kubeconfig=/kube/admin.conf"
+                volumeMounts: # 对应 -v
+                    - mountPath: /kube
+                        name: kube-config
+                    - mountPath: /var/run/kubernetes
+                        name: kube-run-env
+            volumes:
+            - name: kube-config
+                hostPath:
+                    # directory location on host
+                    path: /home/jlch
+                    # this field is optional
+                    type: Directory
+            - name: kube-run-env
+                hostPath:
+                    # directory location on host
+                    path: /var/run/kubernetes
+                    # this field is optional
+                    type: Directory
+</pre>
+</div>
+</li>
+</ul>
+</li>
+
+<li><a id="create-a-cephfs-storage-class"></a>Create a CephFS Storage Class<br />
+<div class="outline-text-6" id="text-create-a-cephfs-storage-class">
+<p>
+Replace Ceph monitor's IP in class.yaml with your own and create storage
+class:
+</p>
+
+<pre class="example">
+kubectl create -f class.yaml
+</pre>
+</div>
+</li>
+
+<li><a id="create-a-claim"></a>Create a claim<br />
+<div class="outline-text-6" id="text-create-a-claim">
+<pre class="example">
+kubectl create -f claim.yaml
+</pre>
+</div>
+</li>
+
+<li><a id="create-a-pod-using-the-claim"></a>Create a Pod using the claim<br />
+<div class="outline-text-6" id="text-create-a-pod-using-the-claim">
+<pre class="example">
+kubectl create -f test-pod.yaml
+</pre>
+
+<p>
+因为我之前安装过 flannel 的缘故，所以部署在 kn2 上的时候，报出 Failed
+create pod sandbox. 错误来了。
+</p>
+
+<pre class="example">
+jlch@km:~/cephfs$ k describe  pod test-pod
+Name:         test-pod
+Namespace:    default
+Node:         kn2/192.168.31.118
+Start Time:   Fri, 24 Nov 2017 11:29:18 +0800
+Labels:       &lt;none&gt;
+Annotations:  kubectl.kubernetes.io/last-applied-configuration={"apiVersion":"v1","kind":"Pod","metadata":{"annotations":{},"name":"test-pod","namespace":"default"},"spec":{"containers":[{"args":["-c","touch /mnt/S...
+Status:       Pending
+IP:
+Containers:
+    test-pod:
+        Container ID:
+        Image:         gcr.io/google_containers/busybox:v1.1.1
+        Image ID:
+        Port:          &lt;none&gt;
+        Command:
+            /bin/sh
+        Args:
+            -c
+            touch /mnt/SUCCESS &amp;&amp; exit 0 || exit 1
+        State:          Waiting
+            Reason:       ContainerCreating
+        Ready:          False
+        Restart Count:  0
+        Environment:    &lt;none&gt;
+        Mounts:
+            /mnt from pvc (rw)
+            /var/run/secrets/kubernetes.io/serviceaccount from default-token-np6qz (ro)
+Conditions:
+    Type           Status
+    Initialized    True
+    Ready          False
+    PodScheduled   True
+Volumes:
+    pvc:
+        Type:       PersistentVolumeClaim (a reference to a PersistentVolumeClaim in the same namespace)
+        ClaimName:  claim1
+        ReadOnly:   false
+    default-token-np6qz:
+        Type:        Secret (a volume populated by a Secret)
+        SecretName:  default-token-np6qz
+        Optional:    false
+QoS Class:       BestEffort
+Node-Selectors:  &lt;none&gt;
+Tolerations:     node.alpha.kubernetes.io/notReady:NoExecute for 300s
+                                node.alpha.kubernetes.io/unreachable:NoExecute for 300s
+Events:
+    Type     Reason                  Age                From               Message
+    ----     ------                  ----               ----               -------
+    Normal   Scheduled               39s                default-scheduler  Successfully assigned test-pod to kn2
+    Normal   SuccessfulMountVolume   39s                kubelet, kn2       MountVolume.SetUp succeeded for volume "default-token-np6qz"
+    Normal   SuccessfulMountVolume   38s                kubelet, kn2       MountVolume.SetUp succeeded for volume "pvc-a2bdd1d1-d0c7-11e7-85d4-000c299a346f"
+    Warning  FailedCreatePodSandBox  31s (x8 over 38s)  kubelet, kn2       Failed create pod sandbox.
+    Warning  FailedSync              31s (x8 over 38s)  kubelet, kn2       Error syncing pod
+    Normal   SandboxChanged          31s (x7 over 38s)  kubelet, kn2       Pod sandbox changed, it will be killed and re-created.
+jlch@km:~/cephfs$
+</pre>
+
+<p>
+这里同样地，参考一下 cephfs-k8s-deployment-faq.rst 就可以了。
+</p>
+
+<p>
+查看一下pod
+</p>
+
+<pre class="example">
+jlch@km:~/cephfs$ k get pod
+NAME                                READY     STATUS    RESTARTS   AGE
+cephfs-provisioner-cff8d95c-6tgcs   1/1       Running   1          22m
+jlch@km:~/cephfs$
+</pre>
+
+<p>
+我的pod 去哪里了？？？ 噢。因为我的 pod
+是一次性的任务，它直接Completed了。所以要 带 -a 参数。
+</p>
+
+<pre class="example">
+jlch@km:~/cephfs$ k get pod -a
+NAME                                READY     STATUS      RESTARTS   AGE
+cephfs-provisioner-cff8d95c-6tgcs   1/1       Running     1          23m
+test-pod                            0/1       Completed   0          2m
+jlch@km:~/cephfs$
+</pre>
+
+<p>
+好了，确实是pod执行完了。
+</p>
+</div>
+</li>
+
+<li><a id="确认-cephfs-数据"></a>确认 cephfs 数据<br />
+<div class="outline-text-6" id="text-确认-cephfs-数据">
+<p>
+那怎么看我的效果呢？
+</p>
+</div>
+
+<ul class="org-ul">
+<li><a id="cephfs-client-内核版本4.4验证"></a>cephfs-client （内核版本4.4）验证<br />
+<div class="outline-text-7" id="text-cephfs-client-内核版本4.4验证">
+<pre class="example">
+cephu@ceph-client:~/mycephfs$ sudo mount -t ceph 192.168.31.114:6789:/ /mnt/mycephfs -o name=admin,secretfile=admin.secret
+unable to read secretfile: No such file or directory
+error reading secret file
+failed to parse ceph_options
+cephu@ceph-client:~/mycephfs$ cd  # 这个目录不对，没有 admin.secret 文件
+cephu@ceph-client:~$ ls
+admin.secret  mycephfs  release.asc
+cephu@ceph-client:~$ cat admin.secret # 看到了吧，这个密码，就是 cephfs 的密码呀。重要
+AQCtj+****************IQZJnaJSPEz4jdGw==
+cephu@ceph-client:~$
+cephu@ceph-client:~$ sudo mount -t ceph 192.168.31.114:6789:/ /mnt/mycephfs -o name=admin,secretfile=admin.secret  # mount 成功
+cephu@ceph-client:~$ ls /mnt/mycephfs/
+a.txt  b.txt  c.txt  h.txt  volumes
+cephu@ceph-client:~$ cd /mnt/mycephfs/
+cephu@ceph-client:/mnt/mycephfs$ ls
+a.txt  b.txt  c.txt  h.txt  volumes
+cephu@ceph-client:/mnt/mycephfs$ cd volumes/
+cephu@ceph-client:/mnt/mycephfs/volumes$ ls
+_deleting  k8s  kubernetes  _kubernetes:kubernetes-dynamic-pvc-5467e02a-c132-11e7-bda7-000c299a346f.meta  _kubernetes:kubernetes-dynamic-pvc-a2c667ad-d0c7-11e7-b656-0a580af40148.meta
+cephu@ceph-client:/mnt/mycephfs/volumes$ cd kubernetes/
+cephu@ceph-client:/mnt/mycephfs/volumes/kubernetes$ ls
+haha  hahaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa  hahaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaabbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb  kubernetes-dynamic-pvc-5467e02a-c132-11e7-bda7-000c299a346f  kubernetes-dynamic-pvc-a2c667ad-d0c7-11e7-b656-0a580af40148
+cephu@ceph-client:/mnt/mycephfs/volumes/kubernetes$ ll
+total 0
+drwxr-xr-x 1 root root 0 Nov 24 11:29 ./
+drwxr-xr-x 1 root root 0 Nov 24 11:29 ../
+drwxr-xr-x 1 root root 0 Nov  1 14:35 haha/
+drwxr-xr-x 1 root root 0 Nov  1 14:36 hahaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/
+drwxr-xr-x 1 root root 0 Nov  1 14:38 hahaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaabbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb/
+drwxr-xr-x 1 root root 0 Nov  4 15:37 kubernetes-dynamic-pvc-5467e02a-c132-11e7-bda7-000c299a346f/
+drwxr-xr-x 1 root root 0 Nov 24 11:36 kubernetes-dynamic-pvc-a2c667ad-d0c7-11e7-b656-0a580af40148/  # 哈哈，从时间上看，这个就是我们要的文件夹。
+cephu@ceph-client:/mnt/mycephfs/volumes/kubernetes$ ll kubernetes-dynamic-pvc-a2c667ad-d0c7-11e7-b656-0a580af40148/
+ls: reading directory 'kubernetes-dynamic-pvc-a2c667ad-d0c7-11e7-b656-0a580af40148/': Input/output error  # what? 又是这个问题。升级内核去吧。我们这里不升级了哈。见 cephfs-k8s-faq.rst
+total 0
+drwxr-xr-x 1 root root 0 Nov 24 11:36 ./
+drwxr-xr-x 1 root root 0 Nov 24 11:29 ../
+cephu@ceph-client:/mnt/mycephfs/volumes/kubernetes$ cd
+</pre>
+
+<p>
+好了，这里没用，换一个内核版本 4.10.0 以上的机器来吧。先umount 吧。
+</p>
+
+<pre class="example">
+cephu@ceph-client:/mnt/mycephfs/volumes/kubernetes$ cd
+cephu@ceph-client:~$ umount /mnt/mycephfs/
+cephu@ceph-client:~$ ls /mnt/mycephfs/
+cephu@ceph-client:~$ mount
+sysfs on /sys type sysfs (rw,nosuid,nodev,noexec,relatime)
+proc on /proc type proc (rw,nosuid,nodev,noexec,relatime)
+udev on /dev type devtmpfs (rw,nosuid,relatime,size=4067060k,nr_inodes=1016765,mode=755)
+devpts on /dev/pts type devpts (rw,nosuid,noexec,relatime,gid=5,mode=620,ptmxmode=000)
+tmpfs on /run type tmpfs (rw,nosuid,noexec,relatime,size=817444k,mode=755)
+/dev/mapper/ubuntu--vg-root on / type ext4 (rw,relatime,errors=remount-ro,data=ordered)
+securityfs on /sys/kernel/security type securityfs (rw,nosuid,nodev,noexec,relatime)
+tmpfs on /dev/shm type tmpfs (rw,nosuid,nodev)
+tmpfs on /run/lock type tmpfs (rw,nosuid,nodev,noexec,relatime,size=5120k)
+tmpfs on /sys/fs/cgroup type tmpfs (ro,nosuid,nodev,noexec,mode=755)
+cgroup on /sys/fs/cgroup/systemd type cgroup (rw,nosuid,nodev,noexec,relatime,xattr,release_agent=/lib/systemd/systemd-cgroups-agent,name=systemd)
+pstore on /sys/fs/pstore type pstore (rw,nosuid,nodev,noexec,relatime)
+cgroup on /sys/fs/cgroup/freezer type cgroup (rw,nosuid,nodev,noexec,relatime,freezer)
+cgroup on /sys/fs/cgroup/memory type cgroup (rw,nosuid,nodev,noexec,relatime,memory)
+cgroup on /sys/fs/cgroup/hugetlb type cgroup (rw,nosuid,nodev,noexec,relatime,hugetlb)
+cgroup on /sys/fs/cgroup/perf_event type cgroup (rw,nosuid,nodev,noexec,relatime,perf_event)
+cgroup on /sys/fs/cgroup/blkio type cgroup (rw,nosuid,nodev,noexec,relatime,blkio)
+cgroup on /sys/fs/cgroup/devices type cgroup (rw,nosuid,nodev,noexec,relatime,devices)
+cgroup on /sys/fs/cgroup/cpu,cpuacct type cgroup (rw,nosuid,nodev,noexec,relatime,cpu,cpuacct)
+cgroup on /sys/fs/cgroup/net_cls,net_prio type cgroup (rw,nosuid,nodev,noexec,relatime,net_cls,net_prio)
+cgroup on /sys/fs/cgroup/pids type cgroup (rw,nosuid,nodev,noexec,relatime,pids)
+cgroup on /sys/fs/cgroup/cpuset type cgroup (rw,nosuid,nodev,noexec,relatime,cpuset)
+systemd-1 on /proc/sys/fs/binfmt_misc type autofs (rw,relatime,fd=32,pgrp=1,timeout=0,minproto=5,maxproto=5,direct)
+hugetlbfs on /dev/hugepages type hugetlbfs (rw,relatime)
+debugfs on /sys/kernel/debug type debugfs (rw,relatime)
+mqueue on /dev/mqueue type mqueue (rw,relatime)
+fusectl on /sys/fs/fuse/connections type fusectl (rw,relatime)
+/dev/sda1 on /boot type ext2 (rw,relatime,block_validity,barrier,user_xattr,acl)
+lxcfs on /var/lib/lxcfs type fuse.lxcfs (rw,nosuid,nodev,relatime,user_id=0,group_id=0,allow_other)
+/dev/mapper/ubuntu--vg-root on /var/lib/docker/aufs type ext4 (rw,relatime,errors=remount-ro,data=ordered)
+none on /var/lib/docker/aufs/mnt/3ebf0690df4cb6798be2be8c6bee8a77eacfa7e89c42acacc2a97ea2bc3af09a type aufs (rw,relatime,si=781e745ed7325e3c,dio,dirperm1)
+nsfs on /run/docker/netns/default type nsfs (rw)
+shm on /var/lib/docker/containers/9e4d9c65734a4e566b4303071ec85f0ea1a18efb2f077e51d09d8457039b725d/shm type tmpfs (rw,nosuid,nodev,noexec,relatime,size=65536k)
+none on /var/lib/docker/aufs/mnt/1a10a53a1baa1de36489cc6f35562790a3659b0dfa08331ee3521d5b89f4f848 type aufs (rw,relatime,si=781e745c1d80ee3c,dio,dirperm1)
+shm on /var/lib/docker/containers/9ceeadb3b8184a36d946bd1aeb98a50a0682b75de141c2195373faa3786bbe66/shm type tmpfs (rw,nosuid,nodev,noexec,relatime,size=65536k)
+tmpfs on /run/user/113 type tmpfs (rw,nosuid,nodev,relatime,size=817444k,mode=700,uid=113,gid=120)
+tmpfs on /run/user/1003 type tmpfs (rw,nosuid,nodev,relatime,size=817444k,mode=700,uid=1003,gid=1003)
+tmpfs on /run/user/1000 type tmpfs (rw,nosuid,nodev,relatime,size=817444k,mode=700,uid=1000,gid=1000)
+cephu@ceph-client:~$ ls /mnt/mycephfs/
+cephu@ceph-client:~$
+</pre>
+
+<p>
+可以了。
+</p>
+</div>
+</li>
+
+<li><a id="kn1-内核版本4.12.0验证"></a>kn1 （内核版本4.12.0）验证<br />
+<div class="outline-text-7" id="text-kn1-内核版本4.12.0验证">
+<p>
+查内核版本
+</p>
+
+<pre class="example">
+jlch@kn1:~$ uname -a
+Linux kn1 4.12.0-041200-generic #201707022031 SMP Mon Jul 3 00:32:52 UTC 2017 x86_64 x86_64 x86_64 GNU/Linux
+jlch@kn1:~$
+</pre>
+
+<p>
+查一下mount下已有的ceph
+</p>
+
+<pre class="example">
+jlch@kn1:~$ mount | grep ceph
+jlch@kn1:~$
+</pre>
+
+<p>
+把密码文件admin.secret搞过来
+</p>
+
+<pre class="example">
+jlch@kn1:~$ ls
+10-kubeadm.conf  apt.conf                     etc.kubernetes     hpa-example.sh  k3-dockerlibraryk8s.sh  linux-image-4.12.0-041200-generic_4.12.0-041200.201707022031_amd64.deb  nginx-dockerlibraryk8s.sh  redis.sh
+admin.conf       busybox-dockerlibraryk8s.sh  hello-frontend.sh  image           k8                      liveness-dockerlibraryk8s.sh                                            node-hello.sh              registry.crt
+admin.secret     docker                       hello-go-gke.sh    job-wq-2        k8.export.sh            mydockersimages.tar                                                     proxy.sh                   xtrabackup-dockerlibraryk8s.sh
+</pre>
+
+<p>
+mount
+</p>
+
+<pre class="example">
+jlch@kn1:~$ sudo mount -t ceph 192.168.31.114:6789:/ /mnt/mycephfs -o name=admin,secretfile=admin.secret
+jlch@kn1:~$ mount | grep ceph
+192.168.31.114:6789:/ on /mnt/mycephfs type ceph (rw,relatime,name=admin,secret=&lt;hidden&gt;,acl)
+jlch@kn1:~$
+</pre>
+
+<p>
+成功了，查一下文件
+</p>
+
+<pre class="example">
+jlch@kn1:~$ ls /mnt/mycephfs/
+a.txt    b.txt    c.txt    h.txt    volumes/
+jlch@kn1:~$ cd /mnt/mycephfs/volumes/
+jlch@kn1:/mnt/mycephfs/volumes$ ls
+_deleting  k8s  kubernetes  _kubernetes:kubernetes-dynamic-pvc-5467e02a-c132-11e7-bda7-000c299a346f.meta  _kubernetes:kubernetes-dynamic-pvc-a2c667ad-d0c7-11e7-b656-0a580af40148.meta
+jlch@kn1:/mnt/mycephfs/volumes$ cd kubernetes/
+jlch@kn1:/mnt/mycephfs/volumes/kubernetes$ ll
+total 0
+drwxr-xr-x 1 root root 5 Nov 24 11:29 ./
+drwxr-xr-x 1 root root 5 Nov 24 11:29 ../
+drwxr-xr-x 1 root root 0 Nov  1 14:35 haha/
+drwxr-xr-x 1 root root 0 Nov  1 14:36 hahaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/
+drwxr-xr-x 1 root root 0 Nov  1 14:38 hahaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaabbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb/
+drwxr-xr-x 1 root root 1 Nov  4 15:37 kubernetes-dynamic-pvc-5467e02a-c132-11e7-bda7-000c299a346f/
+drwxr-xr-x 1 root root 1 Nov 24 11:36 kubernetes-dynamic-pvc-a2c667ad-d0c7-11e7-b656-0a580af40148/  # 哈哈，从时间上看，这个就是我们要的文件夹。
+jlch@kn1:/mnt/mycephfs/volumes/kubernetes$ cd kubernetes-dynamic-pvc-a2c667ad-d0c7-11e7-b656-0a580af40148/
+jlch@kn1:/mnt/mycephfs/volumes/kubernetes/kubernetes-dynamic-pvc-a2c667ad-d0c7-11e7-b656-0a580af40148$ ls
+SUCCESS
+jlch@kn1:/mnt/mycephfs/volumes/kubernetes/kubernetes-dynamic-pvc-a2c667ad-d0c7-11e7-b656-0a580af40148$
+</pre>
+
+<p>
+哈哈，找到了之前由 test-pod 创建的文件 SUCCESS。
+</p>
+
+<p>
+到此，<a href="https://github.com/kubernetes-incubator/external-storage/tree/master/ceph/cephfs">https://github.com/kubernetes-incubator/external-storage/tree/master/ceph/cephfs</a>
+的几个步骤已全走完了。
+</p>
+
+<p>
+game over!
+</p>
+</div>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+
+<div id="outline-container-orgc190238" class="outline-4">
+<h4 id="cephfs-k8s-make-by-go-get">kubernetes-cephfs-make-by-go-get&#xa0;&#xa0;&#xa0;<span class="tag"><span class="make">make</span></span></h4>
+<div class="outline-text-4" id="text-cephfs-k8s-make-by-go-get">
+</div>
+
+<ul class="org-ul">
+<li><a id="env"></a>ENV<br />
+<div class="outline-text-5" id="text-env">
+<pre class="example">
+k8s-master 192.168.31.120 km master
+k8s-node1 192.168.31.119 kn1 node1
+k8s-node2 192.168.31.118 kn2 node2
+ceph-client 192.168.31.172
+ceph-mon1 192.168.31.114
+</pre>
+
+<p>
+这次的make, 可以在任何地方完成，只要满足：golang 1.7 以上的版本
+</p>
+
+<p>
+我在 km,ceph-client,ceph-mon1 上都完成过
+</p>
+</div>
+</li>
+
+<li><a id="安装golang"></a>安装golang<br />
+<div class="outline-text-5" id="text-安装golang">
+<p>
+如果已有安装，请忽略这一步
+</p>
+
+<p>
+安装 golang 1.7 以上的版本。 我们这里安装 1.9.1
+</p>
+
+<blockquote>
+<p>
+cd <i>home/jlch</i>
+tar -xvf go1.9.2.linux-amd64.tar
+ls go
+export PATH=$PATH:/home/jlch/go/bin
+</p>
+</blockquote>
+</div>
+</li>
+
+<li><a id="验证go"></a>验证go<br />
+<div class="outline-text-5" id="text-验证go">
+<pre class="example">
+go version
+</pre>
+</div>
+</li>
+
+<li><a id="配置-gopath"></a>配置 GOPATH<br />
+<div class="outline-text-5" id="text-配置-gopath">
+<pre class="example">
+mkdir gopath
+export GOPATH=/home/jlch/gopath/
+</pre>
+</div>
+</li>
+
+<li><a id="go-get"></a>go get<br />
+<div class="outline-text-5" id="text-go-get">
+<pre class="example">
+go get github.com/kubernetes-incubator/external-storage
+</pre>
+</div>
+</li>
+
+<li><a id="配置-dockerfile"></a>配置 Dockerfile<br />
+<div class="outline-text-5" id="text-配置-dockerfile">
+<p>
+后来发现 docker image 的文件不对。
+</p>
+
+<p>
+这个地方的 ENV CEPH_VERSION "jewel" 应该修改成 ENV CEPH_VERSION "luminous"
+</p>
+
+<p>
+然后再 make
+</p>
+
+<pre class="example">
+cd /github.com/kubernetes-incubator/external-storage/ceph/cephfs/
+vi Dockerfile
+</pre>
+
+<p>
+看一下。
+</p>
+
+<pre class="example">
+root@km:~/cephfs# cat ~/kubernetes.io/TUTORIALS/Stateful-Applications/cephfs-stateful/external-storage/ceph/cephfs/Dockerfile
+# Copyright 2017 The Kubernetes Authors.
+#
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+#     http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+
+FROM centos:7
+
+ENV CEPH_VERSION "jewel"
+RUN rpm -Uvh https://download.ceph.com/rpm-$CEPH_VERSION/el7/noarch/ceph-release-1-1.el7.noarch.rpm &amp;&amp; \
+yum install -y epel-release &amp;&amp; \
+yum install -y ceph-common python-cephfs
+
+COPY cephfs-provisioner /usr/local/bin/cephfs-provisioner
+COPY cephfs_provisioner/cephfs_provisioner.py /usr/local/bin/cephfs_provisioner
+CMD ["chmod", "o+x", "/usr/local/bin/cephfs_provisioner"]
+root@km:~/cephfs#
+</pre>
+</div>
+</li>
+
+<li><a id="make"></a>make<br />
+<div class="outline-text-5" id="text-make">
+<pre class="example">
+cd gopath/src/
+cd ./github.com/kubernetes-incubator/external-storage/
+</pre>
+
+<p>
+这里如果 make ceph/cephfs/ 直接这么走，会报如下错误。
+</p>
+
+<pre class="example">
+[tom@test_240 external-storage]$ make ceph/cephfs/
+make: 对“ceph/cephfs/”无需做任何事。
+[tom@test_240 external-storage]$
+</pre>
+
+<p>
+所以要 cd ceph/cephfs/ &amp;&amp; make ，如下：
+</p>
+
+<pre class="example">
+[tom@test_240 external-storage]$ cd ceph/cephfs/
+[tom@test_240 cephfs]$ ls
+cephfs_provisioner     ceph-secret-admin.yaml  claim.yaml  configmap.yaml   Dockerfile      Makefile  README.md
+cephfs-provisioner.go  CHANGELOG.md            class.yaml  deployment.yaml  local-start.sh  OWNERS    test-pod.yaml
+[tom@test_240 cephfs]$ make
+CGO_ENABLED=0 GOOS=linux go build -a -ldflags '-extldflags "-static"' -o cephfs-provisioner cephfs-provisioner.go
+[tom@test_240 cephfs]$
+</pre>
+
+<p>
+这个时候，在 ceph/cephfs/ 下会多出一个 cephfs-provisioner 文件
+</p>
+
+<pre class="example">
+[tom@test_240 cephfs]$ ls
+cephfs_provisioner  cephfs-provisioner  cephfs-provisioner.go  ceph-secret-admin.yaml  CHANGELOG.md  claim.yaml  class.yaml  configmap.yaml  deployment.yaml  Dockerfile  local-start.sh  Makefile  OWNERS  README.md  test-pod.yaml
+[tom@test_240 cephfs]$
+</pre>
+</div>
+</li>
+
+<li><a id="make-push"></a>make push<br />
+<div class="outline-text-5" id="text-make-push">
+<p>
+生成 docker image , quay.io/external_storage/cephfs-provisioner
+</p>
+
+<pre class="example">
+make push
+</pre>
+
+<p>
+如果说出现下面这个样子，说明是 make 成了 docker image了，但是 Push没有成功（应该是指 push 到 docker.io 没有成功）
+</p>
+
+<pre class="example">
+79c182856123: Preparing
+cf516324493c: Preparing
+unauthorized: access to the requested resource is not authorized
+make: *** [push] 错误 1
+[tom@test_240 cephfs]$
+</pre>
+</div>
+</li>
+
+<li><a id="push-到-registry"></a>push 到 registry<br />
+<div class="outline-text-5" id="text-push-到-registry">
+<p>
+因为有 reg.jlch.com:5000 这个 registry 了，先登录
+</p>
+
+<pre class="example">
+docker login reg.jlch.com:5000
+docker tag quay.io/external_storage/cephfs-provisioner:latest reg.jlch.com:5000/quay.io/external_storage/cephfs-provisioner:20171114
+docker push reg.jlch.com:5000/quay.io/external_storage/cephfs-provisioner:20171114
+</pre>
+
+<p>
+删除
+</p>
+
+<pre class="example">
+docker rmi reg.jlch.com:5000/quay.io/external_storage/cephfs-provisioner:20171114
+</pre>
+</div>
+</li>
+
+<li><a id="game-over"></a>game over<br />
+<div class="outline-text-5" id="text-game-over">
+</div>
+</li>
+</ul>
+</div>
+
+<div id="outline-container-org5a8af96" class="outline-4">
+<h4 id="org5a8af96">kubernetes中cephfs的deployment的FAQ&#xa0;&#xa0;&#xa0;<span class="tag"><span class="faq">faq</span></span></h4>
+<div class="outline-text-4" id="text-org5a8af96">
+</div>
+<ul class="org-ul">
+<li><a id="k8s-cephfs-在-deployment.yaml-中的使用"></a>k8s cephfs 在 deployment.yaml 中的使用<br />
+<div class="outline-text-5" id="text-k8s-cephfs-在-deployment.yaml-中的使用">
+</div>
+
+<ul class="org-ul">
+<li><a id="environment"></a>Environment<br />
+<div class="outline-text-6" id="text-environment">
+<pre class="example">
+k8s-master 192.168.31.120 km master
+k8s-node1 192.168.31.119 kn1 node1
+k8s-node2 192.168.31.118 kn2 node2
+</pre>
+</div>
+</li>
+
+<li><a id="配置-deployment.yaml"></a>配置 deployment.yaml<br />
+<div class="outline-text-6" id="text-配置-deployment.yaml">
+<pre class="example">
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+    name: cephfs-provisioner
+spec:
+    replicas: 1
+    strategy:
+        type: Recreate
+    template:
+        metadata:
+            labels:
+                app: cephfs-provisioner
+        spec:
+            containers:
+            - name: cephfs-provisioner
+                image: "quay.io/external_storage/cephfs-provisioner:latest" # 对应 镜像
+                imagePullPolicy: IfNotPresent
+                env:
+                - name: PROVISIONER_NAME
+                    valueFrom:
+                        configMapKeyRef:
+                            key: provisioner.name
+                            name: cephfs-provisioner
+                command: # 这里对应 命令
+                    - "/usr/local/bin/cephfs-provisioner"
+                args: # 这里对应三个参数
+                    - "-id=cephfs-provisioner-1"
+                    - "-master=https://10.96.0.1/"
+                    - "-kubeconfig=/kube/admin.conf"
+                volumeMounts: # 对应 -v
+                    - mountPath: /kube
+                        name: kube-config
+                    - mountPath: /var/run/kubernetes
+                        name: kube-run-env
+            volumes:
+            - name: kube-config
+                hostPath:
+                    # directory location on host
+                    path: /home/jlch
+                    # this field is optional
+                    type: Directory
+            - name: kube-run-env
+                hostPath:
+                    # directory location on host
+                    path: /var/run/kubernetes
+                    # this field is optional
+                    type: Directory
+</pre>
+
+<p>
+对应于
+</p>
+
+<p>
+方法1 docker
+</p>
+
+<pre class="example">
+docker run -ti -v  /home/jlch:/kube -v /var/run/kubernetes:/var/run/kubernetes --privileged --net=host  quay.io/external_storage/cephfs-provisioner /usr/local/bin/cephfs-provisioner -master=https://10.96.0.1/  -kubeconfig=/kube/admin.conf -id=cephfs-provisioner-1
+</pre>
+</div>
+</li>
+
+<li><a id="apply"></a>apply<br />
+<div class="outline-text-6" id="text-apply">
+<pre class="example">
+jlch@km:~/cephfs$ k apply -f deployment.yaml
+deployment "cephfs-provisioner" created
+jlch@km:~/cephfs$ k get pods
+NAME                                READY     STATUS              RESTARTS   AGE
+cephfs-provisioner-cff8d95c-8b498   0/1       ContainerCreating   0          3s
+</pre>
+</div>
+</li>
+
+<li><a id="describe"></a>describe<br />
+<div class="outline-text-6" id="text-describe">
+<p>
+报错了
+</p>
+
+<pre class="example">
+jlch@km:~/cephfs$ k describe pod cephfs-provisioner-cff8d95c-8b498
+Name:           cephfs-provisioner-cff8d95c-8b498
+Namespace:      default
+Node:           kn1/192.168.31.119
+Start Time:     Fri, 24 Nov 2017 11:13:06 +0800
+Labels:         app=cephfs-provisioner
+                pod-template-hash=79948517
+Annotations:    kubernetes.io/created-by={"kind":"SerializedReference","apiVersion":"v1","reference":{"kind":"ReplicaSet","namespace":"default","name":"cephfs-provisioner-cff8d95c","uid":"645fa2f3-d0c5-11e7-85d4-000c...
+Status:         Pending
+IP:
+Created By:     ReplicaSet/cephfs-provisioner-cff8d95c
+Controlled By:  ReplicaSet/cephfs-provisioner-cff8d95c
+Containers:
+cephfs-provisioner:
+    Container ID:
+    Image:         quay.io/external_storage/cephfs-provisioner:latest
+    Image ID:
+    Port:          &lt;none&gt;
+    Command:
+    /usr/local/bin/cephfs-provisioner
+    Args:
+    -id=cephfs-provisioner-1
+    -master=https://10.96.0.1/
+    -kubeconfig=/kube/admin.conf
+    State:          Waiting
+    Reason:       ContainerCreating
+    Ready:          False
+    Restart Count:  0
+    Environment:
+    PROVISIONER_NAME:  &lt;set to the key 'provisioner.name' of config map 'cephfs-provisioner'&gt;  Optional: false
+    Mounts:
+    /kube from kube-config (rw)
+    /var/run/kubernetes from kube-run-env (rw)
+    /var/run/secrets/kubernetes.io/serviceaccount from default-token-np6qz (ro)
+Conditions:
+Type           Status
+Initialized    True
+Ready          False
+PodScheduled   True
+Volumes:
+kube-config:
+    Type:  HostPath (bare host directory volume)
+    Path:  /home/jlch
+kube-run-env:
+    Type:  HostPath (bare host directory volume)
+    Path:  /var/run/kubernetes
+default-token-np6qz:
+    Type:        Secret (a volume populated by a Secret)
+    SecretName:  default-token-np6qz
+    Optional:    false
+QoS Class:       BestEffort
+Node-Selectors:  &lt;none&gt;
+Tolerations:     node.alpha.kubernetes.io/notReady:NoExecute for 300s
+                node.alpha.kubernetes.io/unreachable:NoExecute for 300s
+Events:
+Type     Reason                  Age                From               Message
+----     ------                  ----               ----               -------
+Normal   Scheduled               20s                default-scheduler  Successfully assigned cephfs-provisioner-cff8d95c-8b498 to kn1
+Normal   SuccessfulMountVolume   19s                kubelet, kn1       MountVolume.SetUp succeeded for volume "kube-run-env"
+Normal   SuccessfulMountVolume   19s                kubelet, kn1       MountVolume.SetUp succeeded for volume "kube-config"
+Normal   SuccessfulMountVolume   19s                kubelet, kn1       MountVolume.SetUp succeeded for volume "default-token-np6qz"
+Warning  FailedCreatePodSandBox  12s (x7 over 18s)  kubelet, kn1       Failed create pod sandbox.
+Warning  FailedSync              11s (x8 over 18s)  kubelet, kn1       Error syncing pod
+Normal   SandboxChanged          11s (x7 over 17s)  kubelet, kn1       Pod sandbox changed, it will be killed and re-created.
+jlch@km:~/cephfs$
+</pre>
+
+<p>
+看到了吧。是 部署在 kn1 上的时候，报出 Failed create pod sandbox.
+错误来了。 那就要去 kn1 上查看日志了。
+</p>
+
+<pre class="example">
+root@kn1:~# vi /var/log/syslog
+...
+# 查找 ceph
+Nov 24 09:09:19 kn1 systemd-udevd[23014]: Could not generate persistent MAC address for vethf620eecc: No such file or directory
+Nov 24 09:09:19 kn1 kubelet[6008]: E1124 09:09:19.678998    6008 cni.go:301] Error adding network: "cni0" already has an IP address different from 10.244.1.1/24
+Nov 24 09:09:19 kn1 kubelet[6008]: E1124 09:09:19.679048    6008 cni.go:250] Error while adding to cni network: "cni0" already has an IP address different from 10.244.1.1/24
+Nov 24 09:09:19 kn1 kernel: [1788519.065714] cni0: port 1(vethf620eecc) entered disabled state
+...
+</pre>
+
+<p>
+查找关键字 ceph， 找到了上面的信息，明显是与 cni0
+相关。这上面讲了，"cni0" already has an IP address different from
+10.244.1.1/24， 也就是说，可能现有已有一个cni0,
+但是与kubernetes自动给它分配的ip: 10.244.1.1/24, 不一致了。 查一下ip,
+</p>
+
+<pre class="example">
+root@kn1:~# ip a
+1: lo: &lt;LOOPBACK,UP,LOWER_UP&gt; mtu 65536 qdisc noqueue state UNKNOWN group default qlen 1000
+    link/loopback 00:00:00:00:00:00 brd 00:00:00:00:00:00
+    inet 127.0.0.1/8 scope host lo
+    valid_lft forever preferred_lft forever
+    inet6 ::1/128 scope host
+    valid_lft forever preferred_lft forever
+2: ens160: &lt;BROADCAST,MULTICAST,UP,LOWER_UP&gt; mtu 1500 qdisc mq state UP group default qlen 1000
+    link/ether 00:0c:29:6f:74:6a brd ff:ff:ff:ff:ff:ff
+    inet 192.168.31.119/24 brd 192.168.31.255 scope global ens160
+    valid_lft forever preferred_lft forever
+    inet6 fe80::20c:29ff:fe6f:746a/64 scope link
+    valid_lft forever preferred_lft forever
+3: docker0: &lt;NO-CARRIER,BROADCAST,MULTICAST,UP&gt; mtu 1500 qdisc noqueue state DOWN group default
+    link/ether 02:42:96:2d:2c:25 brd ff:ff:ff:ff:ff:ff
+    inet 172.17.0.1/16 scope global docker0
+    valid_lft forever preferred_lft forever
+    inet6 fe80::42:96ff:fe2d:2c25/64 scope link
+    valid_lft forever preferred_lft forever
+4: flannel.1: &lt;BROADCAST,MULTICAST,UP,LOWER_UP&gt; mtu 1450 qdisc noqueue state UNKNOWN group default
+    link/ether 9e:b7:c9:ed:7e:cb brd ff:ff:ff:ff:ff:ff
+    inet 10.244.2.0/32 scope global flannel.1
+    valid_lft forever preferred_lft forever
+    inet6 fe80::9cb7:c9ff:feed:7ecb/64 scope link
+    valid_lft forever preferred_lft forever
+4639: cni0: &lt;BROADCAST,MULTICAST,UP,LOWER_UP&gt; mtu 1450 qdisc noqueue state UP group default qlen 1000
+    link/ether 0a:58:0a:f4:02:01 brd ff:ff:ff:ff:ff:ff
+    inet 10.244.2.1/24 scope global cni0
+    valid_lft forever preferred_lft forever
+    inet6 fe80::b401:beff:fedf:2203/64 scope link
+    valid_lft forever preferred_lft forever
+4640: veth3fec5211@if3: &lt;BROADCAST,MULTICAST,UP,LOWER_UP&gt; mtu 1450 qdisc noqueue master cni0 state UP group default
+    link/ether 72:3c:c8:35:61:6f brd ff:ff:ff:ff:ff:ff link-netnsid 0
+    inet6 fe80::703c:c8ff:fe35:616f/64 scope link
+    valid_lft forever preferred_lft forever
+root@kn1:~#
+</pre>
+
+<p>
+我去，果然是。这里面的是 10.244.2.1/24。我靠。 怎么办？怎么办？
+修改cni0呗。
+</p>
+</div>
+</li>
+
+<li><a id="修改-cni0"></a>修改 cni0<br />
+<div class="outline-text-6" id="text-修改-cni0">
+<pre class="example">
+root@kn1:~# systemctl stop docker
+root@kn1:~# ip a
+root@kn1:~# brctl --help
+root@kn1:~# brctl # 这里会提示怎么安装。
+root@kn1:~# apt install bridge-utils
+root@kn1:~# brctl --help
+root@kn1:~# ifconfig cni0 down
+root@kn1:~# brctl delbr cni0
+root@kn1:~# ip a
+root@kn1:~# systemctl start docker
+root@kn1:~# ip a # 这个时候，docker 启动的 containers 会自动帮助把 cni0 启动起来的。
+</pre>
+</div>
+</li>
+
+<li><a id="检查"></a>检查<br />
+<div class="outline-text-6" id="text-检查">
+<p>
+最后的效果
+</p>
+
+<pre class="example">
+root@kn1:~# ip a
+1: lo: &lt;LOOPBACK,UP,LOWER_UP&gt; mtu 65536 qdisc noqueue state UNKNOWN group default qlen 1000
+    link/loopback 00:00:00:00:00:00 brd 00:00:00:00:00:00
+    inet 127.0.0.1/8 scope host lo
+    valid_lft forever preferred_lft forever
+    inet6 ::1/128 scope host
+    valid_lft forever preferred_lft forever
+2: ens160: &lt;BROADCAST,MULTICAST,UP,LOWER_UP&gt; mtu 1500 qdisc mq state UP group default qlen 1000
+    link/ether 00:0c:29:6f:74:6a brd ff:ff:ff:ff:ff:ff
+    inet 192.168.31.119/24 brd 192.168.31.255 scope global ens160
+    valid_lft forever preferred_lft forever
+    inet6 fe80::20c:29ff:fe6f:746a/64 scope link
+    valid_lft forever preferred_lft forever
+3: docker0: &lt;NO-CARRIER,BROADCAST,MULTICAST,UP&gt; mtu 1500 qdisc noqueue state DOWN group default
+    link/ether 02:42:96:2d:2c:25 brd ff:ff:ff:ff:ff:ff
+    inet 172.17.0.1/16 scope global docker0
+    valid_lft forever preferred_lft forever
+    inet6 fe80::42:96ff:fe2d:2c25/64 scope link
+    valid_lft forever preferred_lft forever
+4: flannel.1: &lt;BROADCAST,MULTICAST,UP,LOWER_UP&gt; mtu 1450 qdisc noqueue state UNKNOWN group default
+    link/ether ba:84:65:bb:4d:68 brd ff:ff:ff:ff:ff:ff
+    inet 10.244.1.0/32 scope global flannel.1
+    valid_lft forever preferred_lft forever
+    inet6 fe80::b884:65ff:febb:4d68/64 scope link
+    valid_lft forever preferred_lft forever
+4639: cni0: &lt;BROADCAST,MULTICAST,UP,LOWER_UP&gt; mtu 1450 qdisc noqueue state UP group default qlen 1000
+    link/ether 0a:58:0a:f4:01:01 brd ff:ff:ff:ff:ff:ff
+    inet 10.244.1.1/24 scope global cni0
+    valid_lft forever preferred_lft forever
+    inet6 fe80::f48c:7eff:fecd:4e08/64 scope link
+    valid_lft forever preferred_lft forever
+4640: veth3fec5211@if3: &lt;BROADCAST,MULTICAST,UP,LOWER_UP&gt; mtu 1450 qdisc noqueue master cni0 state UP group default
+    link/ether 72:3c:c8:35:61:6f brd ff:ff:ff:ff:ff:ff link-netnsid 0
+    inet6 fe80::703c:c8ff:fe35:616f/64 scope link
+    valid_lft forever preferred_lft forever
+root@kn1:~#
+</pre>
+
+<p>
+好了，再回到 km ，检查 deployment,
+</p>
+
+<pre class="example">
+jlch@km:~/cephfs$ k get pods
+NAME                                READY     STATUS    RESTARTS   AGE
+cephfs-provisioner-cff8d95c-6tgcs   1/1       Running   1          3h
+jlch@km:~/cephfs$
+</pre>
+</div>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+
+<div id="outline-container-orgfc9c91b" class="outline-4">
+<h4 id="k8s-中-cephfs-成功的-yaml-文件">k8s 中 cephfs 成功的 yaml 文件&#xa0;&#xa0;&#xa0;<span class="tag"><span class="yaml">yaml</span></span></h4>
+<div class="outline-text-4" id="text-k8s-中-cephfs-成功的-yaml-文件">
+<p>
+<a href="https://github.com/kubernetes-incubator/external-storage/tree/master/ceph/cephfs">https://github.com/kubernetes-incubator/external-storage/tree/master/ceph/cephfs</a>
+</p>
+
+<p>
+对 我们好不容易成功安装的 k8s-cephfs 进行一个记录呀！
+</p>
+</div>
+
+<ul class="org-ul">
+<li><a id="环境"></a>环境<br />
+<div class="outline-text-5" id="text-环境">
+<pre class="example">
+k8s-master 192.168.31.120 km master
+k8s-node1 192.168.31.119 kn1 node1
+k8s-node2 192.168.31.118 kn2 node2
+
+cephfs-admin 192.168.31.115
+cephfs-monitor 192.168.31.114
+cephfs-client 192.168.31.172
+</pre>
+</div>
+</li>
+
+<li><a id="git-remote"></a>git remote<br />
+<div class="outline-text-5" id="text-git-remote">
+<pre class="example">
+jlch@km:~/cephfs$ git remote -v
+origin    https://github.com/kubernetes-incubator/external-storage (fetch)
+origin    https://github.com/kubernetes-incubator/external-storage (push)
+jlch@km:~/cephfs$ git log | head
+commit f1eb2a4ddf944fdd35a16e686ae104c1db8753b2
+Merge: 06aaf46 52a4da4
+Author: Matthew Wong &lt;mawong@redhat.com&gt;
+Date:   Tue Nov 21 01:48:43 2017 -0500
+
+    Merge pull request #468 from sathieu/patch-1
+
+    flex: Fix file shbang
+
+commit 06aaf46950c9f6f741b34afc1d9f7807bdbe078c
+jlch@km:~/cephfs$
+</pre>
+</div>
+</li>
+
+<li><a id="git-status"></a>git status<br />
+<div class="outline-text-5" id="text-git-status">
+<p>
+记录一下主要的修改点
+</p>
+
+<pre class="example">
+jlch@km:~/cephfs$ git status
+On branch master
+Your branch is up-to-date with 'origin/master'.
+Changes not staged for commit:
+  (use "git add &lt;file&gt;..." to update what will be committed)
+  (use "git checkout -- &lt;file&gt;..." to discard changes in working directory)
+
+  modified:   ceph-secret-admin.yaml
+  modified:   claim.yaml
+  modified:   class.yaml
+  modified:   deployment.yaml
+  modified:   test-pod.yaml
+
+no changes added to commit (use "git add" and/or "git commit -a")
+jlch@km:~/cephfs$
+</pre>
+</div>
+</li>
+
+<li><a id="git-diff"></a>git diff<br />
+<div class="outline-text-5" id="text-git-diff">
+</div>
+
+<ul class="org-ul">
+<li><a id="ceph-secret-admin.yaml"></a>ceph-secret-admin.yaml<br />
+<div class="outline-text-6" id="text-ceph-secret-admin.yaml">
+<pre class="example">
+jlch@km:~/cephfs$ git diff ceph-secret-admin.yaml
+diff --git a/ceph/cephfs/ceph-secret-admin.yaml b/ceph/cephfs/ceph-secret-admin.yaml
+index c3a741a..1ebaac3 100644
+--- a/ceph/cephfs/ceph-secret-admin.yaml
++++ b/ceph/cephfs/ceph-secret-admin.yaml
+@@ -5,4 +5,5 @@ metadata:
+type: "kubernetes.io/cephfs"
+data:
+#Please note this value is base64 encoded.
+-  key: QVFDTXBIOVlNNFExQmhBQVhHTlF5eU9uZThac1hxV0dvbi9kSVE9PQ==
++  #key: QVFDTXBIOVlNNFExQmhBQVhHTlF5eU9uZThac1hxV0dvbi9kSVE9PQ==
++  key: AQCtj+5ZnNTvGRAA2RxAGcIQZJnaJSPEz4jdGw==
+jlch@km:~/cephfs$
+</pre>
+</div>
+</li>
+
+<li><a id="claim.yaml"></a>claim.yaml<br />
+<div class="outline-text-6" id="text-claim.yaml">
+<pre class="example">
+jlch@km:~/cephfs$ git diff claim.yaml
+diff --git a/ceph/cephfs/claim.yaml b/ceph/cephfs/claim.yaml
+index 2dca6ae..280a7a9 100644
+--- a/ceph/cephfs/claim.yaml
++++ b/ceph/cephfs/claim.yaml
+@@ -9,4 +9,4 @@ spec:
+    - ReadWriteMany
+  resources:
+    requests:
+-      storage: 1Gi
++      storage: 10Gi
+jlch@km:~/cephfs$
+</pre>
+</div>
+</li>
+
+<li><a id="class.yaml"></a>class.yaml<br />
+<div class="outline-text-6" id="text-class.yaml">
+<pre class="example">
+
+
+</pre>
+
+<pre class="example">
+jlch@km:~/cephfs$ git diff class.yaml
+diff --git a/ceph/cephfs/class.yaml b/ceph/cephfs/class.yaml
+index 91c73c0..b2825a3 100644
+--- a/ceph/cephfs/class.yaml
++++ b/ceph/cephfs/class.yaml
+@@ -4,7 +4,7 @@ metadata:
+  name: cephfs
+provisioner: ceph.com/cephfs
+parameters:
+-    monitors: 172.24.0.6:6789
++    monitors: 192.168.31.114:6789
+    adminId: admin
+    adminSecretName: ceph-secret-admin
+    adminSecretNamespace: "kube-system"
+jlch@km:~/cephfs$
+</pre>
+</div>
+</li>
+
+<li><a id="test-pod.yaml"></a>test-pod.yaml<br />
+<div class="outline-text-6" id="text-test-pod.yaml">
+<pre class="example">
+jlch@km:~/cephfs$ git diff test-pod.yaml
+diff --git a/ceph/cephfs/test-pod.yaml b/ceph/cephfs/test-pod.yaml
+index 4888676..ece87e8 100644
+--- a/ceph/cephfs/test-pod.yaml
++++ b/ceph/cephfs/test-pod.yaml
+@@ -5,7 +5,8 @@ metadata:
+spec:
+  containers:
+  - name: test-pod
+-    image: gcr.io/google_containers/busybox:1.24
++    image: gcr.io/google_containers/busybox:latest
++    imagePullPolicy: IfNotPresent
+    command:
+      - "/bin/sh"
+    args:
+jlch@km:~/cephfs$
+</pre>
+</div>
+</li>
+
+<li><a id="deployment.yaml"></a>deployment.yaml<br />
+<div class="outline-text-6" id="text-deployment.yaml">
+<pre class="example">
+jlch@km:~/cephfs$ git diff deployment.yaml
+diff --git a/ceph/cephfs/deployment.yaml b/ceph/cephfs/deployment.yaml
+index 37c5f87..dc0315c 100644
+--- a/ceph/cephfs/deployment.yaml
++++ b/ceph/cephfs/deployment.yaml
+@@ -14,6 +14,7 @@ spec:
+      containers:
+      - name: cephfs-provisioner
+        image: "quay.io/external_storage/cephfs-provisioner:latest"
++        imagePullPolicy: IfNotPresent
+        env:
+        - name: PROVISIONER_NAME
+          valueFrom:
+@@ -24,3 +25,23 @@ spec:
+          - "/usr/local/bin/cephfs-provisioner"
+        args:
+          - "-id=cephfs-provisioner-1"
++          - "-master=https://10.96.0.1/"
++          - "-kubeconfig=/kube/admin.conf"
++        volumeMounts:
++          - mountPath: /kube
++            name: kube-config
++          - mountPath: /var/run/kubernetes
++            name: kube-run-env
++      volumes:
++      - name: kube-config
++        hostPath:
++          # directory location on host
++          path: /home/jlch
++          # this field is optional
++          type: Directory
++      - name: kube-run-env
++        hostPath:
++          # directory location on host
++          path: /var/run/kubernetes
++          # this field is optional
++          type: Directory
+</pre>
+</div>
+</li>
+</ul>
+</li>
+
+<li><a id="cat"></a>cat<br />
+<div class="outline-text-5" id="text-cat">
+<pre class="example">
+jlch@km:~/cephfs$ ls
+cephfs_provisioner  cephfs-provisioner.go  ceph-secret-admin.yaml  CHANGELOG.md  claim.yaml  class.yaml  configmap.yaml  deployment.yaml  Dockerfile  local-start.sh  Makefile  OWNERS  README.md  test-pod.yaml
+jlch@km:~/cephfs$ cat ceph-secret-admin.yaml
+apiVersion: v1
+kind: Secret
+metadata:
+  name: ceph-secret-admin
+type: "kubernetes.io/cephfs"
+data:
+#Please note this value is base64 encoded.
+  #key: QVFDTXBIOVlNNFExQmhBQVhHTlF5eU9uZThac1hxV0dvbi9kSVE9PQ==
+  key: AQCtj+5ZnNTvGRAA2RxAGcIQZJnaJSPEz4jdGw==
+jlch@km:~/cephfs$ cat claim.yaml
+kind: PersistentVolumeClaim
+apiVersion: v1
+metadata:
+  name: claim1
+  annotations:
+    volume.beta.kubernetes.io/storage-class: "cephfs"
+spec:
+  accessModes:
+    - ReadWriteMany
+  resources:
+    requests:
+      storage: 10Gi
+jlch@km:~/cephfs$ cat class.yaml
+kind: StorageClass
+apiVersion: storage.k8s.io/v1
+metadata:
+  name: cephfs
+provisioner: ceph.com/cephfs
+parameters:
+    monitors: 192.168.31.114:6789
+    adminId: admin
+    adminSecretName: ceph-secret-admin
+    adminSecretNamespace: "kube-system"
+
+jlch@km:~/cephfs$ cat test-pod.yaml
+kind: Pod
+apiVersion: v1
+metadata:
+  name: test-pod
+spec:
+  containers:
+  - name: test-pod
+    image: gcr.io/google_containers/busybox:latest
+    imagePullPolicy: IfNotPresent
+    command:
+      - "/bin/sh"
+    args:
+      - "-c"
+      - "touch /mnt/SUCCESS &amp;&amp; exit 0 || exit 1"
+    volumeMounts:
+      - name: pvc
+        mountPath: "/mnt"
+  restartPolicy: "Never"
+  volumes:
+    - name: pvc
+      persistentVolumeClaim:
+        claimName: claim1
+jlch@km:~/cephfs$ cat deployment.yaml
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: cephfs-provisioner
+spec:
+  replicas: 1
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      labels:
+        app: cephfs-provisioner
+    spec:
+      containers:
+      - name: cephfs-provisioner
+        image: "quay.io/external_storage/cephfs-provisioner:latest"
+        imagePullPolicy: IfNotPresent
+        env:
+        - name: PROVISIONER_NAME
+          valueFrom:
+            configMapKeyRef:
+              key: provisioner.name
+              name: cephfs-provisioner
+        command:
+          - "/usr/local/bin/cephfs-provisioner"
+        args:
+          - "-id=cephfs-provisioner-1"
+          - "-master=https://10.96.0.1/"
+          - "-kubeconfig=/kube/admin.conf"
+        volumeMounts:
+          - mountPath: /kube
+            name: kube-config
+          - mountPath: /var/run/kubernetes
+            name: kube-run-env
+      volumes:
+      - name: kube-config
+        hostPath:
+          # directory location on host
+          path: /home/jlch
+          # this field is optional
+          type: Directory
+      - name: kube-run-env
+        hostPath:
+          # directory location on host
+          path: /var/run/kubernetes
+          # this field is optional
+          type: Directory
+jlch@km:~/cephfs$
+</pre>
+</div>
+</li>
+</ul>
+</div>
+
+<div id="outline-container-orgba15b44" class="outline-4">
+<h4 id="cephfs-k8s-中的-make">cephfs-k8s 中的 make&#xa0;&#xa0;&#xa0;<span class="tag"><span class="make">make</span></span></h4>
+<div class="outline-text-4" id="text-cephfs-k8s-中的-make">
+<p>
+下载 make ，报错了。
+</p>
+
+<pre class="example">
+root@km:~/kubernetes.io/TUTORIALS/Stateful-Applications/cephfs-stateful# cd external-storage/ceph/cephfs/
+root@km:~/kubernetes.io/TUTORIALS/Stateful-Applications/cephfs-stateful/external-storage/ceph/cephfs# ls
+cephfs_provisioner  cephfs-provisioner.go  ceph-secret-admin.yaml  CHANGELOG.md  claim.yaml  class.yaml  configmap.yaml  deployment.yaml  Dockerfile  local-start.sh  Makefile  OWNERS  README.md  test-pod.yaml
+root@km:~/kubernetes.io/TUTORIALS/Stateful-Applications/cephfs-stateful/external-storage/ceph/cephfs# make
+CGO_ENABLED=0 GOOS=linux go build -a -ldflags '-extldflags "-static"' -o cephfs-provisioner cephfs-provisioner.go
+cephfs-provisioner.go:28:2: cannot find package "github.com/golang/glog" in any of:
+        /usr/lib/go-1.8/src/github.com/golang/glog (from $GOROOT)
+        /root/go/src/github.com/golang/glog (from $GOPATH)
+cephfs-provisioner.go:29:2: cannot find package "github.com/kubernetes-incubator/external-storage/lib/controller" in any of:
+        /usr/lib/go-1.8/src/github.com/kubernetes-incubator/external-storage/lib/controller (from $GOROOT)
+        /root/go/src/github.com/kubernetes-incubator/external-storage/lib/controller (from $GOPATH)
+cephfs-provisioner.go:30:2: cannot find package "k8s.io/api/core/v1" in any of:
+        /usr/lib/go-1.8/src/k8s.io/api/core/v1 (from $GOROOT)
+        /root/go/src/k8s.io/api/core/v1 (from $GOPATH)
+cephfs-provisioner.go:31:2: cannot find package "k8s.io/apimachinery/pkg/apis/meta/v1" in any of:
+        /usr/lib/go-1.8/src/k8s.io/apimachinery/pkg/apis/meta/v1 (from $GOROOT)
+        /root/go/src/k8s.io/apimachinery/pkg/apis/meta/v1 (from $GOPATH)
+cephfs-provisioner.go:32:2: cannot find package "k8s.io/apimachinery/pkg/util/uuid" in any of:
+        /usr/lib/go-1.8/src/k8s.io/apimachinery/pkg/util/uuid (from $GOROOT)
+        /root/go/src/k8s.io/apimachinery/pkg/util/uuid (from $GOPATH)
+cephfs-provisioner.go:33:2: cannot find package "k8s.io/apimachinery/pkg/util/wait" in any of:
+        /usr/lib/go-1.8/src/k8s.io/apimachinery/pkg/util/wait (from $GOROOT)
+        /root/go/src/k8s.io/apimachinery/pkg/util/wait (from $GOPATH)
+cephfs-provisioner.go:34:2: cannot find package "k8s.io/client-go/kubernetes" in any of:
+        /usr/lib/go-1.8/src/k8s.io/client-go/kubernetes (from $GOROOT)
+        /root/go/src/k8s.io/client-go/kubernetes (from $GOPATH)
+cephfs-provisioner.go:35:2: cannot find package "k8s.io/client-go/rest" in any of:
+        /usr/lib/go-1.8/src/k8s.io/client-go/rest (from $GOROOT)
+        /root/go/src/k8s.io/client-go/rest (from $GOPATH)
+cephfs-provisioner.go:36:2: cannot find package "k8s.io/client-go/tools/clientcmd" in any of:
+        /usr/lib/go-1.8/src/k8s.io/client-go/tools/clientcmd (from $GOROOT)
+        /root/go/src/k8s.io/client-go/tools/clientcmd (from $GOPATH)
+cephfs-provisioner.go:37:2: cannot find package "k8s.io/kubernetes/pkg/api/v1/helper" in any of:
+        /usr/lib/go-1.8/src/k8s.io/kubernetes/pkg/api/v1/helper (from $GOROOT)
+        /root/go/src/k8s.io/kubernetes/pkg/api/v1/helper (from $GOPATH)
+Makefile:27: recipe for target 'all' failed
+make: *** [all] Error 1
+root@km:~/kubernetes.io/TUTORIALS/Stateful-Applications/cephfs-stateful/external-storage/ceph/cephfs#
+</pre>
+
+<p>
+少了包呀。
+</p>
+
+<p>
+查一下，有没有go, GOPATH
+</p>
+
+<pre class="example">
+root@km:~/kubernetes.io/TUTORIALS/Stateful-Applications/cephfs-stateful/external-storage/ceph/cephfs# which go
+/usr/bin/go
+root@km:~/kubernetes.io/TUTORIALS/Stateful-Applications/cephfs-stateful/external-storage/ceph/cephfs# echo $GOPATH
+
+root@km:~/kubernetes.io/TUTORIALS/Stateful-Applications/cephfs-stateful/external-storage/ceph/cephfs#
+</pre>
+
+<p>
+没有设置，那好了，设置成我们之前用过的地址。
+</p>
+
+<p>
+先看一下，我们之前的go包：
+</p>
+
+<pre class="example">
+root@km:~# cd kubernetes
+root@km:~/kubernetes# ls
+api    BUILD.bazel   cluster  code-of-conduct.md  docs      federation  hack         LICENSE  Makefile                  OWNERS          pkg     README.md  SUPPORT.md  third_party   Vagrantfile  WORKSPACE
+build  CHANGELOG.md  cmd      CONTRIBUTING.md     examples  Godeps      labels.yaml  logo     Makefile.generated_files  OWNERS_ALIASES  plugin  staging    test        translations  vendor
+root@km:~/kubernetes#
+</pre>
+
+<p>
+随便查一个，上面没有的包吧，如 client-go:
+</p>
+
+<pre class="example">
+root@km:~/kubernetes# ls -lR &gt; ls-lr
+    root@km:~/kubernetes# cat ls-lr | grep client-go
+    drwxr-xr-x 17 root root 4096 Aug 29 18:47 client-go
+    drwxr-xr-x 5 root root 4096 Aug 29 18:47 client-go
+    ...
+    ...
+    ./staging/src/k8s.io/client-go:
+    ./staging/src/k8s.io/client-go/discovery:
+    ./staging/src/k8s.io/client-go/discovery/cached:
+    ./staging/src/k8s.io/client-go/discovery/fake:
+    ./staging/src/k8s.io/client-go/dynamic:
+    ./staging/src/k8s.io/client-go/dynamic/fake:
+    ./staging/src/k8s.io/client-go/examples:
+    ...
+    ...
+    lrwxrwxrwx 1 root root   34 Aug 29 18:47 client-go -&gt; ../../staging/src/k8s.io/client-go
+    root@km:~/kubernetes#
+</pre>
+
+<p>
+有呀，这样就不用重复下载了。
+</p>
+
+<pre class="example">
+root@km:~/kubernetes# cd staging/
+root@km:~/kubernetes/staging# ls
+BUILD  godeps-json-updater.go  OWNERS  pkg  prime-apimachinery.sh  README.md  src
+root@km:~/kubernetes/staging# cd src
+root@km:~/kubernetes/staging/src# ls
+github.com  golang.org  gopkg.in  k8s.io
+root@km:~/kubernetes/staging/src# cd k8s.io/
+root@km:~/kubernetes/staging/src/k8s.io# ls
+api  apiextensions-apiserver  apimachinery  apiserver  client-go  code-generator  kube-aggregator  kube-openapi  kubernetes  metrics  sample-apiserver
+root@km:~/kubernetes/staging/src/k8s.io# pwd
+/root/kubernetes/staging/src/k8s.io
+root@km:~/kubernetes/staging/src/k8s.io#
+</pre>
+
+<p>
+设置一下 GOPATH
+</p>
+
+<pre class="example">
+root@km:~/kubernetes/staging# export GOPATH=/root/kubernetes/staging
+root@km:~/kubernetes/staging# echo $GOPATH
+/root/kubernetes/staging
+root@km:~/kubernetes/staging#
+</pre>
+
+<p>
+重新来一下，并且 go get
+</p>
+
+<pre class="example">
+root@km:~/kubernetes/staging# cd ~/kubernetes.io/TUTORIALS/Stateful-Applications/cephfs-stateful/external-storage/ceph/cephfs
+root@km:~/kubernetes.io/TUTORIALS/Stateful-Applications/cephfs-stateful/external-storage/ceph/cephfs# make
+CGO_ENABLED=0 GOOS=linux go build -a -ldflags '-extldflags "-static"' -o cephfs-provisioner cephfs-provisioner.go
+/root/kubernetes/staging/src/k8s.io/client-go/discovery/discovery_client.go:26:2: cannot find package "github.com/emicklei/go-restful-swagger12" in any of:
+        /usr/lib/go-1.8/src/github.com/emicklei/go-restful-swagger12 (from $GOROOT)
+        /root/kubernetes/staging/src/github.com/emicklei/go-restful-swagger12 (from $GOPATH)
+/root/kubernetes/staging/src/k8s.io/client-go/discovery/discovery_client.go:27:2: cannot find package "github.com/golang/protobuf/proto" in any of:
+        /usr/lib/go-1.8/src/github.com/golang/protobuf/proto (from $GOROOT)
+        /root/kubernetes/staging/src/github.com/golang/protobuf/proto (from $GOPATH)
+/root/kubernetes/staging/src/k8s.io/client-go/discovery/discovery_client.go:28:2: cannot find package "github.com/googleapis/gnostic/OpenAPIv2" in any of:
+        /usr/lib/go-1.8/src/github.com/googleapis/gnostic/OpenAPIv2 (from $GOROOT)
+        /root/kubernetes/staging/src/github.com/googleapis/gnostic/OpenAPIv2 (from $GOPATH)
+/root/kubernetes/staging/src/k8s.io/client-go/tools/clientcmd/auth_loaders.go:26:2: cannot find package "github.com/howeyc/gopass" in any of:
+        /usr/lib/go-1.8/src/github.com/howeyc/gopass (from $GOROOT)
+        /root/kubernetes/staging/src/github.com/howeyc/gopass (from $GOPATH)
+/root/kubernetes/staging/src/k8s.io/client-go/tools/clientcmd/client_config.go:28:2: cannot find package "github.com/imdario/mergo" in any of:
+        /usr/lib/go-1.8/src/github.com/imdario/mergo (from $GOROOT)
+        /root/kubernetes/staging/src/github.com/imdario/mergo (from $GOPATH)
+/root/kubernetes/staging/src/k8s.io/client-go/util/flowcontrol/throttle.go:22:2: cannot find package "github.com/juju/ratelimit" in any of:
+        /usr/lib/go-1.8/src/github.com/juju/ratelimit (from $GOROOT)
+        /root/kubernetes/staging/src/github.com/juju/ratelimit (from $GOPATH)
+cephfs-provisioner.go:29:2: cannot find package "github.com/kubernetes-incubator/external-storage/lib/controller" in any of:
+        /usr/lib/go-1.8/src/github.com/kubernetes-incubator/external-storage/lib/controller (from $GOROOT)
+        /root/kubernetes/staging/src/github.com/kubernetes-incubator/external-storage/lib/controller (from $GOPATH)
+/root/kubernetes/staging/src/k8s.io/apimachinery/pkg/util/uuid/uuid.go:22:2: cannot find package "github.com/pborman/uuid" in any of:
+        /usr/lib/go-1.8/src/github.com/pborman/uuid (from $GOROOT)
+        /root/kubernetes/staging/src/github.com/pborman/uuid (from $GOPATH)
+Makefile:27: recipe for target 'all' failed
+make: *** [all] Error 1
+root@km:~/kubernetes.io/TUTORIALS/Stateful-Applications/cephfs-stateful/external-storage/ceph/cephfs# go get github.com/emicklei/go-restful-swagger12
+root@km:~/kubernetes.io/TUTORIALS/Stateful-Applications/cephfs-stateful/external-storage/ceph/cephfs# go get github.com/golang/protobuf/proto
+root@km:~/kubernetes.io/TUTORIALS/Stateful-Applications/cephfs-stateful/external-storage/ceph/cephfs# go get github.com/googleapis/gnostic/OpenAPIv2
+root@km:~/kubernetes.io/TUTORIALS/Stateful-Applications/cephfs-stateful/external-storage/ceph/cephfs# go get github.com/howeyc/gopass
+package golang.org/x/crypto/ssh/terminal: unrecognized import path "golang.org/x/crypto/ssh/terminal" (https fetch: Get https://golang.org/x/crypto/ssh/terminal?go-get=1: dial tcp 216.239.37.1:443: i/o timeout)
+root@km:~/kubernetes.io/TUTORIALS/Stateful-Applications/cephfs-stateful/external-storage/ceph/cephfs#
+</pre>
+
+<p>
+呀，这里要去 <a href="https://golang.org/x/crypto/ssh/terminal">https://golang.org/x/crypto/ssh/terminal</a> 这要FQ的呀，怎么办？
+</p>
+
+<p>
+农总来了。
+</p>
+
+<p>
+打开浏览器，github.com, 搜索，crypto, 语言选择 go, 找到 golang/crypto, 打开，复制 url,
+</p>
+
+<p>
+打开 另一个 terminal, 然后，从之前知道 GOPATH 是 <i>root/kubernetes/staging</i> ,那进去。
+</p>
+
+<pre class="example">
+root@km:~#
+root@km:~# cd kubernetes/staging/
+root@km:~/kubernetes/staging# ls
+BUILD  godeps-json-updater.go  OWNERS  pkg  prime-apimachinery.sh  README.md  src
+root@km:~/kubernetes/staging# cd src
+root@km:~/kubernetes/staging/src# ls
+github.com  golang.org  gopkg.in  k8s.io
+root@km:~/kubernetes/staging/src# cd golang.org/
+root@km:~/kubernetes/staging/src/golang.org# ls
+x
+root@km:~/kubernetes/staging/src/golang.org# cd x
+root@km:~/kubernetes/staging/src/golang.org/x# ls
+net  text
+root@km:~/kubernetes/staging/src/golang.org/x#
+</pre>
+
+<p>
+好了，到这里看到了，确实是没有 crypto, 下载 golang 在 github.com 下的官方镜像吧。
+</p>
+
+<pre class="example">
+root@km:~/kubernetes/staging/src/golang.org/x# git clone https://github.com/golang/crypto.git
+Cloning into 'crypto'...
+remote: Counting objects: 3889, done.
+remote: Compressing objects: 100% (22/22), done.
+remote: Total 3889 (delta 6), reused 18 (delta 4), pack-reused 3863
+Receiving objects: 100% (3889/3889), 2.82 MiB | 44.00 KiB/s, done.
+Resolving deltas: 100% (2469/2469), done.
+Checking connectivity... done.
+root@km:~/kubernetes/staging/src/golang.org/x# ls
+crypto  net  text
+root@km:~/kubernetes/staging/src/golang.org/x#
+</pre>
+
+<p>
+好了，现在有了。
+</p>
+
+<p>
+如果后续还有其它的 golang 的包，也这么处理吧。
+</p>
+
+<p>
+回到之前的 terminal 吧。 接着 go get
+</p>
+
+<pre class="example">
+root@km:~/kubernetes.io/TUTORIALS/Stateful-Applications/cephfs-stateful/external-storage/ceph/cephfs# go get github.com/kubernetes-incubator/external-storage/lib/controller
+root@km:~/kubernetes.io/TUTORIALS/Stateful-Applications/cephfs-stateful/external-storage/ceph/cephfs# make
+CGO_ENABLED=0 GOOS=linux go build -a -ldflags '-extldflags "-static"' -o cephfs-provisioner cephfs-provisioner.go
+# command-line-arguments
+./cephfs-provisioner.go:65: cannot use cephFSProvisioner literal (type *cephFSProvisioner) as type controller.Provisioner in return argument:
+        *cephFSProvisioner does not implement controller.Provisioner (wrong type for Delete method)
+                have Delete(*"k8s.io/api/core/v1".PersistentVolume) error
+                want Delete(*"github.com/kubernetes-incubator/external-storage/vendor/k8s.io/api/core/v1".PersistentVolume) error
+./cephfs-provisioner.go:69: cannot use cephFSProvisioner literal (type *cephFSProvisioner) as type controller.Provisioner in assignment:
+        *cephFSProvisioner does not implement controller.Provisioner (wrong type for Delete method)
+                have Delete(*"k8s.io/api/core/v1".PersistentVolume) error
+                want Delete(*"github.com/kubernetes-incubator/external-storage/vendor/k8s.io/api/core/v1".PersistentVolume) error
+./cephfs-provisioner.go:134: cannot use options.PersistentVolumeReclaimPolicy (type "github.com/kubernetes-incubator/external-storage/vendor/k8s.io/api/core/v1".PersistentVolumeReclaimPolicy) as type "k8s.io                           /api/core/v1".PersistentVolumeReclaimPolicy in field value
+./cephfs-provisioner.go:135: cannot use options.PVC.Spec.AccessModes (type []"github.com/kubernetes-incubator/external-storage/vendor/k8s.io/api/core/v1".PersistentVolumeAccessMode) as type []"k8s.io/api/cor                           e/v1".PersistentVolumeAccessMode in field value
+./cephfs-provisioner.go:137: cannot use "k8s.io/api/core/v1".ResourceName("k8s.io/api/core/v1".ResourceStorage) (type "k8s.io/api/core/v1".ResourceName) as type "github.com/kubernetes-incubator/external-stor                           age/vendor/k8s.io/api/core/v1".ResourceName in map index
+./cephfs-provisioner.go:137: cannot use options.PVC.Spec.Resources.Requests["k8s.io/api/core/v1".ResourceName("k8s.io/api/core/v1".ResourceStorage)] (type "github.com/kubernetes-incubator/external-storage/ve                           ndor/k8s.io/apimachinery/pkg/api/resource".Quantity) as type "k8s.io/apimachinery/pkg/api/resource".Quantity in map value
+./cephfs-provisioner.go:147: cannot use "k8s.io/api/core/v1".CephFSVolumeSource literal (type *"k8s.io/api/core/v1".CephFSVolumeSource) as type *"k8s.io/api/core/v1".CephFSPersistentVolumeSource in field val                           ue
+./cephfs-provisioner.go:318: cannot use clientset (type *"k8s.io/client-go/kubernetes".Clientset) as type "github.com/kubernetes-incubator/external-storage/vendor/k8s.io/client-go/kubernetes".Interface in ar                           gument to controller.NewProvisionController:
+        *"k8s.io/client-go/kubernetes".Clientset does not implement "github.com/kubernetes-incubator/external-storage/vendor/k8s.io/client-go/kubernetes".Interface (wrong type for Admissionregistration metho                           d)
+                have Admissionregistration() "k8s.io/client-go/kubernetes/typed/admissionregistration/v1alpha1".AdmissionregistrationV1alpha1Interface
+                want Admissionregistration() "github.com/kubernetes-incubator/external-storage/vendor/k8s.io/client-go/kubernetes/typed/admissionregistration/v1alpha1".AdmissionregistrationV1alpha1Interface
+Makefile:27: recipe for target 'all' failed
+make: *** [all] Error 2
+root@km:~/kubernetes.io/TUTORIALS/Stateful-Applications/cephfs-stateful/external-storage/ceph/cephfs#
+</pre>
+
+<p>
+又报错。
+</p>
+
+<p>
+这个好像是说冲突了嘛。。。
+</p>
+
+<p>
+农总来了。
+</p>
+
+<pre class="example">
+root@km:~/kubernetes.io/TUTORIALS/Stateful-Applications/cephfs-stateful/external-storage# ln -s ~/kubernetes.io/TUTORIALS/Stateful-Applications/cephfs-stateful/external-storage/lib build/src/github.com/kubernetes-incubator/external-storage/
+root@km:~/kubernetes.io/TUTORIALS/Stateful-Applications/cephfs-stateful/external-storage# make ceph/cephfs
+cd ceph/cephfs; \
+make container
+make[1]: Entering directory '/root/kubernetes.io/TUTORIALS/Stateful-Applications/cephfs-stateful/external-storage/ceph/cephfs'
+CGO_ENABLED=0 GOOS=linux go build -a -ldflags '-extldflags "-static"' -o cephfs-provisioner cephfs-provisioner.go
+docker build -t quay.io/external_storage/cephfs-provisioner:latest .
+Sending build context to Docker daemon  36.23MB
+Step 1/6 : FROM centos:7
+7: Pulling from library/centos
+d9aaf4d82f24: Pull complete
+Digest: sha256:eba772bac22c86d7d6e72421b4700c3f894ab6e35475a34014ff8de74c10872e
+Status: Downloaded newer image for centos:7
+ ---&gt; 196e0ce0c9fb
+Step 2/6 : ENV CEPH_VERSION "jewel"
+ ---&gt; Running in c48e286ca165
+ ---&gt; e9689ae3f521
+Removing intermediate container c48e286ca165
+Step 3/6 : RUN rpm -Uvh https://download.ceph.com/rpm-$CEPH_VERSION/el7/noarch/ceph-release-1-1.el7.noarch.rpm &amp;&amp;   yum install -y epel-release &amp;&amp;   yum install -y ceph-common python-cephfs
+ ---&gt; Running in 69640c268019
+warning: /var/tmp/rpm-tmp.6mAWB0: Header V4 RSA/SHA256 Signature, key ID 460f3994: NOKEY
+Retrieving https://download.ceph.com/rpm-jewel/el7/noarch/ceph-release-1-1.el7.noarch.rpm
+Preparing...                          ########################################
+Updating / installing...
+ceph-release-1-1.el7                  ########################################
+Loaded plugins: fastestmirror, ovl
+Determining fastest mirrors
+ * base: mirrors.cn99.com
+ * extras: mirrors.cn99.com
+ * updates: mirrors.cn99.com
+
+
+  userspace-rcu.x86_64 0:0.7.16-1.el7
+....
+...
+... # 好长的一断时间，大约半个小时后
+Complete!
+ ---&gt; 21cae91539c0
+Removing intermediate container b1c88201e72b
+Step 4/6 : COPY cephfs-provisioner /usr/local/bin/cephfs-provisioner
+ ---&gt; 73664d0eca7a
+Removing intermediate container c076e6de19f0
+Step 5/6 : COPY cephfs_provisioner/cephfs_provisioner.py /usr/local/bin/cephfs_provisioner
+ ---&gt; 25bc4c6da1d1
+Removing intermediate container 0eba40388f99
+Step 6/6 : CMD chmod o+x /usr/local/bin/cephfs_provisioner
+ ---&gt; Running in 5bf6e5fbc6e1
+ ---&gt; 262cba7e52ed
+Removing intermediate container 5bf6e5fbc6e1
+Successfully built 262cba7e52ed
+Successfully tagged quay.io/external_storage/cephfs-provisioner:latest
+docker tag quay.io/external_storage/cephfs-provisioner:latest quay.io/external_storage/cephfs-provisioner:latest
+make[1]: Leaving directory '/root/kubernetes.io/TUTORIALS/Stateful-Applications/cephfs-stateful/external-storage/ceph/cephfs'
+root@km:~/kubernetes.io/TUTORIALS/Stateful-Applications/cephfs-stateful/external-storage#
+</pre>
+
+<p>
+成功了，看一下 docker image 是不是多了一个 quay.io/external_storage/cephfs-provisioner:latest
+</p>
+
+<pre class="example">
+root@km:~/kubernetes.io/TUTORIALS/Stateful-Applications/cephfs-stateful/external-storage# docker images
+REPOSITORY                                               TAG                 IMAGE ID            CREATED             SIZE
+quay.io/external_storage/cephfs-provisioner              latest              262cba7e52ed        5 minutes ago       485MB
+gcr.io/google-samples/hello-frontend                     1.0                 d8ca9fb857d9        3 weeks ago         183MB
+</pre>
+
+<p>
+果然有了。
+</p>
+
+<p>
+这样，make 算是完成了。
+</p>
+
+<p>
+后来发现 docker image 的文件不对。
+</p>
+
+<p>
+vi Dockerfile
+</p>
+
+<pre class="example">
+root@km:~/cephfs# cat ~/kubernetes.io/TUTORIALS/Stateful-Applications/cephfs-stateful/external-storage/ceph/cephfs/Dockerfile
+# Copyright 2017 The Kubernetes Authors.
+#
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+#     http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+
+FROM centos:7
+
+ENV CEPH_VERSION "jewel"
+RUN rpm -Uvh https://download.ceph.com/rpm-$CEPH_VERSION/el7/noarch/ceph-release-1-1.el7.noarch.rpm &amp;&amp; \
+yum install -y epel-release &amp;&amp; \
+yum install -y ceph-common python-cephfs
+
+COPY cephfs-provisioner /usr/local/bin/cephfs-provisioner
+COPY cephfs_provisioner/cephfs_provisioner.py /usr/local/bin/cephfs_provisioner
+CMD ["chmod", "o+x", "/usr/local/bin/cephfs_provisioner"]
+root@km:~/cephfs#
+</pre>
+
+<p>
+这个地方的 ENV CEPH_VERSION "jewel" 应该修改成 ENV CEPH_VERSION "luminous"
+</p>
+
+<p>
+然后再 make
+</p>
+</div>
+</div>
+
+<div id="outline-container-orga0ac983" class="outline-4">
+<h4 id="k8s-与-cephfs-相关的faq">k8s 与 cephfs 相关的FAQ&#xa0;&#xa0;&#xa0;<span class="tag"><span class="faq">faq</span></span></h4>
+<div class="outline-text-4" id="text-k8s-与-cephfs-相关的faq">
+</div>
+
+<ul class="org-ul">
+<li><a id="inputoutput-error"></a>Input/output error<br />
+<div class="outline-text-5" id="text-inputoutput-error">
+<pre class="example">
+cephu@ceph-client:/mnt/mycephfs/volumes/kubernetes$ ll kubernetes-dynamic-pvc-a2c667ad-d0c7-11e7-b656-0a580af40148/
+ls: reading directory 'kubernetes-dynamic-pvc-a2c667ad-d0c7-11e7-b656-0a580af40148/': Input/output error
+total 0
+drwxr-xr-x 1 root root 0 Nov 24 11:36 ./
+drwxr-xr-x 1 root root 0 Nov 24 11:29 ../
+cephu@ceph-client:/mnt/mycephfs/volumes/kubernetes$
+</pre>
+
+<p>
+这个问题，看了一下，<a href="https://github.com/kubernetes-incubator/external-storage/issues/345">https://github.com/kubernetes-incubator/external-storage/issues/345</a>，
+</p>
+
+<p>
+最后，有用户是这样回复的
+</p>
+
+<pre class="example">
+I tried to update my ubuntu kernel from 4.4.0 to 4.10.0 (sudo apt install linux-image-4.10.0-28-generic) and after a reboot, the error is gone, everything works fine from now on :)
+</pre>
+
+<p>
+所以就是升级内核了。升级去吧。 升级一下，果然成功了。
+</p>
+</div>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+</body>
+</html>

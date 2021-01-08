@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2020-07-30 Thu 16:12 -->
+<!-- 2021-01-07 Thu 11:15 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>shell</title>
@@ -98,7 +98,12 @@ fathom('trackPageview');
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#org37a1f10">重新启动shell</a></li>
+<li><a href="#org0a2cc8d">重新启动shell</a></li>
+<li><a href="#org646f19b">Can scp create a directory if it doesn't exist?</a>
+<ul>
+<li><a href="#org31cb832">Ref</a></li>
+</ul>
+</li>
 </ul>
 </div>
 </div>
@@ -106,9 +111,9 @@ fathom('trackPageview');
 <a href="../index.html">{Back to site's index}</a>
 </p>
 
-<div id="outline-container-org37a1f10" class="outline-2">
-<h2 id="org37a1f10">重新启动shell</h2>
-<div class="outline-text-2" id="text-org37a1f10">
+<div id="outline-container-org0a2cc8d" class="outline-2">
+<h2 id="org0a2cc8d">重新启动shell</h2>
+<div class="outline-text-2" id="text-org0a2cc8d">
 <p>
 使用场景：使路径更改生效。
 </p>
@@ -116,6 +121,49 @@ fathom('trackPageview');
 <div class="org-src-container">
 <pre class="src src-shell"><span style="color: #00bfff;">exec</span> $<span style="color: #d4d4d4;">SHELL</span>
 </pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org646f19b" class="outline-2">
+<h2 id="org646f19b">Can scp create a directory if it doesn't exist?&#xa0;&#xa0;&#xa0;<span class="tag"><span class="scp">scp</span></span></h2>
+<div class="outline-text-2" id="text-org646f19b">
+<p>
+Can scp create a directory if it doesn't exist?
+</p>
+
+<p>
+As far as I know, scp itself cannot do that, no. However, you could just ssh to the target machine, create the directory and then copy. Something like:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-shell">ssh user@host <span style="color: #daa520;">"mkdir -p /target/path/"</span> &amp;&amp;
+      scp /path/to/source user@host:/target/path/
+</pre>
+</div>
+
+<p>
+Note that if you are copying entire directories, the above is not needed. For example, to copy the directory ~/foo to the remote host, you could use the -r (recursive) flag:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-shell">scp ~/foo/ user@host:~/
+</pre>
+</div>
+
+<p>
+That will create the target directory ~/foo on the remote host.
+However, it can't create the parent directory. scp ~/foo user@host:~/bar/foo will fail unless the target directory bar exists.
+In any case, the -r flag won't help create a target directory if you are copying individual files.
+</p>
+</div>
+
+<div id="outline-container-org31cb832" class="outline-3">
+<h3 id="org31cb832">Ref</h3>
+<div class="outline-text-3" id="text-org31cb832">
+<ul class="org-ul">
+<li><a href="https://unix.stackexchange.com/questions/193368/can-scp-create-a-directory-if-it-doesnt-exist">https://unix.stackexchange.com/questions/193368/can-scp-create-a-directory-if-it-doesnt-exist</a></li>
+</ul>
 </div>
 </div>
 </div>

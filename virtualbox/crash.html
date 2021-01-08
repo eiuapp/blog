@@ -1,0 +1,233 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<!-- 2021-01-08 Fri 15:30 -->
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>virtualbox cannot open when computer crash</title>
+<meta name="generator" content="Org mode" />
+<meta name="author" content="a" />
+<link rel="stylesheet" title="Standard" href="/html/style/worg.css" type="text/css" />
+<link rel="alternate stylesheet" title="Zenburn" href="/html/style/worg-zenburn.css" type="text/css" />
+<link rel="alternate stylesheet" title="Classic" href="/html/style/worg-classic.css" type="text/css" />
+<link rel="SHORTCUT ICON" href="/html/style/org-mode-unicorn.ico" type="image/x-icon" />
+<link rel="icon" href="/html/style/org-mode-unicorn.ico" type="image/ico" />
+<script type="text/javascript">
+/*
+@licstart  The following is the entire license notice for the
+JavaScript code in this tag.
+
+Copyright (C) 2012-2019 Free Software Foundation, Inc.
+
+The JavaScript code in this tag is free software: you can
+redistribute it and/or modify it under the terms of the GNU
+General Public License (GNU GPL) as published by the Free Software
+Foundation, either version 3 of the License, or (at your option)
+any later version.  The code is distributed WITHOUT ANY WARRANTY;
+without even the implied warranty of MERCHANTABILITY or FITNESS
+FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
+
+As additional permission under GNU GPL version 3 section 7, you
+may distribute non-source (e.g., minimized or compacted) forms of
+that code without the copy of the GNU GPL normally required by
+section 4, provided you include this license notice and a URL
+through which recipients can access the Corresponding Source.
+
+
+@licend  The above is the entire license notice
+for the JavaScript code in this tag.
+*/
+<!--/*--><![CDATA[/*><!--*/
+ function CodeHighlightOn(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(null != target) {
+     elem.cacheClassElem = elem.className;
+     elem.cacheClassTarget = target.className;
+     target.className = "code-highlighted";
+     elem.className   = "code-highlighted";
+   }
+ }
+ function CodeHighlightOff(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(elem.cacheClassElem)
+     elem.className = elem.cacheClassElem;
+   if(elem.cacheClassTarget)
+     target.className = elem.cacheClassTarget;
+ }
+/*]]>*///-->
+</script>
+</head>
+<body>
+<div id="preamble" class="status">
+<script type="text/javascript">
+  document.addEventListener('DOMContentLoaded',function() {
+      document.getElementById("table-of-contents").onclick = function() {
+          var elem = document.getElementById("text-table-of-contents");
+          elem.style.display = elem.style.display == "block" ? "none" : "block";
+      }
+  });
+
+  var url = document.location.href;
+  var orgsource = url.substring(0, url.lastIndexOf("."))+".org.html";
+  function show_org_source(){
+      document.location.href = orgsource;
+  }
+</script>
+
+<script>
+(function(f, a, t, h, o, m){
+	a[h]=a[h]||function(){
+		(a[h].q=a[h].q||[]).push(arguments)
+	};
+	o=f.createElement('script'),
+	m=f.getElementsByTagName('script')[0];
+	o.async=1; o.src=t; o.id='fathom-script';
+	m.parentNode.insertBefore(o,m)
+})(document, window, '//stats.orgmode.org/tracker.js', 'fathom');
+fathom('set', 'siteId', 'NWSQJ');
+fathom('trackPageview');
+</script>
+</div>
+<div id="content">
+<h1 class="title">virtualbox cannot open when computer crash</h1>
+<div id="table-of-contents">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#org4f75a30">记一次电脑 crash , virtualbox 的恢复过程</a>
+<ul>
+<li><a href="#org0a13fb7">现象</a></li>
+<li><a href="#org15f6270">step</a>
+<ul>
+<li><a href="#org707dddf">sudo /sbin/vboxconfig</a></li>
+<li><a href="#org827a64b">install virtualbox-dkms</a></li>
+<li><a href="#org021fac6">Secure BOOT 设置成 disable</a></li>
+<li><a href="#orgc4b90a9">Invalid value 'VBOXSVGA' in Display</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+<p>
+<a href="../index.html">{Back to site's index}</a>
+</p>
+
+<div id="outline-container-org4f75a30" class="outline-2">
+<h2 id="org4f75a30">记一次电脑 crash , virtualbox 的恢复过程</h2>
+<div class="outline-text-2" id="text-org4f75a30">
+</div>
+
+<div id="outline-container-org0a13fb7" class="outline-3">
+<h3 id="org0a13fb7">现象</h3>
+<div class="outline-text-3" id="text-org0a13fb7">
+<div class="org-src-container">
+<pre class="src src-example">Kernel driver not installed (rc=-1908)
+
+The VirtualBox Linux kernel driver is either not loaded or not set up correctly. Please try setting it up again by executing
+
+'/sbin/vboxconfig'
+
+as root.
+
+If your system has EFI Secure Boot enabled you may also need to sign the kernel modules (vboxdrv, vboxnetflt, vboxnetadp, vboxpci) before you can load them. Please see your Linux system's documentation for more information.
+
+where: suplibOsInit what: 3 VERR_VM_DRIVER_NOT_INSTALLED (-1908) - The support driver is not installed. On linux, open returned ENOENT.
+
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org15f6270" class="outline-3">
+<h3 id="org15f6270">step</h3>
+<div class="outline-text-3" id="text-org15f6270">
+</div>
+<div id="outline-container-org707dddf" class="outline-4">
+<h4 id="org707dddf">sudo /sbin/vboxconfig</h4>
+<div class="outline-text-4" id="text-org707dddf">
+<p>
+按提示做
+</p>
+
+<div class="org-src-container">
+<pre class="src src-shell">&#10095; sudo /sbin/vboxconfig                                                                                                                                                                              a/git/ubuntu
+vboxdrv.sh: Stopping VirtualBox services.
+vboxdrv.sh: Starting VirtualBox services.
+vboxdrv.sh: You must sign these kernel modules before using VirtualBox:
+  vboxdrv vboxnetflt vboxnetadp
+See the documenatation for your Linux distribution..
+vboxdrv.sh: Building VirtualBox kernel modules.
+debconf: DbDriver <span style="color: #daa520;">"config"</span>: /var/cache/debconf/config.dat is locked by another process: Resource temporarily unavailable
+vboxdrv.sh: Failed to enroll secure boot key..
+vboxdrv.sh: failed: modprobe vboxdrv failed. Please use <span style="color: #daa520;">'dmesg'</span> to find out why.
+
+There were problems setting up VirtualBox.  To re-start the set-up process, run
+  /sbin/vboxconfig
+as root.  If your system is using EFI Secure Boot you may need to sign the
+kernel modules (vboxdrv, vboxnetflt, vboxnetadp, vboxpci) before you can load
+them. Please see your Linux system<span style="color: #daa520;">'s documentation for more information.</span>
+<span style="color: #daa520;">&#10095;</span>
+</pre>
+</div>
+
+<p>
+其中，~debconf: DbDriver "config": /var/cache/debconf/config.dat is locked by another process: Resource temporarily unavailable~
+</p>
+</div>
+</div>
+
+<div id="outline-container-org827a64b" class="outline-4">
+<h4 id="org827a64b">install virtualbox-dkms</h4>
+<div class="outline-text-4" id="text-org827a64b">
+<p>
+重新安装或更新 virtualbox-dkms 包
+</p>
+
+<div class="org-src-container">
+<pre class="src src-shell">sudo apt install --reinstall virtualbox-dkms &amp;&amp; sudo apt install libelf-dev
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org021fac6" class="outline-4">
+<h4 id="org021fac6">Secure BOOT 设置成 disable</h4>
+<div class="outline-text-4" id="text-org021fac6">
+<p>
+关闭UEFI Secure Boot选项
+</p>
+
+<p>
+重启电脑，打开 BIOS, <code>Secure BOOT</code> 设置成 disable
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgc4b90a9" class="outline-4">
+<h4 id="orgc4b90a9">Invalid value 'VBOXSVGA' in Display</h4>
+<div class="outline-text-4" id="text-orgc4b90a9">
+<p>
+这个表示更新了 virtualbox, 但是再次打开 vbox 时，会出现 ~ Invalid value 'VBOXSVGA' in Display/@controller attribute~
+</p>
+
+<ul class="org-ul">
+<li><a href="https://schnouki.net/post/2020/how-to-run-a-win10-dev-vm-on-virtualbox-5/">https://schnouki.net/post/2020/how-to-run-a-win10-dev-vm-on-virtualbox-5/</a></li>
+<li><a href="https://junchu.blog.csdn.net/article/details/106131332">https://junchu.blog.csdn.net/article/details/106131332</a></li>
+</ul>
+
+<p>
+用文本编辑器编辑 虚拟机对应的文件夹中的 <code>*.vbox</code> 这个文件，找到报错中提到的对应行，删去 <code>controller="VBoxSVGA"</code> 这个赋值，该行中的其他内容不动。保存，然后重新打开vb即可。
+</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</body>
+</html>

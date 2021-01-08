@@ -1,0 +1,555 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<!-- 2021-01-08 Fri 14:58 -->
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>k8s</title>
+<meta name="generator" content="Org mode" />
+<meta name="author" content="Bryce" />
+<link rel="stylesheet" title="Standard" href="/html/style/worg.css" type="text/css" />
+<link rel="alternate stylesheet" title="Zenburn" href="/html/style/worg-zenburn.css" type="text/css" />
+<link rel="alternate stylesheet" title="Classic" href="/html/style/worg-classic.css" type="text/css" />
+<link rel="SHORTCUT ICON" href="/html/style/org-mode-unicorn.ico" type="image/x-icon" />
+<link rel="icon" href="/html/style/org-mode-unicorn.ico" type="image/ico" />
+<script type="text/javascript">
+/*
+@licstart  The following is the entire license notice for the
+JavaScript code in this tag.
+
+Copyright (C) 2012-2019 Free Software Foundation, Inc.
+
+The JavaScript code in this tag is free software: you can
+redistribute it and/or modify it under the terms of the GNU
+General Public License (GNU GPL) as published by the Free Software
+Foundation, either version 3 of the License, or (at your option)
+any later version.  The code is distributed WITHOUT ANY WARRANTY;
+without even the implied warranty of MERCHANTABILITY or FITNESS
+FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
+
+As additional permission under GNU GPL version 3 section 7, you
+may distribute non-source (e.g., minimized or compacted) forms of
+that code without the copy of the GNU GPL normally required by
+section 4, provided you include this license notice and a URL
+through which recipients can access the Corresponding Source.
+
+
+@licend  The above is the entire license notice
+for the JavaScript code in this tag.
+*/
+<!--/*--><![CDATA[/*><!--*/
+ function CodeHighlightOn(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(null != target) {
+     elem.cacheClassElem = elem.className;
+     elem.cacheClassTarget = target.className;
+     target.className = "code-highlighted";
+     elem.className   = "code-highlighted";
+   }
+ }
+ function CodeHighlightOff(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(elem.cacheClassElem)
+     elem.className = elem.cacheClassElem;
+   if(elem.cacheClassTarget)
+     target.className = elem.cacheClassTarget;
+ }
+/*]]>*///-->
+</script>
+</head>
+<body>
+<div id="preamble" class="status">
+<script type="text/javascript">
+  document.addEventListener('DOMContentLoaded',function() {
+      document.getElementById("table-of-contents").onclick = function() {
+          var elem = document.getElementById("text-table-of-contents");
+          elem.style.display = elem.style.display == "block" ? "none" : "block";
+      }
+  });
+
+  var url = document.location.href;
+  var orgsource = url.substring(0, url.lastIndexOf("."))+".org.html";
+  function show_org_source(){
+      document.location.href = orgsource;
+  }
+</script>
+
+<script>
+(function(f, a, t, h, o, m){
+	a[h]=a[h]||function(){
+		(a[h].q=a[h].q||[]).push(arguments)
+	};
+	o=f.createElement('script'),
+	m=f.getElementsByTagName('script')[0];
+	o.async=1; o.src=t; o.id='fathom-script';
+	m.parentNode.insertBefore(o,m)
+})(document, window, '//stats.orgmode.org/tracker.js', 'fathom');
+fathom('set', 'siteId', 'NWSQJ');
+fathom('trackPageview');
+</script>
+</div>
+<div id="content">
+<h1 class="title">k8s</h1>
+<div id="table-of-contents">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#orge0dd0d1">Post</a>
+<ul>
+<li><a href="#orgb79b128">kubeadm安装过程FAQ</a>
+<ul>
+<li><a href="#kubeadm-install-faq-kubelet-cni">kubeadm-kubelet-cni</a></li>
+<li><a href="#org1813d67">flannel网络模式下ping出错</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-orge0dd0d1" class="outline-2">
+<h2 id="orge0dd0d1">Post</h2>
+<div class="outline-text-2" id="text-orge0dd0d1">
+</div>
+<div id="outline-container-orgb79b128" class="outline-3">
+<h3 id="orgb79b128">kubeadm安装过程FAQ&#xa0;&#xa0;&#xa0;<span class="tag"><span class="_kubernetes">@kubernetes</span>&#xa0;<span class="kubernetes">kubernetes</span>&#xa0;<span class="install">install</span>&#xa0;<span class="faq">faq</span></span></h3>
+<div class="outline-text-3" id="text-orgb79b128">
+</div>
+<div id="outline-container-orga01eced" class="outline-4">
+<h4 id="kubeadm-install-faq-kubelet-cni">kubeadm-kubelet-cni&#xa0;&#xa0;&#xa0;<span class="tag"><span class="cni">cni</span></span></h4>
+<div class="outline-text-4" id="text-kubeadm-install-faq-kubelet-cni">
+</div>
+
+<ul class="org-ul">
+<li><a id="问题1-kubelet-没有初如化-cni"></a>问题1 kubelet 没有初始化 cni<br />
+<div class="outline-text-5" id="text-问题1-kubelet-没有初如化-cni">
+</div>
+
+<ul class="org-ul">
+<li><a id="现场"></a>现场<br />
+<div class="outline-text-6" id="text-现场">
+<div class="org-src-container">
+<pre class="src src-shell">root@km:~# cat k8.export.sh
+sudo cp /etc/kubernetes/admin.conf $<span style="color: #d4d4d4;">HOME</span>/
+sudo chown $(id -u):$(id -g) $<span style="color: #d4d4d4;">HOME</span>/admin.conf
+<span style="color: #d4d4d4;">export</span> <span style="color: #d4d4d4;">KUBECONFIG</span>=$<span style="color: #d4d4d4;">HOME</span>/admin.conf
+root@km:~# export <span style="color: #d4d4d4;">KUBECONFIG</span>=$<span style="color: #d4d4d4;">HOME</span>/admin.conf
+root@km:~# k get nodes
+NAME      STATUS     ROLES     AGE       VERSION
+km        NotReady   master    18h       v1.8.4
+kn1       Ready      &lt;none&gt;    29s       v1.8.4
+kn2       Ready      &lt;none&gt;    29s       v1.8.4
+</pre>
+</div>
+
+<p>
+出错了。
+</p>
+</div>
+</li>
+
+<li><a id="descibe"></a>descibe<br />
+<div class="outline-text-6" id="text-descibe">
+<pre class="example">
+root@km:~# k describe node km
+Name:               km
+Roles:              master
+Labels:             beta.kubernetes.io/arch=amd64
+                    beta.kubernetes.io/os=linux
+                    kubernetes.io/hostname=km
+                    node-role.kubernetes.io/master=
+Annotations:        node.alpha.kubernetes.io/ttl=0
+                    volumes.kubernetes.io/controller-managed-attach-detach=true
+Taints:             node-role.kubernetes.io/master:NoSchedule
+CreationTimestamp:  Tue, 21 Nov 2017 17:36:14 +0800
+Conditions:
+Type             Status  LastHeartbeatTime                 LastTransitionTime                Reason                       Message
+----             ------  -----------------                 ------------------                ------                       -------
+OutOfDisk        False   Wed, 22 Nov 2017 11:58:45 +0800   Tue, 21 Nov 2017 17:36:14 +0800   KubeletHasSufficientDisk     kubelet has sufficient disk space available
+MemoryPressure   False   Wed, 22 Nov 2017 11:58:45 +0800   Tue, 21 Nov 2017 17:36:14 +0800   KubeletHasSufficientMemory   kubelet has sufficient memory available
+DiskPressure     False   Wed, 22 Nov 2017 11:58:45 +0800   Tue, 21 Nov 2017 17:36:14 +0800   KubeletHasNoDiskPressure     kubelet has no disk pressure
+Ready            False   Wed, 22 Nov 2017 11:58:45 +0800   Tue, 21 Nov 2017 17:36:14 +0800   KubeletNotReady              runtime network not ready: NetworkReady=false reason:NetworkPluginNotReady message:docker: network plugin is not ready: cni config uninitialized
+Addresses:
+InternalIP:  192.168.31.120
+Hostname:    km
+Capacity:
+cpu:     4
+memory:  8175088Ki
+pods:    110
+Allocatable:
+cpu:     4
+memory:  8072688Ki
+pods:    110
+System Info:
+Machine ID:                 78cb13728eba6f6c819e6dea599a5db9
+System UUID:                564D7A67-BDF7-E109-61AC-DDC9929A346F
+Boot ID:                    8f8d7bb3-abb6-4d6a-b1ee-261cd1a2cc74
+Kernel Version:             4.4.0-62-generic
+OS Image:                   Ubuntu 16.04.3 LTS
+Operating System:           linux
+Architecture:               amd64
+Container Runtime Version:  docker://Unknown
+Kubelet Version:            v1.8.4
+Kube-Proxy Version:         v1.8.4
+PodCIDR:                     10.244.0.0/24
+ExternalID:                  km
+Non-terminated Pods:         (5 in total)
+Namespace                  Name                          CPU Requests  CPU Limits  Memory Requests  Memory Limits
+---------                  ----                          ------------  ----------  ---------------  -------------
+kube-system                etcd-km                       0 (0%)        0 (0%)      0 (0%)           0 (0%)
+kube-system                kube-apiserver-km             250m (6%)     0 (0%)      0 (0%)           0 (0%)
+kube-system                kube-controller-manager-km    200m (5%)     0 (0%)      0 (0%)           0 (0%)
+kube-system                kube-proxy-v24fg              0 (0%)        0 (0%)      0 (0%)           0 (0%)
+kube-system                kube-scheduler-km             100m (2%)     0 (0%)      0 (0%)           0 (0%)
+Allocated resources:
+(Total limits may be over 100 percent, i.e., overcommitted.)
+CPU Requests  CPU Limits  Memory Requests  Memory Limits
+------------  ----------  ---------------  -------------
+550m (13%)    0 (0%)      0 (0%)           0 (0%)
+Events:         &lt;none&gt;
+root@km:~#
+</pre>
+
+<p>
+重点是这一句： runtime network not ready: NetworkReady=false reason:NetworkPluginNotReady message:docker  network plugin is not ready: cni config uninitialized
+</p>
+
+<p>
+那明显是 cni 插件 出错了。
+</p>
+</div>
+</li>
+
+<li><a id="找-kubeadm-哪里-与-cni-相关"></a>找 kubeadm 哪里 与 cni 相关<br />
+<div class="outline-text-6" id="text-找-kubeadm-哪里-与-cni-相关">
+<p>
+看 /etc/systemd/system/kubelet.service.d/10-kubeadm.conf  也可以知道，这个地方是 &#x2013;cni-conf-dir=/etc/cni/net.d 与 KUBELET_NETWORK_ARGS 相关
+</p>
+
+<div class="org-src-container">
+<pre class="src src-shell">root@km:~# cat /etc/systemd/system/kubelet.service.d/10-kubeadm.conf
+[Service]
+<span style="color: #d4d4d4;">Environment</span>=<span style="color: #daa520;">"KUBELET_KUBECONFIG_ARGS=--bootstrap-kubeconfig=/etc/kubernetes/bootstrap-kubelet.conf --kubeconfig=/etc/kubernetes/kubelet.conf"</span>
+<span style="color: #d4d4d4;">Environment</span>=<span style="color: #daa520;">"KUBELET_SYSTEM_PODS_ARGS=--pod-manifest-path=/etc/kubernetes/manifests --allow-privileged=true"</span>
+<span style="color: #d4d4d4;">Environment</span>=<span style="color: #daa520;">"KUBELET_NETWORK_ARGS=--network-plugin=cni --cni-conf-dir=/etc/cni/net.d --cni-bin-dir=/opt/cni/bin"</span>
+<span style="color: #d4d4d4;">Environment</span>=<span style="color: #daa520;">"KUBELET_DNS_ARGS=--cluster-dns=10.96.0.10 --cluster-domain=cluster.local"</span>
+<span style="color: #d4d4d4;">Environment</span>=<span style="color: #daa520;">"KUBELET_AUTHZ_ARGS=--authorization-mode=Webhook --client-ca-file=/etc/kubernetes/pki/ca.crt"</span>
+<span style="color: #579C4C;"># </span><span style="color: #579C4C;">Value should match Docker daemon settings.</span>
+<span style="color: #579C4C;"># </span><span style="color: #579C4C;">Defaults are "cgroupfs" for Debian/Ubuntu/OpenSUSE and "systemd" for Fedora/CentOS/RHEL</span>
+<span style="color: #d4d4d4;">Environment</span>=<span style="color: #daa520;">"KUBELET_CGROUP_ARGS=--cgroup-driver=cgroupfs"</span>
+<span style="color: #d4d4d4;">Environment</span>=<span style="color: #daa520;">"KUBELET_CADVISOR_ARGS=--cadvisor-port=0"</span>
+<span style="color: #d4d4d4;">Environment</span>=<span style="color: #daa520;">"KUBELET_CERTIFICATE_ARGS=--rotate-certificates=true"</span>
+<span style="color: #579C4C;">#</span><span style="color: #579C4C;">ExecStart=</span>
+<span style="color: #d4d4d4;">ExecStart</span>=/usr/bin/kubelet $<span style="color: #d4d4d4;">KUBELET_KUBECONFIG_ARGS</span> $<span style="color: #d4d4d4;">KUBELET_SYSTEM_PODS_ARGS</span> $<span style="color: #d4d4d4;">KUBELET_NETWORK_ARGS</span> $<span style="color: #d4d4d4;">KUBELET_DNS_ARGS</span> $<span style="color: #d4d4d4;">KUBELET_AUTHZ_ARGS</span> $<span style="color: #d4d4d4;">KUBELET_CGROUP_ARGS</span> $<span style="color: #d4d4d4;">KUBELET_CADVISOR_ARGS</span> $<span style="color: #d4d4d4;">KUBELET_CERTIFICATE_ARGS</span>
+root@km:~#
+</pre>
+</div>
+
+<p>
+之前，只有 Kubelet 与 cni 相关，去找 kubelet
+</p>
+</div>
+</li>
+
+<li><a id="看-kubelet"></a>看 kubelet<br />
+<div class="outline-text-6" id="text-看-kubelet">
+<pre class="example">
+root@km:/opt/cni/bin# systemctl status kubelet -l
+● kubelet.service - kubelet: The Kubernetes Node Agent
+Loaded: loaded (/lib/systemd/system/kubelet.service; enabled; vendor preset: enabled)
+Drop-In: /etc/systemd/system/kubelet.service.d
+        └─10-kubeadm.conf
+Active: active (running) since Tue 2017-11-21 17:32:53 CST; 18h ago
+    Docs: http://kubernetes.io/docs/
+Main PID: 12169 (kubelet)
+    Tasks: 18
+Memory: 53.0M
+    CPU: 37min 39.889s
+CGroup: /system.slice/kubelet.service
+        └─12169 /usr/bin/kubelet --bootstrap-kubeconfig=/etc/kubernetes/bootstrap-kubelet.conf --kubeconfig=/etc/kubernetes/kubelet.conf --pod-manifest-path=/etc/kubernetes/manifests --allow-privileged=true --network-plugin=cni --cni-conf-dir=/etc/cni/net.d --cni-bin
+
+Nov 22 12:06:47 km kubelet[12169]: E1122 12:06:47.325019   12169 kubelet.go:2095] Container runtime network not ready: NetworkReady=false reason:NetworkPluginNotReady message:docker: network plugin is not ready: cni config uninitialized
+Nov 22 12:06:48 km kubelet[12169]: E1122 12:06:48.015039   12169 fs.go:418] Stat fs failed. Error: no such file or directory
+Nov 22 12:06:52 km kubelet[12169]: W1122 12:06:52.326529   12169 cni.go:196] Unable to update cni config: No networks found in /etc/cni/net.d
+Nov 22 12:06:52 km kubelet[12169]: E1122 12:06:52.326863   12169 kubelet.go:2095] Container runtime network not ready: NetworkReady=false reason:NetworkPluginNotReady message:docker: network plugin is not ready: cni config uninitialized
+Nov 22 12:06:56 km kubelet[12169]: W1122 12:06:56.240582   12169 helpers.go:847] eviction manager: no observation found for eviction signal allocatableNodeFs.available
+Nov 22 12:06:57 km kubelet[12169]: W1122 12:06:57.328311   12169 cni.go:196] Unable to update cni config: No networks found in /etc/cni/net.d
+Nov 22 12:06:57 km kubelet[12169]: E1122 12:06:57.328571   12169 kubelet.go:2095] Container runtime network not ready: NetworkReady=false reason:NetworkPluginNotReady message:docker: network plugin is not ready: cni config uninitialized
+Nov 22 12:07:00 km kubelet[12169]: E1122 12:07:00.897325   12169 fs.go:418] Stat fs failed. Error: no such file or directory
+Nov 22 12:07:02 km kubelet[12169]: W1122 12:07:02.329909   12169 cni.go:196] Unable to update cni config: No networks found in /etc/cni/net.d
+Nov 22 12:07:02 km kubelet[12169]: E1122 12:07:02.330121   12169 kubelet.go:2095] Container runtime network not ready: NetworkReady=false reason:NetworkPluginNotReady message:docker: network plugin is not ready: cni config uninitialized
+root@km:/opt/cni/bin#
+root@km:/opt/cni/bin# ls /etc/cni/net.d
+root@km:/opt/cni/bin#
+</pre>
+
+<p>
+Unable to update cni config: No networks found in /etc/cni/net.d,
+说明这下面少了文件嘛。
+</p>
+</div>
+</li>
+
+<li><a id="加-10-flannel.conf-文件"></a>加 10-flannel.conf 文件<br />
+<div class="outline-text-6" id="text-加-10-flannel.conf-文件">
+<p>
+那到 kn1，kn2 下看这个地方的文件是什么，copy过来试一下。
+</p>
+
+<pre class="example">
+root@km:/opt/cni/bin# cat &lt;&lt;EOF &gt;/etc/cni/net.d/10-flannel.conf
+{
+"name": "cbr0",
+"type": "flannel",
+"delegate": {
+    "isDefaultGateway": true
+}
+}
+root@km:/opt/cni/bin# cat /etc/cni/net.d/10-flannel.conf
+{
+"name": "cbr0",
+"type": "flannel",
+"delegate": {
+    "isDefaultGateway": true
+}
+}
+root@km:/opt/cni/bin#
+</pre>
+</div>
+</li>
+
+<li><a id="重启-kubelet"></a>重启 kubelet<br />
+<div class="outline-text-6" id="text-重启-kubelet">
+<pre class="example">
+root@km:/opt/cni/bin# sudo systemctl restart kubelet.service
+root@km:/opt/cni/bin# sudo systemctl status kubelet.service
+● kubelet.service - kubelet: The Kubernetes Node Agent
+Loaded: loaded (/lib/systemd/system/kubelet.service; enabled; vendor preset: enabled)
+Drop-In: /etc/systemd/system/kubelet.service.d
+        └─10-kubeadm.conf
+Active: active (running) since Wed 2017-11-22 12:13:17 CST; 6s ago
+    Docs: http://kubernetes.io/docs/
+Main PID: 20922 (kubelet)
+    Tasks: 16
+Memory: 30.3M
+    CPU: 1.433s
+CGroup: /system.slice/kubelet.service
+        └─20922 /usr/bin/kubelet --bootstrap-kubeconfig=/etc/kubernetes/bootstrap-kubelet.conf --kubeconfig=/etc/kubernetes/kubelet.conf --pod-manifest-path=/etc/kubernetes/manifests --allow-privileged=true --network-plugin=cni --cni-conf-dir=/etc/cni/net.d --cni-bin
+
+Nov 22 12:13:23 km kubelet[20922]: I1122 12:13:23.194931   20922 reconciler.go:212] operationExecutor.VerifyControllerAttachedVolume started for volume "lib-modules" (UniqueName: "kubernetes.io/host-path/60948ce8-cea3-11e7-b022-000c299a346f-lib-modules") pod "kube-proxy
+Nov 22 12:13:23 km kubelet[20922]: I1122 12:13:23.195034   20922 reconciler.go:212] operationExecutor.VerifyControllerAttachedVolume started for volume "kube-proxy-token-x4p78" (UniqueName: "kubernetes.io/secret/60948ce8-cea3-11e7-b022-000c299a346f-kube-proxy-token-x4p7
+Nov 22 12:13:23 km kubelet[20922]: I1122 12:13:23.195100   20922 reconciler.go:212] operationExecutor.VerifyControllerAttachedVolume started for volume "kubeconfig" (UniqueName: "kubernetes.io/host-path/bfaf9b679f8fe6133395d353696bb6a8-kubeconfig") pod "kube-scheduler-k
+Nov 22 12:13:23 km kubelet[20922]: I1122 12:13:23.195162   20922 reconciler.go:212] operationExecutor.VerifyControllerAttachedVolume started for volume "etcd" (UniqueName: "kubernetes.io/host-path/d76e26fba3bf2bfd215eb29011d55250-etcd") pod "etcd-km" (UID: "d76e26fba3bf
+Nov 22 12:13:23 km kubelet[20922]: I1122 12:13:23.195223   20922 reconciler.go:212] operationExecutor.VerifyControllerAttachedVolume started for volume "k8s-certs" (UniqueName: "kubernetes.io/host-path/05a0699921507cc649967b80b3386902-k8s-certs") pod "kube-apiserver-km"
+Nov 22 12:13:23 km kubelet[20922]: I1122 12:13:23.195278   20922 reconciler.go:212] operationExecutor.VerifyControllerAttachedVolume started for volume "ca-certs" (UniqueName: "kubernetes.io/host-path/05a0699921507cc649967b80b3386902-ca-certs") pod "kube-apiserver-km" (
+Nov 22 12:13:23 km kubelet[20922]: I1122 12:13:23.195337   20922 reconciler.go:212] operationExecutor.VerifyControllerAttachedVolume started for volume "k8s-certs" (UniqueName: "kubernetes.io/host-path/f561b959c5fd24759a4bcc1002f17d77-k8s-certs") pod "kube-controller-ma
+Nov 22 12:13:23 km kubelet[20922]: I1122 12:13:23.195394   20922 reconciler.go:212] operationExecutor.VerifyControllerAttachedVolume started for volume "ca-certs" (UniqueName: "kubernetes.io/host-path/f561b959c5fd24759a4bcc1002f17d77-ca-certs") pod "kube-controller-mana
+Nov 22 12:13:23 km kubelet[20922]: I1122 12:13:23.195481   20922 reconciler.go:212] operationExecutor.VerifyControllerAttachedVolume started for volume "kubeconfig" (UniqueName: "kubernetes.io/host-path/f561b959c5fd24759a4bcc1002f17d77-kubeconfig") pod "kube-controller-
+Nov 22 12:13:23 km kubelet[20922]: I1122 12:13:23.195556   20922 reconciler.go:212] operationExecutor.VerifyControllerAttachedVolume started for volume "flexvolume-dir" (UniqueName: "kubernetes.io/host-path/f561b959c5fd24759a4bcc1002f17d77-flexvolume-dir") pod "kube-con
+root@km:/opt/cni/bin#
+</pre>
+</div>
+</li>
+
+<li><a id="再查-node状态"></a>再查 node状态<br />
+<div class="outline-text-6" id="text-再查-node状态">
+<pre class="example">
+root@km:/opt/cni/bin# k get nodes
+NAME      STATUS    ROLES     AGE       VERSION
+km        Ready     master    18h       v1.8.4
+kn1       Ready     &lt;none&gt;    16m       v1.8.4
+kn2       Ready     &lt;none&gt;    16m       v1.8.4
+root@km:/opt/cni/bin#
+</pre>
+</div>
+</li>
+
+<li><a id="检查网络"></a>检查网络<br />
+<div class="outline-text-6" id="text-检查网络">
+<p>
+事后发现，flannel 与 docker无关，与 ps 无关。
+</p>
+
+<pre class="example">
+root@km:~# docker ps | grep flannel
+root@km:/opt/cni/bin# ps -ef | grep flannel
+root     22240 16316  0 12:32 pts/0    00:00:00 grep --color=auto flannel
+root@km:/opt/cni/bin#
+</pre>
+
+<p>
+但是 ip a 可查看有这个网络
+</p>
+
+<pre class="example">
+root@km:/opt/cni/bin# ip a
+1: lo: &lt;LOOPBACK,UP,LOWER_UP&gt; mtu 65536 qdisc noqueue state UNKNOWN group default qlen 1
+    link/loopback 00:00:00:00:00:00 brd 00:00:00:00:00:00
+    inet 127.0.0.1/8 scope host lo
+    valid_lft forever preferred_lft forever
+    inet6 ::1/128 scope host
+    valid_lft forever preferred_lft forever
+2: ens160: &lt;BROADCAST,MULTICAST,UP,LOWER_UP&gt; mtu 1500 qdisc mq state UP group default qlen 1000
+    link/ether 00:0c:29:9a:34:6f brd ff:ff:ff:ff:ff:ff
+    inet 192.168.31.120/24 brd 192.168.31.255 scope global ens160
+    valid_lft forever preferred_lft forever
+    inet6 fe80::20c:29ff:fe9a:346f/64 scope link
+    valid_lft forever preferred_lft forever
+3: docker0: &lt;NO-CARRIER,BROADCAST,MULTICAST,UP&gt; mtu 1500 qdisc noqueue state DOWN group default
+    link/ether 02:42:05:cf:43:c1 brd ff:ff:ff:ff:ff:ff
+    inet 172.17.0.1/16 scope global docker0
+    valid_lft forever preferred_lft forever
+    inet6 fe80::42:5ff:fecf:43c1/64 scope link
+    valid_lft forever preferred_lft forever
+4: flannel.1: &lt;BROADCAST,MULTICAST,UP,LOWER_UP&gt; mtu 1450 qdisc noqueue state UNKNOWN group default
+    link/ether b2:6d:04:a9:38:8d brd ff:ff:ff:ff:ff:ff
+    inet 10.244.0.0/32 scope global flannel.1
+    valid_lft forever preferred_lft forever
+    inet6 fe80::b06d:4ff:fea9:388d/64 scope link
+    valid_lft forever preferred_lft forever
+5: cni0: &lt;NO-CARRIER,BROADCAST,MULTICAST,UP&gt; mtu 1500 qdisc noqueue state DOWN group default qlen 1000
+    link/ether 0a:58:0a:f4:00:01 brd ff:ff:ff:ff:ff:ff
+    inet 10.244.0.1/24 scope global cni0
+    valid_lft forever preferred_lft forever
+    inet6 fe80::2827:4dff:fe51:9390/64 scope link
+    valid_lft forever preferred_lft forever
+root@km:/opt/cni/bin#
+</pre>
+</div>
+</li>
+
+<li><a id="game-over"></a>game over<br />
+<div class="outline-text-6" id="text-game-over">
+</div>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+
+
+<div id="outline-container-org1813d67" class="outline-4">
+<h4 id="org1813d67">flannel网络模式下ping出错&#xa0;&#xa0;&#xa0;<span class="tag"><span class="flannel">flannel</span></span></h4>
+<div class="outline-text-4" id="text-org1813d67">
+</div>
+
+<ul class="org-ul">
+<li><a id="environment"></a>Environment<br />
+<div class="outline-text-5" id="text-environment">
+<p>
+所有节点都要安装 kubeadm, kubelet, kubectl
+</p>
+
+<p>
+安装时，全使用 root 用户。直到 kubeadm join 成功后，全使用 非root用户
+</p>
+
+<pre class="example">
+192.168.31.120 km master
+192.168.31.119 kn1 node
+192.168.31.118 kn2 node
+</pre>
+</div>
+</li>
+
+<li><a id="问题"></a>问题<br />
+<div class="outline-text-5" id="text-问题">
+<p>
+网络出了问题了，ping 不了 kn1, kn2 中的pod的IP
+</p>
+</div>
+</li>
+
+<li><a id="解决"></a>解决<br />
+<div class="outline-text-5" id="text-解决">
+<p>
+<a href="https://github.com/coreos/flannel/blob/476abd9ef37e7111a1268c41afbd7154046b492a/Documentation/troubleshooting.md#firewalls">https://github.com/coreos/flannel/blob/476abd9ef37e7111a1268c41afbd7154046b492a/Documentation/troubleshooting.md#firewalls</a>
+</p>
+
+<pre class="example">
+root@km:~# k get pods --all-namespaces -o wide
+NAMESPACE     NAME                                READY     STATUS    RESTARTS   AGE       IP               NODE
+default       cephfs-provisioner-cff8d95c-6tgcs   1/1       Running   2          11d       10.244.1.90      kn1
+default       mysql-0                             2/2       Running   2          22h       10.244.1.87      kn1
+default       mysql-1                             2/2       Running   0          22h       10.244.2.243     kn2
+default       mysql-2                             2/2       Running   2          22h       10.244.1.89      kn1
+default       nginx-665ff4c6f7-rgrz6              1/1       Running   1          1d        10.244.1.88      kn1
+default       nginx-665ff4c6f7-tmfft              1/1       Running   0          1d        10.244.2.240     kn2
+kube-system   etcd-km                             1/1       Running   8          13d       192.168.31.120   km
+kube-system   kube-apiserver-km                   1/1       Running   4          13d       192.168.31.120   km
+kube-system   kube-controller-manager-km          1/1       Running   4          13d       192.168.31.120   km
+kube-system   kube-dns-545bc4bfd4-2p847           3/3       Running   391        13d       10.244.2.231     kn2
+kube-system   kube-flannel-ds-fz28b               1/1       Running   0          5h        192.168.31.120   km
+kube-system   kube-flannel-ds-mfmvm               1/1       Running   0          5h        192.168.31.118   kn2
+kube-system   kube-flannel-ds-s5ps6               1/1       Running   1          5h        192.168.31.119   kn1
+kube-system   kube-proxy-hlbc5                    1/1       Running   9          13d       192.168.31.118   kn2
+kube-system   kube-proxy-v24fg                    1/1       Running   4          13d       192.168.31.120   km
+kube-system   kube-proxy-wxjg8                    1/1       Running   6          13d       192.168.31.119   kn1
+kube-system   kube-scheduler-km                   1/1       Running   4          13d       192.168.31.120   km
+</pre>
+
+<p>
+通过查看 kn1 下的 /var/log/syslog
+</p>
+
+<p>
+可以知道是 flannel 的问题。
+</p>
+
+<p>
+从 下面这个地方知道
+</p>
+
+<p>
+<a href="https://github.com/coreos/flannel/blob/476abd9ef37e7111a1268c41afbd7154046b492a/Documentation/troubleshooting.md#firewalls">https://github.com/coreos/flannel/blob/476abd9ef37e7111a1268c41afbd7154046b492a/Documentation/troubleshooting.md#firewalls</a>
+</p>
+
+<p>
+要打开 UDP port 8472
+</p>
+
+<p>
+那就在 km, kn1, kn2, 三机子上
+</p>
+
+<pre class="example">
+ufw allow 8472/udp
+</pre>
+
+<p>
+然后再检查，就ping成功了。
+</p>
+
+<pre class="example">
+root@km:~# ping 10.244.2.231
+PING 10.244.2.231 (10.244.2.231) 56(84) bytes of data.
+64 bytes from 10.244.2.231: icmp_seq=1 ttl=63 time=0.463 ms
+64 bytes from 10.244.2.231: icmp_seq=2 ttl=63 time=0.403 ms
+^C
+--- 10.244.2.231 ping statistics ---
+2 packets transmitted, 2 received, 0% packet loss, time 999ms
+rtt min/avg/max/mdev = 0.403/0.433/0.463/0.030 ms
+root@km:~# ping 10.244.1.90
+PING 10.244.1.90 (10.244.1.90) 56(84) bytes of data.
+64 bytes from 10.244.1.90: icmp_seq=1 ttl=63 time=0.435 ms
+64 bytes from 10.244.1.90: icmp_seq=2 ttl=63 time=0.410 ms
+^C
+--- 10.244.1.90 ping statistics ---
+2 packets transmitted, 2 received, 0% packet loss, time 999ms
+rtt min/avg/max/mdev = 0.410/0.422/0.435/0.024 ms
+root@km:~#
+</pre>
+</div>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+</body>
+</html>

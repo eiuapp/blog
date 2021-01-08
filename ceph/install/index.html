@@ -1,0 +1,259 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<!-- 2021-01-08 Fri 14:58 -->
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>ceph</title>
+<meta name="generator" content="Org mode" />
+<link rel="stylesheet" title="Standard" href="/html/style/worg.css" type="text/css" />
+<link rel="alternate stylesheet" title="Zenburn" href="/html/style/worg-zenburn.css" type="text/css" />
+<link rel="alternate stylesheet" title="Classic" href="/html/style/worg-classic.css" type="text/css" />
+<link rel="SHORTCUT ICON" href="/html/style/org-mode-unicorn.ico" type="image/x-icon" />
+<link rel="icon" href="/html/style/org-mode-unicorn.ico" type="image/ico" />
+<script type="text/javascript">
+/*
+@licstart  The following is the entire license notice for the
+JavaScript code in this tag.
+
+Copyright (C) 2012-2019 Free Software Foundation, Inc.
+
+The JavaScript code in this tag is free software: you can
+redistribute it and/or modify it under the terms of the GNU
+General Public License (GNU GPL) as published by the Free Software
+Foundation, either version 3 of the License, or (at your option)
+any later version.  The code is distributed WITHOUT ANY WARRANTY;
+without even the implied warranty of MERCHANTABILITY or FITNESS
+FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
+
+As additional permission under GNU GPL version 3 section 7, you
+may distribute non-source (e.g., minimized or compacted) forms of
+that code without the copy of the GNU GPL normally required by
+section 4, provided you include this license notice and a URL
+through which recipients can access the Corresponding Source.
+
+
+@licend  The above is the entire license notice
+for the JavaScript code in this tag.
+*/
+<!--/*--><![CDATA[/*><!--*/
+ function CodeHighlightOn(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(null != target) {
+     elem.cacheClassElem = elem.className;
+     elem.cacheClassTarget = target.className;
+     target.className = "code-highlighted";
+     elem.className   = "code-highlighted";
+   }
+ }
+ function CodeHighlightOff(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(elem.cacheClassElem)
+     elem.className = elem.cacheClassElem;
+   if(elem.cacheClassTarget)
+     target.className = elem.cacheClassTarget;
+ }
+/*]]>*///-->
+</script>
+</head>
+<body>
+<div id="preamble" class="status">
+<script type="text/javascript">
+  document.addEventListener('DOMContentLoaded',function() {
+      document.getElementById("table-of-contents").onclick = function() {
+          var elem = document.getElementById("text-table-of-contents");
+          elem.style.display = elem.style.display == "block" ? "none" : "block";
+      }
+  });
+
+  var url = document.location.href;
+  var orgsource = url.substring(0, url.lastIndexOf("."))+".org.html";
+  function show_org_source(){
+      document.location.href = orgsource;
+  }
+</script>
+
+<script>
+(function(f, a, t, h, o, m){
+	a[h]=a[h]||function(){
+		(a[h].q=a[h].q||[]).push(arguments)
+	};
+	o=f.createElement('script'),
+	m=f.getElementsByTagName('script')[0];
+	o.async=1; o.src=t; o.id='fathom-script';
+	m.parentNode.insertBefore(o,m)
+})(document, window, '//stats.orgmode.org/tracker.js', 'fathom');
+fathom('set', 'siteId', 'NWSQJ');
+fathom('trackPageview');
+</script>
+</div>
+<div id="content">
+<h1 class="title">ceph</h1>
+<div id="table-of-contents">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#org91d8fd4">Post</a>
+<ul>
+<li><a href="#org3244908">ceph install</a>
+<ul>
+<li><a href="#org58eec10">ceph 安装 intro</a></li>
+<li><a href="#orgcf08948">ceph安装，基于docker</a></li>
+<li><a href="#orgf39e98a">ceph安装FAQ</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org91d8fd4" class="outline-2">
+<h2 id="org91d8fd4">Post</h2>
+<div class="outline-text-2" id="text-org91d8fd4">
+</div>
+<div id="outline-container-org3244908" class="outline-3">
+<h3 id="org3244908">ceph install&#xa0;&#xa0;&#xa0;<span class="tag"><span class="_ceph">@ceph</span>&#xa0;<span class="ceph">ceph</span></span></h3>
+<div class="outline-text-3" id="text-org3244908">
+</div>
+<div id="outline-container-org58eec10" class="outline-4">
+<h4 id="org58eec10">ceph 安装 intro&#xa0;&#xa0;&#xa0;<span class="tag"><span class="intro">intro</span></span></h4>
+<div class="outline-text-4" id="text-org58eec10">
+<p>
+Contents:
+</p>
+
+<ul class="org-ul">
+<li>install-by-docker</li>
+<li>install.FAQ</li>
+<li>install-by-ubuntu/index</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-orgcf08948" class="outline-4">
+<h4 id="orgcf08948">ceph安装，基于docker&#xa0;&#xa0;&#xa0;<span class="tag"><span class="docker">docker</span></span></h4>
+<div class="outline-text-4" id="text-orgcf08948">
+<p>
+<a href="https://github.com/ceph/ceph-docker">https://github.com/ceph/ceph-docker</a>
+</p>
+</div>
+
+<ul class="org-ul">
+<li><a id="m1"></a>m1<br />
+<div class="outline-text-5" id="text-m1">
+<p>
+<a href="http://ceph.com/planet/%E5%9F%BA%E4%BA%8Edocker%E9%83%A8%E7%BD%B2ceph%E4%BB%A5%E5%8F%8A%E4%BF%AE%E6%94%B9docker-image/">http://ceph.com/planet/%E5%9F%BA%E4%BA%8Edocker%E9%83%A8%E7%BD%B2ceph%E4%BB%A5%E5%8F%8A%E4%BF%AE%E6%94%B9docker-image/</a>
+</p>
+
+<p>
+<a href="http://www.sebastien-han.fr/blog/2015/06/23/bootstrap-your-ceph-cluster-in-docker/">http://www.sebastien-han.fr/blog/2015/06/23/bootstrap-your-ceph-cluster-in-docker/</a>
+</p>
+
+<p>
+<a href="http://www.topjishu.com/10455.html">http://www.topjishu.com/10455.html</a>
+</p>
+
+<p>
+<a href="http://ceph.com/planet/%E5%9F%BA%E4%BA%8Edocker-ui-%E9%85%8D%E7%BD%AEceph%E9%9B%86%E7%BE%A4/">http://ceph.com/planet/%E5%9F%BA%E4%BA%8Edocker-ui-%E9%85%8D%E7%BD%AEceph%E9%9B%86%E7%BE%A4/</a>
+</p>
+</div>
+</li>
+
+<li><a id="m2"></a>m2<br />
+<div class="outline-text-5" id="text-m2">
+<p>
+<a href="http://www.dockerinfo.net/445.html">http://www.dockerinfo.net/445.html</a>
+</p>
+</div>
+</li>
+
+<li><a id="m3"></a>m3<br />
+<div class="outline-text-5" id="text-m3">
+<p>
+<a href="http://www.jianshu.com/p/f08ed7287416">http://www.jianshu.com/p/f08ed7287416</a>
+</p>
+</div>
+</li>
+</ul>
+</div>
+
+
+<div id="outline-container-orgf39e98a" class="outline-4">
+<h4 id="orgf39e98a">ceph安装FAQ&#xa0;&#xa0;&#xa0;<span class="tag"><span class="faq">faq</span></span></h4>
+<div class="outline-text-4" id="text-orgf39e98a">
+</div>
+
+
+<ul class="org-ul">
+<li><a id="q1"></a>Q1<br />
+<div class="outline-text-5" id="text-q1">
+<pre class="example">
+ceph-deploy install ceph-admin ceph-osd1 ceph-osd2 mon1
+...
+[ceph-osd1][DEBUG ] Get:40 https://download.ceph.com/debian-jewel xenial/main amd64 python-rbd amd64 10.2.10-1xenial [1,449 kB]
+[ceph-osd1][DEBUG ] Get:41 https://download.ceph.com/debian-jewel xenial/main amd64 ceph-common amd64 10.2.10-1xenial [15.5 MB]
+[ceph-osd1][DEBUG ] Get:42 https://download.ceph.com/debian-jewel xenial/main amd64 ceph-base amd64 10.2.10-1xenial [50.5 MB]
+[ceph-osd1][WARNIN] No data was received after 300 seconds, disconnecting...
+[ceph-osd1][INFO  ] Running command: sudo ceph --version
+[ceph-osd1][ERROR ] Traceback (most recent call last):
+[ceph-osd1][ERROR ]   File "/usr/lib/python2.7/dist-packages/ceph_deploy/lib/vendor/remoto/process.py", line 119, in run
+[ceph-osd1][ERROR ]     reporting(conn, result, timeout)
+[ceph-osd1][ERROR ]   File "/usr/lib/python2.7/dist-packages/ceph_deploy/lib/vendor/remoto/log.py", line 13, in reporting
+[ceph-osd1][ERROR ]     received = result.receive(timeout)
+[ceph-osd1][ERROR ]   File "/usr/lib/python2.7/dist-packages/ceph_deploy/lib/vendor/remoto/lib/vendor/execnet/gateway_base.py", line 704, in receive
+[ceph-osd1][ERROR ]     raise self._getremoteerror() or EOFError()
+[ceph-osd1][ERROR ] RemoteError: Traceback (most recent call last):
+[ceph-osd1][ERROR ]   File "&lt;string&gt;", line 1036, in executetask
+[ceph-osd1][ERROR ]   File "&lt;remote exec&gt;", line 12, in _remote_run
+[ceph-osd1][ERROR ]   File "/usr/lib/python2.7/subprocess.py", line 711, in __init__
+[ceph-osd1][ERROR ]     errread, errwrite)
+[ceph-osd1][ERROR ]   File "/usr/lib/python2.7/subprocess.py", line 1343, in _execute_child
+[ceph-osd1][ERROR ]     raise child_exception
+[ceph-osd1][ERROR ] OSError: [Errno 2] No such file or directory
+[ceph-osd1][ERROR ]
+[ceph-osd1][ERROR ]
+[ceph_deploy][ERROR ] RuntimeError: Failed to execute command: ceph --version
+
+cephuser@cephfs5:~/my-cluster$
+</pre>
+
+<p>
+<a href="https://blog.54im.com/2016/12/15/centos-install-ceph-doc/">https://blog.54im.com/2016/12/15/centos-install-ceph-doc/</a> 超时问题
+</p>
+</div>
+</li>
+
+<li><a id="orgdc47f91"></a>Q2<br />
+<div class="outline-text-5" id="text-orgdc47f91">
+<p>
+<a href="https://serverfault.com/questions/659308/unable-to-add-initial-monitor-to-ceph-in-ubuntu">https://serverfault.com/questions/659308/unable-to-add-initial-monitor-to-ceph-in-ubuntu</a>
+</p>
+
+<pre class="example">
+[global]
+fsid = 33cb5c76-a685-469e-8cdd-fee7c98c3f4d
+mon_initial_members = ceph1,ceph2
+mon_host = 192.168.61.39,192.168.61.40
+auth_cluster_required = cephx
+auth_service_required = cephx
+auth_client_required = cephx
+filestore_xattr_use_omap = true
+public_network = 192.168.61.0/24
+And the running the command:
+
+$ ceph-deploy --overwrite-conf mon create &lt;ceph-node&gt;
+</pre>
+</div>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+</body>
+</html>

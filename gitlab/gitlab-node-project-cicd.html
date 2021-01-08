@@ -1,0 +1,777 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<!-- 2021-01-07 Thu 11:03 -->
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>&lrm;</title>
+<meta name="generator" content="Org mode" />
+<meta name="author" content="a" />
+<link rel="stylesheet" title="Standard" href="/html/style/worg.css" type="text/css" />
+<link rel="alternate stylesheet" title="Zenburn" href="/html/style/worg-zenburn.css" type="text/css" />
+<link rel="alternate stylesheet" title="Classic" href="/html/style/worg-classic.css" type="text/css" />
+<link rel="SHORTCUT ICON" href="/html/style/org-mode-unicorn.ico" type="image/x-icon" />
+<link rel="icon" href="/html/style/org-mode-unicorn.ico" type="image/ico" />
+<script type="text/javascript">
+/*
+@licstart  The following is the entire license notice for the
+JavaScript code in this tag.
+
+Copyright (C) 2012-2019 Free Software Foundation, Inc.
+
+The JavaScript code in this tag is free software: you can
+redistribute it and/or modify it under the terms of the GNU
+General Public License (GNU GPL) as published by the Free Software
+Foundation, either version 3 of the License, or (at your option)
+any later version.  The code is distributed WITHOUT ANY WARRANTY;
+without even the implied warranty of MERCHANTABILITY or FITNESS
+FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
+
+As additional permission under GNU GPL version 3 section 7, you
+may distribute non-source (e.g., minimized or compacted) forms of
+that code without the copy of the GNU GPL normally required by
+section 4, provided you include this license notice and a URL
+through which recipients can access the Corresponding Source.
+
+
+@licend  The above is the entire license notice
+for the JavaScript code in this tag.
+*/
+<!--/*--><![CDATA[/*><!--*/
+ function CodeHighlightOn(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(null != target) {
+     elem.cacheClassElem = elem.className;
+     elem.cacheClassTarget = target.className;
+     target.className = "code-highlighted";
+     elem.className   = "code-highlighted";
+   }
+ }
+ function CodeHighlightOff(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(elem.cacheClassElem)
+     elem.className = elem.cacheClassElem;
+   if(elem.cacheClassTarget)
+     target.className = elem.cacheClassTarget;
+ }
+/*]]>*///-->
+</script>
+</head>
+<body>
+<div id="preamble" class="status">
+<script type="text/javascript">
+  document.addEventListener('DOMContentLoaded',function() {
+      document.getElementById("table-of-contents").onclick = function() {
+          var elem = document.getElementById("text-table-of-contents");
+          elem.style.display = elem.style.display == "block" ? "none" : "block";
+      }
+  });
+
+  var url = document.location.href;
+  var orgsource = url.substring(0, url.lastIndexOf("."))+".org.html";
+  function show_org_source(){
+      document.location.href = orgsource;
+  }
+</script>
+
+<script>
+(function(f, a, t, h, o, m){
+	a[h]=a[h]||function(){
+		(a[h].q=a[h].q||[]).push(arguments)
+	};
+	o=f.createElement('script'),
+	m=f.getElementsByTagName('script')[0];
+	o.async=1; o.src=t; o.id='fathom-script';
+	m.parentNode.insertBefore(o,m)
+})(document, window, '//stats.orgmode.org/tracker.js', 'fathom');
+fathom('set', 'siteId', 'NWSQJ');
+fathom('trackPageview');
+</script>
+</div>
+<div id="content">
+<div id="table-of-contents">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#前端部分的-gitlab-ci.yaml">前端部分的 gitlab-ci.yaml</a>
+<ul>
+<li><a href="#ssh_known_hosts-的来源"><code>SSH_KNOWN_HOSTS</code> 的来源</a></li>
+<li><a href="#ssh_private_key"><code>SSH_PRIVATE_KEY</code></a></li>
+</ul>
+</li>
+<li><a href="#后端部分-gitlab-ci">后端部分 gitlab ci</a>
+<ul>
+<li><a href="#后端使用-docker-直接在-host-上启用服务">后端使用 docker 直接在 host 上启用服务</a>
+<ul>
+<li><a href="#docker-服务单独启动能正常运行">docker 服务单独启动能正常运行</a></li>
+<li><a href="#host-安装-gitlab-ci-multi-runner">host 安装 gitlab-ci-multi-runner</a></li>
+<li><a href="#把-gitlab-runner-用户加入-docker-组">把 gitlab-runner 用户加入 docker 组</a></li>
+<li><a href="#gitlab-runner-register">gitlab-runner register</a></li>
+<li><a href="#gitlab-runner-验证">gitlab-runner 验证</a></li>
+<li><a href="#gitlab-ci.yml">.gitlab-ci.yml</a></li>
+<li><a href="#git-push">git push</a></li>
+<li><a href="#观察-gitalb.com">观察 gitalb.com</a></li>
+<li><a href="#gitlab-ci-multi-runner-run">gitlab-ci-multi-runner run</a></li>
+<li><a href="#gitlab-runner-如何自启动">gitlab-runner 如何自启动</a></li>
+</ul>
+</li>
+<li><a href="#后端使用-pm2-直接在-host-上启用服务">后端使用 pm2 直接在 host 上启用服务</a></li>
+</ul>
+</li>
+<li><a href="#web-.gitlab-ci.yml">web .gitlab-ci.yml</a></li>
+</ul>
+</div>
+</div>
+<p>
+gitlab cicd + node project
+</p>
+
+<p>
+<a href="https://segmentfault.com/a/1190000017174825">https://segmentfault.com/a/1190000017174825</a>
+</p>
+
+<p>
+<a href="https://docs.gitlab.com/ee/ci/ssh%5C_keys/README.html#ssh-keys-when-using-the-docker-executor">https://docs.gitlab.com/ee/ci/ssh%5C_keys/README.html#ssh-keys-when-using-the-docker-executor</a>
+</p>
+
+<div id="outline-container-org09b2c4d" class="outline-2">
+<h2 id="前端部分的-gitlab-ci.yaml">前端部分的 gitlab-ci.yaml</h2>
+<div class="outline-text-2" id="text-前端部分的-gitlab-ci.yaml">
+<p>
+<a href="https://docs.gitlab.com/ce/ci/yaml/#before%5C_script-and-after%5C_script">https://docs.gitlab.com/ce/ci/yaml/#before%5C_script-and-after%5C_script</a>
+</p>
+
+<p>
+<code>before_script</code> 的内容有调整, 因为, 我们只需要在 <code>deploy_test</code> 和
+<code>deploy_production</code> 的时候, 运行就可以了.
+</p>
+
+<p>
+然后,因为 <code>deploy_test</code> 和 <code>deploy_production</code> 的机器不同,
+所以,设置了2份=SSH_KNOWN_HOSTS= 和 <code>SSH_PRIVATE_KEY</code>
+</p>
+
+<p>
+原理: 把一份能够完成免密 scp 或 ssh 的机器密钥与对应的密钥指纹放到
+gitlab JOB启动的 gitlab-runner container中, 让 gitlab-runner container
+来完成这个事情.
+</p>
+
+<p>
+<b>注意</b> 这里配置的 <code>SSH_KNOWN_HOSTS</code> 和 <code>SSH_PRIVATE_KEY</code> 是 gitlab
+project 的 Maintainer 或 以上权限的所有者可查. 也就是意味着,
+scp,ssh对应的机器,会有权被其控制.
+</p>
+</div>
+
+<div id="outline-container-org25043a0" class="outline-3">
+<h3 id="ssh_known_hosts-的来源"><code>SSH_KNOWN_HOSTS</code> 的来源</h3>
+<div class="outline-text-3" id="text-ssh_known_hosts-的来源">
+<p>
+<a href="https://liam.page/2018/01/24/ssh-keyscan/">https://liam.page/2018/01/24/ssh-keyscan/</a>
+</p>
+
+<p>
+可见, ssh-keyscan 是来获取 密钥指纹的.
+</p>
+
+<p>
+<code>ssh-keyscan IP</code>
+</p>
+
+<p>
+如果是多个IP, 则写进文件里.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-sh">ubuntu@utuntu:~$ cat hosts.txt
+192.168.168.137
+192.168.168.138
+120.77.***.***
+ubuntu@utuntu:~$ ssh-keyscan -f hosts.txt
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgac28b77" class="outline-3">
+<h3 id="ssh_private_key"><code>SSH_PRIVATE_KEY</code></h3>
+<div class="outline-text-3" id="text-ssh_private_key">
+<p>
+<code>cat ~/.ssh/id_rsa</code>
+</p>
+
+<p>
+具体地,我的 .gitlab-ci.yml 文件如下:
+</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org4dbd3b6" class="outline-2">
+<h2 id="后端部分-gitlab-ci">后端部分 gitlab ci</h2>
+<div class="outline-text-2" id="text-后端部分-gitlab-ci">
+</div>
+
+<div id="outline-container-orgf12ffd5" class="outline-3">
+<h3 id="后端使用-docker-直接在-host-上启用服务">后端使用 docker 直接在 host 上启用服务</h3>
+<div class="outline-text-3" id="text-后端使用-docker-直接在-host-上启用服务">
+</div>
+
+<div id="outline-container-org95507e5" class="outline-4">
+<h4 id="docker-服务单独启动能正常运行">docker 服务单独启动能正常运行</h4>
+<div class="outline-text-4" id="text-docker-服务单独启动能正常运行">
+</div>
+
+<ul class="org-ul">
+<li><a id="dockerfile"></a>Dockerfile<br />
+<div class="outline-text-5" id="text-dockerfile">
+<p>
+这里的 Dockerfile 参考了
+</p>
+
+<ul class="org-ul">
+<li><a href="https://pm2.io/doc/en/runtime/integration/docker/">https://pm2.io/doc/en/runtime/integration/docker/</a></li>
+<li><a href="https://www.jianshu.com/p/ab76ba86eafc">https://www.jianshu.com/p/ab76ba86eafc</a></li>
+</ul>
+
+<pre class="example">
+FROM keymetrics/pm2:latest-alpine
+
+# Bundle APP files
+RUN mkdir -p /home/service
+WORKDIR /home/service
+
+COPY . /home/service
+# COPY src src/
+# COPY package.json .
+# COPY ecosystem.config.js .
+
+# Install app dependencies
+ENV NPM_CONFIG_LOGLEVEL warn
+RUN npm install
+
+# Expose the listening port of your app
+EXPOSE 3011
+
+# Show current folder structure in logs
+RUN ls -al -R
+
+CMD [ "pm2-runtime", "start", "ecosystem.config.js", "--only", "server-dev" ]
+</pre>
+</div>
+</li>
+
+<li><a id="制作docker-image"></a>制作docker image<br />
+<div class="outline-text-5" id="text-制作docker-image">
+<div class="org-src-container">
+<pre class="src src-sh">docker build -t lvchuang-server-test4 .
+</pre>
+</div>
+</div>
+</li>
+
+<li><a id="docker-run"></a>docker run<br />
+<div class="outline-text-5" id="text-docker-run">
+<div class="org-src-container">
+<pre class="src src-sh">docker run -d --name lvchuang-server -p 2011:3011 lvchuang-server-test4
+</pre>
+</div>
+</div>
+</li>
+
+<li><a id="验证"></a>验证<br />
+<div class="outline-text-5" id="text-验证">
+<p>
+chrome: <a href="http://192.168.168.137:2011/GetStage">http://192.168.168.137:2011/GetStage</a>
+</p>
+</div>
+</li>
+</ul>
+</div>
+
+<div id="outline-container-org7c9f2eb" class="outline-4">
+<h4 id="host-安装-gitlab-ci-multi-runner">host 安装 gitlab-ci-multi-runner</h4>
+<div class="outline-text-4" id="text-host-安装-gitlab-ci-multi-runner">
+<div class="org-src-container">
+<pre class="src src-sh">sudo apt-get install gitlab-ci-multi-runner
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org5b5f2c6" class="outline-4">
+<h4 id="把-gitlab-runner-用户加入-docker-组">把 gitlab-runner 用户加入 docker 组</h4>
+<div class="outline-text-4" id="text-把-gitlab-runner-用户加入-docker-组">
+<div class="org-src-container">
+<pre class="src src-sh">sudo usermod -aG docker gitlab-runner
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org7c61a7c" class="outline-4">
+<h4 id="gitlab-runner-register">gitlab-runner register</h4>
+<div class="outline-text-4" id="text-gitlab-runner-register">
+<div class="org-src-container">
+<pre class="src src-sh">gitlab-ci-multi-runner register
+</pre>
+</div>
+
+<p>
+注册过程中,executor 选择 shell. 具体完成后, 可见 config.toml 文件.
+</p>
+
+<pre class="example">
+ubuntu@utuntu:~/lcnx/local/lvchuang-server$ cat ~/.gitlab-runner/config.toml
+concurrent = 1
+check_interval = 0
+
+[[runners]]
+  name = "api-deploy-runner"
+  url = "http://192.168.168.137/"
+  token = "obhhKvSY4s5M1pGp49mf"
+  executor = "shell"
+  [runners.cache]
+</pre>
+</div>
+</div>
+
+<div id="outline-container-org8245fab" class="outline-4">
+<h4 id="gitlab-runner-验证">gitlab-runner 验证</h4>
+<div class="outline-text-4" id="text-gitlab-runner-验证">
+<div class="org-src-container">
+<pre class="src src-sh">gitlab-ci-multi-runner register
+gitlab-ci-multi-runner --help
+sudo gitlab-ci-multi-runner status
+gitlab-ci-multi-runner verify
+gitlab-ci-multi-runner list
+</pre>
+</div>
+
+<p>
+具体效果看一下
+</p>
+
+<div class="org-src-container">
+<pre class="src src-sh">ubuntu@utuntu:~/lcnx/local/lvchuang-server$ !1321
+sudo gitlab-ci-multi-runner status
+[sudo] password for ubuntu:
+gitlab-runner: Service is running!
+ubuntu@utuntu:~/lcnx/local/lvchuang-server$ gitlab-ci-multi-runner verify
+WARNING: Running<span style="color: #00bfff;"> in</span> user-mode.
+WARNING: The user-mode requires you to manually start builds processing:
+WARNING: $ gitlab-runner run
+WARNING: Use sudo for system-mode:
+WARNING: $ sudo gitlab-runner...
+
+Verifying runner... is alive                        <span style="color: #d4d4d4;">runner</span>=obhhKvSY
+Verifying runner... is alive                        <span style="color: #d4d4d4;">runner</span>=k7U2n9Sb
+ubuntu@utuntu:~/lcnx/local/lvchuang-server$ gitlab-ci-multi-runner list
+Listing configured runners                          <span style="color: #d4d4d4;">ConfigFile</span>=/home/ubuntu/.gitlab-runner/config.toml
+api-deploy-runner                                   <span style="color: #d4d4d4;">Executor</span>=shell <span style="color: #d4d4d4;">Token</span>=obhhKvSY4s5M1pGp49mf <span style="color: #d4d4d4;">URL</span>=http://192.168.168.137/
+ssh-multi-runner                                    <span style="color: #d4d4d4;">Executor</span>=ssh <span style="color: #d4d4d4;">Token</span>=k7U2n9Sb8ErrXa5nzLDr <span style="color: #d4d4d4;">URL</span>=http://192.168.168.137/
+ubuntu@utuntu:~/lcnx/local/lvchuang-server$
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org7335697" class="outline-4">
+<h4 id="gitlab-ci.yml">.gitlab-ci.yml</h4>
+<div class="outline-text-4" id="text-gitlab-ci.yml">
+<p>
+tag 写之前 gitlab-runner register 时填写的对应.
+</p>
+
+<p>
+<b>注意</b> 下的script中,写的就是 docker 相关命令
+</p>
+
+<pre class="example">
+image: node:11.15.0
+
+stages:
+  - deploy_test
+
+cache:
+  key: ${CI_BUILD_REF_NAME}
+  paths:
+    - node_modules/
+
+before_script:
+  - export PATH=/usr/local/bin:$PATH
+
+# 部署测试服务器
+deploy_test:
+  stage: deploy_test
+  tags:
+    - node-api-deploy-test
+  only:
+    - dev
+    - master
+  script:
+    - 'echo "deploy_test"'
+    - 'echo $PWD &amp;&amp; ls ~'
+    - docker cp ./ lvchuang-server:/home/service
+    - docker restart lvchuang-server
+</pre>
+</div>
+</div>
+
+<div id="outline-container-org270a6c0" class="outline-4">
+<h4 id="git-push">git push</h4>
+<div class="outline-text-4" id="text-git-push">
+<p>
+更新代码, git push 至 repo
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgabf41e8" class="outline-4">
+<h4 id="观察-gitalb.com">观察 gitalb.com</h4>
+<div class="outline-text-4" id="text-观察-gitalb.com">
+<p>
+选择好 runner 从 gitlab page: <a href="http://192.168.168.137">http://192.168.168.137</a> 中看到, pipeline
+下的 job 是 pending 状态的. 也就是意味着, 没启动.
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgf5f985c" class="outline-4">
+<h4 id="gitlab-ci-multi-runner-run">gitlab-ci-multi-runner run</h4>
+<div class="outline-text-4" id="text-gitlab-ci-multi-runner-run">
+<pre class="example">
+ubuntu@utuntu:~/lcnx/local/lvchuang-server$ gitlab-ci-multi-runner run
+Starting multi-runner from /home/ubuntu/.gitlab-runner/config.toml ...  builds=0
+WARNING: Running in user-mode.
+WARNING: Use sudo for system-mode:
+WARNING: $ sudo gitlab-runner...
+
+Configuration loaded                                builds=0
+Metrics server disabled
+Checking for jobs... received                       job=302 repo_url=http://192.168.168.137/zengyunlong/test4.git runner=obhhKvSY
+Job succeeded                                       job=302 project=12 runner=obhhKvSY
+Checking for jobs... received                       job=303 repo_url=http://192.168.168.137/zengyunlong/test4.git runner=obhhKvSY
+Job succeeded                                       job=303 project=12 runner=obhhKvSY
+^CAll workers stopped. Can exit now                   builds=0
+WARNING: Requested service stop: interrupt          builds=0
+ubuntu@utuntu:~/lcnx/local/lvchuang-server$
+</pre>
+
+<p>
+相应地, 看到 pending 已经开始 running 了.
+</p>
+
+<p>
+具体日志如下:
+</p>
+
+<pre class="example">
+Running with gitlab-runner 10.5.0 (10.5.0)
+  on api-deploy-runner obhhKvSY
+Using Shell executor...
+Running on utuntu...
+Fetching changes...
+HEAD is now at c09fdc9 fix
+From http://192.168.168.137/zengyunlong/test4
+   c09fdc9..10f12d7  master     -&gt; origin/master
+Checking out 10f12d72 as master...
+Skipping Git submodules setup
+Checking cache for master...
+Successfully extracted cache
+$ export PATH=/usr/local/bin:$PATH
+$ echo "deploy_test"
+deploy_test
+$ echo $PWD &amp;&amp; ls ~
+/home/ubuntu/lcnx/local/lvchuang-server/builds/obhhKvSY/0/zengyunlong/test4
+default.conf
+docker
+env
+hosts.txt
+index.html
+lcnx
+test-dev
+$ docker cp ./ lvchuang-server:/home/service
+$ docker restart lvchuang-server
+lvchuang-server
+Creating cache master...
+WARNING: node_modules/: no matching files
+Archive is up to date!
+Created cache
+Job succeeded
+</pre>
+
+<p>
+从日志里看出, 当 executor 为 shell 时, 实际上, gitlab-runner
+是在host上执行命令的. 所以, 在 .gitlab-ci.yml 中运行的命令,实际上就是以
+gitlab-runner 这个用户在host上面运行.
+</p>
+</div>
+</div>
+
+<div id="outline-container-org6ffe530" class="outline-4">
+<h4 id="gitlab-runner-如何自启动">gitlab-runner 如何自启动</h4>
+<div class="outline-text-4" id="text-gitlab-runner-如何自启动">
+<p>
+因为上面的运行, 需要, 手动地在命令行下执行 ``,
+所以我们需要更进一步,让系统自动完成,这个操作.
+</p>
+
+<p>
+参考:
+</p>
+
+<ul class="org-ul">
+<li><a href="https://www.jianshu.com/p/2b43151fb92e">https://www.jianshu.com/p/2b43151fb92e</a></li>
+<li><a href="https://www.cnblogs.com/jiukun/p/7481287.html">https://www.cnblogs.com/jiukun/p/7481287.html</a> (特别是
+   gitlab-ci-multi-runner run, install, start, stop, restart
+   之间的关系介绍)</li>
+<li><a href="https://blog.csdn.net/xl%5C_lx/article/details/78329019">https://blog.csdn.net/xl%5C_lx/article/details/78329019</a></li>
+<li><a href="https://www.cnblogs.com/cnundefined/p/7095368.html">https://www.cnblogs.com/cnundefined/p/7095368.html</a></li>
+</ul>
+</div>
+
+<ul class="org-ul">
+<li><a id="install-包装"></a>install 包装<br />
+<div class="outline-text-5" id="text-install-包装">
+<div class="org-src-container">
+<pre class="src src-sh">ubuntu@utuntu:~/lcnx/local/test/test4$ sudo gitlab-ci-multi-runner install  -n  <span style="color: #daa520;">"jiukun_self_runner_2"</span>  -d <span style="color: #daa520;">"/home/ubuntu/lcnx/local/test/test4"</span>  -c <span style="color: #daa520;">"/home/ubuntu/.gitlab-runner/config.toml"</span> -u ubuntu
+</pre>
+</div>
+
+<p>
+执行上述安装命令时，gitlab-ci-multi-runner后台实际是将run命令写入/etc/systemd/system/jiukun\_self\_runner\_2.service文件，使之成为一个单独的服务
+</p>
+</div>
+</li>
+
+<li><a id="启动服务"></a>启动服务<br />
+<div class="outline-text-5" id="text-启动服务">
+<div class="org-src-container">
+<pre class="src src-sh">ubuntu@utuntu:~/lcnx/local/test/test4$ gitlab-ci-multi-runner start -n jiukun_self_runner_2
+FATAL: Please run the commands as root
+ubuntu@utuntu:~/lcnx/local/test/test4$ sudo gitlab-ci-multi-runner start -n jiukun_self_runner_2
+ubuntu@utuntu:~/lcnx/local/test/test4$ ls /etc/systemd/system/jiukun*
+jiukun_self_runner_2.service
+</pre>
+</div>
+</div>
+</li>
+
+<li><a id="验证是否启动"></a>验证是否启动<br />
+<div class="outline-text-5" id="text-验证是否启动">
+<div class="org-src-container">
+<pre class="src src-sh">ubuntu@utuntu:~/lcnx/local/test/test4$ gitlab-ci-multi-runner status
+FATAL: Please run the commands as root
+ubuntu@utuntu:~/lcnx/local/test/test4$ sudo gitlab-ci-multi-runner status
+gitlab-runner: Service is running!
+ubuntu@utuntu:~/lcnx/local/test/test4$ sudo gitlab-ci-multi-runner status -n jiukun_self_runner_2
+jiukun_self_runner_2: Service is running!
+ubuntu@utuntu:~/lcnx/local/test/test4$ sudo gitlab-runner list --config /home/ubuntu/.gitlab-runner/config.toml
+Listing configured runners                          <span style="color: #d4d4d4;">ConfigFile</span>=/home/ubuntu/.gitlab-runner/config.toml
+api-deploy-runner                                   <span style="color: #d4d4d4;">Executor</span>=shell <span style="color: #d4d4d4;">Token</span>=obhhKvSY4s5M1pGp49mf <span style="color: #d4d4d4;">URL</span>=http://192.168.168.137/
+ssh-multi-runner                                    <span style="color: #d4d4d4;">Executor</span>=ssh <span style="color: #d4d4d4;">Token</span>=k7U2n9Sb8ErrXa5nzLDr <span style="color: #d4d4d4;">URL</span>=http://192.168.168.137/
+ubuntu@utuntu:~/lcnx/local/test/test4$ sudo gitlab-runner verify --config /home/ubuntu/.gitlab-runner/config.toml
+Running<span style="color: #00bfff;"> in</span> system-mode.
+
+Verifying runner... is alive                        <span style="color: #d4d4d4;">runner</span>=obhhKvSY
+Verifying runner... is alive                        <span style="color: #d4d4d4;">runner</span>=k7U2n9Sb
+ubuntu@utuntu:~/lcnx/local/test/test4$ sudo gitlab-ci-multi-runner status -n jiukun_self_runner_2
+jiukun_self_runner_2: Service is running!
+ubuntu@utuntu:~/lcnx/local/test/test4$ sudo gitlab-ci-multi-runner status -n jiukun_self_runner
+jiukun_self_runner: Service is not running.
+</pre>
+</div>
+</div>
+</li>
+
+<li><a id="管理服务"></a>管理服务<br />
+<div class="outline-text-5" id="text-管理服务">
+<p>
+1.注册的runner列表
+</p>
+
+<pre class="example">
+gitlab-runner list \
+    --config "/etc/gitlab-runner/config_jiukun_test.toml"
+</pre>
+
+<p>
+2.查看runner连接状态
+</p>
+
+<pre class="example">
+gitlab-runner verify \
+    --config "/etc/gitlab-runner/config_jiukun_test.toml"
+</pre>
+
+<p>
+3.取消注册（移除）
+</p>
+
+<pre class="example">
+gitlab-runner unregistry \
+    --url http://gitlab.xxxxxx.com/ci \
+    --token 9c1bb50065661ba766023016f6ebf2
+</pre>
+
+<p>
+不能直接在project的web端进行remove操作，否则这里会执行失败
+</p>
+
+<p>
+4.管理gitlab-runner服务
+</p>
+
+<pre class="example">
+gitlab-runner status \
+    -n jiukun_self_runner.service
+</pre>
+
+<p>
+不指定服务名，则默认为gitlab-runner服务
+</p>
+
+<pre class="example">
+gitlab-runner stop \
+    -n jiukun_self_runner.service
+
+gitlab-runner restart \
+    -n jiukun_self_runner.service
+
+gitlab-runner uninstall \
+    -n jiukun_self_runner.service
+</pre>
+
+<p>
+执行uninstall会卸载该服务，与之对应的runner将无法通过该服务运行，请确保对应的CI任务已停止。
+</p>
+</div>
+</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org4b320b0" class="outline-3">
+<h3 id="后端使用-pm2-直接在-host-上启用服务">后端使用 pm2 直接在 host 上启用服务</h3>
+<div class="outline-text-3" id="text-后端使用-pm2-直接在-host-上启用服务">
+<p>
+大体与上面相同,就是在运行命令时,记得加入到 PATH 中.
+</p>
+
+<pre class="example">
+before_script:
+  - export PATH=/usr/local/bin:/home/ubuntu/.nvm/versions/node/v10.15.3/bin:/home/ubuntu/.nvm/versions/node/v11.15.0/bin:$PATH
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org0a0d358" class="outline-2">
+<h2 id="web-.gitlab-ci.yml">web .gitlab-ci.yml</h2>
+<div class="outline-text-2" id="text-web-.gitlab-ci.yml">
+<pre class="example">
+image: node:11.15.0
+
+stages:
+  - install_deps
+  # - test
+  - build
+  - deploy_test
+  - deploy_production
+
+cache:
+  # key: ${CI_BUILD_REF_NAME}
+  paths:
+    - node_modules/
+    - dist/
+
+install_deps:
+  stage: install_deps
+  tags:
+    - my-tag
+  only:
+    - dev
+    - master
+  script:
+    - 'echo "install_deps"'
+    - npm install -g cnpm
+    - cnpm install
+
+# 运行测试用例
+# test:
+#   stage: test
+#   tags:
+#     - my-tag
+#   only:
+#     - dev2
+#     - master
+#   script:
+#     - npm run test
+
+# 编译
+build:
+  stage: build
+  tags:
+    - my-tag
+  only:
+    - dev
+    - master
+  script:
+    - 'echo "build"'
+    - npm install -g cnpm
+    - cnpm run alpha
+
+# 部署测试服务器
+deploy_test:
+  stage: deploy_test
+  tags:
+    - my-tag
+  only:
+    - dev
+  before_script:
+    - export PATH=/usr/local/bin:$PATH
+    - 'which ssh-agent || ( apt-get update -y &amp;&amp; apt-get install openssh-client -y )'
+    - eval $(ssh-agent -s)
+    - ssh-add &lt;(echo "$SSH_PRIVATE_KEY")
+    - mkdir -p ~/.ssh
+    - chmod 700 ~/.ssh
+    - echo "$SSH_KNOWN_HOSTS" &gt; ~/.ssh/known_hosts
+    - chmod 644 ~/.ssh/known_hosts
+    - '[[ -f /.dockerenv ]] &amp;&amp; echo -e "Host *\\n\\tStrictHostKeyChecking no\\n\\n" &gt; ~/.ssh/config'
+  script:
+    - 'echo "deploy_test"'
+    - scp -P 2222 -r dist/ root@192.168.168.137:/home/ubuntu/lcnx/local/lvchuang-web/
+
+# 部署生产服务器
+deploy_production:
+  stage: deploy_production
+  tags:
+    - my-tag
+  only:
+    - master
+  before_script:
+    - export PATH=/usr/local/bin:$PATH
+    - 'which ssh-agent || ( apt-get update -y &amp;&amp; apt-get install openssh-client -y )'
+    - eval $(ssh-agent -s)
+    - ssh-add &lt;(echo "$SSH_PRIVATE_KEY_LCNX")
+    - mkdir -p ~/.ssh
+    - chmod 700 ~/.ssh
+    - echo "$SSH_KNOWN_HOSTS_LCNX" &gt; ~/.ssh/known_hosts
+    - chmod 644 ~/.ssh/known_hosts
+    - '[[ -f /.dockerenv ]] &amp;&amp; echo -e "Host *\\n\\tStrictHostKeyChecking no\\n\\n" &gt; ~/.ssh/config'
+  script:
+    # - bash scripts/deploy/deploy.sh
+    - 'echo "deploy_test"'
+    - scp -r dist/ lcnx@120.77.39.189:/home/lcnx/lcnx_eiss/lvchuang-web/dist/
+</pre>
+</div>
+</div>
+</div>
+</body>
+</html>

@@ -1,0 +1,307 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<!-- 2021-01-07 Thu 11:12 -->
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>eaf brower</title>
+<meta name="generator" content="Org mode" />
+<meta name="author" content="a" />
+<link rel="stylesheet" title="Standard" href="/html/style/worg.css" type="text/css" />
+<link rel="alternate stylesheet" title="Zenburn" href="/html/style/worg-zenburn.css" type="text/css" />
+<link rel="alternate stylesheet" title="Classic" href="/html/style/worg-classic.css" type="text/css" />
+<link rel="SHORTCUT ICON" href="/html/style/org-mode-unicorn.ico" type="image/x-icon" />
+<link rel="icon" href="/html/style/org-mode-unicorn.ico" type="image/ico" />
+<script type="text/javascript">
+/*
+@licstart  The following is the entire license notice for the
+JavaScript code in this tag.
+
+Copyright (C) 2012-2019 Free Software Foundation, Inc.
+
+The JavaScript code in this tag is free software: you can
+redistribute it and/or modify it under the terms of the GNU
+General Public License (GNU GPL) as published by the Free Software
+Foundation, either version 3 of the License, or (at your option)
+any later version.  The code is distributed WITHOUT ANY WARRANTY;
+without even the implied warranty of MERCHANTABILITY or FITNESS
+FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
+
+As additional permission under GNU GPL version 3 section 7, you
+may distribute non-source (e.g., minimized or compacted) forms of
+that code without the copy of the GNU GPL normally required by
+section 4, provided you include this license notice and a URL
+through which recipients can access the Corresponding Source.
+
+
+@licend  The above is the entire license notice
+for the JavaScript code in this tag.
+*/
+<!--/*--><![CDATA[/*><!--*/
+ function CodeHighlightOn(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(null != target) {
+     elem.cacheClassElem = elem.className;
+     elem.cacheClassTarget = target.className;
+     target.className = "code-highlighted";
+     elem.className   = "code-highlighted";
+   }
+ }
+ function CodeHighlightOff(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(elem.cacheClassElem)
+     elem.className = elem.cacheClassElem;
+   if(elem.cacheClassTarget)
+     target.className = elem.cacheClassTarget;
+ }
+/*]]>*///-->
+</script>
+</head>
+<body>
+<div id="preamble" class="status">
+<script type="text/javascript">
+  document.addEventListener('DOMContentLoaded',function() {
+      document.getElementById("table-of-contents").onclick = function() {
+          var elem = document.getElementById("text-table-of-contents");
+          elem.style.display = elem.style.display == "block" ? "none" : "block";
+      }
+  });
+
+  var url = document.location.href;
+  var orgsource = url.substring(0, url.lastIndexOf("."))+".org.html";
+  function show_org_source(){
+      document.location.href = orgsource;
+  }
+</script>
+
+<script>
+(function(f, a, t, h, o, m){
+	a[h]=a[h]||function(){
+		(a[h].q=a[h].q||[]).push(arguments)
+	};
+	o=f.createElement('script'),
+	m=f.getElementsByTagName('script')[0];
+	o.async=1; o.src=t; o.id='fathom-script';
+	m.parentNode.insertBefore(o,m)
+})(document, window, '//stats.orgmode.org/tracker.js', 'fathom');
+fathom('set', 'siteId', 'NWSQJ');
+fathom('trackPageview');
+</script>
+</div>
+<div id="content">
+<h1 class="title">eaf brower</h1>
+<div id="table-of-contents">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#orgf63648a">download web page</a>
+<ul>
+<li><a href="#org4368357">M1</a>
+<ul>
+<li><a href="#org195d1a4">[EAF/browser] Executable monolith not in PATH</a></li>
+</ul>
+</li>
+<li><a href="#org3d4d1d2">M2 先找到 url, 用 eww 下载</a>
+<ul>
+<li><a href="#org7aa9902">eaf copy url</a></li>
+<li><a href="#org085f59d">eww 打开 url</a></li>
+<li><a href="#orgae2e955">eww 下载</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#orgf234c0e">copy eww page to eaf</a>
+<ul>
+<li><a href="#org17efe1c">eww copy page url</a></li>
+<li><a href="#org95d621a">eaf open url</a></li>
+</ul>
+</li>
+<li><a href="#org064f342">keybinding</a></li>
+<li><a href="#orga783fc1">eaf brower login picture validate failed</a></li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-orgf63648a" class="outline-2">
+<h2 id="orgf63648a">download web page</h2>
+<div class="outline-text-2" id="text-orgf63648a">
+</div>
+<div id="outline-container-org4368357" class="outline-3">
+<h3 id="org4368357">M1</h3>
+<div class="outline-text-3" id="text-org4368357">
+<p>
+<code>M-x insert_or_save_as_single_file</code> 快捷键(S).
+</p>
+</div>
+
+<div id="outline-container-org195d1a4" class="outline-4">
+<h4 id="org195d1a4">[EAF/browser] Executable monolith not in PATH</h4>
+<div class="outline-text-4" id="text-org195d1a4">
+<p>
+是没有安装 monolith。如何安装？见 <a href="https://github.com/Y2Z/monolith">https://github.com/Y2Z/monolith</a>
+</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org3d4d1d2" class="outline-3">
+<h3 id="org3d4d1d2">M2 先找到 url, 用 eww 下载</h3>
+<div class="outline-text-3" id="text-org3d4d1d2">
+</div>
+<div id="outline-container-org7aa9902" class="outline-4">
+<h4 id="org7aa9902">eaf copy url</h4>
+<div class="outline-text-4" id="text-org7aa9902">
+<p>
+返回到上一页面 <code>M-x insert_or_history_backward</code> ， 然后再复制url <code>M-x insert_or_copy_link</code>
+</p>
+</div>
+</div>
+<div id="outline-container-org085f59d" class="outline-4">
+<h4 id="org085f59d">eww 打开 url</h4>
+<div class="outline-text-4" id="text-org085f59d">
+<p>
+<code>M-x eww</code>
+</p>
+</div>
+</div>
+<div id="outline-container-orgae2e955" class="outline-4">
+<h4 id="orgae2e955">eww 下载</h4>
+<div class="outline-text-4" id="text-orgae2e955">
+<p>
+<code>M-x eww-download</code>
+</p>
+</div>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgf234c0e" class="outline-2">
+<h2 id="orgf234c0e">copy eww page to eaf</h2>
+<div class="outline-text-2" id="text-orgf234c0e">
+</div>
+<div id="outline-container-org17efe1c" class="outline-3">
+<h3 id="org17efe1c">eww copy page url</h3>
+<div class="outline-text-3" id="text-org17efe1c">
+<p>
+<code>M-x eww-copy-page-url</code>
+</p>
+</div>
+</div>
+
+<div id="outline-container-org95d621a" class="outline-3">
+<h3 id="org95d621a">eaf open url</h3>
+<div class="outline-text-3" id="text-org95d621a">
+<p>
+<code>M-x eaf-open-brower</code>
+</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org064f342" class="outline-2">
+<h2 id="org064f342">keybinding</h2>
+<div class="outline-text-2" id="text-org064f342">
+<div class="org-src-container">
+<pre class="src src-elisp">(<span style="color: #00bfff;">defcustom</span> <span style="color: #d4d4d4;">eaf-browser-keybinding</span>
+  '((<span style="color: #daa520;">"C--"</span> . <span style="color: #daa520;">"zoom_out"</span>)                              <span style="color: #579C4C;">;; </span><span style="color: #579C4C;">&#39029;&#38754;&#21464;&#23567;</span>
+    (<span style="color: #daa520;">"C-="</span> . <span style="color: #daa520;">"zoom_in"</span>)                               <span style="color: #579C4C;">;; </span><span style="color: #579C4C;">&#39029;&#38754;&#21464;&#22823;</span>
+    (<span style="color: #daa520;">"C-0"</span> . <span style="color: #daa520;">"zoom_reset"</span>)                            <span style="color: #579C4C;">;; </span><span style="color: #579C4C;">&#39029;&#38754;&#32553;&#25918;&#36824;&#21407;</span>
+    (<span style="color: #daa520;">"C-s"</span> . <span style="color: #daa520;">"search_text_forward"</span>)
+    (<span style="color: #daa520;">"C-r"</span> . <span style="color: #daa520;">"search_text_backward"</span>)
+    (<span style="color: #daa520;">"C-n"</span> . <span style="color: #daa520;">"scroll_up"</span>)                             <span style="color: #579C4C;">;; </span><span style="color: #579C4C;">&#20809;&#26631;&#21521;&#19978;&#19968;&#34892;&#65292;&#39029;&#38754;&#21521;&#19979;&#19968;&#34892;</span>
+    (<span style="color: #daa520;">"C-p"</span> . <span style="color: #daa520;">"scroll_down"</span>)                           <span style="color: #579C4C;">;; </span><span style="color: #579C4C;">&#20809;&#26631;&#21521;&#19979;&#19968;&#34892;&#65292;&#39029;&#38754;&#21521;&#19978;&#19968;&#34892;</span>
+    (<span style="color: #daa520;">"C-f"</span> . <span style="color: #daa520;">"scroll_right"</span>)                          <span style="color: #579C4C;">;; </span><span style="color: #579C4C;">&#39029;&#38754;&#21521;&#21491;</span>
+    (<span style="color: #daa520;">"C-b"</span> . <span style="color: #daa520;">"scroll_left"</span>)                           <span style="color: #579C4C;">;; </span><span style="color: #579C4C;">&#39029;&#38754;&#21521;&#24038;</span>
+    (<span style="color: #daa520;">"C-v"</span> . <span style="color: #daa520;">"scroll_up_page"</span>)                        <span style="color: #579C4C;">;; </span><span style="color: #579C4C;">&#39029;&#38754;&#21521;&#19979;&#19968;&#23631;</span>
+    (<span style="color: #daa520;">"C-y"</span> . <span style="color: #daa520;">"yank_text"</span>)
+    (<span style="color: #daa520;">"C-w"</span> . <span style="color: #daa520;">"kill_text"</span>)
+    (<span style="color: #daa520;">"M-e"</span> . <span style="color: #daa520;">"edit_focus_text"</span>)
+    (<span style="color: #daa520;">"M-s"</span> . <span style="color: #daa520;">"open_link"</span>)                             <span style="color: #579C4C;">;; </span><span style="color: #579C4C;">&#22312;&#26412;buffer&#25171;&#24320; link </span>
+    (<span style="color: #daa520;">"M-S"</span> . <span style="color: #daa520;">"open_link_new_buffer"</span>)                  <span style="color: #579C4C;">;; </span><span style="color: #579C4C;">&#22312; &#26032;buffer&#25171;&#24320; link </span>
+    (<span style="color: #daa520;">"M-d"</span> . <span style="color: #daa520;">"open_link_background_buffer"</span>)           <span style="color: #579C4C;">;; </span><span style="color: #579C4C;">&#22312; &#26032;buffer&#25171;&#24320; link ,&#20294;&#26159;&#19981;&#39532;&#19978;&#36339;&#36716;&#21040;&#37027;&#19968;&#39029;</span>
+    (<span style="color: #daa520;">"C-/"</span> . <span style="color: #daa520;">"undo_action"</span>)
+    (<span style="color: #daa520;">"M-_"</span> . <span style="color: #daa520;">"redo_action"</span>)
+    (<span style="color: #daa520;">"M-w"</span> . <span style="color: #daa520;">"copy_text"</span>)                             <span style="color: #579C4C;">;; </span><span style="color: #579C4C;">(&#36873;&#20013;&#21518;)&#22797;&#21046;&#25991;&#26412;</span>
+    (<span style="color: #daa520;">"M-f"</span> . <span style="color: #daa520;">"history_forward"</span>)                       <span style="color: #579C4C;">;; </span><span style="color: #579C4C;">&#39029;&#38754;&#21521;&#21069;&#36827;</span>
+    (<span style="color: #daa520;">"M-b"</span> . <span style="color: #daa520;">"history_backward"</span>)                      <span style="color: #579C4C;">;; </span><span style="color: #579C4C;">&#39029;&#38754;&#21521;&#21518;&#36827;</span>
+    (<span style="color: #daa520;">"M-q"</span> . <span style="color: #daa520;">"clear_all_cookies"</span>)
+    (<span style="color: #daa520;">"C-M-q"</span> . <span style="color: #daa520;">"clear_history"</span>)
+    (<span style="color: #daa520;">"M-v"</span> . <span style="color: #daa520;">"scroll_down_page"</span>)                      <span style="color: #579C4C;">;; </span><span style="color: #579C4C;">&#39029;&#38754;&#21521;&#19979;</span>
+    (<span style="color: #daa520;">"M-&lt;"</span> . <span style="color: #daa520;">"scroll_to_begin"</span>)
+    (<span style="color: #daa520;">"M-&gt;"</span> . <span style="color: #daa520;">"scroll_to_bottom"</span>)
+    (<span style="color: #daa520;">"M-t"</span> . <span style="color: #daa520;">"new_blank_page"</span>)                        <span style="color: #579C4C;">;; </span><span style="color: #579C4C;">&#25171;&#24320;&#26032;&#30340;&#65288;&#40664;&#35748;&#39029;&#38754;&#65289;&#20027;&#39029;</span>
+    (<span style="color: #daa520;">"SPC"</span> . <span style="color: #daa520;">"insert_or_scroll_up_page"</span>)              <span style="color: #579C4C;">;; </span><span style="color: #579C4C;">&#39029;&#38754;&#21521;&#19979;</span>
+    (<span style="color: #daa520;">"J"</span> . <span style="color: #daa520;">"insert_or_select_left_tab"</span>)               <span style="color: #579C4C;">;; </span><span style="color: #579C4C;">&#21521;&#24038;&#25171;&#24320;&#39029;&#38754;</span>
+    (<span style="color: #daa520;">"K"</span> . <span style="color: #daa520;">"insert_or_select_right_tab"</span>)              <span style="color: #579C4C;">;; </span><span style="color: #579C4C;">&#21521;&#21491;&#25171;&#24320;&#39029;&#38754;</span>
+    (<span style="color: #daa520;">"j"</span> . <span style="color: #daa520;">"insert_or_scroll_up"</span>)                     <span style="color: #579C4C;">;;  </span><span style="color: #579C4C;">&#39029;&#38754;&#21521;&#19979;</span>
+    (<span style="color: #daa520;">"k"</span> . <span style="color: #daa520;">"insert_or_scroll_down"</span>)                   <span style="color: #579C4C;">;;  </span><span style="color: #579C4C;">&#39029;&#38754;&#21521;&#19978;</span>
+    (<span style="color: #daa520;">"h"</span> . <span style="color: #daa520;">"insert_or_scroll_left"</span>)                   <span style="color: #579C4C;">;; </span><span style="color: #579C4C;">&#39029;&#38754;&#21521;&#24038;</span>
+    (<span style="color: #daa520;">"l"</span> . <span style="color: #daa520;">"insert_or_scroll_right"</span>)                  <span style="color: #579C4C;">;; </span><span style="color: #579C4C;">&#39029;&#38754;&#21521;&#21491;</span>
+    (<span style="color: #daa520;">"f"</span> . <span style="color: #daa520;">"insert_or_open_link"</span>)                     <span style="color: #579C4C;">;; </span><span style="color: #579C4C;">&#22312;&#26412;buffer&#25171;&#24320; link </span>
+    (<span style="color: #daa520;">"F"</span> . <span style="color: #daa520;">"insert_or_open_link_new_buffer"</span>)          <span style="color: #579C4C;">;; </span><span style="color: #579C4C;">&#22312; &#26032;buffer&#25171;&#24320; link </span>
+    (<span style="color: #daa520;">"D"</span> . <span style="color: #daa520;">"insert_or_open_link_background_buffer"</span>)   <span style="color: #579C4C;">;; </span><span style="color: #579C4C;">&#22312; &#26032;buffer&#25171;&#24320; link ,&#20294;&#26159;&#19981;&#39532;&#19978;&#36339;&#36716;&#21040;&#37027;&#19968;&#39029;</span>
+    (<span style="color: #daa520;">"c"</span> . <span style="color: #daa520;">"insert_or_copy_link"</span>)                     <span style="color: #579C4C;">;; </span><span style="color: #579C4C;">&#22797;&#21046; link url</span>
+    (<span style="color: #daa520;">"C"</span> . <span style="color: #daa520;">"insert_or_copy_code"</span>)
+    (<span style="color: #daa520;">"d"</span> . <span style="color: #daa520;">"insert_or_scroll_up_page"</span>)                <span style="color: #579C4C;">;;  </span><span style="color: #579C4C;">&#39029;&#38754;&#21521;&#19979;</span>
+    (<span style="color: #daa520;">"u"</span> . <span style="color: #daa520;">"insert_or_scroll_down_page"</span>)              <span style="color: #579C4C;">;;  </span><span style="color: #579C4C;">&#39029;&#38754;&#21521;&#19978;</span>
+    (<span style="color: #daa520;">"H"</span> . <span style="color: #daa520;">"insert_or_history_backward"</span>)
+    (<span style="color: #daa520;">"L"</span> . <span style="color: #daa520;">"insert_or_history_forward"</span>)
+    (<span style="color: #daa520;">"t"</span> . <span style="color: #daa520;">"insert_or_new_blank_page"</span>)                <span style="color: #579C4C;">;; </span><span style="color: #579C4C;">&#25171;&#24320;&#26032;&#30340;&#65288;&#40664;&#35748;&#39029;&#38754;&#65289;&#20027;&#39029;</span>
+    (<span style="color: #daa520;">"T"</span> . <span style="color: #daa520;">"insert_or_recover_prev_close_page"</span>)       <span style="color: #579C4C;">;; </span><span style="color: #579C4C;">&#25171;&#24320; &#26368;&#36817;&#19968;&#20010;&#20851;&#38381;&#39029;&#38754;</span>
+    (<span style="color: #daa520;">"i"</span> . <span style="color: #daa520;">"insert_or_focus_input"</span>)                   <span style="color: #579C4C;">;; </span><span style="color: #579C4C;">&#20809;&#26631;&#31227;&#33267;&#36755;&#20837;&#26694;&#20013;</span>
+    (<span style="color: #daa520;">"I"</span> . <span style="color: #daa520;">"insert_or_open_download_manage_page"</span>)     <span style="color: #579C4C;">;; </span><span style="color: #579C4C;">&#25171;&#24320;&#19979;&#36733;&#31649;&#29702;&#39029;&#38754;(aria2webui)</span>
+    (<span style="color: #daa520;">"r"</span> . <span style="color: #daa520;">"insert_or_refresh_page"</span>)                  <span style="color: #579C4C;">;; </span><span style="color: #579C4C;">&#21047;&#26032;&#39029;&#38754;</span>
+    (<span style="color: #daa520;">"g"</span> . <span style="color: #daa520;">"insert_or_scroll_to_begin"</span>)               <span style="color: #579C4C;">;; </span><span style="color: #579C4C;">&#21040;&#26412;&#39029;&#38754;&#39030;&#37096;</span>
+    (<span style="color: #daa520;">"x"</span> . <span style="color: #daa520;">"insert_or_close_buffer"</span>)                  <span style="color: #579C4C;">;; </span><span style="color: #579C4C;">&#20851;&#38381;&#26412;&#39029;&#38754;&#65292; &#20063;&#21487;&#20197;&#29992; ~M-x kill-buffer~</span>
+    (<span style="color: #daa520;">"G"</span> . <span style="color: #daa520;">"insert_or_scroll_to_bottom"</span>)              <span style="color: #579C4C;">;; </span><span style="color: #579C4C;">&#21040;&#26412;&#39029;&#38754;&#24213;&#37096;</span>
+    (<span style="color: #daa520;">"-"</span> . <span style="color: #daa520;">"insert_or_zoom_out"</span>)                      <span style="color: #579C4C;">;; </span><span style="color: #579C4C;">&#39029;&#38754;&#21464;&#23567;</span>
+    (<span style="color: #daa520;">"="</span> . <span style="color: #daa520;">"insert_or_zoom_in"</span>)                       <span style="color: #579C4C;">;; </span><span style="color: #579C4C;">&#39029;&#38754;&#21464;&#22823;</span>
+    (<span style="color: #daa520;">"0"</span> . <span style="color: #daa520;">"insert_or_zoom_reset"</span>)                    <span style="color: #579C4C;">;; </span><span style="color: #579C4C;">&#39029;&#38754;&#32553;&#25918;&#36824;&#21407;</span>
+    (<span style="color: #daa520;">"m"</span> . <span style="color: #daa520;">"insert_or_save_as_bookmark"</span>)
+    (<span style="color: #daa520;">"o"</span> . <span style="color: #daa520;">"insert_or_open_url"</span>)                      <span style="color: #579C4C;">;; </span><span style="color: #579C4C;">&#25171;&#24320;&#26032;&#39029;&#38754;&#65292;&#38656;&#35201;&#36755;&#20837;url</span>
+    (<span style="color: #daa520;">"y"</span> . <span style="color: #daa520;">"insert_or_download_youtube_video"</span>)
+    (<span style="color: #daa520;">"Y"</span> . <span style="color: #daa520;">"insert_or_download_youtube_audio"</span>)
+    (<span style="color: #daa520;">"p"</span> . <span style="color: #daa520;">"insert_or_toggle_device"</span>)
+    (<span style="color: #daa520;">"s"</span> . <span style="color: #daa520;">"insert_or_save_as_pdf"</span>)                   <span style="color: #579C4C;">;; </span><span style="color: #579C4C;">&#20445;&#23384;&#39029;&#38754;&#33267;pdf</span>
+    (<span style="color: #daa520;">"S"</span> . <span style="color: #daa520;">"insert_or_save_as_single_file"</span>)           <span style="color: #579C4C;">;; </span><span style="color: #579C4C;">&#20445;&#23384;&#39029;&#38754;&#33267;html</span>
+    (<span style="color: #daa520;">"v"</span> . <span style="color: #daa520;">"insert_or_view_source"</span>)                   <span style="color: #579C4C;">;; </span><span style="color: #579C4C;">&#26597;&#30475;&#39029;&#38754;&#28304;&#30721;</span>
+    (<span style="color: #daa520;">"e"</span> . <span style="color: #daa520;">"insert_or_edit_url"</span>)                      <span style="color: #579C4C;">;; </span><span style="color: #579C4C;">&#26597;&#30475;&#25110;&#20462;&#25913;&#24403;&#21069;&#39029;&#38754;url</span>
+    (<span style="color: #daa520;">"C-a"</span> . <span style="color: #daa520;">"select_all_or_input_text"</span>)
+    (<span style="color: #daa520;">"M-u"</span> . <span style="color: #daa520;">"clear_focus"</span>)
+    (<span style="color: #daa520;">"M-i"</span> . <span style="color: #daa520;">"open_download_manage_page"</span>)             <span style="color: #579C4C;">;; </span><span style="color: #579C4C;">&#25171;&#24320;&#19979;&#36733;&#31649;&#29702;&#39029;&#38754;(aria2webui)</span>
+    (<span style="color: #daa520;">"M-o"</span> . <span style="color: #daa520;">"eval_js"</span>)
+    (<span style="color: #daa520;">"M-O"</span> . <span style="color: #daa520;">"eval_js_file"</span>)
+    (<span style="color: #daa520;">"M-g"</span> . <span style="color: #daa520;">"exit_fullscreen"</span>)
+    (<span style="color: #daa520;">"M-,"</span> . <span style="color: #daa520;">"eaf-send-down-key"</span>)                     <span style="color: #579C4C;">;; </span><span style="color: #579C4C;">&#20809;&#26631;&#21521;&#19978;&#19968;&#34892;&#65292;&#39029;&#38754;&#21521;&#19979;&#19968;&#34892;</span>
+    (<span style="color: #daa520;">"M-."</span> . <span style="color: #daa520;">"eaf-send-up-key"</span>)                       <span style="color: #579C4C;">;; </span><span style="color: #579C4C;">&#20809;&#26631;&#21521;&#19979;&#19968;&#34892;&#65292;&#39029;&#38754;&#21521;&#19978;&#19968;&#34892;</span>
+    (<span style="color: #daa520;">"M-m"</span> . <span style="color: #daa520;">"eaf-send-return-key"</span>)
+    (<span style="color: #daa520;">"&lt;f5&gt;"</span> . <span style="color: #daa520;">"refresh_page"</span>)
+    (<span style="color: #daa520;">"&lt;f12&gt;"</span> . <span style="color: #daa520;">"open_dev_tool_page"</span>)
+    (<span style="color: #daa520;">"&lt;C-return&gt;"</span> . <span style="color: #daa520;">"eaf-send-ctrl-return-sequence"</span>)
+    )
+  <span style="color: #999999;">"The keybinding of EAF Browser."</span>
+  <span style="color: #d4d4d4;">:type</span> 'cons)
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orga783fc1" class="outline-2">
+<h2 id="orga783fc1">eaf brower login picture validate failed</h2>
+<div class="outline-text-2" id="text-orga783fc1">
+<p>
+when i login <a href="https://bihu.com/account">https://bihu.com/account</a> , 填写完 username, password, then need picture validate, then eaf crashed.
+</p>
+
+<p>
+how to fix it?
+</p>
+</div>
+</div>
+</div>
+</body>
+</html>

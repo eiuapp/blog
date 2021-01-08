@@ -3,10 +3,10 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2020-07-30 Thu 16:11 -->
+<!-- 2021-01-07 Thu 11:04 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>&lrm;</title>
+<title>git submodule</title>
 <meta name="generator" content="Org mode" />
 <meta name="author" content="a" />
 <link rel="stylesheet" title="Standard" href="/html/style/worg.css" type="text/css" />
@@ -93,58 +93,38 @@ fathom('trackPageview');
 </script>
 </div>
 <div id="content">
+<h1 class="title">git submodule</h1>
 <div id="table-of-contents">
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#orga7e06c5">git submodule</a>
+<li><a href="#orgde072be">git submodule</a>
 <ul>
-<li><a href="#org12c3743">在已有 submodule 中，切换 branch</a></li>
-<li><a href="#org2e27b48">submodule branch 不是 master 分支</a></li>
-<li><a href="#org3a8cb64">(modified content) vs (new commits)</a></li>
-<li><a href="#orgaea395c">修改 submodule 的 名称</a></li>
+<li><a href="#org9be9604">submodule branch 不是 master 分支</a></li>
+<li><a href="#org7e0b393">(modified content) vs (new commits)</a></li>
+<li><a href="#orgb7f8787">修改 submodule 的 名称</a></li>
+</ul>
+</li>
+<li><a href="#org2f6e615">git submodule子模块操作－如何修改子模块的url，以及更新和删除操作</a>
+<ul>
+<li><a href="#org1a78812">manual</a></li>
+<li><a href="#org0e72040">set-url</a></li>
 </ul>
 </li>
 </ul>
 </div>
 </div>
-<div id="outline-container-orga7e06c5" class="outline-2">
-<h2 id="orga7e06c5">git submodule</h2>
-<div class="outline-text-2" id="text-orga7e06c5">
-</div>
-<div id="outline-container-org12c3743" class="outline-3">
-<h3 id="org12c3743">在已有 submodule 中，切换 branch</h3>
-<div class="outline-text-3" id="text-org12c3743">
 <p>
-`git config -f .gitmodules submodule.&lt;name&gt;.branch &lt;branch-name&gt;`
+<a href="../index.html">{Back to site's index}</a>
 </p>
 
-<p>
-<a href="https://git-scm.com/book/zh/v2/Git-%E5%B7%A5%E5%85%B7-%E5%AD%90%E6%A8%A1%E5%9D%97">https://git-scm.com/book/zh/v2/Git-%E5%B7%A5%E5%85%B7-%E5%AD%90%E6%A8%A1%E5%9D%97</a>
-</p>
-
-<p>
-此命令默认会假定你想要更新并检出子模块仓库的 master 分支。 不过你也可以设置为想要的其他分支。 例如，你想要 DbConnector 子模块跟踪仓库的 “stable” 分支，那么既可以在 .gitmodules 文件中设置（这样其他人也可以跟踪它），也可以只在本地的 .git/config 文件中设置。 让我们在 .gitmodules 文件中设置它：
-</p>
-
-<div class="org-src-container">
-<pre class="src src-shell">$ git config -f .gitmodules submodule.DbConnector.branch stable
-
-$ git submodule update --remote
-remote: Counting objects: 4, done.
-remote: Compressing objects: 100% (2/2), done.
-remote: Total 4 (delta 2), reused 4 (delta 2)
-Unpacking objects: 100% (4/4), done.
-From https://github.com/chaconinc/DbConnector
-   27cf5d3..c87d55d  stable -&gt; origin/stable
-Submodule path <span style="color: #daa520;">'DbConnector'</span>: checked out <span style="color: #daa520;">'c87d55d4c6d4b05ee34fbc8cb6f7bf4585ae6687'</span>
-</pre>
+<div id="outline-container-orgde072be" class="outline-2">
+<h2 id="orgde072be">git submodule</h2>
+<div class="outline-text-2" id="text-orgde072be">
 </div>
-</div>
-</div>
-<div id="outline-container-org2e27b48" class="outline-3">
-<h3 id="org2e27b48">submodule branch 不是 master 分支</h3>
-<div class="outline-text-3" id="text-org2e27b48">
+<div id="outline-container-org9be9604" class="outline-3">
+<h3 id="org9be9604">submodule branch 不是 master 分支</h3>
+<div class="outline-text-3" id="text-org9be9604">
 <p>
 这时，当你 `cd path/to/submodule` 后，`git status`
 </p>
@@ -157,7 +137,7 @@ Submodule path <span style="color: #daa520;">'DbConnector'</span>: checked out <
   remotes/origin/add-missing-modes
   remotes/origin/cleanup-org-mode-snippets
   remotes/origin/cleanup_html_tags
-  remotes/origin/eiuapp
+  remotes/origin/zhangsan
   remotes/origin/master
   remotes/origin/notetiene-master
   remotes/origin/proper-package
@@ -169,14 +149,14 @@ nothing to commit, working directory clean
 </div>
 
 <p>
-发现，不会显示 branch 名称 "eiuapp", 而是会显示 eiuapp branch 的 commit hash id.
+发现，不会显示 branch 名称 "zhangsan", 而是会显示 zhangsan branch 的 commit hash id.
 </p>
 </div>
 </div>
 
-<div id="outline-container-org3a8cb64" class="outline-3">
-<h3 id="org3a8cb64">(modified content) vs (new commits)</h3>
-<div class="outline-text-3" id="text-org3a8cb64">
+<div id="outline-container-org7e0b393" class="outline-3">
+<h3 id="org7e0b393">(modified content) vs (new commits)</h3>
+<div class="outline-text-3" id="text-org7e0b393">
 <div class="org-src-container">
 <pre class="src src-shell">$ git submodule update --remote
 $ git status
@@ -202,15 +182,53 @@ Changes not staged for commit:
 </div>
 </div>
 
-<div id="outline-container-orgaea395c" class="outline-3">
-<h3 id="orgaea395c">修改 submodule 的 名称</h3>
-<div class="outline-text-3" id="text-orgaea395c">
+<div id="outline-container-orgb7f8787" class="outline-3">
+<h3 id="orgb7f8787">修改 submodule 的 名称</h3>
+<div class="outline-text-3" id="text-orgb7f8787">
 <p>
 <a href="https://git-scm.com/docs/git-submodule">https://git-scm.com/docs/git-submodule</a>
 </p>
 
 <p>
 没有找到解决方案
+</p>
+</div>
+</div>
+</div>
+
+
+<div id="outline-container-org2f6e615" class="outline-2">
+<h2 id="org2f6e615">git submodule子模块操作－如何修改子模块的url，以及更新和删除操作</h2>
+<div class="outline-text-2" id="text-org2f6e615">
+</div>
+<div id="outline-container-org1a78812" class="outline-3">
+<h3 id="org1a78812">manual</h3>
+<div class="outline-text-3" id="text-org1a78812">
+<p>
+<a href="https://blog.csdn.net/chengde6896383/article/details/103969532">https://blog.csdn.net/chengde6896383/article/details/103969532</a>
+</p>
+
+<p>
+vi .gitmodules
+git submodule sync
+</p>
+
+<p>
+cat .git/config 检查看一下，是不是修改过来了. 一般情况，肯定是修改过来了的。
+</p>
+</div>
+</div>
+
+<div id="outline-container-org0e72040" class="outline-3">
+<h3 id="org0e72040">set-url</h3>
+<div class="outline-text-3" id="text-org0e72040">
+<ul class="org-ul">
+<li><a href="https://stackoverflow.com/questions/35902895/git-submodule-url-changed">https://stackoverflow.com/questions/35902895/git-submodule-url-changed</a></li>
+</ul>
+
+<p>
+git submodule set-url  [&#x2013;] &lt;path&gt; &lt;newurl&gt;
+git submodule sync
 </p>
 </div>
 </div>

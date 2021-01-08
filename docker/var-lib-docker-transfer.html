@@ -1,0 +1,452 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<!-- 2021-01-08 Fri 15:30 -->
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>&lrm;</title>
+<meta name="generator" content="Org mode" />
+<meta name="author" content="a" />
+<link rel="stylesheet" title="Standard" href="/html/style/worg.css" type="text/css" />
+<link rel="alternate stylesheet" title="Zenburn" href="/html/style/worg-zenburn.css" type="text/css" />
+<link rel="alternate stylesheet" title="Classic" href="/html/style/worg-classic.css" type="text/css" />
+<link rel="SHORTCUT ICON" href="/html/style/org-mode-unicorn.ico" type="image/x-icon" />
+<link rel="icon" href="/html/style/org-mode-unicorn.ico" type="image/ico" />
+<script type="text/javascript">
+/*
+@licstart  The following is the entire license notice for the
+JavaScript code in this tag.
+
+Copyright (C) 2012-2019 Free Software Foundation, Inc.
+
+The JavaScript code in this tag is free software: you can
+redistribute it and/or modify it under the terms of the GNU
+General Public License (GNU GPL) as published by the Free Software
+Foundation, either version 3 of the License, or (at your option)
+any later version.  The code is distributed WITHOUT ANY WARRANTY;
+without even the implied warranty of MERCHANTABILITY or FITNESS
+FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
+
+As additional permission under GNU GPL version 3 section 7, you
+may distribute non-source (e.g., minimized or compacted) forms of
+that code without the copy of the GNU GPL normally required by
+section 4, provided you include this license notice and a URL
+through which recipients can access the Corresponding Source.
+
+
+@licend  The above is the entire license notice
+for the JavaScript code in this tag.
+*/
+<!--/*--><![CDATA[/*><!--*/
+ function CodeHighlightOn(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(null != target) {
+     elem.cacheClassElem = elem.className;
+     elem.cacheClassTarget = target.className;
+     target.className = "code-highlighted";
+     elem.className   = "code-highlighted";
+   }
+ }
+ function CodeHighlightOff(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(elem.cacheClassElem)
+     elem.className = elem.cacheClassElem;
+   if(elem.cacheClassTarget)
+     target.className = elem.cacheClassTarget;
+ }
+/*]]>*///-->
+</script>
+</head>
+<body>
+<div id="preamble" class="status">
+<script type="text/javascript">
+  document.addEventListener('DOMContentLoaded',function() {
+      document.getElementById("table-of-contents").onclick = function() {
+          var elem = document.getElementById("text-table-of-contents");
+          elem.style.display = elem.style.display == "block" ? "none" : "block";
+      }
+  });
+
+  var url = document.location.href;
+  var orgsource = url.substring(0, url.lastIndexOf("."))+".org.html";
+  function show_org_source(){
+      document.location.href = orgsource;
+  }
+</script>
+
+<script>
+(function(f, a, t, h, o, m){
+	a[h]=a[h]||function(){
+		(a[h].q=a[h].q||[]).push(arguments)
+	};
+	o=f.createElement('script'),
+	m=f.getElementsByTagName('script')[0];
+	o.async=1; o.src=t; o.id='fathom-script';
+	m.parentNode.insertBefore(o,m)
+})(document, window, '//stats.orgmode.org/tracker.js', 'fathom');
+fathom('set', 'siteId', 'NWSQJ');
+fathom('trackPageview');
+</script>
+</div>
+<div id="content">
+<div id="table-of-contents">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#两种方式迁移-docker-的默认安装存储目录">两种方式迁移 Docker 的默认安装(存储)目录</a></li>
+<li><a href="#两种方法迁移-docker-的默认安装存储目录">两种方法迁移 Docker 的默认安装(存储)目录</a>
+<ul>
+<li><a href="#前置工作">前置工作</a>
+<ul>
+<li><a href="#方法一软链接">方法一：软链接</a></li>
+</ul>
+</li>
+<li><a href="#方法二直接修改-docker-配置文件">方法二：直接修改 Docker 配置文件</a>
+<ul>
+<li><a href="#docker-版本-v17.05.0">Docker 版本 &lt; v17.05.0</a></li>
+<li><a href="#docker-版本-v17.05.0-1">Docker 版本 &gt;= v17.05.0</a></li>
+</ul>
+</li>
+<li><a href="#重启-docker-清理原安装存储目录">重启 Docker &amp; 清理原安装(存储)目录</a></li>
+</ul>
+</li>
+<li><a href="#以下内容废弃">以下内容废弃</a></li>
+</ul>
+</div>
+</div>
+<p>
+两种方式迁移 Docker 的默认安装(存储)目录
+</p>
+
+<p>
+转载自： <a href="https://taohuawu.club/migrate-docker-installation-directory">https://taohuawu.club/migrate-docker-installation-directory</a>
+</p>
+
+
+<div class="figure">
+<p><img src="https://devclass.com/wp-content/uploads/2018/11/Docker.jpg" alt="Docker.jpg" />
+</p>
+<p><span class="figure-number">Figure 1: </span>两种方式迁移 Docker 的默认安装(存储)目录</p>
+</div>
+
+<div id="outline-container-orgb1d8e11" class="outline-2">
+<h2 id="两种方式迁移-docker-的默认安装存储目录">两种方式迁移 Docker 的默认安装(存储)目录</h2>
+<div class="outline-text-2" id="text-两种方式迁移-docker-的默认安装存储目录">
+<p>
+2019年11月15日 1,244 °C
+<a href="https://taohuawu.club/category/technical-mixture">技术杂谈</a>
+<a href="https://taohuawu.club/tags/Docker">Docker</a>
+<a href="https://taohuawu.club/tags/Ubuntu">Ubuntu</a>
+</p>
+
+
+<div class="figure">
+<p><img src="https://devclass.com/wp-content/uploads/2018/11/Docker.jpg" alt="Docker.jpg" />
+</p>
+</div>
+
+<blockquote>
+<p>
+前阵子我给自己的云服务器买了数据云盘挂载上去了，作为以后主要的存储那些占用磁盘比较大的数据，所以就想着把一些以前装在系统的根目录
+/ 下的一些软件的数据目录迁移到新的数据盘挂载的目录下，首先迁移的是
+Docker，我的服务器系统发行版本是 Ubuntu-16.04。
+</p>
+
+<p>
+Google
+查了一些博客文章，发现其中有些方法被提及得很多次但是我试了之后并没有生效，于是我直接去看官网文档，再结合其他一些第三方博客，总算是被我搞定了。。。记录一下，做个备份。
+</p>
+</blockquote>
+</div>
+</div>
+
+<div id="outline-container-orge86cdf5" class="outline-2">
+<h2 id="两种方法迁移-docker-的默认安装存储目录">两种方法迁移 Docker 的默认安装(存储)目录</h2>
+<div class="outline-text-2" id="text-两种方法迁移-docker-的默认安装存储目录">
+<p>
+如果是通过 Ubuntu 的 apt-get 安装的
+Docker，默认的安装目录应该是：=/var/lib/docker=。
+</p>
+
+<p>
+为了完全确定，可以使用以下的命令查询真正的安装路径：
+</p>
+
+<pre class="example">
+sudo docker info | grep "Docker Root Dir"
+</pre>
+</div>
+
+<div id="outline-container-org48a855a" class="outline-3">
+<h3 id="前置工作">前置工作</h3>
+<div class="outline-text-3" id="text-前置工作">
+<p>
+<b>下文以=/store/software/docker=这个路径作为要迁移的新 Docker
+安装(存储)目录</b>
+</p>
+
+<p>
+在开始迁移之前，首先复制原 Docker 安装(存储)目录到新的路径下：
+</p>
+
+<pre class="example">
+cp -a /var/lib/docker /store/software/
+</pre>
+
+<p>
+然后备份原目录数据：
+</p>
+
+<pre class="example">
+mv -u /var/lib/docker /var/lib/docker.bak
+</pre>
+</div>
+
+<div id="outline-container-orgfe21131" class="outline-4">
+<h4 id="方法一软链接">方法一：软链接</h4>
+<div class="outline-text-4" id="text-方法一软链接">
+<p>
+通过把 Docker
+的原安装(存储)目录移动到自定义的其他路径下，然后在原位置下建立软链接是最简单快捷的方式。
+</p>
+
+<p>
+首先，关停 Docker 服务：
+</p>
+
+<pre class="example">
+sudo systemctl stop docker
+# or
+sudo service docker stop
+</pre>
+
+<p>
+接着，新建一个=/var/lib/docker=的软链：
+</p>
+
+<pre class="example">
+sudo ln -fs /store/software/docker /var/lib/docker
+</pre>
+
+<p>
+最后，重启 Docker 服务：
+</p>
+
+<pre class="example">
+sudo systemctl start docker
+# or
+sudo service docker start
+</pre>
+
+<p>
+*启动 Docker 之后，以后你 pull image 和 run container，Docker
+写入的路径依然是=/var/lib/docker=，但是因为软链的设置，实际已经是往新的目录写入了。至此，完成了
+Docker 安装(存储)目录的迁移。*
+</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org7ec996c" class="outline-3">
+<h3 id="方法二直接修改-docker-配置文件">方法二：直接修改 Docker 配置文件</h3>
+<div class="outline-text-3" id="text-方法二直接修改-docker-配置文件">
+</div>
+
+<div id="outline-container-org498a2b3" class="outline-4">
+<h4 id="docker-版本-v17.05.0">Docker 版本 &lt; v17.05.0</h4>
+<div class="outline-text-4" id="text-docker-版本-v17.05.0">
+<p>
+因为 dockerd 运行 Docker 服务的时候可以通过参数
+=graph=指定镜像和容器存放路径，比如：=–graph=/var/lib/docker=，我们只需要修改配置文件指定启动参数即可。
+</p>
+
+<p>
+Docker
+的配置文件可以设置大部分的后台进程参数，在各个操作系统中的存放位置不一致，在
+Ubuntu 中的位置是：=/etc/default/docker=，在 CentOS
+中的位置是：=/etc/sysconfig/docker=。
+</p>
+
+<pre class="example">
+# 如果是 CentOS 则添加下面这行：
+OPTIONS=--graph="/store/software/docker" --selinux-enabled -H fd://
+
+# 如果是 Ubuntu 则添加下面这行（因为 Ubuntu 默认没开启 selinux）：
+OPTIONS=--graph="/store/software/docker" -H fd://
+# 或者
+DOCKER_OPTS="-g /store/software/docker"
+</pre>
+</div>
+</div>
+
+<div id="outline-container-org8993c7a" class="outline-4">
+<h4 id="docker-版本-v17.05.0-1">Docker 版本 &gt;= v17.05.0</h4>
+<div class="outline-text-4" id="text-docker-版本-v17.05.0-1">
+<p>
+因为 Docker 官方在这个发行版本就 deprecated 了=graph=这个
+feature，所以如果你机器上安装的 Docker 版本 &gt;=
+v17.05.0，则无法通过在=/etc/default/docker=配置文件中指定=graph=参数来修改
+Docker
+的默认安装(存储)目录了，具体参见官网文档：<a href="https://docs.docker.com/engine/deprecated/#-g-and---graph-flags-on-dockerd">Docker
+Docs</a>。
+</p>
+
+<p>
+好在天无绝人之路，新版本的 Docker
+还有其他方式可以达到我们修改安装(存储)目录的目的：通过修改(新建)=/etc/docker/daemon.json=，指定=data-root=参数的值。
+</p>
+
+<p>
+按如下操作：
+</p>
+
+<pre class="example">
+vim /etc/docker/daemon.json
+</pre>
+
+<p>
+加入
+</p>
+
+<pre class="example">
+{
+    "data-root": "/store/software/docker",
+    "storage-driver": "overlay2" # 这个是 Docker 是默认设置，这里也可以不用加
+}
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org5a5b6a5" class="outline-3">
+<h3 id="重启-docker-清理原安装存储目录">重启 Docker &amp; 清理原安装(存储)目录</h3>
+<div class="outline-text-3" id="text-重启-docker-清理原安装存储目录">
+<p>
+最后，重启 Docker 服务：
+</p>
+
+<pre class="example">
+sudo systemctl restart docker
+# or
+sudo service docker restart
+</pre>
+
+<p>
+通过上述任一方法完成迁移之后，在确认 Docker
+能正常工作之后，删除备份的原目录数据：
+</p>
+
+<pre class="example">
+rm -rf /var/lib/docker.bak
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgdce6652" class="outline-2">
+<h2 id="以下内容废弃">以下内容废弃</h2>
+<div class="outline-text-2" id="text-以下内容废弃">
+<p>
+转载自： <a href="https://my.oschina.net/qbj/blog/2998164">https://my.oschina.net/qbj/blog/2998164</a>
+</p>
+
+<p>
+由于早上到公司发现=/var/lib/docker/overlay2=
+占用空间很大，决定做一下=/var/lib/docker=目录迁移工作
+</p>
+
+<ol class="org-ol">
+<li>首先需要停止docker服务</li>
+</ol>
+
+<div class="org-src-container">
+<pre class="src src-sh">systemctl stop docker
+</pre>
+</div>
+
+<ol class="org-ol">
+<li>通过命令df -h 先去看下磁盘大概的情况，找一个大的空间</li>
+
+<li>创建docker的新目录，我这边找了data, 所以我这边的新目录地址是
+   <code>/data/docker/lib/</code></li>
+</ol>
+
+<div class="org-src-container">
+<pre class="src src-sh">mkdir -p /data/docker/lib
+</pre>
+</div>
+
+<p>
+注：参数-p 确保目录名称存在，如果目录不存在的就新创建一个。
+</p>
+
+<ol class="org-ol">
+<li>开始迁移</li>
+</ol>
+
+<div class="org-src-container">
+<pre class="src src-sh">rsync -avzP /var/lib/docker /data/docker/lib/
+</pre>
+</div>
+
+<p>
+先确认是否安装了rsync.
+</p>
+
+<p>
+参数解释：
+</p>
+
+<pre class="example">
+-a，归档模式，表示递归传输并保持文件属性。
+-v，显示rsync过程中详细信息。可以使用"-vvvv"获取更详细信息。
+-P，显示文件传输的进度信息。(实际上"-P"="--partial --progress"，其中的"--progress"才是显示进度信息的)。
+-z,   传输时进行压缩提高效率。
+</pre>
+
+<ol class="org-ol">
+<li>指定新的docker目录</li>
+</ol>
+
+<div class="org-src-container">
+<pre class="src src-sh">vim /lib/systemd/system/docker.service
+</pre>
+</div>
+
+<p>
+在ExecStart加入:
+</p>
+
+<pre class="example">
+--graph=/data/docker/lib/docker
+</pre>
+
+<p>
+注：之前文档里这一步是采用另一种方式的如下图，也是可以的，但建议以新的为准。
+</p>
+
+<ol class="org-ol">
+<li>重启docker</li>
+</ol>
+
+<div class="org-src-container">
+<pre class="src src-sh">systemctl daemon-reload
+
+systemctl restart docker
+
+systemctl enable docker
+</pre>
+</div>
+
+<ol class="org-ol">
+<li>启动之后确认docker 没有问题，删除旧的=/var/lib/docker/=目录</li>
+</ol>
+</div>
+</div>
+</div>
+</body>
+</html>

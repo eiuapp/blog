@@ -1,0 +1,1605 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<!-- 2021-01-08 Fri 14:58 -->
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>k8s</title>
+<meta name="generator" content="Org mode" />
+<meta name="author" content="Bryce" />
+<link rel="stylesheet" title="Standard" href="/html/style/worg.css" type="text/css" />
+<link rel="alternate stylesheet" title="Zenburn" href="/html/style/worg-zenburn.css" type="text/css" />
+<link rel="alternate stylesheet" title="Classic" href="/html/style/worg-classic.css" type="text/css" />
+<link rel="SHORTCUT ICON" href="/html/style/org-mode-unicorn.ico" type="image/x-icon" />
+<link rel="icon" href="/html/style/org-mode-unicorn.ico" type="image/ico" />
+<script type="text/javascript">
+/*
+@licstart  The following is the entire license notice for the
+JavaScript code in this tag.
+
+Copyright (C) 2012-2019 Free Software Foundation, Inc.
+
+The JavaScript code in this tag is free software: you can
+redistribute it and/or modify it under the terms of the GNU
+General Public License (GNU GPL) as published by the Free Software
+Foundation, either version 3 of the License, or (at your option)
+any later version.  The code is distributed WITHOUT ANY WARRANTY;
+without even the implied warranty of MERCHANTABILITY or FITNESS
+FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
+
+As additional permission under GNU GPL version 3 section 7, you
+may distribute non-source (e.g., minimized or compacted) forms of
+that code without the copy of the GNU GPL normally required by
+section 4, provided you include this license notice and a URL
+through which recipients can access the Corresponding Source.
+
+
+@licend  The above is the entire license notice
+for the JavaScript code in this tag.
+*/
+<!--/*--><![CDATA[/*><!--*/
+ function CodeHighlightOn(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(null != target) {
+     elem.cacheClassElem = elem.className;
+     elem.cacheClassTarget = target.className;
+     target.className = "code-highlighted";
+     elem.className   = "code-highlighted";
+   }
+ }
+ function CodeHighlightOff(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(elem.cacheClassElem)
+     elem.className = elem.cacheClassElem;
+   if(elem.cacheClassTarget)
+     target.className = elem.cacheClassTarget;
+ }
+/*]]>*///-->
+</script>
+</head>
+<body>
+<div id="preamble" class="status">
+<script type="text/javascript">
+  document.addEventListener('DOMContentLoaded',function() {
+      document.getElementById("table-of-contents").onclick = function() {
+          var elem = document.getElementById("text-table-of-contents");
+          elem.style.display = elem.style.display == "block" ? "none" : "block";
+      }
+  });
+
+  var url = document.location.href;
+  var orgsource = url.substring(0, url.lastIndexOf("."))+".org.html";
+  function show_org_source(){
+      document.location.href = orgsource;
+  }
+</script>
+
+<script>
+(function(f, a, t, h, o, m){
+	a[h]=a[h]||function(){
+		(a[h].q=a[h].q||[]).push(arguments)
+	};
+	o=f.createElement('script'),
+	m=f.getElementsByTagName('script')[0];
+	o.async=1; o.src=t; o.id='fathom-script';
+	m.parentNode.insertBefore(o,m)
+})(document, window, '//stats.orgmode.org/tracker.js', 'fathom');
+fathom('set', 'siteId', 'NWSQJ');
+fathom('trackPageview');
+</script>
+</div>
+<div id="content">
+<h1 class="title">k8s</h1>
+<div id="table-of-contents">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#org337fe07">Post</a>
+<ul>
+<li><a href="#org51b459a">kubernetes install</a>
+<ul>
+<li><a href="#org48c5951">k8s安装系列</a></li>
+<li><a href="#orgd31ae55">kubernetes开始安装前</a></li>
+<li><a href="#orga9f13d9">运行 kubeadm init 之前</a></li>
+<li><a href="#org439368f">ubuntu中安装kubeadm v1.8.4</a></li>
+<li><a href="#kubeadm-join">kubeadm join</a></li>
+<li><a href="#org5198bb0">kubeadm从v1.8.3更新至v1.8.4失败</a></li>
+<li><a href="#orgd9ede2b">kubeadm v1.8.3 安装</a></li>
+<li><a href="#kubeadm-init-use-local-image">使用本地镜像进行kubeadm init</a></li>
+<li><a href="#orgbaafd8e">kubeadm build</a></li>
+<li><a href="#org0ece0c6">kubernetes delete node</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+<p>
+-<b>-  mode: org; mode: visual-line -</b>-
+</p>
+
+<div id="outline-container-org337fe07" class="outline-2">
+<h2 id="org337fe07">Post</h2>
+<div class="outline-text-2" id="text-org337fe07">
+</div>
+<div id="outline-container-org51b459a" class="outline-3">
+<h3 id="org51b459a">kubernetes install&#xa0;&#xa0;&#xa0;<span class="tag"><span class="_kubernetes">@kubernetes</span>&#xa0;<span class="kubernetes">kubernetes</span>&#xa0;<span class="install">install</span></span></h3>
+<div class="outline-text-3" id="text-org51b459a">
+</div>
+<div id="outline-container-org48c5951" class="outline-4">
+<h4 id="org48c5951">k8s安装系列&#xa0;&#xa0;&#xa0;<span class="tag"><span class="intro">intro</span></span></h4>
+<div class="outline-text-4" id="text-org48c5951">
+</div>
+
+<ul class="org-ul">
+<li><a id="orgd2e0781"></a>env<br />
+<div class="outline-text-5" id="text-orgd2e0781">
+<ul class="org-ul">
+<li>kubeadm: v1.8.4</li>
+<li>os: ubuntu 16.04</li>
+</ul>
+</div>
+</li>
+
+<li><a id="orgd367d25"></a>step<br />
+<div class="outline-text-5" id="text-orgd367d25">
+<p>
+kubernetes-before-install
+kubeadm-init-before-v1.8.3
+kubeadm-install-ubuntu-v1.8.4
+kubeadm-join
+upgrade-v1.8.3-failure-install-v1.8.3
+kubeadm-install-v1.8.3
+kubeadm-init-use-local-image
+kubeadm-build
+delete-node
+kubeadm-install-FAQ
+</p>
+</div>
+</li>
+</ul>
+</div>
+
+<div id="outline-container-orgd31ae55" class="outline-4">
+<h4 id="orgd31ae55">kubernetes开始安装前&#xa0;&#xa0;&#xa0;<span class="tag"><span class="before">before</span></span></h4>
+<div class="outline-text-4" id="text-orgd31ae55">
+</div>
+
+<ul class="org-ul">
+<li><a id="ubuntu16.04-update-kernel"></a>升级内核至 4.10 以上 update-kernel<br />
+<div class="outline-text-5" id="text-ubuntu16.04-update-kernel">
+</div>
+
+<ul class="org-ul">
+<li><a id="env"></a>env<br />
+<div class="outline-text-6" id="text-env">
+<ul class="org-ul">
+<li><p>
+os:  ubuntu16.04
+</p>
+<pre class="example">
+192.168.31.118
+192.168.31.119
+</pre></li>
+</ul>
+</div>
+</li>
+
+<li><a id="step"></a>step<br />
+<div class="outline-text-6" id="text-step">
+<p>
+浏览器打开 <a href="http://kernel.ubuntu.com/~kernel-ppa/mainline/">http://kernel.ubuntu.com/~kernel-ppa/mainline/</a>
+</p>
+
+<p>
+找到适合的 内核版本（这时v4.12), 进入，
+</p>
+
+<p>
+找到合适的内核文件(linux-image-4.12.0-041200-generic_4.12.0-041200.201707022031_amd64.deb)
+</p>
+
+<pre class="example">
+wget http://kernel.ubuntu.com/~kernel-ppa/mainline/v4.12/linux-image-4.12.0-041200-generic_4.12.0-041200.201707022031_amd64.deb
+</pre>
+
+<p>
+然后安装就可以了。
+</p>
+</div>
+</li>
+
+<li><a id="orgca1173a"></a>Ref<br />
+<div class="outline-text-6" id="text-orgca1173a">
+<ul class="org-ul">
+<li><a href="https://b.qqbb.app/posts/ubuntu16-update-kernel/">https://b.qqbb.app/posts/ubuntu16-update-kernel/</a></li>
+</ul>
+</div>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+
+<div id="outline-container-orga9f13d9" class="outline-4">
+<h4 id="orga9f13d9">运行 kubeadm init 之前&#xa0;&#xa0;&#xa0;<span class="tag"><span class="before">before</span></span></h4>
+<div class="outline-text-4" id="text-orga9f13d9">
+<p>
+在运行 kubeadm init 之前的动作
+</p>
+</div>
+
+<ul class="org-ul">
+<li><a id="kubelet-服务检查"></a>kubelet 服务检查<br />
+<div class="outline-text-5" id="text-kubelet-服务检查">
+<p>
+后来发现，在这里应该测试一下 kubelet.service。
+</p>
+
+<p>
+原来，虽然我 apt install kubelet , 但是， 遗留了之前 kubeadm
+的一些配置.(应该把它们清空的.) 如:
+/etc/systemd/system/kubelet.service.d/10-kubeadm.conf
+</p>
+
+<p>
+让我们来吧。
+</p>
+</div>
+
+<ul class="org-ul">
+<li><a id="删除这个新安装的-kubelet"></a>删除这个新安装的 kubelet<br />
+<div class="outline-text-6" id="text-删除这个新安装的-kubelet">
+<div class="org-src-container">
+<pre class="src src-shell">root@km:/etc/cni/net.d#
+root@km:/etc/cni/net.d# apt remove kubelet
+Reading package lists... Done
+Building dependency tree
+Reading state information... Done
+The following packages were automatically installed and are no longer required:
+ebtables golang-1.8-go golang-1.8-race-detector-runtime golang-1.8-src kubernetes-cni socat
+Use <span style="color: #daa520;">'apt autoremove'</span> to remove them.
+The following packages will be REMOVED:
+kubeadm kubelet
+0 upgraded, 0 newly installed, 2 to remove and 11 not upgraded.
+After this operation, 274 MB disk space will be freed.
+Do you want to continue? [Y/n] y
+(Reading database ... 113087 files and directories currently installed.)
+Removing kubeadm (1.8.3-00) ...
+Removing kubelet (1.8.3-00) ...
+root@km:/etc/cni/net.d#
+root@km: ~# cd /lib/systemd/system
+root@km:/lib/systemd/system# ls kube*
+ls: cannot access <span style="color: #daa520;">'kube*'</span>: No such file or directory
+root@km:/lib/systemd/system#
+</pre>
+</div>
+</div>
+</li>
+
+<li><a id="删除原-conf-文件"></a>删除原 conf 文件<br />
+<div class="outline-text-6" id="text-删除原-conf-文件">
+<p>
+删除从 /lib/systemd/system/kubelet.service 下看到的这个 conf 文件
+</p>
+
+<div class="org-src-container">
+<pre class="src src-shell">root@km:/opt/cni/bin# cd /etc/systemd/system/kubelet.service.d/
+root@km:/etc/systemd/system/kubelet.service.d# ls
+10-kubeadm.conf
+root@km:/etc/systemd/system/kubelet.service.d# rm 10-kubeadm.conf
+root@km:/etc/systemd/system/kubelet.service.d# cd ..
+root@km:/etc/systemd/system# rmdir kubelet.service.d/
+root@km:/etc/systemd/system#
+</pre>
+</div>
+</div>
+</li>
+
+<li><a id="再安装-kubelet"></a>再安装 kubelet<br />
+<div class="outline-text-6" id="text-再安装-kubelet">
+<div class="org-src-container">
+<pre class="src src-shell">root@km:/lib/systemd/system# apt install kubelet
+Reading package lists... Done
+Setting up kubelet (1.8.3-00) ...
+root@km:/lib/systemd/system# systemctl start kubelet
+root@km:/lib/systemd/system# systemctl status kubelet
+&#9679; kubelet.service - kubelet: The Kubernetes Node Agent
+Loaded: loaded (/lib/systemd/system/kubelet.service; enabled; vendor preset: enabled)
+Active: activating (auto-restart) (Result: exit-code) since Fri 2017-11-17 17:34:35 CST; 1s ago
+Docs: http://kubernetes.io/docs/
+Process: 25074 <span style="color: #d4d4d4;">ExecStart</span>=/usr/bin/kubelet (<span style="color: #d4d4d4;">code</span>=exited, <span style="color: #d4d4d4;">status</span>=1/FAILURE)
+Main PID: 25074 (<span style="color: #d4d4d4;">code</span>=exited, <span style="color: #d4d4d4;">status</span>=1/FAILURE)
+
+Nov 17 17:34:35 km systemd[1]: kubelet.service: Unit entered failed state.
+Nov 17 17:34:35 km systemd[1]: kubelet.service: Failed with result <span style="color: #daa520;">'exit-code'</span>.
+root@km:/lib/systemd/system#
+</pre>
+</div>
+
+<p>
+还出错了
+</p>
+<div class="org-src-container">
+<pre class="src src-shell">root@km:/lib/systemd/system# cat kubelet.service
+[Unit]
+<span style="color: #d4d4d4;">Description</span>=kubelet: The Kubernetes Node Agent
+<span style="color: #d4d4d4;">Documentation</span>=http://kubernetes.io/docs/
+
+[Service]
+<span style="color: #d4d4d4;">ExecStart</span>=/usr/bin/kubelet
+<span style="color: #d4d4d4;">Restart</span>=always
+<span style="color: #d4d4d4;">StartLimitInterval</span>=0
+<span style="color: #d4d4d4;">RestartSec</span>=10
+
+[Install]
+<span style="color: #d4d4d4;">WantedBy</span>=multi-user.target
+root@km:/lib/systemd/system# journalctl -xe
+.....
+Nov 17 17:36:51 km kubelet[25463]: error: failed to run Kubelet: Running with swap on is not supported, please disable swap! or set --fail-swap-on flag to false. /proc/swaps contained: [Filename
+
+</pre>
+</div>
+
+<p>
+从信息中看到，要把 swap 关闭，或者带 &#x2013;fail-swap-on 参数。
+那就带参数试一下先。
+</p>
+
+<div class="org-src-container">
+<pre class="src src-shell">root@km:/lib/systemd/system# kubelet --fail-swap-on=false
+</pre>
+</div>
+
+<p>
+成功逃过这个错误。 但是报了另一个错误。
+</p>
+
+<div class="org-src-container">
+<pre class="src src-shell">root@km:/lib/systemd/system# kubelet --fail-swap-on=false
+W1117 17:48:12.355020   27348 cni.go:196] Unable to update cni config: No networks found<span style="color: #00bfff;"> in</span> /etc/cni/net.d
+                                          I1117 17:48:12.361647   27348 docker_service.go:207] Docker cri networking managed by kubernetes.io/no-op
+                                                                                               error: failed to run Kubelet: failed to create kubelet: misconfiguration: kubelet cgroup driver: <span style="color: #daa520;">"cgroupfs"</span> is different from docker cgroup driver: <span style="color: #daa520;">"systemd"</span>
+</pre>
+</div>
+<p>
+这个显然与 docker 相关。
+</p>
+
+<div class="org-src-container">
+<pre class="src src-shell">root@km:/lib/systemd/system# cat /etc/docker/daemon.json
+{
+    <span style="color: #daa520;">"exec-opts"</span>: [<span style="color: #daa520;">"native.cgroupdriver=systemd"</span>],
+    <span style="color: #daa520;">"registry-mirrors"</span>: [<span style="color: #daa520;">"https://0d6wdn2y.mirror.aliyuncs.com"</span>]
+}
+</pre>
+</div>
+
+<p>
+那好了，先把这个后来加进来的 "exec-opts":
+["native.cgroupdriver=systemd"], 删除了吧。
+</p>
+
+
+<div class="org-src-container">
+<pre class="src src-shell">root@km:/lib/systemd/system# cat /etc/docker/daemon.json
+{
+    <span style="color: #daa520;">"registry-mirrors"</span>: [<span style="color: #daa520;">"https://0d6wdn2y.mirror.aliyuncs.com"</span>]
+}
+root@km:/lib/systemd/system# sudo systemctl restart docker
+...
+root@km:/lib/systemd/system# kubelet --fail-swap-on=false
+I1117 17:52:52.954982   28490 feature_gate.go:156] feature gates: map[]
+                                                   I1117 17:52:52.955098   28490 controller.go:114] kubelet config controller: starting controller
+                                                                                                    I1117 17:52:52.955117   28490 controller.go:118] kubelet config controller: validating combination of defaults and flags
+                                                                                                                                                     I1117 17:52:52.974917   28490 client.go:75] Connecting to docker on unix:///var/run/docker.sock
+                                                                                                                                                                                                 I1117 17:52:52.974977   28490 client.go:95] Start docker client with request <span style="color: #d4d4d4;">timeout</span>=2m0s
+                                                                                                                                                                                                                                             W1117 17:52:52.977139   28490 cni.go:196] Unable to update cni config: No networks found<span style="color: #00bfff;"> in</span> /etc/cni/net.d
+                                                                                                                                                                                                                                                                                       I1117 17:52:52.983192   28490 feature_gate.go:156] feature gates: map[]
+                                                                                                                                                                                                                                                                                                                                          W1117 17:52:52.983420   28490 server.go:289] --cloud-provider=auto-detect is deprecated. The desired cloud provider should be set explicitly
+                                                                                                                                                                                                                                                                                                                                                                                       W1117 17:52:52.983465   28490 server.go:324] standalone mode, no API client
+                                                                                                                                                                                                                                                                                                                                                                                                                                    I1117 17:52:52.983810   28490 manager.go:149] cAdvisor running<span style="color: #00bfff;"> in</span> container: <span style="color: #daa520;">"/sys/fs/cgroup/cpu,cpuacct/user.slice"</span>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  W1117 17:52:53.017865   28490 manager.go:157] unable to connect to Rkt api service: rkt: cannot tcp Dial rkt api service: dial tcp [::1]:15441: getsockopt: connection refused
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                W1117 17:52:53.018035   28490 manager.go:166] unable to connect to CRI-O api service: Get http://%2Fvar%2Frun%2Fcrio.sock/info: dial unix /var/run/crio.sock: connect: no such file or directory
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              I1117 17:52:53.049774   28490 fs.go:139] Filesystem UUIDs: map[90ef4dc9-3b9e-4031-ad7f-209b328d2f3b:/dev/sda1 2017-02-15-20-36-22-00:/dev/sr0 3687da9b-d812-42a1-b42c-a3d3e7178372:/dev/dm-0 8679fa71-e60b-4686-a5fa-9a0cc5023568:/dev/dm-1]
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       I1117 17:52:53.049836   28490 fs.go:140] Filesystem partitions: map[tmpfs:{mountpoint:/run major:0 minor:19 fsType:tmpfs blockSize:0} /dev/mapper/ubuntu--vg-root:{mountpoint:/var/lib/docker/aufs major:252 minor:0 fsType:ext4 blockSize:0} /dev/sda1:{mountpoint:/boot major:8 minor:1 fsType:ext2 blockSize:0}]
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                I1117 17:52:53.052104   28490 manager.go:216] Machine: {NumCores:4 CpuFrequency:2097571 MemoryCapacity:8371290112 HugePages:[{PageSize:1048576 NumPages:0} {PageSize:2048 NumPages:0}] MachineID:78cb13728eba6f6c819e6dea599a5db9 SystemUUID:564D7A67-BDF7-E109-61AC-DDC9929A346F BootID:8f8d7bb3-abb6-4d6a-b1ee-261cd1a2cc74 Filesystems:[{Device:tmpfs DeviceMajor:0 DeviceMinor:19 Capacity:837132288 Type:vfs Inodes:1021886 HasInodes:true} {Device:/dev/mapper/ubuntu--vg-root DeviceMajor:252 DeviceMinor:0 Capacity:75452612608 Type:vfs Inodes:4694016 HasInodes:true} {Device:/dev/sda1 DeviceMajor:8 DeviceMinor:1 Capacity:494512128 Type:vfs Inodes:124928 HasInodes:true}] DiskMap:map[252:0:{Name:dm-0 Major:252 Minor:0 Size:76793511936 Scheduler:none} 252:1:{Name:dm-1 Major:252 Minor:1 Size:8589934592 Scheduler:none} 2:0:{Name:fd0 Major:2 Minor:0 Size:4096 Scheduler:deadline} 8:0:{Name:sda Major:8 Minor:0 Size:85899345920 Scheduler:deadline}] NetworkDevices:[{Name:cni0 MacAddress:0a:58:0a:f4:00:01 Speed:0 Mtu:1500} {Name:ens160 MacAddress:00:0c:29:9a:34:6f Speed:10000 Mtu:1500} {Name:flannel.1 MacAddress:b2:6d:04:a9:38:8d Speed:0 Mtu:1450}] Topology:[{Id:0 Memory:8371290112 Cores:[{Id:0 Threads:[0] Caches:[]} {Id:1 Threads:[1] Caches:[]} {Id:2 Threads:[2] Caches:[]} {Id:3 Threads:[3] Caches:[]}] Caches:[{Size:20971520 Type:Unified Level:3}]}] CloudProvider:Unknown InstanceType:Unknown InstanceID:None}
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              I1117 17:52:53.053151   28490 manager.go:222] Version: {KernelVersion:4.4.0-62-generic ContainerOsVersion:Ubuntu 16.04.3 LTS DockerVersion:17.05.0-ce DockerAPIVersion:1.29 CadvisorVersion: CadvisorRevision:}
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            W1117 17:52:53.053992   28490 server.go:232] No api server defined - no events will be sent to API server.
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         I1117 17:52:53.054023   28490 server.go:422] --cgroups-per-qos enabled, but --cgroup-root was not specified.  defaulting to /
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      I1117 17:52:53.056245   28490 container_manager_linux.go:252] container manager verified user specified cgroup-root exists: /
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    I1117 17:52:53.056284   28490 container_manager_linux.go:257] Creating Container Manager object based on Node Config: {RuntimeCgroupsName: SystemCgroupsName: KubeletCgroupsName: ContainerRuntime:docker CgroupsPerQOS:true CgroupRoot:/ CgroupDriver:cgroupfs ProtectKernelDefaults:false NodeAllocatableConfig:{KubeReservedCgroupName: SystemReservedCgroupName: EnforceNodeAllocatable:map[pods:{}] KubeReserved:map[] SystemReserved:map[] HardEvictionThresholds:[{Signal:memory.available Operator:LessThan Value:{Quantity:100Mi Percentage:0} GracePeriod:0s MinReclaim:&lt;nil&gt;} {Signal:nodefs.available Operator:LessThan Value:{Quantity:&lt;nil&gt; Percentage:0.1} GracePeriod:0s MinReclaim:&lt;nil&gt;} {Signal:nodefs.inodesFree Operator:LessThan Value:{Quantity:&lt;nil&gt; Percentage:0.05} GracePeriod:0s MinReclaim:&lt;nil&gt;}]} ExperimentalQOSReserved:map[] ExperimentalCPUManagerPolicy:none ExperimentalCPUManagerReconcilePeriod:10s}
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  I1117 17:52:53.056462   28490 container_manager_linux.go:288] Creating device plugin handler: false
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                W1117 17:52:53.061351   28490 kubelet_network.go:69] Hairpin mode set to <span style="color: #daa520;">"promiscuous-bridge"</span> but kubenet is not enabled, falling back to <span style="color: #daa520;">"hairpin-veth"</span>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     I1117 17:52:53.061391   28490 kubelet.go:517] Hairpin mode set to <span style="color: #daa520;">"hairpin-veth"</span>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   W1117 17:52:53.065042   28490 cni.go:196] Unable to update cni config: No networks found<span style="color: #00bfff;"> in</span> /etc/cni/net.d
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             I1117 17:52:53.071790   28490 docker_service.go:207] Docker cri networking managed by kubernetes.io/no-op
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  I1117 17:52:53.102961   28490 docker_service.go:224] Setting cgroupDriver to cgroupfs
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       I1117 17:52:53.140011   28490 remote_runtime.go:43] Connecting to runtime service unix:///var/run/dockershim.sock
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           I1117 17:52:53.142110   28490 kuberuntime_manager.go:178] Container runtime docker initialized, version: 17.05.0-ce, apiVersion: 1.29.0
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     W1117 17:52:53.142331   28490 probe.go:215] Flexvolume plugin directory at /usr/libexec/kubernetes/kubelet-plugins/volume/exec/ does not exist. Recreating.
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 I1117 17:52:53.144299   28490 server.go:718] Started kubelet v1.8.3
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              E1117 17:52:53.144359   28490 kubelet.go:1234] Image garbage collection failed once. Stats initialization may not have completed yet: failed to get imageFs info: unable to find data for container /
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             W1117 17:52:53.144478   28490 kubelet.go:1318] No api server defined - no node status update will be sent.
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            I1117 17:52:53.144496   28490 server.go:128] Starting to listen on 0.0.0.0:10250
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         I1117 17:52:53.145570   28490 kubelet_node_status.go:280] Setting node annotation to enable volume controller attach/detach
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   I1117 17:52:53.146415   28490 server.go:296] Adding debug handlers to kubelet server.
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                I1117 17:52:53.159723   28490 fs_resource_analyzer.go:66] Starting FS ResourceAnalyzer
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          I1117 17:52:53.159773   28490 status_manager.go:136] Kubernetes client is nil, not starting status manager.
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               I1117 17:52:53.159791   28490 kubelet.go:1768] Starting kubelet main sync loop.
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              I1117 17:52:53.159842   28490 kubelet.go:1779] skipping pod synchronization - [container runtime is down PLEG is not healthy: pleg was last seen active 2562047h47m16.854775807s ago; threshold is 3m0s]
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             W1117 17:52:53.160705   28490 container_manager_linux.go:869] CPUAccounting not enabled for pid: 28490
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           W1117 17:52:53.160728   28490 container_manager_linux.go:872] MemoryAccounting not enabled for pid: 28490
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         E1117 17:52:53.160816   28490 container_manager_linux.go:603] [ContainerManager]: Fail to get rootfs information unable to find data for container /
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       I1117 17:52:53.160887   28490 volume_manager.go:246] Starting Kubelet Volume Manager
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            I1117 17:52:53.228692   28490 factory.go:355] Registering Docker factory
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          W1117 17:52:53.228739   28490 manager.go:265] Registration of the rkt container factory failed: unable to communicate with Rkt api service: rkt: cannot tcp Dial rkt api service: dial tcp [::1]:15441: getsockopt: connection refused
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        W1117 17:52:53.228910   28490 manager.go:276] Registration of the crio container factory failed: Get http://%2Fvar%2Frun%2Fcrio.sock/info: dial unix /var/run/crio.sock: connect: no such file or directory
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      I1117 17:52:53.228931   28490 factory.go:54] Registering systemd factory
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   I1117 17:52:53.229203   28490 factory.go:86] Registering Raw factory
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                I1117 17:52:53.229466   28490 manager.go:1140] Started watching for new ooms<span style="color: #00bfff;"> in</span> manager
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               I1117 17:52:53.230193   28490 manager.go:311] Starting recovery of all containers
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             I1117 17:52:53.342529   28490 manager.go:316] Recovery completed
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           I1117 17:52:53.487640   28490 kubelet_node_status.go:280] Setting node annotation to enable volume controller attach/detach
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     E1117 17:52:53.522074   28490 summary.go:92] Failed to get system container stats for <span style="color: #daa520;">"/user.slice/user-1000.slice/session-553.scope"</span>: failed to get cgroup stats for <span style="color: #daa520;">"/user.slice/user-1000.slice/session-553.scope"</span>: failed to get container info for <span style="color: #daa520;">"/user.slice/user-1000.slice/session-553.scope"</span>: unknown container <span style="color: #daa520;">"/user.slice/user-1000.slice/session-553.scope"</span>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  W1117 17:52:53.522142   28490 helpers.go:847] eviction manager: no observation found for eviction signal allocatableNodeFs.available
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                I1117 17:53:03.522396   28490 kubelet_node_status.go:280] Setting node annotation to enable volume controller attach/detach
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          E1117 17:53:03.554477   28490 summary.go:92] Failed to get system container stats for <span style="color: #daa520;">"/user.slice/user-1000.slice/session-553.scope"</span>: failed to get cgroup stats for <span style="color: #daa520;">"/user.slice/user-1000.slice/session-553.scope"</span>: failed to get container info for <span style="color: #daa520;">"/user.slice/user-1000.slice/session-553.scope"</span>: unknown container <span style="color: #daa520;">"/user.slice/user-1000.slice/session-553.scope"</span>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       W1117 17:53:03.554543   28490 helpers.go:847] eviction manager: no observation found for eviction signal allocatableNodeFs.available
+</pre>
+</div>
+
+<p>
+这下是真的成功了。
+</p>
+
+<p>
+打断它。把 &#x2013;fail-swap-on=false 参数，加到 启动文件下吧。
+</p>
+
+<div class="org-src-container">
+<pre class="src src-shell">
+<span style="color: #d4d4d4;">cd</span> /lib/systemd/system
+root@km:/lib/systemd/system# vi kubelet.service
+root@km:/lib/systemd/system# cat kubelet.service
+root@km:/lib/systemd/system# systemctl daemon-reload
+root@km:/lib/systemd/system# systemctl start kubelet
+root@km:/lib/systemd/system# systemctl status kubelet
+&#9679; kubelet.service - kubelet: The Kubernetes Node Agent
+Loaded: loaded (/lib/systemd/system/kubelet.service; enabled; vendor preset: enabled)
+Active: active (running) since Fri 2017-11-17 17:54:21 CST; 15s ago
+Docs: http://kubernetes.io/docs/
+Main PID: 28824 (kubelet)
+Tasks: 14
+Memory: 22.5M
+CPU: 1.005s
+CGroup: /system.slice/kubelet.service
+&#9492;&#9472;28824 /usr/bin/kubelet --fail-swap-on=false
+
+Nov 17 17:54:21 km kubelet[28824]: I1117 17:54:21.815998   28824 factory.go:54] Registering systemd factory
+
+                                                                                Nov 17 17:54:21 km kubelet[28824]: I1117 17:54:21.816270   28824 factory.go:86] Registering Raw factory
+                                                                                                                                                                Nov 17 17:54:21 km kubelet[28824]: I1117 17:54:21.816520   28824 manager.go:1140] Started watching for new ooms<span style="color: #00bfff;"> in</span> manager
+                                                                                                                                                                                                                                                  Nov 17 17:54:21 km kubelet[28824]: I1117 17:54:21.817206   28824 manager.go:311] Starting recovery of all containers
+                                                                                                                                                                                                                                                                                                                                   Nov 17 17:54:21 km kubelet[28824]: I1117 17:54:21.915504   28824 manager.go:316] Recovery completed
+                                                                                                                                                                                                                                                                                                                                                                                                                    Nov 17 17:54:22 km kubelet[28824]: I1117 17:54:22.050494   28824 kubelet_node_status.go:280] Setting node annotation to enable volume controller attach/detach
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 Nov 17 17:54:22 km kubelet[28824]: W1117 17:54:22.082192   28824 helpers.go:847] eviction manager: no observation found for eviction signal allocatableNodeFs.available
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  Nov 17 17:54:31 km systemd[1]: Started kubelet: The Kubernetes Node Agent.
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  Nov 17 17:54:32 km kubelet[28824]: I1117 17:54:32.082476   28824 kubelet_node_status.go:280] Setting node annotation to enable volume controller attach/detach
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               Nov 17 17:54:32 km kubelet[28824]: W1117 17:54:32.114163   28824 helpers.go:847] eviction manager: no observation found for eviction signal allocatableNodeFs.available
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                root@km:/lib/systemd/system#
+
+
+</pre>
+</div>
+<p>
+如果说, 想保证重开机也生效,那就直接
+<a href="https://askubuntu.com/questions/214805/how-do-i-disable-swap">https://askubuntu.com/questions/214805/how-do-i-disable-swap</a> 来吧.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-shell">sudo swapoff -a
+</pre>
+</div>
+
+<p>
+成功了。
+</p>
+</div>
+</li>
+
+<li><a id="kubelet-stop"></a>kubelet stop<br />
+<div class="outline-text-6" id="text-kubelet-stop">
+<p>
+因为 kubeadm v1.8.3 在 kubeadm init 的过程中会自动启动 kubelet
+,所以这里要把 kubelet stop了。
+</p>
+
+<div class="org-src-container">
+<pre class="src src-shell">root@km:/lib/systemd/system# systemctl stop kubelet
+</pre>
+</div>
+
+<p>
+好了。kubelet 这一块是OK了。
+</p>
+</div>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+
+<div id="outline-container-org439368f" class="outline-4">
+<h4 id="org439368f">ubuntu中安装kubeadm v1.8.4&#xa0;&#xa0;&#xa0;<span class="tag"><span class="kubeadm">kubeadm</span></span></h4>
+<div class="outline-text-4" id="text-org439368f">
+</div>
+
+<ul class="org-ul">
+<li><a id="environment"></a>Environment<br />
+<div class="outline-text-5" id="text-environment">
+<ul class="org-ul">
+<li><p>
+kubeadm: v1.8.4
+</p>
+
+<p>
+所有节点都要安装 kubeadm, kubelet, kubectl
+</p>
+
+<p>
+安装时，全使用 root 用户。直到 kubeadm join 成功后，全使用 非root用户
+</p>
+
+<pre class="example">
+192.168.31.120 km master
+192.168.31.119 kn1 node
+192.168.31.118 kn2 node
+</pre></li>
+</ul>
+</div>
+</li>
+
+<li><a id="加代理"></a>加代理<br />
+<div class="outline-text-5" id="text-加代理">
+<p>
+准备FQ网络
+</p>
+
+<ul class="org-ul">
+<li>命令行</li>
+</ul>
+
+<p>
+加代理原因：kubeadm init 会去检查最新版本，及最新版本镜像是什么，镜像是否要更新。
+如果本地有了相同的docker image id，就不会下载，不会更新。
+这意味着，我们前几天的手工build kubeadm，达成 在
+<i>etc/kubernetes/mainfest</i> 下的 *.yaml 文件 加上 "imagePullPolicy:
+IfNotPresent" , 没有意义了。
+</p>
+
+<div class="org-src-container">
+<pre class="src src-shell">root@km:~#  export <span style="color: #d4d4d4;">http_proxy</span>=<span style="color: #daa520;">"http://192.168.31.239:8118/"</span>
+root@km:~#  export <span style="color: #d4d4d4;">https_proxy</span>=<span style="color: #daa520;">"http://192.168.31.239:8118/"</span>
+root@km:~#  export <span style="color: #d4d4d4;">no_proxy</span>=<span style="color: #daa520;">"localhost,127.0.0.1,192.168.31.120,10.96.0.10,github.com,ubuntu.com"</span>
+</pre>
+</div>
+
+<ul class="org-ul">
+<li>apt</li>
+</ul>
+
+<p>
+加代理原因： apt update 要去 google.com 下载
+</p>
+
+<div class="org-src-container">
+<pre class="src src-shell">root@km:~# cat /etc/apt/apt.conf
+Acquire::http::proxy <span style="color: #daa520;">"http://192.168.31.239:8118/"</span>;
+Acquire::https::proxy <span style="color: #daa520;">"https://192.168.31.239:8118/"</span>;
+Acquire::no::proxy <span style="color: #daa520;">"ubuntu.com"</span>;
+root@km:~#
+</pre>
+</div>
+
+<ul class="org-ul">
+<li>docker</li>
+</ul>
+
+<p>
+加代理原因：当 kubeadm init 中下载完了最新的images后，要通过 docker 专有的环境去下载镜像，并启动。这个过程，需要代理。
+</p>
+
+<p>
+重点是加了
+</p>
+
+<blockquote>
+<p>
+Environment="HTTP_PROXY=<a href="http://192.168.31.239:8118/">http://192.168.31.239:8118/</a>"
+"HTTPS_PROXY=<a href="http://192.168.31.239:8118/">http://192.168.31.239:8118/</a>" "NO_PROXY=localhost,127.0.0.1,docker.io"
+</p>
+</blockquote>
+
+<p>
+具体如下：
+</p>
+
+<div class="org-src-container">
+<pre class="src src-shell">
+root@km:~# cat /lib/systemd/system/docker.service
+[Unit]
+<span style="color: #d4d4d4;">Description</span>=Docker Application Container Engine
+<span style="color: #d4d4d4;">Documentation</span>=https://docs.docker.com
+<span style="color: #d4d4d4;">After</span>=network.target docker.socket firewalld.service
+<span style="color: #d4d4d4;">Requires</span>=docker.socket
+
+[Service]
+<span style="color: #d4d4d4;">Type</span>=notify
+<span style="color: #579C4C;"># </span><span style="color: #579C4C;">the default is not to use systemd for cgroups because the delegate issues still</span>
+<span style="color: #579C4C;"># </span><span style="color: #579C4C;">exists and systemd currently does not support the cgroup feature set required</span>
+<span style="color: #579C4C;"># </span><span style="color: #579C4C;">for containers run by docker</span>
+<span style="color: #d4d4d4;">Environment</span>=<span style="color: #daa520;">"HTTP_PROXY=http://192.168.31.239:8118/"</span> <span style="color: #daa520;">"HTTPS_PROXY=http://192.168.31.239:8118/"</span> <span style="color: #daa520;">"NO_PROXY=localhost,127.0.0.1,docker.io"</span>
+<span style="color: #d4d4d4;">ExecStart</span>=/usr/bin/dockerd -H fd://
+<span style="color: #d4d4d4;">ExecReload</span>=/bin/kill -s HUP $<span style="color: #d4d4d4;">MAINPID</span>
+<span style="color: #d4d4d4;">LimitNOFILE</span>=1048576
+<span style="color: #579C4C;"># </span><span style="color: #579C4C;">Having non-zero Limit*s causes performance problems due to accounting overhead</span>
+<span style="color: #579C4C;"># </span><span style="color: #579C4C;">in the kernel. We recommend using cgroups to do container-local accounting.</span>
+<span style="color: #d4d4d4;">LimitNPROC</span>=infinity
+<span style="color: #d4d4d4;">LimitCORE</span>=infinity
+<span style="color: #579C4C;"># </span><span style="color: #579C4C;">Uncomment TasksMax if your systemd version supports it.</span>
+<span style="color: #579C4C;"># </span><span style="color: #579C4C;">Only systemd 226 and above support this version.</span>
+<span style="color: #d4d4d4;">TasksMax</span>=infinity
+<span style="color: #d4d4d4;">TimeoutStartSec</span>=0
+<span style="color: #579C4C;"># </span><span style="color: #579C4C;">set delegate yes so that systemd does not reset the cgroups of docker containers</span>
+<span style="color: #d4d4d4;">Delegate</span>=yes
+<span style="color: #579C4C;"># </span><span style="color: #579C4C;">kill only the docker process, not all processes in the cgroup</span>
+<span style="color: #d4d4d4;">KillMode</span>=process
+
+[Install]
+<span style="color: #d4d4d4;">WantedBy</span>=multi-user.target
+root@km:~#
+</pre>
+</div>
+</div>
+</li>
+
+<li><a id="卸载之前已安装的kube"></a>卸载之前已安装的kube*<br />
+<div class="outline-text-5" id="text-卸载之前已安装的kube">
+<div class="org-src-container">
+<pre class="src src-shell">root@km:~# sudo apt remove kubelet kubeadm kubectl -y
+</pre>
+</div>
+
+<p>
+卸载完之后检查
+</p>
+<div class="org-src-container">
+<pre class="src src-shell">root@km:~# which kubeadm
+root@km:~# which kubelet
+root@km:~# which kubectl
+</pre>
+</div>
+
+<p>
+具体如下
+</p>
+</div>
+
+<ul class="org-ul">
+<li><a id="卸载"></a>卸载<br />
+<div class="outline-text-6" id="text-卸载">
+<div class="org-src-container">
+<pre class="src src-shell">jlch@kn1:~$ sudo apt remove kubelet kubeadm kubectl
+Reading package lists... Done
+Building dependency tree
+Reading state information... Done
+Package <span style="color: #daa520;">'kubeadm'</span> is not installed, so not removed
+Package <span style="color: #daa520;">'kubelet'</span> is not installed, so not removed
+The following packages were automatically installed and are no longer required:
+ebtables kubernetes-cni socat
+Use <span style="color: #daa520;">'sudo apt autoremove'</span> to remove them.
+The following packages will be REMOVED:
+kubectl
+0 upgraded, 0 newly installed, 1 to remove and 86 not upgraded.
+After this operation, 72.4 MB disk space will be freed.
+Do you want to continue? [Y/n] y
+(Reading database ... 67947 files and directories currently installed.)
+Removing kubectl (1.7.3-01) ...
+jlch@kn1:~$
+</pre>
+</div>
+</div>
+</li>
+
+<li><a id="检查"></a>检查<br />
+<div class="outline-text-6" id="text-检查">
+<div class="org-src-container">
+<pre class="src src-shell">jlch@kn1:~$ which kubelet
+jlch@kn1:~$ which kubeadm
+jlch@kn1:~$
+root@kn1:~# which kubectl
+/usr/local/bin/kubectl
+root@kn1:~# kubectl version
+Client Version: version.Info{Major:<span style="color: #daa520;">"1"</span>, Minor:<span style="color: #daa520;">"7"</span>, GitVersion:<span style="color: #daa520;">"v1.7.3"</span>, GitCommit:<span style="color: #daa520;">"2c2fe6e8278a5db2d15a013987b53968c743f2a1"</span>, GitTreeState:<span style="color: #daa520;">"clean"</span>, BuildDate:<span style="color: #daa520;">"2017-08-03T07:00:21Z"</span>, GoVersion:<span style="color: #daa520;">"go1.8.3"</span>, Compiler:<span style="color: #daa520;">"gc"</span>, Platform:<span style="color: #daa520;">"linux/amd64"</span>}
+The connection to the server localhost:8080 was refused - did you specify the right host or port?
+root@kn1:~# mv /usr/local/bin/kubectl /usr/local/bin/kubectl.v1.7.3
+root@kn1:~# which kubectl
+/usr/bin/kubectl
+root@kn1:~#
+root@kn1:~# su - jlch
+jlch@kn1:~$ kubectl version
+Client Version: version.Info{Major:<span style="color: #daa520;">"1"</span>, Minor:<span style="color: #daa520;">"8"</span>, GitVersion:<span style="color: #daa520;">"v1.8.4"</span>, GitCommit:<span style="color: #daa520;">"9befc2b8928a9426501d3bf62f72849d5cbcd5a3"</span>, GitTreeState:<span style="color: #daa520;">"clean"</span>, BuildDate:<span style="color: #daa520;">"2017-11-20T05:28:34Z"</span>, GoVersion:<span style="color: #daa520;">"go1.8.3"</span>, Compiler:<span style="color: #daa520;">"gc"</span>, Platform:<span style="color: #daa520;">"linux/amd64"</span>}
+The connection to the server localhost:8080 was refused - did you specify the right host or port?
+jlch@kn1:~$
+</pre>
+</div>
+</div>
+</li>
+</ul>
+</li>
+
+<li><a id="安装docer"></a>安装docer<br />
+<div class="outline-text-5" id="text-安装docer">
+<p>
+看官网
+</p>
+</div>
+
+<ul class="org-ul">
+<li><a id="根据官网安装其它"></a>根据官网安装其它<br />
+<div class="outline-text-6" id="text-根据官网安装其它">
+<div class="org-src-container">
+<pre class="src src-shell">root@kn1:~# curl -s https://packages.cloud.google.com/apt/doc/apt-key.gpg | apt-key add -
+OK
+root@kn1:~# cat /etc/apt/sources.list.d/kubernetes.list
+deb http://apt.kubernetes.io/ kubernetes-xenial main
+</pre>
+</div>
+</div>
+</li>
+</ul>
+</li>
+
+<li><a id="安装kube"></a>安装kube*<br />
+<div class="outline-text-5" id="text-安装kube">
+</div>
+
+<ul class="org-ul">
+<li><a id="安装kubelet-kubeadm-kubectl"></a>安装kubelet kubeadm kubectl<br />
+<div class="outline-text-6" id="text-安装kubelet-kubeadm-kubectl">
+<p>
+看官网
+</p>
+<div class="org-src-container">
+<pre class="src src-shell">root@kn1:~# apt-get install -y kubelet kubeadm kubectl
+Reading package lists... Done
+Building dependency tree
+Reading state information... Done
+The following NEW packages will be installed:
+kubeadm kubectl kubelet
+0 upgraded, 3 newly installed, 0 to remove and 87 not upgraded.
+Need to get 46.0 MB of archives.
+After this operation, 326 MB of additional disk space will be used.
+Get:1 https://packages.cloud.google.com/apt kubernetes-xenial/main amd64 kubelet amd64 1.8.4-00 [19.2 MB]
+Get:2 https://packages.cloud.google.com/apt kubernetes-xenial/main amd64 kubectl amd64 1.8.4-00 [8,612 kB]
+Get:3 https://packages.cloud.google.com/apt kubernetes-xenial/main amd64 kubeadm amd64 1.8.4-00 [18.1 MB]
+Fetched 46.0 MB<span style="color: #00bfff;"> in</span> 1min 22s (557 kB/s)
+Selecting previously unselected package kubelet.
+(Reading database ... 67946 files and directories currently installed.)
+Preparing to unpack .../kubelet_1.8.4-00_amd64.deb ...
+Unpacking kubelet (1.8.4-00) ...
+Selecting previously unselected package kubectl.
+Preparing to unpack .../kubectl_1.8.4-00_amd64.deb ...
+Unpacking kubectl (1.8.4-00) ...
+Selecting previously unselected package kubeadm.
+Preparing to unpack .../kubeadm_1.8.4-00_amd64.deb ...
+Unpacking kubeadm (1.8.4-00) ...
+Setting up kubelet (1.8.4-00) ...
+Setting up kubectl (1.8.4-00) ...
+Setting up kubeadm (1.8.4-00) ...
+Installing new version of config file /etc/systemd/system/kubelet.service.d/10-kubeadm.conf ...
+root@kn1:~#
+</pre>
+</div>
+</div>
+</li>
+</ul>
+</li>
+
+<li><a id="kubeadm-init"></a>kubeadm init<br />
+<div class="outline-text-5" id="text-kubeadm-init">
+</div>
+
+<ul class="org-ul">
+<li><a id="kubeadm-init-1"></a>kubeadm init<br />
+<div class="outline-text-6" id="text-kubeadm-init-1">
+<div class="org-src-container">
+<pre class="src src-shell">kubeadm init --pod-network-cidr=10.244.0.0/16 --skip-preflight-checks
+</pre>
+</div>
+</div>
+</li>
+
+<li><a id="安装-flannel"></a>安装 flannel<br />
+<div class="outline-text-6" id="text-安装-flannel">
+<div class="org-src-container">
+<pre class="src src-shell">kubectl apply -f https://raw.githubusercontent.com/coreos/flannel/master/Documentation/kube-flannel.yml
+</pre>
+</div>
+
+<p>
+flannel 各节点开端口
+</p>
+
+<p>
+<a href="https://github.com/coreos/flannel/blob/476abd9ef37e7111a1268c41afbd7154046b492a/Documentation/troubleshooting.md#firewalls">https://github.com/coreos/flannel/blob/476abd9ef37e7111a1268c41afbd7154046b492a/Documentation/troubleshooting.md#firewalls</a>
+</p>
+<div class="org-src-container">
+<pre class="src src-shell">ufw allow 8472
+</pre>
+</div>
+</div>
+</li>
+
+<li><a id="测试"></a>测试<br />
+<div class="outline-text-6" id="text-测试">
+<p>
+ping 各pod 的 IP
+</p>
+</div>
+</li>
+</ul>
+</li>
+
+<li><a id="kubeadm-join"></a>kubeadm join<br />
+<div class="outline-text-5" id="text-kubeadm-join">
+<p>
+看 kubeadm-join.rst
+</p>
+</div>
+</li>
+</ul>
+</div>
+
+<div id="outline-container-org4a7909a" class="outline-4">
+<h4 id="kubeadm-join">kubeadm join</h4>
+<div class="outline-text-4" id="text-kubeadm-join">
+</div>
+
+
+<ul class="org-ul">
+<li><a id="environment"></a>Environment<br />
+<div class="outline-text-5" id="text-environment">
+<p>
+已安装 kubeadm, kubelet, kubectl
+</p>
+
+<p>
+安装时，全使用 root 用户。直到 kubeadm join 成功后，全使用 非root用户
+</p>
+
+<pre class="example">
+192.168.31.120 km master
+192.168.31.119 kn1 node
+192.168.31.118 kn2 node
+</pre>
+</div>
+</li>
+
+<li><a id="kubeadm-join-1"></a>kubeadm join<br />
+<div class="outline-text-5" id="text-kubeadm-join-1">
+</div>
+
+<ul class="org-ul">
+<li><a id="etckubernetespkica.crt-already-exists"></a>/etc/kubernetes/pki/ca.crt already exists<br />
+<div class="outline-text-6" id="text-etckubernetespkica.crt-already-exists">
+<div class="org-src-container">
+<pre class="src src-shell">sudo kubeadm join --token ce4253.8322cc2590378260 192.168.31.120:6443  --discovery-token-ca-cert-hash sha256:bb0b9ef27e5ffef06776ca10a87ed548cefedc703ddaf904316c87d4a7f3655d
+</pre>
+</div>
+
+<p>
+这个来自于 master节点， kubeadm init 后的提示。
+</p>
+
+<div class="org-src-container">
+<pre class="src src-shell">jlch@kn1:~$ sudo kubeadm join --token ce4253.8322cc2590378260 192.168.31.120:6443 --discovery-token-ca-cert-hash sha256:bb0b9ef27e5ffef06776ca10a87ed548cefedc703ddaf904316c87d4a7f3655d
+[kubeadm] WARNING: kubeadm is<span style="color: #00bfff;"> in</span> beta, please do not use it for production clusters.
+[preflight] Running pre-flight checks
+[preflight] WARNING: docker version is greater than the most recently validated version. Docker version: 17.05.0-ce. Max validated version: 17.03
+[preflight] Some fatal errors occurred:
+/etc/kubernetes/pki/ca.crt already exists
+/etc/kubernetes/kubelet.conf already exists
+running with swap on is not supported. Please disable swap
+[preflight] If you know what you are doing, you can skip pre-flight checks with <span style="color: #00cdcd; font-weight: bold;">`--skip-preflight-checks`</span>
+jlch@kn1:~$ mkdir etc.kubernetes
+jlch@kn1:~$ mkdir etc.kubernetes/pki/
+jlch@kn1:~$ sudo mv /etc/kubernetes/pki/ca.crt etc.kubernetes/pki/
+jlch@kn1:~$ sudo mv /etc/kubernetes/kubelet.conf etc.kubernetes/
+</pre>
+</div>
+</div>
+</li>
+
+<li><a id="please-disable-swap"></a>Please disable swap<br />
+<div class="outline-text-6" id="text-please-disable-swap">
+<div class="org-src-container">
+<pre class="src src-shell">jlch@kn1:~$ sudo kubeadm join --token ce4253.8322cc2590378260 192.168.31.120:6443 --discovery-token-ca-cert-hash sha256:bb0b9ef27e5ffef06776ca10a87ed548cefedc703ddaf904316c87d4a7f3655d
+[kubeadm] WARNING: kubeadm is<span style="color: #00bfff;"> in</span> beta, please do not use it for production clusters.
+[preflight] Running pre-flight checks
+[preflight] WARNING: docker version is greater than the most recently validated version. Docker version: 17.05.0-ce. Max validated version: 17.03
+[preflight] Some fatal errors occurred:
+running with swap on is not supported. Please disable swap
+[preflight] If you know what you are doing, you can skip pre-flight checks with <span style="color: #00cdcd; font-weight: bold;">`--skip-preflight-checks`</span>
+jlch@kn1:~$ sudo swapoff -a
+</pre>
+</div>
+</div>
+</li>
+
+<li><a id="再来"></a>再来<br />
+<div class="outline-text-6" id="text-再来">
+<div class="org-src-container">
+<pre class="src src-shell">jlch@kn1:~$ sudo kubeadm join --token ce4253.8322cc2590378260 192.168.31.120:6443 --discovery-token-ca-cert-hash sha256:bb0b9ef27e5ffef06776ca10a87ed548cefedc703ddaf904316c87d4a7f3655d
+[kubeadm] WARNING: kubeadm is<span style="color: #00bfff;"> in</span> beta, please do not use it for production clusters.
+[preflight] Running pre-flight checks
+[preflight] WARNING: docker version is greater than the most recently validated version. Docker version: 17.05.0-ce. Max validated version: 17.03
+[discovery] Trying to connect to API Server <span style="color: #daa520;">"192.168.31.120:6443"</span>
+[discovery] Created cluster-info discovery client, requesting info from <span style="color: #daa520;">"https://192.168.31.120:6443"</span>
+[discovery] Requesting info from <span style="color: #daa520;">"https://192.168.31.120:6443"</span> again to validate TLS against the pinned public key
+[discovery] Cluster info signature and contents are valid and TLS certificate validates against pinned roots, will use API Server <span style="color: #daa520;">"192.168.31.120:6443"</span>
+[discovery] Successfully established connection with API Server <span style="color: #daa520;">"192.168.31.120:6443"</span>
+[bootstrap] Detected server version: v1.8.4
+[bootstrap] The server supports the Certificates API (certificates.k8s.io/v1beta1)
+
+Node join complete:
+* Certificate signing request sent to master and response
+received.
+* Kubelet informed of new secure connection details.
+
+Run <span style="color: #daa520;">'kubectl get nodes'</span> on the master to see this machine join.
+jlch@kn1:~$
+</pre>
+</div>
+
+<p>
+成功了。
+</p>
+
+<p>
+回 master 检查一下。
+</p>
+</div>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+
+<div id="outline-container-org5198bb0" class="outline-4">
+<h4 id="org5198bb0">kubeadm从v1.8.3更新至v1.8.4失败&#xa0;&#xa0;&#xa0;<span class="tag"><span class="upgrade">upgrade</span></span></h4>
+<div class="outline-text-4" id="text-org5198bb0">
+</div>
+
+<ul class="org-ul">
+<li><a id="installing-docker"></a>Installing Docker<br />
+<div class="outline-text-5" id="text-installing-docker">
+<div class="org-src-container">
+<pre class="src src-shell">root@km:~# cat /etc/apt/sources.list.d/docker.list
+deb https://apt.dockerproject.org/repo ubuntu-xenial main
+root@km:~# cat /etc/docker/daemon.json
+{
+    <span style="color: #daa520;">"registry-mirrors"</span>: [<span style="color: #daa520;">"https://0d6wdn2y.mirror.aliyuncs.com"</span>]
+}
+root@km:~# vi /etc/docker/daemon.json
+root@km:~# cat /etc/docker/daemon.json
+{
+    <span style="color: #daa520;">"exec-opts"</span>: [<span style="color: #daa520;">"native.cgroupdriver=systemd"</span>],
+    <span style="color: #daa520;">"registry-mirrors"</span>: [<span style="color: #daa520;">"https://0d6wdn2y.mirror.aliyuncs.com"</span>]
+}
+
+root@km:~# apt-get install -y curl apt-transport-https
+Reading package lists... Done
+Building dependency tree
+Reading state information... Done
+apt-transport-https is already the newest version (1.2.24).
+curl is already the newest version (7.47.0-1ubuntu2.4).
+The following packages were automatically installed and are no longer required:
+golang-1.8-go golang-1.8-race-detector-runtime golang-1.8-src
+Use <span style="color: #daa520;">'sudo apt autoremove'</span> to remove them.
+0 upgraded, 0 newly installed, 0 to remove and 0 not upgraded.
+1 not fully installed or removed.
+After this operation, 0 B of additional disk space will be used.
+Setting up etcd (2.2.5+dfsg-1ubuntu1) ...
+insserv: warning: current start runlevel(s) (empty) of script <span style="color: #00cdcd; font-weight: bold;">`etcd' overrides LSB defaults (2 3 4 5).</span>
+<span style="color: #00cdcd; font-weight: bold;">insserv: warning: current stop runlevel(s) (0 1 2 3 4 5 6) of script `</span>etcd<span style="color: #daa520;">' overrides LSB defaults (0 1 6).</span>
+</pre>
+</div>
+</div>
+</li>
+
+<li><a id="installing-kubeadm-kubelet-and-kubectl"></a>Installing kubeadm, kubelet and kubectl<br />
+<div class="outline-text-5" id="text-installing-kubeadm-kubelet-and-kubectl">
+<div class="org-src-container">
+<pre class="src src-shell">root@km:~# apt-get install -y apt-transport-https
+Reading package lists... Done
+Building dependency tree
+Reading state information... Done
+apt-transport-https is already the newest version (1.2.24).
+The following packages were automatically installed and are no longer required:
+golang-1.8-go golang-1.8-race-detector-runtime golang-1.8-src
+Use <span style="color: #daa520;">'sudo apt autoremove'</span> to remove them.
+0 upgraded, 0 newly installed, 0 to remove and 0 not upgraded.
+root@km:~# cat /etc/apt/sources.list.d/kubernetes.list
+deb http://apt.kubernetes.io/ kubernetes-xenial main
+root@km:~# apt-get install -y kubelet kubeadm kubectl
+Reading package lists... Done
+Building dependency tree
+Reading state information... Done
+kubeadm is already the newest version (1.8.3-00).
+kubectl is already the newest version (1.8.3-00).
+kubectl set to manually installed.
+kubelet is already the newest version (1.8.3-00).
+The following packages were automatically installed and are no longer required:
+golang-1.8-go golang-1.8-race-detector-runtime golang-1.8-src
+Use <span style="color: #daa520;">'sudo apt autoremove'</span> to remove them.
+0 upgraded, 0 newly installed, 0 to remove and 0 not upgraded.
+root@km:~#
+</pre>
+</div>
+
+<p>
+去下一个页面吧
+<a href="https://kubernetes.io/docs/setup/independent/create-cluster-kubeadm/">https://kubernetes.io/docs/setup/independent/create-cluster-kubeadm/</a>
+</p>
+</div>
+</li>
+</ul>
+</div>
+
+<div id="outline-container-orgd9ede2b" class="outline-4">
+<h4 id="orgd9ede2b">kubeadm v1.8.3 安装&#xa0;&#xa0;&#xa0;<span class="tag"><span class="install">install</span></span></h4>
+<div class="outline-text-4" id="text-orgd9ede2b">
+<p>
+<a href="https://kubernetes.io/docs/setup/independent/create-cluster-kubeadm/">https://kubernetes.io/docs/setup/independent/create-cluster-kubeadm/</a>
+</p>
+</div>
+
+<ul class="org-ul">
+<li><a id="env"></a>env<br />
+<div class="outline-text-5" id="text-env">
+<pre class="example">
+192.168.31.120 km master
+192.168.31.119 kn1 node
+192.168.31.118 kn2 node
+</pre>
+</div>
+</li>
+
+<li><a id="initializing-your-master"></a>Initializing your master<br />
+<div class="outline-text-5" id="text-initializing-your-master">
+<div class="org-src-container">
+<pre class="src src-shell">kubeadm init --pod-network-cidr=10.244.0.0/16
+</pre>
+</div>
+
+<p>
+如果遇到类似下面错误
+</p>
+<div class="org-src-container">
+<pre class="src src-shell">- [preflight] Some fatal errors occurred: :: Port 10250 is<span style="color: #00bfff;"> in</span> use
+/etc/kubernetes/manifests is not empty /var/lib/kubelet is not empty
+</pre>
+</div>
+
+<p>
+则，参考 <a href="https://github.com/kubernetes/kubernetes/issues/37063">https://github.com/kubernetes/kubernetes/issues/37063</a>
+运行下面命令：
+</p>
+
+<div class="org-src-container">
+<pre class="src src-shell">kubeadm reset
+systemctl start kubelet.service
+</pre>
+</div>
+
+<p>
+之后，再次运行
+</p>
+
+<div class="org-src-container">
+<pre class="src src-shell">kubeadm init --pod-network-cidr=10.244.0.0/16
+</pre>
+</div>
+
+<p>
+被墙了，出不去，我了个去，怎么办？
+</p>
+
+<p>
+<a href="https://mritd.me/2016/10/29/set-up-kubernetes-cluster-by-kubeadm/#21%E5%AE%89%E8%A3%85%E5%8C%85%E4%BB%8E%E5%93%AA%E6%9D%A5">https://mritd.me/2016/10/29/set-up-kubernetes-cluster-by-kubeadm/#21%E5%AE%89%E8%A3%85%E5%8C%85%E4%BB%8E%E5%93%AA%E6%9D%A5</a>
+</p>
+
+<p>
+好吧，那就去 hub.docker.com 中配置吧
+</p>
+</div>
+</li>
+
+<li><a id="找到所有要配置的-image"></a>找到所有要配置的 image<br />
+<div class="outline-text-5" id="text-找到所有要配置的-image">
+</div>
+
+<ul class="org-ul">
+<li><a id="找-etckubernetesmanifests"></a>找 <i>etc/kubernetes/manifests</i><br />
+<div class="outline-text-6" id="text-找-etckubernetesmanifests">
+<div class="org-src-container">
+<pre class="src src-shell">root@km:~# cd /etc/kubernetes/manifests/
+root@km:/etc/kubernetes/manifests# ls
+etcd.yaml  kube-apiserver.yaml  kube-controller-manager.yaml  kube-scheduler.yaml
+root@km:/etc/kubernetes/manifests#
+root@km:/etc/kubernetes/manifests# cat *.yaml | grep image
+image: gcr.io/google_containers/etcd-amd64:3.0.17
+image: gcr.io/google_containers/kube-apiserver-amd64:v1.8.3
+image: gcr.io/google_containers/kube-controller-manager-amd64:v1.8.3
+image: gcr.io/google_containers/kube-scheduler-amd64:v1.8.3
+root@km:/etc/kubernetes/manifests#
+</pre>
+</div>
+</div>
+</li>
+
+<li><a id="找源码"></a>找源码<br />
+<div class="outline-text-6" id="text-找源码">
+<p>
+<a href="https://github.com/kubernetes/kubernetes/tree/master/cmd/kubeadm">https://github.com/kubernetes/kubernetes/tree/master/cmd/kubeadm</a>
+</p>
+
+<div class="org-src-container">
+<pre class="src src-shell">root@km:~/kubernetes.20171116/cmd/kubeadm# git clone https://github.com/kubernetes/kubernetes kubernetes.20171116
+root@km:~# cd kubernetes.20171116
+root@km:~/kubernetes.20171116# cd cmd/kubeadm/
+root@km:~/kubernetes.20171116/cmd/kubeadm# grep gcr.io -r ./
+./app/apis/kubeadm/v1alpha1/defaults.go:    <span style="color: #d4d4d4;">DefaultImageRepository</span> = <span style="color: #daa520;">"gcr.io/google_containers"</span>
+./app/phases/selfhosting/selfhosting_test.go:    image: gcr.io/google_containers/kube-apiserver-amd64:v1.7.4
+./app/phases/selfhosting/selfhosting_test.go:        image: gcr.io/google_containers/kube-apiserver-amd64:v1.7.4
+./app/phases/selfhosting/selfhosting_test.go:    image: gcr.io/google_containers/kube-controller-manager-amd64:v1.7.4
+./app/phases/selfhosting/selfhosting_test.go:        image: gcr.io/google_containers/kube-controller-manager-amd64:v1.7.4
+./app/phases/selfhosting/selfhosting_test.go:    image: gcr.io/google_containers/kube-scheduler-amd64:v1.7.4
+./app/phases/selfhosting/selfhosting_test.go:        image: gcr.io/google_containers/kube-scheduler-amd64:v1.7.4
+./app/phases/selfhosting/selfhosting_test.go:    - image: gcr.io/google_containers/busybox
+./app/phases/selfhosting/selfhosting_test.go:        <span style="color: #daa520;">"image"</span>: <span style="color: #daa520;">"gcr.io/google_containers/busybox"</span>
+./app/phases/selfhosting/selfhosting_test.go:  - image: gcr.io/google_containers/busybox
+./app/phases/upgrade/staticpods_test.go:imageRepository: gcr.io/google_containers
+./app/util/template_test.go:    <span style="color: #d4d4d4;">validTmplOut</span> = <span style="color: #daa520;">"image: gcr.io/google_containers/pause-amd64:3.0"</span>
+./app/util/template_test.go:    <span style="color: #d4d4d4;">doNothing</span>    = <span style="color: #daa520;">"image: gcr.io/google_containers/pause-amd64:3.0"</span>
+./app/util/template_test.go:                ImageRepository: <span style="color: #daa520;">"gcr.io/google_containers"</span>,
+./app/util/template_test.go:                ImageRepository: <span style="color: #daa520;">"gcr.io/google_containers"</span>,
+./app/images/images_test.go:    <span style="color: #d4d4d4;">gcrPrefix</span>   = <span style="color: #daa520;">"gcr.io/google_containers"</span>
+./app/constants/constants.go:   <span style="color: #d4d4d4;">DefaultCIImageRepository</span> = <span style="color: #daa520;">"gcr.io/kubernetes-ci-images"</span>
+root@km:~/kubernetes.20171116/cmd/kubeadm#
+</pre>
+</div>
+
+<p>
+最后，居然什么也没有找到。哎呀。好吧。
+</p>
+
+<p>
+回到 <a href="https://gitee.com/tomt/tom_docker_registry_push_pull.git">https://gitee.com/tomt/tom_docker_registry_push_pull.git</a>
+，看了一下，也就是这4个需要更新一下。
+</p>
+
+<div class="org-src-container">
+<pre class="src src-shell">gcr.io/google_containers/kube-apiserver-amd64:v1.8.3
+gcr.io/google_containers/kube-proxy-amd64:v1.8.3
+gcr.io/google_containers/kube-scheduler-amd64:v1.8.3
+gcr.io/google_containers/kube-controller-manager-amd64:v1.8.3
+</pre>
+</div>
+
+<p>
+好了。明确了image, 那就做吧。
+</p>
+</div>
+</li>
+
+<li><a id="github-hub.docker.io-配置-image"></a>github hub.docker.io 配置 image<br />
+<div class="outline-text-6" id="text-github-hub.docker.io-配置-image">
+<p>
+注意，在 hub.docker.io 下，自动构建仓库，时，取 github的仓库，对这个仓库名称有限制
+</p>
+
+<ul class="org-ul">
+<li>不能大于3个 “-” 号</li>
+<li>长度不能太长</li>
+</ul>
+
+<p>
+这样呢，gcr.io/google_containers/kube-controller-manager-amd64:v1.8.3，在
+github上本来要创建名称为 dockerlibraryk8s-kube-controller-manager-amd64 ，那这个不符合要求的。
+怎么办？改个名称咯。 我把它修改成 dockerlibraryk8s-kube-cm-amd64了。
+记得最后，pull 下来的时候，docker tag 一下。
+</p>
+
+<div class="org-src-container">
+<pre class="src src-shell">root@km:~/tom_k8s_kubernetes_install/k8/docker-library-k8s-v1.8.3# ls
+dockerlibraryk8s.sh  k8s-v1.8.3.txt
+root@km:~/tom_k8s_kubernetes_install/k8/docker-library-k8s-v1.8.3# cat dockerlibraryk8s.sh
+<span style="color: #579C4C;">#</span><span style="color: #579C4C;">images=(heapster-influxdb-amd64:v1.3.3 heapster-amd64:v1.4.0 heapster-grafana-amd64:v4.4.3)</span>
+<span style="color: #579C4C;">#</span><span style="color: #579C4C;">images=(heapster-grafana-amd64:v4.4.3)</span>
+<span style="color: #00bfff;">for</span> imageName<span style="color: #00bfff;"> in</span> <span style="color: #00cdcd; font-weight: bold;">`cat k8s-v1.8.3.txt`</span>; <span style="color: #00bfff;">do</span>
+    <span style="color: #d4d4d4;">echo</span> $<span style="color: #d4d4d4;">imageName</span>
+    <span style="color: #d4d4d4;">echo</span> ${<span style="color: #d4d4d4;">imageName</span>%:*}
+    <span style="color: #d4d4d4;">echo</span> ${<span style="color: #d4d4d4;">imageName</span>#*:}
+    <span style="color: #d4d4d4;">imageNamelast</span>=dockerlibraryk8s-${<span style="color: #d4d4d4;">imageName</span>%:*}
+    <span style="color: #d4d4d4;">echo</span> docker pull tomtsang/$<span style="color: #d4d4d4;">imageNamelast</span>
+    docker pull tomtsang/$<span style="color: #d4d4d4;">imageNamelast</span>
+    <span style="color: #d4d4d4;">echo</span> docker tag tomtsang/$<span style="color: #d4d4d4;">imageNamelast</span> gcr.io/google_containers/$<span style="color: #d4d4d4;">imageName</span>
+    docker tag tomtsang/$<span style="color: #d4d4d4;">imageNamelast</span> gcr.io/google_containers/$<span style="color: #d4d4d4;">imageName</span>
+    <span style="color: #d4d4d4;">echo</span> docker rmi tomtsang/$<span style="color: #d4d4d4;">imageNamelast</span>
+    docker rmi tomtsang/$<span style="color: #d4d4d4;">imageNamelast</span>
+<span style="color: #00bfff;">done</span>
+<span style="color: #d4d4d4;">echo</span> <span style="color: #daa520;">"game over"</span>
+
+root@km:~/tom_k8s_kubernetes_install/k8/docker-library-k8s-v1.8.3# docker pull tomtsang/dockerlibraryk8s-kube-cm-amd64
+Using default tag: latest
+latest: Pulling from tomtsang/dockerlibraryk8s-kube-cm-amd64
+0ffadd58f2a6: Already exists
+18c5c31a1ebe: Pull complete
+Digest: sha256:4e738f80a607772c205ca597c1d5874ee50ac40f0a5e88ab85084fd45b684ac0
+Status: Downloaded newer image for tomtsang/dockerlibraryk8s-kube-cm-amd64:latest
+root@km:~/tom_k8s_kubernetes_install/k8/docker-library-k8s-v1.8.3# docker tag tomtsang/dockerlibraryk8s-kube-cm-amd64 gcr.io/google_containers/dockerlibraryk8s-kube-cm-amd64:v1.8.3
+root@km:~/tom_k8s_kubernetes_install/k8/docker-library-k8s-v1.8.3# docker tag gcr.io/google_containers/dockerlibraryk8s-kube-cm-amd64:v1.8.3 gcr.io/google_containers/kube-controller-manager-amd64:v1.8.3
+root@km:~/tom_k8s_kubernetes_install/k8/docker-library-k8s-v1.8.3# docker rmi tomtsang/dockerlibraryk8s-kube-cm-amd64
+Untagged: tomtsang/dockerlibraryk8s-kube-cm-amd64:latest
+Untagged: tomtsang/dockerlibraryk8s-kube-cm-amd64@sha256:4e738f80a607772c205ca597c1d5874ee50ac40f0a5e88ab85084fd45b684ac0
+root@km:~/tom_k8s_kubernetes_install/k8/docker-library-k8s-v1.8.3#
+</pre>
+</div>
+
+<p>
+使用 <a href="http://git.oschina.net/tomt/tom_k8s_kubernetes_install">http://git.oschina.net/tomt/tom_k8s_kubernetes_install</a>
+这个仓库吧。
+</p>
+
+<div class="org-src-container">
+<pre class="src src-shell">root@km:~/tom_k8s_kubernetes_install/k8/docker-library-k8s-v1.8.3# git remote -v
+origin  http://git.oschina.net/tomt/tom_k8s_kubernetes_install (fetch)
+origin  http://git.oschina.net/tomt/tom_k8s_kubernetes_install (push)
+root@km:~/tom_k8s_kubernetes_install/k8/docker-library-k8s-v1.8.3# ls
+dockerlibraryk8s.sh  k8s-v1.8.3.txt
+root@km:~/tom_k8s_kubernetes_install/k8/docker-library-k8s-v1.8.3# pwd
+/root/tom_k8s_kubernetes_install/k8/docker-library-k8s-v1.8.3
+root@km:~/tom_k8s_kubernetes_install/k8/docker-library-k8s-v1.8.3# ls
+dockerlibraryk8s.sh  k8s-v1.8.3.txt
+root@km:~/tom_k8s_kubernetes_install/k8/docker-library-k8s-v1.8.3# ./dockerlibraryk8s.sh
+</pre>
+</div>
+
+<p>
+到现在为止，应该 4 个 image都成功pull 到了 master节点了。
+</p>
+</div>
+</li>
+</ul>
+</li>
+
+<li><a id="docker-registry-push"></a>docker registry push<br />
+<div class="outline-text-5" id="text-docker-registry-push">
+<p>
+因为我们后面要在 node 节点上使用，所以干脆就直接 push 到 docker registry
+去吧。
+</p>
+</div>
+</li>
+
+<li><a id="kubeadm-init-use-local-image"></a>kubeadm-init-use-local-image<br />
+<div class="outline-text-5" id="text-kubeadm-init-use-local-image">
+<p>
+参看 kubeadm-init-use-local-image.rst 文件。
+</p>
+
+<p>
+好像没成功
+</p>
+</div>
+</li>
+
+<li><a id="kubeadm-init"></a>kubeadm init<br />
+<div class="outline-text-5" id="text-kubeadm-init">
+<div class="org-src-container">
+<pre class="src src-shell">root@km:~# export
+...
+<span style="color: #d4d4d4;">declare</span> -x <span style="color: #d4d4d4;">http_proxy</span>=<span style="color: #daa520;">"http://192.168.31.239:8118/"</span>
+<span style="color: #d4d4d4;">declare</span> -x <span style="color: #d4d4d4;">https_proxy</span>=<span style="color: #daa520;">"http://192.168.31.239:8118/"</span>
+<span style="color: #d4d4d4;">declare</span> -x <span style="color: #d4d4d4;">no_proxy</span>=<span style="color: #daa520;">"localhost,127.0.0.1,192.168.31.120,10.96.0.10,github.com,ubuntu.com"</span>
+</pre>
+</div>
+
+<div class="org-src-container">
+<pre class="src src-shell">root@km:~# kubeadm init --pod-network-cidr=10.244.0.0/16 --skip-preflight-checks
+....
+....
+....
+To start using your cluster, you need to run (as a regular user):
+
+mkdir -p $<span style="color: #d4d4d4;">HOME</span>/.kube
+sudo cp -i /etc/kubernetes/admin.conf $<span style="color: #d4d4d4;">HOME</span>/.kube/config
+sudo chown $(id -u):$(id -g) $<span style="color: #d4d4d4;">HOME</span>/.kube/config
+
+You should now deploy a pod network to the cluster.
+Run <span style="color: #daa520;">"kubectl apply -f [podnetwork].yaml"</span> with one of the options listed at:
+http://kubernetes.io/docs/admin/addons/
+
+You can now join any number of machines by running the following on each node
+as root:
+
+kubeadm join --token ce4253.8322cc2590378260 192.168.31.120:6443 --discovery-token-ca-cert-hash sha256:bb0b9ef27e5ffef06776ca10a87ed548cefedc703ddaf904316c87d4a7f3655d
+</pre>
+</div>
+
+<p>
+有image, 而不能启动docker container.
+</p>
+</div>
+</li>
+</ul>
+</div>
+
+<div id="outline-container-orgf0b2698" class="outline-4">
+<h4 id="kubeadm-init-use-local-image">使用本地镜像进行kubeadm init&#xa0;&#xa0;&#xa0;<span class="tag"><span class="image">image</span></span></h4>
+<div class="outline-text-4" id="text-kubeadm-init-use-local-image">
+<p>
+因为 kubeadm 安装 要提前下载好docker images, 并使用 这些个 docker images.
+但是，我们公司的网络FQ的下载速度太慢，时不时会断了。所以，我们考虑使用本地下载好的这些 images。
+</p>
+
+<p>
+要使用 local images, 那就要去修改 kubeadm 的代码，并重新build。好吧，我们build 吧。
+</p>
+</div>
+
+<ul class="org-ul">
+<li><a id="env"></a>env<br />
+<div class="outline-text-5" id="text-env">
+<pre class="example">
+192.168.31.120 km master
+192.168.31.119 kn1 node
+192.168.31.118 kn2 node
+</pre>
+</div>
+</li>
+
+<li><a id="kubeadm-build"></a>kubeadm-build<br />
+<div class="outline-text-5" id="text-kubeadm-build">
+<p>
+见 kubeadm-build 部分
+</p>
+</div>
+</li>
+
+<li><a id="加代理"></a>加代理<br />
+<div class="outline-text-5" id="text-加代理">
+<div class="org-src-container">
+<pre class="src src-shell">root@km:/etc/kubernetes/manifests# export
+<span style="color: #d4d4d4;">declare</span> -x <span style="color: #d4d4d4;">HOME</span>=<span style="color: #daa520;">"/root"</span>
+<span style="color: #d4d4d4;">declare</span> -x <span style="color: #d4d4d4;">LANG</span>=<span style="color: #daa520;">"en_US.UTF-8"</span>
+<span style="color: #d4d4d4;">declare</span> -x <span style="color: #d4d4d4;">LANGUAGE</span>=<span style="color: #daa520;">"en_US:en"</span>
+<span style="color: #d4d4d4;">declare</span> -x <span style="color: #d4d4d4;">LESSCLOSE</span>=<span style="color: #daa520;">"/usr/bin/lesspipe %s %s"</span>
+<span style="color: #d4d4d4;">declare</span> -x <span style="color: #d4d4d4;">LESSOPEN</span>=<span style="color: #daa520;">"| /usr/bin/lesspipe %s"</span>
+<span style="color: #d4d4d4;">declare</span> -x <span style="color: #d4d4d4;">LOGNAME</span>=<span style="color: #daa520;">"root"</span>
+<span style="color: #d4d4d4;">declare</span> -x <span style="color: #d4d4d4;">LS_COLORS</span>=<span style="color: #daa520;">"rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=30;41:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.Z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.jpg=01;35:*.jpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:"</span>
+<span style="color: #d4d4d4;">declare</span> -x <span style="color: #d4d4d4;">MAIL</span>=<span style="color: #daa520;">"/var/mail/root"</span>
+<span style="color: #d4d4d4;">declare</span> -x <span style="color: #d4d4d4;">NO_PROXY</span>=<span style="color: #daa520;">"localhost,127.0.0.1/8,192.168.31.1/24"</span>
+<span style="color: #d4d4d4;">declare</span> -x <span style="color: #d4d4d4;">OLDPWD</span>=<span style="color: #daa520;">"/etc/kubernetes"</span>
+<span style="color: #d4d4d4;">declare</span> -x <span style="color: #d4d4d4;">PATH</span>=<span style="color: #daa520;">"/home/jlch/.ana/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games"</span>
+<span style="color: #d4d4d4;">declare</span> -x <span style="color: #d4d4d4;">PWD</span>=<span style="color: #daa520;">"/etc/kubernetes/manifests"</span>
+<span style="color: #d4d4d4;">declare</span> -x <span style="color: #d4d4d4;">SHELL</span>=<span style="color: #daa520;">"/bin/bash"</span>
+<span style="color: #d4d4d4;">declare</span> -x <span style="color: #d4d4d4;">SHLVL</span>=<span style="color: #daa520;">"1"</span>
+<span style="color: #d4d4d4;">declare</span> -x <span style="color: #d4d4d4;">SUDO_COMMAND</span>=<span style="color: #daa520;">"/bin/su"</span>
+<span style="color: #d4d4d4;">declare</span> -x <span style="color: #d4d4d4;">SUDO_GID</span>=<span style="color: #daa520;">"1000"</span>
+<span style="color: #d4d4d4;">declare</span> -x <span style="color: #d4d4d4;">SUDO_UID</span>=<span style="color: #daa520;">"1000"</span>
+<span style="color: #d4d4d4;">declare</span> -x <span style="color: #d4d4d4;">SUDO_USER</span>=<span style="color: #daa520;">"jlch"</span>
+<span style="color: #d4d4d4;">declare</span> -x <span style="color: #d4d4d4;">TERM</span>=<span style="color: #daa520;">"xterm"</span>
+<span style="color: #d4d4d4;">declare</span> -x <span style="color: #d4d4d4;">USER</span>=<span style="color: #daa520;">"root"</span>
+<span style="color: #d4d4d4;">declare</span> -x <span style="color: #d4d4d4;">USERNAME</span>=<span style="color: #daa520;">"root"</span>
+<span style="color: #d4d4d4;">declare</span> -x <span style="color: #d4d4d4;">http_proxy</span>=<span style="color: #daa520;">"http://192.168.31.10:1080"</span>
+<span style="color: #d4d4d4;">declare</span> -x <span style="color: #d4d4d4;">https_proxy</span>=<span style="color: #daa520;">"http://192.168.31.10:1080"</span>
+<span style="color: #d4d4d4;">declare</span> -x <span style="color: #d4d4d4;">no_proxy</span>=<span style="color: #daa520;">"localhost,127.0.0.1,192.168.31.120,192.168.0.0/16,10.96.0.0/16,github.com"</span>
+</pre>
+</div>
+</div>
+</li>
+
+<li><a id="kubeadm-init"></a>kubeadm init<br />
+<div class="outline-text-5" id="text-kubeadm-init">
+<p>
+把这个 kubeadm 放到 km 下
+</p>
+
+<div class="org-src-container">
+<pre class="src src-shell">root@km:/etc/kubernetes/manifests# chmod a+rx /usr/bin/kubeadm
+root@km:/etc/kubernetes/manifests# kubeadm version
+kubeadm version: &amp;version.Info{Major:<span style="color: #daa520;">"1"</span>, Minor:<span style="color: #daa520;">"8+"</span>, GitVersion:<span style="color: #daa520;">"v1.8.3-dirty"</span>, GitCommit:<span style="color: #daa520;">"f0efb3cb883751c5ffdbe6d515f3cb4fbe7b7acd"</span>, GitTreeState:<span style="color: #daa520;">"dirty"</span>, BuildDate:<span style="color: #daa520;">"2017-11-20T07:05:42Z"</span>, GoVersion:<span style="color: #daa520;">"go1.9.2"</span>, Compiler:<span style="color: #daa520;">"gc"</span>, Platform:<span style="color: #daa520;">"linux/amd64"</span>}
+root@km:/etc/kubernetes/manifests#
+root@km:/etc/kubernetes/manifests# kubeadm init --pod-network-cidr=10.244.0.0/16 --skip-preflight-checks
+[kubeadm] WARNING: kubeadm is<span style="color: #00bfff;"> in</span> beta, please do not use it for production clusters.
+unable to get URL <span style="color: #daa520;">"https://dl.k8s.io/release/stable-1.8.txt"</span>: Get https://dl.k8s.io/release/stable-1.8.txt: net/http: TLS handshake timeout
+root@km:/etc/kubernetes/manifests#
+</pre>
+</div>
+
+<p>
+不成功呀。连接上了代理，还是会 pull image
+</p>
+</div>
+</li>
+
+<li><a id="其它测试"></a>其它测试<br />
+<div class="outline-text-5" id="text-其它测试">
+<div class="org-src-container">
+<pre class="src src-shell">root@km:/etc/kubernetes/manifests# kubeadm alpha phase etcd local
+unable to get URL <span style="color: #daa520;">"https://dl.k8s.io/release/stable-1.8.txt"</span>: Get https://dl.k8s.io/release/stable-1.8.txt: net/http: TLS handshake timeout
+root@km:/etc/kubernetes/manifests#
+</pre>
+</div>
+</div>
+</li>
+</ul>
+</div>
+<div id="outline-container-orgbaafd8e" class="outline-4">
+<h4 id="orgbaafd8e">kubeadm build&#xa0;&#xa0;&#xa0;<span class="tag"><span class="build">build</span></span></h4>
+<div class="outline-text-4" id="text-orgbaafd8e">
+</div>
+
+<ul class="org-ul">
+<li><a id="build-kubeadm"></a>build kubeadm<br />
+<div class="outline-text-5" id="text-build-kubeadm">
+<p>
+修改 Kubeadm 使得 <i>etc/kubernetes/manifests</i> 下的 *.yaml 文件带有 imagePullPolicy: IfNotPresent
+</p>
+</div>
+
+<ul class="org-ul">
+<li><a id="env"></a>env<br />
+<div class="outline-text-6" id="text-env">
+<p>
+192.168.31.114 jlch
+</p>
+</div>
+</li>
+
+<li><a id="gopath"></a>gopath<br />
+<div class="outline-text-6" id="text-gopath">
+<div class="org-src-container">
+<pre class="src src-shell"><span style="color: #d4d4d4;">cd</span> ~/gopath/src/github.com/kubernetes/
+git clone https://github.com/kubernetes/kubernetes.git
+<span style="color: #d4d4d4;">cd</span> kubernetes
+</pre>
+</div>
+</div>
+</li>
+
+<li><a id="修改吧"></a>修改吧<br />
+<div class="outline-text-6" id="text-修改吧">
+<div class="org-src-container">
+<pre class="src src-shell">jlch@mon1:~/gopath/src/github.com/kubernetes/kubernetes$ git status
+Not currently on any branch.
+Changes not staged for commit:
+(use <span style="color: #daa520;">"git add &lt;file&gt;..."</span> to update what will be committed)
+(use <span style="color: #daa520;">"git checkout -- &lt;file&gt;..."</span> to discard changes<span style="color: #00bfff;"> in</span> working directory)
+
+modified:   cmd/kubeadm/app/phases/controlplane/manifests.go
+modified:   cmd/kubeadm/app/phases/etcd/local.go
+
+no changes added to commit (use <span style="color: #daa520;">"git add"</span> and/or <span style="color: #daa520;">"git commit -a"</span>)
+jlch@mon1:~/gopath/src/github.com/kubernetes/kubernetes$ git diff cmd/kubeadm/app/phases/controlplane/manifests.go
+diff --git a/cmd/kubeadm/app/phases/controlplane/manifests.go b/cmd/kubeadm/app/phases/controlplane/manifests.go
+index 7d2784d..5b2833f 100644
+--- a/cmd/kubeadm/app/phases/controlplane/manifests.go
++++ b/cmd/kubeadm/app/phases/controlplane/manifests.go
+@@ -75,6 +75,7 @@ func GetStaticPodSpecs(cfg *kubeadmapi.MasterConfiguration, k8sVersion *version.
+                                         kubeadmconstants.KubeAPIServer: staticpodutil.ComponentPod(v1.Container{
+                                                                                                        Name:          kubeadmconstants.KubeAPIServer,
+                                                                                                        Image:         images.GetCoreImage(kubeadmconstants.KubeAPIServer, cfg.GetControlPlaneImageRepository(), cfg.KubernetesVersion, cfg.UnifiedControlPlaneImage),
+                                                                                                        +                        ImagePullPolicy: v1.PullIfNotPresent,
+                                                                                                        Command:       getAPIServerCommand(cfg, k8sVersion),
+                                                                                                        VolumeMounts:  mounts.GetVolumeMounts(kubeadmconstants.KubeAPIServer),
+                                                                                                        LivenessProbe: staticpodutil.ComponentProbe(int(cfg.API.BindPort), <span style="color: #daa520;">"/healthz"</span>, v1.URISchemeHTTPS),
+                                                                                                        @@ -84,6 +85,7 @@ func GetStaticPodSpecs(cfg *kubeadmapi.MasterConfiguration, k8sVersion *version.
+                                                                                                                                                 kubeadmconstants.KubeControllerManager: staticpodutil.ComponentPod(v1.Container{
+                                                                                                                                                                                                                        Name:          kubeadmconstants.KubeControllerManager,
+                                                                                                                                                                                                                        Image:         images.GetCoreImage(kubeadmconstants.KubeControllerManager, cfg.GetControlPlaneImageRepository(), cfg.KubernetesVersion, cfg.UnifiedControlPlaneImage),
+                                                                                                                                                                                                                        +                        ImagePullPolicy: v1.PullIfNotPresent,
+                                                                                                                                                                                                                        Command:       getControllerManagerCommand(cfg, k8sVersion),
+                                                                                                                                                                                                                        VolumeMounts:  mounts.GetVolumeMounts(kubeadmconstants.KubeControllerManager),
+                                                                                                                                                                                                                        LivenessProbe: staticpodutil.ComponentProbe(10252, <span style="color: #daa520;">"/healthz"</span>, v1.URISchemeHTTP),
+                                                                                                                                                                                                                        @@ -93,6 +95,7 @@ func GetStaticPodSpecs(cfg *kubeadmapi.MasterConfiguration, k8sVersion *version.
+                                                                                                                                                                                                                                                                 kubeadmconstants.KubeScheduler: staticpodutil.ComponentPod(v1.Container{
+                                                                                                                                                                                                                                                                                                                                Name:          kubeadmconstants.KubeScheduler,
+                                                                                                                                                                                                                                                                                                                                Image:         images.GetCoreImage(kubeadmconstants.KubeScheduler, cfg.GetControlPlaneImageRepository(), cfg.KubernetesVersion, cfg.UnifiedControlPlaneImage),
+                                                                                                                                                                                                                                                                                                                                +                        ImagePullPolicy: v1.PullIfNotPresent,
+                                                                                                                                                                                                                                                                                                                                Command:       getSchedulerCommand(cfg),
+                                                                                                                                                                                                                                                                                                                                VolumeMounts:  mounts.GetVolumeMounts(kubeadmconstants.KubeScheduler),
+                                                                                                                                                                                                                                                                                                                                LivenessProbe: staticpodutil.ComponentProbe(10251, <span style="color: #daa520;">"/healthz"</span>, v1.URISchemeHTTP),
+                                                                                                                                                                                                                                                                                                                                jlch@mon1:~/gopath/src/github.com/kubernetes/kubernetes$ git diff cmd/kubeadm/app/phases/etcd/local.go
+                                                                                                                                                                                                                                                                                                                                diff --git a/cmd/kubeadm/app/phases/etcd/local.go b/cmd/kubeadm/app/phases/etcd/local.go
+                                                                                                                                                                                                                                                                                                                                index e947794..8cc609a 100644
+                                                                                                                                                                                                                                                                                                                                --- a/cmd/kubeadm/app/phases/etcd/local.go
+                                                                                                                                                                                                                                                                                                                                +++ b/cmd/kubeadm/app/phases/etcd/local.go
+                                                                                                                                                                                                                                                                                                                                @@ -54,6 +54,7 @@ func GetEtcdPodSpec(cfg *kubeadmapi.MasterConfiguration) v1.Pod {
+                                                                                                                                                                                                                                                                                                                                    Name:    kubeadmconstants.Etcd,
+                                                                                                                                                                                                                                                                                                                                    Command: getEtcdCommand(cfg),
+                                                                                                                                                                                                                                                                                                                                    Image:   images.GetCoreImage(kubeadmconstants.Etcd, cfg.ImageRepository, <span style="color: #daa520;">""</span>, cfg.Etcd.Image),
+                                                                                                                                                                                                                                                                                                                                    +                ImagePullPolicy: v1.PullIfNotPresent,
+                                                                                                                                                                                                                                                                                                                                    // Mount the etcd datadir path read-write so etcd can store data<span style="color: #00bfff;"> in</span> a more persistent manner
+                                                                                                                                                                                                                                                                                                                                    VolumeMounts:  []v1.VolumeMount{staticpodutil.NewVolumeMount(etcdVolumeName, cfg.Etcd.DataDir, false)},
+                                                                                                                                                                                                                                                                                                                                    LivenessProbe: staticpodutil.ComponentProbe(2379, <span style="color: #daa520;">"/health"</span>, v1.URISchemeHTTP),
+                                                                                                                                                                                                                                                                                                                                    jlch@mon1:~/gopath/src/github.com/kubernetes/kubernetes$
+
+
+</pre>
+</div>
+</div>
+</li>
+<li><a id="make"></a>make<br />
+<div class="outline-text-6" id="text-make">
+<div class="org-src-container">
+<pre class="src src-shell">jlch@mon1:~/gopath/src/github.com/kubernetes/kubernetes$ make
+jlch@mon1:~/gopath/src/github.com/kubernetes/kubernetes$ cd _output/
+jlch@mon1:~/gopath/src/github.com/kubernetes/kubernetes/_output$ ls
+bin  local
+jlch@mon1:~/gopath/src/github.com/kubernetes/kubernetes/_output$ cd bin/
+jlch@mon1:~/gopath/src/github.com/kubernetes/kubernetes/_output/bin$ ls
+apiextensions-apiserver   conversion-gen  defaulter-gen  e2e.test  genfeddocs   genman              genyaml  gke-certificates-controller  hyperkube  kube-aggregator  kube-controller-manager  kubefed  kubemark    kube-scheduler  openapi-gen
+cloud-controller-manager  deepcopy-gen    e2e_node.test  gendocs   genkubedocs  genswaggertypedocs  ginkgo   go-bindata                   kubeadm    kube-apiserver   kubectl                  kubelet  kube-proxy  linkcheck       teststale
+jlch@mon1:~/gopath/src/github.com/kubernetes/kubernetes/_output/bin$ ./kubeadm version
+kubeadm version: &amp;version.Info{Major:<span style="color: #daa520;">"1"</span>, Minor:<span style="color: #daa520;">"8+"</span>, GitVersion:<span style="color: #daa520;">"v1.8.3-dirty"</span>, GitCommit:<span style="color: #daa520;">"f0efb3cb883751c5ffdbe6d515f3cb4fbe7b7acd"</span>, GitTreeState:<span style="color: #daa520;">"dirty"</span>, BuildDate:<span style="color: #daa520;">"2017-11-20T07:05:42Z"</span>, GoVersion:<span style="color: #daa520;">"go1.9.2"</span>, Compiler:<span style="color: #daa520;">"gc"</span>, Platform:<span style="color: #daa520;">"linux/amd64"</span>}
+jlch@mon1:~/gopath/src/github.com/kubernetes/kubernetes/_output/bin$
+</pre>
+</div>
+<p>
+好了，现在我们要的就是 kubeadm 文件。
+</p>
+</div>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+
+<div id="outline-container-org0ece0c6" class="outline-4">
+<h4 id="org0ece0c6">kubernetes delete node&#xa0;&#xa0;&#xa0;<span class="tag"><span class="delete">delete</span></span></h4>
+<div class="outline-text-4" id="text-org0ece0c6">
+<div class="org-src-container">
+<pre class="src src-shell">clear
+cat k8.export.sh
+<span style="color: #d4d4d4;">export</span> <span style="color: #d4d4d4;">KUBECONFIG</span>=$<span style="color: #d4d4d4;">HOME</span>/admin.conf
+ls
+k get node
+kubectl drain kn1 --delete-local-data --force --ignore-daemonsets
+kubectl delete node kn1
+kubectl drain kn2 --delete-local-data --force --ignore-daemonsets
+kubectl delete node kn2
+k get node
+clear
+kubectl drain km --delete-local-data --force --ignore-daemonsets
+kubeadm reset
+k get pod --all-namespaces
+docker ps
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</body>
+</html>

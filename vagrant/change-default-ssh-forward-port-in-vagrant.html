@@ -1,0 +1,288 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<!-- 2021-01-07 Thu 11:06 -->
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Vagrant更改默认的SSH端口</title>
+<meta name="generator" content="Org mode" />
+<meta name="author" content="zhangsan" />
+<meta name="description" content="Vagrant更改默认的SSH端口"
+ />
+<link rel="stylesheet" title="Standard" href="/html/style/worg.css" type="text/css" />
+<link rel="alternate stylesheet" title="Zenburn" href="/html/style/worg-zenburn.css" type="text/css" />
+<link rel="alternate stylesheet" title="Classic" href="/html/style/worg-classic.css" type="text/css" />
+<link rel="SHORTCUT ICON" href="/html/style/org-mode-unicorn.ico" type="image/x-icon" />
+<link rel="icon" href="/html/style/org-mode-unicorn.ico" type="image/ico" />
+<script type="text/javascript">
+/*
+@licstart  The following is the entire license notice for the
+JavaScript code in this tag.
+
+Copyright (C) 2012-2019 Free Software Foundation, Inc.
+
+The JavaScript code in this tag is free software: you can
+redistribute it and/or modify it under the terms of the GNU
+General Public License (GNU GPL) as published by the Free Software
+Foundation, either version 3 of the License, or (at your option)
+any later version.  The code is distributed WITHOUT ANY WARRANTY;
+without even the implied warranty of MERCHANTABILITY or FITNESS
+FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
+
+As additional permission under GNU GPL version 3 section 7, you
+may distribute non-source (e.g., minimized or compacted) forms of
+that code without the copy of the GNU GPL normally required by
+section 4, provided you include this license notice and a URL
+through which recipients can access the Corresponding Source.
+
+
+@licend  The above is the entire license notice
+for the JavaScript code in this tag.
+*/
+<!--/*--><![CDATA[/*><!--*/
+ function CodeHighlightOn(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(null != target) {
+     elem.cacheClassElem = elem.className;
+     elem.cacheClassTarget = target.className;
+     target.className = "code-highlighted";
+     elem.className   = "code-highlighted";
+   }
+ }
+ function CodeHighlightOff(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(elem.cacheClassElem)
+     elem.className = elem.cacheClassElem;
+   if(elem.cacheClassTarget)
+     target.className = elem.cacheClassTarget;
+ }
+/*]]>*///-->
+</script>
+</head>
+<body>
+<div id="preamble" class="status">
+<script type="text/javascript">
+  document.addEventListener('DOMContentLoaded',function() {
+      document.getElementById("table-of-contents").onclick = function() {
+          var elem = document.getElementById("text-table-of-contents");
+          elem.style.display = elem.style.display == "block" ? "none" : "block";
+      }
+  });
+
+  var url = document.location.href;
+  var orgsource = url.substring(0, url.lastIndexOf("."))+".org.html";
+  function show_org_source(){
+      document.location.href = orgsource;
+  }
+</script>
+
+<script>
+(function(f, a, t, h, o, m){
+	a[h]=a[h]||function(){
+		(a[h].q=a[h].q||[]).push(arguments)
+	};
+	o=f.createElement('script'),
+	m=f.getElementsByTagName('script')[0];
+	o.async=1; o.src=t; o.id='fathom-script';
+	m.parentNode.insertBefore(o,m)
+})(document, window, '//stats.orgmode.org/tracker.js', 'fathom');
+fathom('set', 'siteId', 'NWSQJ');
+fathom('trackPageview');
+</script>
+</div>
+<div id="content">
+<h1 class="title">Vagrant更改默认的SSH端口</h1>
+
+<div id="outline-container-org6a5eab4" class="outline-2">
+<h2 id="org6a5eab4">Vagrant更改默认的SSH端口&#xa0;&#xa0;&#xa0;<span class="tag"><span class="_vagrant">@vagrant</span>&#xa0;<span class="vagrant">vagrant</span></span></h2>
+<div class="outline-text-2" id="text-org6a5eab4">
+<p>
+通过学习，知道在 vagrantfile 中添加
+</p>
+
+<p>
+config.vm.network "forwarded\_port", guest: 222, host: 3333
+</p>
+
+<div class="org-src-container">
+<pre class="src src-shell">
+
+D:\vag-files\ubuntu16
+&#955;  vagrant up
+Bringing machine <span style="color: #daa520;">'default'</span> up with <span style="color: #daa520;">'virtualbox'</span> provider...
+==&gt; default: Clearing any previously set forwarded ports...
+==&gt; default: Clearing any previously set network interfaces...
+==&gt; default: Preparing network interfaces based on configuration...
+    default: Adapter 1: nat
+    default: Adapter 2: bridged
+==&gt; default: Forwarding ports...
+    default: 222 (guest) =&gt; 2222 (host) (adapter 1)
+    default: 22 (guest) =&gt; 2222 (host) (adapter 1)
+==&gt; default: Running <span style="color: #daa520;">'pre-boot'</span> VM customizations...
+==&gt; default: Booting VM...
+==&gt; default: Waiting for machine to boot. This may take a few minutes...
+    default: SSH address: 127.0.0.1:2222
+    default: SSH username: vagran
+    default: SSH auth method: private key
+    default: Warning: Connection reset. Retrying...
+    default: Warning: Connection aborted. Retrying...
+    default: Warning: Authentication failure. Retrying...
+    default: Warning: Authentication failure. Retrying...
+    default: Warning: Authentication failure. Retrying...
+    default: Warning: Authentication failure. Retrying...
+    default: Warning: Authentication failure. Retrying...
+    default: Warning: Authentication failure. Retrying...
+    default: Warning: Authentication failure. Retrying...
+    default: Warning: Authentication failure. Retrying...
+    default: Warning: Authentication failure. Retrying...
+    default: Warning: Authentication failure. Retrying...
+    default: Warning: Authentication failure. Retrying...
+    default: Warning: Authentication failure. Retrying...
+    default: Warning: Authentication failure. Retrying...
+    default: Warning: Authentication failure. Retrying...
+    default: Warning: Authentication failure. Retrying...
+    default: Warning: Authentication failure. Retrying...
+    default: Warning: Authentication failure. Retrying...
+    default: Warning: Authentication failure. Retrying...
+    default: Warning: Authentication failure. Retrying...
+    default: Warning: Authentication failure. Retrying...
+    default: Warning: Authentication failure. Retrying...
+    default: Warning: Authentication failure. Retrying...
+    default: Warning: Authentication failure. Retrying...
+    default: Warning: Authentication failure. Retrying...
+    default: Warning: Authentication failure. Retrying...
+    default: Warning: Authentication failure. Retrying...
+    default: Warning: Authentication failure. Retrying...
+Timed out while waiting for the machine to boot. This means that
+Vagrant was unable to communicate with the guest machine within
+the configured (<span style="color: #daa520;">"config.vm.boot_timeout"</span> value) <span style="color: #d4d4d4;">time</span> period.
+
+If you look above, you should be able to see the error(s) that
+Vagrant had when attempting to connect to the machine. These errors
+are usually good hints as to what may be wrong.
+
+If you<span style="color: #daa520;">'re using a custom box, make sure that networking is properly</span>
+<span style="color: #daa520;">working and you'</span>re able to connect to the machine. It is a common
+problem that networking isn<span style="color: #daa520;">'t setup properly in these boxes.</span>
+<span style="color: #daa520;">Verify that authentication configurations are also setup properly,</span>
+<span style="color: #daa520;">as well.</span>
+
+<span style="color: #daa520;">If the box appears to be booting properly, you may want to increase</span>
+<span style="color: #daa520;">the timeout ("config.vm.boot_timeout") value.</span>
+<span style="color: #daa520;">D:\vag-files\ubuntu16</span>
+</pre>
+</div>
+
+<p>
+不行，然后搜索到：
+</p>
+
+<p>
+<a href="https://tlanyan.me/change-default-ssh-forward-port-in-vagrant/">https://tlanyan.me/change-default-ssh-forward-port-in-vagrant/</a>
+</p>
+
+<pre class="example">
+config.vm.network "forwarded_port", guest: 22, host: 2222, id: "ssh", disabled: "true"
+config.vm.network "forwarded_port", guest: 222, host: 3333
+</pre>
+
+<div class="org-src-container">
+<pre class="src src-sh">D:\vag-files\ubuntu16
+&#955;  vagrant up
+Bringing machine <span style="color: #daa520;">'default'</span> up with <span style="color: #daa520;">'virtualbox'</span> provider...
+==&gt; default: Clearing any previously set forwarded ports...
+==&gt; default: Clearing any previously set network interfaces...
+==&gt; default: Preparing network interfaces based on configuration...
+    default: Adapter 1: nat
+    default: Adapter 2: bridged
+==&gt; default: Forwarding ports...
+    default: 222 (guest) =&gt; 3333 (host) (adapter 1)
+==&gt; default: Running <span style="color: #daa520;">'pre-boot'</span> VM customizations...
+==&gt; default: Booting VM...
+==&gt; default: Waiting for machine to boot. This may take a few minutes...
+    default: SSH address: 127.0.0.1:22
+    default: SSH username: vagrant
+    default: SSH auth method: private key
+Timed out while waiting for the machine to boot. This means that
+Vagrant was unable to communicate with the guest machine within
+the configured (<span style="color: #daa520;">"config.vm.boot_timeout"</span> value) <span style="color: #d4d4d4;">time</span> period.
+
+If you look above, you should be able to see the error(s) that
+Vagrant had when attempting to connect to the machine. These errors
+are usually good hints as to what may be wrong.
+
+If you<span style="color: #daa520;">'re using a custom box, make sure that networking is properly</span>
+<span style="color: #daa520;">working and you'</span>re able to connect to the machine. It is a common
+problem that networking isn<span style="color: #daa520;">'t setup properly in these boxes.</span>
+<span style="color: #daa520;">Verify that authentication configurations are also setup properly,</span>
+<span style="color: #daa520;">as well.</span>
+
+<span style="color: #daa520;">If the box appears to be booting properly, you may want to increase</span>
+<span style="color: #daa520;">the timeout ("config.vm.boot_timeout") value.</span>
+<span style="color: #daa520;">D:\vag-files\ubuntu16</span>
+<span style="color: #daa520;">&#955;</span>
+</pre>
+</div>
+
+<p>
+观察到，vm是启动起来了。
+</p>
+
+<div class="org-src-container">
+<pre class="src src-sh">D:\vag-files\ubuntu16
+&#955;  vagrant ssh-config
+Host default
+  HostName 127.0.0.1
+  User vagrant
+  Port 22
+  UserKnownHostsFile /dev/null
+  StrictHostKeyChecking no
+  PasswordAuthentication no
+  IdentityFile D:/vag-files/ubuntu16/.vagrant/machines/default/virtualbox/private_key
+  IdentitiesOnly yes
+  LogLevel FATAL
+
+D:\vag-files\ubuntu16
+&#955;  ssh -i D:/vag-files/ubuntu16/.vagrant/machines/default/virtualbox/private_key -p 3333 vagrant@localhost
+Welcome to Ubuntu 16.04.6 LTS (GNU/Linux 4.4.0-145-generic x86_64)
+
+ * Documentation:  https://help.ubuntu.com
+ * Management:     https://landscape.canonical.com
+ * Support:        https://ubuntu.com/advantage
+
+  Get cloud support with Ubuntu Advantage Cloud Guest:
+    http://www.ubuntu.com/business/services/cloud
+
+10 packages can be updated.
+0 updates are security updates.
+
+New release <span style="color: #daa520;">'18.04.2 LTS'</span> available.
+Run <span style="color: #daa520;">'do-release-upgrade'</span> to upgrade to it.
+
+
+Last login: Tue Apr 23 06:04:00 2019 from 10.0.2.2
+vagrant@ubuntu-xenial:~$
+</pre>
+</div>
+
+<p>
+可以登录成功的. yeah!
+</p>
+</div>
+
+<div id="outline-container-org8762e42" class="outline-3">
+<h3 id="ref">ref</h3>
+<div class="outline-text-3" id="text-ref">
+<ul class="org-ul">
+<li><a href="https://tlanyan.me/change-default-ssh-forward-port-in-vagrant/">https://tlanyan.me/change-default-ssh-forward-port-in-vagrant/</a></li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+</body>
+</html>

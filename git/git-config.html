@@ -1,0 +1,187 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<!-- 2021-01-07 Thu 11:05 -->
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>git config</title>
+<meta name="generator" content="Org mode" />
+<meta name="author" content="a" />
+<link rel="stylesheet" title="Standard" href="/html/style/worg.css" type="text/css" />
+<link rel="alternate stylesheet" title="Zenburn" href="/html/style/worg-zenburn.css" type="text/css" />
+<link rel="alternate stylesheet" title="Classic" href="/html/style/worg-classic.css" type="text/css" />
+<link rel="SHORTCUT ICON" href="/html/style/org-mode-unicorn.ico" type="image/x-icon" />
+<link rel="icon" href="/html/style/org-mode-unicorn.ico" type="image/ico" />
+<script type="text/javascript">
+/*
+@licstart  The following is the entire license notice for the
+JavaScript code in this tag.
+
+Copyright (C) 2012-2019 Free Software Foundation, Inc.
+
+The JavaScript code in this tag is free software: you can
+redistribute it and/or modify it under the terms of the GNU
+General Public License (GNU GPL) as published by the Free Software
+Foundation, either version 3 of the License, or (at your option)
+any later version.  The code is distributed WITHOUT ANY WARRANTY;
+without even the implied warranty of MERCHANTABILITY or FITNESS
+FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
+
+As additional permission under GNU GPL version 3 section 7, you
+may distribute non-source (e.g., minimized or compacted) forms of
+that code without the copy of the GNU GPL normally required by
+section 4, provided you include this license notice and a URL
+through which recipients can access the Corresponding Source.
+
+
+@licend  The above is the entire license notice
+for the JavaScript code in this tag.
+*/
+<!--/*--><![CDATA[/*><!--*/
+ function CodeHighlightOn(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(null != target) {
+     elem.cacheClassElem = elem.className;
+     elem.cacheClassTarget = target.className;
+     target.className = "code-highlighted";
+     elem.className   = "code-highlighted";
+   }
+ }
+ function CodeHighlightOff(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(elem.cacheClassElem)
+     elem.className = elem.cacheClassElem;
+   if(elem.cacheClassTarget)
+     target.className = elem.cacheClassTarget;
+ }
+/*]]>*///-->
+</script>
+</head>
+<body>
+<div id="preamble" class="status">
+<script type="text/javascript">
+  document.addEventListener('DOMContentLoaded',function() {
+      document.getElementById("table-of-contents").onclick = function() {
+          var elem = document.getElementById("text-table-of-contents");
+          elem.style.display = elem.style.display == "block" ? "none" : "block";
+      }
+  });
+
+  var url = document.location.href;
+  var orgsource = url.substring(0, url.lastIndexOf("."))+".org.html";
+  function show_org_source(){
+      document.location.href = orgsource;
+  }
+</script>
+
+<script>
+(function(f, a, t, h, o, m){
+	a[h]=a[h]||function(){
+		(a[h].q=a[h].q||[]).push(arguments)
+	};
+	o=f.createElement('script'),
+	m=f.getElementsByTagName('script')[0];
+	o.async=1; o.src=t; o.id='fathom-script';
+	m.parentNode.insertBefore(o,m)
+})(document, window, '//stats.orgmode.org/tracker.js', 'fathom');
+fathom('set', 'siteId', 'NWSQJ');
+fathom('trackPageview');
+</script>
+</div>
+<div id="content">
+<h1 class="title">git config</h1>
+<div id="table-of-contents">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#org16862cc">git bash中不能显示中文</a></li>
+</ul>
+</div>
+</div>
+<p>
+<a href="../index.html">{Back to site's index}</a>
+</p>
+
+<div id="outline-container-org16862cc" class="outline-2">
+<h2 id="org16862cc">git bash中不能显示中文</h2>
+<div class="outline-text-2" id="text-org16862cc">
+<ul class="org-ul">
+<li><a href="https://www.cnblogs.com/fallenmoon/p/8659678.html">https://www.cnblogs.com/fallenmoon/p/8659678.html</a></li>
+</ul>
+
+<p>
+在git bash下查看状态中文文件名全部显示为数字，像这样
+</p>
+
+<div class="org-src-container">
+<pre class="src src-shell">$ git status
+On branch master
+Untracked files:
+  (use <span style="color: #daa520;">"git add &lt;file&gt;..."</span> to include<span style="color: #00bfff;"> in</span> what will be committed)
+
+        <span style="color: #daa520;">"1. \346\236\204\345\273\272\347\274\226\350\257\221\347\216\257\345\242\203.doc"</span>
+        algorithms.c
+        queue.h
+        test.cpp
+        <span style="color: #daa520;">"\346\226\260\345\273\272 Microsoft Word \346\226\207\346\241\243.doc"</span>
+        <span style="color: #daa520;">"\346\265\201\351\200\232\351\200\232\351\201\223\345\256\275\345\272\246\350\256\241\347\256\227.png"</span>
+        <span style="color: #daa520;">"\347\256\227\346\263\225.txt"</span>
+        <span style="color: #daa520;">"\347\256\227\346\263\225\345\233\276.xls"</span>
+        <span style="color: #daa520;">"\347\256\227\346\263\225\345\233\276\344\276\213.png"</span>
+        <span style="color: #daa520;">"\347\256\227\346\263\225\347\254\224\350\256\260.doc"</span>
+</pre>
+</div>
+
+<p>
+把git的配置改一下 <code>git config --global core.quotepath false</code> 就可以了
+</p>
+
+<p>
+在 git log 时中文依然不能显示，首先试试用 git &#x2013;no-pager log 能不能显示中文，如果可以，则设置pager为more： git config &#x2013;global core.pager more
+</p>
+
+<p>
+以及，其他的一些解决办法：
+</p>
+
+<div class="org-src-container">
+<pre class="src src-example">进入你的项目根目录
+
+1.设置git gui的界面编码
+
+git config --global gui.encoding utf-8
+
+2.设置 commit log 提交时使用 utf-8 编码，可避免服务器上乱码，同时与linux上的提交保持一致！
+
+git config --global i18n.commitencoding utf-8
+
+git config --global i18n.logoutputencoding utf-8
+
+注：
+
+windows系统默认编码为gbk，可改成gbk
+
+如果系统设置了：
+
+export LANG=zh_CN.UTF-8
+
+则日志输出编码设置为utf-8
+
+git config --global i18n.logoutputencoding utf-8
+
+3.在 /etc/profile 中添加：
+
+export LESSCHARSET=utf-8
+
+在试一下问题解决了！
+</pre>
+</div>
+</div>
+</div>
+</div>
+</body>
+</html>

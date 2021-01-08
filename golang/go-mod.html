@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2020-07-30 Thu 16:12 -->
+<!-- 2021-01-07 Thu 11:18 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>go mod</title>
@@ -94,13 +94,97 @@ fathom('trackPageview');
 </div>
 <div id="content">
 <h1 class="title">go mod</h1>
+<div id="table-of-contents">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#orge3eca71">basic</a></li>
+<li><a href="#org8e27376">go mod download后如何更新 go.mod 中的某个pkg</a></li>
+<li><a href="#org5cd595f">require local package</a></li>
+<li><a href="#org641f618">malformed module path XXX: missing dot in first path element</a></li>
+<li><a href="#org649e655">compile: version "go1.14.1" does not match go tool version "go1.13.5"</a></li>
+</ul>
+</div>
+</div>
 <p>
 <a href="../index.html">{Back to site's index}</a>
 </p>
 
+<div id="outline-container-orge3eca71" class="outline-2">
+<h2 id="orge3eca71">basic</h2>
+<div class="outline-text-2" id="text-orge3eca71">
 <p>
 <a href="https://www.jianshu.com/p/bbed916d16ea">https://www.jianshu.com/p/bbed916d16ea</a>
 </p>
+</div>
+</div>
+
+<div id="outline-container-org8e27376" class="outline-2">
+<h2 id="org8e27376">go mod download后如何更新 go.mod 中的某个pkg</h2>
+<div class="outline-text-2" id="text-org8e27376">
+<p>
+<a href="https://zhuanlan.zhihu.com/p/103534192">https://zhuanlan.zhihu.com/p/103534192</a> （这里面还有一些其它的高级用法）
+</p>
+
+<div class="org-src-container">
+<pre class="src src-shell">go get github.com/user/package
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org5cd595f" class="outline-2">
+<h2 id="org5cd595f">require local package</h2>
+<div class="outline-text-2" id="text-org5cd595f">
+<p>
+tomtsang@toms-MacBook-Pro:~/github/trade/binance/go-binance-test-2% go test
+go: futures@v0.1.1: parsing futures/go.mod: open /Users/tomtsang/github/trade/binance/go-binance-test-2/futures/go.mod: no such file or directory
+tomtsang@toms-MacBook-Pro:~/github/trade/binance/go-binance-test-2% go mod download
+go: futures@v0.1.1: parsing futures/go.mod: open /Users/tomtsang/github/trade/binance/go-binance-test-2/futures/go.mod: no such file or directory
+tomtsang@toms-MacBook-Pro:~/github/trade/binance/go-binance-test-2% cd futures
+tomtsang@toms-MacBook-Pro:~/github/trade/binance/go-binance-test-2/futures% go mod init futures
+go: creating new go.mod: module futures
+tomtsang@toms-MacBook-Pro:~/github/trade/binance/go-binance-test-2/futures% go mod download
+tomtsang@toms-MacBook-Pro:~/github/trade/binance/go-binance-test-2/futures% cd ..
+tomtsang@toms-MacBook-Pro:~/github/trade/binance/go-binance-test-2% go mod download
+tomtsang@toms-MacBook-Pro:~/github/trade/binance/go-binance-test-2% go test
+PASS
+ok      github.com/adshao/go-binance    0.034s
+tomtsang@toms-MacBook-Pro:~/github/trade/binance/go-binance-test-2%
+</p>
+</div>
+</div>
+
+
+<div id="outline-container-org641f618" class="outline-2">
+<h2 id="org641f618">malformed module path XXX: missing dot in first path element</h2>
+<div class="outline-text-2" id="text-org641f618">
+<p>
+<a href="https://www.jianshu.com/p/75cb8214e53f">https://www.jianshu.com/p/75cb8214e53f</a>
+</p>
+
+<p>
+另外 子目录的包中不应该有go.mod，否则会报同样错误。
+</p>
+
+<p>
+也就是说：如果 localPackageA 包引用了本地包 localPackageB , 然后，这时 packageC 想引用 localPackageA 就会报
+cannot load xxx/xxx: malformed module path "xxx/xxx": missing dot in first path element
+原因就是，把 localPackageB 当作是 localPackageA 的子目录，而 localPackageB 一定会有 go.mod 文件.
+</p>
+</div>
+</div>
+
+
+<div id="outline-container-org649e655" class="outline-2">
+<h2 id="org649e655">compile: version "go1.14.1" does not match go tool version "go1.13.5"</h2>
+<div class="outline-text-2" id="text-org649e655">
+<p>
+<a href="https://github.com/moovweb/gvm/issues/188#issuecomment-256615244">https://github.com/moovweb/gvm/issues/188#issuecomment-256615244</a>
+<a href="https://github.com/moovweb/gvm/issues/188#issuecomment-372918090">https://github.com/moovweb/gvm/issues/188#issuecomment-372918090</a>
+</p>
+</div>
+</div>
 </div>
 </body>
 </html>

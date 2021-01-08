@@ -1,0 +1,236 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<!-- 2021-01-08 Fri 15:30 -->
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>openapi test</title>
+<meta name="generator" content="Org mode" />
+<meta name="author" content="a" />
+<link rel="stylesheet" title="Standard" href="/html/style/worg.css" type="text/css" />
+<link rel="alternate stylesheet" title="Zenburn" href="/html/style/worg-zenburn.css" type="text/css" />
+<link rel="alternate stylesheet" title="Classic" href="/html/style/worg-classic.css" type="text/css" />
+<link rel="SHORTCUT ICON" href="/html/style/org-mode-unicorn.ico" type="image/x-icon" />
+<link rel="icon" href="/html/style/org-mode-unicorn.ico" type="image/ico" />
+<script type="text/javascript">
+/*
+@licstart  The following is the entire license notice for the
+JavaScript code in this tag.
+
+Copyright (C) 2012-2019 Free Software Foundation, Inc.
+
+The JavaScript code in this tag is free software: you can
+redistribute it and/or modify it under the terms of the GNU
+General Public License (GNU GPL) as published by the Free Software
+Foundation, either version 3 of the License, or (at your option)
+any later version.  The code is distributed WITHOUT ANY WARRANTY;
+without even the implied warranty of MERCHANTABILITY or FITNESS
+FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
+
+As additional permission under GNU GPL version 3 section 7, you
+may distribute non-source (e.g., minimized or compacted) forms of
+that code without the copy of the GNU GPL normally required by
+section 4, provided you include this license notice and a URL
+through which recipients can access the Corresponding Source.
+
+
+@licend  The above is the entire license notice
+for the JavaScript code in this tag.
+*/
+<!--/*--><![CDATA[/*><!--*/
+ function CodeHighlightOn(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(null != target) {
+     elem.cacheClassElem = elem.className;
+     elem.cacheClassTarget = target.className;
+     target.className = "code-highlighted";
+     elem.className   = "code-highlighted";
+   }
+ }
+ function CodeHighlightOff(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(elem.cacheClassElem)
+     elem.className = elem.cacheClassElem;
+   if(elem.cacheClassTarget)
+     target.className = elem.cacheClassTarget;
+ }
+/*]]>*///-->
+</script>
+</head>
+<body>
+<div id="preamble" class="status">
+<script type="text/javascript">
+  document.addEventListener('DOMContentLoaded',function() {
+      document.getElementById("table-of-contents").onclick = function() {
+          var elem = document.getElementById("text-table-of-contents");
+          elem.style.display = elem.style.display == "block" ? "none" : "block";
+      }
+  });
+
+  var url = document.location.href;
+  var orgsource = url.substring(0, url.lastIndexOf("."))+".org.html";
+  function show_org_source(){
+      document.location.href = orgsource;
+  }
+</script>
+
+<script>
+(function(f, a, t, h, o, m){
+	a[h]=a[h]||function(){
+		(a[h].q=a[h].q||[]).push(arguments)
+	};
+	o=f.createElement('script'),
+	m=f.getElementsByTagName('script')[0];
+	o.async=1; o.src=t; o.id='fathom-script';
+	m.parentNode.insertBefore(o,m)
+})(document, window, '//stats.orgmode.org/tracker.js', 'fathom');
+fathom('set', 'siteId', 'NWSQJ');
+fathom('trackPageview');
+</script>
+</div>
+<div id="content">
+<h1 class="title">openapi test</h1>
+<div id="table-of-contents">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#orgbb82b18">OpenAPIValidators</a>
+<ul>
+<li><a href="#orgd1690df">handling-api-validation-with-openapi-swagger-documents-in-nodejs</a></li>
+<li><a href="#orgb7d59e0">chai-openapi-response-validator readme</a>
+<ul>
+<li><a href="#org2a01915">写成的 *.yaml 文件，请确保语法正确</a></li>
+<li><a href="#org2eda44a">语法正确情况下， paths 中使用 $ref 则也会提示 <code>AssertionError: expected res to satisfy API spec</code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#orge525da3">swagger_meqa</a></li>
+</ul>
+</div>
+</div>
+<p>
+<a href="../index.html">{Back to site's index}</a>
+</p>
+
+
+<div id="outline-container-orgbb82b18" class="outline-2">
+<h2 id="orgbb82b18">OpenAPIValidators</h2>
+<div class="outline-text-2" id="text-orgbb82b18">
+<p>
+对 openapi responses 进行 validate
+</p>
+
+<p>
+<a href="https://github.com/RuntimeTools/OpenAPIValidators">https://github.com/RuntimeTools/OpenAPIValidators</a>
+</p>
+</div>
+
+<div id="outline-container-orgd1690df" class="outline-3">
+<h3 id="orgd1690df">handling-api-validation-with-openapi-swagger-documents-in-nodejs</h3>
+<div class="outline-text-3" id="text-orgd1690df">
+<ul class="org-ul">
+<li><a href="https://medium.com/@Scampiuk/handling-api-validation-with-openapi-swagger-documents-in-nodejs-1f09c133d4d2">https://medium.com/@Scampiuk/handling-api-validation-with-openapi-swagger-documents-in-nodejs-1f09c133d4d2</a></li>
+</ul>
+<p>
+这样就非常方便地检查openapi的传入与输出。做单元测试就很容易了。
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgb7d59e0" class="outline-3">
+<h3 id="orgb7d59e0">chai-openapi-response-validator readme</h3>
+<div class="outline-text-3" id="text-orgb7d59e0">
+<ul class="org-ul">
+<li><a href="https://github.com/RuntimeTools/OpenAPIValidators/tree/master/packages/chai-openapi-response-validator#readme">https://github.com/RuntimeTools/OpenAPIValidators/tree/master/packages/chai-openapi-response-validator#readme</a></li>
+</ul>
+</div>
+
+
+<div id="outline-container-org2a01915" class="outline-4">
+<h4 id="org2a01915">写成的 *.yaml 文件，请确保语法正确</h4>
+<div class="outline-text-4" id="text-org2a01915">
+<ul class="org-ul">
+<li><a href="https://editor.swagger.io/">https://editor.swagger.io/</a> 中输入后无提示出错</li>
+</ul>
+
+<p>
+比如：
+</p>
+
+<p>
+<code>schema: '#/components/schemas/ExampleSchemaObject'</code> 这个写法，不支持，会报错 ~throw new Error(`Invalid OpenAPI spec: ${error.message}`);~。
+</p>
+
+<div class="org-src-container">
+<pre class="src src-shell">throw new Error(<span style="color: #00cdcd; font-weight: bold;">`Invalid OpenAPI spec: ${error.message}`</span>);
+          ^
+Error: Invalid OpenAPI spec: [ { keyword: <span style="color: #daa520;">'type'</span>,
+    dataPath:
+     <span style="color: #daa520;">'.paths[\'</span>/example<span style="color: #daa520;">\'</span>].get.responses[<span style="color: #daa520;">\'</span>200<span style="color: #daa520;">\'</span>].content[<span style="color: #daa520;">\'</span>application/json<span style="color: #daa520;">\'</span>].schema<span style="color: #daa520;">',</span>
+<span style="color: #daa520;">    schemaPath: '</span><span style="color: #579C4C;">#</span><span style="color: #579C4C;">/type',</span>
+    params: { <span style="color: #d4d4d4;">type</span>: <span style="color: #daa520;">'object'</span> },
+    message: <span style="color: #daa520;">'should be object'</span> },
+</pre>
+</div>
+
+<p>
+要换成
+</p>
+
+<div class="org-src-container">
+<pre class="src src-yaml">              schema:
+                $ref: '#/components/schemas/ExampleSchemaObject'
+components:
+  schemas:
+    ExampleSchemaObject:
+      type: object
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org2eda44a" class="outline-4">
+<h4 id="org2eda44a">语法正确情况下， paths 中使用 $ref 则也会提示 <code>AssertionError: expected res to satisfy API spec</code></h4>
+<div class="outline-text-4" id="text-org2eda44a">
+<div class="org-src-container">
+<pre class="src src-shell">$ npm run test-local
+
+&gt; <span style="color: #d4d4d4;">EGG_SERVER_ENV</span>=unittest egg-bin test
+
+
+  GET /example/endpoint
+    1) should satisfy OpenAPI spec
+
+
+  0 passing (29ms)
+  1 failing
+
+  1) GET /example/endpoint
+       should satisfy OpenAPI spec:
+     AssertionError: expected res to satisfy API spec
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orge525da3" class="outline-2">
+<h2 id="orge525da3">swagger_meqa</h2>
+<div class="outline-text-2" id="text-orge525da3">
+<p>
+<a href="https://github.com/meqaio/swagger_meqa">https://github.com/meqaio/swagger_meqa</a>
+</p>
+
+<p>
+Auto generate and run tests using swagger/OpenAPI spec, no coding needed</p>
+</div>
+</div>
+</div>
+</body>
+</html>

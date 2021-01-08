@@ -1,0 +1,237 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<!-- 2021-01-07 Thu 11:12 -->
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>emacs</title>
+<meta name="generator" content="Org mode" />
+<meta name="author" content="zyl@zyl.com" />
+<link rel="stylesheet" title="Standard" href="/html/style/worg.css" type="text/css" />
+<link rel="alternate stylesheet" title="Zenburn" href="/html/style/worg-zenburn.css" type="text/css" />
+<link rel="alternate stylesheet" title="Classic" href="/html/style/worg-classic.css" type="text/css" />
+<link rel="SHORTCUT ICON" href="/html/style/org-mode-unicorn.ico" type="image/x-icon" />
+<link rel="icon" href="/html/style/org-mode-unicorn.ico" type="image/ico" />
+<script type="text/javascript">
+/*
+@licstart  The following is the entire license notice for the
+JavaScript code in this tag.
+
+Copyright (C) 2012-2019 Free Software Foundation, Inc.
+
+The JavaScript code in this tag is free software: you can
+redistribute it and/or modify it under the terms of the GNU
+General Public License (GNU GPL) as published by the Free Software
+Foundation, either version 3 of the License, or (at your option)
+any later version.  The code is distributed WITHOUT ANY WARRANTY;
+without even the implied warranty of MERCHANTABILITY or FITNESS
+FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
+
+As additional permission under GNU GPL version 3 section 7, you
+may distribute non-source (e.g., minimized or compacted) forms of
+that code without the copy of the GNU GPL normally required by
+section 4, provided you include this license notice and a URL
+through which recipients can access the Corresponding Source.
+
+
+@licend  The above is the entire license notice
+for the JavaScript code in this tag.
+*/
+<!--/*--><![CDATA[/*><!--*/
+ function CodeHighlightOn(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(null != target) {
+     elem.cacheClassElem = elem.className;
+     elem.cacheClassTarget = target.className;
+     target.className = "code-highlighted";
+     elem.className   = "code-highlighted";
+   }
+ }
+ function CodeHighlightOff(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(elem.cacheClassElem)
+     elem.className = elem.cacheClassElem;
+   if(elem.cacheClassTarget)
+     target.className = elem.cacheClassTarget;
+ }
+/*]]>*///-->
+</script>
+</head>
+<body>
+<div id="preamble" class="status">
+<script type="text/javascript">
+  document.addEventListener('DOMContentLoaded',function() {
+      document.getElementById("table-of-contents").onclick = function() {
+          var elem = document.getElementById("text-table-of-contents");
+          elem.style.display = elem.style.display == "block" ? "none" : "block";
+      }
+  });
+
+  var url = document.location.href;
+  var orgsource = url.substring(0, url.lastIndexOf("."))+".org.html";
+  function show_org_source(){
+      document.location.href = orgsource;
+  }
+</script>
+
+<script>
+(function(f, a, t, h, o, m){
+	a[h]=a[h]||function(){
+		(a[h].q=a[h].q||[]).push(arguments)
+	};
+	o=f.createElement('script'),
+	m=f.getElementsByTagName('script')[0];
+	o.async=1; o.src=t; o.id='fathom-script';
+	m.parentNode.insertBefore(o,m)
+})(document, window, '//stats.orgmode.org/tracker.js', 'fathom');
+fathom('set', 'siteId', 'NWSQJ');
+fathom('trackPageview');
+</script>
+</div>
+<div id="content">
+<h1 class="title">emacs</h1>
+<div id="table-of-contents">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#org75dac35"><span class="todo STARTED">STARTED</span> emacs</a>
+<ul>
+<li><a href="#org3941b7a">configure</a>
+<ul>
+<li><a href="#org2022e22">org-mode下，遍历所有的.org文件</a></li>
+<li><a href="#org68e65d0">看过的</a></li>
+</ul>
+</li>
+<li><a href="#orgfa2a921"><span class="todo STARTED">STARTED</span> org-mode GTD</a>
+<ul>
+<li><a href="#orgca5c08f"><span class="done DONE">DONE</span> Emacs月月积累（终结篇）：熟练使用org-mode管理日常事务 学习笔记</a></li>
+<li><a href="#orge343071"><span class="todo STARTED">STARTED</span> 用Org-mode实现GTD</a></li>
+<li><a href="#orgd3b6972">浏览过的网页</a></li>
+<li><a href="#org70dce7f">org-mode教程</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+
+
+<div id="outline-container-org75dac35" class="outline-2">
+<h2 id="org75dac35"><span class="todo STARTED">STARTED</span> emacs&#xa0;&#xa0;&#xa0;<span class="tag"><span class="emacs">emacs</span>&#xa0;<span class="learn">learn</span></span></h2>
+<div class="outline-text-2" id="text-org75dac35">
+</div>
+<div id="outline-container-org3941b7a" class="outline-3">
+<h3 id="org3941b7a">configure</h3>
+<div class="outline-text-3" id="text-org3941b7a">
+</div>
+<div id="outline-container-org2022e22" class="outline-4">
+<h4 id="org2022e22">org-mode下，遍历所有的.org文件</h4>
+<div class="outline-text-4" id="text-org2022e22">
+<p>
+<a href="https://github.com/15cm/spacemacs-config/blob/master/layers/my-writing/packages.el">https://github.com/15cm/spacemacs-config/blob/master/layers/my-writing/packages.el</a>
+</p>
+
+<div class="org-src-container">
+<pre class="src src-Emacs-lisp">;; 这个是子龙的配置
+      ;; (setq org-agenda-files (list org-agenda-dir))
+;; 这个是15cm的配置
+      ;; agenda files for tag search
+      (let ((notes-dir "~/org-notes"))
+        (if (file-exists-p notes-dir)
+            (progn
+              (load-library "find-lisp")
+              (setq org-agenda-files (find-lisp-find-files "~/org-notes" "\.org$"))
+              )))
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org68e65d0" class="outline-4">
+<h4 id="org68e65d0">看过的</h4>
+<div class="outline-text-4" id="text-org68e65d0">
+<p>
+<a href="https://blog.csdn.net/uninterrupted/article/details/79120402">https://blog.csdn.net/uninterrupted/article/details/79120402</a>
+<a href="https://www.cnblogs.com/holbrook/archive/2012/04/17/2454619.html">https://www.cnblogs.com/holbrook/archive/2012/04/17/2454619.html</a>
+</p>
+</div>
+</div>
+</div>
+
+
+<div id="outline-container-orgfa2a921" class="outline-3">
+<h3 id="orgfa2a921"><span class="todo STARTED">STARTED</span> org-mode GTD</h3>
+<div class="outline-text-3" id="text-orgfa2a921">
+</div>
+<div id="outline-container-orgca5c08f" class="outline-4">
+<h4 id="orgca5c08f"><span class="done DONE">DONE</span> 学习笔记</h4>
+<div class="outline-text-4" id="text-orgca5c08f">
+<p>
+修正
+</p>
+
+<ul class="org-ul">
+<li>在当前标题后插入同级标题符号（即换行符和星号）,快捷键，已经从`M-RET`修改成`M-RET M-RET`了。</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-orge343071" class="outline-4">
+<h4 id="orge343071"><span class="todo STARTED">STARTED</span> <a href="https://www.cnblogs.com/holbrook/archive/2012/04/17/2454619.html">用Org-mode实现GTD</a></h4>
+<div class="outline-text-4" id="text-orge343071">
+<p>
+用Org-mode实现GTD , 把这文章中的内容，配置到tomtsang中去。
+</p>
+</div>
+</div>
+
+
+<div id="outline-container-orgd3b6972" class="outline-4">
+<h4 id="orgd3b6972">浏览过的网页</h4>
+<div class="outline-text-4" id="text-orgd3b6972">
+</div>
+<ul class="org-ul">
+<li><a id="org0ceee3d"></a><a href="http://ergoemacs.org/emacs/emacs_whats_best_setup_for_xyz.html">http://ergoemacs.org/emacs/emacs_whats_best_setup_for_xyz.html</a><br /></li>
+
+
+
+
+<li><a id="org511fd57"></a><span class="todo TODO">TODO</span> <a href="http://www.fuzihao.org/blog/2015/02/19/org-mode%E6%95%99%E7%A8%8B/">http://www.fuzihao.org/blog/2015/02/19/org-mode%E6%95%99%E7%A8%8B/</a><br /></li>
+
+
+<li><a id="org8a43c5e"></a><span class="todo TODO">TODO</span> <a href="https://www.jianshu.com/p/d308e17a48d1">https://www.jianshu.com/p/d308e17a48d1</a><br /></li>
+</ul>
+</div>
+<div id="outline-container-org70dce7f" class="outline-4">
+<h4 id="org70dce7f">org-mode教程</h4>
+<div class="outline-text-4" id="text-org70dce7f">
+</div>
+<ul class="org-ul">
+<li><a id="org39200dc"></a><span class="todo TODO">TODO</span> <a href="http://orgmode.org/orgguide.pdf">官方教程PDF</a><br /></li>
+<li><a id="org816a4ea"></a><span class="todo TODO">TODO</span> <a href="http://www.cnblogs.com/Open_Source/archive/2011/07/17/2108747.html">Org-mode 简明手册</a><br />
+<div class="outline-text-5" id="text-org816a4ea">
+<p>
+不错的中文教程.
+</p>
+</div>
+</li>
+
+<li><a id="org174094b"></a><span class="todo TODO">TODO</span> Carsten Dominik (Org-mode 发明者) 在 <a href="http://orgmode.org/talks.html">google tech talks 上的演讲</a>.<br />
+<div class="outline-text-5" id="text-org174094b">
+<p>
+（程斌说）最好的英文教程。
+</p>
+</div>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+</body>
+</html>

@@ -1,0 +1,177 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<!-- 2021-01-07 Thu 11:05 -->
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>&lrm;</title>
+<meta name="generator" content="Org mode" />
+<meta name="author" content="a" />
+<link rel="stylesheet" title="Standard" href="/html/style/worg.css" type="text/css" />
+<link rel="alternate stylesheet" title="Zenburn" href="/html/style/worg-zenburn.css" type="text/css" />
+<link rel="alternate stylesheet" title="Classic" href="/html/style/worg-classic.css" type="text/css" />
+<link rel="SHORTCUT ICON" href="/html/style/org-mode-unicorn.ico" type="image/x-icon" />
+<link rel="icon" href="/html/style/org-mode-unicorn.ico" type="image/ico" />
+<script type="text/javascript">
+/*
+@licstart  The following is the entire license notice for the
+JavaScript code in this tag.
+
+Copyright (C) 2012-2019 Free Software Foundation, Inc.
+
+The JavaScript code in this tag is free software: you can
+redistribute it and/or modify it under the terms of the GNU
+General Public License (GNU GPL) as published by the Free Software
+Foundation, either version 3 of the License, or (at your option)
+any later version.  The code is distributed WITHOUT ANY WARRANTY;
+without even the implied warranty of MERCHANTABILITY or FITNESS
+FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
+
+As additional permission under GNU GPL version 3 section 7, you
+may distribute non-source (e.g., minimized or compacted) forms of
+that code without the copy of the GNU GPL normally required by
+section 4, provided you include this license notice and a URL
+through which recipients can access the Corresponding Source.
+
+
+@licend  The above is the entire license notice
+for the JavaScript code in this tag.
+*/
+<!--/*--><![CDATA[/*><!--*/
+ function CodeHighlightOn(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(null != target) {
+     elem.cacheClassElem = elem.className;
+     elem.cacheClassTarget = target.className;
+     target.className = "code-highlighted";
+     elem.className   = "code-highlighted";
+   }
+ }
+ function CodeHighlightOff(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(elem.cacheClassElem)
+     elem.className = elem.cacheClassElem;
+   if(elem.cacheClassTarget)
+     target.className = elem.cacheClassTarget;
+ }
+/*]]>*///-->
+</script>
+</head>
+<body>
+<div id="preamble" class="status">
+<script type="text/javascript">
+  document.addEventListener('DOMContentLoaded',function() {
+      document.getElementById("table-of-contents").onclick = function() {
+          var elem = document.getElementById("text-table-of-contents");
+          elem.style.display = elem.style.display == "block" ? "none" : "block";
+      }
+  });
+
+  var url = document.location.href;
+  var orgsource = url.substring(0, url.lastIndexOf("."))+".org.html";
+  function show_org_source(){
+      document.location.href = orgsource;
+  }
+</script>
+
+<script>
+(function(f, a, t, h, o, m){
+	a[h]=a[h]||function(){
+		(a[h].q=a[h].q||[]).push(arguments)
+	};
+	o=f.createElement('script'),
+	m=f.getElementsByTagName('script')[0];
+	o.async=1; o.src=t; o.id='fathom-script';
+	m.parentNode.insertBefore(o,m)
+})(document, window, '//stats.orgmode.org/tracker.js', 'fathom');
+fathom('set', 'siteId', 'NWSQJ');
+fathom('trackPageview');
+</script>
+</div>
+<div id="content">
+<div id="table-of-contents">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#org33a0ec1">youtube-dl使用介绍</a></li>
+<li><a href="#orgecc1858">youtube-dl error</a>
+<ul>
+<li><a href="#orgfcf7990">urlopen error [SSL: UNKNOWN_PROTOCOL] unknown protocol (_ssl.c:590)</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+<p>
+youtube
+</p>
+
+<div id="outline-container-org33a0ec1" class="outline-2">
+<h2 id="org33a0ec1">youtube-dl使用介绍</h2>
+<div class="outline-text-2" id="text-org33a0ec1">
+<p>
+<a href="https://www.jianshu.com/p/6bae57859325">https://www.jianshu.com/p/6bae57859325</a>
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgecc1858" class="outline-2">
+<h2 id="orgecc1858">youtube-dl error</h2>
+<div class="outline-text-2" id="text-orgecc1858">
+</div>
+<div id="outline-container-orgfcf7990" class="outline-3">
+<h3 id="orgfcf7990">urlopen error [SSL: UNKNOWN_PROTOCOL] unknown protocol (_ssl.c:590)</h3>
+<div class="outline-text-3" id="text-orgfcf7990">
+<div class="org-src-container">
+<pre class="src src-shell">$ youtube-dl -F https://www.youtube.com/watch?<span style="color: #d4d4d4;">v</span>=pKzhNZGG1AM
+[youtube] 6u0fQJG0asc: Downloading webpage
+ERROR: Unable to download webpage: &lt;urlopen error [SSL: UNKNOWN_PROTOCOL] unknown protocol (_ssl.c:590)&gt; (caused by URLError(SSLError(1, u<span style="color: #daa520;">'[SSL: UNKNOWN_PROTOCOL] unknown protocol (_ssl.c:590)'</span>),))
+</pre>
+</div>
+
+<p>
+<a href="https://github.com/ytdl-org/youtube-dl/issues/4816#issuecomment-72134141">https://github.com/ytdl-org/youtube-dl/issues/4816#issuecomment-72134141</a>
+</p>
+
+<div class="org-src-container">
+<pre class="src src-shell">$ youtube-dl -F https://www.youtube.com/watch?<span style="color: #d4d4d4;">v</span>=pKzhNZGG1AM --no-check-certificate
+[youtube] 6u0fQJG0asc: Downloading webpage
+[youtube] 6u0fQJG0asc: Downloading video info webpage
+WARNING: unable to download video info webpage: &lt;urlopen error [SSL: UNKNOWN_PROTOCOL] unknown protocol (_ssl.c:590)&gt;
+WARNING: unable to download video info webpage: &lt;urlopen error [SSL: UNKNOWN_PROTOCOL] unknown protocol (_ssl.c:590)&gt;
+[info] Available formats for 6u0fQJG0asc:
+format code  extension  resolution note
+249          webm       audio only tiny   55k , opus @ 50k (48000Hz), 20.40MiB
+250          webm       audio only tiny   72k , opus @ 70k (48000Hz), 23.50MiB
+251          webm       audio only tiny  131k , opus @160k (48000Hz), 42.91MiB
+140          m4a        audio only tiny  133k , m4a_dash container, mp4a.40.2@128k (44100Hz), 52.52MiB
+394          mp4        256x144    144p   79k , av01.0.00M.08, 30fps, video only, 26.06MiB
+278          webm       256x144    144p  101k , webm container, vp9, 30fps, video only, 29.50MiB
+160          mp4        256x144    144p  135k , avc1.4d400c, 30fps, video only, 29.73MiB
+395          mp4        426x240    240p  176k , av01.0.00M.08, 30fps, video only, 44.79MiB
+242          webm       426x240    240p  188k , vp9, 30fps, video only, 44.81MiB
+133          mp4        426x240    240p  300k , avc1.4d4015, 30fps, video only, 69.47MiB
+396          mp4        640x360    360p  318k , av01.0.01M.08, 30fps, video only, 80.49MiB
+243          webm       640x360    360p  396k , vp9, 30fps, video only, 94.17MiB
+397          mp4        854x480    480p  532k , av01.0.04M.08, 30fps, video only, 142.03MiB
+134          mp4        640x360    360p  616k , avc1.4d401e, 30fps, video only, 134.66MiB
+244          webm       854x480    480p  644k , vp9, 30fps, video only, 158.82MiB
+135          mp4        854x480    480p  975k , avc1.4d401f, 30fps, video only, 223.78MiB
+398          mp4        1280x720   720p 1138k , av01.0.05M.08, 30fps, video only, 316.36MiB
+247          webm       1280x720   720p 1274k , vp9, 30fps, video only, 330.88MiB
+136          mp4        1280x720   720p 2040k , avc1.4d401f, 30fps, video only, 454.04MiB
+18           mp4        640x360    360p  461k , avc1.42001E, 30fps, mp4a.40.2@ 96k (44100Hz), 187.13MiB
+22           mp4        1280x720   720p 1247k , avc1.64001F, 30fps, mp4a.40.2@192k (44100Hz) (best)
+$
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+</body>
+</html>

@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2020-07-30 Thu 16:13 -->
+<!-- 2021-01-07 Thu 18:43 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>ubuntu server as vpn server</title>
@@ -98,7 +98,7 @@ fathom('trackPageview');
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#orge00af49">WARNING <b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b>*</b></b></b></b></b></b></b></b></b></b></b></b></b></b></b></b></b></a></li>
+<li><a href="#orgd04206f">ubuntu server as vpn server</a></li>
 </ul>
 </div>
 </div>
@@ -106,20 +106,19 @@ fathom('trackPageview');
 <a href="../index.html">{Back to site's index}</a>
 </p>
 
-<p>
-ubuntu server as vpn server
-</p>
-
+<div id="outline-container-orgd04206f" class="outline-2">
+<h2 id="orgd04206f">ubuntu server as vpn server</h2>
+<div class="outline-text-2" id="text-orgd04206f">
 <p>
 <a href="https://github.com/hwdsl2/setup-ipsec-vpn/blob/master/README-zh.md#%E5%AE%89%E8%A3%85%E8%AF%B4%E6%98%8E">https://github.com/hwdsl2/setup-ipsec-vpn/blob/master/README-zh.md#%E5%AE%89%E8%A3%85%E8%AF%B4%E6%98%8E</a>
 </p>
 
 <p>
-记录一个安装日志
+记录一个安装日志.
 </p>
 
 <p>
-#+BEGIN_SRC shell
+#+BEGIN_SRC example
 ➜  ~
 ## 所有变量值必须用 '单引号' 括起来
 ## <b>不要</b> 在值中使用这些字符：  \ " '
@@ -794,9 +793,10 @@ running: systemctl &#x2013;system daemon-reload
 running: systemd-tmpfiles &#x2013;create /usr/lib/tmpfiles.d/libreswan.conf
 DESTDIR=''
 </p>
-<div id="outline-container-orge00af49" class="outline-2">
-<h2 id="orge00af49">WARNING <b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b>*</b></b></b></b></b></b></b></b></b></b></b></b></b></b></b></b></b></h2>
-<div class="outline-text-2" id="text-orge00af49">
+</div>
+<ul class="org-ul">
+<li><a id="orgd0c63c4"></a>WARNING <b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b>*</b></b></b></b></b></b></b></b></b></b></b></b></b></b></b></b></b><br />
+<div class="outline-text-27" id="text-orgd0c63c4">
 <p>
 The ipsec service is currently disabled. To enable this service issue:
  systemctl enable ipsec.service
@@ -867,6 +867,8 @@ IKEv2 guide:       <a href="https://git.io/ikev2">https://git.io/ikev2</a>
 #+END_SRC
 </p>
 </div>
+</li>
+</ul>
 </div>
 </div>
 </body>

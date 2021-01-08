@@ -1,0 +1,173 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<!-- 2021-01-07 Thu 11:05 -->
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>&lrm;</title>
+<meta name="generator" content="Org mode" />
+<meta name="author" content="a" />
+<link rel="stylesheet" title="Standard" href="/html/style/worg.css" type="text/css" />
+<link rel="alternate stylesheet" title="Zenburn" href="/html/style/worg-zenburn.css" type="text/css" />
+<link rel="alternate stylesheet" title="Classic" href="/html/style/worg-classic.css" type="text/css" />
+<link rel="SHORTCUT ICON" href="/html/style/org-mode-unicorn.ico" type="image/x-icon" />
+<link rel="icon" href="/html/style/org-mode-unicorn.ico" type="image/ico" />
+<script type="text/javascript">
+/*
+@licstart  The following is the entire license notice for the
+JavaScript code in this tag.
+
+Copyright (C) 2012-2019 Free Software Foundation, Inc.
+
+The JavaScript code in this tag is free software: you can
+redistribute it and/or modify it under the terms of the GNU
+General Public License (GNU GPL) as published by the Free Software
+Foundation, either version 3 of the License, or (at your option)
+any later version.  The code is distributed WITHOUT ANY WARRANTY;
+without even the implied warranty of MERCHANTABILITY or FITNESS
+FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
+
+As additional permission under GNU GPL version 3 section 7, you
+may distribute non-source (e.g., minimized or compacted) forms of
+that code without the copy of the GNU GPL normally required by
+section 4, provided you include this license notice and a URL
+through which recipients can access the Corresponding Source.
+
+
+@licend  The above is the entire license notice
+for the JavaScript code in this tag.
+*/
+<!--/*--><![CDATA[/*><!--*/
+ function CodeHighlightOn(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(null != target) {
+     elem.cacheClassElem = elem.className;
+     elem.cacheClassTarget = target.className;
+     target.className = "code-highlighted";
+     elem.className   = "code-highlighted";
+   }
+ }
+ function CodeHighlightOff(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(elem.cacheClassElem)
+     elem.className = elem.cacheClassElem;
+   if(elem.cacheClassTarget)
+     target.className = elem.cacheClassTarget;
+ }
+/*]]>*///-->
+</script>
+</head>
+<body>
+<div id="preamble" class="status">
+<script type="text/javascript">
+  document.addEventListener('DOMContentLoaded',function() {
+      document.getElementById("table-of-contents").onclick = function() {
+          var elem = document.getElementById("text-table-of-contents");
+          elem.style.display = elem.style.display == "block" ? "none" : "block";
+      }
+  });
+
+  var url = document.location.href;
+  var orgsource = url.substring(0, url.lastIndexOf("."))+".org.html";
+  function show_org_source(){
+      document.location.href = orgsource;
+  }
+</script>
+
+<script>
+(function(f, a, t, h, o, m){
+	a[h]=a[h]||function(){
+		(a[h].q=a[h].q||[]).push(arguments)
+	};
+	o=f.createElement('script'),
+	m=f.getElementsByTagName('script')[0];
+	o.async=1; o.src=t; o.id='fathom-script';
+	m.parentNode.insertBefore(o,m)
+})(document, window, '//stats.orgmode.org/tracker.js', 'fathom');
+fathom('set', 'siteId', 'NWSQJ');
+fathom('trackPageview');
+</script>
+</div>
+<div id="content">
+<div id="table-of-contents">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#org2ef95a9">compare</a>
+<ul>
+<li><a href="#orgf103ce7">item 与 project 对应关系</a></li>
+</ul>
+</li>
+<li><a href="#org422e79f">star</a></li>
+<li><a href="#org4a2477d">demo</a></li>
+<li><a href="#org95fcf51">mini program</a></li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org2ef95a9" class="outline-2">
+<h2 id="org2ef95a9">compare</h2>
+<div class="outline-text-2" id="text-org2ef95a9">
+<p>
+有写过一个各种开源商城的比较 csv 和 markdown 文件，放在 wps 的　IT/shopping_mall/ 中。
+</p>
+</div>
+
+<div id="outline-container-orgf103ce7" class="outline-3">
+<h3 id="orgf103ce7">item 与 project 对应关系</h3>
+<div class="outline-text-3" id="text-orgf103ce7">
+<div class="org-src-container">
+<pre class="src src-markdown">| project \\ item            | &#25216;&#26415;&#26632;                                          | &#26356;&#26032;  | &#24179;&#21488;                    | &#29305;&#33394;                    | &#21151;&#33021;&#29305;&#33394; | git&#22320;&#22336;                                                          |   |   |   |   |
+|----------------------------|----------------------------------------------|-----|-----------------------|-----------------------|------|----------------------------------------------------------------|---|---|---|---|
+| mall                       | java \+ mysql \+ redis \+ mq                 | &#36817;1&#26376; | PC&#31471;                   | &#25991;&#26723;&#40784;&#20840;&#65292;&#26377;&#32676;&#35752;&#35770;             | &#22810;    | <span style="color: #51afef;">https://github\.com/macrozheng/mall</span>                            |   |   |   |   |
+| nideshop                   | Thinkjs \+ Mysql                             | &#36817;9&#26376; | &#24494;&#20449;&#23567;&#31243;&#24207;                 | &#25991;&#26723;&#40784;&#20840;&#65292;&#26377;&#32676;&#35752;&#35770;             | &#22810;    | <span style="color: #51afef;">https://github\.com/tumobi/nideshop</span>                            |   |   |   |   |
+| weapp\-demo                | egg \+ mysql \+ redis                        | &#36817;1&#26376; | pc&#31649;&#29702;&#31471; \+ &#24494;&#20449;&#23567;&#31243;&#24207;        |                       | &#22810;    | <span style="color: #51afef;">https://github\.com/ruiyong\-lee/weapp\-vue\-eggjs\-shop\-demo</span> |   |   |   |   |
+| 24time                     | egg \+ Mysql \+ Redis                        | &#36817;2&#24180; | pc&#31649;&#29702;&#31471; \+ &#24494;&#20449;&#23567;&#31243;&#24207;        |                       |      | <span style="color: #51afef;">https://github\.com/seasonstar/egg\-24time</span>                     |   |   |   |   |
+| apshop                     | egg \+ mysql                                 | &#36817;2&#26376; | PC&#31471;                   |                       | &#36739;&#22810;   | <span style="color: #51afef;">https://github\.com/inmyjs/apshop</span>                              |   |   |   |   |
+|                            |                                              |     |                       |                       |      |                                                                |   |   |   |   |
+| shop\-system               | egg \+ mysql                                 | &#36817;5&#26376; | nativeApp \+ &#21830;&#22478;&#21518;&#21488;&#31649;&#29702;&#31995;&#32479; | react\-native&#24320;&#21457;&#30340;&#28151;&#21512;app |      | <span style="color: #51afef;">https://github\.com/iloveoldking/shop\-system</span>                  |   |   |   |   |
+| jike\-wepy                 | egg \+ mongodb                               |     | &#23567;&#31243;&#24207;                   |                       |      | <span style="color: #51afef;">https://github\.com/moyuanhua/jike\-wepy\-eggjs</span>                |   |   |   |   |
+| nj\-egg                    | egg \+ mongodb                               |     |                       | &#29992;&#25143;&#35782;&#21035;                  |      | <span style="color: #51afef;">https://github\.com/niuzz/nj\-egg</span>                              |   |   |   |   |
+| egg\.js\-shop              | egg \+ mongodb                               |     |                       |                       |      | <span style="color: #51afef;">https://github\.com/userand/egg\.js\-shop</span>                      |   |   |   |   |
+| egg\-xiaomi\-shop          | egg \+ mongodb                               |     |                       | RBAC&#26435;&#38480;&#31649;&#29702;              |      | <span style="color: #51afef;">https://github\.com/Ouchuxuan/egg\-xiaomi\-shop</span>                |   |   |   |   |
+| JD\-shopping\-mall\-server | typescript \+ node \+ egg\(koa2\) \+ typeORM | &#36817;2&#24180; | &#23433;&#21331;&#39033;&#30446;&#30340;&#21518;&#21488;&#31995;&#32479;             | &#39640;&#20223;&#20140;&#19996;&#21830;&#22478;&#65292;&#32467;&#31639;&#36141;&#29289;&#36710;          |      | <span style="color: #51afef;">https://github\.com/linsir6/JD\-shopping\-mall\-server</span>         |   |   |   |   |
+</pre>
+</div>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org422e79f" class="outline-2">
+<h2 id="org422e79f">star</h2>
+<div class="outline-text-2" id="text-org422e79f">
+<ul class="org-ul">
+<li><a href="https://gitee.com/linlinjava/litemall">https://gitee.com/linlinjava/litemall</a></li>
+<li><a href="https://github.com/macrozheng/mall-learning">https://github.com/macrozheng/mall-learning</a></li>
+<li><a href="https://github.com/tumobi/nideshop">https://github.com/tumobi/nideshop</a></li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org4a2477d" class="outline-2">
+<h2 id="org4a2477d">demo</h2>
+<div class="outline-text-2" id="text-org4a2477d">
+<ul class="org-ul">
+<li><a href="https://github.com/ruiyong-lee/weapp-vue-eggjs-shop-demo">https://github.com/ruiyong-lee/weapp-vue-eggjs-shop-demo</a></li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org95fcf51" class="outline-2">
+<h2 id="org95fcf51">mini program</h2>
+<div class="outline-text-2" id="text-org95fcf51">
+<ul class="org-ul">
+<li><a href="https://github.com/tumobi/nideshop">https://github.com/tumobi/nideshop</a>  eggjs + wxpy</li>
+</ul>
+</div>
+</div>
+</div>
+</body>
+</html>

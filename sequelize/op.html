@@ -1,0 +1,201 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<!-- 2021-01-07 Thu 18:51 -->
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>sequelize op</title>
+<meta name="generator" content="Org mode" />
+<meta name="author" content="a" />
+<link rel="stylesheet" title="Standard" href="/html/style/worg.css" type="text/css" />
+<link rel="alternate stylesheet" title="Zenburn" href="/html/style/worg-zenburn.css" type="text/css" />
+<link rel="alternate stylesheet" title="Classic" href="/html/style/worg-classic.css" type="text/css" />
+<link rel="SHORTCUT ICON" href="/html/style/org-mode-unicorn.ico" type="image/x-icon" />
+<link rel="icon" href="/html/style/org-mode-unicorn.ico" type="image/ico" />
+<script type="text/javascript">
+/*
+@licstart  The following is the entire license notice for the
+JavaScript code in this tag.
+
+Copyright (C) 2012-2019 Free Software Foundation, Inc.
+
+The JavaScript code in this tag is free software: you can
+redistribute it and/or modify it under the terms of the GNU
+General Public License (GNU GPL) as published by the Free Software
+Foundation, either version 3 of the License, or (at your option)
+any later version.  The code is distributed WITHOUT ANY WARRANTY;
+without even the implied warranty of MERCHANTABILITY or FITNESS
+FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
+
+As additional permission under GNU GPL version 3 section 7, you
+may distribute non-source (e.g., minimized or compacted) forms of
+that code without the copy of the GNU GPL normally required by
+section 4, provided you include this license notice and a URL
+through which recipients can access the Corresponding Source.
+
+
+@licend  The above is the entire license notice
+for the JavaScript code in this tag.
+*/
+<!--/*--><![CDATA[/*><!--*/
+ function CodeHighlightOn(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(null != target) {
+     elem.cacheClassElem = elem.className;
+     elem.cacheClassTarget = target.className;
+     target.className = "code-highlighted";
+     elem.className   = "code-highlighted";
+   }
+ }
+ function CodeHighlightOff(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(elem.cacheClassElem)
+     elem.className = elem.cacheClassElem;
+   if(elem.cacheClassTarget)
+     target.className = elem.cacheClassTarget;
+ }
+/*]]>*///-->
+</script>
+</head>
+<body>
+<div id="preamble" class="status">
+<script type="text/javascript">
+  document.addEventListener('DOMContentLoaded',function() {
+      document.getElementById("table-of-contents").onclick = function() {
+          var elem = document.getElementById("text-table-of-contents");
+          elem.style.display = elem.style.display == "block" ? "none" : "block";
+      }
+  });
+
+  var url = document.location.href;
+  var orgsource = url.substring(0, url.lastIndexOf("."))+".org.html";
+  function show_org_source(){
+      document.location.href = orgsource;
+  }
+</script>
+
+<script>
+(function(f, a, t, h, o, m){
+	a[h]=a[h]||function(){
+		(a[h].q=a[h].q||[]).push(arguments)
+	};
+	o=f.createElement('script'),
+	m=f.getElementsByTagName('script')[0];
+	o.async=1; o.src=t; o.id='fathom-script';
+	m.parentNode.insertBefore(o,m)
+})(document, window, '//stats.orgmode.org/tracker.js', 'fathom');
+fathom('set', 'siteId', 'NWSQJ');
+fathom('trackPageview');
+</script>
+</div>
+<div id="content">
+<h1 class="title">sequelize op</h1>
+<div id="table-of-contents">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#orgeb56f22">basic</a></li>
+<li><a href="#org2b601fb">is null</a></li>
+</ul>
+</div>
+</div>
+<p>
+<a href="../index.html">{Back to site's index}</a>
+</p>
+
+
+<div id="outline-container-orgeb56f22" class="outline-2">
+<h2 id="orgeb56f22">basic</h2>
+<div class="outline-text-2" id="text-orgeb56f22">
+<p>
+const Op = Sequelize.Op
+</p>
+
+<div class="org-src-container">
+<pre class="src src-example">[Op.and]: {a: 5}           // 且 (a = 5)
+[Op.or]: [{a: 5}, {a: 6}]  // (a = 5 或 a = 6)
+[Op.gt]: 6,                // id &gt; 6
+[Op.gte]: 6,               // id &gt;= 6
+[Op.lt]: 10,               // id &lt; 10
+[Op.lte]: 10,              // id &lt;= 10
+[Op.ne]: 20,               // id != 20
+[Op.eq]: 3,                // = 3
+[Op.not]: true,            // 不是 TRUE
+[Op.between]: [6, 10],     // 在 6 和 10 之间
+[Op.notBetween]: [11, 15], // 不在 11 和 15 之间
+[Op.in]: [1, 2],           // 在 [1, 2] 之中
+[Op.notIn]: [1, 2],        // 不在 [1, 2] 之中
+[Op.like]: '%hat',         // 包含 '%hat'
+[Op.notLike]: '%hat'       // 不包含 '%hat'
+[Op.iLike]: '%hat'         // 包含 '%hat' (不区分大小写)  (仅限 PG)
+[Op.notILike]: '%hat'      // 不包含 '%hat'  (仅限 PG)
+[Op.regexp]: '^[h|a|t]'    // 匹配正则表达式/~ '^[h|a|t]' (仅限 MySQL/PG)
+[Op.notRegexp]: '^[h|a|t]' // 不匹配正则表达式/!~ '^[h|a|t]' (仅限 MySQL/PG)
+[Op.iRegexp]: '^[h|a|t]'    // ~* '^[h|a|t]' (仅限 PG)
+[Op.notIRegexp]: '^[h|a|t]' // !~* '^[h|a|t]' (仅限 PG)
+[Op.like]: { [Op.any]: ['cat', 'hat']} // 包含任何数组['cat', 'hat'] - 同样适用于 iLike 和 notLike
+[Op.overlap]: [1, 2]       // &amp;&amp; [1, 2] (PG数组重叠运算符)
+[Op.contains]: [1, 2]      // @&gt; [1, 2] (PG数组包含运算符)
+[Op.contained]: [1, 2]     // &lt;@ [1, 2] (PG数组包含于运算符)
+[Op.any]: [2,3]            // 任何数组[2, 3]::INTEGER (仅限PG)
+[Op.col]: 'user.organization_id' // = 'user'.'organization_id', 使用数据库语言特定的列标识符, 本例使用 PG
+</pre>
+</div>
+</div>
+</div>
+
+
+<div id="outline-container-org2b601fb" class="outline-2">
+<h2 id="org2b601fb">is null</h2>
+<div class="outline-text-2" id="text-org2b601fb">
+<ul class="org-ul">
+<li><a href="https://stackoverflow.com/questions/50646216/sequelize-where-if-not-null">https://stackoverflow.com/questions/50646216/sequelize-where-if-not-null</a></li>
+</ul>
+
+
+<div class="org-src-container">
+<pre class="src src-example">Post.update({
+  updatedAt: null,
+}, {
+  where: {
+    deletedAt: {
+      [Op.ne]: null
+    }
+  }
+});
+</pre>
+</div>
+
+<p>
+Basically your query should have
+</p>
+
+<p>
+WHERE fk_id=1234 OR fk_id is null
+</p>
+
+<p>
+so for sequilize it would:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-example">const Op = Sequelize.Op;
+
+Model.findAll({
+   where: {
+      fk_id: {
+        [Op.or]: [1234, null]
+      }
+   }
+});
+</pre>
+</div>
+</div>
+</div>
+</div>
+</body>
+</html>

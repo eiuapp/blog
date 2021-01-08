@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2020-07-30 Thu 16:11 -->
+<!-- 2021-01-07 Thu 11:09 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>sed</title>
@@ -98,7 +98,8 @@ fathom('trackPageview');
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#org2b5b0d5">Linux截取文件指定行数之间的内容</a></li>
+<li><a href="#org1ea0ce8">Linux截取文件指定行数之间的内容</a></li>
+<li><a href="#orgaaf4183">用sed 报了一下错误 invalid command code</a></li>
 </ul>
 </div>
 </div>
@@ -106,12 +107,38 @@ fathom('trackPageview');
 <a href="../index.html">{Back to site's index}</a>
 </p>
 
-<div id="outline-container-org2b5b0d5" class="outline-2">
-<h2 id="org2b5b0d5">Linux截取文件指定行数之间的内容</h2>
-<div class="outline-text-2" id="text-org2b5b0d5">
+<div id="outline-container-org1ea0ce8" class="outline-2">
+<h2 id="org1ea0ce8">Linux截取文件指定行数之间的内容</h2>
+<div class="outline-text-2" id="text-org1ea0ce8">
 <p>
 　
-sed -n '开始行数，结束行数p' 被截取文件 &gt; 另存为文件</p>
+sed -n '开始行数，结束行数p' 被截取文件 &gt; 另存为文件
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgaaf4183" class="outline-2">
+<h2 id="orgaaf4183">用sed 报了一下错误 invalid command code</h2>
+<div class="outline-text-2" id="text-orgaaf4183">
+<ul class="org-ul">
+<li><a href="https://blog.csdn.net/u010339879/article/details/90107977">https://blog.csdn.net/u010339879/article/details/90107977</a></li>
+</ul>
+
+<p>
+在Mac 环境下面, sed -i 就必须 加上 后缀, 如果不加就不备份, 加引号 就可以了. 这个时候要加上一个空格.
+如果要备份 -i 后面可以有空格 ,或者没有都可以的. 然后后面跟后缀就可以了.
+如下面的例子:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-shell">sed -i <span style="color: #daa520;">".bak"</span>    <span style="color: #daa520;">'1,7s/^/#/'</span> pip.conf
+sed -i<span style="color: #daa520;">'.bak123'</span>    <span style="color: #daa520;">'1,7s/^/#/'</span> pip.conf
+<span style="color: #579C4C;"># </span><span style="color: #579C4C;">&#19981;&#22791;&#20221;</span>
+sed -i <span style="color: #daa520;">''</span>    <span style="color: #daa520;">'1,7s/^/#/'</span> pip.conf
+<span style="color: #579C4C;"># </span><span style="color: #579C4C;">&#36825;&#26679;&#22909;&#20687;&#20250;&#25253;&#38169;&#30340;.</span>
+sed -i<span style="color: #daa520;">''</span>    <span style="color: #daa520;">'1,7s/^/#/'</span> pip.conf
+</pre>
+</div>
 </div>
 </div>
 </div>

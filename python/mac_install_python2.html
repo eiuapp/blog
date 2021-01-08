@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<!-- 2021-01-07 Thu 11:18 -->
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>&lrm;</title>
+<meta name="generator" content="Org mode" />
+<meta name="author" content="a" />
+<link rel="stylesheet" title="Standard" href="/html/style/worg.css" type="text/css" />
+<link rel="alternate stylesheet" title="Zenburn" href="/html/style/worg-zenburn.css" type="text/css" />
+<link rel="alternate stylesheet" title="Classic" href="/html/style/worg-classic.css" type="text/css" />
+<link rel="SHORTCUT ICON" href="/html/style/org-mode-unicorn.ico" type="image/x-icon" />
+<link rel="icon" href="/html/style/org-mode-unicorn.ico" type="image/ico" />
+<script type="text/javascript">
+/*
+@licstart  The following is the entire license notice for the
+JavaScript code in this tag.
+
+Copyright (C) 2012-2019 Free Software Foundation, Inc.
+
+The JavaScript code in this tag is free software: you can
+redistribute it and/or modify it under the terms of the GNU
+General Public License (GNU GPL) as published by the Free Software
+Foundation, either version 3 of the License, or (at your option)
+any later version.  The code is distributed WITHOUT ANY WARRANTY;
+without even the implied warranty of MERCHANTABILITY or FITNESS
+FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
+
+As additional permission under GNU GPL version 3 section 7, you
+may distribute non-source (e.g., minimized or compacted) forms of
+that code without the copy of the GNU GPL normally required by
+section 4, provided you include this license notice and a URL
+through which recipients can access the Corresponding Source.
+
+
+@licend  The above is the entire license notice
+for the JavaScript code in this tag.
+*/
+<!--/*--><![CDATA[/*><!--*/
+ function CodeHighlightOn(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(null != target) {
+     elem.cacheClassElem = elem.className;
+     elem.cacheClassTarget = target.className;
+     target.className = "code-highlighted";
+     elem.className   = "code-highlighted";
+   }
+ }
+ function CodeHighlightOff(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(elem.cacheClassElem)
+     elem.className = elem.cacheClassElem;
+   if(elem.cacheClassTarget)
+     target.className = elem.cacheClassTarget;
+ }
+/*]]>*///-->
+</script>
+</head>
+<body>
+<div id="preamble" class="status">
+<script type="text/javascript">
+  document.addEventListener('DOMContentLoaded',function() {
+      document.getElementById("table-of-contents").onclick = function() {
+          var elem = document.getElementById("text-table-of-contents");
+          elem.style.display = elem.style.display == "block" ? "none" : "block";
+      }
+  });
+
+  var url = document.location.href;
+  var orgsource = url.substring(0, url.lastIndexOf("."))+".org.html";
+  function show_org_source(){
+      document.location.href = orgsource;
+  }
+</script>
+
+<script>
+(function(f, a, t, h, o, m){
+	a[h]=a[h]||function(){
+		(a[h].q=a[h].q||[]).push(arguments)
+	};
+	o=f.createElement('script'),
+	m=f.getElementsByTagName('script')[0];
+	o.async=1; o.src=t; o.id='fathom-script';
+	m.parentNode.insertBefore(o,m)
+})(document, window, '//stats.orgmode.org/tracker.js', 'fathom');
+fathom('set', 'siteId', 'NWSQJ');
+fathom('trackPageview');
+</script>
+</div>
+<div id="content">
+<div id="table-of-contents">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#org690d5df">mac 安装 python2</a></li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org690d5df" class="outline-2">
+<h2 id="org690d5df">mac 安装 python2</h2>
+<div class="outline-text-2" id="text-org690d5df">
+<ul class="org-ul">
+<li><a href="https://pythonguidecn.readthedocs.io/zh/latest/starting/install/osx.html">https://pythonguidecn.readthedocs.io/zh/latest/starting/install/osx.html</a></li>
+</ul>
+
+<div class="org-src-container">
+<pre class="src src-shell">brew install python@2
+</pre>
+</div>
+
+<p>
+看一下，上面的最后输出，有显示 python2 的安装路径，比如，我的就是： /usr/local/Cellar/python@2/2.7.17_1
+</p>
+
+<p>
+因为 python@2 像一个“桶”，我们需要再次更新我们的``PATH``，以指向我们的新安装：
+</p>
+
+<div class="org-src-container">
+<pre class="src src-shell">ls /usr/local/Cellar/python@2/2.7.17_1/bin
+<span style="color: #579C4C;"># </span><span style="color: #579C4C;">export PATH="/usr/local/opt/python@2/libexec/bin:$PATH"</span>
+<span style="color: #579C4C;"># </span><span style="color: #579C4C;">export PATH="$PATH:/usr/local/Cellar/python@2/2.7.17_1/bin"</span>
+<span style="color: #d4d4d4;">export</span> <span style="color: #d4d4d4;">PATH</span>=<span style="color: #daa520;">"/usr/local/Cellar/python@2/2.7.17_1/bin:$PATH"</span>
+</pre>
+</div>
+
+<p>
+Homebrew命名可执行文件 python2，以便您仍然可以通过可执行文件“python”运行系统Python。
+</p>
+</div>
+</div>
+</div>
+</body>
+</html>

@@ -1,0 +1,279 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<!-- 2021-01-08 Fri 15:30 -->
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>&lrm;</title>
+<meta name="generator" content="Org mode" />
+<meta name="author" content="a" />
+<link rel="stylesheet" title="Standard" href="/html/style/worg.css" type="text/css" />
+<link rel="alternate stylesheet" title="Zenburn" href="/html/style/worg-zenburn.css" type="text/css" />
+<link rel="alternate stylesheet" title="Classic" href="/html/style/worg-classic.css" type="text/css" />
+<link rel="SHORTCUT ICON" href="/html/style/org-mode-unicorn.ico" type="image/x-icon" />
+<link rel="icon" href="/html/style/org-mode-unicorn.ico" type="image/ico" />
+<script type="text/javascript">
+/*
+@licstart  The following is the entire license notice for the
+JavaScript code in this tag.
+
+Copyright (C) 2012-2019 Free Software Foundation, Inc.
+
+The JavaScript code in this tag is free software: you can
+redistribute it and/or modify it under the terms of the GNU
+General Public License (GNU GPL) as published by the Free Software
+Foundation, either version 3 of the License, or (at your option)
+any later version.  The code is distributed WITHOUT ANY WARRANTY;
+without even the implied warranty of MERCHANTABILITY or FITNESS
+FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
+
+As additional permission under GNU GPL version 3 section 7, you
+may distribute non-source (e.g., minimized or compacted) forms of
+that code without the copy of the GNU GPL normally required by
+section 4, provided you include this license notice and a URL
+through which recipients can access the Corresponding Source.
+
+
+@licend  The above is the entire license notice
+for the JavaScript code in this tag.
+*/
+<!--/*--><![CDATA[/*><!--*/
+ function CodeHighlightOn(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(null != target) {
+     elem.cacheClassElem = elem.className;
+     elem.cacheClassTarget = target.className;
+     target.className = "code-highlighted";
+     elem.className   = "code-highlighted";
+   }
+ }
+ function CodeHighlightOff(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(elem.cacheClassElem)
+     elem.className = elem.cacheClassElem;
+   if(elem.cacheClassTarget)
+     target.className = elem.cacheClassTarget;
+ }
+/*]]>*///-->
+</script>
+</head>
+<body>
+<div id="preamble" class="status">
+<script type="text/javascript">
+  document.addEventListener('DOMContentLoaded',function() {
+      document.getElementById("table-of-contents").onclick = function() {
+          var elem = document.getElementById("text-table-of-contents");
+          elem.style.display = elem.style.display == "block" ? "none" : "block";
+      }
+  });
+
+  var url = document.location.href;
+  var orgsource = url.substring(0, url.lastIndexOf("."))+".org.html";
+  function show_org_source(){
+      document.location.href = orgsource;
+  }
+</script>
+
+<script>
+(function(f, a, t, h, o, m){
+	a[h]=a[h]||function(){
+		(a[h].q=a[h].q||[]).push(arguments)
+	};
+	o=f.createElement('script'),
+	m=f.getElementsByTagName('script')[0];
+	o.async=1; o.src=t; o.id='fathom-script';
+	m.parentNode.insertBefore(o,m)
+})(document, window, '//stats.orgmode.org/tracker.js', 'fathom');
+fathom('set', 'siteId', 'NWSQJ');
+fathom('trackPageview');
+</script>
+</div>
+<div id="content">
+<div id="table-of-contents">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#使用-hugo-build-action-解决">使用 hugo-build-action 解决</a></li>
+<li><a href="#操作">操作</a>
+<ul>
+<li><a href="#create-deploy-key">Create Deploy Key</a></li>
+<li><a href="#githubworkflowspush.yml"><code>.github/workflows/push.yml</code></a></li>
+</ul>
+</li>
+<li><a href="#可跳过查找路径">(可跳过)查找路径</a></li>
+<li><a href="#build前下载themes">build前下载themes</a></li>
+</ul>
+</div>
+</div>
+<p>
+hugo 与 github actions
+</p>
+
+<div id="outline-container-org8343af0" class="outline-2">
+<h2 id="使用-hugo-build-action-解决">使用 hugo-build-action 解决</h2>
+<div class="outline-text-2" id="text-使用-hugo-build-action-解决">
+<ul class="org-ul">
+<li><a href="https://github.com/marketplace?utf8=%E2%9C%93&amp;type=actions&amp;query=hugo">https://github.com/marketplace?utf8=%E2%9C%93&amp;type=actions&amp;query=hugo</a></li>
+<li><a href="https://github.com/marketplace/actions/hugo-build-action">https://github.com/marketplace/actions/hugo-build-action</a> 找到 github</li>
+<li><a href="https://github.com/peaceiris/actions-hugo">https://github.com/peaceiris/actions-hugo</a></li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org4397a14" class="outline-2">
+<h2 id="操作">操作</h2>
+<div class="outline-text-2" id="text-操作">
+<p>
+结合一下 <a href="https://github.com/khanhicetea/gh-actions-hugo-deploy-gh-pages">https://github.com/khanhicetea/gh-actions-hugo-deploy-gh-pages</a>
+提到的 <code>Create Deploy Key</code> 进行操作
+</p>
+</div>
+
+<div id="outline-container-orgc0d69f5" class="outline-3">
+<h3 id="create-deploy-key">Create Deploy Key</h3>
+<div class="outline-text-3" id="text-create-deploy-key">
+<p>
+Official Documents is
+<a href="https://developer.github.com/v3/guides/managing-deploy-keys/#deploy-keys">here</a>
+</p>
+
+<p>
+install setup is
+<a href="https://developer.github.com/v3/guides/managing-deploy-keys/#setup-2">here</a>
+</p>
+
+<p>
+Here is my Steps:
+</p>
+
+<ol class="org-ol">
+<li>Generate deploy key ssh-keygen -t rsa -f hugo -q -N ""</li>
+<li>Then go to "Settings &gt; Deploy Keys" of repository</li>
+<li>Add your public key within "Allow write access" option.</li>
+<li>Copy your private deploy key to GIT\_DEPLOY\_KEY secret in "Settings
+   &gt; Secrets"</li>
+</ol>
+</div>
+</div>
+
+<div id="outline-container-org2150940" class="outline-3">
+<h3 id="githubworkflowspush.yml"><code>.github/workflows/push.yml</code></h3>
+<div class="outline-text-3" id="text-githubworkflowspush.yml">
+<ul class="org-ul">
+<li><a href="https://github.com/peaceiris/actions-hugo">https://github.com/peaceiris/actions-hugo</a></li>
+</ul>
+
+<p>
+直接把这README.md 中的 <code>.github/workflows/gh-pages.yml</code>
+示例弄过来了，替换成 <code>.github/workflows/push.yml</code>
+</p>
+
+<p>
+具体如下：
+</p>
+
+<pre class="example">
+name: github pages
+
+on:
+  push:
+    branches:
+    - master
+
+jobs:
+  build-deploy:
+    runs-on: ubuntu-18.04
+    steps:
+    - uses: actions/checkout@master
+      with:
+        submodules: true
+
+    - name: build
+      uses: peaceiris/actions-hugo@v0.58.1
+      with:
+        args: --gc --minify --cleanDestinationDir
+
+    - name: deploy
+      uses: peaceiris/actions-gh-pages@v2.2.0
+      env:
+        ACTIONS_DEPLOY_KEY: ${{ secrets.DEPLOY_TOKEN_MATTBAILEY }}
+        PUBLISH_BRANCH: gh-pages
+        PUBLISH_DIR: ./public
+</pre>
+
+<p>
+成功了。
+</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org5ad7611" class="outline-2">
+<h2 id="可跳过查找路径">(可跳过)查找路径</h2>
+<div class="outline-text-2" id="text-可跳过查找路径">
+<p>
+<a href="https://github.com/marketplace?utf8=%E2%9C%93&amp;type=actions&amp;query=hugo">https://github.com/marketplace?utf8=%E2%9C%93&amp;type=actions&amp;query=hugo</a>
+</p>
+
+<p>
+<a href="https://github.com/marketplace/actions/hugo-gh-pages-action">https://github.com/marketplace/actions/hugo-gh-pages-action</a>
+</p>
+
+<p>
+<a href="https://github.com/mattbailey/actions-hugo">https://github.com/mattbailey/actions-hugo</a>
+</p>
+
+<p>
+<a href="https://github.com/mattbailey/">https://github.com/mattbailey/</a>
+</p>
+
+<p>
+<a href="https://github.com/dadlan/dadlan.com">https://github.com/dadlan/dadlan.com</a>
+</p>
+
+<p>
+<a href="https://github.com/dadlan/dadlan.com/blob/master/.github/workflows/push.yaml">https://github.com/dadlan/dadlan.com/blob/master/.github/workflows/push.yaml</a>
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgd846601" class="outline-2">
+<h2 id="build前下载themes">build前下载themes</h2>
+<div class="outline-text-2" id="text-build前下载themes">
+<div class="org-src-container">
+<pre class="src src-sh">Build 2s
+<span style="color: #579C4C;">##</span><span style="color: #579C4C;">[error]Docker run failed with exit code 255</span>
+Run mattbailey/actions-hugo@v0.57.2
+/usr/bin/docker run --name df7dc4ad10577cef04c17b47013079333c4ac_cbd433 --label 0df7dc --workdir /github/workspace --rm -e GITHUB_TOKEN -e INPUT_ARGS -e HOME -e GITHUB_REF -e GITHUB_SHA -e GITHUB_REPOSITORY -e GITHUB_ACTOR -e GITHUB_WORKFLOW -e GITHUB_HEAD_REF -e GITHUB_BASE_REF -e GITHUB_EVENT_NAME -e GITHUB_WORKSPACE -e GITHUB_ACTION -e GITHUB_EVENT_PATH -e RUNNER_OS -e RUNNER_TOOL_CACHE -e RUNNER_TEMP -e RUNNER_WORKSPACE -v <span style="color: #daa520;">"/var/run/docker.sock"</span>:<span style="color: #daa520;">"/var/run/docker.sock"</span> -v <span style="color: #daa520;">"/home/runner/work/_temp/_github_home"</span>:<span style="color: #daa520;">"/github/home"</span> -v <span style="color: #daa520;">"/home/runner/work/_temp/_github_workflow"</span>:<span style="color: #daa520;">"/github/workflow"</span> -v <span style="color: #daa520;">"/home/runner/work/github-handbook/github-handbook"</span>:<span style="color: #daa520;">"/github/workspace"</span> 0df7dc:4ad10577cef04c17b47013079333c4ac --gc --minify
+Generating site
+hugo: /usr/lib/libstdc++.so.6: no version information available (required by hugo)
+hugo: /usr/lib/libstdc++.so.6: no version information available (required by hugo)
+hugo: /usr/lib/libstdc++.so.6: no version information available (required by hugo)
+hugo: /usr/lib/libstdc++.so.6: no version information available (required by hugo)
+hugo: /usr/lib/libstdc++.so.6: no version information available (required by hugo)
+hugo: /usr/lib/libstdc++.so.6: no version information available (required by hugo)
+hugo: /usr/lib/libstdc++.so.6: no version information available (required by hugo)
+hugo: /usr/lib/libstdc++.so.6: no version information available (required by hugo)
+hugo: /usr/lib/libstdc++.so.6: no version information available (required by hugo)
+Error: module <span style="color: #daa520;">"hugo-theme-learn"</span> not found; either add it as a Hugo Module or store it<span style="color: #00bfff;"> in</span> <span style="color: #daa520;">"/github/workspace/themes"</span>.: module does not exist
+<span style="color: #579C4C;">##</span><span style="color: #579C4C;">[error]Docker run failed with exit code 255</span>
+</pre>
+</div>
+
+<p>
+如上，提示，=module "hugo-theme-learn" not found=, 说明这个工程依赖
+"hugo-theme-learn" 没有下载。
+</p>
+
+<p>
+在 .travis.yml file 中是放在了 <code>script</code> 中的。
+</p>
+</div>
+</div>
+</div>
+</body>
+</html>

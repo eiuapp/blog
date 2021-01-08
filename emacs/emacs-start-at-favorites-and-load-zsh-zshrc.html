@@ -1,0 +1,214 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<!-- 2021-01-07 Thu 11:11 -->
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>emacs start with zshrc config</title>
+<meta name="generator" content="Org mode" />
+<meta name="author" content="a" />
+<link rel="stylesheet" title="Standard" href="/html/style/worg.css" type="text/css" />
+<link rel="alternate stylesheet" title="Zenburn" href="/html/style/worg-zenburn.css" type="text/css" />
+<link rel="alternate stylesheet" title="Classic" href="/html/style/worg-classic.css" type="text/css" />
+<link rel="SHORTCUT ICON" href="/html/style/org-mode-unicorn.ico" type="image/x-icon" />
+<link rel="icon" href="/html/style/org-mode-unicorn.ico" type="image/ico" />
+<script type="text/javascript">
+/*
+@licstart  The following is the entire license notice for the
+JavaScript code in this tag.
+
+Copyright (C) 2012-2019 Free Software Foundation, Inc.
+
+The JavaScript code in this tag is free software: you can
+redistribute it and/or modify it under the terms of the GNU
+General Public License (GNU GPL) as published by the Free Software
+Foundation, either version 3 of the License, or (at your option)
+any later version.  The code is distributed WITHOUT ANY WARRANTY;
+without even the implied warranty of MERCHANTABILITY or FITNESS
+FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
+
+As additional permission under GNU GPL version 3 section 7, you
+may distribute non-source (e.g., minimized or compacted) forms of
+that code without the copy of the GNU GPL normally required by
+section 4, provided you include this license notice and a URL
+through which recipients can access the Corresponding Source.
+
+
+@licend  The above is the entire license notice
+for the JavaScript code in this tag.
+*/
+<!--/*--><![CDATA[/*><!--*/
+ function CodeHighlightOn(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(null != target) {
+     elem.cacheClassElem = elem.className;
+     elem.cacheClassTarget = target.className;
+     target.className = "code-highlighted";
+     elem.className   = "code-highlighted";
+   }
+ }
+ function CodeHighlightOff(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(elem.cacheClassElem)
+     elem.className = elem.cacheClassElem;
+   if(elem.cacheClassTarget)
+     target.className = elem.cacheClassTarget;
+ }
+/*]]>*///-->
+</script>
+</head>
+<body>
+<div id="preamble" class="status">
+<script type="text/javascript">
+  document.addEventListener('DOMContentLoaded',function() {
+      document.getElementById("table-of-contents").onclick = function() {
+          var elem = document.getElementById("text-table-of-contents");
+          elem.style.display = elem.style.display == "block" ? "none" : "block";
+      }
+  });
+
+  var url = document.location.href;
+  var orgsource = url.substring(0, url.lastIndexOf("."))+".org.html";
+  function show_org_source(){
+      document.location.href = orgsource;
+  }
+</script>
+
+<script>
+(function(f, a, t, h, o, m){
+	a[h]=a[h]||function(){
+		(a[h].q=a[h].q||[]).push(arguments)
+	};
+	o=f.createElement('script'),
+	m=f.getElementsByTagName('script')[0];
+	o.async=1; o.src=t; o.id='fathom-script';
+	m.parentNode.insertBefore(o,m)
+})(document, window, '//stats.orgmode.org/tracker.js', 'fathom');
+fathom('set', 'siteId', 'NWSQJ');
+fathom('trackPageview');
+</script>
+</div>
+<div id="content">
+<h1 class="title">emacs start with zshrc config</h1>
+<div id="table-of-contents">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#org74e5875">emacs start with zshrc config</a>
+<ul>
+<li><a href="#orgd788e9a">需求</a></li>
+<li><a href="#org3a2fc9e">env</a></li>
+<li><a href="#orgc04530b">step</a>
+<ul>
+<li><a href="#org48d90c5">zsh 加载一下配置</a></li>
+<li><a href="#orge4d74ae">创建 /usr/local/bin/emacs-start 文件（让*.desktop文件Exec启动）</a></li>
+<li><a href="#org98ea8fe">applications/emacs270.desktop</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+<p>
+<a href="../index.html">{Back to site's index}</a>
+</p>
+
+<div id="outline-container-org74e5875" class="outline-2">
+<h2 id="org74e5875">emacs start with zshrc config</h2>
+<div class="outline-text-2" id="text-org74e5875">
+</div>
+<div id="outline-container-orgd788e9a" class="outline-3">
+<h3 id="orgd788e9a">需求</h3>
+<div class="outline-text-3" id="text-orgd788e9a">
+<p>
+使得在ubuntu下，直接按 <code>Win+3</code> 键，完成 emacs 启动，并，能加载 zsh 的特性.
+zsh 的特性（如：xmodmap: 键盘右alt 替换成 Ctrl )
+</p>
+
+<p>
+这样一来:
+</p>
+<ul class="org-ul">
+<li>要在emacs启动前，加载的可能影响emacs使用的配置，全都可以放在 <code>/etc/zsh/zshrc</code> 中。</li>
+<li>不需要只是为了这些特性而每次在 Terminal 中启动emacs, 而担心 Terminal 关闭导致 emacs 不可用。</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org3a2fc9e" class="outline-3">
+<h3 id="org3a2fc9e">env</h3>
+<div class="outline-text-3" id="text-org3a2fc9e">
+<p>
+os: ubuntu18.04
+emacs: 27.0.9
+</p>
+</div>
+</div>
+<div id="outline-container-orgc04530b" class="outline-3">
+<h3 id="orgc04530b">step</h3>
+<div class="outline-text-3" id="text-orgc04530b">
+<p>
+思路，最后肯定是要修改 favorites。 favorites, 是在 <code>/usr/share/applications/emacs270.desktop</code>
+</p>
+</div>
+<div id="outline-container-org48d90c5" class="outline-4">
+<h4 id="org48d90c5">zsh 加载一下配置</h4>
+<div class="outline-text-4" id="text-org48d90c5">
+<p>
+因为要让系统用户加载到，所以，我直接把 <i>home/a</i>.zshrc 中的内容，直接复制过来
+</p>
+
+<div class="org-src-container">
+<pre class="src src-shell">sudo cp zshrc /etc/zsh/zshrc.20200826.bak
+sudo cp /home/a/.zshrc /etc/zsh/zshrc
+</pre>
+</div>
+
+<p>
+如果说，内容中有 <code>$HOME</code>, <code>~</code>, 则，替换成绝对路径。
+</p>
+</div>
+</div>
+
+<div id="outline-container-orge4d74ae" class="outline-4">
+<h4 id="orge4d74ae">创建 /usr/local/bin/emacs-start 文件（让*.desktop文件Exec启动）</h4>
+<div class="outline-text-4" id="text-orge4d74ae">
+<div class="org-src-container">
+<pre class="src src-shell">$ cat /usr/local/bin/emacs-start
+<span style="color: #579C4C;">#</span><span style="color: #579C4C;">!/usr/bin/zsh</span>
+<span style="color: #d4d4d4;">echo</span> <span style="color: #daa520;">"in /usr/local/bin/emacs-start"</span>
+<span style="color: #d4d4d4;">echo</span> <span style="color: #daa520;">"zsh"</span>
+/usr/local/bin/emacs270
+$
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org98ea8fe" class="outline-4">
+<h4 id="org98ea8fe">applications/emacs270.desktop</h4>
+<div class="outline-text-4" id="text-org98ea8fe">
+<div class="org-src-container">
+<pre class="src src-shell">$ cat /usr/share/applications/emacs270.desktop
+[Desktop Entry]
+<span style="color: #d4d4d4;">Name</span> = emacs270
+<span style="color: #d4d4d4;">Comment</span>= emacs270
+<span style="color: #579C4C;">#</span><span style="color: #579C4C;">Exec=/usr/bin/zsh &amp;&amp; /usr/local/bin/emacs270</span>
+<span style="color: #d4d4d4;">Exec</span>=/usr/local/bin/emacs-start
+<span style="color: #d4d4d4;">Icon</span>=/home/a/Desktop/e270.png
+<span style="color: #d4d4d4;">Terminal</span>=false
+<span style="color: #d4d4d4;">Type</span>=Application
+$
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</body>
+</html>

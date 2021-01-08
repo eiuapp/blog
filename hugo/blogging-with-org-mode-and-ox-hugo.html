@@ -1,0 +1,659 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<!-- 2021-01-08 Fri 17:22 -->
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>blogging-with-org-mode-and-ox-hugo-and-easy-hugo</title>
+<meta name="generator" content="Org mode" />
+<link rel="stylesheet" title="Standard" href="/html/style/worg.css" type="text/css" />
+<link rel="alternate stylesheet" title="Zenburn" href="/html/style/worg-zenburn.css" type="text/css" />
+<link rel="alternate stylesheet" title="Classic" href="/html/style/worg-classic.css" type="text/css" />
+<link rel="SHORTCUT ICON" href="/html/style/org-mode-unicorn.ico" type="image/x-icon" />
+<link rel="icon" href="/html/style/org-mode-unicorn.ico" type="image/ico" />
+<script type="text/javascript">
+/*
+@licstart  The following is the entire license notice for the
+JavaScript code in this tag.
+
+Copyright (C) 2012-2019 Free Software Foundation, Inc.
+
+The JavaScript code in this tag is free software: you can
+redistribute it and/or modify it under the terms of the GNU
+General Public License (GNU GPL) as published by the Free Software
+Foundation, either version 3 of the License, or (at your option)
+any later version.  The code is distributed WITHOUT ANY WARRANTY;
+without even the implied warranty of MERCHANTABILITY or FITNESS
+FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
+
+As additional permission under GNU GPL version 3 section 7, you
+may distribute non-source (e.g., minimized or compacted) forms of
+that code without the copy of the GNU GPL normally required by
+section 4, provided you include this license notice and a URL
+through which recipients can access the Corresponding Source.
+
+
+@licend  The above is the entire license notice
+for the JavaScript code in this tag.
+*/
+<!--/*--><![CDATA[/*><!--*/
+ function CodeHighlightOn(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(null != target) {
+     elem.cacheClassElem = elem.className;
+     elem.cacheClassTarget = target.className;
+     target.className = "code-highlighted";
+     elem.className   = "code-highlighted";
+   }
+ }
+ function CodeHighlightOff(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(elem.cacheClassElem)
+     elem.className = elem.cacheClassElem;
+   if(elem.cacheClassTarget)
+     target.className = elem.cacheClassTarget;
+ }
+/*]]>*///-->
+</script>
+</head>
+<body>
+<div id="preamble" class="status">
+<script type="text/javascript">
+  document.addEventListener('DOMContentLoaded',function() {
+      document.getElementById("table-of-contents").onclick = function() {
+          var elem = document.getElementById("text-table-of-contents");
+          elem.style.display = elem.style.display == "block" ? "none" : "block";
+      }
+  });
+
+  var url = document.location.href;
+  var orgsource = url.substring(0, url.lastIndexOf("."))+".org.html";
+  function show_org_source(){
+      document.location.href = orgsource;
+  }
+</script>
+
+<script>
+(function(f, a, t, h, o, m){
+	a[h]=a[h]||function(){
+		(a[h].q=a[h].q||[]).push(arguments)
+	};
+	o=f.createElement('script'),
+	m=f.getElementsByTagName('script')[0];
+	o.async=1; o.src=t; o.id='fathom-script';
+	m.parentNode.insertBefore(o,m)
+})(document, window, '//stats.orgmode.org/tracker.js', 'fathom');
+fathom('set', 'siteId', 'NWSQJ');
+fathom('trackPageview');
+</script>
+</div>
+<div id="content">
+<h1 class="title">blogging-with-org-mode-and-ox-hugo-and-easy-hugo</h1>
+<div id="table-of-contents">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#orgb17a4e3">Post</a>
+<ul>
+<li><a href="#orgaf23bfe">blogging-with-org-mode-and-ox-hugo-and-easy-hugo</a>
+<ul>
+<li><a href="#org78a20cf">关于 hugo, easy-hugo, ox-hugo, spacemacs 集成相关的问题</a></li>
+<li><a href="#orgf05b75e">使用org-mode和ox-hugo写文档</a></li>
+<li><a href="#org8f41d2a">quickly create a new draft post</a></li>
+<li><a href="#orgc85e3dc">shane sveller blog 笔记</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-orgb17a4e3" class="outline-2">
+<h2 id="orgb17a4e3">Post</h2>
+<div class="outline-text-2" id="text-orgb17a4e3">
+</div>
+<div id="outline-container-orgaf23bfe" class="outline-3">
+<h3 id="orgaf23bfe">blogging-with-org-mode-and-ox-hugo-and-easy-hugo&#xa0;&#xa0;&#xa0;<span class="tag"><span class="_org">@org</span>&#xa0;<span class="org">org</span></span></h3>
+<div class="outline-text-3" id="text-orgaf23bfe">
+</div>
+<div id="outline-container-org78a20cf" class="outline-4">
+<h4 id="org78a20cf">关于 hugo, easy-hugo, ox-hugo, spacemacs 集成相关的问题&#xa0;&#xa0;&#xa0;<span class="tag"><span class="org">org</span>&#xa0;<span class="ox_hugo">ox_hugo</span>&#xa0;<span class="easy_hugo">easy_hugo</span>&#xa0;<span class="sapcemacs">sapcemacs</span></span></h4>
+<div class="outline-text-4" id="text-org78a20cf">
+</div>
+
+<ul class="org-ul">
+<li><a id="orga25ca12"></a>ox-hugo，easy-hugo, spacemacs的集成<br />
+<ul class="org-ul">
+<li><a id="orgb65fb7b"></a>ox-hugo 写文档<br />
+<div class="outline-text-6" id="text-orgb65fb7b">
+<p>
+这里，在写文档的时候，配置好就可以了,无需修改 spacemacs的配置。
+</p>
+
+<p>
+具体的配置，见 ox-hugo-example-2.org, aa.org, ox-hugo-example-1.org
+</p>
+</div>
+</li>
+
+<li><a id="org9f0910f"></a>导出至easy-hugo的content/xxx文件夹中<br />
+<div class="outline-text-6" id="text-org9f0910f">
+<p>
+这一步，可以被 auto-save 函数替换了。
+</p>
+
+<p>
+C-c C-e H H
+</p>
+</div>
+</li>
+
+<li><a id="orga44295c"></a>easy-hugo preview<br />
+<div class="outline-text-6" id="text-orga44295c">
+<p>
+C-c e p
+</p>
+</div>
+</li>
+</ul>
+</li>
+<li><a id="org1252de1"></a>用 easy-hugo preview 有时会因为缓存问题，而失真哟<br />
+<div class="outline-text-5" id="text-org1252de1">
+<p>
+当时有一个 pages/about.md 文件导致的失真。在右上角的Menu中始终存在。
+</p>
+
+<p>
+解决方式，清缓存。
+</p>
+</div>
+</li>
+
+<li><a id="orgf3bbf5c"></a>EXPORT_HUGO_SECTION 失效<br />
+<div class="outline-text-5" id="text-orgf3bbf5c">
+<p>
+当 content 下，没有pages文件夹时，在 *.org 的
+</p>
+
+<pre class="example">
+:EXPORT_HUGO_SECTION: pages
+
+</pre>
+
+<p>
+会失效，且，.md 文件会在 easy-hugo 的配置项 easy-hugo-postdir（我这里设置的是 content/posts/）下 .
+</p>
+</div>
+</li>
+
+<li><a id="org6389af6"></a>同时有 .org 和 .md 文件，.org 有效，.md 失效<br />
+<div class="outline-text-5" id="text-org6389af6">
+<p>
+当 content/posts/ 下同时有 .org 和 .md 文件，则 .org 文件有效，.md 失效
+</p>
+</div>
+</li>
+</ul>
+</div>
+
+<div id="outline-container-orgf05b75e" class="outline-4">
+<h4 id="orgf05b75e">使用org-mode和ox-hugo写文档&#xa0;&#xa0;&#xa0;<span class="tag"><span class="easy_hugo">easy_hugo</span>&#xa0;<span class="org">org</span>&#xa0;<span class="ox_hugo">ox_hugo</span></span></h4>
+<div class="outline-text-4" id="text-orgf05b75e">
+</div>
+
+<ul class="org-ul">
+<li><a id="orgef91bbd"></a>Env<br />
+<div class="outline-text-5" id="text-orgef91bbd">
+<ul class="org-ul">
+<li>os: mac</li>
+<li>Emacs: 26.1</li>
+<li>Spacemacs: 0.300.0</li>
+<li>Org: 9.1.2</li>
+<li>Hugo: v0.41</li>
+<li>ox-hugo: 20181106.2350</li>
+<li>prodigy: 20180511.938</li>
+</ul>
+</div>
+</li>
+
+<li><a id="orgec6fb28"></a>Step<br />
+<ul class="org-ul">
+<li><a id="org9504a5b"></a>Part 1: Blog Setup<br />
+<ul class="org-ul">
+<li><a id="orgced1055"></a>Download Hugo<br />
+<div class="outline-text-7" id="text-orgced1055">
+<div class="org-src-container">
+<pre class="src src-shell">pacman -S hugo
+</pre>
+</div>
+</div>
+</li>
+
+<li><a id="orgb915dac"></a>Initialize Project<br />
+<div class="outline-text-7" id="text-orgb915dac">
+<div class="org-src-container">
+<pre class="src src-shell">hugo new site test-blog
+<span style="color: #d4d4d4;">cd</span> test-blog
+git init
+</pre>
+</div>
+</div>
+</li>
+
+
+<li><a id="orgb3a3fde"></a>Download a Theme (YMMV)<br />
+<div class="outline-text-7" id="text-orgb3a3fde">
+<p>
+This seems like a clean, simple <a href="https://github.com/goodroot/hugo-classic">theme</a>.
+</p>
+
+<p>
+You can use a submodule like this:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-shell">git submodule add https://github.com/goodroot/hugo-classic.git themes/hugo-classic
+</pre>
+</div>
+
+
+<p>
+Or you can just clone it
+</p>
+<div class="org-src-container">
+<pre class="src src-shell">mkdir themes/
+git clone git@github.com:goodroot/hugo-classic.git themes/hugo-classic
+</pre>
+</div>
+</div>
+</li>
+
+
+
+<li><a id="org09aae2f"></a>Copy the necessary files from the theme<br />
+<div class="outline-text-7" id="text-org09aae2f">
+<p>
+Warning: This will destroy your config.toml file, so, optionally back yours up.
+</p>
+<div class="org-src-container">
+<pre class="src src-shell">cp -r themes/hugo-classic/exampleSite/* .
+</pre>
+</div>
+</div>
+</li>
+</ul>
+</li>
+
+<li><a id="org0e8cbf7"></a>Part 2: Emacs/Org-Mode/OX-Hugo integration<br />
+<ul class="org-ul">
+<li><a id="org401a7a5"></a>Installing ox-hugo<br />
+<div class="outline-text-7" id="text-org401a7a5">
+<p>
+Add the following to your .emacs or ~/.emacs.d/init.el file.
+</p>
+<div class="org-src-container">
+<pre class="src src-emacs-lisp">(use-package ox-hugo <span style="color: #d4d4d4;">:ensure</span> t <span style="color: #d4d4d4;">:after</span> ox)
+</pre>
+</div>
+</div>
+</li>
+
+<li><a id="org0e00803"></a>Configuring Ox-hugo<br />
+<div class="outline-text-7" id="text-org0e00803">
+<p>
+Create a new org-mode file to represent your blog. This file shouldlive in the root of the blog.
+</p>
+<div class="org-src-container">
+<pre class="src src-shell">touch blog.org
+</pre>
+</div>
+</div>
+</li>
+
+<li><a id="orgad6db36"></a>Create your blog content in org-mode<br />
+<div class="outline-text-7" id="text-orgad6db36">
+<p>
+Here’s a starter template for the blog.org file:
+</p>
+
+<pre class="example">
+#+HUGO_BASE_DIR: .
+* Pages
+  :PROPERTIES:
+  :EXPORT_HUGO_CUSTOM_FRONT_MATTER: :noauthor true :nocomment true :nodate true :nopaging true :noread true
+  :EXPORT_HUGO_MENU: :menu main    # 把 .md文件显示在 menu 中. 所以这个一般情况注释掉
+  :EXPORT_HUGO_TITLE: hmm
+  :EXPORT_HUGO_SECTION: pages    # 把.md文件放在 content/pages/ 下
+  :EXPORT_HUGO_WEIGHT: auto
+  :END:
+** About Page
+   :PROPERTIES:
+   :EXPORT_FILE_NAME: about   # 导出的.md 文件名为 about.md
+   :END:
+This is my about page.
+* Post
+  :PROPERTIES:
+  # :EXPORT_HUGO_CUSTOM_FRONT_MATTER: :noauthor true :nocomment true :nodate true :nopaging true :noread true
+  :EXPORT_HUGO_MENU: :menu main
+  :EXPORT_HUGO_SECTION: post
+  :EXPORT_HUGO_WEIGHT: auto
+  :END:
+** First Post
+   :PROPERTIES:
+   :EXPORT_FILE_NAME: some-file-name
+   :EXPORT_DATE: &lt;2018-03-19 Mon 22:08&gt;   # 导出的时间
+   :EXPORT_HUGO_DRAFT: true    # 是否为draft
+   :END:
+
+</pre>
+</div>
+</li>
+
+<li><a id="org48909ff"></a>Export your content to hugo with ox-hugo<br />
+<div class="outline-text-7" id="text-org48909ff">
+<p>
+When editing the blog.org file, export it through org-export-dispatch:
+</p>
+
+<p>
+This will export all the content from the blog.org file into the hugo project.
+</p>
+<div class="org-src-container">
+<pre class="src src-shell">C-c C-e H A
+</pre>
+</div>
+
+<p>
+Sometimes you just want to export one post/page (aka subtree in org-mode terms):
+</p>
+<div class="org-src-container">
+<pre class="src src-shell">C-c C-e H H
+</pre>
+</div>
+</div>
+</li>
+</ul>
+</li>
+
+<li><a id="org1c47921"></a>Start the Server<br />
+<div class="outline-text-6" id="text-org1c47921">
+<p>
+At this point, you
+</p>
+<div class="org-src-container">
+<pre class="src src-shell">hugo server -D
+</pre>
+</div>
+</div>
+</li>
+
+<li><a id="org13c2746"></a>Extras<br />
+<ul class="org-ul">
+<li><a id="org92c9657"></a>MathJax<br />
+<div class="outline-text-7" id="text-org92c9657">
+<p>
+If you’d like to have nice equation support, check this link: <a href="https://ox-hugo.scripter.co/doc/equations/">https://ox-hugo.scripter.co/doc/equations/</a>
+</p>
+
+<p>
+Here’s an example of a LaTeX formatted equation: E=−J∑Ni=1sisi+1
+</p>
+
+<p>
+Add this to the footer.html to get MathJax support:
+</p>
+<div class="org-src-container">
+<pre class="src src-html">&lt;<span style="color: #F94949;">script</span> <span style="color: #d4d4d4;">type</span>=<span style="color: #daa520;">"text/x-mathjax-config"</span>&gt;
+  MathJax.Hub.Config({
+  displayAlign: "center",
+  displayIndent: "0em",
+
+  "HTML-CSS": { scale: 100,
+  linebreaks: { automatic: "false" },
+  webFont: "TeX"
+  },
+  SVG: {scale: 100,
+  linebreaks: { automatic: "false" },
+  font: "TeX"},
+  NativeMML: {scale: 100},
+  TeX: { equationNumbers: {autoNumber: "AMS"},
+  MultLineWidth: "85%",
+  TagSide: "right",
+  TagIndent: ".8em"
+  }
+  });
+&lt;/<span style="color: #F94949;">script</span>&gt;
+<span style="color: #579C4C;">&lt;!-- </span><span style="color: #579C4C;">https://gohugo.io/content-management/formats/#mathjax-with-hugo </span><span style="color: #579C4C;">--&gt;</span>
+&lt;<span style="color: #F94949;">script</span> <span style="color: #d4d4d4;">src</span>=<span style="color: #daa520;">"https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS_HTML"</span>&gt;&lt;/<span style="color: #F94949;">script</span>&gt;
+<span style="color: #579C4C;">&lt;!-- </span><span style="color: #579C4C;">&lt;script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"&gt;&lt;/script&gt; </span><span style="color: #579C4C;">--&gt;</span>
+
+</pre>
+</div>
+</div>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+
+<li><a id="org39ae6c6"></a>Ref<br />
+<div class="outline-text-5" id="text-org39ae6c6">
+<ul class="org-ul">
+<li><a href="https://gohugo.io/tools/editors/#emacs">https://gohugo.io/tools/editors/#emacs</a></li>
+<li><a href="https://www.shanesveller.com/blog/2018/02/13/blogging-with-org-mode-and-ox-hugo/">https://www.shanesveller.com/blog/2018/02/13/blogging-with-org-mode-and-ox-hugo/</a></li>
+<li><a href="https://www.xianmin.org/post/ox-hugo/">https://www.xianmin.org/post/ox-hugo/</a></li>
+<li><a href="https://lakedenman.com/blog/posts/bloggin-hugo-ox-hugo/">https://lakedenman.com/blog/posts/bloggin-hugo-ox-hugo/</a></li>
+<li><a href="https://www.baty.net/2018/lets-try-using-ox-hugo-again/">https://www.baty.net/2018/lets-try-using-ox-hugo-again/</a></li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+<div id="outline-container-org8f41d2a" class="outline-4">
+<h4 id="org8f41d2a">quickly create a new draft post&#xa0;&#xa0;&#xa0;<span class="tag"><span class="ox_hugo">ox_hugo</span></span></h4>
+<div class="outline-text-4" id="text-org8f41d2a">
+<p>
+Of course I’m using a handy capture template, as provided by the ox-hugo docs. This lets me type `C-c c h` to quickly create a new draft post.
+</p>
+<div class="org-src-container">
+<pre class="src src-emacs-lisp">(<span style="color: #00bfff;">with-eval-after-load</span> 'org-capture
+  (<span style="color: #00bfff;">defun</span> <span style="color: #F94949;">org-hugo-new-subtree-post-capture-template</span> ()
+    <span style="color: #999999;">"Returns `</span><span style="color: #339CDB;">org-capture</span><span style="color: #999999;">' template string for new Hugo post.</span>
+<span style="color: #999999;">See `</span><span style="color: #339CDB;">org-capture-templates</span><span style="color: #999999;">' for more information."</span>
+    (<span style="color: #00bfff;">let*</span> ((title (read-from-minibuffer <span style="color: #daa520;">"Post Title: "</span>)) <span style="color: #579C4C;">;</span><span style="color: #579C4C;">Prompt to enter the post title</span>
+           (fname (org-hugo-slug title)))
+      (mapconcat #'identity
+                 `(
+                   ,(concat <span style="color: #daa520;">"* TODO "</span> title)
+                   <span style="color: #daa520;">":PROPERTIES:"</span>
+                   ,(concat <span style="color: #daa520;">":EXPORT_FILE_NAME: "</span> fname)
+                   <span style="color: #daa520;">":END:"</span>
+                   <span style="color: #daa520;">"%?\n"</span>)        <span style="color: #579C4C;">;</span><span style="color: #579C4C;">Place the cursor here finally</span>
+                 <span style="color: #daa520;">"\n"</span>)))
+
+  (add-to-list 'org-capture-templates
+               '(<span style="color: #daa520;">"h"</span>              <span style="color: #579C4C;">;</span><span style="color: #579C4C;">`</span><span style="color: #339CDB;">org-capture</span><span style="color: #579C4C;">' binding + h</span>
+                 <span style="color: #daa520;">"Hugo post"</span>
+                 entry
+                 <span style="color: #579C4C;">;; </span><span style="color: #579C4C;">It is assumed that below file is present in `</span><span style="color: #339CDB;">org-directory</span><span style="color: #579C4C;">'</span>
+                 <span style="color: #579C4C;">;; </span><span style="color: #579C4C;">and that it has a "Blog Ideas" heading. It can even be a</span>
+                 <span style="color: #579C4C;">;; </span><span style="color: #579C4C;">symlink pointing to the actual location of all-posts.org!</span>
+                 (file+olp <span style="color: #daa520;">"all-posts.org"</span> <span style="color: #daa520;">"Blog Ideas"</span>)
+                 (<span style="color: #00bfff;">function</span> org-hugo-new-subtree-post-capture-template))))
+)))
+
+</pre>
+</div>
+
+<p>
+如果直接使用上面的配置，则运行之前，有2个条件：
+</p>
+
+<ul class="org-ul">
+<li>在 `org-directory` 中有个 名为 all-posts.org 的文件</li>
+<li>此文件中 有一个一级标题，为"Blog Ideas"</li>
+</ul>
+
+
+<p>
+要先查`org-directory`在哪里（SPC h d v），默认为~/org。如果想设置成其它文件夹，请看<a href="https://b.qqbb.app/posts/org-mode-set-org-directory/">org-mode-set-org-directory</a>
+</p>
+
+<div class="org-src-container">
+<pre class="src src-shell">&#10140;  hugo git:(master) &#10007; head ~/org/all-posts.org
+</pre>
+</div>
+
+<p>
+我的all-posts.org的头是下面这样的：
+</p>
+<blockquote>
+<pre class="example">
+#+HUGO_BASE_DIR: /Users/tomtsang/bitbucket/qqbb/tomtsang-rootsongjc-hugo/
+*  Blog Ideas
+  :PROPERTIES:
+  # :EXPORT_HUGO_CUSTOM_FRONT_MATTER: :noauthor true :nocomment true :nodate true :nopaging true :noread true
+  :EXPORT_HUGO_SECTION: post
+  :EXPORT_HUGO_WEIGHT: auto
+  :END:
+** TODO test-a-aritile-title
+   :PROPERTIES:
+   :EXPORT_FILE_NAME: test-a-file-name
+   :END:
+
+   This is a abc test!
+
+</pre>
+</blockquote>
+</div>
+
+
+<ul class="org-ul">
+<li><a id="org029ef7a"></a>Ref<br />
+<div class="outline-text-5" id="text-org029ef7a">
+<ul class="org-ul">
+<li><a href="https://www.baty.net/2018/lets-try-using-ox-hugo-again/">https://www.baty.net/2018/lets-try-using-ox-hugo-again/</a></li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+<div id="outline-container-orgc85e3dc" class="outline-4">
+<h4 id="orgc85e3dc">shane sveller blog 笔记&#xa0;&#xa0;&#xa0;<span class="tag"><span class="ox_hugo">ox_hugo</span></span></h4>
+<div class="outline-text-4" id="text-orgc85e3dc">
+</div>
+
+<ul class="org-ul">
+<li><a id="org626c05d"></a>notes<br />
+<div class="outline-text-5" id="text-org626c05d">
+<p>
+<a href="https://www.shanesveller.com/blog/2018/02/13/blogging-with-org-mode-and-ox-hugo/">Blogging with org-mode and ox-hugo</a> 这篇文章，写得很好，主要讲了下面几点。
+</p>
+<ol class="org-ol">
+<li>install</li>
+<li>Global settings and metadatad</li>
+<li>STARTUP: content</li>
+<li>AUTHOR: Shane Sveller</li>
+<li>HUGO_BASE_DIR: .</li>
+<li>HUGO_AUTO_SET_LASTMOD: t</li>
+<li>Creating posts</li>
+<li>Setup hugo project category and tag.</li>
+<li>Excluding/heading sub-headings from export（it’s a :noexport: tag）</li>
+<li>Automatic export on save</li>
+<li>Marking a post as a Draft</li>
+<li>Optional: Live reload without a separate shell tab</li>
+<li>Emacs Lisp Snippets</li>
+</ol>
+
+<p>
+其中几个说明一下。
+</p>
+</div>
+<ul class="org-ul">
+<li><a id="org2b9b3ac"></a>Automatic export on save<br />
+<div class="outline-text-6" id="text-org2b9b3ac">
+<blockquote>
+<pre class="example">
+* Footnotes
+* COMMENT Local Variables                                           :ARCHIVE:
+  # Local Variables:
+  # eval: (auto-fill-mode 1)
+  # End:
+
+</pre>
+</blockquote>
+
+<p>
+用 <code>eval: (add-hook 'after-save-hook #'org-hugo-export-wim-to-md :append :local)</code> 放在 <code>Local Variables:</code> 之下。
+</p>
+
+<p>
+(为什么要这样？因为，当 emacs 没有安装org-hugo-export-win-to-md 函数时，~M-x org-publish~ 会报错)
+</p>
+
+<p>
+其中，查一下函数（SPC h d f) 知道，要把 org-hugo-export-wim-to-md-after-save 修改成 org-hugo-export-wim-to-md。
+</p>
+</div>
+</li>
+
+<li><a id="orgc009f87"></a>Marking a post as a Draft<br />
+<div class="outline-text-6" id="text-orgc009f87">
+<p>
+把文章的标题，设置为 TODO 。就可以了。
+</p>
+
+<p>
+所以，要忽略文章，或者说草稿部分，就2种方法:
+</p>
+
+<ul class="org-ul">
+<li>文章：设置为 TODO</li>
+<li>文章中的某部分：设置 :noexport: tag</li>
+</ul>
+</div>
+</li>
+<li><a id="org910aa0a"></a>Optional: Live reload without a separate shell tab<br />
+<div class="outline-text-6" id="text-org910aa0a">
+<div class="org-src-container">
+<pre class="src src-emacs-lisp">(prodigy-define-service
+  <span style="color: #d4d4d4;">:name</span> <span style="color: #daa520;">"Hugo Server beautifulhugo"</span>
+  <span style="color: #d4d4d4;">:command</span> <span style="color: #daa520;">"/usr/local/bin/hugo"</span>
+  <span style="color: #d4d4d4;">:args</span> '(<span style="color: #daa520;">"server"</span> <span style="color: #daa520;">"-D"</span> <span style="color: #daa520;">"--navigateToChanged"</span> <span style="color: #daa520;">"-t"</span> <span style="color: #daa520;">"beautifulhugo"</span>)
+  <span style="color: #d4d4d4;">:cwd</span> <span style="color: #daa520;">"~/******jc-hugo"</span>
+  <span style="color: #d4d4d4;">:tags</span> '(hugo server)
+  <span style="color: #d4d4d4;">:stop-signal</span> 'sigkill
+  <span style="color: #d4d4d4;">:init</span> (<span style="color: #00bfff;">lambda</span> () (browse-url <span style="color: #daa520;">"http://localhost:1313"</span>))
+  <span style="color: #d4d4d4;">:kill-process-buffer-on-stop</span> t)
+</pre>
+</div>
+
+<p>
+其中 Emacs Lisp Snippets 的功能，已经通过 `:init (lambda () (browse-url
+"<a href="http://localhost:1313">http://localhost:1313</a>"))`实现了。
+</p>
+</div>
+</li>
+</ul>
+</li>
+
+<li><a id="org41b65c3"></a>Ref<br />
+<div class="outline-text-5" id="text-org41b65c3">
+<ul class="org-ul">
+<li><a href="https://www.shanesveller.com/blog/2018/02/13/blogging-with-org-mode-and-ox-hugo/">https://www.shanesveller.com/blog/2018/02/13/blogging-with-org-mode-and-ox-hugo/</a></li>
+<li><a href="https://ox-hugo.scripter.co/doc/auto-export-on-saving/">https://ox-hugo.scripter.co/doc/auto-export-on-saving/</a></li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+</body>
+</html>

@@ -1,0 +1,174 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<!-- 2021-01-07 Thu 16:31 -->
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>&lrm;</title>
+<meta name="generator" content="Org mode" />
+<meta name="author" content="a" />
+<link rel="stylesheet" title="Standard" href="/html/style/worg.css" type="text/css" />
+<link rel="alternate stylesheet" title="Zenburn" href="/html/style/worg-zenburn.css" type="text/css" />
+<link rel="alternate stylesheet" title="Classic" href="/html/style/worg-classic.css" type="text/css" />
+<link rel="SHORTCUT ICON" href="/html/style/org-mode-unicorn.ico" type="image/x-icon" />
+<link rel="icon" href="/html/style/org-mode-unicorn.ico" type="image/ico" />
+<script type="text/javascript">
+/*
+@licstart  The following is the entire license notice for the
+JavaScript code in this tag.
+
+Copyright (C) 2012-2019 Free Software Foundation, Inc.
+
+The JavaScript code in this tag is free software: you can
+redistribute it and/or modify it under the terms of the GNU
+General Public License (GNU GPL) as published by the Free Software
+Foundation, either version 3 of the License, or (at your option)
+any later version.  The code is distributed WITHOUT ANY WARRANTY;
+without even the implied warranty of MERCHANTABILITY or FITNESS
+FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
+
+As additional permission under GNU GPL version 3 section 7, you
+may distribute non-source (e.g., minimized or compacted) forms of
+that code without the copy of the GNU GPL normally required by
+section 4, provided you include this license notice and a URL
+through which recipients can access the Corresponding Source.
+
+
+@licend  The above is the entire license notice
+for the JavaScript code in this tag.
+*/
+<!--/*--><![CDATA[/*><!--*/
+ function CodeHighlightOn(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(null != target) {
+     elem.cacheClassElem = elem.className;
+     elem.cacheClassTarget = target.className;
+     target.className = "code-highlighted";
+     elem.className   = "code-highlighted";
+   }
+ }
+ function CodeHighlightOff(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(elem.cacheClassElem)
+     elem.className = elem.cacheClassElem;
+   if(elem.cacheClassTarget)
+     target.className = elem.cacheClassTarget;
+ }
+/*]]>*///-->
+</script>
+</head>
+<body>
+<div id="preamble" class="status">
+<script type="text/javascript">
+  document.addEventListener('DOMContentLoaded',function() {
+      document.getElementById("table-of-contents").onclick = function() {
+          var elem = document.getElementById("text-table-of-contents");
+          elem.style.display = elem.style.display == "block" ? "none" : "block";
+      }
+  });
+
+  var url = document.location.href;
+  var orgsource = url.substring(0, url.lastIndexOf("."))+".org.html";
+  function show_org_source(){
+      document.location.href = orgsource;
+  }
+</script>
+
+<script>
+(function(f, a, t, h, o, m){
+	a[h]=a[h]||function(){
+		(a[h].q=a[h].q||[]).push(arguments)
+	};
+	o=f.createElement('script'),
+	m=f.getElementsByTagName('script')[0];
+	o.async=1; o.src=t; o.id='fathom-script';
+	m.parentNode.insertBefore(o,m)
+})(document, window, '//stats.orgmode.org/tracker.js', 'fathom');
+fathom('set', 'siteId', 'NWSQJ');
+fathom('trackPageview');
+</script>
+</div>
+<div id="content">
+<div id="table-of-contents">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#orgd496bcd">string 转base64</a></li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orgd496bcd" class="outline-2">
+<h2 id="orgd496bcd">string 转base64</h2>
+<div class="outline-text-2" id="text-orgd496bcd">
+<div class="org-src-container">
+<pre class="src src-javascript"><span style="color: #00bfff;">var</span> <span style="color: #d4d4d4;">code</span> = <span style="color: #daa520;">'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/'</span>
+<span style="color: #00bfff;">function</span> <span style="color: #F94949;">strToHexCharCode</span>(<span style="color: #d4d4d4;">str</span>) {
+&#12288;&#12288;if(str === <span style="color: #daa520;">""</span>)
+&#12288;&#12288;&#12288;&#12288;return <span style="color: #daa520;">""</span>;
+&#12288;&#12288;var hexCharCode = [];
+&#12288;&#12288;for(<span style="color: #00bfff;">var</span> <span style="color: #d4d4d4;">i</span> = 0; i &lt; str.length; i++) {
+&#12288;&#12288;&#12288;&#12288;hexCharCode.push((str.charCodeAt(i)).toString(16));
+&#12288;&#12288;}
+&#12288;&#12288;return hexCharCode.join(<span style="color: #daa520;">""</span>);
+}
+
+<span style="color: #00bfff;">function</span> <span style="color: #F94949;">strToBase64</span>(<span style="color: #d4d4d4;">str</span>) {
+    <span style="color: #00bfff;">var</span> <span style="color: #d4d4d4;">base64_rep</span> = <span style="color: #daa520;">""</span>;
+    <span style="color: #00bfff;">var</span> <span style="color: #d4d4d4;">cnt</span> = 0;
+    <span style="color: #00bfff;">var</span> <span style="color: #d4d4d4;">bit_arr</span> = 0;
+    <span style="color: #00bfff;">var</span> <span style="color: #d4d4d4;">bit_num</span> = 0;
+
+    <span style="color: #00bfff;">for</span>(<span style="color: #00bfff;">var</span> <span style="color: #d4d4d4;">n</span> = 0; n &lt; str.length; ++n)
+    {
+        <span style="color: #00bfff;">if</span>(str[n] &gt;= <span style="color: #daa520;">'A'</span> &amp;&amp; str[n] &lt;= <span style="color: #daa520;">'Z'</span>)
+        {
+            ascv = str.charCodeAt(n) - 55;
+        }
+        <span style="color: #00bfff;">else</span> <span style="color: #00bfff;">if</span>(str[n] &gt;= <span style="color: #daa520;">'a'</span> &amp;&amp; str[n] &lt;= <span style="color: #daa520;">'z'</span>)
+        {
+            ascv = str.charCodeAt(n) - 87;
+        }
+        <span style="color: #00bfff;">else</span>
+        {
+            ascv = str.charCodeAt(n) - 48;
+        }
+
+        bit_arr = (bit_arr &lt;&lt; 4) | ascv;
+        bit_num += 4;
+        <span style="color: #00bfff;">if</span>(bit_num &gt;= 6)
+        {
+            bit_num -= 6;
+
+            base64_rep += code[bit_arr &gt;&gt;&gt; bit_num];
+            bit_arr &amp;= ~(-1 &lt;&lt; bit_num);
+        }
+    }
+
+    <span style="color: #00bfff;">if</span>(bit_num &gt; 0)
+    {
+        bit_arr &lt;&lt;= 6 - bit_num;
+        base64_rep += code[bit_arr];
+    }
+    <span style="color: #00bfff;">var</span> <span style="color: #d4d4d4;">padding</span> = base64_rep.length % 4;
+
+    <span style="color: #00bfff;">if</span>(padding &gt; 0){
+        <span style="color: #00bfff;">for</span>(<span style="color: #00bfff;">var</span> <span style="color: #d4d4d4;">n</span> = 0; n &lt; 4 - padding; ++n)
+        {
+            base64_rep += <span style="color: #daa520;">"="</span>;
+        }
+    }
+    <span style="color: #00bfff;">return</span> base64_rep;
+}
+
+console.log(strToBase64(strToHexCharCode(<span style="color: #daa520;">'nihao'</span>)))
+</pre>
+</div>
+</div>
+</div>
+</div>
+</body>
+</html>

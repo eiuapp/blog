@@ -1,0 +1,397 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<!-- 2021-01-07 Thu 11:02 -->
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>&lrm;</title>
+<meta name="generator" content="Org mode" />
+<meta name="author" content="a" />
+<link rel="stylesheet" title="Standard" href="/html/style/worg.css" type="text/css" />
+<link rel="alternate stylesheet" title="Zenburn" href="/html/style/worg-zenburn.css" type="text/css" />
+<link rel="alternate stylesheet" title="Classic" href="/html/style/worg-classic.css" type="text/css" />
+<link rel="SHORTCUT ICON" href="/html/style/org-mode-unicorn.ico" type="image/x-icon" />
+<link rel="icon" href="/html/style/org-mode-unicorn.ico" type="image/ico" />
+<script type="text/javascript">
+/*
+@licstart  The following is the entire license notice for the
+JavaScript code in this tag.
+
+Copyright (C) 2012-2019 Free Software Foundation, Inc.
+
+The JavaScript code in this tag is free software: you can
+redistribute it and/or modify it under the terms of the GNU
+General Public License (GNU GPL) as published by the Free Software
+Foundation, either version 3 of the License, or (at your option)
+any later version.  The code is distributed WITHOUT ANY WARRANTY;
+without even the implied warranty of MERCHANTABILITY or FITNESS
+FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
+
+As additional permission under GNU GPL version 3 section 7, you
+may distribute non-source (e.g., minimized or compacted) forms of
+that code without the copy of the GNU GPL normally required by
+section 4, provided you include this license notice and a URL
+through which recipients can access the Corresponding Source.
+
+
+@licend  The above is the entire license notice
+for the JavaScript code in this tag.
+*/
+<!--/*--><![CDATA[/*><!--*/
+ function CodeHighlightOn(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(null != target) {
+     elem.cacheClassElem = elem.className;
+     elem.cacheClassTarget = target.className;
+     target.className = "code-highlighted";
+     elem.className   = "code-highlighted";
+   }
+ }
+ function CodeHighlightOff(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(elem.cacheClassElem)
+     elem.className = elem.cacheClassElem;
+   if(elem.cacheClassTarget)
+     target.className = elem.cacheClassTarget;
+ }
+/*]]>*///-->
+</script>
+</head>
+<body>
+<div id="preamble" class="status">
+<script type="text/javascript">
+  document.addEventListener('DOMContentLoaded',function() {
+      document.getElementById("table-of-contents").onclick = function() {
+          var elem = document.getElementById("text-table-of-contents");
+          elem.style.display = elem.style.display == "block" ? "none" : "block";
+      }
+  });
+
+  var url = document.location.href;
+  var orgsource = url.substring(0, url.lastIndexOf("."))+".org.html";
+  function show_org_source(){
+      document.location.href = orgsource;
+  }
+</script>
+
+<script>
+(function(f, a, t, h, o, m){
+	a[h]=a[h]||function(){
+		(a[h].q=a[h].q||[]).push(arguments)
+	};
+	o=f.createElement('script'),
+	m=f.getElementsByTagName('script')[0];
+	o.async=1; o.src=t; o.id='fathom-script';
+	m.parentNode.insertBefore(o,m)
+})(document, window, '//stats.orgmode.org/tracker.js', 'fathom');
+fathom('set', 'siteId', 'NWSQJ');
+fathom('trackPageview');
+</script>
+</div>
+<div id="content">
+<div id="table-of-contents">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#env">env</a>
+<ul>
+<li><a href="#docker-配置">docker 配置</a></li>
+<li><a href="#docker-container-现象">docker container 现象</a></li>
+<li><a href="#ufw-日志">ufw 日志</a></li>
+</ul>
+</li>
+<li><a href="#step">step</a>
+<ul>
+<li><a href="#可跳过失敗尝试">(可跳过)失敗尝试</a>
+<ul>
+<li><a href="#使用ip添加规则">使用ip添加规则。</a></li>
+<li><a href="#ip">ip</a></li>
+<li><a href="#docker0">docker0</a></li>
+<li><a href="#etcufwbefore.rules">/etc/ufw/before.rules</a></li>
+</ul>
+</li>
+<li><a href="#如果您熟悉iptables">如果您熟悉iptables</a></li>
+<li><a href="#etcdefaultufw以将default_forward_policy的值更改为accept">/etc/default/ufw以将DEFAULT\_FORWARD\_POLICY的值更改为"ACCEPT"</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+<p>
+docker break ufw's rules in ubuntu - env2
+</p>
+
+<p>
+ufw 阻止了从docker容器到外部的网络连接
+</p>
+
+<p>
+对我来说这是一个非常标准的设置，我有一台运行docker和ufw的ubuntu机器作为我的防火墙。
+如果启用防火墙，则docker实例无法连接到外部
+</p>
+
+<p>
+<a href="https://blog.36web.rocks/2016/07/08/docker-behind-ufw.html">https://blog.36web.rocks/2016/07/08/docker-behind-ufw.html</a>
+<a href="https://oomake.com/question/4955599">https://oomake.com/question/4955599</a>
+</p>
+
+<div id="outline-container-org6da7b0d" class="outline-2">
+<h2 id="env">env</h2>
+<div class="outline-text-2" id="text-env">
+<p>
+当运行docker后
+</p>
+</div>
+
+<div id="outline-container-orga361b5a" class="outline-3">
+<h3 id="docker-配置">docker 配置</h3>
+<div class="outline-text-3" id="text-docker-配置">
+<div class="org-src-container">
+<pre class="src src-sh">ubuntu@utuntu:~/lcnx/local/lvchuang-server$ sudo cat /etc/docker/daemon.json
+{
+    <span style="color: #daa520;">"hosts"</span>: [<span style="color: #daa520;">"tcp://0.0.0.0:2376"</span>,<span style="color: #daa520;">"unix:///var/run/docker.sock"</span>],
+    <span style="color: #daa520;">"registry-mirrors"</span>: [<span style="color: #daa520;">"https://0d6wdn2y.mirror.aliyuncs.com"</span>],
+    <span style="color: #daa520;">"dns"</span> : [<span style="color: #daa520;">"192.168.168.222"</span>]
+}
+ubuntu@utuntu:~/lcnx/local/lvchuang-server$ sudo cat /etc/default/docker
+<span style="color: #579C4C;"># </span><span style="color: #579C4C;">Docker Upstart and SysVinit configuration file</span>
+
+<span style="color: #579C4C;">#</span>
+<span style="color: #579C4C;"># </span><span style="color: #579C4C;">THIS FILE DOES NOT APPLY TO SYSTEMD</span>
+<span style="color: #579C4C;">#</span>
+<span style="color: #579C4C;">#   </span><span style="color: #579C4C;">Please see the documentation for "systemd drop-ins":</span>
+<span style="color: #579C4C;">#   </span><span style="color: #579C4C;">https://docs.docker.com/engine/admin/systemd/</span>
+<span style="color: #579C4C;">#</span>
+
+<span style="color: #579C4C;"># </span><span style="color: #579C4C;">Customize location of Docker binary (especially for development testing).</span>
+<span style="color: #579C4C;">#</span><span style="color: #579C4C;">DOCKERD="/usr/local/bin/dockerd"</span>
+
+<span style="color: #579C4C;"># </span><span style="color: #579C4C;">Use DOCKER_OPTS to modify the daemon startup options.</span>
+<span style="color: #579C4C;">#</span><span style="color: #579C4C;">DOCKER_OPTS="--dns 8.8.8.8 --dns 8.8.4.4"</span>
+<span style="color: #d4d4d4;">DOCKER_OPTS</span>=<span style="color: #daa520;">"--iptables=false"</span>
+
+<span style="color: #579C4C;"># </span><span style="color: #579C4C;">If you need Docker to use an HTTP proxy, it can also be specified here.</span>
+<span style="color: #579C4C;">#</span><span style="color: #579C4C;">export http_proxy="http://127.0.0.1:3128/"</span>
+
+<span style="color: #579C4C;"># </span><span style="color: #579C4C;">This is also a handy place to tweak where Docker's temporary files go.</span>
+<span style="color: #579C4C;">#</span><span style="color: #579C4C;">export DOCKER_TMPDIR="/mnt/bigdrive/docker-tmp"</span>
+
+ubuntu@utuntu:~/lcnx/local/lvchuang-server$ sudo cat /etc/default/docker | grep DOCKER_OPTS
+<span style="color: #579C4C;"># </span><span style="color: #579C4C;">Use DOCKER_OPTS to modify the daemon startup options.</span>
+<span style="color: #579C4C;">#</span><span style="color: #579C4C;">DOCKER_OPTS="--dns 8.8.8.8 --dns 8.8.4.4"</span>
+<span style="color: #d4d4d4;">DOCKER_OPTS</span>=<span style="color: #daa520;">"--iptables=false"</span>
+ubuntu@utuntu:~/lcnx/local/lvchuang-server$
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org2b7ccd6" class="outline-3">
+<h3 id="docker-container-现象">docker container 现象</h3>
+<div class="outline-text-3" id="text-docker-container-现象">
+<div class="org-src-container">
+<pre class="src src-sh">ubuntu@utuntu:~/docker/images/ubuntu$ docker run -it -d --dns 192.168.168.222 --name ubuntu-tools ubuntu-tools:v1.0
+b4b3f7cd3d03c09f48eae8b0979678af57a07b2fcf118f80de653f8ef45c4e4e
+ubuntu@utuntu:~/docker/images/ubuntu$ docker exec -it ubuntu-tools bash
+root@b4b3f7cd3d03:/# cat /etc/resolv.conf
+nameserver 192.168.168.222
+root@b4b3f7cd3d03:/# ping qq.com
+^C
+</pre>
+</div>
+
+<p>
+当ufw disable后, 则 container 可以连接外网
+</p>
+
+<div class="org-src-container">
+<pre class="src src-sh">root@b4b3f7cd3d03:/# ping qq.com
+PING qq.com (59.37.96.63) 56(84) bytes of data.
+64 bytes from 59.37.96.63: <span style="color: #d4d4d4;">icmp_seq</span>=1 <span style="color: #d4d4d4;">ttl</span>=54 <span style="color: #d4d4d4;">time</span>=4.77 ms
+64 bytes from 59.37.96.63: <span style="color: #d4d4d4;">icmp_seq</span>=2 <span style="color: #d4d4d4;">ttl</span>=54 <span style="color: #d4d4d4;">time</span>=4.69 ms
+^C
+--- qq.com ping statistics ---
+2 packets transmitted, 2 received, 0% packet loss, time 1001ms
+rtt min/avg/max/mdev = 4.691/4.730/4.770/0.079 ms
+root@b4b3f7cd3d03:/# route
+Kernel IP routing table
+Destination     Gateway         Genmask         Flags Metric Ref    Use Iface
+default         172.17.0.1      0.0.0.0         UG    0      0        0 eth0
+172.17.0.0      *               255.255.0.0     U     0      0        0 eth0
+root@b4b3f7cd3d03:/# traceroute qq.com
+traceroute to qq.com (59.37.96.63), 30 hops max, 60 byte packets
+ 1  172.17.0.1 (172.17.0.1)  0.095 ms  0.036 ms  0.035 ms
+ 2  * * *
+ 3  218.17.137.1 (218.17.137.1)  4.515 ms  5.474 ms  5.535 ms
+ 4  202.105.103.117 (202.105.103.117)  3.896 ms 202.105.159.205 (202.105.159.205)  3.651 ms 202.105.159.213 (202.105.159.213)  3.763 ms
+ 5  117.176.37.59.broad.dg.gd.dynamic.163data.com.cn (59.37.176.117)  4.348 ms * *
+ 6  119.147.223.178 (119.147.223.178)  3.624 ms 119.147.223.254 (119.147.223.254)  3.451 ms 121.34.242.134 (121.34.242.134)  3.370 ms
+ 7  * * *
+ 8  14.17.2.250 (14.17.2.250)  6.196 ms 14.17.2.242 (14.17.2.242)  6.363 ms  6.457 ms
+ 9  * * *
+10  * * *
+11  * * *
+12  * * *
+13  * * *
+14  * * *
+15  * * *
+16  * * *^C
+root@b4b3f7cd3d03:/#
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgc583934" class="outline-3">
+<h3 id="ufw-日志">ufw 日志</h3>
+<div class="outline-text-3" id="text-ufw-日志">
+<p>
+显示来自docker的阻塞连接
+</p>
+
+<div class="org-src-container">
+<pre class="src src-sh">$ sudo tail /var/log/ufw.log
+Jun 11 11:46:08 utuntu kernel: [68180.673178] [UFW BLOCK] <span style="color: #d4d4d4;">IN</span>=enp2s0 <span style="color: #d4d4d4;">OUT</span>= <span style="color: #d4d4d4;">MAC</span>=01:00:5e:00:00:01:78:11:dc:3c:d0:1e:08:00 <span style="color: #d4d4d4;">SRC</span>=0.0.0.0 <span style="color: #d4d4d4;">DST</span>=224.0.0.1 <span style="color: #d4d4d4;">LEN</span>=32 <span style="color: #d4d4d4;">TOS</span>=0x00 <span style="color: #d4d4d4;">PREC</span>=0xC0 <span style="color: #d4d4d4;">TTL</span>=1 <span style="color: #d4d4d4;">ID</span>=0 DF <span style="color: #d4d4d4;">PROTO</span>=2
+Jun 11 11:46:08 utuntu kernel: [68180.673448] [UFW BLOCK] <span style="color: #d4d4d4;">IN</span>=enp2s0 <span style="color: #d4d4d4;">OUT</span>= <span style="color: #d4d4d4;">MAC</span>=01:00:5e:00:00:01:78:11:dc:3c:d0:1e:08:00 <span style="color: #d4d4d4;">SRC</span>=0.0.0.0 <span style="color: #d4d4d4;">DST</span>=224.0.0.1 <span style="color: #d4d4d4;">LEN</span>=32 <span style="color: #d4d4d4;">TOS</span>=0x00 <span style="color: #d4d4d4;">PREC</span>=0xC0 <span style="color: #d4d4d4;">TTL</span>=1 <span style="color: #d4d4d4;">ID</span>=0 DF <span style="color: #d4d4d4;">PROTO</span>=2
+Jun 11 11:46:09 utuntu kernel: [68181.175761] [UFW BLOCK] <span style="color: #d4d4d4;">IN</span>=enp2s0 <span style="color: #d4d4d4;">OUT</span>= <span style="color: #d4d4d4;">MAC</span>=01:00:5e:00:00:01:78:11:dc:17:16:de:08:00 <span style="color: #d4d4d4;">SRC</span>=0.0.0.0 <span style="color: #d4d4d4;">DST</span>=224.0.0.1 <span style="color: #d4d4d4;">LEN</span>=32 <span style="color: #d4d4d4;">TOS</span>=0x00 <span style="color: #d4d4d4;">PREC</span>=0xC0 <span style="color: #d4d4d4;">TTL</span>=1 <span style="color: #d4d4d4;">ID</span>=0 DF <span style="color: #d4d4d4;">PROTO</span>=2
+Jun 11 11:46:09 utuntu kernel: [68181.176021] [UFW BLOCK] <span style="color: #d4d4d4;">IN</span>=enp2s0 <span style="color: #d4d4d4;">OUT</span>= <span style="color: #d4d4d4;">MAC</span>=01:00:5e:00:00:01:78:11:dc:17:16:de:08:00 <span style="color: #d4d4d4;">SRC</span>=0.0.0.0 <span style="color: #d4d4d4;">DST</span>=224.0.0.1 <span style="color: #d4d4d4;">LEN</span>=32 <span style="color: #d4d4d4;">TOS</span>=0x00 <span style="color: #d4d4d4;">PREC</span>=0xC0 <span style="color: #d4d4d4;">TTL</span>=1 <span style="color: #d4d4d4;">ID</span>=0 DF <span style="color: #d4d4d4;">PROTO</span>=2
+Jun 11 11:48:14 utuntu kernel: [68306.114435] [UFW BLOCK] <span style="color: #d4d4d4;">IN</span>=enp2s0 <span style="color: #d4d4d4;">OUT</span>= <span style="color: #d4d4d4;">MAC</span>=01:00:5e:00:00:01:78:11:dc:3c:d0:1e:08:00 <span style="color: #d4d4d4;">SRC</span>=0.0.0.0 <span style="color: #d4d4d4;">DST</span>=224.0.0.1 <span style="color: #d4d4d4;">LEN</span>=32 <span style="color: #d4d4d4;">TOS</span>=0x00 <span style="color: #d4d4d4;">PREC</span>=0xC0 <span style="color: #d4d4d4;">TTL</span>=1 <span style="color: #d4d4d4;">ID</span>=0 DF <span style="color: #d4d4d4;">PROTO</span>=2
+Jun 11 11:48:14 utuntu kernel: [68306.114666] [UFW BLOCK] <span style="color: #d4d4d4;">IN</span>=enp2s0 <span style="color: #d4d4d4;">OUT</span>= <span style="color: #d4d4d4;">MAC</span>=01:00:5e:00:00:01:78:11:dc:3c:d0:1e:08:00 <span style="color: #d4d4d4;">SRC</span>=0.0.0.0 <span style="color: #d4d4d4;">DST</span>=224.0.0.1 <span style="color: #d4d4d4;">LEN</span>=32 <span style="color: #d4d4d4;">TOS</span>=0x00 <span style="color: #d4d4d4;">PREC</span>=0xC0 <span style="color: #d4d4d4;">TTL</span>=1 <span style="color: #d4d4d4;">ID</span>=0 DF <span style="color: #d4d4d4;">PROTO</span>=2
+Jun 11 11:48:14 utuntu kernel: [68306.617583] [UFW BLOCK] <span style="color: #d4d4d4;">IN</span>=enp2s0 <span style="color: #d4d4d4;">OUT</span>= <span style="color: #d4d4d4;">MAC</span>=01:00:5e:00:00:01:78:11:dc:17:16:de:08:00 <span style="color: #d4d4d4;">SRC</span>=0.0.0.0 <span style="color: #d4d4d4;">DST</span>=224.0.0.1 <span style="color: #d4d4d4;">LEN</span>=32 <span style="color: #d4d4d4;">TOS</span>=0x00 <span style="color: #d4d4d4;">PREC</span>=0xC0 <span style="color: #d4d4d4;">TTL</span>=1 <span style="color: #d4d4d4;">ID</span>=0 DF <span style="color: #d4d4d4;">PROTO</span>=2
+Jun 11 11:48:14 utuntu kernel: [68306.617832] [UFW BLOCK] <span style="color: #d4d4d4;">IN</span>=enp2s0 <span style="color: #d4d4d4;">OUT</span>= <span style="color: #d4d4d4;">MAC</span>=01:00:5e:00:00:01:78:11:dc:17:16:de:08:00 <span style="color: #d4d4d4;">SRC</span>=0.0.0.0 <span style="color: #d4d4d4;">DST</span>=224.0.0.1 <span style="color: #d4d4d4;">LEN</span>=32 <span style="color: #d4d4d4;">TOS</span>=0x00 <span style="color: #d4d4d4;">PREC</span>=0xC0 <span style="color: #d4d4d4;">TTL</span>=1 <span style="color: #d4d4d4;">ID</span>=0 DF <span style="color: #d4d4d4;">PROTO</span>=2
+Jun 11 11:50:19 utuntu kernel: [68431.555632] [UFW BLOCK] <span style="color: #d4d4d4;">IN</span>=enp2s0 <span style="color: #d4d4d4;">OUT</span>= <span style="color: #d4d4d4;">MAC</span>=01:00:5e:00:00:01:78:11:dc:3c:d0:1e:08:00 <span style="color: #d4d4d4;">SRC</span>=0.0.0.0 <span style="color: #d4d4d4;">DST</span>=224.0.0.1 <span style="color: #d4d4d4;">LEN</span>=32 <span style="color: #d4d4d4;">TOS</span>=0x00 <span style="color: #d4d4d4;">PREC</span>=0xC0 <span style="color: #d4d4d4;">TTL</span>=1 <span style="color: #d4d4d4;">ID</span>=0 DF <span style="color: #d4d4d4;">PROTO</span>=2
+</pre>
+</div>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org9079f52" class="outline-2">
+<h2 id="step">step</h2>
+<div class="outline-text-2" id="text-step">
+</div>
+
+<div id="outline-container-org08354d0" class="outline-3">
+<h3 id="可跳过失敗尝试">(可跳过)失敗尝试</h3>
+<div class="outline-text-3" id="text-可跳过失敗尝试">
+</div>
+
+<div id="outline-container-org1612495" class="outline-4">
+<h4 id="使用ip添加规则">使用ip添加规则。</h4>
+<div class="outline-text-4" id="text-使用ip添加规则">
+<pre class="example">
+$ sudo ufw allow in from 172.16.42.2
+$ sudo ufw allow out from 172.16.42.2
+</pre>
+</div>
+</div>
+
+<div id="outline-container-org6ab1a7d" class="outline-4">
+<h4 id="ip">ip</h4>
+<div class="outline-text-4" id="text-ip">
+<p>
+sudo ufw allow from 172.17.0.0/16
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgc55b506" class="outline-4">
+<h4 id="docker0">docker0</h4>
+<div class="outline-text-4" id="text-docker0">
+<div class="org-src-container">
+<pre class="src src-sh">sudo ufw allow<span style="color: #00bfff;"> in</span> on docker0
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org9ca1c6f" class="outline-4">
+<h4 id="etcufwbefore.rules">/etc/ufw/before.rules</h4>
+<div class="outline-text-4" id="text-etcufwbefore.rules">
+<div class="org-src-container">
+<pre class="src src-sh">sudo vi /etc/ufw/before.rules
+</pre>
+</div>
+
+<p>
+编辑/etc/ufw/before.rules如下： 在*
+filter部分中，在第一个必需行块之后，添加：
+</p>
+
+<pre class="example">
+# docker rules to enable external network access from the container
+# forward traffic accross the bridge
+-A ufw-before-forward -i docker0 -j ACCEPT
+-A ufw-before-forward -i testbr0 -j ACCEPT
+-A ufw-before-forward -m state --state RELATED,ESTABLISHED -j ACCEPT
+</pre>
+
+<p>
+在文件末尾，在显示COMMIT的行之后，添加以下部分：
+</p>
+
+<pre class="example">
+*nat
+:POSTROUTING ACCEPT [0:0]
+-A POSTROUTING -s 172.16.42.0/8 -o eth0 -j MASQUERADE
+# don't delete the 'COMMIT' line or these rules won't be processed
+COMMIT
+</pre>
+
+<p>
+保存文件后，使用sudo ufw disable &amp;&amp; sudo ufw enable重新启动ufw
+</p>
+
+<p>
+并没有改变仍然被阻止。
+</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org01afa3a" class="outline-3">
+<h3 id="如果您熟悉iptables">如果您熟悉iptables</h3>
+<div class="outline-text-3" id="text-如果您熟悉iptables">
+<div class="org-src-container">
+<pre class="src src-sh">sudo ufw show raw
+</pre>
+</div>
+
+<p>
+但是,我不熟悉,这个就尴尬了.
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgc2742e2" class="outline-3">
+<h3 id="etcdefaultufw以将default_forward_policy的值更改为accept">/etc/default/ufw以将DEFAULT\_FORWARD\_POLICY的值更改为"ACCEPT"</h3>
+<div class="outline-text-3" id="text-etcdefaultufw以将default_forward_policy的值更改为accept">
+<p>
+这时, 参考
+</p>
+
+<p>
+<a href="https://oomake.com/question/4955599">https://oomake.com/question/4955599</a>
+</p>
+
+<pre class="example">
+也许这是由于当前版本，但目前的答案不适用于我的系统(Docker 0.7.2与基础Ubuntu映像)。 解决方案解释为here in the official Docker documentation。 对于懒惰的人：
+
+编辑/etc/default/ufw以将DEFAULT_FORWARD_POLICY的值更改为"ACCEPT"，
+使用[sudo] ufw reload重新加载。
+这可以确保您将流量转发到Docker的桥接网络(就我目前对这些事情的理解而言......)。
+</pre>
+
+<p>
+发现有用.
+</p>
+</div>
+</div>
+</div>
+</div>
+</body>
+</html>

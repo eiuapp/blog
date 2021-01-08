@@ -1,0 +1,1056 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<!-- 2021-01-08 Fri 15:30 -->
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>openstack</title>
+<meta name="generator" content="Org mode" />
+<link rel="stylesheet" title="Standard" href="/html/style/worg.css" type="text/css" />
+<link rel="alternate stylesheet" title="Zenburn" href="/html/style/worg-zenburn.css" type="text/css" />
+<link rel="alternate stylesheet" title="Classic" href="/html/style/worg-classic.css" type="text/css" />
+<link rel="SHORTCUT ICON" href="/html/style/org-mode-unicorn.ico" type="image/x-icon" />
+<link rel="icon" href="/html/style/org-mode-unicorn.ico" type="image/ico" />
+<script type="text/javascript">
+/*
+@licstart  The following is the entire license notice for the
+JavaScript code in this tag.
+
+Copyright (C) 2012-2019 Free Software Foundation, Inc.
+
+The JavaScript code in this tag is free software: you can
+redistribute it and/or modify it under the terms of the GNU
+General Public License (GNU GPL) as published by the Free Software
+Foundation, either version 3 of the License, or (at your option)
+any later version.  The code is distributed WITHOUT ANY WARRANTY;
+without even the implied warranty of MERCHANTABILITY or FITNESS
+FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
+
+As additional permission under GNU GPL version 3 section 7, you
+may distribute non-source (e.g., minimized or compacted) forms of
+that code without the copy of the GNU GPL normally required by
+section 4, provided you include this license notice and a URL
+through which recipients can access the Corresponding Source.
+
+
+@licend  The above is the entire license notice
+for the JavaScript code in this tag.
+*/
+<!--/*--><![CDATA[/*><!--*/
+ function CodeHighlightOn(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(null != target) {
+     elem.cacheClassElem = elem.className;
+     elem.cacheClassTarget = target.className;
+     target.className = "code-highlighted";
+     elem.className   = "code-highlighted";
+   }
+ }
+ function CodeHighlightOff(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(elem.cacheClassElem)
+     elem.className = elem.cacheClassElem;
+   if(elem.cacheClassTarget)
+     target.className = elem.cacheClassTarget;
+ }
+/*]]>*///-->
+</script>
+</head>
+<body>
+<div id="preamble" class="status">
+<script type="text/javascript">
+  document.addEventListener('DOMContentLoaded',function() {
+      document.getElementById("table-of-contents").onclick = function() {
+          var elem = document.getElementById("text-table-of-contents");
+          elem.style.display = elem.style.display == "block" ? "none" : "block";
+      }
+  });
+
+  var url = document.location.href;
+  var orgsource = url.substring(0, url.lastIndexOf("."))+".org.html";
+  function show_org_source(){
+      document.location.href = orgsource;
+  }
+</script>
+
+<script>
+(function(f, a, t, h, o, m){
+	a[h]=a[h]||function(){
+		(a[h].q=a[h].q||[]).push(arguments)
+	};
+	o=f.createElement('script'),
+	m=f.getElementsByTagName('script')[0];
+	o.async=1; o.src=t; o.id='fathom-script';
+	m.parentNode.insertBefore(o,m)
+})(document, window, '//stats.orgmode.org/tracker.js', 'fathom');
+fathom('set', 'siteId', 'NWSQJ');
+fathom('trackPageview');
+</script>
+</div>
+<div id="content">
+<h1 class="title">openstack</h1>
+<div id="table-of-contents">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#orgcdad94e">Post</a>
+<ul>
+<li><a href="#org0f9b676">openstack</a>
+<ul>
+<li><a href="#orgdf2cb2e">swift 安装过程（queen）</a></li>
+<li><a href="#orgd0a45bf">swift storage node 出现 xfs 错误</a></li>
+<li><a href="#orgd3c97f0">swift 第2次安装过程（queen）</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-orgcdad94e" class="outline-2">
+<h2 id="orgcdad94e">Post</h2>
+<div class="outline-text-2" id="text-orgcdad94e">
+</div>
+<div id="outline-container-org0f9b676" class="outline-3">
+<h3 id="org0f9b676">openstack&#xa0;&#xa0;&#xa0;<span class="tag"><span class="_openstack">@openstack</span>&#xa0;<span class="openstack">openstack</span>&#xa0;<span class="swift">swift</span></span></h3>
+<div class="outline-text-3" id="text-org0f9b676">
+</div>
+<div id="outline-container-orgdf2cb2e" class="outline-4">
+<h4 id="orgdf2cb2e">swift 安装过程（queen）&#xa0;&#xa0;&#xa0;<span class="tag"><span class="install">install</span></span></h4>
+<div class="outline-text-4" id="text-orgdf2cb2e">
+<p>
+主要记录一下根据官方文档安装过程中遇到的一些小的问题。
+</p>
+</div>
+
+<ul class="org-ul">
+<li><a id="orge7d17c8"></a>env<br />
+<div class="outline-text-5" id="text-orge7d17c8">
+<p>
+os: 均为 ubuntu server 16.04
+controller node:
+</p>
+
+<ul class="org-ul">
+<li>192.168.100.50</li>
+</ul>
+
+<p>
+网络适配器 3 个：
+</p>
+<ul class="org-ul">
+<li>VMnet0</li>
+<li>VMnet1</li>
+<li>VMnet8(NAT)</li>
+</ul>
+
+<p>
+storage node:
+</p>
+
+<ul class="org-ul">
+<li>192.168.100.105</li>
+<li>192.168.100.106</li>
+<li>192.168.100.107</li>
+</ul>
+
+
+<p>
+各节点网络适配器相同，2个：
+</p>
+<ul class="org-ul">
+<li>VMnet0</li>
+<li>VMnet1</li>
+</ul>
+
+<p>
+注意：钱工说 VMnet0 就是桥接网络
+</p>
+
+<p>
+以 storage node 中的 IP 为 192.168.100.107 为例子，展示一下 /etc/hosts 文件 。
+</p>
+
+<div class="org-src-container">
+<pre class="src src-shell">ubuntu@swift107:~$ cat /etc/hosts
+127.0.0.1   localhost
+127.0.0.1   swift107
+127.0.1.1   ubuntu
+<span style="color: #579C4C;"># </span><span style="color: #579C4C;">controller</span>
+192.168.100.50  controller
+<span style="color: #579C4C;"># </span><span style="color: #579C4C;">storage</span>
+192.168.100.105 swift105
+192.168.100.106 swift106
+192.168.100.107 swift107
+</pre>
+</div>
+
+<p>
+官方文档这里只显示了 storage node :
+</p>
+
+<ul class="org-ul">
+<li>10.0.0.51       object1</li>
+<li>10.0.0.52       object2</li>
+</ul>
+</div>
+</li>
+
+<li><a id="org95b7e7f"></a>step<br />
+<ul class="org-ul">
+<li><a id="org6b8d7d2"></a>environment networking<br />
+<div class="outline-text-6" id="text-org6b8d7d2">
+<p>
+<a href="https://docs.openstack.org/swift/queens/install/environment-networking.html">https://docs.openstack.org/swift/queens/install/environment-networking.html</a>
+</p>
+
+<p>
+这里记录的2个节点，均指存储节点（storage node）.
+官方文档这里对每个节点均设置了2个硬盘（/dev/sdb, /dev/sdb）.
+</p>
+</div>
+</li>
+
+<li><a id="org6ee01b8"></a>storage node<br />
+<div class="outline-text-6" id="text-org6ee01b8">
+<p>
+<a href="https://docs.openstack.org/swift/queens/install/storage-install-ubuntu-debian.html">https://docs.openstack.org/swift/queens/install/storage-install-ubuntu-debian.html</a>
+</p>
+</div>
+
+<ul class="org-ul">
+<li><a id="org8f8e46b"></a>storage node 可以使用已挂载硬盘的某个新分区<br />
+<div class="outline-text-7" id="text-org8f8e46b">
+<p>
+Format the /dev/sdb and /dev/sdc devices as XFS:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-shell">$ mkfs.xfs /dev/sda6
+</pre>
+</div>
+</div>
+</li>
+
+<li><a id="org5a3c895"></a>storage node 中的 MANAGEMENT_INTERFACE_IP_ADDRESS<br />
+<div class="outline-text-7" id="text-org5a3c895">
+<p>
+<a href="https://docs.openstack.org/swift/queens/install/storage-install-ubuntu-debian.html#install-and-configure-components">https://docs.openstack.org/swift/queens/install/storage-install-ubuntu-debian.html#install-and-configure-components</a>
+</p>
+
+<p>
+Replace MANAGEMENT_INTERFACE_IP_ADDRESS with the IP address of the management network on the storage node.
+这里的 MANAGEMENT_INTERFACE_IP_ADDRESS 应该理解为 storage node 上的对应与
+management network 中的IP，也就是 192.168.100.105 之类的IP
+</p>
+</div>
+</li>
+</ul>
+</li>
+
+<li><a id="orgb66259e"></a>rings<br />
+<div class="outline-text-6" id="text-orgb66259e">
+<p>
+<a href="https://docs.openstack.org/swift/queens/install/initial-rings.html#distribute-ring-configuration-files">https://docs.openstack.org/swift/queens/install/initial-rings.html#distribute-ring-configuration-files</a>
+</p>
+
+<p>
+这一步不要忘记了。也就是把 controller node 中的 account.ring.gz, container.ring.gz, and object.ring.gz 复制过去。
+</p>
+</div>
+</li>
+
+<li><a id="org253946a"></a>finalize-installation<br />
+<div class="outline-text-6" id="text-org253946a">
+<p>
+<a href="https://docs.openstack.org/swift/queens/install/finalize-installation-ubuntu-debian.html">https://docs.openstack.org/swift/queens/install/finalize-installation-ubuntu-debian.html</a>
+</p>
+
+<p>
+On the controller node and any other nodes running the proxy service, restart the Object Storage proxy service including its dependencies:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-shell">$ service memcached restart
+$ service swift-proxy restart
+</pre>
+</div>
+
+<p>
+这里运行完成后，必须要用 status 检查一下。当时我就是没有检查（实际上是storage node没有开放相应端口），导致后面一步的 `swift stat` 失效。
+</p>
+
+<div class="org-src-container">
+<pre class="src src-shell">$ service memcached status
+$ service swift-proxy status
+</pre>
+</div>
+</div>
+</li>
+
+<li><a id="org7f05d70"></a>verify<br />
+<div class="outline-text-6" id="text-org7f05d70">
+<p>
+<a href="https://docs.openstack.org/swift/queens/install/verify.html">https://docs.openstack.org/swift/queens/install/verify.html</a>
+</p>
+
+<p>
+基本的命令，也可以通过 horizon 进行。
+</p>
+
+<p>
+demo-openrc 文件应该之前就有了。
+</p>
+
+<div class="org-src-container">
+<pre class="src src-shell">root@controller:~# cat demo-openrc
+<span style="color: #d4d4d4;">export</span> <span style="color: #d4d4d4;">OS_PROJECT_DOMAIN_NAME</span>=Default
+<span style="color: #d4d4d4;">export</span> <span style="color: #d4d4d4;">OS_USER_DOMAIN_NAME</span>=Default
+<span style="color: #d4d4d4;">export</span> <span style="color: #d4d4d4;">OS_PROJECT_NAME</span>=demo
+<span style="color: #d4d4d4;">export</span> <span style="color: #d4d4d4;">OS_USERNAME</span>=demo
+<span style="color: #d4d4d4;">export</span> <span style="color: #d4d4d4;">OS_PASSWORD</span>=openstack
+<span style="color: #d4d4d4;">export</span> <span style="color: #d4d4d4;">OS_AUTH_URL</span>=http://controller:5000/v3
+<span style="color: #d4d4d4;">export</span> <span style="color: #d4d4d4;">OS_IDENTITY_API_VERSION</span>=3
+<span style="color: #d4d4d4;">export</span> <span style="color: #d4d4d4;">OS_IMAGE_API_VERSION</span>=2
+root@controller:~# . demo-openrc
+</pre>
+</div>
+</div>
+
+<ul class="org-ul">
+<li><a id="org0ee5dfb"></a>上传文件<br />
+<div class="outline-text-7" id="text-org0ee5dfb">
+<div class="org-src-container">
+<pre class="src src-shell">root@controller:~# openstack object create container1 360bdoctor.exe
+root@controller:~# openstack object list container1
++----------------+
+| Name           |
++----------------+
+| 360bdoctor.exe |
++----------------+
+root@controller:~#
+</pre>
+</div>
+</div>
+
+<ul class="org-ul">
+<li><a id="orgfa747d4"></a>当上传文件太大时，会出503错误。<br />
+<div class="outline-text-8" id="text-orgfa747d4">
+<div class="org-src-container">
+<pre class="src src-shell">root@controller:~# openstack object create container1 cn_sql_server_2008_r2_enterprise_x86_x64_ia64_dvd_522233.rar -v
+START with options: [u<span style="color: #daa520;">'object'</span>, u<span style="color: #daa520;">'create'</span>, u<span style="color: #daa520;">'container1'</span>, u<span style="color: #daa520;">'cn_sql_server_2008_r2_enterprise_x86_x64_ia64_dvd_522233.rar'</span>, u<span style="color: #daa520;">'-v'</span>]
+command: object create -&gt; openstackclient.object.v1.object.CreateObject (<span style="color: #d4d4d4;">auth</span>=True)
+Using auth plugin: password
+Service Unavailable (HTTP 503) (Request-ID: tx063c37fe0f004a6fba14c-005c345bf6)
+END return value: 1
+root@controller:~# du -sh cn_sql_server_2008_r2_enterprise_x86_x64_ia64_dvd_522233.rar
+3.3G    cn_sql_server_2008_r2_enterprise_x86_x64_ia64_dvd_522233.rar
+root@controller:~#
+</pre>
+</div>
+
+<p>
+是不是与配置过程中的 <a href="https://docs.openstack.org/swift/queens/install/initial-rings.html">https://docs.openstack.org/swift/queens/install/initial-rings.html</a> For simplicity, this guide uses one region and two zones with 2^10 (1024) maximum partitions, 3 replicas of each object, and 1 hour minimum time between moving a partition more than once. 中的
+2^10 (1024) maximum partitions 这个位置相关。如果是这个思路，我们可以尝试往这个方向，改一下。
+</p>
+</div>
+</li>
+
+
+
+<li><a id="orgde56eef"></a>在上传文件时，请不要使用 "./****" 形式<br />
+<div class="outline-text-8" id="text-orgde56eef">
+<p>
+因为这样的话，会导致在 horizon 中显示为目录形式，这明显不对。
+而且，当有这样的目录文件时，在 horizon 是删除不了这个文件的（可能是因为，horizon 传过去的就是 "." ，而不是你希望的 "./360bdoctor.exe" 这样的文件）
+所以这时，只能通过命令行`openstack object delete controller1 ./360bdoctor.exe`这样的删除了。
+</p>
+
+
+<p>
+(下面命令请不要运行)
+</p>
+
+<div class="org-src-container">
+<pre class="src src-shell">$ openstack object create container1 ./360bdoctor.exe
+</pre>
+</div>
+</div>
+</li>
+
+
+<li><a id="orgcecd093"></a>不能上传文件夹<br />
+<div class="outline-text-8" id="text-orgcecd093">
+<p>
+官网的这次配置不能上传文件夹，是不是与配置过程中的某个因素相关
+</p>
+
+<div class="org-src-container">
+<pre class="src src-shell">root@controller:~# ll
+total 3450604
+drwx------  8 root root       4096 Jan  8 15:52 ./
+drwxr-xr-x 23 root root       4096 Oct 22 18:11 ../
+-rw-r--r--  1 root root    1993728 Jan  4 18:58 360bdoctor.exe
+drwx------  2 root root       4096 Oct 29 10:50 .ssh/
+root@controller:~# openstack object create container1 ttt -v
+START with options: [u<span style="color: #daa520;">'object'</span>, u<span style="color: #daa520;">'create'</span>, u<span style="color: #daa520;">'container1'</span>, u<span style="color: #daa520;">'ttt'</span>, u<span style="color: #daa520;">'-v'</span>]
+command: object create -&gt; openstackclient.object.v1.object.CreateObject (<span style="color: #d4d4d4;">auth</span>=True)
+Using auth plugin: password
+[Errno 21] Is a directory: u<span style="color: #daa520;">'ttt'</span>
+END return value: 1
+root@controller:~#
+</pre>
+</div>
+</div>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+
+
+<li><a id="orgc1304c4"></a>Ref<br />
+<div class="outline-text-5" id="text-orgc1304c4">
+<ul class="org-ul">
+<li><a href="https://docs.openstack.org/swift/queens/install/">https://docs.openstack.org/swift/queens/install/</a></li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+
+
+
+<div id="outline-container-orgd0a45bf" class="outline-4">
+<h4 id="orgd0a45bf">swift storage node 出现 xfs 错误&#xa0;&#xa0;&#xa0;<span class="tag"><span class="xfs">xfs</span></span></h4>
+<div class="outline-text-4" id="text-orgd0a45bf">
+</div>
+
+<ul class="org-ul">
+<li><a id="org16bd22f"></a>env<br />
+<div class="outline-text-5" id="text-org16bd22f">
+<p>
+在安装 swift storage node 过程中，把storage node关机，再开机时，开机登陆页面，出现如下的错误：
+</p>
+
+
+<div class="figure">
+<p><img src="https://res.cloudinary.com/dmtixvmgt/image/upload/v1547016078/xfs-internal-error-xfs_want_corrupted_return_e77thd.jpg" alt="xfs-internal-error-xfs_want_corrupted_return_e77thd.jpg" />
+</p>
+</div>
+
+<p>
+错误中，主要是包含 "XFS(sdb): Internal error xfs_trans_cancel", "XFS(sdb):
+Corruption of in -memory data detected" 等字样，这明显是 xfs 相关的问题。
+</p>
+
+<p>
+在安装过程中，与 xfs 相关，主要就是挂载分区或挂载硬盘的时候咯。
+</p>
+
+<p>
+而且查看 storage node 的挂载文件夹
+</p>
+
+<div class="org-src-container">
+<pre class="src src-shell">root@swift107:/etc/swift# chown -R swift:swift /srv/node
+chown: cannot access <span style="color: #daa520;">'/srv/node/sdb'</span>: Input/output error
+root@swift107:/etc/swift# cd /srv/node/
+root@swift107:/srv/node# ls
+ls: cannot access <span style="color: #daa520;">'sdb'</span>: Input/output error
+sdb  sdc
+root@swift107:/srv/node#
+</pre>
+</div>
+
+<p>
+而且，如果是在 controller node 有监控的话，可以看到：
+</p>
+
+<div class="org-src-container">
+<pre class="src src-shell">root@controller:/etc/swift# service swift-proxy status
+&#9679; swift-proxy.service - LSB: Swift proxy server
+   Loaded: loaded (/etc/init.d/swift-proxy; bad; vendor preset: enabled)
+   Active: active (running) since Wed 2019-01-09 10:19:46 CST; 5min ago
+     Docs: man:systemd-sysv-generator(8)
+  Process: 5475 <span style="color: #d4d4d4;">ExecStop</span>=/etc/init.d/swift-proxy stop (<span style="color: #d4d4d4;">code</span>=exited, <span style="color: #d4d4d4;">status</span>=0/SUCCESS)
+  Process: 5486 <span style="color: #d4d4d4;">ExecStart</span>=/etc/init.d/swift-proxy start (<span style="color: #d4d4d4;">code</span>=exited, <span style="color: #d4d4d4;">status</span>=0/SUCCESS)
+    Tasks: 5
+   Memory: 100.3M
+      CPU: 5.790s
+   CGroup: /system.slice/swift-proxy.service
+           &#9500;&#9472;5497 /usr/bin/python /usr/bin/swift-proxy-server /etc/swift/proxy-server.conf
+           &#9500;&#9472;5506 /usr/bin/python /usr/bin/swift-proxy-server /etc/swift/proxy-server.conf
+           &#9500;&#9472;5507 /usr/bin/python /usr/bin/swift-proxy-server /etc/swift/proxy-server.conf
+           &#9500;&#9472;5508 /usr/bin/python /usr/bin/swift-proxy-server /etc/swift/proxy-server.conf
+           &#9492;&#9472;5509 /usr/bin/python /usr/bin/swift-proxy-server /etc/swift/proxy-server.conf
+
+Jan 09 10:23:39 controller proxy-server[5509]: ERROR Insufficient Storage 192.168.100.107:6200/sda6 (txn: txff3a41a6156d41b39866c-00
+Jan 09 10:23:39 controller proxy-server[5509]: ERROR Insufficient Storage 192.168.100.107:6200/sdb (txn: txff3a41a6156d41b39866c-005
+Jan 09 10:23:39 controller proxy-server[5509]: 127.0.0.1 127.0.0.1 09/Jan/2019/02/23/39 PUT /v1/AUTH_7d6eaa90d74a4f239963933c3a744df
+Jan 09 10:23:39 controller proxy-server[5508]: 127.0.0.1 127.0.0.1 09/Jan/2019/02/23/39 GET /v1/AUTH_7d6eaa90d74a4f239963933c3a744df
+Jan 09 10:23:39 controller proxy-server[5507]: ERROR Insufficient Storage 192.168.100.107:6201/sdb (txn: txba2112e7ac2c4fd09ebc7-005
+Jan 09 10:23:39 controller proxy-server[5507]: 127.0.0.1 127.0.0.1 09/Jan/2019/02/23/39 GET /v1/AUTH_7d6eaa90d74a4f239963933c3a744df
+root@controller:/etc/swift#
+</pre>
+</div>
+
+<p>
+报出了 " ERROR Insufficient Storage" 错误。
+</p>
+</div>
+</li>
+
+<li><a id="orgd274780"></a>step<br />
+<div class="outline-text-5" id="text-orgd274780">
+<p>
+通过 - <a href="https://www.experts-exchange.com/questions/26974279/Problem-with-xfs-file-system.html">https://www.experts-exchange.com/questions/26974279/Problem-with-xfs-file-system.html</a>
+知道，要先 umount 再使用 `xfs_repair -L `去修复一下，再mount。
+</p>
+
+<div class="org-src-container">
+<pre class="src src-shell">root@swift107:/home/ubuntu# umount /srv/node/sdb
+umount: /srv/node/sdb: not mounted
+root@swift107:/home/ubuntu# umount /srv/node/sdc
+root@swift107:/home/ubuntu# xfs_repair -L /dev/sdb
+Phase 1 - find and verify superblock...
+Phase 2 - using internal log
+        - zero log...
+ALERT: The filesystem has valuable metadata changes<span style="color: #00bfff;"> in</span> a log which is being
+destroyed because the -L option was used.
+        - scan filesystem freespace and inode maps...
+sb_ifree 199, counted 159
+sb_fdblocks 5237633, counted 5196324
+        - found root inode chunk
+Phase 3 - for each AG...
+        - scan and clear agi unlinked lists...
+        - process known inodes and perform inode discovery...
+        - <span style="color: #d4d4d4;">agno</span> = 0
+        - <span style="color: #d4d4d4;">agno</span> = 1
+        - <span style="color: #d4d4d4;">agno</span> = 2
+correcting nblocks for inode 33575016, was 1 - counted 0
+imap claims a free inode 33575022 is<span style="color: #00bfff;"> in</span> use, correcting imap and clearing inode
+cleared inode 33575022
+        - <span style="color: #d4d4d4;">agno</span> = 3
+        - process newly discovered inodes...
+Phase 4 - check for duplicate blocks...
+        - setting up duplicate extent list...
+        - check for inodes claiming duplicate blocks...
+        - <span style="color: #d4d4d4;">agno</span> = 1
+        - <span style="color: #d4d4d4;">agno</span> = 3
+        - <span style="color: #d4d4d4;">agno</span> = 0
+        - <span style="color: #d4d4d4;">agno</span> = 2
+Phase 5 - rebuild AG headers and trees...
+        - reset superblock...
+Phase 6 - check inode connectivity...
+        - resetting contents of realtime bitmap and summary inodes
+        - traversing filesystem ...
+entry <span style="color: #daa520;">"hashes.pkl"</span><span style="color: #00bfff;"> in</span> directory inode 33575010 references already connected inode 33575016.
+
+        - traversal finished ...
+        - moving disconnected inodes to lost+found ...
+Phase 7 - verify and correct link counts...
+Maximum metadata LSN (4:8073) is ahead of log (1:2).
+Format log to cycle 7.
+<span style="color: #00bfff;">done</span>
+root@swift107:/home/ubuntu# xfs_repair -L /dev/sda6
+Phase 1 - find and verify superblock...
+Phase 2 - using internal log
+        - zero log...
+        - scan filesystem freespace and inode maps...
+        - found root inode chunk
+Phase 3 - for each AG...
+        - scan and clear agi unlinked lists...
+        - process known inodes and perform inode discovery...
+        - <span style="color: #d4d4d4;">agno</span> = 0
+        - <span style="color: #d4d4d4;">agno</span> = 1
+        - <span style="color: #d4d4d4;">agno</span> = 2
+        - <span style="color: #d4d4d4;">agno</span> = 3
+        - process newly discovered inodes...
+Phase 4 - check for duplicate blocks...
+        - setting up duplicate extent list...
+        - check for inodes claiming duplicate blocks...
+        - <span style="color: #d4d4d4;">agno</span> = 0
+        - <span style="color: #d4d4d4;">agno</span> = 2
+        - <span style="color: #d4d4d4;">agno</span> = 3
+        - <span style="color: #d4d4d4;">agno</span> = 1
+Phase 5 - rebuild AG headers and trees...
+        - reset superblock...
+Phase 6 - check inode connectivity...
+        - resetting contents of realtime bitmap and summary inodes
+        - traversing filesystem ...
+        - traversal finished ...
+        - moving disconnected inodes to lost+found ...
+Phase 7 - verify and correct link counts...
+Maximum metadata LSN (1:30) is ahead of log (1:2).
+Format log to cycle 4.
+<span style="color: #00bfff;">done</span>
+root@swift107:/home/ubuntu# mount /srv/node/sdb
+root@swift107:/home/ubuntu# ls /srv/node/sdb -a
+.  ..  accounts  containers  objects  quarantined  tmp
+root@swift107:/home/ubuntu# ls /srv/node/sdc -a
+.  ..
+root@swift107:/home/ubuntu# mount | grep sd
+/dev/sda1 on / type ext4 (rw,relatime,<span style="color: #d4d4d4;">errors</span>=remount-ro,<span style="color: #d4d4d4;">data</span>=ordered)
+/dev/sdb on /srv/node/sdb type xfs (rw,noatime,nodiratime,attr2,nobarrier,inode64,<span style="color: #d4d4d4;">logbufs</span>=8,noquota)
+root@swift107:/home/ubuntu# du -sh /srv/node/sdb
+291M    /srv/node/sdb
+
+</pre>
+</div>
+
+<p>
+然后，把 controller node 中的 swift-proxy 重启一下。
+</p>
+
+<div class="org-src-container">
+<pre class="src src-shell">service swift-proxy restart
+service swift-proxy status
+</pre>
+</div>
+
+<p>
+再上传文件，看一下 /srv/node/sdb 的大小是否有增加。
+</p>
+
+<div class="org-src-container">
+<pre class="src src-shell">root@swift107:/home/ubuntu# du -sh /srv/node/sdb
+498M    /srv/node/sdb
+</pre>
+</div>
+
+<p>
+因为这台机器的 /dev/sda6 分区，也是做成了  xfs 类型文件系统，所以，一样地处理一
+下。
+</p>
+
+<div class="org-src-container">
+<pre class="src src-shell">root@swift107:/home/ubuntu# mount /srv/node/sdc
+mount: /dev/sda6 is already mounted or /srv/node/sdc busy
+       /dev/sda6 is already mounted on /srv/node/sdc
+root@swift107:/home/ubuntu# mount | grep sd
+/dev/sda1 on / type ext4 (rw,relatime,<span style="color: #d4d4d4;">errors</span>=remount-ro,<span style="color: #d4d4d4;">data</span>=ordered)
+/dev/sdb on /srv/node/sdb type xfs (rw,noatime,nodiratime,attr2,nobarrier,inode64,<span style="color: #d4d4d4;">logbufs</span>=8,noquota)
+/dev/sda6 on /srv/node/sdc type xfs (rw,noatime,nodiratime,attr2,nobarrier,inode64,<span style="color: #d4d4d4;">logbufs</span>=8,noquota)
+root@swift107:/home/ubuntu# du -sh /srv/node/sdc
+0   /srv/node/sdc
+root@swift107:/home/ubuntu#
+</pre>
+</div>
+
+<p>
+这样子，就完成了。
+</p>
+</div>
+</li>
+
+<li><a id="org24b9a71"></a>Ref<br />
+<div class="outline-text-5" id="text-org24b9a71">
+<ul class="org-ul">
+<li><a href="https://www.experts-exchange.com/questions/26974279/Problem-with-xfs-file-system.html">https://www.experts-exchange.com/questions/26974279/Problem-with-xfs-file-system.html</a></li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+
+
+
+
+<div id="outline-container-orgd3c97f0" class="outline-4">
+<h4 id="orgd3c97f0">swift 第2次安装过程（queen）</h4>
+<div class="outline-text-4" id="text-orgd3c97f0">
+</div>
+<ul class="org-ul">
+<li><a id="orgf368935"></a>env<br />
+<div class="outline-text-5" id="text-orgf368935">
+<p>
+os: 均为 ubuntu server 16.04
+controller node:
+</p>
+
+<ul class="org-ul">
+<li>192.168.100.50</li>
+</ul>
+
+<p>
+网络适配器 3 个：
+</p>
+<ul class="org-ul">
+<li>VMnet0</li>
+<li>VMnet1</li>
+<li>VMnet8(NAT)</li>
+</ul>
+
+<p>
+storage node:
+</p>
+
+<ul class="org-ul">
+<li>192.168.0.198</li>
+<li>192.168.0.180</li>
+<li>192.168.0.135</li>
+</ul>
+
+<p>
+各节点网络适配器相同，2个：
+</p>
+<ul class="org-ul">
+<li>VMnet0</li>
+<li>VMnet1</li>
+</ul>
+
+<p>
+注意：钱工说 VMnet0 就是桥接网络
+</p>
+
+<p>
+现在的环境有一点不同。因为，现在storage node全都是 派 。
+</p>
+
+<p>
+controller node是从同事那里直接copy 过来的，所以，这一块，我要先配置一下。
+</p>
+</div>
+</li>
+
+<li><a id="org1218e8e"></a>step<br />
+<ul class="org-ul">
+<li><a id="org1146b34"></a>controller node 准备<br />
+<div class="outline-text-6" id="text-org1146b34">
+<p>
+因为现在这台机器，还没有配置成功过。所以，先使用原来的IP192.168.100.50 , 但是，后续应该把这个IP更换一下，这样就与之前安装的那套环境不冲
+突。
+</p>
+
+<p>
+vmware workstation pro 中设置了三个网络适配器，那么，就应该与我们这里的三个网卡
+相对应。看一下网卡。
+</p>
+
+<div class="org-src-container">
+<pre class="src src-shell">ubuntu@controller:~$ ip a
+1: lo: &lt;LOOPBACK,UP,LOWER_UP&gt; mtu 65536 qdisc noqueue state UNKNOWN group default qlen 1
+    link/loopback 00:00:00:00:00:00 brd 00:00:00:00:00:00
+    inet 127.0.0.1/8 scope host lo
+       valid_lft forever preferred_lft forever
+    inet6 ::1/128 scope host
+       valid_lft forever preferred_lft forever
+2: ens37: &lt;BROADCAST,MULTICAST,UP,LOWER_UP&gt; mtu 1500 qdisc pfifo_fast master brqbc2de25c-35 state UP group default qlen 1000
+    link/ether 00:0c:29:a8:b5:19 brd ff:ff:ff:ff:ff:ff
+    inet6 fe80::20c:29ff:fea8:b519/64 scope link
+       valid_lft forever preferred_lft forever
+3: ens38: &lt;BROADCAST,MULTICAST,UP,LOWER_UP&gt; mtu 1500 qdisc pfifo_fast state UP group default qlen 1000
+    link/ether 00:0c:29:a8:b5:23 brd ff:ff:ff:ff:ff:ff
+    inet 192.168.100.50/24 brd 192.168.100.255 scope global ens38
+       valid_lft forever preferred_lft forever
+    inet6 fe80::20c:29ff:fea8:b523/64 scope link
+       valid_lft forever preferred_lft forever
+4: ens39: &lt;BROADCAST,MULTICAST,UP,LOWER_UP&gt; mtu 1500 qdisc pfifo_fast state UP group default qlen 1000
+    link/ether 00:0c:29:a8:b5:2d brd ff:ff:ff:ff:ff:ff
+    inet 192.168.78.128/24 brd 192.168.78.255 scope global ens39
+       valid_lft forever preferred_lft forever
+    inet6 fe80::20c:29ff:fea8:b52d/64 scope link
+       valid_lft forever preferred_lft forever
+6: tap60c25032-6c@if2: &lt;BROADCAST,MULTICAST,UP,LOWER_UP&gt; mtu 1500 qdisc noqueue master brqbc2de25c-35 state UP group default qlen 1000
+    link/ether fe:48:4a:33:c5:bc brd ff:ff:ff:ff:ff:ff link-netnsid 0
+7: tap55b338fb-f6@if2: &lt;BROADCAST,MULTICAST,UP,LOWER_UP&gt; mtu 1450 qdisc noqueue master brq872c0e06-e4 state UP group default qlen 1000
+    link/ether 22:7a:d6:53:33:a5 brd ff:ff:ff:ff:ff:ff link-netnsid 1
+8: brqbc2de25c-35: &lt;BROADCAST,MULTICAST,UP,LOWER_UP&gt; mtu 1500 qdisc noqueue state UP group default qlen 1000
+    link/ether 00:0c:29:a8:b5:19 brd ff:ff:ff:ff:ff:ff
+    inet 192.168.0.51/24 brd 192.168.0.255 scope global brqbc2de25c-35
+       valid_lft forever preferred_lft forever
+    inet6 fe80::c486:8dff:fe6c:5a98/64 scope link
+       valid_lft forever preferred_lft forever
+9: vxlan-98: &lt;BROADCAST,MULTICAST,UP,LOWER_UP&gt; mtu 1450 qdisc noqueue master brq872c0e06-e4 state UNKNOWN group default qlen 1000
+    link/ether 92:b6:8e:62:dc:9b brd ff:ff:ff:ff:ff:ff
+10: brq872c0e06-e4: &lt;BROADCAST,MULTICAST,UP,LOWER_UP&gt; mtu 1450 qdisc noqueue state UP group default qlen 1000
+    link/ether 22:7a:d6:53:33:a5 brd ff:ff:ff:ff:ff:ff
+    inet6 fe80::983b:e5ff:fe24:aaa5/64 scope link
+       valid_lft forever preferred_lft forever
+11: tap3ee62b5a-5e@if2: &lt;BROADCAST,MULTICAST,UP,LOWER_UP&gt; mtu 1450 qdisc noqueue master brq872c0e06-e4 state UP group default qlen 1000
+    link/ether ee:03:29:f3:82:ca brd ff:ff:ff:ff:ff:ff link-netnsid 2
+12: tap673be83a-2d@if3: &lt;BROADCAST,MULTICAST,UP,LOWER_UP&gt; mtu 1500 qdisc noqueue master brqbc2de25c-35 state UP group default qlen 1000
+    link/ether 1a:7b:69:15:c9:ad brd ff:ff:ff:ff:ff:ff link-netnsid 2
+ubuntu@controller:~$
+</pre>
+</div>
+
+<p>
+对了，这里应该就是 ens37 为 VMnet0 , 这里看，它拿到了 192.168.0.51 的这个IP, 果
+然是桥接网络。
+</p>
+
+<p>
+ens37 - VMnet0
+ens38 - VMnet1
+ens39 - VMnet8
+</p>
+
+<p>
+其实，这里也可以看一下ubuntu网络配置
+</p>
+
+<div class="org-src-container">
+<pre class="src src-shell">ubuntu@controller:~$ cat /etc/network/interfaces
+<span style="color: #579C4C;"># </span><span style="color: #579C4C;">This file describes the network interfaces available on your system</span>
+<span style="color: #579C4C;"># </span><span style="color: #579C4C;">and how to activate them. For more information, see interfaces(5).</span>
+
+<span style="color: #d4d4d4;">source</span> /etc/network/interfaces.d/*
+
+<span style="color: #579C4C;"># </span><span style="color: #579C4C;">The loopback network interface</span>
+auto lo
+iface lo inet loopback
+
+auto ens37
+<span style="color: #579C4C;">#</span><span style="color: #579C4C;">iface ens37 inet dhcp</span>
+iface ens37 inet static
+address 192.168.0.51
+netmask 255.255.255.0
+
+auto ens38
+iface ens38 inet static
+address 192.168.100.50
+netmask 255.255.255.0
+up ip link set dev $<span style="color: #d4d4d4;">IFACE</span> up
+down ip link set dev $<span style="color: #d4d4d4;">IFACE</span> down
+
+auto ens39
+iface ens39 inet dhcp
+ubuntu@controller:~$
+</pre>
+</div>
+
+<p>
+这里也看出来，是一一对应的。
+</p>
+
+<p>
+看一下出去的网络
+</p>
+
+<div class="org-src-container">
+<pre class="src src-shell">ubuntu@controller:~$ traceroute qq.com
+traceroute to qq.com (59.37.96.63), 30 hops max, 60 byte packets
+ 1  192.168.78.2 (192.168.78.2)  0.275 ms  0.487 ms  0.461 ms^C
+ubuntu@controller:~$ ping qq.com
+PING qq.com (59.37.96.63) 56(84) bytes of data.
+64 bytes from 59.37.96.63: <span style="color: #d4d4d4;">icmp_seq</span>=1 <span style="color: #d4d4d4;">ttl</span>=128 <span style="color: #d4d4d4;">time</span>=8.31 ms
+^C
+--- qq.com ping statistics ---
+1 packets transmitted, 1 received, 0% packet loss, time 0ms
+rtt min/avg/max/mdev = 8.318/8.318/8.318/0.000 ms
+ubuntu@controller:~$
+</pre>
+</div>
+
+<p>
+看出来，这里出外网，是通过 ens39 , 而不是我们的 192.168.0.1/24 网段出去的。
+</p>
+
+<p>
+看一下，与 192.168.0.1/24 段的通信，是否正常。
+</p>
+
+<div class="org-src-container">
+<pre class="src src-shell">ubuntu@controller:~$ ping 192.168.0.1
+PING 192.168.0.1 (192.168.0.1) 56(84) bytes of data.
+64 bytes from 192.168.0.1: <span style="color: #d4d4d4;">icmp_seq</span>=1 Destination Host Unreachable
+64 bytes from 192.168.0.1: <span style="color: #d4d4d4;">icmp_seq</span>=2 Destination Host Unreachable
+ubuntu@controller:~$
+</pre>
+</div>
+
+<p>
+这里说明外层的网络配置有问题。
+</p>
+
+<p>
+这个时候，钱工出马了。
+</p>
+
+<p>
+回到 vmware workstation pro 界面，编辑，虚拟网络编辑器，更改设置。
+这个地方可以看到，应该要有三个网络，但是我这里只有2个，所以，错误应该就是这里导
+致的。那我们添加吧。
+</p>
+
+<p>
+点击，添加网络，（因为我这里就是桥接模式的 VMnet0 没有显示出来）然后，在VMnet 信
+息中选择 桥接模式，桥接到 "802.11n USB Wireless LAN Card"(这个地方就是我们的宿主
+机的网卡，因为我是无线网卡，在"控制面板/所有控制面板项/网络和共享中心/更改适配器
+设置" 或者 "控制面板/网络和Internet/网络连接" 中可以看得到) ，然后点击确定。
+</p>
+
+<p>
+这样子，就可以了。可以回到ubuntu确认一下，如下：
+</p>
+
+<div class="org-src-container">
+<pre class="src src-shell">ubuntu@controller:~$ ping 192.168.0.1
+PING 192.168.0.1 (192.168.0.1) 56(84) bytes of data.
+64 bytes from 192.168.0.1: <span style="color: #d4d4d4;">icmp_seq</span>=1 <span style="color: #d4d4d4;">ttl</span>=64 <span style="color: #d4d4d4;">time</span>=5.08 ms
+64 bytes from 192.168.0.1: <span style="color: #d4d4d4;">icmp_seq</span>=2 <span style="color: #d4d4d4;">ttl</span>=64 <span style="color: #d4d4d4;">time</span>=3.16 ms
+^C
+--- 192.168.0.1 ping statistics ---
+2 packets transmitted, 2 received, 0% packet loss, time 1001ms
+rtt min/avg/max/mdev = 3.165/4.123/5.081/0.958 ms
+ubuntu@controller:~$
+</pre>
+</div>
+
+<p>
+成功。到其它 storage node 也是可以的。
+</p>
+
+<div class="org-src-container">
+<pre class="src src-shell">ubuntu@controller:~$ ping 192.168.0.180
+PING 192.168.0.180 (192.168.0.180) 56(84) bytes of data.
+64 bytes from 192.168.0.180: <span style="color: #d4d4d4;">icmp_seq</span>=1 <span style="color: #d4d4d4;">ttl</span>=64 <span style="color: #d4d4d4;">time</span>=1012 ms
+64 bytes from 192.168.0.180: <span style="color: #d4d4d4;">icmp_seq</span>=2 <span style="color: #d4d4d4;">ttl</span>=64 <span style="color: #d4d4d4;">time</span>=6.30 ms
+64 bytes from 192.168.0.180: <span style="color: #d4d4d4;">icmp_seq</span>=3 <span style="color: #d4d4d4;">ttl</span>=64 <span style="color: #d4d4d4;">time</span>=17.8 ms
+^C
+--- 192.168.0.180 ping statistics ---
+3 packets transmitted, 3 received, 0% packet loss, time 2011ms
+rtt min/avg/max/mdev = 6.305/345.413/1012.097/471.440 ms, pipe 2
+ubuntu@controller:~$
+</pre>
+</div>
+</div>
+</li>
+
+
+<li><a id="org1c84011"></a>storage node 准备<br />
+<div class="outline-text-6" id="text-org1c84011">
+<p>
+这3个派，是从其它地方过来的，因为之前已经被使用成 dos 系统，所以我们先处理一下。
+</p>
+
+<div class="org-src-container">
+<pre class="src src-shell">root@lattepanda:~# df -h
+Filesystem      Size  Used Avail Use% Mounted on
+udev            943M     0  943M   0% /dev
+tmpfs           193M   19M  174M  10% /run
+/dev/mmcblk0p2   27G  5.1G   20G  21% /
+tmpfs           963M  184K  963M   1% /dev/shm
+tmpfs           5.0M  4.0K  5.0M   1% /run/lock
+tmpfs           963M     0  963M   0% /sys/fs/cgroup
+/dev/mmcblk0p1  511M  3.5M  508M   1% /boot/efi
+/dev/sda1       3.7T  293M  3.7T   1% /media/Elements
+tmpfs           193M   76K  193M   1% /run/user/1001
+root@lattepanda:~# umount /media/Elements/
+root@lattepanda:~# fdisk  /dev/sda1 -l
+Disk /dev/sda1: 3.7 TiB, 4000750501888 bytes, 7813965824 sectors
+Units: sectors of 1 * <span style="color: #d4d4d4;">512</span> = 512 bytes
+Sector size (logical/physical): 512 bytes / 4096 bytes
+I/O size (minimum/optimal): 4096 bytes / 4096 bytes
+Disklabel type: dos
+Disk identifier: 0x6e697373
+
+Device      Boot      Start        End    Sectors   Size Id Type
+/dev/sda1p1      1936269394 3772285809 1836016416 875.5G 4f QNX4.x
+/dev/sda1p2      1917848077 2462285169  544437093 259.6G 73 unknown
+/dev/sda1p3      1818575915 2362751050  544175136 259.5G 2b unknown
+/dev/sda1p4      2844524554 2844579527      54974  26.9M 61 SpeedSt
+
+Partition 1 does not start on physical sector boundary.
+Partition 2 does not start on physical sector boundary.
+Partition 3 does not start on physical sector boundary.
+Partition 4 does not start on physical sector boundary.
+Partition table entries are not<span style="color: #00bfff;"> in</span> disk order.
+root@lattepanda:~# fdisk  /dev/sda1
+
+Welcome to fdisk (util-linux 2.27.1).
+Changes will remain<span style="color: #00bfff;"> in</span> memory only, until you decide to write them.
+Be careful before using the write command.
+
+The size of this disk is 3.7 TiB (4000750501888 bytes). DOS partition table format can not be used on drives for volumes larger than 2199023255040 bytes for 512-byte sectors. Use GUID partition table format (GPT).
+
+<span style="color: #F94949;">Command</span> (m for help): d
+Partition number (1-4, default 4):
+
+Partition 4 has been deleted.
+
+<span style="color: #F94949;">Command</span> (m for help): d
+Partition number (1-3, default 3):
+
+Partition 3 has been deleted.
+
+<span style="color: #F94949;">Command</span> (m for help): d
+Partition number (1,2, default 2):
+
+Partition 2 has been deleted.
+
+<span style="color: #F94949;">Command</span> (m for help): d
+Selected partition 1
+Partition 1 has been deleted.
+
+<span style="color: #F94949;">Command</span> (m for help): p
+Disk /dev/sda1: 3.7 TiB, 4000750501888 bytes, 7813965824 sectors
+Units: sectors of 1 * <span style="color: #d4d4d4;">512</span> = 512 bytes
+Sector size (logical/physical): 512 bytes / 4096 bytes
+I/O size (minimum/optimal): 4096 bytes / 4096 bytes
+Disklabel type: dos
+Disk identifier: 0x6e697373
+
+<span style="color: #F94949;">Command</span> (m for help): q
+
+root@lattepanda:~# df -h
+Filesystem      Size  Used Avail Use% Mounted on
+udev            943M     0  943M   0% /dev
+tmpfs           193M   19M  174M  10% /run
+/dev/mmcblk0p2   27G  5.1G   20G  21% /
+tmpfs           963M  184K  963M   1% /dev/shm
+tmpfs           5.0M  4.0K  5.0M   1% /run/lock
+tmpfs           963M     0  963M   0% /sys/fs/cgroup
+/dev/mmcblk0p1  511M  3.5M  508M   1% /boot/efi
+tmpfs           193M   76K  193M   1% /run/user/1001
+root@lattepanda:~#
+</pre>
+</div>
+
+<p>
+创建文件系统
+</p>
+
+<div class="org-src-container">
+<pre class="src src-shell">root@lattepanda:~# mkfs.xfs /dev/sda1
+mkfs.xfs: /dev/sda1 appears to contain an existing filesystem (ntfs).
+mkfs.xfs: Use the -f option to force overwrite.
+root@lattepanda:~# mkfs.xfs -f /dev/sda1
+meta-data=/dev/sda1              <span style="color: #d4d4d4;">isize</span>=512    <span style="color: #d4d4d4;">agcount</span>=4, <span style="color: #d4d4d4;">agsize</span>=244186432 blks
+         =                       <span style="color: #d4d4d4;">sectsz</span>=4096  <span style="color: #d4d4d4;">attr</span>=2, <span style="color: #d4d4d4;">projid32bit</span>=1
+         =                       <span style="color: #d4d4d4;">crc</span>=1        <span style="color: #d4d4d4;">finobt</span>=1, <span style="color: #d4d4d4;">sparse</span>=0
+<span style="color: #d4d4d4;">data</span>     =                       <span style="color: #d4d4d4;">bsize</span>=4096   <span style="color: #d4d4d4;">blocks</span>=976745728, <span style="color: #d4d4d4;">imaxpct</span>=5
+         =                       <span style="color: #d4d4d4;">sunit</span>=0      <span style="color: #d4d4d4;">swidth</span>=0 blks
+<span style="color: #d4d4d4;">naming</span>   =version 2              <span style="color: #d4d4d4;">bsize</span>=4096   ascii-ci=0 <span style="color: #d4d4d4;">ftype</span>=1
+<span style="color: #d4d4d4;">log</span>      =internal log           <span style="color: #d4d4d4;">bsize</span>=4096   <span style="color: #d4d4d4;">blocks</span>=476926, <span style="color: #d4d4d4;">version</span>=2
+         =                       <span style="color: #d4d4d4;">sectsz</span>=4096  <span style="color: #d4d4d4;">sunit</span>=1 blks, lazy-count=1
+<span style="color: #d4d4d4;">realtime</span> =none                   <span style="color: #d4d4d4;">extsz</span>=4096   <span style="color: #d4d4d4;">blocks</span>=0, <span style="color: #d4d4d4;">rtextents</span>=0
+root@lattepanda:~#
+</pre>
+</div>
+
+
+
+<p>
+<b><b>*</b></b>
+</p>
+</div>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+</body>
+</html>

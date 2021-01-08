@@ -1,0 +1,291 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<!-- 2021-01-08 Fri 14:58 -->
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>nodejs</title>
+<meta name="generator" content="Org mode" />
+<link rel="stylesheet" title="Standard" href="/html/style/worg.css" type="text/css" />
+<link rel="alternate stylesheet" title="Zenburn" href="/html/style/worg-zenburn.css" type="text/css" />
+<link rel="alternate stylesheet" title="Classic" href="/html/style/worg-classic.css" type="text/css" />
+<link rel="SHORTCUT ICON" href="/html/style/org-mode-unicorn.ico" type="image/x-icon" />
+<link rel="icon" href="/html/style/org-mode-unicorn.ico" type="image/ico" />
+<script type="text/javascript">
+/*
+@licstart  The following is the entire license notice for the
+JavaScript code in this tag.
+
+Copyright (C) 2012-2019 Free Software Foundation, Inc.
+
+The JavaScript code in this tag is free software: you can
+redistribute it and/or modify it under the terms of the GNU
+General Public License (GNU GPL) as published by the Free Software
+Foundation, either version 3 of the License, or (at your option)
+any later version.  The code is distributed WITHOUT ANY WARRANTY;
+without even the implied warranty of MERCHANTABILITY or FITNESS
+FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
+
+As additional permission under GNU GPL version 3 section 7, you
+may distribute non-source (e.g., minimized or compacted) forms of
+that code without the copy of the GNU GPL normally required by
+section 4, provided you include this license notice and a URL
+through which recipients can access the Corresponding Source.
+
+
+@licend  The above is the entire license notice
+for the JavaScript code in this tag.
+*/
+<!--/*--><![CDATA[/*><!--*/
+ function CodeHighlightOn(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(null != target) {
+     elem.cacheClassElem = elem.className;
+     elem.cacheClassTarget = target.className;
+     target.className = "code-highlighted";
+     elem.className   = "code-highlighted";
+   }
+ }
+ function CodeHighlightOff(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(elem.cacheClassElem)
+     elem.className = elem.cacheClassElem;
+   if(elem.cacheClassTarget)
+     target.className = elem.cacheClassTarget;
+ }
+/*]]>*///-->
+</script>
+</head>
+<body>
+<div id="preamble" class="status">
+<script type="text/javascript">
+  document.addEventListener('DOMContentLoaded',function() {
+      document.getElementById("table-of-contents").onclick = function() {
+          var elem = document.getElementById("text-table-of-contents");
+          elem.style.display = elem.style.display == "block" ? "none" : "block";
+      }
+  });
+
+  var url = document.location.href;
+  var orgsource = url.substring(0, url.lastIndexOf("."))+".org.html";
+  function show_org_source(){
+      document.location.href = orgsource;
+  }
+</script>
+
+<script>
+(function(f, a, t, h, o, m){
+	a[h]=a[h]||function(){
+		(a[h].q=a[h].q||[]).push(arguments)
+	};
+	o=f.createElement('script'),
+	m=f.getElementsByTagName('script')[0];
+	o.async=1; o.src=t; o.id='fathom-script';
+	m.parentNode.insertBefore(o,m)
+})(document, window, '//stats.orgmode.org/tracker.js', 'fathom');
+fathom('set', 'siteId', 'NWSQJ');
+fathom('trackPageview');
+</script>
+</div>
+<div id="content">
+<h1 class="title">nodejs</h1>
+<div id="table-of-contents">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#org4904754">Post</a>
+<ul>
+<li><a href="#org1fe2d12">nodejs install</a>
+<ul>
+<li><a href="#org98b8bec">nodejs 一定要通过 nvm安装</a></li>
+<li><a href="#org3ae09dc">ubuntu中安装 nodejs</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org4904754" class="outline-2">
+<h2 id="org4904754">Post</h2>
+<div class="outline-text-2" id="text-org4904754">
+</div>
+<div id="outline-container-org1fe2d12" class="outline-3">
+<h3 id="org1fe2d12">nodejs install&#xa0;&#xa0;&#xa0;<span class="tag"><span class="_nodejs">@nodejs</span>&#xa0;<span class="nodejs">nodejs</span>&#xa0;<span class="install">install</span></span></h3>
+<div class="outline-text-3" id="text-org1fe2d12">
+</div>
+<div id="outline-container-org98b8bec" class="outline-4">
+<h4 id="org98b8bec">nodejs 一定要通过 nvm安装&#xa0;&#xa0;&#xa0;<span class="tag"><span class="nvm">nvm</span></span></h4>
+<div class="outline-text-4" id="text-org98b8bec">
+<p>
+使用 nvm 管理不同版本的 node 与 npm
+</p>
+</div>
+
+<ul class="org-ul">
+<li><a id="org6fb770c"></a>step<br />
+<div class="outline-text-5" id="text-org6fb770c">
+<p>
+补充说明：Mac 下通过 brew install nvm 所安装的 nvm ，由于安装路径不同，无法正确启用。建议使用 brew uninstall nvm 卸载掉之后，通过本文的方案重新安装一次。
+</p>
+
+<p>
+nvm 是 Mac 下的 node 管理工具，有点类似管理 Ruby 的 rvm，如果是需要管理 Windows 下的 node，官方推荐是使用 nvmw 或 nvm-windows 。
+</p>
+
+<p>
+以下具体说下 Mac 系统中的安装与使用细节（Windows 系统仅供类比参考）。
+</p>
+</div>
+</li>
+
+<li><a id="org75dff82"></a>一、卸载已安装到全局的 node/npm<br />
+<div class="outline-text-5" id="text-org75dff82">
+<p>
+如果之前是在官网下载的 node 安装包，运行后会自动安装在全局目录，其中
+</p>
+
+<p>
+node 命令在 /usr/local/bin/node ，npm 命令在全局 node_modules 目录中，具体路径为 /usr/local/lib/node_modules/npm
+</p>
+
+<p>
+安装 nvm 之后最好先删除下已安装的 node 和全局 node 模块：
+</p>
+<div class="org-src-container">
+<pre class="src src-shell">npm ls -g --depth=0 <span style="color: #579C4C;">#</span><span style="color: #579C4C;">&#26597;&#30475;&#24050;&#32463;&#23433;&#35013;&#22312;&#20840;&#23616;&#30340;&#27169;&#22359;&#65292;&#20197;&#20415;&#21024;&#38500;&#36825;&#20123;&#20840;&#23616;&#27169;&#22359;&#21518;&#20877;&#25353;&#29031;&#19981;&#21516;&#30340; node &#29256;&#26412;&#37325;&#26032;&#36827;&#34892;&#20840;&#23616;&#23433;&#35013;</span>
+
+sudo rm -rf /usr/local/lib/node_modules <span style="color: #579C4C;">#</span><span style="color: #579C4C;">&#21024;&#38500;&#20840;&#23616; node_modules &#30446;&#24405;</span>
+sudo rm /usr/local/bin/node <span style="color: #579C4C;">#</span><span style="color: #579C4C;">&#21024;&#38500; node</span>
+<span style="color: #d4d4d4;">cd</span>  /usr/local/bin &amp;&amp; ls -l | grep <span style="color: #daa520;">"../lib/node_modules/"</span> | awk <span style="color: #daa520;">'{print $9}'</span>| xargs rm <span style="color: #579C4C;">#</span><span style="color: #579C4C;">&#21024;&#38500;&#20840;&#23616; node &#27169;&#22359;&#27880;&#20876;&#30340;&#36719;&#38142;</span>
+</pre>
+</div>
+</div>
+</li>
+
+<li><a id="org103a357"></a>二、安装 nvm<br />
+<div class="outline-text-5" id="text-org103a357">
+<div class="org-src-container">
+<pre class="src src-shell">curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.29.0/install.sh | bash
+</pre>
+</div>
+<p>
+安装完成后请重新打开终端环境，Mac 下推荐使用 oh-my-zsh 代替默认的 bash shell。
+</p>
+</div>
+</li>
+
+
+
+<li><a id="orgda2fff3"></a>三、安装切换各版本 node/npm<br />
+<div class="outline-text-5" id="text-orgda2fff3">
+<div class="org-src-container">
+<pre class="src src-shell">nvm install stable <span style="color: #579C4C;">#</span><span style="color: #579C4C;">&#23433;&#35013;&#26368;&#26032;&#31283;&#23450;&#29256; node&#65292;&#29616;&#22312;&#26159; 5.0.0</span>
+nvm install 4.2.2 <span style="color: #579C4C;">#</span><span style="color: #579C4C;">&#23433;&#35013; 4.2.2 &#29256;&#26412;</span>
+nvm install 0.12.7 <span style="color: #579C4C;">#</span><span style="color: #579C4C;">&#23433;&#35013; 0.12.7 &#29256;&#26412;</span>
+
+<span style="color: #579C4C;"># </span><span style="color: #579C4C;">&#29305;&#21035;&#35828;&#26126;&#65306;&#20197;&#19979;&#27169;&#22359;&#23433;&#35013;&#20165;&#20379;&#28436;&#31034;&#35828;&#26126;&#65292;&#24182;&#38750;&#24517;&#39035;&#23433;&#35013;&#27169;&#22359;</span>
+nvm use 0 <span style="color: #579C4C;">#</span><span style="color: #579C4C;">&#20999;&#25442;&#33267; 0.12.7 &#29256;&#26412;</span>
+npm install -g mz-fis <span style="color: #579C4C;">#</span><span style="color: #579C4C;">&#23433;&#35013; mz-fis &#27169;&#22359;&#33267;&#20840;&#23616;&#30446;&#24405;&#65292;&#23433;&#35013;&#23436;&#25104;&#30340;&#36335;&#24452;&#26159; /Users/&lt;&#20320;&#30340;&#29992;&#25143;&#21517;&gt;/.nvm/versions/node/v0.12.7/lib/mz-fis</span>
+nvm use 4 <span style="color: #579C4C;">#</span><span style="color: #579C4C;">&#20999;&#25442;&#33267; 4.2.2 &#29256;&#26412;</span>
+npm install -g react-native-cli <span style="color: #579C4C;">#</span><span style="color: #579C4C;">&#23433;&#35013; react-native-cli &#27169;&#22359;&#33267;&#20840;&#23616;&#30446;&#24405;&#65292;&#23433;&#35013;&#23436;&#25104;&#30340;&#36335;&#24452;&#26159; /Users/&lt;&#20320;&#30340;&#29992;&#25143;&#21517;&gt;/.nvm/versions/node/v4.2.2/lib/react-native-cli</span>
+
+nvm alias default 0.12.7 <span style="color: #579C4C;">#</span><span style="color: #579C4C;">&#35774;&#32622;&#40664;&#35748; node &#29256;&#26412;&#20026; 0.12.7</span>
+</pre>
+</div>
+</div>
+</li>
+
+
+<li><a id="orgd6eda74"></a>四、使用 .nvmrc 文件配置项目所使用的 node 版本<br />
+<div class="outline-text-5" id="text-orgd6eda74">
+<p>
+如果你的默认 node 版本（通过 nvm alias 命令设置的）与项目所需的版本不同，则可在项目根目录或其任意父级目录中创建 .nvmrc 文件，在文件中指定使用的 node 版本号，例如：
+</p>
+
+<div class="org-src-container">
+<pre class="src src-shell"><span style="color: #d4d4d4;">cd</span> &lt;&#39033;&#30446;&#26681;&#30446;&#24405;&gt;  <span style="color: #579C4C;">#</span><span style="color: #579C4C;">&#36827;&#20837;&#39033;&#30446;&#26681;&#30446;&#24405;</span>
+<span style="color: #d4d4d4;">echo</span> 4 &gt; .nvmrc <span style="color: #579C4C;">#</span><span style="color: #579C4C;">&#28155;&#21152; .nvmrc &#25991;&#20214;</span>
+nvm use <span style="color: #579C4C;">#</span><span style="color: #579C4C;">&#26080;&#38656;&#25351;&#23450;&#29256;&#26412;&#21495;&#65292;&#20250;&#33258;&#21160;&#20351;&#29992; .nvmrc &#25991;&#20214;&#20013;&#37197;&#32622;&#30340;&#29256;&#26412;</span>
+node -v <span style="color: #579C4C;">#</span><span style="color: #579C4C;">&#26597;&#30475; node &#26159;&#21542;&#20999;&#25442;&#20026;&#23545;&#24212;&#29256;&#26412;</span>
+</pre>
+</div>
+</div>
+</li>
+
+
+<li><a id="orgd0272b4"></a>五、nvm 与 n 的区别<br />
+<div class="outline-text-5" id="text-orgd0272b4">
+<p>
+node 版本管理工具还有一个是 TJ 大神的 n 命令，n 命令是作为一个 node 的模块而存在，而 nvm 是一个独立于 node/npm 的外部 shell 脚本，因此 n 命令相比 nvm 更加局限。
+</p>
+
+<p>
+由于 npm 安装的模块路径均为 /usr/local/lib/node_modules ，当使用 n 切换不同的 node 版本时，实际上会共用全局的 node/npm 目录。 因此不能很好的满足『按不同 node 版本使用不同全局 node 模块』的需求。
+</p>
+
+<p>
+因此建议各位尽早开始使用 nvm ，以免出现全局模块无法更新的问题。
+</p>
+
+<p>
+当然，如果你用的是 windows 操作系统，我只能说 …… 朋友，能不能早点换个 Mac
+</p>
+</div>
+</li>
+
+<li><a id="org15794a7"></a>Ref<br />
+<div class="outline-text-5" id="text-org15794a7">
+<ul class="org-ul">
+<li><a href="http://www.cnblogs.com/kaiye/p/4937191.html">http://www.cnblogs.com/kaiye/p/4937191.html</a></li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+
+
+<div id="outline-container-org3ae09dc" class="outline-4">
+<h4 id="org3ae09dc">ubuntu中安装 nodejs&#xa0;&#xa0;&#xa0;<span class="tag"><span class="install">install</span></span></h4>
+<div class="outline-text-4" id="text-org3ae09dc">
+<div class="org-src-container">
+<pre class="src src-shell">(oscar) &#10140;  sources.list.d curl --proxy http://127.0.0.1:8118 -sL https://deb.nodesource.com/setup_10.x | sudo -E bash -
+
+<span style="color: #579C4C;">## </span><span style="color: #579C4C;">Installing the NodeSource Node.js 10.x repo...</span>
+
+
+<span style="color: #579C4C;">## </span><span style="color: #579C4C;">Populating apt-get cache...</span>
+
++ apt-get update
+Ign:1 http://dl.google.com/linux/chrome/deb stable InRelease
+Hit:2 http://dl.google.com/linux/chrome/deb stable Release
+Hit:4 http://ppa.launchpad.net/max-c-lv/shadowsocks-libev/ubuntu xenial InRelease
+Hit:5 http://us.archive.ubuntu.com/ubuntu xenial InRelease
+Get:6 http://us.archive.ubuntu.com/ubuntu xenial-backports InRelease [107 kB]
+Hit:7 https://download.docker.com/linux/ubuntu xenial InRelease
+Get:8 http://us.archive.ubuntu.com/ubuntu xenial-updates InRelease [109 kB]
+Get:9 http://security.ubuntu.com/ubuntu xenial-security InRelease [109 kB]
+Fetched 325 kB<span style="color: #00bfff;"> in</span> 4s (72.7 kB/s)
+Reading package lists... Done
+
+<span style="color: #579C4C;">## </span><span style="color: #579C4C;">Confirming "xenial" is supported...</span>
+
++ curl -sLf -o /dev/null <span style="color: #daa520;">'https://deb.nodesource.com/node_10.x/dists/xenial/Release'</span>
+
+<span style="color: #579C4C;">## </span><span style="color: #579C4C;">Your distribution, identified as "xenial", is not currently supported, please contact NodeSource at https://github.com/nodesource/distributions/issues if you think this is incorrect or would like your distribution to be considered for support</span>
+
+(oscar) &#10140;  sources.list.d
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</body>
+</html>

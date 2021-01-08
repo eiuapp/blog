@@ -1,0 +1,318 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<!-- 2021-01-08 Fri 15:31 -->
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>mac</title>
+<meta name="generator" content="Org mode" />
+<link rel="stylesheet" title="Standard" href="/html/style/worg.css" type="text/css" />
+<link rel="alternate stylesheet" title="Zenburn" href="/html/style/worg-zenburn.css" type="text/css" />
+<link rel="alternate stylesheet" title="Classic" href="/html/style/worg-classic.css" type="text/css" />
+<link rel="SHORTCUT ICON" href="/html/style/org-mode-unicorn.ico" type="image/x-icon" />
+<link rel="icon" href="/html/style/org-mode-unicorn.ico" type="image/ico" />
+<script type="text/javascript">
+/*
+@licstart  The following is the entire license notice for the
+JavaScript code in this tag.
+
+Copyright (C) 2012-2019 Free Software Foundation, Inc.
+
+The JavaScript code in this tag is free software: you can
+redistribute it and/or modify it under the terms of the GNU
+General Public License (GNU GPL) as published by the Free Software
+Foundation, either version 3 of the License, or (at your option)
+any later version.  The code is distributed WITHOUT ANY WARRANTY;
+without even the implied warranty of MERCHANTABILITY or FITNESS
+FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
+
+As additional permission under GNU GPL version 3 section 7, you
+may distribute non-source (e.g., minimized or compacted) forms of
+that code without the copy of the GNU GPL normally required by
+section 4, provided you include this license notice and a URL
+through which recipients can access the Corresponding Source.
+
+
+@licend  The above is the entire license notice
+for the JavaScript code in this tag.
+*/
+<!--/*--><![CDATA[/*><!--*/
+ function CodeHighlightOn(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(null != target) {
+     elem.cacheClassElem = elem.className;
+     elem.cacheClassTarget = target.className;
+     target.className = "code-highlighted";
+     elem.className   = "code-highlighted";
+   }
+ }
+ function CodeHighlightOff(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(elem.cacheClassElem)
+     elem.className = elem.cacheClassElem;
+   if(elem.cacheClassTarget)
+     target.className = elem.cacheClassTarget;
+ }
+/*]]>*///-->
+</script>
+</head>
+<body>
+<div id="preamble" class="status">
+<script type="text/javascript">
+  document.addEventListener('DOMContentLoaded',function() {
+      document.getElementById("table-of-contents").onclick = function() {
+          var elem = document.getElementById("text-table-of-contents");
+          elem.style.display = elem.style.display == "block" ? "none" : "block";
+      }
+  });
+
+  var url = document.location.href;
+  var orgsource = url.substring(0, url.lastIndexOf("."))+".org.html";
+  function show_org_source(){
+      document.location.href = orgsource;
+  }
+</script>
+
+<script>
+(function(f, a, t, h, o, m){
+	a[h]=a[h]||function(){
+		(a[h].q=a[h].q||[]).push(arguments)
+	};
+	o=f.createElement('script'),
+	m=f.getElementsByTagName('script')[0];
+	o.async=1; o.src=t; o.id='fathom-script';
+	m.parentNode.insertBefore(o,m)
+})(document, window, '//stats.orgmode.org/tracker.js', 'fathom');
+fathom('set', 'siteId', 'NWSQJ');
+fathom('trackPageview');
+</script>
+</div>
+<div id="content">
+<h1 class="title">mac</h1>
+<div id="table-of-contents">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#orgf7f768e">Post</a>
+<ul>
+<li><a href="#org9712545">mac</a>
+<ul>
+<li><a href="#org6720903">在mac zsh下，ls只显示文件名</a></li>
+<li><a href="#org4a17407">Mac下为什么有的文件名后带一个*星号</a></li>
+<li><a href="#orgebf89f8">mac 系统中文件的软链接、硬链接</a></li>
+<li><a href="#orgd27fa35">mac 小知识</a></li>
+<li><a href="#org69baaa6">mac tips</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-orgf7f768e" class="outline-2">
+<h2 id="orgf7f768e">Post</h2>
+<div class="outline-text-2" id="text-orgf7f768e">
+</div>
+<div id="outline-container-org9712545" class="outline-3">
+<h3 id="org9712545">mac&#xa0;&#xa0;&#xa0;<span class="tag"><span class="_mac">@mac</span>&#xa0;<span class="mac">mac</span></span></h3>
+<div class="outline-text-3" id="text-org9712545">
+</div>
+<div id="outline-container-org6720903" class="outline-4">
+<h4 id="org6720903">在mac zsh下，ls只显示文件名&#xa0;&#xa0;&#xa0;<span class="tag"><span class="file">file</span></span></h4>
+<div class="outline-text-4" id="text-org6720903">
+<p>
+ls只显示文件名
+</p>
+
+<div class="org-src-container">
+<pre class="src src-bash">$ ls -a1
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-org4a17407" class="outline-4">
+<h4 id="org4a17407">Mac下为什么有的文件名后带一个*星号&#xa0;&#xa0;&#xa0;<span class="tag"><span class="file">file</span></span></h4>
+<div class="outline-text-4" id="text-org4a17407">
+</div>
+
+<ul class="org-ul">
+<li><a id="org76ec20e"></a>Mac下为什么有的文件名后带一个*星号？<br />
+<div class="outline-text-5" id="text-org76ec20e">
+<p>
+这个*号仅仅是ls命令显示的，表示有可执行权限，实际文件名不带*号。
+</p>
+<div class="org-src-container">
+<pre class="src src-bash">$ ls -F
+</pre>
+</div>
+<p>
+可执行文件名后就会加*号。
+</p>
+
+<p>
+显示一个或多个文件的相关信息。
+ls [options] [file-list]
+</p>
+</div>
+</li>
+
+<li><a id="org77ce18b"></a>参数<br />
+<div class="outline-text-5" id="text-org77ce18b">
+<p>
+默认情况下，ls按照文件名的字母顺序列出文件的信息，file-list可以是任意文件或目录
+当file-list包含多个目录时，ls将显示目录的名称，不显示子目录和子文件
+当file-list为普通文件时，ls则显示该文件的相关信息
+</p>
+</div>
+</li>
+
+<li><a id="orge6eaf92"></a>Ref<br />
+<div class="outline-text-5" id="text-orge6eaf92">
+<ul class="org-ul">
+<li><a href="http://www.cnblogs.com/jackbo/p/7201885.html">http://www.cnblogs.com/jackbo/p/7201885.html</a></li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+
+
+
+<div id="outline-container-orgebf89f8" class="outline-4">
+<h4 id="orgebf89f8">mac 系统中文件的软链接、硬链接&#xa0;&#xa0;&#xa0;<span class="tag"><span class="links">links</span></span></h4>
+<div class="outline-text-4" id="text-orgebf89f8">
+<p>
+最近有这么个需求，由于我在多台设备上使用 Surge ，因此我想把 Surge 的配置文件使用 Dropbox 进行同步，但是 Dropbox 的路径在 ~/User/slark/Dropbox/surge.conf 下，而 Surge 的配置文件位于 ~/.surge.conf，每次修改 .surge.conf 后，我都会手动把文件另存到 Dropbox 中，比较麻烦。
+</p>
+
+<p>
+开始想用一款本地文件同步工具来满足这个需求，比如 GoodSync，这个工具也确实能满足需求，但是就这么小的需求也要用软件来实现？经过 Google 后，发现可以通过创建文件的 硬链接 来完美满足这个需求。
+</p>
+</div>
+
+<ul class="org-ul">
+<li><a id="org4c3a59e"></a>文件的 软链接 和 硬链接<br />
+<div class="outline-text-5" id="text-org4c3a59e">
+<p>
+在 Unix 系统中，可以对文件创建 硬链接 和 软链接。简单来说，链接就是可以指向文件系统中其他位置的一个快捷方式，比如 Windows 系统下的快捷方式。那么，硬链接和软链接有什么区别呢？
+</p>
+</div>
+
+<ul class="org-ul">
+<li><a id="orgc2bfa97"></a>硬链接<br />
+<div class="outline-text-6" id="text-orgc2bfa97">
+<p>
+硬链接是一个目录条目，它指具有同一个 i-node（硬盘上的物理位置）的另一个文件，事实上只存在一个文件，比如我对 Dropbox 中的 surge.conf 文件创建一个硬链接：
+</p>
+
+<pre class="example">
+格式：ln [原文件] [硬链接文件]
+ln ~/Dropbox/surge.conf ~/.surge.conf
+</pre>
+
+<p>
+原文件和硬链接的详细信息对比：
+</p>
+
+<p>
+!<a href="https://res.cloudinary.com/dmtixvmgt/image/upload/v1543678506/2016-05-20-14637569371835_unmhhs.png">file vs hard-link</a>
+</p>
+
+<p>
+硬链接有这么几个特点：
+</p>
+
+<ul class="org-ul">
+<li>文件的所有的硬链接指向的是同一个文件，硬盘中只实际只存储一份文件；</li>
+<li>所有硬链接与原文件的大小，修改时间，权限都相同；</li>
+</ul>
+
+<p>
+因为是硬链接，所以 ~/Dropbox/surge.conf 和 ~/.surge.conf 指向的是同一个文件，删除任何一个链接都不会真正的删除文件。
+</p>
+
+<p>
+可以这么理解，在 Unix 系统下，任何文件的实际路径都是一个硬链接，该文件的硬链接数为 1，每创建一个硬链接后，硬链接数 +1，删除一个硬链接，硬链接数 -1，硬链接数为 0 时这个文件实际就被删除了。好比程序中的指针，实际的对象只有一份，指向这个对象的指针却有多个，删除任何一个指针并不会删除这个对象，只有把最后一个指针删掉，这个对象才算是删除掉了。
+</p>
+</div>
+</li>
+
+<li><a id="org8816898"></a>软链接<br />
+<div class="outline-text-6" id="text-org8816898">
+<p>
+软链接则和 windows 中的快捷方式类似，是一个独立的文件，其中包含了指向一个位置的指针，使用如下命令可以创建一个软链接：
+</p>
+
+<pre class="example">
+格式：ln -s [原文件] [软链接文件]
+ln -s .surge.conf mac_surge.conf
+</pre>
+
+<p>
+原文件和软链接的详细信息对比：
+</p>
+
+<p>
+!<a href="https://res.cloudinary.com/dmtixvmgt/image/upload/v1543678969/2016-05-20-14637573776652_uktun5.png">file vs soft links</a>
+</p>
+
+
+<p>
+因为是软链接，删除原文件，所有的软链接都会失效，修改软链接并不会影响原文件，仅仅修改的是该软链接指向的位置而已。
+</p>
+</div>
+</li>
+</ul>
+</li>
+
+<li><a id="orgdd6404f"></a>关于文件链接使用的选择<br />
+<div class="outline-text-5" id="text-orgdd6404f">
+<p>
+基于上面的介绍，我的需求就只有硬链接可以满足了，修改一处，每处都会发生变化。硬链接用于原始文件和目标文件位于当前同一个文件系统。好处是能提供真实文件的有关信息，在原始文件被删除或移动时，也不会成为空链接。但是，如果需要连接目录或位于另一个文件系统的文件时，就必须采用软链接。
+</p>
+</div>
+</li>
+
+<li><a id="orgfff1ec5"></a>Ref<br />
+<div class="outline-text-5" id="text-orgfff1ec5">
+<ul class="org-ul">
+<li><a href="https://slarker.me/mac-file-link/">https://slarker.me/mac-file-link/</a></li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+
+
+<div id="outline-container-orgd27fa35" class="outline-4">
+<h4 id="orgd27fa35">mac 小知识</h4>
+</div>
+<div id="outline-container-org69baaa6" class="outline-4">
+<h4 id="org69baaa6">mac tips&#xa0;&#xa0;&#xa0;<span class="tag"><span class="tips">tips</span></span></h4>
+<div class="outline-text-4" id="text-org69baaa6">
+</div>
+
+<ul class="org-ul">
+<li><a id="org4dd122f"></a>卸载软件<br />
+<div class="outline-text-5" id="text-org4dd122f">
+<p>
+为什么在我的mac上面下了腾讯电脑管家就卸载不了了？点击没有小叉叉也不能移到废纸篓.
+</p>
+
+<pre class="example">
+finder－应用程序－右键－移到废纸篓
+</pre>
+</div>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+</body>
+</html>

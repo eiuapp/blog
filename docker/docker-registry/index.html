@@ -1,0 +1,280 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<!-- 2021-01-08 Fri 15:30 -->
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>docker</title>
+<meta name="generator" content="Org mode" />
+<link rel="stylesheet" title="Standard" href="/html/style/worg.css" type="text/css" />
+<link rel="alternate stylesheet" title="Zenburn" href="/html/style/worg-zenburn.css" type="text/css" />
+<link rel="alternate stylesheet" title="Classic" href="/html/style/worg-classic.css" type="text/css" />
+<link rel="SHORTCUT ICON" href="/html/style/org-mode-unicorn.ico" type="image/x-icon" />
+<link rel="icon" href="/html/style/org-mode-unicorn.ico" type="image/ico" />
+<script type="text/javascript">
+/*
+@licstart  The following is the entire license notice for the
+JavaScript code in this tag.
+
+Copyright (C) 2012-2019 Free Software Foundation, Inc.
+
+The JavaScript code in this tag is free software: you can
+redistribute it and/or modify it under the terms of the GNU
+General Public License (GNU GPL) as published by the Free Software
+Foundation, either version 3 of the License, or (at your option)
+any later version.  The code is distributed WITHOUT ANY WARRANTY;
+without even the implied warranty of MERCHANTABILITY or FITNESS
+FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
+
+As additional permission under GNU GPL version 3 section 7, you
+may distribute non-source (e.g., minimized or compacted) forms of
+that code without the copy of the GNU GPL normally required by
+section 4, provided you include this license notice and a URL
+through which recipients can access the Corresponding Source.
+
+
+@licend  The above is the entire license notice
+for the JavaScript code in this tag.
+*/
+<!--/*--><![CDATA[/*><!--*/
+ function CodeHighlightOn(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(null != target) {
+     elem.cacheClassElem = elem.className;
+     elem.cacheClassTarget = target.className;
+     target.className = "code-highlighted";
+     elem.className   = "code-highlighted";
+   }
+ }
+ function CodeHighlightOff(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(elem.cacheClassElem)
+     elem.className = elem.cacheClassElem;
+   if(elem.cacheClassTarget)
+     target.className = elem.cacheClassTarget;
+ }
+/*]]>*///-->
+</script>
+</head>
+<body>
+<div id="preamble" class="status">
+<script type="text/javascript">
+  document.addEventListener('DOMContentLoaded',function() {
+      document.getElementById("table-of-contents").onclick = function() {
+          var elem = document.getElementById("text-table-of-contents");
+          elem.style.display = elem.style.display == "block" ? "none" : "block";
+      }
+  });
+
+  var url = document.location.href;
+  var orgsource = url.substring(0, url.lastIndexOf("."))+".org.html";
+  function show_org_source(){
+      document.location.href = orgsource;
+  }
+</script>
+
+<script>
+(function(f, a, t, h, o, m){
+	a[h]=a[h]||function(){
+		(a[h].q=a[h].q||[]).push(arguments)
+	};
+	o=f.createElement('script'),
+	m=f.getElementsByTagName('script')[0];
+	o.async=1; o.src=t; o.id='fathom-script';
+	m.parentNode.insertBefore(o,m)
+})(document, window, '//stats.orgmode.org/tracker.js', 'fathom');
+fathom('set', 'siteId', 'NWSQJ');
+fathom('trackPageview');
+</script>
+</div>
+<div id="content">
+<h1 class="title">docker</h1>
+<div id="table-of-contents">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#orgdf2c4bb">Post</a>
+<ul>
+<li><a href="#orgb9e8946">docker-registry-ui</a>
+<ul>
+<li><a href="#docker-registry">docker registry</a></li>
+<li><a href="#docker-registry-ui">docker registry ui</a></li>
+<li><a href="#docker-registry-push-pull">docker-registry-push-pull</a></li>
+<li><a href="#docker-login-failure">docker 登陆失败</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-orgdf2c4bb" class="outline-2">
+<h2 id="orgdf2c4bb">Post</h2>
+<div class="outline-text-2" id="text-orgdf2c4bb">
+</div>
+<div id="outline-container-orgb9e8946" class="outline-3">
+<h3 id="orgb9e8946">docker-registry-ui&#xa0;&#xa0;&#xa0;<span class="tag"><span class="_docker">@docker</span>&#xa0;<span class="docker">docker</span>&#xa0;<span class="registry">registry</span></span></h3>
+<div class="outline-text-3" id="text-orgb9e8946">
+</div>
+<div id="outline-container-org191685f" class="outline-4">
+<h4 id="docker-registry">docker registry&#xa0;&#xa0;&#xa0;<span class="tag"><span class="registry">registry</span></span></h4>
+<div class="outline-text-4" id="text-docker-registry">
+<p>
+docker registry
+</p>
+
+<pre class="example">
+在 192.168.31.240 ， 10.10.12.17 中建立了 registry
+
+输入用户zimug，密码zimug_password
+</pre>
+
+<p>
+192.168.31.171 client
+</p>
+
+<p>
+root 用户
+</p>
+
+<pre class="example">
+sudo mkdir -p /etc/docker/certs.d/reg.jlch.com:5000
+sudo echo 192.168.31.240 reg.jlch.com  &gt;&gt; /etc/hosts
+
+sudo scp -r tom@192.168.31.240:/home/tom/registry/certs/registry.crt /etc/docker/certs.d/reg.jlch.com:5000
+</pre>
+
+<pre class="example">
+root@k-m:/home/jlch# docker login reg.jlch.com:5000
+Username: zimug
+Password:
+Login Succeeded
+root@k-m:/home/jlch# docker images
+REPOSITORY          TAG                 IMAGE ID            CREATED             SIZE
+ceph/daemon         latest              dc9781d1d530        20 hours ago        983MB
+hello-world         latest              1815c82652c0        4 months ago        1.84kB
+root@k-m:/home/jlch# docker tag ceph/daemon reg.jlch.com:5000/ceph/daemon:latest
+root@k-m:/home/jlch# docker push reg.jlch.com:5000/ceph/daemon:latest
+</pre>
+</div>
+</div>
+
+<div id="outline-container-org1668444" class="outline-4">
+<h4 id="docker-registry-ui">docker registry ui&#xa0;&#xa0;&#xa0;<span class="tag"><span class="registry_ui">registry_ui</span></span></h4>
+<div class="outline-text-4" id="text-docker-registry-ui">
+<p>
+<a href="http://blog.csdn.net/mideagroup/article/details/52052618">http://blog.csdn.net/mideagroup/article/details/52052618</a>
+</p>
+</div>
+
+
+<ul class="org-ul">
+<li><a id="env"></a>env<br />
+<div class="outline-text-5" id="text-env">
+<p>
+192.168.31.240
+</p>
+
+<p>
+<i>home/tom/hyper-docker-registry-web-config</i> 下
+</p>
+</div>
+</li>
+</ul>
+</div>
+
+<div id="outline-container-org8f53a1c" class="outline-4">
+<h4 id="docker-registry-push-pull">docker-registry-push-pull</h4>
+<div class="outline-text-4" id="text-docker-registry-push-pull">
+<p>
+请查看
+</p>
+
+<p>
+<a href="https://gitee.com/tomt/tom_docker_registry_push_pull.git">https://gitee.com/tomt/tom_docker_registry_push_pull.git</a>
+</p>
+</div>
+</div>
+
+<div id="outline-container-org45315dc" class="outline-4">
+<h4 id="docker-login-failure">docker 登陆失败&#xa0;&#xa0;&#xa0;<span class="tag"><span class="login">login</span></span></h4>
+<div class="outline-text-4" id="text-docker-login-failure">
+</div>
+
+<ul class="org-ul">
+<li><a id="login-failure---代理问题"></a>login failure - 代理问题<br />
+<div class="outline-text-5" id="text-login-failure---代理问题">
+<pre class="example">
+root@km:~/dockerRegistry# docker login reg.jlch.com:5000
+Username (zimug):
+Password:
+Error response from daemon: Get https://reg.jlch.com:5000/v1/users/: EOF
+root@km:~/dockerRegistry# vi /lib/systemd/system/docker.service
+</pre>
+
+<p>
+重点把 reg.jlch.com 加入 Environment 中。
+</p>
+
+<pre class="example">
+root@km:~# cat /lib/systemd/system/docker.service
+[Unit]
+Description=Docker Application Container Engine
+Documentation=https://docs.docker.com
+After=network.target docker.socket firewalld.service
+Requires=docker.socket
+
+[Service]
+Type=notify
+# the default is not to use systemd for cgroups because the delegate issues still
+# exists and systemd currently does not support the cgroup feature set required
+# for containers run by docker
+Environment="HTTP_PROXY=http://192.168.31.239:8118/" "HTTPS_PROXY=http://192.168.31.239:8118/" "NO_PROXY=localhost,127.0.0.1,docker.io,reg.jlch.com"
+ExecStart=/usr/bin/dockerd -H fd://
+ExecReload=/bin/kill -s HUP $MAINPID
+LimitNOFILE=1048576
+# Having non-zero Limit*s causes performance problems due to accounting overhead
+# in the kernel. We recommend using cgroups to do container-local accounting.
+LimitNPROC=infinity
+LimitCORE=infinity
+# Uncomment TasksMax if your systemd version supports it.
+# Only systemd 226 and above support this version.
+TasksMax=infinity
+TimeoutStartSec=0
+# set delegate yes so that systemd does not reset the cgroups of docker containers
+Delegate=yes
+# kill only the docker process, not all processes in the cgroup
+KillMode=process
+
+[Install]
+WantedBy=multi-user.target
+root@km:~#
+</pre>
+
+<p>
+重启docker
+</p>
+
+<blockquote>
+<p>
+<a href="mailto:root@km">root@km</a>:~/dockerRegistry# systemctl daemon-reload
+<a href="mailto:root@km">root@km</a>:~/dockerRegistry# systemctl restart
+docker.service <a href="mailto:root@km">root@km</a>:~/dockerRegistry# docker
+login reg.jlch.com:5000 Username (zimug): Password: Login Succeeded
+<a href="mailto:root@km">root@km</a>:~/dockerRegistry#
+</p>
+</blockquote>
+</div>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+</body>
+</html>

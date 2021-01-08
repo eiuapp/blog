@@ -1,0 +1,211 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<!-- 2021-01-08 Fri 14:59 -->
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>hugo</title>
+<meta name="generator" content="Org mode" />
+<link rel="stylesheet" title="Standard" href="/html/style/worg.css" type="text/css" />
+<link rel="alternate stylesheet" title="Zenburn" href="/html/style/worg-zenburn.css" type="text/css" />
+<link rel="alternate stylesheet" title="Classic" href="/html/style/worg-classic.css" type="text/css" />
+<link rel="SHORTCUT ICON" href="/html/style/org-mode-unicorn.ico" type="image/x-icon" />
+<link rel="icon" href="/html/style/org-mode-unicorn.ico" type="image/ico" />
+<script type="text/javascript">
+/*
+@licstart  The following is the entire license notice for the
+JavaScript code in this tag.
+
+Copyright (C) 2012-2019 Free Software Foundation, Inc.
+
+The JavaScript code in this tag is free software: you can
+redistribute it and/or modify it under the terms of the GNU
+General Public License (GNU GPL) as published by the Free Software
+Foundation, either version 3 of the License, or (at your option)
+any later version.  The code is distributed WITHOUT ANY WARRANTY;
+without even the implied warranty of MERCHANTABILITY or FITNESS
+FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
+
+As additional permission under GNU GPL version 3 section 7, you
+may distribute non-source (e.g., minimized or compacted) forms of
+that code without the copy of the GNU GPL normally required by
+section 4, provided you include this license notice and a URL
+through which recipients can access the Corresponding Source.
+
+
+@licend  The above is the entire license notice
+for the JavaScript code in this tag.
+*/
+<!--/*--><![CDATA[/*><!--*/
+ function CodeHighlightOn(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(null != target) {
+     elem.cacheClassElem = elem.className;
+     elem.cacheClassTarget = target.className;
+     target.className = "code-highlighted";
+     elem.className   = "code-highlighted";
+   }
+ }
+ function CodeHighlightOff(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(elem.cacheClassElem)
+     elem.className = elem.cacheClassElem;
+   if(elem.cacheClassTarget)
+     target.className = elem.cacheClassTarget;
+ }
+/*]]>*///-->
+</script>
+</head>
+<body>
+<div id="preamble" class="status">
+<script type="text/javascript">
+  document.addEventListener('DOMContentLoaded',function() {
+      document.getElementById("table-of-contents").onclick = function() {
+          var elem = document.getElementById("text-table-of-contents");
+          elem.style.display = elem.style.display == "block" ? "none" : "block";
+      }
+  });
+
+  var url = document.location.href;
+  var orgsource = url.substring(0, url.lastIndexOf("."))+".org.html";
+  function show_org_source(){
+      document.location.href = orgsource;
+  }
+</script>
+
+<script>
+(function(f, a, t, h, o, m){
+	a[h]=a[h]||function(){
+		(a[h].q=a[h].q||[]).push(arguments)
+	};
+	o=f.createElement('script'),
+	m=f.getElementsByTagName('script')[0];
+	o.async=1; o.src=t; o.id='fathom-script';
+	m.parentNode.insertBefore(o,m)
+})(document, window, '//stats.orgmode.org/tracker.js', 'fathom');
+fathom('set', 'siteId', 'NWSQJ');
+fathom('trackPageview');
+</script>
+</div>
+<div id="content">
+<h1 class="title">hugo</h1>
+<div id="table-of-contents">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#orgf99b98a">Post</a>
+<ul>
+<li><a href="#orgb44451d">emacs下使用hugo写文档</a>
+<ul>
+<li><a href="#org2f500f2">emacs下使用hugo写文档</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-orgf99b98a" class="outline-2">
+<h2 id="orgf99b98a">Post</h2>
+<div class="outline-text-2" id="text-orgf99b98a">
+</div>
+<div id="outline-container-orgb44451d" class="outline-3">
+<h3 id="orgb44451d">emacs下使用hugo写文档&#xa0;&#xa0;&#xa0;<span class="tag"><span class="_hugo">@hugo</span>&#xa0;<span class="hugo">hugo</span></span></h3>
+<div class="outline-text-3" id="text-orgb44451d">
+</div>
+<div id="outline-container-org2f500f2" class="outline-4">
+<h4 id="org2f500f2">emacs下使用hugo写文档</h4>
+<div class="outline-text-4" id="text-org2f500f2">
+<p>
+emacs下使用hugo写文档, 主要有以下几种方式
+</p>
+
+<p>
+无论是写哪种文档，都建议使用easy-mode创建,管理文档
+</p>
+</div>
+
+<ul class="org-ul">
+<li><a id="org68cf307"></a>写org文档<br />
+<ul class="org-ul">
+<li><a id="orgcab0610"></a>用ox-hugo写org文档<br />
+<ul class="org-ul">
+<li><a id="orgb338a90"></a>安装<br /></li>
+
+<li><a id="org743e1eb"></a>使用<br /></li>
+</ul>
+</li>
+
+
+<li><a id="org36cf8fe"></a>用org-mode写org文档<br />
+<ul class="org-ul">
+<li><a id="org300196c"></a><span class="todo TODO">TODO</span> 直接用easy-mode创建新的.org文档，header不正常<br />
+<div class="outline-text-7" id="text-org300196c">
+<p>
+看了一下代码，好像是源码里写死，没有使用到 archetype/default.org文件呀。
+</p>
+</div>
+
+<ul class="org-ul">
+<li><a id="orgf8e4265"></a>直接用easy-mode preview<br />
+<div class="outline-text-8" id="text-orgf8e4265">
+<p>
+可以看到，
+</p>
+
+<p>
+TODO 避免删除后重新安装
+</p>
+<p>
+这样子的信息。
+</p>
+</div>
+</li>
+</ul>
+</li>
+
+<li><a id="org6df926e"></a>导出成markdown<br />
+<div class="outline-text-7" id="text-org6df926e">
+<p>
+发现写成org文档后，导出成markdown，会有content-table,这样，会有2个大纲，且，文章的时间不对。
+</p>
+</div>
+</li>
+
+<li><a id="orgb29ccf2"></a>直接导出成html<br />
+<div class="outline-text-7" id="text-orgb29ccf2">
+<p>
+这时，没有大纲。但是，其它都还正常。
+</p>
+</div>
+</li>
+</ul>
+</li>
+
+<li><a id="orgc3672e5"></a><span class="todo TODO">TODO</span> Orgmode利用ox-pandoc导出成markdown<br />
+<div class="outline-text-6" id="text-orgc3672e5">
+<p>
+<a href="https://blog.yuantops.com/tech/emacs-orgmode-hugo-with-oxpandoc/">Orgmode利用ox-pandoc导出hugo博客的workflow</a>
+</p>
+</div>
+</li>
+</ul>
+</li>
+
+<li><a id="orgb1fdfc9"></a>写markdown文档<br />
+<ul class="org-ul">
+<li><a id="org0cf6e7b"></a>用markdown-mode写markdown文档<br /></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+</body>
+</html>

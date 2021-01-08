@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2020-07-30 Thu 16:10 -->
+<!-- 2021-01-07 Thu 11:02 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>ubuntu apt 安装 PyQt5</title>
@@ -98,13 +98,14 @@ fathom('trackPageview');
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#orgdf70891">Ubuntu18.04 安装 PyQt5</a>
+<li><a href="#orgd7a62e9">Ubuntu18.04 安装 PyQt5</a>
 <ul>
-<li><a href="#org9cb9d70">安装pip3</a></li>
-<li><a href="#orgf3f014e">首先更新pip3：</a></li>
-<li><a href="#org7440581">安装pyqt5</a></li>
-<li><a href="#org9c56693">安装图形设计工具</a></li>
-<li><a href="#orgc025669">验证安装成功</a></li>
+<li><a href="#orgb22297e">安装pip3</a></li>
+<li><a href="#org750ced0">首先更新pip3：</a></li>
+<li><a href="#org9ab2528">安装 PyQtWebEngine==5.12.1</a></li>
+<li><a href="#org6bdee71">安装 pyqt5==5.12.0</a></li>
+<li><a href="#org6d1006b">安装图形设计工具</a></li>
+<li><a href="#org7af3a7e">验证安装成功</a></li>
 </ul>
 </li>
 </ul>
@@ -114,35 +115,52 @@ fathom('trackPageview');
 <a href="../index.html">{Back to site's index}</a>
 </p>
 
-<div id="outline-container-orgdf70891" class="outline-2">
-<h2 id="orgdf70891">Ubuntu18.04 安装 PyQt5</h2>
-<div class="outline-text-2" id="text-orgdf70891">
+<div id="outline-container-orgd7a62e9" class="outline-2">
+<h2 id="orgd7a62e9">Ubuntu18.04 安装 PyQt5</h2>
+<div class="outline-text-2" id="text-orgd7a62e9">
 <p>
 <a href="https://zhuanlan.zhihu.com/p/137571552">https://zhuanlan.zhihu.com/p/137571552</a>
 </p>
 </div>
 
-<div id="outline-container-org9cb9d70" class="outline-3">
-<h3 id="org9cb9d70">安装pip3</h3>
-<div class="outline-text-3" id="text-org9cb9d70">
+<div id="outline-container-orgb22297e" class="outline-3">
+<h3 id="orgb22297e">安装pip3</h3>
+<div class="outline-text-3" id="text-orgb22297e">
 <p>
 没有对应的pip3，于是执行命令 <code>sudo apt-get install python3-pip</code> ，即可成功安装pip3
 </p>
 </div>
 </div>
 
-<div id="outline-container-orgf3f014e" class="outline-3">
-<h3 id="orgf3f014e">首先更新pip3：</h3>
-<div class="outline-text-3" id="text-orgf3f014e">
+<div id="outline-container-org750ced0" class="outline-3">
+<h3 id="org750ced0">首先更新pip3：</h3>
+<div class="outline-text-3" id="text-org750ced0">
 <p>
 sudo python3 -m pip install &#x2013;upgrade pip
 </p>
 </div>
 </div>
 
-<div id="outline-container-org7440581" class="outline-3">
-<h3 id="org7440581">安装pyqt5</h3>
-<div class="outline-text-3" id="text-org7440581">
+<div id="outline-container-org9ab2528" class="outline-3">
+<h3 id="org9ab2528">安装 PyQtWebEngine==5.12.1</h3>
+<div class="outline-text-3" id="text-org9ab2528">
+<ul class="org-ul">
+<li><a href="https://stackoverflow.com/questions/55812117/pyqt-qtwebenginewidgets-with-pyqt-5-12">https://stackoverflow.com/questions/55812117/pyqt-qtwebenginewidgets-with-pyqt-5-12</a></li>
+</ul>
+
+<p>
+因为，后续的包加载过程中，很可能会有导入错误，所以，要选择相互匹配的版本。目前（2020.11.11）最好选择 5.12 版本。
+</p>
+
+<p>
+sudo pip install PyQtWebEngine==5.12.1  -i <a href="https://pypi.doubanio.com/simple/">https://pypi.doubanio.com/simple/</a> &#x2013;trusted-host pypi.doubanio.com
+</p>
+</div>
+</div>
+
+<div id="outline-container-org6bdee71" class="outline-3">
+<h3 id="org6bdee71">安装 pyqt5==5.12.0</h3>
+<div class="outline-text-3" id="text-org6bdee71">
 <p>
 sudo pip3 install pyqt5==5.12.0
 </p>
@@ -154,9 +172,9 @@ sudo pip3 install pyqt5==5.12.0
 </div>
 </div>
 
-<div id="outline-container-org9c56693" class="outline-3">
-<h3 id="org9c56693">安装图形设计工具</h3>
-<div class="outline-text-3" id="text-org9c56693">
+<div id="outline-container-org6d1006b" class="outline-3">
+<h3 id="org6d1006b">安装图形设计工具</h3>
+<div class="outline-text-3" id="text-org6d1006b">
 <p>
 sudo apt install pyqt5-dev pyqt5-dev-tools *安装pyqt5的依赖项
 sudo apt install qt5-default qttools5-dev-tools * 安装qtdesigner
@@ -164,9 +182,9 @@ sudo apt install qt5-default qttools5-dev-tools * 安装qtdesigner
 </div>
 </div>
 
-<div id="outline-container-orgc025669" class="outline-3">
-<h3 id="orgc025669">验证安装成功</h3>
-<div class="outline-text-3" id="text-orgc025669">
+<div id="outline-container-org7af3a7e" class="outline-3">
+<h3 id="org7af3a7e">验证安装成功</h3>
+<div class="outline-text-3" id="text-org7af3a7e">
 <p>
 <a href="https://blog.csdn.net/weixin_42528089/article/details/90579245">https://blog.csdn.net/weixin_42528089/article/details/90579245</a>
 </p>

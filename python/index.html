@@ -1,0 +1,833 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<!-- 2021-01-08 Fri 14:59 -->
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>python</title>
+<meta name="generator" content="Org mode" />
+<link rel="stylesheet" title="Standard" href="/html/style/worg.css" type="text/css" />
+<link rel="alternate stylesheet" title="Zenburn" href="/html/style/worg-zenburn.css" type="text/css" />
+<link rel="alternate stylesheet" title="Classic" href="/html/style/worg-classic.css" type="text/css" />
+<link rel="SHORTCUT ICON" href="/html/style/org-mode-unicorn.ico" type="image/x-icon" />
+<link rel="icon" href="/html/style/org-mode-unicorn.ico" type="image/ico" />
+<script type="text/javascript">
+/*
+@licstart  The following is the entire license notice for the
+JavaScript code in this tag.
+
+Copyright (C) 2012-2019 Free Software Foundation, Inc.
+
+The JavaScript code in this tag is free software: you can
+redistribute it and/or modify it under the terms of the GNU
+General Public License (GNU GPL) as published by the Free Software
+Foundation, either version 3 of the License, or (at your option)
+any later version.  The code is distributed WITHOUT ANY WARRANTY;
+without even the implied warranty of MERCHANTABILITY or FITNESS
+FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
+
+As additional permission under GNU GPL version 3 section 7, you
+may distribute non-source (e.g., minimized or compacted) forms of
+that code without the copy of the GNU GPL normally required by
+section 4, provided you include this license notice and a URL
+through which recipients can access the Corresponding Source.
+
+
+@licend  The above is the entire license notice
+for the JavaScript code in this tag.
+*/
+<!--/*--><![CDATA[/*><!--*/
+ function CodeHighlightOn(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(null != target) {
+     elem.cacheClassElem = elem.className;
+     elem.cacheClassTarget = target.className;
+     target.className = "code-highlighted";
+     elem.className   = "code-highlighted";
+   }
+ }
+ function CodeHighlightOff(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(elem.cacheClassElem)
+     elem.className = elem.cacheClassElem;
+   if(elem.cacheClassTarget)
+     target.className = elem.cacheClassTarget;
+ }
+/*]]>*///-->
+</script>
+</head>
+<body>
+<div id="preamble" class="status">
+<script type="text/javascript">
+  document.addEventListener('DOMContentLoaded',function() {
+      document.getElementById("table-of-contents").onclick = function() {
+          var elem = document.getElementById("text-table-of-contents");
+          elem.style.display = elem.style.display == "block" ? "none" : "block";
+      }
+  });
+
+  var url = document.location.href;
+  var orgsource = url.substring(0, url.lastIndexOf("."))+".org.html";
+  function show_org_source(){
+      document.location.href = orgsource;
+  }
+</script>
+
+<script>
+(function(f, a, t, h, o, m){
+	a[h]=a[h]||function(){
+		(a[h].q=a[h].q||[]).push(arguments)
+	};
+	o=f.createElement('script'),
+	m=f.getElementsByTagName('script')[0];
+	o.async=1; o.src=t; o.id='fathom-script';
+	m.parentNode.insertBefore(o,m)
+})(document, window, '//stats.orgmode.org/tracker.js', 'fathom');
+fathom('set', 'siteId', 'NWSQJ');
+fathom('trackPageview');
+</script>
+</div>
+<div id="content">
+<h1 class="title">python</h1>
+<div id="table-of-contents">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#orgcf89511">Post</a>
+<ul>
+<li><a href="#org1536c4d">ython</a>
+<ul>
+<li><a href="#org606f99b">python面试准备roadmap</a></li>
+<li><a href="#org83152e0">mac中python安装pyenv</a></li>
+<li><a href="#orgc8590cb"><span class="todo TODO">TODO</span> spacemacs配置python3环境</a></li>
+<li><a href="#orgf90be81">python小技巧</a></li>
+<li><a href="#orge1177bb"><span class="todo TODO">TODO</span> 跟着廖雪峰老师一起学python</a></li>
+<li><a href="#orgdfb7196">jupyter-notebook 密码查询</a></li>
+<li><a href="#org6baf81e">Emacs与Jupyter notebook之间的集成</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-orgcf89511" class="outline-2">
+<h2 id="orgcf89511">Post</h2>
+<div class="outline-text-2" id="text-orgcf89511">
+</div>
+<div id="outline-container-org1536c4d" class="outline-3">
+<h3 id="org1536c4d">ython&#xa0;&#xa0;&#xa0;<span class="tag"><span class="_python">@python</span>&#xa0;<span class="python">python</span></span></h3>
+<div class="outline-text-3" id="text-org1536c4d">
+</div>
+<div id="outline-container-org606f99b" class="outline-4">
+<h4 id="org606f99b">python面试准备roadmap&#xa0;&#xa0;&#xa0;<span class="tag"><span class="interview">interview</span></span></h4>
+<div class="outline-text-4" id="text-org606f99b">
+</div>
+<ul class="org-ul">
+<li><a id="orgd816027"></a>题目<br />
+<ul class="org-ul">
+<li><a id="org5fe0ef6"></a>请设计一个decorator，它可作用于任何函数上，并打印该函数的执行时间<br />
+<div class="outline-text-6" id="text-org5fe0ef6">
+<div class="org-src-container">
+<pre class="src src-python"><span style="color: #00bfff;">import</span> functools, time
+
+<span style="color: #00bfff;">def</span> <span style="color: #F94949;">metric</span>(fnc):
+    <span style="color: #d4d4d4;">@functools.wraps</span>(fnc)
+    <span style="color: #00bfff;">def</span> <span style="color: #F94949;">wrapper</span>(*args,**kw):
+        <span style="color: #d4d4d4;">start</span> = time.time()
+        fnc(*args,**kw)
+        <span style="color: #d4d4d4;">stop</span> = time.time()
+        <span style="color: #d4d4d4;">t</span> = stop-start
+        <span style="color: #00bfff;">print</span>(<span style="color: #daa520;">'%s executed in %s ms'</span> % (fnc.<span style="color: #d4d4d4;">__name__</span>, t))
+        <span style="color: #00bfff;">pass</span>
+    <span style="color: #00bfff;">return</span> wrapper
+
+<span style="color: #d4d4d4;">@metric</span>
+<span style="color: #00bfff;">def</span> <span style="color: #F94949;">test</span>():
+    time.sleep(2)
+    <span style="color: #00bfff;">print</span>(<span style="color: #daa520;">"test is running!"</span>)
+
+test()
+
+</pre>
+</div>
+
+
+<p>
+<b><b>*</b></b>
+</p>
+</div>
+</li>
+</ul>
+</li>
+<li><a id="orgbf0aa2f"></a>step1<br />
+<div class="outline-text-5" id="text-orgbf0aa2f">
+<p>
+<a href="https://www.cnblogs.com/Vito2008/p/5044251.html">https://www.cnblogs.com/Vito2008/p/5044251.html</a>
+</p>
+
+
+<div class="org-src-container">
+<pre class="src src-python"><span style="color: #579C4C;">#</span><span style="color: #579C4C;">!/Users/tomtsang/.virtualenvs/quant-py3/bin/python</span>
+<span style="color: #579C4C;"># </span><span style="color: #579C4C;">-*- coding:utf-8 -*-</span>
+<span style="color: #579C4C;"># </span><span style="color: #579C4C;">Author: zengyunlong</span>
+
+<span style="color: #579C4C;"># </span><span style="color: #579C4C;">&#34917;&#20805;&#32570;&#22833;&#30340;&#20195;&#30721;</span>
+
+<span style="color: #00bfff;">def</span> <span style="color: #F94949;">print_directory_contents</span>(sPath):
+    <span style="color: #999999;">"""</span>
+<span style="color: #999999;">    &#36825;&#20010;&#20989;&#25968;&#25509;&#21463;&#25991;&#20214;&#22841;&#30340;&#21517;&#31216;&#20316;&#20026;&#36755;&#20837;&#21442;&#25968;&#65292;</span>
+<span style="color: #999999;">    &#36820;&#22238;&#35813;&#25991;&#20214;&#22841;&#20013;&#25991;&#20214;&#30340;&#36335;&#24452;&#65292;</span>
+<span style="color: #999999;">    &#20197;&#21450;&#20854;&#21253;&#21547;&#25991;&#20214;&#22841;&#20013;&#25991;&#20214;&#30340;&#36335;&#24452;&#12290;</span>
+
+<span style="color: #999999;">    """</span>
+    <span style="color: #00bfff;">import</span> os
+    <span style="color: #00bfff;">for</span> sChild <span style="color: #00bfff;">in</span> os.listdir(sPath):
+        <span style="color: #d4d4d4;">sChildPath</span> = os.path.join(sPath , sChild)
+        <span style="color: #00bfff;">if</span> os.path.isdir(sChildPath):
+            print_directory_contents(sChildPath)
+        <span style="color: #00bfff;">else</span>:
+            <span style="color: #00bfff;">print</span>(sChildPath)
+<span style="color: #00bfff;">print</span>(<span style="color: #daa520;">"this is before if __name__:%s"</span>%<span style="color: #d4d4d4;">__name__</span>)
+<span style="color: #00bfff;">if</span> <span style="color: #d4d4d4;">__name__</span>==<span style="color: #daa520;">'__main__'</span>:
+    <span style="color: #00bfff;">print</span>(<span style="color: #daa520;">"this is after if __name__:%s"</span>%<span style="color: #d4d4d4;">__name__</span>)
+    <span style="color: #00bfff;">print</span>(print_directory_contents(<span style="color: #daa520;">"."</span>))
+
+</pre>
+</div>
+</div>
+</li>
+
+
+<li><a id="org4df440b"></a><span class="todo TODO">TODO</span> step2<br />
+<div class="outline-text-5" id="text-org4df440b">
+<p>
+<a href="https://www.cnblogs.com/goodhacker/p/3366618.html">https://www.cnblogs.com/goodhacker/p/3366618.html</a>
+</p>
+</div>
+</li>
+
+<li><a id="org3e851ea"></a><span class="todo TODO">TODO</span> step3<br />
+<div class="outline-text-5" id="text-org3e851ea">
+<p>
+<a href="https://blog.csdn.net/weixin_41666747/article/details/79942847">https://blog.csdn.net/weixin_41666747/article/details/79942847</a>
+</p>
+</div>
+</li>
+</ul>
+</div>
+
+<div id="outline-container-org83152e0" class="outline-4">
+<h4 id="org83152e0">mac中python安装pyenv&#xa0;&#xa0;&#xa0;<span class="tag"><span class="pyenv">pyenv</span></span></h4>
+<div class="outline-text-4" id="text-org83152e0">
+<p>
+pyenv 用于同时管理多个python版本，它可以为每个工作目录设定使用指定的py版本，在不同目录下使用不同的版本可以同时开发不同版本的项目。
+</p>
+</div>
+<ul class="org-ul">
+<li><a id="org72f4b32"></a>Ubuntu安装<br />
+<div class="outline-text-5" id="text-org72f4b32">
+<div class="org-src-container">
+<pre class="src src-shell">&#10140;  oscar git:(master) &#10007; git clone https://github.com/pyenv/pyenv ~/.pyenv
+Cloning into <span style="color: #daa520;">'/Users/tomtsang/.pyenv'</span>...
+remote: Enumerating objects: 63, done.
+remote: Counting objects: 100% (63/63), done.
+remote: Compressing objects: 100% (37/37), done.
+remote: Total 16547 (delta 24), reused 50 (delta 20), pack-reused 16484
+Receiving objects: 100% (16547/16547), 3.24 MiB | 497.00 KiB/s, done.
+Resolving deltas: 100% (11211/11211), done.
+&#10140;  oscar git:(master) &#10007; git clone https://github.com/pyenv/pyenv-virtualenv ~/.pyenv/plugins/pyenv-virtualenv
+Cloning into <span style="color: #daa520;">'/Users/tomtsang/.pyenv/plugins/pyenv-virtualenv'</span>...
+remote: Enumerating objects: 2027, done.
+remote: Total 2027 (delta 0), reused 0 (delta 0), pack-reused 2027
+Receiving objects: 100% (2027/2027), 572.01 KiB | 340.00 KiB/s, done.
+Resolving deltas: 100% (1384/1384), done.
+&#10140;  oscar git:(master) &#10007;
+</pre>
+</div>
+
+<p>
+将PYENV_ROOT和pyenv init加入bash的~/.bashrc（或zsh的~/.zshrc）
+</p>
+
+<div class="org-src-container">
+<pre class="src src-shell"><span style="color: #d4d4d4;">echo</span> <span style="color: #daa520;">'export PYENV_ROOT="$HOME/.pyenv"'</span> &gt;&gt; ~/.zshrc
+<span style="color: #d4d4d4;">echo</span> <span style="color: #daa520;">'export PATH="$PYENV_ROOT/bin:$PATH"'</span> &gt;&gt; ~/.zshrc
+<span style="color: #d4d4d4;">echo</span> <span style="color: #daa520;">'eval "$(pyenv init -)"'</span> &gt;&gt; ~/.zshrc
+<span style="color: #d4d4d4;">echo</span> <span style="color: #daa520;">'eval "$(pyenv virtualenv-init -)"'</span> &gt;&gt; ~/.zshrc
+</pre>
+</div>
+
+<p>
+激活pyenv
+</p>
+
+<p>
+source ~/.bashrc（或zsh的`~/.zshrc`）
+</p>
+</div>
+</li>
+
+<li><a id="orgbffe7b2"></a>Mac 安装<br />
+<div class="outline-text-5" id="text-orgbffe7b2">
+<p>
+更新brew
+</p>
+<div class="org-src-container">
+<pre class="src src-shell">brew update
+</pre>
+</div>
+
+<p>
+使用brew安装pyenv
+</p>
+<div class="org-src-container">
+<pre class="src src-shell">brew install pyenv
+</pre>
+</div>
+
+<p>
+配置环境变量
+</p>
+<div class="org-src-container">
+<pre class="src src-shell"><span style="color: #d4d4d4;">echo</span> <span style="color: #daa520;">'eval "$(pyenv init -)"'</span> &gt;&gt; ~/.zshrc
+<span style="color: #d4d4d4;">echo</span> <span style="color: #daa520;">'eval "$(pyenv virtualenv-init -)"'</span> &gt;&gt; ~/.zshrc
+</pre>
+</div>
+
+<p>
+或vim直接编辑
+</p>
+
+<p>
+激活环境
+</p>
+<div class="org-src-container">
+<pre class="src src-shell"><span style="color: #d4d4d4;">source</span> ~/.zshrc
+</pre>
+</div>
+</div>
+</li>
+
+<li><a id="org61eaaa5"></a>检验<br />
+<div class="outline-text-5" id="text-org61eaaa5">
+<div class="org-src-container">
+<pre class="src src-shell">pyenv -v
+</pre>
+</div>
+</div>
+
+<ul class="org-ul">
+<li><a id="org15c1d16"></a>pyenv: no such command `sh-activate`<br />
+<div class="outline-text-6" id="text-org15c1d16">
+<p>
+如果这个时候，会出现 “pyenv: no such command `sh-activate`”错误，再安装
+pyenv-virtualenv 就可以了。
+</p>
+
+<div class="org-src-container">
+<pre class="src src-shell">&#10140;  ~ git:(master) &#10007; pyenv -v
+pyenv 1.2.8
+pyenv: no such command <span style="color: #00cdcd; font-weight: bold;">`sh-activate'</span>
+<span style="color: #00cdcd; font-weight: bold;">&#10140;  ~ git:(master) &#10007; brew install pyenv-virtualenv</span>
+<span style="color: #00cdcd; font-weight: bold;">Updating Homebrew...</span>
+<span style="color: #00cdcd; font-weight: bold;">==&gt; Downloading https://github.com/pyenv/pyenv-virtualenv/archive/v1.1.3.tar.gz</span>
+<span style="color: #00cdcd; font-weight: bold;">==&gt; Downloading from https://codeload.github.com/pyenv/pyenv-virtualenv/tar.gz/v1.1.3</span>
+<span style="color: #00cdcd; font-weight: bold;">######################################################################## 100.0%</span>
+<span style="color: #00cdcd; font-weight: bold;">==&gt; ./install.sh</span>
+<span style="color: #00cdcd; font-weight: bold;">==&gt; Caveats</span>
+<span style="color: #00cdcd; font-weight: bold;">To enable auto-activation add to your profile:</span>
+<span style="color: #00cdcd; font-weight: bold;">  if which pyenv-virtualenv-init &gt; /dev/null; then eval "$(pyenv virtualenv-init -)"; fi</span>
+<span style="color: #00cdcd; font-weight: bold;">==&gt; Summary</span>
+<span style="color: #00cdcd; font-weight: bold;">&#127866;  /usr/local/Cellar/pyenv-virtualenv/1.1.3: 20 files, 62.2KB, built in 12 seconds</span>
+<span style="color: #00cdcd; font-weight: bold;">&#10140;  ~ git:(master) &#10007; pyenv -v</span>
+<span style="color: #00cdcd; font-weight: bold;">pyenv 1.2.8</span>
+<span style="color: #00cdcd; font-weight: bold;">&#10140;  ~ git:(master) &#10007;</span>
+</pre>
+</div>
+</div>
+</li>
+
+<li><a id="org345bacf"></a>Ref<br />
+<div class="outline-text-6" id="text-org345bacf">
+<ul class="org-ul">
+<li><a href="https://stackoverflow.com/questions/37152659/bash-environment-variable-setting-of-home-returns-pyenv-no-such-command-sh">https://stackoverflow.com/questions/37152659/bash-environment-variable-setting-of-home-returns-pyenv-no-such-command-sh</a></li>
+</ul>
+</div>
+</li>
+</ul>
+</li>
+
+<li><a id="org80d8998"></a>常用命令<br />
+<div class="outline-text-5" id="text-org80d8998">
+<div class="org-src-container">
+<pre class="src src-shell">pyenv install --list <span style="color: #579C4C;"># </span><span style="color: #579C4C;">&#21015;&#20986;&#21487;&#23433;&#35013;&#29256;&#26412;</span>
+pyenv install &lt;version&gt; <span style="color: #579C4C;"># </span><span style="color: #579C4C;">&#23433;&#35013;&#23545;&#24212;&#29256;&#26412;</span>
+pyenv install -v &lt;version&gt; <span style="color: #579C4C;"># </span><span style="color: #579C4C;">&#23433;&#35013;&#23545;&#24212;&#29256;&#26412;&#65292;&#33509;&#21457;&#29983;&#38169;&#35823;&#65292;&#21487;&#20197;&#26174;&#31034;&#35814;&#32454;&#30340;&#38169;&#35823;&#20449;&#24687;</span>
+pyenv versions <span style="color: #579C4C;"># </span><span style="color: #579C4C;">&#26174;&#31034;&#24403;&#21069;&#20351;&#29992;&#30340;python&#29256;&#26412;</span>
+pyenv which python <span style="color: #579C4C;"># </span><span style="color: #579C4C;">&#26174;&#31034;&#24403;&#21069;python&#23433;&#35013;&#36335;&#24452;</span>
+pyenv global &lt;version&gt; <span style="color: #579C4C;"># </span><span style="color: #579C4C;">&#35774;&#32622;&#40664;&#35748;Python&#29256;&#26412;</span>
+pyenv local &lt;version&gt; <span style="color: #579C4C;"># </span><span style="color: #579C4C;">&#24403;&#21069;&#36335;&#24452;&#21019;&#24314;&#19968;&#20010;.python-version, &#20197;&#21518;&#36827;&#20837;&#36825;&#20010;&#30446;&#24405;&#33258;&#21160;&#20999;&#25442;&#20026;&#35813;&#29256;&#26412;</span>
+pyenv shell &lt;version&gt; <span style="color: #579C4C;"># </span><span style="color: #579C4C;">&#24403;&#21069;shell&#30340;session&#20013;&#21551;&#29992;&#26576;&#29256;&#26412;&#65292;&#20248;&#20808;&#32423;&#39640;&#20110;global &#21450; local</span>
+</pre>
+</div>
+
+<p>
+使用virtualenv
+</p>
+
+<div class="org-src-container">
+<pre class="src src-shell">pyenv virtualenv env <span style="color: #579C4C;"># </span><span style="color: #579C4C;">&#20174;&#40664;&#35748;&#29256;&#26412;&#21019;&#24314;&#34394;&#25311;&#29615;&#22659;</span>
+pyenv virtualenv 3.6.4 env-3.6.4 <span style="color: #579C4C;"># </span><span style="color: #579C4C;">&#21019;&#24314;3.6.4&#29256;&#26412;&#30340;&#34394;&#25311;&#29615;&#22659;</span>
+pyenv activate env-3.6.4 <span style="color: #579C4C;"># </span><span style="color: #579C4C;">&#28608;&#27963; env-3.6.4 &#36825;&#20010;&#34394;&#25311;&#29615;&#22659;</span>
+pyenv deactivate <span style="color: #579C4C;"># </span><span style="color: #579C4C;">&#20572;&#29992;&#24403;&#21069;&#30340;&#34394;&#25311;&#29615;&#22659;</span>
+
+<span style="color: #579C4C;"># </span><span style="color: #579C4C;">&#33258;&#21160;&#28608;&#27963;</span>
+<span style="color: #579C4C;"># </span><span style="color: #579C4C;">&#20351;&#29992;pyenv local &#34394;&#25311;&#29615;&#22659;&#21517;</span>
+<span style="color: #579C4C;"># </span><span style="color: #579C4C;">&#20250;&#25226;`&#34394;&#25311;&#29615;&#22659;&#21517;`&#20889;&#20837;&#24403;&#21069;&#30446;&#24405;&#30340;.python-version&#25991;&#20214;&#20013;</span>
+<span style="color: #579C4C;"># </span><span style="color: #579C4C;">&#20851;&#38381;&#33258;&#21160;&#28608;&#27963; -&gt; pyenv deactivate</span>
+<span style="color: #579C4C;"># </span><span style="color: #579C4C;">&#21551;&#21160;&#33258;&#21160;&#28608;&#27963; -&gt; pyenv activate env-3.6.4</span>
+pyenv local env-3.6.4
+
+pyenv uninstall env-3.6.4 <span style="color: #579C4C;"># </span><span style="color: #579C4C;">&#21024;&#38500; env-3.6.4 &#36825;&#20010;&#34394;&#25311;&#29615;&#22659;</span>
+</pre>
+</div>
+
+<p>
+实践过程中发现创建虚拟环境后会多出两个，但是可以不用管，好像没什么影响
+</p>
+</div>
+</li>
+
+
+<li><a id="orgcbd9b7d"></a>安装3.7.0<br />
+<ul class="org-ul">
+<li><a id="orgb8ec127"></a>提示了" zlib not available "<br />
+<div class="outline-text-6" id="text-orgb8ec127">
+<div class="org-src-container">
+<pre class="src src-shell">&#10140;  ~ git:(master) &#10007; pyenv install 3.7.0
+python-build: use openssl from homebrew
+python-build: use readline from homebrew
+Downloading Python-3.7.0.tar.xz...
+-&gt; https://www.python.org/ftp/python/3.7.0/Python-3.7.0.tar.xz
+Installing Python-3.7.0...
+python-build: use readline from homebrew
+
+BUILD FAILED (OS X 10.14 using python-build 20180424)
+
+Inspect or clean up the working tree at /var/folders/pj/9t97fpn94r71_8631wx_x1hm0000gn/T/python-build.20181216140437.92921
+Results logged to /var/folders/pj/9t97fpn94r71_8631wx_x1hm0000gn/T/python-build.20181216140437.92921.log
+
+Last 10 log lines:
+  File <span style="color: #daa520;">"/private/var/folders/pj/9t97fpn94r71_8631wx_x1hm0000gn/T/python-build.20181216140437.92921/Python-3.7.0/Lib/ensurepip/__main__.py"</span>, line 5,<span style="color: #00bfff;"> in</span> &lt;module&gt;
+    sys.exit(ensurepip._main())
+  File <span style="color: #daa520;">"/private/var/folders/pj/9t97fpn94r71_8631wx_x1hm0000gn/T/python-build.20181216140437.92921/Python-3.7.0/Lib/ensurepip/__init__.py"</span>, line 204,<span style="color: #00bfff;"> in</span> _main
+    <span style="color: #d4d4d4;">default_pip</span>=args.default_pip,
+  File <span style="color: #daa520;">"/private/var/folders/pj/9t97fpn94r71_8631wx_x1hm0000gn/T/python-build.20181216140437.92921/Python-3.7.0/Lib/ensurepip/__init__.py"</span>, line 117,<span style="color: #00bfff;"> in</span> _bootstrap
+    <span style="color: #00bfff;">return</span> _run_pip(args + [p[0] for p<span style="color: #00bfff;"> in</span> _PROJECTS], additional_paths)
+  File <span style="color: #daa520;">"/private/var/folders/pj/9t97fpn94r71_8631wx_x1hm0000gn/T/python-build.20181216140437.92921/Python-3.7.0/Lib/ensurepip/__init__.py"</span>, line 27,<span style="color: #00bfff;"> in</span> _run_pip
+    import pip._internal
+zipimport.ZipImportError: can<span style="color: #daa520;">'t decompress data; zlib not available</span>
+<span style="color: #daa520;">make: *** [install] Error 1</span>
+<span style="color: #daa520;">&#10140;  ~ git:(master) &#10007;</span>
+</pre>
+</div>
+
+<p>
+提示了" zlib not availabl", 安装 zlib 后继续吧。
+</p>
+
+<div class="org-src-container">
+<pre class="src src-shell">&#10140;  ~ git:(master) &#10007; brew install zlib
+Updating Homebrew...
+==&gt; Downloading https://homebrew.bintray.com/bottles/zlib-1.2.11.mojave.bottle.tar.gz
+<span style="color: #579C4C;">######################################################################## </span><span style="color: #579C4C;">100.0%</span>
+==&gt; Pouring zlib-1.2.11.mojave.bottle.tar.gz
+==&gt; Caveats
+zlib is keg-only, which means it was not symlinked into /usr/local,
+because macOS already provides this software and installing another version<span style="color: #00bfff;"> in</span>
+parallel can cause all kinds of trouble.
+
+For compilers to find zlib you may need to set:
+  <span style="color: #d4d4d4;">export</span> <span style="color: #d4d4d4;">LDFLAGS</span>=<span style="color: #daa520;">"-L/usr/local/opt/zlib/lib"</span>
+  <span style="color: #d4d4d4;">export</span> <span style="color: #d4d4d4;">CPPFLAGS</span>=<span style="color: #daa520;">"-I/usr/local/opt/zlib/include"</span>
+
+For pkg-config to find zlib you may need to set:
+  <span style="color: #d4d4d4;">export</span> <span style="color: #d4d4d4;">PKG_CONFIG_PATH</span>=<span style="color: #daa520;">"/usr/local/opt/zlib/lib/pkgconfig"</span>
+
+==&gt; Summary
+&#127866;  /usr/local/Cellar/zlib/1.2.11: 12 files, 373KB
+&#10140;  ~ git:(master) &#10007;
+</pre>
+</div>
+
+<p>
+这样安装完成后，还是会有机同的提示，所以我们要完成刚刚的3个export，之后再次尝试。
+</p>
+
+<div class="org-src-container">
+<pre class="src src-shell">&#10140;  ~ git:(master) &#10007; pyenv install 3.7.0
+python-build: use openssl from homebrew
+python-build: use readline from homebrew
+Downloading Python-3.7.0.tar.xz...
+-&gt; https://www.python.org/ftp/python/3.7.0/Python-3.7.0.tar.xz
+Installing Python-3.7.0...
+python-build: use readline from homebrew
+
+BUILD FAILED (OS X 10.14 using python-build 20180424)
+
+Inspect or clean up the working tree at /var/folders/pj/9t97fpn94r71_8631wx_x1hm0000gn/T/python-build.20181216141406.7026
+Results logged to /var/folders/pj/9t97fpn94r71_8631wx_x1hm0000gn/T/python-build.20181216141406.7026.log
+
+Last 10 log lines:
+  File <span style="color: #daa520;">"/private/var/folders/pj/9t97fpn94r71_8631wx_x1hm0000gn/T/python-build.20181216141406.7026/Python-3.7.0/Lib/ensurepip/__main__.py"</span>, line 5,<span style="color: #00bfff;"> in</span> &lt;module&gt;
+    sys.exit(ensurepip._main())
+  File <span style="color: #daa520;">"/private/var/folders/pj/9t97fpn94r71_8631wx_x1hm0000gn/T/python-build.20181216141406.7026/Python-3.7.0/Lib/ensurepip/__init__.py"</span>, line 204,<span style="color: #00bfff;"> in</span> _main
+    <span style="color: #d4d4d4;">default_pip</span>=args.default_pip,
+  File <span style="color: #daa520;">"/private/var/folders/pj/9t97fpn94r71_8631wx_x1hm0000gn/T/python-build.20181216141406.7026/Python-3.7.0/Lib/ensurepip/__init__.py"</span>, line 117,<span style="color: #00bfff;"> in</span> _bootstrap
+    <span style="color: #00bfff;">return</span> _run_pip(args + [p[0] for p<span style="color: #00bfff;"> in</span> _PROJECTS], additional_paths)
+  File <span style="color: #daa520;">"/private/var/folders/pj/9t97fpn94r71_8631wx_x1hm0000gn/T/python-build.20181216141406.7026/Python-3.7.0/Lib/ensurepip/__init__.py"</span>, line 27,<span style="color: #00bfff;"> in</span> _run_pip
+    import pip._internal
+zipimport.ZipImportError: can<span style="color: #daa520;">'t decompress data; zlib not available</span>
+<span style="color: #daa520;">make: *** [install] Error 1</span>
+<span style="color: #daa520;">&#10140;  ~ git:(master) &#10007; which zlib</span>
+<span style="color: #daa520;">zlib not found</span>
+<span style="color: #daa520;">&#10140;  ~ git:(master) &#10007; export LDFLAGS="-L/usr/local/opt/zlib/lib"</span>
+<span style="color: #daa520;">&#10140;  ~ git:(master) &#10007; which zlib</span>
+<span style="color: #daa520;">zlib not found</span>
+<span style="color: #daa520;">&#10140;  ~ git:(master) &#10007; export CPPFLAGS="-I/usr/local/opt/zlib/include"</span>
+<span style="color: #daa520;">&#10140;  ~ git:(master) &#10007; export PKG_CONFIG_PATH="/usr/local/opt/zlib/lib/pkgconfig"</span>
+<span style="color: #daa520;">&#10140;  ~ git:(master) &#10007; which zlib</span>
+<span style="color: #daa520;">zlib not found</span>
+<span style="color: #daa520;">&#10140;  ~ git:(master) &#10007; pyenv install 3.7.0</span>
+<span style="color: #daa520;">python-build: use openssl from homebrew</span>
+<span style="color: #daa520;">python-build: use readline from homebrew</span>
+<span style="color: #daa520;">Downloading Python-3.7.0.tar.xz...</span>
+<span style="color: #daa520;">-&gt; https://www.python.org/ftp/python/3.7.0/Python-3.7.0.tar.xz</span>
+<span style="color: #daa520;">Installing Python-3.7.0...</span>
+<span style="color: #daa520;">python-build: use readline from homebrew</span>
+<span style="color: #daa520;">WARNING: The Python sqlite3 extension was not compiled. Missing the SQLite3 lib?</span>
+<span style="color: #daa520;">Installed Python-3.7.0 to /Users/tomtsang/.pyenv/versions/3.7.0</span>
+
+<span style="color: #daa520;">&#10140;  ~ git:(master) &#10007;</span>
+</pre>
+</div>
+</div>
+</li>
+</ul>
+</li>
+
+
+<li><a id="org294e0b6"></a>FAQ<br />
+<ul class="org-ul">
+<li><a id="org7f43ac9"></a>莫名其妙的BUILD FEILED (Ubuntu 16.04 using python-build 1.2.2)<br />
+<div class="outline-text-6" id="text-org7f43ac9">
+<p>
+问题是缺少依赖包，各个系统见以下链接
+</p>
+
+<p>
+<a href="https://github.com/pyenv/pyenv/wiki/Common-build-problems">https://github.com/pyenv/pyenv/wiki/Common-build-problems</a>
+</p>
+</div>
+</li>
+</ul>
+</li>
+
+<li><a id="org60af695"></a>我的安装<br />
+<div class="outline-text-5" id="text-org60af695">
+<div class="org-src-container">
+<pre class="src src-shell">
+<span style="color: #579C4C;"># </span><span style="color: #579C4C;"># if your system is ubuntu</span>
+<span style="color: #579C4C;"># </span><span style="color: #579C4C;">git clone https://github.com/yyuu/pyenv.git ~/.pyenv</span>
+<span style="color: #579C4C;"># </span><span style="color: #579C4C;">git clone https://github.com/yyuu/pyenv-virtualenv.git ~/.pyenv/plugins/pyenv-virtualenv</span>
+<span style="color: #579C4C;"># </span><span style="color: #579C4C;">echo 'export PYENV_ROOT="$HOME/.pyenv"' &gt;&gt; ~/.zshrc</span>
+<span style="color: #579C4C;"># </span><span style="color: #579C4C;">echo 'export PATH="$PYENV_ROOT/bin:$PATH"' &gt;&gt; ~/.zshrc</span>
+
+<span style="color: #579C4C;"># </span><span style="color: #579C4C;"># else if your system is mac</span>
+brew install openssl readline sqlite3 xz zlib
+brew install pyenv
+brew install pyenv-virtualenv
+
+<span style="color: #579C4C;"># </span><span style="color: #579C4C;">&#37197;&#32622;</span>
+<span style="color: #d4d4d4;">echo</span> <span style="color: #daa520;">'eval "$(pyenv init -)"'</span> &gt;&gt; ~/.zshrc
+<span style="color: #d4d4d4;">echo</span> <span style="color: #daa520;">'eval "$(pyenv virtualenv-init -)"'</span> &gt;&gt; ~/.zshrc
+<span style="color: #579C4C;"># </span><span style="color: #579C4C;">&#28608;&#27963;&#37197;&#32622;</span>
+<span style="color: #d4d4d4;">source</span> ~/.zshrc
+<span style="color: #579C4C;"># </span><span style="color: #579C4C;"># &#21028;&#26029;&#26377;&#27809;&#26377;wget</span>
+command -v wget &gt;/dev/null 2&gt;&amp;1 || { <span style="color: #d4d4d4;">echo</span> &gt;&amp;2 <span style="color: #daa520;">"I require wget but it's not installed.  Aborting."</span>; <span style="color: #00bfff;">exit</span> 1; }
+<span style="color: #579C4C;"># </span><span style="color: #579C4C;"># &#19981;&#21916;&#20889;&#20860;&#23481;&#20195;&#30721;&#65292;&#25152;&#26377;&#20195;&#30721;&#22343;&#21521; 3.5+ &#38752;&#25314;</span>
+<span style="color: #d4d4d4;">v</span>=3.7.0 | wget http://mirrors.sohu.com/python/$<span style="color: #d4d4d4;">v</span>/Python-$<span style="color: #d4d4d4;">v</span>.tar.xz -P ~/.pyenv/cache/;pyenv install $<span style="color: #d4d4d4;">v</span>
+<span style="color: #d4d4d4;">v</span>=2.7.14 &amp;&amp; wget http://mirrors.sohu.com/python/$<span style="color: #d4d4d4;">v</span>/Python-$<span style="color: #d4d4d4;">v</span>.tar.xz -P ~/.pyenv/cache/;pyenv install $<span style="color: #d4d4d4;">v</span>
+<span style="color: #579C4C;"># </span><span style="color: #579C4C;">v=2.7.10 | wget http://mirrors.sohu.com/python/$v/Python-$v.tar.xz -P ~/.pyenv/cache/;pyenv install $v</span>
+
+<span style="color: #579C4C;"># </span><span style="color: #579C4C;"># &#35774;&#32622; Global Python &#20026; 2.7.10, &#22791;&#27880;&#65306;&#23613;&#37327;&#19981;&#35201;&#25226; Py3 &#35774;&#32622;&#20026;&#20840;&#23616;&#65292;&#21542;&#21017;&#30001;&#20110; Homebrew &#26412;&#36523;&#26377;&#19968;&#20123;&#24212;&#29992;&#26159;&#20381;&#36182;&#20110; Py2 &#30340;&#65292;&#35774;&#32622;&#20026;Py2&#23481;&#26131;&#20986;&#29616;&#19968;&#20123;&#22855;&#24618;&#30340;&#38382;&#39064;&#12290;</span>
+<span style="color: #579C4C;"># </span><span style="color: #579C4C;">pyenv global 2.7.14</span>
+pip install -i https://pypi.doubanio.com/simple requests
+<span style="color: #579C4C;"># </span><span style="color: #579C4C;">&#19979;&#38754;&#36825;&#20010;&#26159;&#29992;&#20110;&#23433;&#35013;&#22522;&#26412;&#30340;&#20195;&#30721;&#34917;&#20840;&#21151;&#33021;</span>
+pip install -i https://pypi.doubanio.com/simple --upgrade <span style="color: #daa520;">"jedi&gt;=0.9.0"</span> <span style="color: #daa520;">"json-rpc&gt;=1.8.1"</span> <span style="color: #daa520;">"service_factory&gt;=0.1.5"</span> flake8 pytest autoflake hy
+
+pyenv virtualenv 3.7.0 py3-daily
+pyenv activate py3-daily
+
+<span style="color: #579C4C;"># </span><span style="color: #579C4C;">&#23433;&#35013;&#20381;&#36182;&#21253;</span>
+<span style="color: #579C4C;"># </span><span style="color: #579C4C;">pip install -i https://pypi.doubanio.com/simple requests</span>
+<span style="color: #579C4C;"># </span><span style="color: #579C4C;">pip install -i https://pypi.doubanio.com/simple beatutifulsoup4</span>
+<span style="color: #579C4C;"># </span><span style="color: #579C4C;">pip install -i https://pypi.doubanio.com/simple ipython[notebook]</span>
+<span style="color: #579C4C;"># </span><span style="color: #579C4C;">pip install -i https://pypi.doubanio.com/simple jupyter</span>
+<span style="color: #579C4C;"># </span><span style="color: #579C4C;"># &#19979;&#38754;&#36825;&#20010;&#26159;&#29992;&#20110;&#23433;&#35013;&#22522;&#26412;&#30340;&#20195;&#30721;&#34917;&#20840;&#21151;&#33021;</span>
+<span style="color: #579C4C;"># </span><span style="color: #579C4C;">pip install -i https://pypi.doubanio.com/simple --upgrade "jedi&gt;=0.9.0" "json-rpc&gt;=1.8.1" "service_factory&gt;=0.1.5" flake8 pytest autoflake hy</span>
+<span style="color: #579C4C;"># </span><span style="color: #579C4C;">&#20851;&#38381;&#33258;&#21160;&#28608;&#27963;,&#20572;&#29992;&#34394;&#25311;&#29615;&#22659;</span>
+<span style="color: #579C4C;"># </span><span style="color: #579C4C;">pyenv deactivate</span>
+<span style="color: #579C4C;"># </span><span style="color: #579C4C;">&#21368;&#36733;</span>
+<span style="color: #579C4C;"># </span><span style="color: #579C4C;">pyenv uninstall py3-daily</span>
+</pre>
+</div>
+</div>
+</li>
+
+<li><a id="org2f2d951"></a>Ref<br />
+<div class="outline-text-5" id="text-org2f2d951">
+<ul class="org-ul">
+<li><a href="https://www.jianshu.com/p/c5cc672aae63">https://www.jianshu.com/p/c5cc672aae63</a></li>
+<li><a href="https://www.jianshu.com/p/af1f8d7b6b31">https://www.jianshu.com/p/af1f8d7b6b31</a></li>
+<li><a href="https://www.jianshu.com/p/ad2cdcaef9e6">https://www.jianshu.com/p/ad2cdcaef9e6</a></li>
+<li><a href="https://www.cnblogs.com/saneri/p/7642316.html">https://www.cnblogs.com/saneri/p/7642316.html</a></li>
+<li><a href="https://www.jianshu.com/p/5e00ca8a10d5">https://www.jianshu.com/p/5e00ca8a10d5</a></li>
+<li><a href="http://www.qingpingshan.com/m/view.php?aid=393729">http://www.qingpingshan.com/m/view.php?aid=393729</a></li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+
+
+
+<div id="outline-container-orgc8590cb" class="outline-4">
+<h4 id="orgc8590cb"><span class="todo TODO">TODO</span> spacemacs配置python3环境&#xa0;&#xa0;&#xa0;<span class="tag"><span class="spacemacs">spacemacs</span>&#xa0;<span class="python3">python3</span></span></h4>
+<div class="outline-text-4" id="text-orgc8590cb">
+</div>
+
+
+<ul class="org-ul">
+<li><a id="orgdb1ad3b"></a>Emacs：最好的Python编辑器？<br />
+<ul class="org-ul">
+<li><a id="org8c79d3f"></a>安装 elpy<br /></li>
+
+<li><a id="orgd6c9600"></a>usage<br />
+<div class="outline-text-6" id="text-orgd6c9600">
+<p>
+运行这个脚本.只需要Python缓冲区按下
+</p>
+
+<p>
+&gt; C-c C-c
+</p>
+</div>
+</li>
+
+
+
+<li><a id="org09d971e"></a>Ref<br />
+<div class="outline-text-6" id="text-org09d971e">
+<ul class="org-ul">
+<li><a href="http://www.open-open.com/lib/view/open1451802607011.html">http://www.open-open.com/lib/view/open1451802607011.html</a></li>
+<li><a href="https://realpython.com/emacs-the-best-python-editor/">https://realpython.com/emacs-the-best-python-editor/</a></li>
+<li><a href="https://www.cnblogs.com/yangwen0228/p/6418969.html">https://www.cnblogs.com/yangwen0228/p/6418969.html</a></li>
+</ul>
+</div>
+</li>
+</ul>
+</li>
+<li><a id="org81f2fd0"></a><span class="todo TODO">TODO</span> 多python环境<br />
+<div class="outline-text-5" id="text-org81f2fd0">
+<p>
+查看 spacemacs 文档的 python layer 中的
+~/.emacs.d/layers/+lang/python/README.org，搜索 pyenv 或者 pyvenv
+</p>
+</div>
+
+<ul class="org-ul">
+<li><a id="org2106b42"></a>spacemacs 结合 virtualenv virtualenvwrapper<br /></li>
+
+<li><a id="org85bc005"></a>spacemacs 结合  pyenv-mode<br />
+<div class="outline-text-6" id="text-org85bc005">
+<p>
+<a href="https://github.com/proofit404/pyenv-mode">https://github.com/proofit404/pyenv-mode</a>
+</p>
+</div>
+</li>
+</ul>
+</li>
+
+
+<li><a id="orgdf03f3f"></a><span class="todo TODO">TODO</span> 配置1<br />
+<div class="outline-text-5" id="text-orgdf03f3f">
+<p>
+以下环境依据  <a href="https://www.jianshu.com/p/c5cc672aae63">https://www.jianshu.com/p/c5cc672aae63</a>
+</p>
+</div>
+</li>
+
+
+
+<li><a id="org9840dc5"></a><span class="todo TODO">TODO</span> 配置2<br />
+<div class="outline-text-5" id="text-org9840dc5">
+<ul class="org-ul">
+<li><a href="https://stackoverflow.com/questions/34135856/how-do-i-configure-spacemacs-for-python-3">https://stackoverflow.com/questions/34135856/how-do-i-configure-spacemacs-for-python-3</a></li>
+</ul>
+</div>
+</li>
+<li><a id="org41f2353"></a><span class="todo TODO">TODO</span> 配置3<br />
+<div class="outline-text-5" id="text-org41f2353">
+<ul class="org-ul">
+<li><a href="https://www.jianshu.com/p/bdd64fecddce">https://www.jianshu.com/p/bdd64fecddce</a></li>
+</ul>
+</div>
+</li>
+<li><a id="org5965751"></a>Ref<br />
+<div class="outline-text-5" id="text-org5965751">
+<ul class="org-ul">
+<li><a href="https://www.jianshu.com/p/c5cc672aae63">https://www.jianshu.com/p/c5cc672aae63</a></li>
+<li><a href="https://stackoverflow.com/questions/34135856/how-do-i-configure-spacemacs-for-python-3">https://stackoverflow.com/questions/34135856/how-do-i-configure-spacemacs-for-python-3</a></li>
+<li><a href="https://www.jianshu.com/p/bdd64fecddce">https://www.jianshu.com/p/bdd64fecddce</a></li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+
+
+
+
+<div id="outline-container-orgf90be81" class="outline-4">
+<h4 id="orgf90be81">python小技巧&#xa0;&#xa0;&#xa0;<span class="tag"><span class="tips">tips</span></span></h4>
+<div class="outline-text-4" id="text-orgf90be81">
+</div>
+
+<ul class="org-ul">
+<li><a id="org800f6aa"></a>Python查看安装路径<br />
+<div class="outline-text-5" id="text-org800f6aa">
+<div class="org-src-container">
+<pre class="src src-python"><span style="color: #00bfff;">import</span> sys
+sys.path
+</pre>
+</div>
+</div>
+</li>
+</ul>
+</div>
+
+
+<div id="outline-container-orge1177bb" class="outline-4">
+<h4 id="orge1177bb"><span class="todo TODO">TODO</span> 跟着廖雪峰老师一起学python&#xa0;&#xa0;&#xa0;<span class="tag"><span class="learn">learn</span></span></h4>
+<div class="outline-text-4" id="text-orge1177bb">
+</div>
+</div>
+
+
+
+<div id="outline-container-orgdfb7196" class="outline-4">
+<h4 id="orgdfb7196">jupyter-notebook 密码查询&#xa0;&#xa0;&#xa0;<span class="tag"><span class="notebook">notebook</span></span></h4>
+<div class="outline-text-4" id="text-orgdfb7196">
+<p>
+有一些场景，需要连接jupyter-notebook, 这时，需要提供登陆密码.
+</p>
+
+<p>
+这个密码就是 token.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-shell">(py3) &#10140;  learn-python3 git:(master) &#10007;  /Users/tomtsang/Downloads/.ana/bin/jupyter-notebook list
+Currently running servers:
+http://localhost:8888/?<span style="color: #d4d4d4;">token</span>=b488be28e8f4bdf6f11b3e863ee92896d99c50ed70e67bde :: /Users/tomtsang
+(py3) &#10140;  learn-python3 git:(master) &#10007;
+</pre>
+</div>
+
+<p>
+如果是安装的 anaconda ，则在 anaconda 启动 jupyter-notebook 的过程中会提示出这个
+token. 如下：
+</p>
+
+<div class="org-src-container">
+<pre class="src src-shell">&#10140;  ~ git:(master) &#10007; /Users/tomtsang/Downloads/.ana/bin/jupyter_mac.command ; <span style="color: #00bfff;">exit</span>;
+[I 09:36:46.923 NotebookApp] JupyterLab extension loaded from /Users/tomtsang/Downloads/.ana/lib/python3.7/site-packages/jupyterlab
+[I 09:36:46.924 NotebookApp] JupyterLab application directory is /Users/tomtsang/Downloads/.ana/share/jupyter/lab
+[I 09:36:46.931 NotebookApp] Serving notebooks from local directory: /Users/tomtsang
+[I 09:36:46.931 NotebookApp] The Jupyter Notebook is running at:
+[I 09:36:46.931 NotebookApp] http://localhost:8888/?<span style="color: #d4d4d4;">token</span>=b488be28e8f4bdf6f11b3e863ee92896d99c50ed70e67bde
+[I 09:36:46.931 NotebookApp] Use Control-C to stop this server and shut down all kernels (twice to skip confirmation).
+[C 09:36:46.936 NotebookApp]
+
+    Copy/paste this URL into your browser when you connect for the first time,
+    to login with a token:
+        http://localhost:8888/?<span style="color: #d4d4d4;">token</span>=b488be28e8f4bdf6f11b3e863ee92896d99c50ed70e67bde
+[I 09:36:47.210 NotebookApp] Accepting one-time-token-authenticated connection from ::1
+
+</pre>
+</div>
+
+<p>
+第6行中的
+`<a href="http://localhost:8888/?token=b488be28e8f4bdf6f11b3e863ee92896d99c50ed70e67bde">http://localhost:8888/?token=b488be28e8f4bdf6f11b3e863ee92896d99c50ed70e67bde</a>`
+就是地址和token了。
+</p>
+</div>
+
+<ul class="org-ul">
+<li><a id="org4678aae"></a>Ref<br />
+<div class="outline-text-5" id="text-org4678aae">
+<ul class="org-ul">
+<li><a href="https://blog.csdn.net/e35t66/article/details/76274714">https://blog.csdn.net/e35t66/article/details/76274714</a></li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+
+
+
+<div id="outline-container-org6baf81e" class="outline-4">
+<h4 id="org6baf81e">Emacs与Jupyter notebook之间的集成&#xa0;&#xa0;&#xa0;<span class="tag"><span class="notebook">notebook</span>&#xa0;<span class="emacs">emacs</span>&#xa0;<span class="spacemacs">spacemacs</span></span></h4>
+<div class="outline-text-4" id="text-org6baf81e">
+</div>
+
+<ul class="org-ul">
+<li><a id="orgfded195"></a>emacs配置ein包<br />
+<div class="outline-text-5" id="text-orgfded195">
+<p>
+具体配置可以参考我的个人配置
+</p>
+</div>
+</li>
+<li><a id="org8473038"></a>启动notebook服务器<br /></li>
+<li><a id="org7acc8ad"></a>连接notebook服务器<br />
+<div class="outline-text-5" id="text-org7acc8ad">
+<p>
+&gt; M-x ein:notebooklist-open
+选择 New Notebook , 然后输入 token
+</p>
+</div>
+</li>
+
+<li><a id="org6d2d0fc"></a>使用<br />
+<div class="outline-text-5" id="text-org6d2d0fc">
+<p>
+使用的时候，查看 菜单栏 或者 C-c 出现大多数你想要的命令。
+</p>
+</div>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+</body>
+</html>

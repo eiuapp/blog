@@ -1,0 +1,268 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<!-- 2021-01-08 Fri 14:59 -->
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>golang</title>
+<meta name="generator" content="Org mode" />
+<link rel="stylesheet" title="Standard" href="/html/style/worg.css" type="text/css" />
+<link rel="alternate stylesheet" title="Zenburn" href="/html/style/worg-zenburn.css" type="text/css" />
+<link rel="alternate stylesheet" title="Classic" href="/html/style/worg-classic.css" type="text/css" />
+<link rel="SHORTCUT ICON" href="/html/style/org-mode-unicorn.ico" type="image/x-icon" />
+<link rel="icon" href="/html/style/org-mode-unicorn.ico" type="image/ico" />
+<script type="text/javascript">
+/*
+@licstart  The following is the entire license notice for the
+JavaScript code in this tag.
+
+Copyright (C) 2012-2019 Free Software Foundation, Inc.
+
+The JavaScript code in this tag is free software: you can
+redistribute it and/or modify it under the terms of the GNU
+General Public License (GNU GPL) as published by the Free Software
+Foundation, either version 3 of the License, or (at your option)
+any later version.  The code is distributed WITHOUT ANY WARRANTY;
+without even the implied warranty of MERCHANTABILITY or FITNESS
+FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
+
+As additional permission under GNU GPL version 3 section 7, you
+may distribute non-source (e.g., minimized or compacted) forms of
+that code without the copy of the GNU GPL normally required by
+section 4, provided you include this license notice and a URL
+through which recipients can access the Corresponding Source.
+
+
+@licend  The above is the entire license notice
+for the JavaScript code in this tag.
+*/
+<!--/*--><![CDATA[/*><!--*/
+ function CodeHighlightOn(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(null != target) {
+     elem.cacheClassElem = elem.className;
+     elem.cacheClassTarget = target.className;
+     target.className = "code-highlighted";
+     elem.className   = "code-highlighted";
+   }
+ }
+ function CodeHighlightOff(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(elem.cacheClassElem)
+     elem.className = elem.cacheClassElem;
+   if(elem.cacheClassTarget)
+     target.className = elem.cacheClassTarget;
+ }
+/*]]>*///-->
+</script>
+</head>
+<body>
+<div id="preamble" class="status">
+<script type="text/javascript">
+  document.addEventListener('DOMContentLoaded',function() {
+      document.getElementById("table-of-contents").onclick = function() {
+          var elem = document.getElementById("text-table-of-contents");
+          elem.style.display = elem.style.display == "block" ? "none" : "block";
+      }
+  });
+
+  var url = document.location.href;
+  var orgsource = url.substring(0, url.lastIndexOf("."))+".org.html";
+  function show_org_source(){
+      document.location.href = orgsource;
+  }
+</script>
+
+<script>
+(function(f, a, t, h, o, m){
+	a[h]=a[h]||function(){
+		(a[h].q=a[h].q||[]).push(arguments)
+	};
+	o=f.createElement('script'),
+	m=f.getElementsByTagName('script')[0];
+	o.async=1; o.src=t; o.id='fathom-script';
+	m.parentNode.insertBefore(o,m)
+})(document, window, '//stats.orgmode.org/tracker.js', 'fathom');
+fathom('set', 'siteId', 'NWSQJ');
+fathom('trackPageview');
+</script>
+</div>
+<div id="content">
+<h1 class="title">golang</h1>
+<div id="table-of-contents">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#orgca37567">Post</a>
+<ul>
+<li><a href="#org57d7413">golang</a>
+<ul>
+<li><a href="#org60b3993">go-tour-zh离线安装(本地安装)</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-orgca37567" class="outline-2">
+<h2 id="orgca37567">Post</h2>
+<div class="outline-text-2" id="text-orgca37567">
+</div>
+<div id="outline-container-org57d7413" class="outline-3">
+<h3 id="org57d7413">golang&#xa0;&#xa0;&#xa0;<span class="tag"><span class="_golang">@golang</span>&#xa0;<span class="golang">golang</span></span></h3>
+<div class="outline-text-3" id="text-org57d7413">
+</div>
+<div id="outline-container-org60b3993" class="outline-4">
+<h4 id="org60b3993">go-tour-zh离线安装(本地安装)&#xa0;&#xa0;&#xa0;<span class="tag"><span class="tour">tour</span>&#xa0;<span class="install">install</span></span></h4>
+<div class="outline-text-4" id="text-org60b3993">
+</div>
+
+<ul class="org-ul">
+<li><a id="org06ca5fa"></a>中文文档<br />
+<div class="outline-text-5" id="text-org06ca5fa">
+<p>
+最近尝试学习golang，在某个网站（真忘了）上发现gotour是一款灰常叼的教程&amp;指南，之后搜索发现有前辈给出了<a href="http://www.cnblogs.com/chijianqiang/archive/2012/11/19/gotour.html">本地安装离线gotour的方法</a>，但实际安装过程中发现一些问题：
+</p>
+
+<p>
+1.通过go get bitbucket.org/mikespook/go-tour-zh/gotour 命令安装时报错，提示missing Mercurial command，原来是先需要<a href="https://studygolang.com/articles/714">安装Mercurial</a>；
+</p>
+
+<div class="org-src-container">
+<pre class="src src-bash">&#10140;  bitbucket git:(master) &#10007; go get bitbucket.org/mikespook/go-tour-zh/gotour
+go: missing Mercurial command. See https://golang.org/s/gogetcmd
+package bitbucket.org/mikespook/go-tour-zh/gotour: exec: <span style="color: #daa520;">"hg"</span>: executable file not found<span style="color: #00bfff;"> in</span> $<span style="color: #d4d4d4;">PATH</span>
+&#10140;  bitbucket git:(master) &#10007; brew install mercurial
+Updating Homebrew...
+==&gt; Downloading https://homebrew.bintray.com/bottles/mercurial-4.8.mojave.bottle.tar.gz
+<span style="color: #579C4C;">######################################################################## </span><span style="color: #579C4C;">100.0%</span>
+==&gt; Pouring mercurial-4.8.mojave.bottle.tar.gz
+==&gt; Caveats
+Bash completion has been installed to:
+  /usr/local/etc/bash_completion.d
+
+zsh completions have been installed to:
+  /usr/local/share/zsh/site-functions
+==&gt; Summary
+&#127866;  /usr/local/Cellar/mercurial/4.8: 618 files, 9.9MB
+&#10140;  bitbucket git:(master) &#10007; hg clone https://bitbucket.org/mikespook/go-tour-zh
+</pre>
+</div>
+
+<p>
+2.顺利用以上命令安装成功后，原贴说直接运行gotour命令即可通过<a href="http://127.0.0.1:3999">http://127.0.0.1:3999</a> 进行本地访问gotour，然而，bin目录下没有gotour&#x2026; <a href="https://studygolang.com/articles/4768">解决方法</a>
+</p>
+
+<p>
+综上，本帖将整体安装过程梳理一遍（go语言安装及配置就不再赘诉了）
+</p>
+
+<p>
+1.下载并安装Mercurial及Git
+</p>
+
+<p>
+　　Mercurial：<a href="https://www.mercurial-scm.org/wiki/Download">https://www.mercurial-scm.org/wiki/Download</a>
+</p>
+
+<p>
+　　Git：<a href="https://git-scm.com/download/win">https://git-scm.com/download/win</a>
+</p>
+
+<p>
+　　（如无法访问请科学上网或百度寻找国内下载源）
+</p>
+
+<p>
+2.用Mercurial下载gotour离线包，命令如下
+</p>
+
+<p>
+　　hg clone <a href="https://bitbucket.org/mikespook/go-tour-zh">https://bitbucket.org/mikespook/go-tour-zh</a>
+</p>
+
+<p>
+3.用Git下载goTools&amp;goNet，命令如下
+</p>
+
+<p>
+　　go get github.com/golang/net
+</p>
+
+<p>
+　　go get github.com/golang/tools
+</p>
+
+<p>
+4.调整文件路径，确保以上所下载的三个文件夹分别在以下路径中
+</p>
+
+<p>
+　　gotour离线包：$GOPATH/src/bitbucket.org/mikespook
+</p>
+
+<p>
+　　net：$GOPATH/src/golang.org/x/
+</p>
+
+<p>
+　　tools：$GOPATH/src/golang.org/x/
+</p>
+
+<p>
+　　（$GOPATH指代你自己定义的GOPATH路径，请参考<a href="https://blog.csdn.net/hil2000/article/details/41261267">go语言环境配置</a>，需要注意的是，GOPATH下要建立src、bin、pkg三个文件夹）
+</p>
+
+<p>
+5.在命令行中切换到$GOPATH/src/bitbucket.org/mikespook/go-tour-zh/gotour，执行以下命令
+</p>
+
+<p>
+　　go install
+</p>
+
+<p>
+6.至此，在$GOPATH/bin目录下已经生成gotour文件了，将其复制到$GOROOT/bin目录下
+</p>
+
+<p>
+7.命令行中执行gotour，到浏览器中访问<a href="http://127.0.0.1:3999">http://127.0.0.1:3999</a> 就可以查看本地的gotour了
+</p>
+</div>
+
+<ul class="org-ul">
+<li><a id="org26e8ab3"></a>Ref<br />
+<div class="outline-text-6" id="text-org26e8ab3">
+<ul class="org-ul">
+<li><a href="http://www.cnblogs.com/Vulpers/p/5562586.html">http://www.cnblogs.com/Vulpers/p/5562586.html</a></li>
+<li><a href="http://www.cnblogs.com/chijianqiang/archive/2012/11/19/gotour.html">构建离线Go编程指南——gotour</a></li>
+<li><a href="https://studygolang.com/articles/714">golang - revel安装手记</a></li>
+<li><a href="https://studygolang.com/articles/4768">go-tour-zh离线安装</a></li>
+<li><a href="https://blog.csdn.net/hil2000/article/details/41261267">Go语言开发环境配置</a></li>
+</ul>
+</div>
+</li>
+</ul>
+</li>
+
+<li><a id="org4b6fd96"></a>英文文档<br />
+<div class="outline-text-5" id="text-org4b6fd96">
+<div class="org-src-container">
+<pre class="src src-bash">&#10140;  ~ git:(master) &#10007; godoc -http=:6060
+</pre>
+</div>
+</div>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+</body>
+</html>

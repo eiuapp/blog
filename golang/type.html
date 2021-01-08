@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2020-07-30 Thu 16:12 -->
+<!-- 2021-01-07 Thu 11:18 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>golang type</title>
@@ -98,7 +98,8 @@ fathom('trackPageview');
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#orgd28e36b">type convert</a></li>
+<li><a href="#orgaf36092">type convert</a></li>
+<li><a href="#org8f518f4">strconv.FormatFloat + f</a></li>
 </ul>
 </div>
 </div>
@@ -106,9 +107,9 @@ fathom('trackPageview');
 <a href="../index.html">{Back to site's index}</a>
 </p>
 
-<div id="outline-container-orgd28e36b" class="outline-2">
-<h2 id="orgd28e36b">type convert</h2>
-<div class="outline-text-2" id="text-orgd28e36b">
+<div id="outline-container-orgaf36092" class="outline-2">
+<h2 id="orgaf36092">type convert</h2>
+<div class="outline-text-2" id="text-orgaf36092">
 <div class="org-src-container">
 <pre class="src src-example">#string到int
 int,err := strconv.Atoi(string)
@@ -147,6 +148,41 @@ float,err := strconv.ParseFloat(string,32)
 
 #int到int64
 int64_ := int64(1234)
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org8f518f4" class="outline-2">
+<h2 id="org8f518f4">strconv.FormatFloat + f</h2>
+<div class="outline-text-2" id="text-org8f518f4">
+<p>
+golang之路-格式化float输出
+</p>
+
+<p>
+代码：
+</p>
+
+<div class="org-src-container">
+<pre class="src src-example">a:=strconv.FormatFloat(10.100,'f',-1,32)
+输出:
+10.1
+a := strconv.FormatFloat(10.101, 'f', -1, 64)
+输出:
+10.101
+a := strconv.FormatFloat(10.010, 'f', -1, 64)
+输出：10.01
+a:=strconv.FormatFloat(10.1,'f',2,64)
+输出:10.10
+</pre>
+</div>
+
+
+<div class="org-src-container">
+<pre class="src src-example">f 参数可以是e,E,g,G
+-1 代表输出的精度小数点后的位数，如果是&lt;0的值，则返回最少的位数来表示该数，如果是大于0的则返回对应位数的值
+64 为float的类型，go中float分为32和64位，因此就需要传入32或者64
 </pre>
 </div>
 </div>

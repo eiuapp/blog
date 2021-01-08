@@ -1,0 +1,183 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<!-- 2021-01-07 Thu 16:31 -->
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>&lrm;</title>
+<meta name="generator" content="Org mode" />
+<meta name="author" content="a" />
+<link rel="stylesheet" title="Standard" href="/html/style/worg.css" type="text/css" />
+<link rel="alternate stylesheet" title="Zenburn" href="/html/style/worg-zenburn.css" type="text/css" />
+<link rel="alternate stylesheet" title="Classic" href="/html/style/worg-classic.css" type="text/css" />
+<link rel="SHORTCUT ICON" href="/html/style/org-mode-unicorn.ico" type="image/x-icon" />
+<link rel="icon" href="/html/style/org-mode-unicorn.ico" type="image/ico" />
+<script type="text/javascript">
+/*
+@licstart  The following is the entire license notice for the
+JavaScript code in this tag.
+
+Copyright (C) 2012-2019 Free Software Foundation, Inc.
+
+The JavaScript code in this tag is free software: you can
+redistribute it and/or modify it under the terms of the GNU
+General Public License (GNU GPL) as published by the Free Software
+Foundation, either version 3 of the License, or (at your option)
+any later version.  The code is distributed WITHOUT ANY WARRANTY;
+without even the implied warranty of MERCHANTABILITY or FITNESS
+FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
+
+As additional permission under GNU GPL version 3 section 7, you
+may distribute non-source (e.g., minimized or compacted) forms of
+that code without the copy of the GNU GPL normally required by
+section 4, provided you include this license notice and a URL
+through which recipients can access the Corresponding Source.
+
+
+@licend  The above is the entire license notice
+for the JavaScript code in this tag.
+*/
+<!--/*--><![CDATA[/*><!--*/
+ function CodeHighlightOn(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(null != target) {
+     elem.cacheClassElem = elem.className;
+     elem.cacheClassTarget = target.className;
+     target.className = "code-highlighted";
+     elem.className   = "code-highlighted";
+   }
+ }
+ function CodeHighlightOff(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(elem.cacheClassElem)
+     elem.className = elem.cacheClassElem;
+   if(elem.cacheClassTarget)
+     target.className = elem.cacheClassTarget;
+ }
+/*]]>*///-->
+</script>
+</head>
+<body>
+<div id="preamble" class="status">
+<script type="text/javascript">
+  document.addEventListener('DOMContentLoaded',function() {
+      document.getElementById("table-of-contents").onclick = function() {
+          var elem = document.getElementById("text-table-of-contents");
+          elem.style.display = elem.style.display == "block" ? "none" : "block";
+      }
+  });
+
+  var url = document.location.href;
+  var orgsource = url.substring(0, url.lastIndexOf("."))+".org.html";
+  function show_org_source(){
+      document.location.href = orgsource;
+  }
+</script>
+
+<script>
+(function(f, a, t, h, o, m){
+	a[h]=a[h]||function(){
+		(a[h].q=a[h].q||[]).push(arguments)
+	};
+	o=f.createElement('script'),
+	m=f.getElementsByTagName('script')[0];
+	o.async=1; o.src=t; o.id='fathom-script';
+	m.parentNode.insertBefore(o,m)
+})(document, window, '//stats.orgmode.org/tracker.js', 'fathom');
+fathom('set', 'siteId', 'NWSQJ');
+fathom('trackPageview');
+</script>
+</div>
+<div id="content">
+<div id="table-of-contents">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#summary">Summary</a>
+<ul>
+<li><a href="#序言">序言</a></li>
+<li><a href="#pyenv">pyenv</a></li>
+<li><a href="#mysql">mysql</a></li>
+<li><a href="#常见问题">常见问题</a></li>
+<li><a href="#未来">未来</a></li>
+<li><a href="#相关资源">相关资源</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org3b96f34" class="outline-2">
+<h2 id="summary">Summary</h2>
+<div class="outline-text-2" id="text-summary">
+</div>
+
+<div id="outline-container-orgb17a1f3" class="outline-3">
+<h3 id="序言">序言</h3>
+<div class="outline-text-3" id="text-序言">
+<ul class="org-ul">
+<li><a href="README.md">前言</a></li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org9ad5af6" class="outline-3">
+<h3 id="pyenv">pyenv</h3>
+<div class="outline-text-3" id="text-pyenv">
+<ul class="org-ul">
+<li><a href="docs/pyenv-install-372.md">pyenv安装3.7.2</a></li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-orge2b1891" class="outline-3">
+<h3 id="mysql">mysql</h3>
+<div class="outline-text-3" id="text-mysql">
+<ul class="org-ul">
+<li><a href="docs/python-mysql.md">连接mysql</a></li>
+<li><a href="docs/sqlalchemy.md">sqlalchemy</a></li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-orge10dfaa" class="outline-3">
+<h3 id="常见问题">常见问题</h3>
+<div class="outline-text-3" id="text-常见问题">
+<ul class="org-ul">
+<li><a href="docs/mysql-no-module-named-MySQLdb.md">连接mysql报MySQLdb错误</a></li>
+<li><a href="docs/python-sys-executable.md">查看python安装位置</a></li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-orga96c275" class="outline-3">
+<h3 id="未来">未来</h3>
+<div class="outline-text-3" id="text-未来">
+<div class="HTML">
+<p>
+&lt;!&#x2013; * [我的ceph探险之旅](<a href="https://b.qqbb.app/tags/ceph/">https://b.qqbb.app/tags/ceph/</a>) &#x2013;&gt;
+</p>
+
+</div>
+</div>
+</div>
+
+
+<div id="outline-container-org0d42914" class="outline-3">
+<h3 id="相关资源">相关资源</h3>
+<div class="outline-text-3" id="text-相关资源">
+<div class="HTML">
+<p>
+&lt;!&#x2013; - [ceph技术工具与资源](docs/tech_resource.md) &#x2013;&gt;
+</p>
+
+</div>
+</div>
+</div>
+</div>
+</div>
+</body>
+</html>

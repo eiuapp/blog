@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2020-07-30 Thu 16:12 -->
+<!-- 2021-01-08 Fri 14:59 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>python pyenv</title>
@@ -98,11 +98,20 @@ fathom('trackPageview');
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#org95ee992">basic</a></li>
-<li><a href="#org35c2c9c">install</a>
+<li><a href="#orgcc63835">basic</a></li>
+<li><a href="#org1afea52">install</a>
 <ul>
-<li><a href="#orgc2f33db">科学上网</a></li>
-<li><a href="#org60091c3">安装效果</a></li>
+<li><a href="#orgf5cd285">科学上网</a></li>
+<li><a href="#org29921f3">安装效果</a></li>
+</ul>
+</li>
+<li><a href="#org3aebead">Post</a>
+<ul>
+<li><a href="#orga45a147">python</a>
+<ul>
+<li><a href="#orgc3c9993">pipenv install 报错</a></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
@@ -112,22 +121,22 @@ fathom('trackPageview');
 <a href="../index.html">{Back to site's index}</a>
 </p>
 
-<div id="outline-container-org95ee992" class="outline-2">
-<h2 id="org95ee992">basic</h2>
-<div class="outline-text-2" id="text-org95ee992">
+<div id="outline-container-orgcc63835" class="outline-2">
+<h2 id="orgcc63835">basic</h2>
+<div class="outline-text-2" id="text-orgcc63835">
 <p>
 <a href="https://www.jianshu.com/p/60f361822a7e">https://www.jianshu.com/p/60f361822a7e</a>
 <a href="https://www.jianshu.com/p/30183d722b54">https://www.jianshu.com/p/30183d722b54</a>
 </p>
 </div>
 </div>
-<div id="outline-container-org35c2c9c" class="outline-2">
-<h2 id="org35c2c9c">install</h2>
-<div class="outline-text-2" id="text-org35c2c9c">
+<div id="outline-container-org1afea52" class="outline-2">
+<h2 id="org1afea52">install</h2>
+<div class="outline-text-2" id="text-org1afea52">
 </div>
-<div id="outline-container-orgc2f33db" class="outline-3">
-<h3 id="orgc2f33db">科学上网</h3>
-<div class="outline-text-3" id="text-orgc2f33db">
+<div id="outline-container-orgf5cd285" class="outline-3">
+<h3 id="orgf5cd285">科学上网</h3>
+<div class="outline-text-3" id="text-orgf5cd285">
 <div class="org-src-container">
 <pre class="src src-shell">[a:~]$ curl https://pyenv.run | bash                                                                                                                                                                    (ubuntu&#10033;)
   % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
@@ -151,9 +160,9 @@ Failed to git clone https://github.com/pyenv/pyenv.git
 </div>
 </div>
 
-<div id="outline-container-org60091c3" class="outline-3">
-<h3 id="org60091c3">安装效果</h3>
-<div class="outline-text-3" id="text-org60091c3">
+<div id="outline-container-org29921f3" class="outline-3">
+<h3 id="org29921f3">安装效果</h3>
+<div class="outline-text-3" id="text-org29921f3">
 <div class="org-src-container">
 <pre class="src src-shell">[a:~]$ curl https://pyenv.run | bash                                                                                                                                                                    (ubuntu&#10033;)
   % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
@@ -198,6 +207,96 @@ remote: Total 10 (delta 1), reused 6 (delta 0), pack-reused 0
 Unpacking objects: 100% (10/10), done.
 [a:~]$
 </pre>
+</div>
+</div>
+</div>
+</div>
+
+
+<div id="outline-container-org3aebead" class="outline-2">
+<h2 id="org3aebead">Post</h2>
+<div class="outline-text-2" id="text-org3aebead">
+</div>
+<div id="outline-container-orga45a147" class="outline-3">
+<h3 id="orga45a147">python&#xa0;&#xa0;&#xa0;<span class="tag"><span class="_python">@python</span>&#xa0;<span class="python">python</span>&#xa0;<span class="pipenv">pipenv</span></span></h3>
+<div class="outline-text-3" id="text-orga45a147">
+</div>
+<div id="outline-container-orgc3c9993" class="outline-4">
+<h4 id="orgc3c9993">pipenv install 报错&#xa0;&#xa0;&#xa0;<span class="tag"><span class="faq">faq</span></span></h4>
+<div class="outline-text-4" id="text-orgc3c9993">
+<p>
+在某个项目中遇到了出错，如下：
+</p>
+
+<div class="org-src-container">
+<pre class="src src-shell">(saleor) &#10140;  saleor git:(master) pipenv install --dev
+Courtesy Notice: Pipenv found itself running within a virtual environment, so it will automatically use that environment, instead of creating its own for any project. You can set PIPENV_IGNORE_VIRTUALENVS
+=1 to force pipenv to ignore that environment and create its own instead. You can set <span style="color: #d4d4d4;">PIPENV_VERBOSITY</span>=-1 to suppress this warning.
+Installing dependencies from Pipfile.lock (0c0b26)&#8230;
+An error occurred while installing <span style="color: #d4d4d4;">yarl</span>==1.3.0 ; python_version &gt;= <span style="color: #daa520;">'3.4'</span> --hash=sha256:024ecdc12bc02b321bc66b41327f930d1c2c543fa9a561b39861da9388ba7aa9 --hash=sha256:2f3010703295fbe1aec51023740871e64bb966
+4c789cba5a6bdf404e93f7568f --hash=sha256:3890ab952d508523ef4881457c4099056546593fa05e93da84c7250516e632eb --hash=sha256:3e2724eb9af5dc41648e5bb304fcf4891adc33258c6e14e2a7414ea32541e320 --hash=sha256:5badb
+97dd0abf26623a9982cd448ff12cb39b8e4c94032ccdedf22ce01a64842 --hash=sha256:73f447d11b530d860ca1e6b582f947688286ad16ca42256413083d13f260b7a0 --hash=sha256:7ab825726f2940c16d92aaec7d204cfc34ac26c0040da727cf8
+ba87255a33829 --hash=sha256:b25de84a8c20540531526dfbb0e2d2b648c13fd5dd126728c496d7c3fea33310 --hash=sha256:c6e341f5a6562af74ba55205dbd56d248daf1b5748ec48a0200ba227bb9e33f4 --hash=sha256:c9bb7c249c4432cd47
+e75af3864bc02d26c9594f49c82e2a28624417f0ae63b8 --hash=sha256:e060906c0c585565c718d1c3841747b61c5439af2211e185f6739a9412dfbde1! Will try again.
+  &#128013;   &#9609;&#9609;&#9609;&#9609;&#9609;&#9609;&#9609;&#9609;&#9609;&#9609;&#9609;&#9609;&#9609;&#9609;&#9609;&#9609;&#9609;&#9609;&#9609;&#9609;&#9609;&#9609;&#9609;&#9609;&#9609;&#9609;&#9609;&#9609;&#9609;&#9609;&#9609;&#9609; 151/151 &#8212; 00:02:25                                                                                                                                                  Installing initially failed dependencies&#8230;                                                                                                                                                                   [pipenv.exceptions.InstallError]:   File <span style="color: #daa520;">"/home/tom/.virtualenvs/saleor/lib/python3.5/site-packages/pipenv/core.py"</span>, line 1874,<span style="color: #00bfff;"> in</span> do_install
+[pipenv.exceptions.InstallError]:       <span style="color: #d4d4d4;">keep_outdated</span>=keep_outdated
+[pipenv.exceptions.InstallError]:   File <span style="color: #daa520;">"/home/tom/.virtualenvs/saleor/lib/python3.5/site-packages/pipenv/core.py"</span>, line 1253,<span style="color: #00bfff;"> in</span> do_init
+[pipenv.exceptions.InstallError]:       <span style="color: #d4d4d4;">pypi_mirror</span>=pypi_mirror,
+[pipenv.exceptions.InstallError]:   File <span style="color: #daa520;">"/home/tom/.virtualenvs/saleor/lib/python3.5/site-packages/pipenv/core.py"</span>, line 859,<span style="color: #00bfff;"> in</span> do_install_dependencies
+[pipenv.exceptions.InstallError]:       retry_list, procs, failed_deps_queue, requirements_dir, **install_kwargs
+[pipenv.exceptions.InstallError]:   File <span style="color: #daa520;">"/home/tom/.virtualenvs/saleor/lib/python3.5/site-packages/pipenv/core.py"</span>, line 763,<span style="color: #00bfff;"> in</span> batch_install
+[pipenv.exceptions.InstallError]:       _cleanup_procs(procs, not blocking, failed_deps_queue, <span style="color: #d4d4d4;">retry</span>=retry)
+[pipenv.exceptions.InstallError]:   File <span style="color: #daa520;">"/home/tom/.virtualenvs/saleor/lib/python3.5/site-packages/pipenv/core.py"</span>, line 681,<span style="color: #00bfff;"> in</span> _cleanup_procs
+[pipenv.exceptions.InstallError]:       raise exceptions.InstallError(c.dep.name, <span style="color: #d4d4d4;">extra</span>=err_lines)
+[pipenv.exceptions.InstallError]: [<span style="color: #daa520;">'Looking in indexes: https://pypi.python.org/simple'</span>, <span style="color: #daa520;">'Collecting yarl==1.3.0 (from -r /tmp/pipenv-umy9db73-requirements/pipenv-5nm2wwj2-requirement.txt (line 1))'</span>]
+[pipenv.exceptions.InstallError]: [<span style="color: #daa520;">'Could not find a version that satisfies the requirement yarl==1.3.0 (from -r /tmp/pipenv-umy9db73-requirements/pipenv-5nm2wwj2-requirement.txt (line 1)) (from versions:</span>
+<span style="color: #daa520;"> 0.0.1, 0.1.0, 0.1.1, 0.1.2, 0.1.3, 0.1.4, 0.2.0, 0.2.1, 0.3.0, 0.3.1, 0.3.2, 0.4.0, 0.4.1, 0.4.2, 0.4.3, 0.5.0b2, 0.5.0b3, 0.5.0b4, 0.5.0b5, 0.5.0, 0.5.1, 0.5.2, 0.5.3, 0.6.0, 0.7.0, 0.7.1, 0.8.0, 0.8.1, 0.9.0, 0.9.1, 0.9.2, 0.9.3, 0.9.4, 0.9.5, 0.9.6, 0.9.7, 0.9.8, 0.10.0, 0.10.1, 0.10.2, 0.10.3, 0.11.0, 0.12.0, 0.13.0, 0.14.0, 0.14.1, 0.14.2, 0.15.0, 0.16.0, 0.17.0, 0.18.0, 1.0.0, 1.1.0, 1.1.1, 1.2.0)'</span>
+, <span style="color: #daa520;">'No matching distribution found for yarl==1.3.0 (from -r /tmp/pipenv-umy9db73-requirements/pipenv-5nm2wwj2-requirement.txt (line 1))'</span>]
+ERROR: ERROR: Package installation failed...
+(saleor) &#10140;  saleor git:(master)
+</pre>
+</div>
+
+<p>
+其实在最开始的时候，就已经提示`An error occurred while installing yarl==1.3.0`, 这个时候，如果我们看到了，应该要停止安装接下来的包，因为，最后还是会报错的。
+</p>
+
+<p>
+一个简单有效的思路，就是手工安装一下 yarl 包，看是不是版本不对。
+</p>
+
+<div class="org-src-container">
+<pre class="src src-shell">(saleor) &#10140;  saleor git:(master) grep yarl -rn ./Pipfile*
+./Pipfile.lock:1384:        <span style="color: #daa520;">"yarl"</span>: {
+(saleor) &#10140;  saleor git:(master) vi ./Pipfile.lock
+(saleor) &#10140;  saleor git:(master) pip install <span style="color: #d4d4d4;">yarl</span>==1.3
+Collecting <span style="color: #d4d4d4;">yarl</span>==1.3
+  Could not find a version that satisfies the requirement <span style="color: #d4d4d4;">yarl</span>==1.3 (from versions: 0.0.1, 0.1.0, 0.1.1, 0.1.2, 0.1.3, 0.1.4, 0.2.0, 0.2.1, 0.3.0, 0.3.1, 0.3.2, 0.4.0, 0.4.1, 0.4.2, 0.4.3, 0.5.0b2, 0.5.0b3, 0.5.0b4, 0.5.0b5, 0.5.0, 0.5.1, 0.5.2, 0.5.3, 0.6.0, 0.7.0, 0.7.1, 0.8.0, 0.8.1, 0.9.0, 0.9.1, 0.9.2, 0.9.3, 0.9.4, 0.9.5, 0.9.6, 0.9.7, 0.9.8, 0.10.0, 0.10.1, 0.10.2, 0.10.3, 0.11.0, 0.12.0, 0.13.0, 0.14.0, 0.14.1, 0.14.2, 0.15.0, 0.16.0, 0.17.0, 0.18.0, 1.0.0, 1.1.0, 1.1.1, 1.2.0)
+No matching distribution found for <span style="color: #d4d4d4;">yarl</span>==1.3
+(saleor) &#10140;  saleor git:(master) pip install yarl
+Collecting yarl
+  Downloading https://files.pythonhosted.org/packages/23/7d/41beef3b35c1836079fde8408aebfb3c0a24c6bf2e66078d351fc4cfa1ff/yarl-1.2.0-cp35-cp35m-manylinux1_x86_64.whl (252kB)
+    100% |&#9608;&#9608;&#9608;&#9608;&#9608;&#9608;&#9608;&#9608;&#9608;&#9608;&#9608;&#9608;&#9608;&#9608;&#9608;&#9608;&#9608;&#9608;&#9608;&#9608;&#9608;&#9608;&#9608;&#9608;&#9608;&#9608;&#9608;&#9608;&#9608;&#9608;&#9608;&#9608;| 256kB 520kB/s
+Requirement already satisfied: idna&gt;=2.0<span style="color: #00bfff;"> in</span> /home/tom/.virtualenvs/saleor/lib/python3.5/site-packages (from yarl) (2.8)
+Requirement already satisfied: multidict&gt;=4.0<span style="color: #00bfff;"> in</span> /home/tom/.virtualenvs/saleor/lib/python3.5/site-packages (from yarl) (4.5.2)
+Installing collected packages: yarl
+Successfully installed yarl-1.2.0
+(saleor) &#10140;  saleor git:(master) vi ./Pipfile.lock
+(saleor) &#10140;  saleor git:(master) &#10007; pipenv install --dev
+Courtesy Notice: Pipenv found itself running within a virtual environment, so it will automatically use that environment, instead of creating its own for any project. You can set <span style="color: #d4d4d4;">PIPENV_IGNORE_VIRTUALENVS</span>=1 to force pipenv to ignore that environment and create its own instead. You can set <span style="color: #d4d4d4;">PIPENV_VERBOSITY</span>=-1 to suppress this warning.
+Installing dependencies from Pipfile.lock (0c0b26)&#8230;
+  &#128013;   &#9609;&#9609;&#9609;&#9609;&#9609;&#9609;&#9609;&#9609;&#9609;&#9609;&#9609;&#9609;&#9609;&#9609;&#9609;&#9609;&#9609;&#9609;&#9609;&#9609;&#9609;&#9609;&#9609;&#9609;&#9609;&#9609;&#9609;&#9609;&#9609;&#9609;&#9609;&#9609; 151/151 &#8212; 00:02:00
+(saleor) &#10140;  saleor git:(master) &#10007; ls
+apollo.config.js  common.env                   docker-compose.yml  LICENSE    package.json       Pipfile.lock  requirements_dev.txt  saleor     templates  tsconfig.json      webpack.d.ts
+app.json          deployment                   Dockerfile          locale     package-lock.json  Procfile      requirements.txt      scripts    tests      tslint.json
+CHANGELOG.md      docker-compose.override.yml  docs                manage.py  Pipfile            README.md     runtime.txt           setup.cfg  tox.ini    webpack.config.js
+(saleor) &#10140;  saleor git:(master) &#10007;
+</pre>
+</div>
+
+<p>
+看到了吧。pip 直接安装的是 1.2.0 ,所以，把 Pipfile.lock 文件里的版本值 修改成 1.2.0 就可以了。
+</p>
 </div>
 </div>
 </div>

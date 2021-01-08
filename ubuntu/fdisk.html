@@ -1,0 +1,179 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<!-- 2021-01-08 Fri 14:57 -->
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>ubuntu</title>
+<meta name="generator" content="Org mode" />
+<link rel="stylesheet" title="Standard" href="/html/style/worg.css" type="text/css" />
+<link rel="alternate stylesheet" title="Zenburn" href="/html/style/worg-zenburn.css" type="text/css" />
+<link rel="alternate stylesheet" title="Classic" href="/html/style/worg-classic.css" type="text/css" />
+<link rel="SHORTCUT ICON" href="/html/style/org-mode-unicorn.ico" type="image/x-icon" />
+<link rel="icon" href="/html/style/org-mode-unicorn.ico" type="image/ico" />
+<script type="text/javascript">
+/*
+@licstart  The following is the entire license notice for the
+JavaScript code in this tag.
+
+Copyright (C) 2012-2019 Free Software Foundation, Inc.
+
+The JavaScript code in this tag is free software: you can
+redistribute it and/or modify it under the terms of the GNU
+General Public License (GNU GPL) as published by the Free Software
+Foundation, either version 3 of the License, or (at your option)
+any later version.  The code is distributed WITHOUT ANY WARRANTY;
+without even the implied warranty of MERCHANTABILITY or FITNESS
+FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
+
+As additional permission under GNU GPL version 3 section 7, you
+may distribute non-source (e.g., minimized or compacted) forms of
+that code without the copy of the GNU GPL normally required by
+section 4, provided you include this license notice and a URL
+through which recipients can access the Corresponding Source.
+
+
+@licend  The above is the entire license notice
+for the JavaScript code in this tag.
+*/
+<!--/*--><![CDATA[/*><!--*/
+ function CodeHighlightOn(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(null != target) {
+     elem.cacheClassElem = elem.className;
+     elem.cacheClassTarget = target.className;
+     target.className = "code-highlighted";
+     elem.className   = "code-highlighted";
+   }
+ }
+ function CodeHighlightOff(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(elem.cacheClassElem)
+     elem.className = elem.cacheClassElem;
+   if(elem.cacheClassTarget)
+     target.className = elem.cacheClassTarget;
+ }
+/*]]>*///-->
+</script>
+</head>
+<body>
+<div id="preamble" class="status">
+<script type="text/javascript">
+  document.addEventListener('DOMContentLoaded',function() {
+      document.getElementById("table-of-contents").onclick = function() {
+          var elem = document.getElementById("text-table-of-contents");
+          elem.style.display = elem.style.display == "block" ? "none" : "block";
+      }
+  });
+
+  var url = document.location.href;
+  var orgsource = url.substring(0, url.lastIndexOf("."))+".org.html";
+  function show_org_source(){
+      document.location.href = orgsource;
+  }
+</script>
+
+<script>
+(function(f, a, t, h, o, m){
+	a[h]=a[h]||function(){
+		(a[h].q=a[h].q||[]).push(arguments)
+	};
+	o=f.createElement('script'),
+	m=f.getElementsByTagName('script')[0];
+	o.async=1; o.src=t; o.id='fathom-script';
+	m.parentNode.insertBefore(o,m)
+})(document, window, '//stats.orgmode.org/tracker.js', 'fathom');
+fathom('set', 'siteId', 'NWSQJ');
+fathom('trackPageview');
+</script>
+</div>
+<div id="content">
+<h1 class="title">ubuntu</h1>
+<div id="table-of-contents">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#org5afe782">Post</a>
+<ul>
+<li><a href="#org71cfa07">ubuntu</a>
+<ul>
+<li><a href="#orgae185a7">在vmware workstation pro 中给ubuntu增加新分区</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org5afe782" class="outline-2">
+<h2 id="org5afe782">Post</h2>
+<div class="outline-text-2" id="text-org5afe782">
+</div>
+<div id="outline-container-org71cfa07" class="outline-3">
+<h3 id="org71cfa07">ubuntu&#xa0;&#xa0;&#xa0;<span class="tag"><span class="_ubuntu">@ubuntu</span>&#xa0;<span class="ubuntu">ubuntu</span></span></h3>
+<div class="outline-text-3" id="text-org71cfa07">
+</div>
+<div id="outline-container-orgae185a7" class="outline-4">
+<h4 id="orgae185a7">在vmware workstation pro 中给ubuntu增加新分区&#xa0;&#xa0;&#xa0;<span class="tag"><span class="fdisk">fdisk</span></span></h4>
+<div class="outline-text-4" id="text-orgae185a7">
+</div>
+
+<ul class="org-ul">
+<li><a id="org422bb6c"></a>env<br />
+<div class="outline-text-5" id="text-org422bb6c">
+<p>
+在 vmware workstation pro 中安装的ubuntu server已经把20G的硬盘已经按默认的方式分区，且已经是把20G硬盘全占用。
+此时，如果用 fdisk /dev/sda 然后 n 来新建分区的时候，会报出 no sector available 的错误。
+</p>
+
+<p>
+这个时候，有2个思路。
+</p>
+
+<ol class="org-ol">
+<li>把原来的 sector和硬盘空间 释放出来，然后，新建立分区</li>
+<li>把硬盘空间加大（不是另增加一块硬盘），然后，重新规划分区</li>
+</ol>
+</div>
+</li>
+
+<li><a id="org68d4353"></a>step<br />
+<div class="outline-text-5" id="text-org68d4353">
+<p>
+思路1，本来是寄希望于 gpart 和 gparted 命令（通过 apt install 安装）的，但是，发现，文章已失效，-s -t 等命令的效果与原理明显不对了，所以思路1，中断。
+</p>
+
+<p>
+思路2，操作成功。下面就只介绍思路2.
+</p>
+
+<p>
+关虚拟机，打开，点击，设置/硬盘/扩展容量，增加10G到30G, 然后，磁盘整理，一下，开机。
+</p>
+
+<p>
+这个时候，fdisk -l 可以看到 sector 已经增加了。
+</p>
+
+<p>
+但是通过 n 后，并不能选择 l, 只能选择 p，且分配的大小，不超过1个G,明显不是我们想要的。
+</p>
+
+<p>
+这个时候，我直接把 原有的 1,2,5 三个分区的 2，5直接删除（d）,然后再 n, 这个时候，就可以分出我们想要的分区了。
+最后我的效果是 1,2,5,6 其中6分区占用了新增磁盘的 8 GB .
+</p>
+</div>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+</body>
+</html>

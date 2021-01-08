@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2020-07-30 Thu 16:12 -->
+<!-- 2021-01-07 Thu 11:16 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>sequelize migrate</title>
@@ -98,23 +98,25 @@ fathom('trackPageview');
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#org8ea54bc">migrate to test env</a></li>
-<li><a href="#org372b6a0">new project</a>
+<li><a href="#org52841a3">migrate to test env</a></li>
+<li><a href="#org0835d4e">new project</a>
 <ul>
-<li><a href="#org46c5ceb">use egg &amp;&amp; sequelize</a></li>
-<li><a href="#org0e585f5">Project bootstrapping</a></li>
+<li><a href="#orgd5c2f07">use egg &amp;&amp; sequelize</a></li>
+<li><a href="#orgd67cf2b">Project bootstrapping</a></li>
 </ul>
 </li>
-<li><a href="#orgb33ec3e">migrate 中使用原生sql语法</a></li>
-<li><a href="#org6bd79fa">storage写入JSON</a></li>
-<li><a href="#org9025bd8">Undoing(单条) 指定单次的 Migrations</a></li>
-<li><a href="#org4250ceb">Undoing(到达历史状态) 到指定单次的 Migrations</a></li>
-<li><a href="#orgc85206d">注意</a>
+<li><a href="#orgf12ebd7">migrate 中使用原生sql语法</a></li>
+<li><a href="#orgf590f41">storage写入JSON</a></li>
+<li><a href="#org34a124a">Undoing(单条) 指定单次的 Migrations</a></li>
+<li><a href="#org39851b5">Undoing(到达历史状态) 到指定单次的 Migrations</a></li>
+<li><a href="#orgff014fe">注意</a>
 <ul>
-<li><a href="#orga9de690">删除掉 <code>*.js</code> 文件</a></li>
+<li><a href="#org87bd759">删除掉 <code>*.js</code> 文件</a></li>
 </ul>
 </li>
-<li><a href="#orgb588ffd">Index columns during createTable</a></li>
+<li><a href="#orgc16bd12">Index columns during createTable</a></li>
+<li><a href="#org18e2dc4">change column</a></li>
+<li><a href="#org07aaffd">nodejs+sequelize同步模型到mysql数据库</a></li>
 </ul>
 </div>
 </div>
@@ -134,9 +136,9 @@ sequelize migrate
 <a href="https://github.com/sequelize/cli">https://github.com/sequelize/cli</a>
 </p>
 
-<div id="outline-container-org8ea54bc" class="outline-2">
-<h2 id="org8ea54bc">migrate to test env</h2>
-<div class="outline-text-2" id="text-org8ea54bc">
+<div id="outline-container-org52841a3" class="outline-2">
+<h2 id="org52841a3">migrate to test env</h2>
+<div class="outline-text-2" id="text-org52841a3">
 <div class="org-src-container">
 <pre class="src src-shell">npx sequelize db:migrate --env test
 </pre>
@@ -144,13 +146,13 @@ sequelize migrate
 </div>
 </div>
 
-<div id="outline-container-org372b6a0" class="outline-2">
-<h2 id="org372b6a0">new project</h2>
-<div class="outline-text-2" id="text-org372b6a0">
+<div id="outline-container-org0835d4e" class="outline-2">
+<h2 id="org0835d4e">new project</h2>
+<div class="outline-text-2" id="text-org0835d4e">
 </div>
-<div id="outline-container-org46c5ceb" class="outline-3">
-<h3 id="org46c5ceb">use egg &amp;&amp; sequelize</h3>
-<div class="outline-text-3" id="text-org46c5ceb">
+<div id="outline-container-orgd5c2f07" class="outline-3">
+<h3 id="orgd5c2f07">use egg &amp;&amp; sequelize</h3>
+<div class="outline-text-3" id="text-orgd5c2f07">
 <p>
 脚手架
 <a href="https://eggjs.org/zh-cn/tutorials/sequelize.html#%E8%84%9A%E6%89%8B%E6%9E%B6">https://eggjs.org/zh-cn/tutorials/sequelize.html#%E8%84%9A%E6%89%8B%E6%9E%B6</a>
@@ -158,9 +160,9 @@ sequelize migrate
 </div>
 </div>
 
-<div id="outline-container-org0e585f5" class="outline-3">
-<h3 id="org0e585f5">Project bootstrapping</h3>
-<div class="outline-text-3" id="text-org0e585f5">
+<div id="outline-container-orgd67cf2b" class="outline-3">
+<h3 id="orgd67cf2b">Project bootstrapping</h3>
+<div class="outline-text-3" id="text-orgd67cf2b">
 <p>
 <a href="https://sequelize.org/master/manual/migrations.html">https://sequelize.org/master/manual/migrations.html</a> 在 project bootstrapping 有
 提到：
@@ -174,9 +176,9 @@ sequelize migrate
 </div>
 </div>
 
-<div id="outline-container-orgb33ec3e" class="outline-2">
-<h2 id="orgb33ec3e">migrate 中使用原生sql语法</h2>
-<div class="outline-text-2" id="text-orgb33ec3e">
+<div id="outline-container-orgf12ebd7" class="outline-2">
+<h2 id="orgf12ebd7">migrate 中使用原生sql语法</h2>
+<div class="outline-text-2" id="text-orgf12ebd7">
 <p>
 <a href="https://github.com/sequelize/cli/blob/master/docs/README.md#the-migration-schema">https://github.com/sequelize/cli/blob/master/docs/README.md#the-migration-schema</a>
 </p>
@@ -193,9 +195,9 @@ sequelize migrate
 </div>
 </div>
 
-<div id="outline-container-org6bd79fa" class="outline-2">
-<h2 id="org6bd79fa">storage写入JSON</h2>
-<div class="outline-text-2" id="text-org6bd79fa">
+<div id="outline-container-orgf590f41" class="outline-2">
+<h2 id="orgf590f41">storage写入JSON</h2>
+<div class="outline-text-2" id="text-orgf590f41">
 <p>
 不写入数据库, 则 <code>database/config.json</code> 中配置
 </p>
@@ -223,9 +225,9 @@ sequelize migrate
 </div>
 </div>
 
-<div id="outline-container-org9025bd8" class="outline-2">
-<h2 id="org9025bd8">Undoing(单条) 指定单次的 Migrations</h2>
-<div class="outline-text-2" id="text-org9025bd8">
+<div id="outline-container-org34a124a" class="outline-2">
+<h2 id="org34a124a">Undoing(单条) 指定单次的 Migrations</h2>
+<div class="outline-text-2" id="text-org34a124a">
 <p>
 <code>db:migrate:undo --name</code>
 </p>
@@ -266,9 +268,9 @@ sequelize_meta.json 是：
 </div>
 </div>
 </div>
-<div id="outline-container-org4250ceb" class="outline-2">
-<h2 id="org4250ceb">Undoing(到达历史状态) 到指定单次的 Migrations</h2>
-<div class="outline-text-2" id="text-org4250ceb">
+<div id="outline-container-org39851b5" class="outline-2">
+<h2 id="org39851b5">Undoing(到达历史状态) 到指定单次的 Migrations</h2>
+<div class="outline-text-2" id="text-org39851b5">
 <p>
 <code>db:migrate:undo:all --to</code>
 </p>
@@ -313,13 +315,13 @@ sequelize_meta.json 是：
 </div>
 </div>
 
-<div id="outline-container-orgc85206d" class="outline-2">
-<h2 id="orgc85206d">注意</h2>
-<div class="outline-text-2" id="text-orgc85206d">
+<div id="outline-container-orgff014fe" class="outline-2">
+<h2 id="orgff014fe">注意</h2>
+<div class="outline-text-2" id="text-orgff014fe">
 </div>
-<div id="outline-container-orga9de690" class="outline-3">
-<h3 id="orga9de690">删除掉 <code>*.js</code> 文件</h3>
-<div class="outline-text-3" id="text-orga9de690">
+<div id="outline-container-org87bd759" class="outline-3">
+<h3 id="org87bd759">删除掉 <code>*.js</code> 文件</h3>
+<div class="outline-text-3" id="text-org87bd759">
 <p>
 如果真要回到指定状态，则，要同时，删除掉 <code>*.js</code> 文件，否则，当你运行
 <code>npx sequelize db:migrate</code> 后，又会回到 删除前的状态。
@@ -335,9 +337,9 @@ sequelize_meta.json 是：
 </div>
 </div>
 </div>
-<div id="outline-container-orgb588ffd" class="outline-2">
-<h2 id="orgb588ffd">Index columns during createTable</h2>
-<div class="outline-text-2" id="text-orgb588ffd">
+<div id="outline-container-orgc16bd12" class="outline-2">
+<h2 id="orgc16bd12">Index columns during createTable</h2>
+<div class="outline-text-2" id="text-orgc16bd12">
 <p>
 <a href="https://github.com/sequelize/cli/issues/410#issuecomment-523420333">https://github.com/sequelize/cli/issues/410#issuecomment-523420333</a>
 <a href="https://github.com/sequelize/sequelize/pull/9946/files">https://github.com/sequelize/sequelize/pull/9946/files</a>
@@ -360,6 +362,35 @@ sequelize_meta.json 是：
 );
 </pre>
 </div>
+</div>
+</div>
+<div id="outline-container-org18e2dc4" class="outline-2">
+<h2 id="org18e2dc4">change column</h2>
+<div class="outline-text-2" id="text-org18e2dc4">
+<ul class="org-ul">
+<li><a href="https://github.com/sequelize/sequelize/search?q=addColumn&amp;unscoped_q=addColumn">https://github.com/sequelize/sequelize/search?q=addColumn&amp;unscoped_q=addColumn</a></li>
+</ul>
+
+<div class="org-src-container">
+<pre class="src src-javascript"><span style="color: #00bfff;">await</span> queryInterface.changeColumn(
+  {
+    tableName: <span style="color: #daa520;">'pms_grant_option'</span>,
+          },
+  <span style="color: #daa520;">'plan_grant_number'</span>,
+  {
+    type: Sequelize.DataTypes.NUMERIC(20, 4),
+  }
+);
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-org07aaffd" class="outline-2">
+<h2 id="org07aaffd">nodejs+sequelize同步模型到mysql数据库</h2>
+<div class="outline-text-2" id="text-org07aaffd">
+<ul class="org-ul">
+<li><a href="https://blog.csdn.net/feinifi/article/details/71080750">https://blog.csdn.net/feinifi/article/details/71080750</a></li>
+</ul>
 </div>
 </div>
 </div>

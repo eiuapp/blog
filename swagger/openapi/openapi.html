@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2020-07-30 Thu 16:13 -->
+<!-- 2021-01-08 Fri 15:30 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>openapi faq</title>
@@ -98,9 +98,14 @@ fathom('trackPageview');
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#org90e7f9e">参数序列化</a></li>
-<li><a href="#orgc5384b7">Bearer Authentication</a></li>
-<li><a href="#org562ebb2">对返回字段为整数时，进行最小值，最大值限制</a></li>
+<li><a href="#org0f50429">参数序列化</a></li>
+<li><a href="#orgb189cd5">Bearer Authentication</a></li>
+<li><a href="#org4186003">对返回字段为整数时，进行最小值，最大值限制</a></li>
+<li><a href="#org5492bc3">ref</a>
+<ul>
+<li><a href="#org300d4b5">path 中使用 ref</a></li>
+</ul>
+</li>
 </ul>
 </div>
 </div>
@@ -108,9 +113,9 @@ fathom('trackPageview');
 <a href="../../index.html">{Back to site's index}</a>
 </p>
 
-<div id="outline-container-org90e7f9e" class="outline-2">
-<h2 id="org90e7f9e">参数序列化</h2>
-<div class="outline-text-2" id="text-org90e7f9e">
+<div id="outline-container-org0f50429" class="outline-2">
+<h2 id="org0f50429">参数序列化</h2>
+<div class="outline-text-2" id="text-org0f50429">
 <p>
 <a href="https://www.breakyizhan.com/swagger/2955.html">https://www.breakyizhan.com/swagger/2955.html</a>
 </p>
@@ -134,9 +139,9 @@ fathom('trackPageview');
 </div>
 </div>
 
-<div id="outline-container-orgc5384b7" class="outline-2">
-<h2 id="orgc5384b7">Bearer Authentication</h2>
-<div class="outline-text-2" id="text-orgc5384b7">
+<div id="outline-container-orgb189cd5" class="outline-2">
+<h2 id="orgb189cd5">Bearer Authentication</h2>
+<div class="outline-text-2" id="text-orgb189cd5">
 <p>
 <a href="https://swagger.io/docs/specification/authentication/bearer-authentication/">https://swagger.io/docs/specification/authentication/bearer-authentication/</a>
 </p>
@@ -156,9 +161,9 @@ fathom('trackPageview');
 
 
 
-<div id="outline-container-org562ebb2" class="outline-2">
-<h2 id="org562ebb2">对返回字段为整数时，进行最小值，最大值限制</h2>
-<div class="outline-text-2" id="text-org562ebb2">
+<div id="outline-container-org4186003" class="outline-2">
+<h2 id="org4186003">对返回字段为整数时，进行最小值，最大值限制</h2>
+<div class="outline-text-2" id="text-org4186003">
 <p>
 如，我们对 status code 作 <code>minimum</code>, <code>maximum</code>
 </p>
@@ -177,6 +182,34 @@ fathom('trackPageview');
                 minimum: 100
                 maximum: 511
 </pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org5492bc3" class="outline-2">
+<h2 id="org5492bc3">ref</h2>
+<div class="outline-text-2" id="text-org5492bc3">
+</div>
+<div id="outline-container-org300d4b5" class="outline-3">
+<h3 id="org300d4b5">path 中使用 ref</h3>
+<div class="outline-text-3" id="text-org300d4b5">
+<ul class="org-ul">
+<li>（必看）<a href="https://editor.swagger.io/?url=https://raw.githubusercontent.com/SourceCodeOER/sourcecode_api/master/api.yml">https://editor.swagger.io/?url=https://raw.githubusercontent.com/SourceCodeOER/sourcecode_api/master/api.yml</a></li>
+<li><a href="https://raw.githubusercontent.com/SourceCodeOER/sourcecode_api/master/api.yml">https://raw.githubusercontent.com/SourceCodeOER/sourcecode_api/master/api.yml</a></li>
+<li><a href="https://raw.githubusercontent.com/SourceCodeOER/sourcecode_api/master/openapi/paths/auth.yaml">https://raw.githubusercontent.com/SourceCodeOER/sourcecode_api/master/openapi/paths/auth.yaml</a></li>
+</ul>
+
+<div class="org-src-container">
+<pre class="src src-yaml">paths:
+  /auth/login:
+    $ref: 'openapi/paths/auth.yaml#/paths/~1auth~1login'
+  /auth/register:
+    $ref: 'openapi/paths/auth.yaml#/paths/~1auth~1register'
+</pre>
+</div>
+
+<p>
+注意这里 "paths/~1auth~1login" 的写法.</p>
 </div>
 </div>
 </div>

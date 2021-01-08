@@ -3,10 +3,10 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2020-07-30 Thu 16:11 -->
+<!-- 2021-01-07 Thu 11:08 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>&lrm;</title>
+<title>javascript sort</title>
 <meta name="generator" content="Org mode" />
 <meta name="author" content="a" />
 <link rel="stylesheet" title="Standard" href="/html/style/worg.css" type="text/css" />
@@ -93,15 +93,74 @@ fathom('trackPageview');
 </script>
 </div>
 <div id="content">
+<h1 class="title">javascript sort</h1>
+<div id="table-of-contents">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#orge2448d8">array sort</a></li>
+</ul>
+</div>
+</div>
 <p>
-// 给 arr 按大到小 sort
+<a href="../index.html">{Back to site's index}</a>
+</p>
+
+<div id="outline-container-orge2448d8" class="outline-2">
+<h2 id="orge2448d8">array sort</h2>
+<div class="outline-text-2" id="text-orge2448d8">
+<div class="org-src-container">
+<pre class="src src-javascript"><span style="color: #daa520;">'use strict'</span>;
+<span style="color: #00bfff;">const</span> <span style="color: #d4d4d4;">actions</span> = [
+  {
+    action: <span style="color: #daa520;">'list'</span>,
+    action_id: 5,
+    action_name: <span style="color: #daa520;">'&#26597;&#35810;-&#36134;&#21495;&#21015;&#34920;'</span>,
+  },
+  {
+    action: <span style="color: #daa520;">'create'</span>,
+    action_id: 6,
+    action_name: <span style="color: #daa520;">'&#22686;&#21152;-&#36134;&#21495;&#20449;&#24687;'</span>,
+  },
+  {
+    action: <span style="color: #daa520;">'delete'</span>,
+    action_id: 7,
+    action_name: <span style="color: #daa520;">'&#21024;&#38500;-&#36134;&#21495;&#20449;&#24687;'</span>,
+  },
+  {
+    action: <span style="color: #daa520;">'update'</span>,
+    action_id: 8,
+    action_name: <span style="color: #daa520;">'&#26356;&#26032;-&#36134;&#21495;&#20449;&#24687;'</span>,
+  },
+  {
+    action: <span style="color: #daa520;">'id'</span>,
+    action_id: 9,
+    action_name: <span style="color: #daa520;">'&#26597;&#35810;-&#36134;&#21495;&#35814;&#24773;'</span>,
+  },
+  {
+    action: <span style="color: #daa520;">'passInit'</span>,
+    action_id: 300,
+    action_name: <span style="color: #daa520;">'&#21021;&#22987;&#21270;-&#36134;&#21495;&#23494;&#30721;'</span>,
+  },
+];
+console.log(<span style="color: #daa520;">`actions: ${JSON.stringify(actions)}`</span>);
+<span style="color: #00bfff;">let</span> <span style="color: #d4d4d4;">arr</span> = actions;
+<span style="color: #00bfff;">const</span> <span style="color: #d4d4d4;">rule</span> = { list: 1, create: 2, update: 3, id: 4, <span style="color: #00bfff;">delete</span>: 5 };
+<span style="color: #579C4C;">// </span><span style="color: #579C4C;">&#25226; actions &#25353; actions[i].action &#30340;&#20540;&#36827;&#34892;&#25490;&#24207;</span>
 arr = arr.sort((n1, n2) =&gt; {
-  <i>/ return -1; //返回负值  交换顺序
-  /</i> return 0 或者 1   //返回正值   保持顺序不变
-  return n2.sum_plan_grant_number - n1.sum_plan_grant_number;
-  <i>/ n2 - n1  从大到小
-  /</i> n1 - n2  从小到大
-});</p>
+  <span style="color: #579C4C;">// </span><span style="color: #579C4C;">return -1; //&#36820;&#22238;&#36127;&#20540;  &#20132;&#25442;&#39034;&#24207;</span>
+  <span style="color: #579C4C;">// </span><span style="color: #579C4C;">return 0 &#25110;&#32773; 1   //&#36820;&#22238;&#27491;&#20540;   &#20445;&#25345;&#39034;&#24207;&#19981;&#21464;</span>
+  console.log(n1, n2);
+  <span style="color: #00bfff;">return</span> rule[n1.action] - rule[n2.action];
+  <span style="color: #579C4C;">// </span><span style="color: #579C4C;">n1 - n2  &#20174;&#23567;&#21040;&#22823;</span>
+  <span style="color: #579C4C;">// </span><span style="color: #579C4C;">n2 - n1  &#20174;&#22823;&#21040;&#23567;</span>
+});
+console.log(<span style="color: #daa520;">`arr: ${JSON.stringify(arr)}`</span>);
+console.log(<span style="color: #daa520;">`actions: ${JSON.stringify(actions)}`</span>);
+</pre>
+</div>
+</div>
+</div>
 </div>
 </body>
 </html>

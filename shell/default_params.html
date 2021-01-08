@@ -1,0 +1,224 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<!-- 2021-01-07 Thu 11:16 -->
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>&lrm;</title>
+<meta name="generator" content="Org mode" />
+<meta name="author" content="a" />
+<link rel="stylesheet" title="Standard" href="/html/style/worg.css" type="text/css" />
+<link rel="alternate stylesheet" title="Zenburn" href="/html/style/worg-zenburn.css" type="text/css" />
+<link rel="alternate stylesheet" title="Classic" href="/html/style/worg-classic.css" type="text/css" />
+<link rel="SHORTCUT ICON" href="/html/style/org-mode-unicorn.ico" type="image/x-icon" />
+<link rel="icon" href="/html/style/org-mode-unicorn.ico" type="image/ico" />
+<script type="text/javascript">
+/*
+@licstart  The following is the entire license notice for the
+JavaScript code in this tag.
+
+Copyright (C) 2012-2019 Free Software Foundation, Inc.
+
+The JavaScript code in this tag is free software: you can
+redistribute it and/or modify it under the terms of the GNU
+General Public License (GNU GPL) as published by the Free Software
+Foundation, either version 3 of the License, or (at your option)
+any later version.  The code is distributed WITHOUT ANY WARRANTY;
+without even the implied warranty of MERCHANTABILITY or FITNESS
+FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
+
+As additional permission under GNU GPL version 3 section 7, you
+may distribute non-source (e.g., minimized or compacted) forms of
+that code without the copy of the GNU GPL normally required by
+section 4, provided you include this license notice and a URL
+through which recipients can access the Corresponding Source.
+
+
+@licend  The above is the entire license notice
+for the JavaScript code in this tag.
+*/
+<!--/*--><![CDATA[/*><!--*/
+ function CodeHighlightOn(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(null != target) {
+     elem.cacheClassElem = elem.className;
+     elem.cacheClassTarget = target.className;
+     target.className = "code-highlighted";
+     elem.className   = "code-highlighted";
+   }
+ }
+ function CodeHighlightOff(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(elem.cacheClassElem)
+     elem.className = elem.cacheClassElem;
+   if(elem.cacheClassTarget)
+     target.className = elem.cacheClassTarget;
+ }
+/*]]>*///-->
+</script>
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        displayAlign: "center",
+        displayIndent: "0em",
+
+        "HTML-CSS": { scale: 100,
+                        linebreaks: { automatic: "false" },
+                        webFont: "TeX"
+                       },
+        SVG: {scale: 100,
+              linebreaks: { automatic: "false" },
+              font: "TeX"},
+        NativeMML: {scale: 100},
+        TeX: { equationNumbers: {autoNumber: "AMS"},
+               MultLineWidth: "85%",
+               TagSide: "right",
+               TagIndent: ".8em"
+             }
+});
+</script>
+<script type="text/javascript"
+        src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS_HTML"></script>
+</head>
+<body>
+<div id="preamble" class="status">
+<script type="text/javascript">
+  document.addEventListener('DOMContentLoaded',function() {
+      document.getElementById("table-of-contents").onclick = function() {
+          var elem = document.getElementById("text-table-of-contents");
+          elem.style.display = elem.style.display == "block" ? "none" : "block";
+      }
+  });
+
+  var url = document.location.href;
+  var orgsource = url.substring(0, url.lastIndexOf("."))+".org.html";
+  function show_org_source(){
+      document.location.href = orgsource;
+  }
+</script>
+
+<script>
+(function(f, a, t, h, o, m){
+	a[h]=a[h]||function(){
+		(a[h].q=a[h].q||[]).push(arguments)
+	};
+	o=f.createElement('script'),
+	m=f.getElementsByTagName('script')[0];
+	o.async=1; o.src=t; o.id='fathom-script';
+	m.parentNode.insertBefore(o,m)
+})(document, window, '//stats.orgmode.org/tracker.js', 'fathom');
+fathom('set', 'siteId', 'NWSQJ');
+fathom('trackPageview');
+</script>
+</div>
+<div id="content">
+<div id="table-of-contents">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#orge4884b3">for + default parameters</a></li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orge4884b3" class="outline-2">
+<h2 id="orge4884b3">for + default parameters</h2>
+<div class="outline-text-2" id="text-orge4884b3">
+<p>
+如果不加参数则默认执行restart函数，加stop，则执行stop函数
+</p>
+
+<p>
+<a href="https://www.cnblogs.com/outsrkem/p/11196724.html">https://www.cnblogs.com/outsrkem/p/11196724.html</a>
+</p>
+
+<p>
+#+BEGIN_SRC bash -l 7 :hl_lines 8
+#!/bin/bash
+</p>
+
+<p>
+strategys=(
+    "near_stop_out_dynamic_sleep"
+    "retracement_touch_max_loss_amount_dynamic_sleep_symbol"
+    "anti_trend_close_plus"
+    )
+</p>
+
+<p>
+function stop(){
+</p>
+
+<p>
+echo "stop() start &#x2026;"
+</p>
+
+<p>
+for dir in ${strategys[@]};do
+    echo "\(dir stop ..."
+        ps -ef | grep "main" | grep "\){dir}" | awk '{print $2}' | xargs kill
+done
+</p>
+
+<p>
+    echo "stop() end &#x2026;"
+}
+function start(){
+</p>
+
+<p>
+echo "start() start &#x2026;"
+</p>
+
+<p>
+for dir in ${strategys[@]};do
+    echo "\(dir for start ..."
+        ps -ef | grep "main" | grep "\){dir}" | awk '{print $2}' | xargs kill
+    go build -o ${dir}/main.build \({dir}/main.go && nohup ./\){dir}/main.build &gt; ${dir}/`date +%Y%m%d%H%M%S`.log 2&gt;&amp;1 &amp;
+</p>
+
+<p>
+    echo "for next &#x2026;"
+    sleep 1
+done
+</p>
+
+<p>
+    echo "start() end &#x2026;"
+}
+function restart(){
+</p>
+
+<p>
+echo "restart() start &#x2026;"
+</p>
+
+<p>
+stop $strategys
+sleep 3
+start $strategys
+</p>
+
+<p>
+    echo "restart() end &#x2026;"
+}
+</p>
+
+<p>
+cmd=$1
+</p>
+
+<p>
+echo "start &#x2026;&#x2026;&#x2026;&#x2026;&#x2026;."
+${cmd:-restart}
+</p>
+
+<p>
+#END_SRC</p>
+</div>
+</div>
+</div>
+</body>
+</html>

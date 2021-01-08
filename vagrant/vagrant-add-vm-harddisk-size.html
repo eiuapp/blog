@@ -1,0 +1,255 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<!-- 2021-01-07 Thu 11:06 -->
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>vagrant 增加硬盘容量实践记录</title>
+<meta name="generator" content="Org mode" />
+<meta name="author" content="zhangsan" />
+<meta name="description" content="vagrant 增加硬盘容量实践记录"
+ />
+<link rel="stylesheet" title="Standard" href="/html/style/worg.css" type="text/css" />
+<link rel="alternate stylesheet" title="Zenburn" href="/html/style/worg-zenburn.css" type="text/css" />
+<link rel="alternate stylesheet" title="Classic" href="/html/style/worg-classic.css" type="text/css" />
+<link rel="SHORTCUT ICON" href="/html/style/org-mode-unicorn.ico" type="image/x-icon" />
+<link rel="icon" href="/html/style/org-mode-unicorn.ico" type="image/ico" />
+<script type="text/javascript">
+/*
+@licstart  The following is the entire license notice for the
+JavaScript code in this tag.
+
+Copyright (C) 2012-2019 Free Software Foundation, Inc.
+
+The JavaScript code in this tag is free software: you can
+redistribute it and/or modify it under the terms of the GNU
+General Public License (GNU GPL) as published by the Free Software
+Foundation, either version 3 of the License, or (at your option)
+any later version.  The code is distributed WITHOUT ANY WARRANTY;
+without even the implied warranty of MERCHANTABILITY or FITNESS
+FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
+
+As additional permission under GNU GPL version 3 section 7, you
+may distribute non-source (e.g., minimized or compacted) forms of
+that code without the copy of the GNU GPL normally required by
+section 4, provided you include this license notice and a URL
+through which recipients can access the Corresponding Source.
+
+
+@licend  The above is the entire license notice
+for the JavaScript code in this tag.
+*/
+<!--/*--><![CDATA[/*><!--*/
+ function CodeHighlightOn(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(null != target) {
+     elem.cacheClassElem = elem.className;
+     elem.cacheClassTarget = target.className;
+     target.className = "code-highlighted";
+     elem.className   = "code-highlighted";
+   }
+ }
+ function CodeHighlightOff(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(elem.cacheClassElem)
+     elem.className = elem.cacheClassElem;
+   if(elem.cacheClassTarget)
+     target.className = elem.cacheClassTarget;
+ }
+/*]]>*///-->
+</script>
+</head>
+<body>
+<div id="preamble" class="status">
+<script type="text/javascript">
+  document.addEventListener('DOMContentLoaded',function() {
+      document.getElementById("table-of-contents").onclick = function() {
+          var elem = document.getElementById("text-table-of-contents");
+          elem.style.display = elem.style.display == "block" ? "none" : "block";
+      }
+  });
+
+  var url = document.location.href;
+  var orgsource = url.substring(0, url.lastIndexOf("."))+".org.html";
+  function show_org_source(){
+      document.location.href = orgsource;
+  }
+</script>
+
+<script>
+(function(f, a, t, h, o, m){
+	a[h]=a[h]||function(){
+		(a[h].q=a[h].q||[]).push(arguments)
+	};
+	o=f.createElement('script'),
+	m=f.getElementsByTagName('script')[0];
+	o.async=1; o.src=t; o.id='fathom-script';
+	m.parentNode.insertBefore(o,m)
+})(document, window, '//stats.orgmode.org/tracker.js', 'fathom');
+fathom('set', 'siteId', 'NWSQJ');
+fathom('trackPageview');
+</script>
+</div>
+<div id="content">
+<h1 class="title">vagrant 增加硬盘容量实践记录</h1>
+
+<div id="outline-container-org44ba7da" class="outline-2">
+<h2 id="org44ba7da">vagrant 增加硬盘容量实践记录</h2>
+<div class="outline-text-2" id="text-org44ba7da">
+<p>
+<a href="https://www.jianshu.com/p/b1acd5d8d53e">https://www.jianshu.com/p/b1acd5d8d53e</a>
+</p>
+
+<p>
+严格来说,这篇文章,应该属于virtualbox
+</p>
+</div>
+
+<div id="outline-container-org1f4f080" class="outline-3">
+<h3 id="env">env</h3>
+<div class="outline-text-3" id="text-env">
+<ul class="org-ul">
+<li>os: windows10</li>
+<li>virtualbox: 6.0</li>
+<li>powershell: 管理员权限打开</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org5363f51" class="outline-3">
+<h3 id="找到-vm-所在文件夹.">找到 VM 所在文件夹.</h3>
+<div class="outline-text-3" id="text-找到-vm-所在文件夹.">
+<p>
+管理/全局设置/默认虚拟电脑位置
+</p>
+
+<p>
+打开virtualbox面板, 点击vm, 设置,存储,选中,明细,位置
+</p>
+
+<div class="org-src-container">
+<pre class="src src-sh">C:\Program Files\soft\cmder
+&#955;  cd <span style="color: #daa520;">'C:\Users\a\VirtualBox VMs\ubuntu16_default_1555655333404_65452\'</span>
+C:\Users\a\VirtualBox VMs\ubuntu16_default_1555655333404_65452&#35686;&#21578;: Missing git support, install posh-git with <span style="color: #daa520;">'Install-Module posh-git'</span> and restart cmder.
+PS&gt;ls
+
+
+    &#30446;&#24405;: C:\Users\a\VirtualBox VMs\ubuntu16_default_1555655333404_65452
+
+
+Mode                LastWriteTime         Length Name
+----                -------------         ------ ----
+d-----        2019/4/29     18:08                Logs
+d-----        2019/4/20     11:47                Snapshots
+-a----        2019/4/29     18:08         196608 ubuntu-xenial-16.04-cloudimg-configdrive.vmdk
+-a----        2019/4/30      8:23    10298523648 ubuntu-xenial-16.04-cloudimg.vmdk
+-a----        2019/4/29     18:09           7596 ubuntu16_default_1555655333404_65452.vbox
+-a----        2019/4/29     18:08           6804 ubuntu16_default_1555655333404_65452.vbox-prev
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgfcbf0e4" class="outline-3">
+<h3 id="确保-vboxmanage-命令可用">确保 VBoxManage 命令可用</h3>
+<div class="outline-text-3" id="text-确保-vboxmanage-命令可用">
+<p>
+如果在有安装VIRTUALBOX的情况下,而没有找到VBoxManage命令,是因为没有把此命令加入到环境变量.
+</p>
+
+<p>
+<a href="https://www.jianshu.com/p/a665cf386b0e">https://www.jianshu.com/p/a665cf386b0e</a>
+</p>
+
+<p>
+在 powershell 下, <code>VBoxManage --help</code>
+</p>
+</div>
+</div>
+
+<div id="outline-container-org1267b04" class="outline-3">
+<h3 id="执行改格式的命令">执行改格式的命令</h3>
+<div class="outline-text-3" id="text-执行改格式的命令">
+<div class="org-src-container">
+<pre class="src src-sh">PS&gt;VBoxManage clonehd <span style="color: #daa520;">"ubuntu-xenial-16.04-cloudimg.vmdk"</span> <span style="color: #daa520;">"ubuntu-xenial-16.04-cloudimg.vdi"</span> --format vdi
+0%...10%...20%...30%...40%...50%...60%...70%...80%...90%...100%
+Clone medium created<span style="color: #00bfff;"> in</span> format <span style="color: #daa520;">'vdi'</span>. UUID: 406ede3a-b9d8-4b60-9675-893eb9141145
+C:\Users\a\VirtualBox VMs\ubuntu16_default_1555655333404_65452&#35686;&#21578;: Missing git support, install posh-git with <span style="color: #daa520;">'Install-Module posh-git'</span> and restart cmder.
+</pre>
+</div>
+
+<p>
+resize 单位为M，20480即为20G
+</p>
+
+<div class="org-src-container">
+<pre class="src src-sh">PS&gt;VBoxManage modifyhd <span style="color: #daa520;">"ubuntu-xenial-16.04-cloudimg.vdi"</span> --resize 40960
+0%...10%...20%...30%...40%...50%...60%...70%...80%...90%...100%
+C:\Users\a\VirtualBox VMs\ubuntu16_default_1555655333404_65452&#35686;&#21578;: Missing git support, install posh-git with <span style="color: #daa520;">'Install-Module posh-git'</span> and restart cmder.
+PS&gt;
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org6a120e5" class="outline-3">
+<h3 id="重新挂载">重新挂载</h3>
+<div class="outline-text-3" id="text-重新挂载">
+<p>
+=ubuntu16_default_1555655333404_65452=是文件夹名,或者说是VM名
+</p>
+
+<div class="org-src-container">
+<pre class="src src-sh">PS&gt;VBoxManage storageattach ubuntu16_default_1555655333404_65452 --storagectl <span style="color: #daa520;">"SCSI"</span> --port 0 --device 0 --type hdd --medium ubuntu-xenial-16.04-cloudimg.vdi
+C:\Users\a\VirtualBox VMs\ubuntu16_default_1555655333404_65452&#35686;&#21578;: Missing git support, install posh-git with <span style="color: #daa520;">'Install-Module posh-git'</span> and restart cmder.
+</pre>
+</div>
+
+<p>
+--storagectl "SCSI" 根据不同的操作系统类型不通，常见的还有 "SATA Contr"
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgc4ef2fa" class="outline-3">
+<h3 id="vagrant-up">vagrant up</h3>
+<div class="outline-text-3" id="text-vagrant-up">
+<div class="org-src-container">
+<pre class="src src-sh">PS&gt;cd D:\vag-files\ubuntu16<span style="color: #daa520;">\</span>
+D:\vag-files\ubuntu16
+&#955;  vagrant up
+Bringing machine <span style="color: #daa520;">'default'</span> up with <span style="color: #daa520;">'virtualbox'</span> provider...
+==&gt; default: Clearing any previously set forwarded ports...
+==&gt; default: Clearing any previously set network interfaces...
+==&gt; default: Preparing network interfaces based on configuration...
+    default: Adapter 1: nat
+    default: Adapter 2: bridged
+==&gt; default: Forwarding ports...
+    default: 222 (guest) =&gt; 3333 (host) (adapter 1)
+    default: 2376 (guest) =&gt; 2375 (host) (adapter 1)
+==&gt; default: Running <span style="color: #daa520;">'pre-boot'</span> VM customizations...
+==&gt; default: Booting VM...
+==&gt; default: Waiting for machine to boot. This may take a few minutes...
+    default: SSH address: 127.0.0.1:22
+    default: SSH username: vagrant
+    default: SSH auth method: private key
+D:\vag-files\ubuntu16
+<span style="color: #d4d4d4;">&#955;</span>  ==&gt; default: Waiting for cleanup before exiting...
+Vagrant exited after cleanup due to external interrupt.
+D:\vag-files\ubuntu16
+</pre>
+</div>
+
+<p>
+通过 <code>du -h</code> 查看.
+</p>
+</div>
+</div>
+</div>
+</div>
+</body>
+</html>

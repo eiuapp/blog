@@ -1,0 +1,356 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<!-- 2021-01-07 Thu 11:13 -->
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>org mode 通过 ox-hugo 转换成　markdown hugo faq</title>
+<meta name="generator" content="Org mode" />
+<meta name="author" content="zhangsan" />
+<meta name="description" content="Simple and basic description of who I am and what the hell I'm all about."
+ />
+<link rel="stylesheet" title="Standard" href="/html/style/worg.css" type="text/css" />
+<link rel="alternate stylesheet" title="Zenburn" href="/html/style/worg-zenburn.css" type="text/css" />
+<link rel="alternate stylesheet" title="Classic" href="/html/style/worg-classic.css" type="text/css" />
+<link rel="SHORTCUT ICON" href="/html/style/org-mode-unicorn.ico" type="image/x-icon" />
+<link rel="icon" href="/html/style/org-mode-unicorn.ico" type="image/ico" />
+<script type="text/javascript">
+/*
+@licstart  The following is the entire license notice for the
+JavaScript code in this tag.
+
+Copyright (C) 2012-2019 Free Software Foundation, Inc.
+
+The JavaScript code in this tag is free software: you can
+redistribute it and/or modify it under the terms of the GNU
+General Public License (GNU GPL) as published by the Free Software
+Foundation, either version 3 of the License, or (at your option)
+any later version.  The code is distributed WITHOUT ANY WARRANTY;
+without even the implied warranty of MERCHANTABILITY or FITNESS
+FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
+
+As additional permission under GNU GPL version 3 section 7, you
+may distribute non-source (e.g., minimized or compacted) forms of
+that code without the copy of the GNU GPL normally required by
+section 4, provided you include this license notice and a URL
+through which recipients can access the Corresponding Source.
+
+
+@licend  The above is the entire license notice
+for the JavaScript code in this tag.
+*/
+<!--/*--><![CDATA[/*><!--*/
+ function CodeHighlightOn(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(null != target) {
+     elem.cacheClassElem = elem.className;
+     elem.cacheClassTarget = target.className;
+     target.className = "code-highlighted";
+     elem.className   = "code-highlighted";
+   }
+ }
+ function CodeHighlightOff(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(elem.cacheClassElem)
+     elem.className = elem.cacheClassElem;
+   if(elem.cacheClassTarget)
+     target.className = elem.cacheClassTarget;
+ }
+/*]]>*///-->
+</script>
+</head>
+<body>
+<div id="preamble" class="status">
+<script type="text/javascript">
+  document.addEventListener('DOMContentLoaded',function() {
+      document.getElementById("table-of-contents").onclick = function() {
+          var elem = document.getElementById("text-table-of-contents");
+          elem.style.display = elem.style.display == "block" ? "none" : "block";
+      }
+  });
+
+  var url = document.location.href;
+  var orgsource = url.substring(0, url.lastIndexOf("."))+".org.html";
+  function show_org_source(){
+      document.location.href = orgsource;
+  }
+</script>
+
+<script>
+(function(f, a, t, h, o, m){
+	a[h]=a[h]||function(){
+		(a[h].q=a[h].q||[]).push(arguments)
+	};
+	o=f.createElement('script'),
+	m=f.getElementsByTagName('script')[0];
+	o.async=1; o.src=t; o.id='fathom-script';
+	m.parentNode.insertBefore(o,m)
+})(document, window, '//stats.orgmode.org/tracker.js', 'fathom');
+fathom('set', 'siteId', 'NWSQJ');
+fathom('trackPageview');
+</script>
+</div>
+<div id="content">
+<h1 class="title">org mode 通过 ox-hugo 转换成　markdown hugo faq</h1>
+<p>
+<a href="../index.html">{Back to site's index}</a>
+</p>
+
+<div id="outline-container-org8d54c2c" class="outline-2">
+<h2 id="org8d54c2c">pandoc</h2>
+<div class="outline-text-2" id="text-org8d54c2c">
+<ul class="org-ul">
+<li><a href="https://ox-hugo.scripter.co/doc/pandoc-citations/">https://ox-hugo.scripter.co/doc/pandoc-citations/</a></li>
+<li><a href="https://github.com/kaushalmodi/ox-hugo/issues/175">https://github.com/kaushalmodi/ox-hugo/issues/175</a></li>
+<li><a href="https://blindwith.science/2020/06/455.html/">https://blindwith.science/2020/06/455.html/</a></li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org298e353" class="outline-2">
+<h2 id="org298e353">tips</h2>
+<div class="outline-text-2" id="text-org298e353">
+<ul class="org-ul">
+<li><a href="https://zlearning.netlify.app/linux/emacs/emacs-org-hugo.html">https://zlearning.netlify.app/linux/emacs/emacs-org-hugo.html</a></li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org3afe5d9" class="outline-2">
+<h2 id="org3afe5d9">HUGO_SECTION vs EXPORT_HUGO_SECTION</h2>
+<div class="outline-text-2" id="text-org3afe5d9">
+<p>
+<a href="https://ox-hugo.scripter.co/doc/usage/">https://ox-hugo.scripter.co/doc/usage/</a>
+</p>
+
+<p>
+如果说，org 最开始部分有了 <code>#+HUGO_SECTION: ./hugo-faq/</code>, 而在　subtree 中有了　~:EXPORT_HUGO_SECTION: ./server/~, 那么，
+此时，会直接使用　~EXPORT_HUGO_SECTION~ 的值。
+</p>
+
+<p>
+begin_src example
+</p>
+</div>
+</div>
+
+<div id="outline-container-org00137ea" class="outline-2">
+<h2 id="org00137ea">hugo serve&#xa0;&#xa0;&#xa0;<span class="tag"><span class="_serve">@serve</span>&#xa0;<span class="serve">serve</span></span></h2>
+<div class="outline-text-2" id="text-org00137ea">
+</div>
+<div id="outline-container-org9980ab1" class="outline-3">
+<h3 id="org9980ab1">failed to transform "scss/main.scss" (text/x-scss)</h3>
+<div class="outline-text-3" id="text-org9980ab1">
+<ul class="org-ul">
+<li><a href="https://github.com/gohugoio/hugo/issues/5793">https://github.com/gohugoio/hugo/issues/5793</a></li>
+<li><a href="https://github.com/gohugoio/hugoDocs/commit/3f21d0957389a72a31a7d28807a6d43888293761">https://github.com/gohugoio/hugoDocs/commit/3f21d0957389a72a31a7d28807a6d43888293761</a></li>
+</ul>
+
+<p>
+重新下载安装 hugo 带 extended 字样的版本
+end_src
+</p>
+
+<p>
+The HUGO_SECTION is the bare-minimum requirement to specify the destination path.
+</p>
+
+<p>
+所以，有3个原则：
+</p>
+<ul class="org-ul">
+<li>当一个org file, 对应于一个文件夹中的一个markdown文件，只设置 <code>#+HUGO_SECTION:</code>, 且使用 <code>C-c C-e H h</code>, 不要去使用 subtree <code>:EXPORT_HUGO_SECTION:</code>. subtree 可以没有 PROPERTIES.</li>
+<li>当一个org file, 对应于一个文件夹中的多markdown文件时，只设置 <code>#+HUGO_SECTION:</code>, 不要去使用 subtree <code>:EXPORT_HUGO_SECTION:~。subtree 必有 PROPERTIES。必须要使用　</code>:EXPORT_FILE_NAME:~　以指定不同的文件名。未指定~:EXPORT_FILE_NAME:~的subtree，不会被转换。</li>
+<li>当一个org file, 要转换至多个文件夹的多个markdown文件时，请（且只能）使用　subtree <code>:EXPORT_HUGO_SECTION:~，且可以方便使用 ~C-c C-e H A</code> 一次性更新所有的文件夹中的多个markdown文件。如果只更新一个subtree,则必须到对应subtree下，使用 ~C-c C-e H H~。</li>
+</ul>
+
+<p>
+所以，如果想　subtree 绕开　PROPERTIES, 那就只能是一个 org file　对应一个 markdown文件。
+</p>
+
+<p>
+至于，你想使用上面３个中的哪一个原则，示具体情况而定吧。
+</p>
+
+<p>
+官方推荐使用 原则1,2
+</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgb04f03b" class="outline-2">
+<h2 id="orgb04f03b">goldmark can Enable “unsafe” HTML</h2>
+<div class="outline-text-2" id="text-orgb04f03b">
+<p>
+<a href="https://ox-hugo.scripter.co/doc/goldmark/">https://ox-hugo.scripter.co/doc/goldmark/</a> 有提到 <code>unsafe = true</code>, 但是怎么配置呢？
+直接看官方的例子就可以了。
+</p>
+<ul class="org-ul">
+<li><a href="https://github.com/kaushalmodi/ox-hugo/blob/master/doc/config.toml#L49">https://github.com/kaushalmodi/ox-hugo/blob/master/doc/config.toml#L49</a></li>
+<li><a href="https://github.com/kaushalmodi/ox-hugo/blob/master/test/site/config.toml#L26">https://github.com/kaushalmodi/ox-hugo/blob/master/test/site/config.toml#L26</a></li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org3148c6c" class="outline-2">
+<h2 id="org3148c6c">tags and categories</h2>
+<div class="outline-text-2" id="text-org3148c6c">
+<p>
+the best way: <a href="https://ox-hugo.scripter.co/doc/tags-and-categories/#examples">https://ox-hugo.scripter.co/doc/tags-and-categories/#examples</a>
+直接看官方的 org, markdown, html
+</p>
+</div>
+
+<div id="outline-container-orgbd486ab" class="outline-4">
+<h4 id="orgbd486ab">marking-files-to-not-be-exported</h4>
+<div class="outline-text-4" id="text-orgbd486ab">
+<ul class="org-ul">
+<li><a href="https://ox-hugo.scripter.co/doc/tags-and-categories/#marking-files-to-not-be-exported">https://ox-hugo.scripter.co/doc/tags-and-categories/#marking-files-to-not-be-exported</a></li>
+</ul>
+
+<p>
+这里提到了 add that special tag to the org-export-exclude-tags variable. but how to do that?
+然后，我　~C-h v org-export-exclude-tags~ 查到已有一个值 <code>noexport</code>, 所以，可以直接在 subtree 中使用这个 tag.
+但是，如果你就是喜欢用自己的一个特定tag来表示"do not export"的含义，那么，仔细看~C-h v org-export-exclude-tags~的输出，
+最后一行，有提到，~This option can also be set with the EXCLUDE_TAGS keyword.~, 也就是说，我们可以在org file中使用
+<code>#+:EXCLUDE_TAGS: abc</code> 的方式，使得所有在subtree中含有~abc~的tag会被忽略，不被oxport.但是，请注意，此时，在这个org file中，
+<code>org-export-exclude-tags~的默认值~noexport~会失效。
+所以，这里有一个权衡，如果你使用了~#+:EXCLUDE_TAGS: abc</code>, 则 <code>:noexport:</code> 无法生效；如果使用 <code>:noexport:</code> ,则不能使用 <code>#+:EXCLUDE_TAGS: abc</code>.
+我个人推荐使用 <code>:noexport:</code>,　因为既然是二选一，为何不用默认值呢。而且~#+:EXCLUDE_TAGS: abc~，还要去注意tag值~abc~的编写是否正确之类的问题。
+</p>
+</div>
+</div>
+
+<div id="outline-container-org2446e27" class="outline-4">
+<h4 id="org2446e27">HUGO_TAGS vs filetags</h4>
+<div class="outline-text-4" id="text-org2446e27">
+<p>
+subtree 中的使用原则：
+</p>
+
+<ul class="org-ul">
+<li>HUGO_TAGS不空, filetags不空: 则　~C-c C-e H A~ 输出只有 HUGO_TAGS的 tags</li>
+<li>HUGO_TAGS为空，filetags不空：则　~C-c C-e H A~ 输出，正常，是　filetags中的tags 和 subtree headline 的 tags</li>
+<li>HUGO_TAGS为空，filetags为空：则　~C-c C-e H A~ 输出，正常，是　subtree headline 的 tags</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-orge4f4712" class="outline-4">
+<h4 id="orge4f4712">HUGO_PREFER_HYPHEN_IN_TAGS</h4>
+<div class="outline-text-4" id="text-orge4f4712">
+<div class="org-src-container">
+<pre class="src src-org"><span style="color: #35393e;">#+filetags: filetags "filetagsa" 'filetagsb' filetagsc_filetagsd filetagse__f filetagesg___h</span>
+</pre>
+</div>
+
+<p>
+will transform to markdown
+</p>
+
+<div class="org-src-container">
+<pre class="src src-markdown">tags = ["filetags", "filetagsa", "'filetagsb'", "filetagsc-filetagsd", "filetagse<span style="color: #a9a1e1;">__f", "filetagesg_</span>h"]
+</pre>
+</div>
+
+<p>
+注意观察上面的转换。
+</p>
+
+<ul class="org-ul">
+<li>无引号，转换后，双引号</li>
+<li>双引号，转换后，双引号</li>
+<li>单引号，转换后，单引号</li>
+<li>_号，转换后，-号</li>
+<li>__号, 转换后，__号</li>
+<li>___号，转换后，_号</li>
+</ul>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org0e3cba5" class="outline-2">
+<h2 id="org0e3cba5">ox-hugo HUGO_FRONT_MATTER_FORMAT</h2>
+<div class="outline-text-2" id="text-org0e3cba5">
+<p>
+org file use ox-hugo, front matter:
+</p>
+
+
+<div class="org-src-container">
+<pre class="src src-org"><span style="color: #35393e;">#+OPTIONS: ':t *:t -:t ::t &lt;:t H:3 \n:nil ^:t arch:headline author:t</span>
+<span style="color: #35393e;">#+OPTIONS: broken-links:nil c:nil creator:nil d:(not "LOGBOOK")</span>
+<span style="color: #35393e;">#+OPTIONS: date:t e:t email:nil f:t inline:t num:t p:nil pri:nil</span>
+<span style="color: #35393e;">#+OPTIONS: prop:nil stat:t tags:t tasks:t tex:t timestamp:t title:t</span>
+<span style="color: #35393e;">#+OPTIONS: toc:t todo:t |:t</span>
+
+<span style="color: #d4d4d4;">#+TITLE:</span> <span style="color: #2257A0; font-weight: bold;">title</span>
+<span style="color: #35393e;">#+DESCRIPTION: description</span>
+<span style="color: #d4d4d4;">#+AUTHOR:</span> <span style="color: #2257A0;">author</span>
+<span style="color: #d4d4d4;">#+DATE:</span> <span style="color: #2257A0;">&lt;2020-09-10 Thu&gt;</span>
+<span style="color: #d4d4d4;">#+EMAIL:</span> <span style="color: #2257A0;">273412935@qq.com</span>
+<span style="color: #35393e;">#+KEYWORDS:</span>
+<span style="color: #35393e;">#+CREATOR: Emacs 26.3 (Org mode 9.1.13 + ox-hugo)</span>
+<span style="color: #35393e;">#+OPTIONS: ':nil -:nil ^:{} num:nil toc:nil</span>
+<span style="color: #35393e;">#+HUGO_FRONT_MATTER_FORMAT: toml</span>
+<span style="color: #35393e;">#+HUGO_LEVEL_OFFSET: 1</span>
+<span style="color: #35393e;">#+HUGO_PRESERVE_FILLING:</span>
+<span style="color: #35393e;">#+HUGO_SECTION: ./</span>
+<span style="color: #35393e;">#+HUGO_BASE_DIR: ~/&#26368;&#22909;&#26159;&#19968;&#20010;&#32477;&#23545;&#36335;&#24452;&#21727;</span>
+<span style="color: #35393e;">#+HUGO_PREFER_HYPHEN_IN_TAGS: t</span>
+<span style="color: #35393e;">#+HUGO_ALLOW_SPACES_IN_TAGS: nil</span>
+<span style="color: #35393e;">#+HUGO_AUTO_SET_LASTMOD: t</span>
+<span style="color: #35393e;">#+HUGO_DATE_FORMAT: %Y-%m-%dT%T%z</span>
+<span style="color: #35393e;">#+HUGO_DRAFT: false</span>
+<span style="color: #35393e;">#+HUGO_TAGS:</span>
+<span style="color: #35393e;">#+HUGO_CATEGORIES:</span>
+<span style="color: #35393e;">#+HUGO_WEIGHT: 90</span>
+<span style="color: #35393e;">#+filetags: </span>
+</pre>
+</div>
+
+<p>
+比如：
+</p>
+
+<div class="org-src-container">
+<pre class="src src-org"><span style="color: #35393e;">#+OPTIONS: ':t *:t -:t ::t &lt;:t H:3 \n:nil ^:t arch:headline author:t</span>
+<span style="color: #35393e;">#+OPTIONS: broken-links:nil c:nil creator:nil d:(not "LOGBOOK")</span>
+<span style="color: #35393e;">#+OPTIONS: date:t e:t email:nil f:t inline:t num:t p:nil pri:nil</span>
+<span style="color: #35393e;">#+OPTIONS: prop:nil stat:t tags:t tasks:t tex:t timestamp:t title:t</span>
+<span style="color: #35393e;">#+OPTIONS: toc:t todo:t |:t</span>
+
+<span style="color: #d4d4d4;">#+TITLE:</span> <span style="color: #2257A0; font-weight: bold;">About</span>
+<span style="color: #35393e;">#+DESCRIPTION: Simple and basic description of who I am and what the hell I'm all about.</span>
+<span style="color: #d4d4d4;">#+AUTHOR:</span> <span style="color: #2257A0;">zengyunlong</span>
+<span style="color: #d4d4d4;">#+DATE:</span> <span style="color: #2257A0;">&lt;2020-09-10 Thu&gt;</span>
+<span style="color: #d4d4d4;">#+EMAIL:</span> <span style="color: #2257A0;">273412935@qq.com</span>
+<span style="color: #35393e;">#+KEYWORDS:</span>
+<span style="color: #35393e;">#+CREATOR: Emacs 25.2.2 (Org mode 9.1.13 + ox-hugo)</span>
+<span style="color: #35393e;">#+OPTIONS: ':nil -:nil ^:{} num:nil toc:nil</span>
+<span style="color: #35393e;">#+HUGO_FRONT_MATTER_FORMAT: toml</span>
+<span style="color: #35393e;">#+HUGO_LEVEL_OFFSET: 1</span>
+<span style="color: #35393e;">#+HUGO_PRESERVE_FILLING:</span>
+<span style="color: #35393e;">#+HUGO_SECTION: ./</span>
+<span style="color: #35393e;">#+HUGO_BASE_DIR: ../hugo/</span>
+<span style="color: #35393e;">#+HUGO_PREFER_HYPHEN_IN_TAGS: t</span>
+<span style="color: #35393e;">#+HUGO_ALLOW_SPACES_IN_TAGS: nil</span>
+<span style="color: #35393e;">#+HUGO_AUTO_SET_LASTMOD: t</span>
+<span style="color: #35393e;">#+HUGO_DATE_FORMAT: %Y-%m-%dT%T%z</span>
+<span style="color: #35393e;">#+HUGO_DRAFT: false</span>
+<span style="color: #35393e;">#+HUGO_TAGS:</span>
+<span style="color: #35393e;">#+HUGO_CATEGORIES:</span>
+<span style="color: #35393e;">#+HUGO_WEIGHT: 90</span>
+<span style="color: #35393e;">#+filetags: </span>
+</pre>
+</div>
+</div>
+</div>
+</div>
+</body>
+</html>

@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2020-07-30 Thu 16:11 -->
+<!-- 2021-01-07 Thu 11:09 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>&lrm;</title>
@@ -97,21 +97,14 @@ fathom('trackPageview');
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#org885a3d2">tar</a>
-<ul>
-<li><a href="#org02bcc5b">exclude</a></li>
-</ul>
-</li>
+<li><a href="#org521fdb6">tar exclude</a></li>
+<li><a href="#org4a849cb">linux tar: z: unknown function modifie 错误</a></li>
 </ul>
 </div>
 </div>
-<div id="outline-container-org885a3d2" class="outline-2">
-<h2 id="org885a3d2">tar</h2>
-<div class="outline-text-2" id="text-org885a3d2">
-</div>
-<div id="outline-container-org02bcc5b" class="outline-3">
-<h3 id="org02bcc5b">exclude</h3>
-<div class="outline-text-3" id="text-org02bcc5b">
+<div id="outline-container-org521fdb6" class="outline-2">
+<h2 id="org521fdb6">tar exclude</h2>
+<div class="outline-text-2" id="text-org521fdb6">
 <p>
 <a href="https://www.gnu.org/software/tar/manual/html_node/exclude.html">https://www.gnu.org/software/tar/manual/html_node/exclude.html</a>
 </p>
@@ -121,6 +114,43 @@ fathom('trackPageview');
 </pre>
 </div>
 </div>
+</div>
+
+
+<div id="outline-container-org4a849cb" class="outline-2">
+<h2 id="org4a849cb">linux tar: z: unknown function modifie 错误</h2>
+<div class="outline-text-2" id="text-org4a849cb">
+<p>
+转载 <a href="https://blog.csdn.net/syc001/article/details/72841916">https://blog.csdn.net/syc001/article/details/72841916</a>
+</p>
+
+<p>
+某些linux版本的机器上使用 tar -zxvf *.tar.gz 命令解压.tar.gz时会出现
+</p>
+
+<p>
+tar: z: unknown function modifier
+</p>
+
+<p>
+错误。
+</p>
+
+<p>
+而使用 tar -x *.tar.gz 会出现“tar: /dev/rmt/0: No such file or directory”错误。
+</p>
+
+<p>
+这是因为该linux下的tar不支持z参数造成的。在这种情况下，可以把解压过程分为两步：
+</p>
+
+<p>
+gzip -d yourfile.tar.gz。生成一个.tar文件。
+</p>
+
+<p>
+tar -xvf yourfile.tar。解压文件。
+</p>
 </div>
 </div>
 </div>

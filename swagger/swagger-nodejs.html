@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2020-07-30 Thu 16:13 -->
+<!-- 2021-01-08 Fri 15:30 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>swagger for nodejs</title>
@@ -98,28 +98,29 @@ fathom('trackPageview');
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#org1ab4d4f">egg-swagger-doc</a>
+<li><a href="#org255551d">egg-swagger-doc</a>
 <ul>
-<li><a href="#org58da752">good</a></li>
-<li><a href="#orgb974d74">bad</a></li>
+<li><a href="#orge6ca390">good</a></li>
+<li><a href="#orge2e2949">bad</a></li>
 </ul>
 </li>
-<li><a href="#orgaad944f">代码自动生成~swagger-ui~</a>
+<li><a href="#org128eaf9">代码自动生成~swagger-ui~</a>
 <ul>
-<li><a href="#org1ae76de">bad</a></li>
-<li><a href="#orga5b319c">good</a></li>
-<li><a href="#orgc147dfc">example</a></li>
+<li><a href="#org876140f">bad</a></li>
+<li><a href="#org457280b">good</a></li>
+<li><a href="#org4e761f5">example</a></li>
 </ul>
 </li>
-<li><a href="#org517ab6f">unittest</a>
+<li><a href="#org378930f">unittest</a>
 <ul>
-<li><a href="#org0ee594f">example</a></li>
-<li><a href="#orgce7d746">swagger-mocha</a></li>
-<li><a href="#org5e408cf">google oatts</a></li>
+<li><a href="#org07efebd">example</a></li>
+<li><a href="#orgd0fe5e9">swagger-mocha</a></li>
+<li><a href="#org87a3269">google oatts</a></li>
 </ul>
 </li>
-<li><a href="#org21d6055">get started</a></li>
-<li><a href="#org1120fde">swagger, typeson, docson 结合使用</a></li>
+<li><a href="#orgb96b854">get started</a></li>
+<li><a href="#org97ba0f1">swagger, typeson, docson 结合使用</a></li>
+<li><a href="#org5303187">swagger nodejs</a></li>
 </ul>
 </div>
 </div>
@@ -127,26 +128,26 @@ fathom('trackPageview');
 <a href="../index.html">{Back to site's index}</a>
 </p>
 
-<div id="outline-container-org1ab4d4f" class="outline-2">
-<h2 id="org1ab4d4f">egg-swagger-doc</h2>
-<div class="outline-text-2" id="text-org1ab4d4f">
+<div id="outline-container-org255551d" class="outline-2">
+<h2 id="org255551d">egg-swagger-doc</h2>
+<div class="outline-text-2" id="text-org255551d">
 <p>
 <a href="https://github.com/Yanshijie-EL/egg-swagger-doc">https://github.com/Yanshijie-EL/egg-swagger-doc</a>
 </p>
 </div>
 
-<div id="outline-container-org58da752" class="outline-3">
-<h3 id="org58da752">good</h3>
-<div class="outline-text-3" id="text-org58da752">
+<div id="outline-container-orge6ca390" class="outline-3">
+<h3 id="orge6ca390">good</h3>
+<div class="outline-text-3" id="text-orge6ca390">
 <ul class="org-ul">
 <li>在代码中写注释,可自动生成 <code>swagger-ui</code></li>
 </ul>
 </div>
 </div>
 
-<div id="outline-container-orgb974d74" class="outline-3">
-<h3 id="orgb974d74">bad</h3>
-<div class="outline-text-3" id="text-orgb974d74">
+<div id="outline-container-orge2e2949" class="outline-3">
+<h3 id="orge2e2949">bad</h3>
+<div class="outline-text-3" id="text-orge2e2949">
 <ul class="org-ul">
 <li>only <code>egg</code> project</li>
 <li>can not 集成 unit test</li>
@@ -156,14 +157,14 @@ fathom('trackPageview');
 </div>
 </div>
 
-<div id="outline-container-orgaad944f" class="outline-2">
-<h2 id="orgaad944f">代码自动生成~swagger-ui~</h2>
-<div class="outline-text-2" id="text-orgaad944f">
+<div id="outline-container-org128eaf9" class="outline-2">
+<h2 id="org128eaf9">代码自动生成~swagger-ui~</h2>
+<div class="outline-text-2" id="text-org128eaf9">
 </div>
 
-<div id="outline-container-org1ae76de" class="outline-3">
-<h3 id="org1ae76de">bad</h3>
-<div class="outline-text-3" id="text-org1ae76de">
+<div id="outline-container-org876140f" class="outline-3">
+<h3 id="org876140f">bad</h3>
+<div class="outline-text-3" id="text-org876140f">
 <ul class="org-ul">
 <li>与代码相关. 服务不启动, 就看不到对应的~swagger-ui~</li>
 <li>代码启动后, 如果服务对外开放, 就要对这个 URL 专门进行处理(比如:禁止访
@@ -174,18 +175,18 @@ fathom('trackPageview');
 </div>
 </div>
 
-<div id="outline-container-orga5b319c" class="outline-3">
-<h3 id="orga5b319c">good</h3>
-<div class="outline-text-3" id="text-orga5b319c">
+<div id="outline-container-org457280b" class="outline-3">
+<h3 id="org457280b">good</h3>
+<div class="outline-text-3" id="text-org457280b">
 <ul class="org-ul">
 <li>代码注释更多, 理解代码更容易.</li>
 </ul>
 </div>
 </div>
 
-<div id="outline-container-orgc147dfc" class="outline-3">
-<h3 id="orgc147dfc">example</h3>
-<div class="outline-text-3" id="text-orgc147dfc">
+<div id="outline-container-org4e761f5" class="outline-3">
+<h3 id="org4e761f5">example</h3>
+<div class="outline-text-3" id="text-org4e761f5">
 <p>
 <a href="https://itnext.io/setting-up-swagger-in-a-node-js-application-d3c4d7aa56d4">https://itnext.io/setting-up-swagger-in-a-node-js-application-d3c4d7aa56d4</a>
 <a href="https://github.com/Yanshijie-EL/egg-swagger-doc">https://github.com/Yanshijie-EL/egg-swagger-doc</a>
@@ -194,23 +195,23 @@ fathom('trackPageview');
 </div>
 </div>
 
-<div id="outline-container-org517ab6f" class="outline-2">
-<h2 id="org517ab6f">unittest</h2>
-<div class="outline-text-2" id="text-org517ab6f">
+<div id="outline-container-org378930f" class="outline-2">
+<h2 id="org378930f">unittest</h2>
+<div class="outline-text-2" id="text-org378930f">
 </div>
 
-<div id="outline-container-org0ee594f" class="outline-3">
-<h3 id="org0ee594f">example</h3>
-<div class="outline-text-3" id="text-org0ee594f">
+<div id="outline-container-org07efebd" class="outline-3">
+<h3 id="org07efebd">example</h3>
+<div class="outline-text-3" id="text-org07efebd">
 <p>
 <a href="https://itnext.io/openapi-swagger-specifications-that-write-your-tests-for-you-sort-of-82276a491c68">https://itnext.io/openapi-swagger-specifications-that-write-your-tests-for-you-sort-of-82276a491c68</a>
 </p>
 </div>
 </div>
 
-<div id="outline-container-orgce7d746" class="outline-3">
-<h3 id="orgce7d746">swagger-mocha</h3>
-<div class="outline-text-3" id="text-orgce7d746">
+<div id="outline-container-orgd0fe5e9" class="outline-3">
+<h3 id="orgd0fe5e9">swagger-mocha</h3>
+<div class="outline-text-3" id="text-orgd0fe5e9">
 <p>
 Automatic validation of Swagger schemas and responses
 <a href="https://github.com/omninews/swagger-mocha">https://github.com/omninews/swagger-mocha</a>
@@ -218,9 +219,9 @@ Automatic validation of Swagger schemas and responses
 </div>
 </div>
 
-<div id="outline-container-org5e408cf" class="outline-3">
-<h3 id="org5e408cf">google oatts</h3>
-<div class="outline-text-3" id="text-org5e408cf">
+<div id="outline-container-org87a3269" class="outline-3">
+<h3 id="org87a3269">google oatts</h3>
+<div class="outline-text-3" id="text-org87a3269">
 <p>
 <a href="https://github.com/google/oatts">https://github.com/google/oatts</a>
 </p>
@@ -228,9 +229,9 @@ Automatic validation of Swagger schemas and responses
 </div>
 </div>
 
-<div id="outline-container-org21d6055" class="outline-2">
-<h2 id="org21d6055">get started</h2>
-<div class="outline-text-2" id="text-org21d6055">
+<div id="outline-container-orgb96b854" class="outline-2">
+<h2 id="orgb96b854">get started</h2>
+<div class="outline-text-2" id="text-orgb96b854">
 <p>
 <a href="https://blog.csdn.net/luanpeng825485697/article/details/82819977">https://blog.csdn.net/luanpeng825485697/article/details/82819977</a>
 <a href="https://www.zhihu.com/question/33516911">https://www.zhihu.com/question/33516911</a>
@@ -242,13 +243,22 @@ Automatic validation of Swagger schemas and responses
 </div>
 </div>
 
-<div id="outline-container-org1120fde" class="outline-2">
-<h2 id="org1120fde">swagger, typeson, docson 结合使用</h2>
-<div class="outline-text-2" id="text-org1120fde">
+<div id="outline-container-org97ba0f1" class="outline-2">
+<h2 id="org97ba0f1">swagger, typeson, docson 结合使用</h2>
+<div class="outline-text-2" id="text-org97ba0f1">
 <p>
 这个比较老
 <a href="https://yq.aliyun.com/articles/773">https://yq.aliyun.com/articles/773</a>
 </p>
+</div>
+</div>
+
+<div id="outline-container-org5303187" class="outline-2">
+<h2 id="org5303187">swagger nodejs</h2>
+<div class="outline-text-2" id="text-org5303187">
+<ul class="org-ul">
+<li><a href="https://github.com/mjhea0/node-swagger-api">https://github.com/mjhea0/node-swagger-api</a></li>
+</ul>
 </div>
 </div>
 </div>

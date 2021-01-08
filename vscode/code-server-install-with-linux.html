@@ -1,0 +1,306 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<!-- 2021-01-08 Fri 15:30 -->
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>&lrm;</title>
+<meta name="generator" content="Org mode" />
+<meta name="author" content="a" />
+<link rel="stylesheet" title="Standard" href="/html/style/worg.css" type="text/css" />
+<link rel="alternate stylesheet" title="Zenburn" href="/html/style/worg-zenburn.css" type="text/css" />
+<link rel="alternate stylesheet" title="Classic" href="/html/style/worg-classic.css" type="text/css" />
+<link rel="SHORTCUT ICON" href="/html/style/org-mode-unicorn.ico" type="image/x-icon" />
+<link rel="icon" href="/html/style/org-mode-unicorn.ico" type="image/ico" />
+<script type="text/javascript">
+/*
+@licstart  The following is the entire license notice for the
+JavaScript code in this tag.
+
+Copyright (C) 2012-2019 Free Software Foundation, Inc.
+
+The JavaScript code in this tag is free software: you can
+redistribute it and/or modify it under the terms of the GNU
+General Public License (GNU GPL) as published by the Free Software
+Foundation, either version 3 of the License, or (at your option)
+any later version.  The code is distributed WITHOUT ANY WARRANTY;
+without even the implied warranty of MERCHANTABILITY or FITNESS
+FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
+
+As additional permission under GNU GPL version 3 section 7, you
+may distribute non-source (e.g., minimized or compacted) forms of
+that code without the copy of the GNU GPL normally required by
+section 4, provided you include this license notice and a URL
+through which recipients can access the Corresponding Source.
+
+
+@licend  The above is the entire license notice
+for the JavaScript code in this tag.
+*/
+<!--/*--><![CDATA[/*><!--*/
+ function CodeHighlightOn(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(null != target) {
+     elem.cacheClassElem = elem.className;
+     elem.cacheClassTarget = target.className;
+     target.className = "code-highlighted";
+     elem.className   = "code-highlighted";
+   }
+ }
+ function CodeHighlightOff(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(elem.cacheClassElem)
+     elem.className = elem.cacheClassElem;
+   if(elem.cacheClassTarget)
+     target.className = elem.cacheClassTarget;
+ }
+/*]]>*///-->
+</script>
+</head>
+<body>
+<div id="preamble" class="status">
+<script type="text/javascript">
+  document.addEventListener('DOMContentLoaded',function() {
+      document.getElementById("table-of-contents").onclick = function() {
+          var elem = document.getElementById("text-table-of-contents");
+          elem.style.display = elem.style.display == "block" ? "none" : "block";
+      }
+  });
+
+  var url = document.location.href;
+  var orgsource = url.substring(0, url.lastIndexOf("."))+".org.html";
+  function show_org_source(){
+      document.location.href = orgsource;
+  }
+</script>
+
+<script>
+(function(f, a, t, h, o, m){
+	a[h]=a[h]||function(){
+		(a[h].q=a[h].q||[]).push(arguments)
+	};
+	o=f.createElement('script'),
+	m=f.getElementsByTagName('script')[0];
+	o.async=1; o.src=t; o.id='fathom-script';
+	m.parentNode.insertBefore(o,m)
+})(document, window, '//stats.orgmode.org/tracker.js', 'fathom');
+fathom('set', 'siteId', 'NWSQJ');
+fathom('trackPageview');
+</script>
+</div>
+<div id="content">
+<div id="table-of-contents">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#env">env</a>
+<ul>
+<li><a href="#clond-server">clond server</a></li>
+<li><a href="#local-server">local server</a></li>
+</ul>
+</li>
+<li><a href="#step">step</a>
+<ul>
+<li><a href="#docker">docker</a>
+<ul>
+<li><a href="#可跳过内存要大于2g">（可跳过）内存要大于2G</a></li>
+<li><a href="#内存大于2gb">内存大于2GB</a></li>
+<li><a href="#todo-设置密码登录">Todo 设置密码登录</a></li>
+<li><a href="#问题">问题</a></li>
+</ul>
+</li>
+<li><a href="#binaries">Binaries</a>
+<ul>
+<li><a href="#启动">启动</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+<p>
+安装 <a href="https://github.com/cdr/code-server">code server</a>
+</p>
+
+<div id="outline-container-orgfb2b291" class="outline-2">
+<h2 id="env">env</h2>
+<div class="outline-text-2" id="text-env">
+</div>
+
+<div id="outline-container-org4e36ba2" class="outline-3">
+<h3 id="clond-server">clond server</h3>
+<div class="outline-text-3" id="text-clond-server">
+<ul class="org-ul">
+<li>cloud: tencent cloud:</li>
+<li>os: ubuntu</li>
+<li>memory: 1GB</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org9337cc5" class="outline-3">
+<h3 id="local-server">local server</h3>
+<div class="outline-text-3" id="text-local-server">
+<ul class="org-ul">
+<li>os: ubuntu</li>
+<li>memory: 16GB</li>
+</ul>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org8b987b8" class="outline-2">
+<h2 id="step">step</h2>
+<div class="outline-text-2" id="text-step">
+</div>
+
+<div id="outline-container-org397672c" class="outline-3">
+<h3 id="docker">docker</h3>
+<div class="outline-text-3" id="text-docker">
+</div>
+
+<div id="outline-container-orgeba036a" class="outline-4">
+<h4 id="可跳过内存要大于2g">（可跳过）内存要大于2G</h4>
+<div class="outline-text-4" id="text-可跳过内存要大于2g">
+<pre class="example">
+ubuntu@VM-0-12-ubuntu:~/code-server$ docker run -it -p 8443:8443 -v "${PWD}:/home/coder/project" codercom/code-server --allow-http --no-auth
+(node:5) [DEP0005] DeprecationWarning: Buffer() is deprecated due to security and usability issues. Please use the Buffer.alloc(), Buffer.allocUnsafe(), or Buffer.from() methods instead.
+INFO  code-server v1.1156-vsc1.33.1
+INFO  Additional documentation: http://github.com/cdr/code-server
+INFO  Initializing {"data-dir":"/home/coder/.local/share/code-server","extensions-dir":"/home/coder/.local/share/code-server/extensions","working-dir":"/home/coder/project","log-dir":"/home/coder/.cache/code-server/logs/20190811033659113"}
+INFO  Starting shared process [1/5]...
+INFO  Starting webserver... {"host":"0.0.0.0","port":8443}
+WARN  No certificate specified. This could be insecure.
+WARN  Documentation on securing your setup: https://github.com/cdr/code-server/blob/master/doc/security/ssl.md
+WARN
+WARN  Launched without authentication.
+INFO
+INFO  Started (click the link below to open):
+INFO  http://localhost:8443/
+INFO
+WARN  stderr {"data":"(node:18) [DEP0005] DeprecationWarning: Buffer() is deprecated due to security and usability issues. Please use the Buffer.alloc(), Buffer.allocUnsafe(), or Buffer.from() methods instead.\n"}
+internal/child_process.js:366
+    throw errnoException(err, 'spawn');
+    ^
+
+Error: spawn ENOMEM
+    at ChildProcess.spawn (internal/child_process.js:366:11)
+    at Object.spawn [as _spawn] (child_process.js:538:9)
+    at t.async (/src/packages/server/out/cli.js:504:34598)
+    at e.exports (/src/packages/server/out/cli.js:504:34099)
+    at e (/src/packages/server/out/cli.js:504:32722)
+    at Timeout.u [as _onTimeout] (/src/packages/server/out/cli.js:504:33015)
+    at ontimeout (timers.js:436:11)
+    at tryOnTimeout (timers.js:300:5)
+    at listOnTimeout (timers.js:263:5)
+    at Timer.processTimers (timers.js:223:10)
+ubuntu@VM-0-12-ubuntu:~/code-server$
+</pre>
+
+<p>
+报错了。
+</p>
+
+<p>
+所以，我先尝试其它方式安装吧。
+</p>
+
+<p>
+参考：<a href="https://github.com/cdr/code-server/issues/232">https://github.com/cdr/code-server/issues/232</a>
+</p>
+
+<p>
+知道，要正常安装 code-server 必须要有 2GB 的内存。
+</p>
+
+<p>
+而且因为，不支持 windows 平台，所以，这里先放弃在 云端 部署了。
+</p>
+
+<p>
+尝试在内网的一台机器上运行吧
+</p>
+</div>
+</div>
+
+<div id="outline-container-org94546d5" class="outline-4">
+<h4 id="内存大于2gb">内存大于2GB</h4>
+<div class="outline-text-4" id="text-内存大于2gb">
+<p>
+内网机器内存 16GB, 所以执行：
+</p>
+
+<div class="org-src-container">
+<pre class="src src-sh"><span style="color: #d4d4d4;">cd</span>
+<span style="color: #d4d4d4;">pwd</span>
+ubuntu@utuntu:~$ docker run -d --restart always -p 8443:8443 -v <span style="color: #daa520;">"${PWD}:/home/coder/project"</span> codercom/code-server --allow-http --no-auth
+</pre>
+</div>
+
+<p>
+本地 chrome 打开：<a href="http://192.168.168.137:8443/">http://192.168.168.137:8443/</a>
+即可使用（没设置密码登录，要改进）
+</p>
+</div>
+</div>
+
+<div id="outline-container-org3f9ffce" class="outline-4">
+<h4 id="todo-设置密码登录">Todo 设置密码登录</h4>
+<div class="outline-text-4" id="text-todo-设置密码登录">
+</div>
+</div>
+
+<div id="outline-container-org5814bad" class="outline-4">
+<h4 id="问题">问题</h4>
+<div class="outline-text-4" id="text-问题">
+<p>
+以 container 方式启动后的 web 访问，使用的是容器内的coder帐户。
+所以，不能使用 ubuntu系统下原生的 bash 以及其环境变量。
+也就意味着，node, npm, 等实用程序，不再能使用。
+</p>
+
+<p>
+这一点来说，不如 remote-ssh 方式。
+</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org913518a" class="outline-3">
+<h3 id="binaries">Binaries</h3>
+<div class="outline-text-3" id="text-binaries">
+<p>
+<a href="https://blog.csdn.net/Granery/article/details/90415636">https://blog.csdn.net/Granery/article/details/90415636</a>
+</p>
+</div>
+
+<div id="outline-container-orgda0d61d" class="outline-4">
+<h4 id="启动">启动</h4>
+<div class="outline-text-4" id="text-启动">
+<p>
+如果下载的是 2.0 以上版本
+</p>
+
+<pre class="example">
+./code-server --auth="password"
+</pre>
+
+<p>
+如果下载的是 1.* 版本
+</p>
+
+<pre class="example">
+./code-server
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+</body>
+</html>

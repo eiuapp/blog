@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2020-08-05 Wed 18:11 -->
+<!-- 2021-01-07 Thu 11:10 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>emacs load path</title>
@@ -98,8 +98,14 @@ fathom('trackPageview');
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#org0481328">让某个目录和它所有的子目录都加入到load-path</a></li>
-<li><a href="#orgb737eb4">load-path</a></li>
+<li><a href="#org33658e3">让某个目录和它所有的子目录都加入到load-path</a></li>
+<li><a href="#org5fddda0">load-path</a></li>
+<li><a href="#org782155c">在 self/config/init-*.el 中加载失效</a>
+<ul>
+<li><a href="#orgf3fa1eb">要使用其中的功能，必须再次 require</a></li>
+<li><a href="#org12697f4">不能 <code>M-x a-function</code> 来直接使用 *.el 中的 defun a-function</a></li>
+</ul>
+</li>
 </ul>
 </div>
 </div>
@@ -107,9 +113,9 @@ fathom('trackPageview');
 <a href="../index.html">{Back to site's index}</a>
 </p>
 
-<div id="outline-container-org0481328" class="outline-2">
-<h2 id="org0481328">让某个目录和它所有的子目录都加入到load-path</h2>
-<div class="outline-text-2" id="text-org0481328">
+<div id="outline-container-org33658e3" class="outline-2">
+<h2 id="org33658e3">让某个目录和它所有的子目录都加入到load-path</h2>
+<div class="outline-text-2" id="text-org33658e3">
 <div class="org-src-container">
 <pre class="src src-elisp"><span style="color: #579C4C;">;; </span><span style="color: #579C4C;">&#23450;&#20041;&#19968;&#20123;&#21551;&#21160;&#30446;&#24405;&#65292;&#26041;&#20415;&#19979;&#27425;&#36801;&#31227;&#20462;&#25913;</span>
 (<span style="color: #00bfff;">defvar</span> <span style="color: #d4d4d4;">addition-lazycat-emacs-root-dir</span> (file-truename <span style="color: #daa520;">"~/lazycat-emacs/self/site-lisp"</span>))
@@ -126,12 +132,58 @@ fathom('trackPageview');
 </div>
 </div>
 
-<div id="outline-container-orgb737eb4" class="outline-2">
-<h2 id="orgb737eb4">load-path</h2>
-<div class="outline-text-2" id="text-orgb737eb4">
+<div id="outline-container-org5fddda0" class="outline-2">
+<h2 id="org5fddda0">load-path</h2>
+<div class="outline-text-2" id="text-org5fddda0">
 <div class="org-src-container">
 <pre class="src src-elisp">(add-to-list 'load-path <span style="color: #daa520;">"/a/path/"</span>)
 </pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org782155c" class="outline-2">
+<h2 id="org782155c">在 self/config/init-*.el 中加载失效</h2>
+<div class="outline-text-2" id="text-org782155c">
+</div>
+<div id="outline-container-orgf3fa1eb" class="outline-3">
+<h3 id="orgf3fa1eb">要使用其中的功能，必须再次 require</h3>
+<div class="outline-text-3" id="text-orgf3fa1eb">
+<p>
+有一次在安装 ox-hugo 过程中，发现，~M-x org-hugo-auto-export-mode~ can be used to toggle the auto-exporting on and off in an Org buffer. 但是，我却不行。
+</p>
+
+<p>
+解决:
+</p>
+
+<p>
+self/config/init-ox-hugo.el 中硬加载
+</p>
+
+<p>
+(load (concat addition-lazycat-emacs-extension-dir "/ox-hugo/org-hugo-auto-export-mode.el"))
+</p>
+
+<p>
+这样才能生效，这下子，我就误以为，是之前load *.el 文件的问题，其实我错了，实际上，只需要
+</p>
+
+<p>
+self/config/init-ox-hugo.el 中写入 <code>(require 'org-hugo-auto-export-mode)</code> 就可以了。
+也很好理解，加载了 ox-hugo.el 但是，没有require。
+</p>
+</div>
+</div>
+
+<div id="outline-container-org12697f4" class="outline-3">
+<h3 id="org12697f4">不能 <code>M-x a-function</code> 来直接使用 *.el 中的 defun a-function</h3>
+<div class="outline-text-3" id="text-org12697f4">
+<p>
+但是，又有一个新问题，为什么我 <code>(require 'org-hugo-auto-export-mode)</code>, 但是 /ox-hugo/org-hugo-auto-export-mode.el 中的函数未生效(直接 <code>M-x a-function</code> 方式调用)呢？
+其实不是未生效，而是已经生效了。~C-h f RTN org-hugo-export-wim-to-md-after-save RTN~ 就可以知道，此函数已加载。
+只不过，它是由 org-hugo-auto-export-mode 作为 minor mode 来使用的，它不是当下这个环境能直接 <code>M-x org-hugo-export-wim-to-md-after-save</code> 调用的。
+同理回答，为什么 <code>(require 'ox-hugo-pandoc-cite)</code>, 但是 /ox-hugo/ox-hugo-pandoc-cite.el 中的函数未能直接 <code>M-x org-hugo-pandoc-cite--remove-pandoc-meta-data</code> 等类似问题。</p>
 </div>
 </div>
 </div>

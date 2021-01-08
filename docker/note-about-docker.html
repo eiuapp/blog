@@ -1,0 +1,216 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<!-- 2021-01-08 Fri 15:30 -->
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>docker</title>
+<meta name="generator" content="Org mode" />
+<link rel="stylesheet" title="Standard" href="/html/style/worg.css" type="text/css" />
+<link rel="alternate stylesheet" title="Zenburn" href="/html/style/worg-zenburn.css" type="text/css" />
+<link rel="alternate stylesheet" title="Classic" href="/html/style/worg-classic.css" type="text/css" />
+<link rel="SHORTCUT ICON" href="/html/style/org-mode-unicorn.ico" type="image/x-icon" />
+<link rel="icon" href="/html/style/org-mode-unicorn.ico" type="image/ico" />
+<script type="text/javascript">
+/*
+@licstart  The following is the entire license notice for the
+JavaScript code in this tag.
+
+Copyright (C) 2012-2019 Free Software Foundation, Inc.
+
+The JavaScript code in this tag is free software: you can
+redistribute it and/or modify it under the terms of the GNU
+General Public License (GNU GPL) as published by the Free Software
+Foundation, either version 3 of the License, or (at your option)
+any later version.  The code is distributed WITHOUT ANY WARRANTY;
+without even the implied warranty of MERCHANTABILITY or FITNESS
+FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
+
+As additional permission under GNU GPL version 3 section 7, you
+may distribute non-source (e.g., minimized or compacted) forms of
+that code without the copy of the GNU GPL normally required by
+section 4, provided you include this license notice and a URL
+through which recipients can access the Corresponding Source.
+
+
+@licend  The above is the entire license notice
+for the JavaScript code in this tag.
+*/
+<!--/*--><![CDATA[/*><!--*/
+ function CodeHighlightOn(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(null != target) {
+     elem.cacheClassElem = elem.className;
+     elem.cacheClassTarget = target.className;
+     target.className = "code-highlighted";
+     elem.className   = "code-highlighted";
+   }
+ }
+ function CodeHighlightOff(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(elem.cacheClassElem)
+     elem.className = elem.cacheClassElem;
+   if(elem.cacheClassTarget)
+     target.className = elem.cacheClassTarget;
+ }
+/*]]>*///-->
+</script>
+</head>
+<body>
+<div id="preamble" class="status">
+<script type="text/javascript">
+  document.addEventListener('DOMContentLoaded',function() {
+      document.getElementById("table-of-contents").onclick = function() {
+          var elem = document.getElementById("text-table-of-contents");
+          elem.style.display = elem.style.display == "block" ? "none" : "block";
+      }
+  });
+
+  var url = document.location.href;
+  var orgsource = url.substring(0, url.lastIndexOf("."))+".org.html";
+  function show_org_source(){
+      document.location.href = orgsource;
+  }
+</script>
+
+<script>
+(function(f, a, t, h, o, m){
+	a[h]=a[h]||function(){
+		(a[h].q=a[h].q||[]).push(arguments)
+	};
+	o=f.createElement('script'),
+	m=f.getElementsByTagName('script')[0];
+	o.async=1; o.src=t; o.id='fathom-script';
+	m.parentNode.insertBefore(o,m)
+})(document, window, '//stats.orgmode.org/tracker.js', 'fathom');
+fathom('set', 'siteId', 'NWSQJ');
+fathom('trackPageview');
+</script>
+</div>
+<div id="content">
+<h1 class="title">docker</h1>
+<div id="table-of-contents">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#org36a83ed">Post</a>
+<ul>
+<li><a href="#org6f57165">docker</a>
+<ul>
+<li><a href="#org6ff0952">用户加入docker组</a></li>
+<li><a href="#orgcc0d442">docker-compose安装后报"specify DOCKER_HOST"错误</a></li>
+<li><a href="#org4899e26">批量删除docker images</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org36a83ed" class="outline-2">
+<h2 id="org36a83ed">Post</h2>
+<div class="outline-text-2" id="text-org36a83ed">
+</div>
+<div id="outline-container-org6f57165" class="outline-3">
+<h3 id="org6f57165">docker&#xa0;&#xa0;&#xa0;<span class="tag"><span class="_docker">@docker</span>&#xa0;<span class="docker">docker</span></span></h3>
+<div class="outline-text-3" id="text-org6f57165">
+</div>
+<div id="outline-container-org6ff0952" class="outline-4">
+<h4 id="org6ff0952">用户加入docker组</h4>
+<div class="outline-text-4" id="text-org6ff0952">
+<p>
+Docker 创建docker用户组，应用用户加入docker组
+</p>
+</div>
+
+<ul class="org-ul">
+<li><a id="orge18241b"></a>创建docker用户组<br />
+<div class="outline-text-5" id="text-orge18241b">
+<div class="org-src-container">
+<pre class="src src-shell">sudo groupadd docker
+</pre>
+</div>
+</div>
+</li>
+
+<li><a id="orgda62ac9"></a>应用用户加入docker用户组<br />
+<div class="outline-text-5" id="text-orgda62ac9">
+<div class="org-src-container">
+<pre class="src src-shell">sudo usermod -aG docker ${<span style="color: #d4d4d4;">USER</span>}
+</pre>
+</div>
+</div>
+</li>
+<li><a id="orge321db7"></a>重启docker服务<br />
+<div class="outline-text-5" id="text-orge321db7">
+<div class="org-src-container">
+<pre class="src src-shell">sudo systemctl restart docker
+</pre>
+</div>
+</div>
+</li>
+<li><a id="org86f5631"></a>切换或者退出当前账户再从新登入<br />
+<div class="outline-text-5" id="text-org86f5631">
+<div class="org-src-container">
+<pre class="src src-shell">su root           <span style="color: #579C4C;">#  </span><span style="color: #579C4C;">&#20999;&#25442;&#21040;root&#29992;&#25143;</span>
+su ${<span style="color: #d4d4d4;">USER</span>}        <span style="color: #579C4C;">#  </span><span style="color: #579C4C;">&#20877;&#20999;&#25442;&#21040;&#21407;&#26469;&#30340;&#24212;&#29992;&#29992;&#25143;&#20197;&#19978;&#37197;&#32622;&#25165;&#29983;&#25928;</span>
+</pre>
+</div>
+</div>
+</li>
+</ul>
+</div>
+
+
+<div id="outline-container-orgcc0d442" class="outline-4">
+<h4 id="orgcc0d442">docker-compose安装后报"specify DOCKER_HOST"错误&#xa0;&#xa0;&#xa0;<span class="tag"><span class="docker_compose">docker_compose</span></span></h4>
+<div class="outline-text-4" id="text-orgcc0d442">
+<p>
+按照官网 <a href="https://docs.docker.com/compose/install/">https://docs.docker.com/compose/install/</a> 安装完 docker-compose 后，要重
+新进入一下用户(比如切换为root，再次切换为user)，配置才生效。
+</p>
+
+<p>
+否则会报出下面的错误：
+</p>
+
+<div class="org-src-container">
+<pre class="src src-shell">ERROR: Couldn&#8217;t connect to Docker daemon at http+docker://localunixsocket - is it running?
+
+If it&#8217;s at a non-standard location, specify the URL with the DOCKER_HOST environment variable.
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org4899e26" class="outline-4">
+<h4 id="org4899e26">批量删除docker images&#xa0;&#xa0;&#xa0;<span class="tag"><span class="images">images</span></span></h4>
+<div class="outline-text-4" id="text-org4899e26">
+<div class="org-src-container">
+<pre class="src src-shell">docker ps -a | grep <span style="color: #daa520;">"Exited"</span> | awk <span style="color: #daa520;">'{print $1 }'</span>|xargs docker stop
+docker ps -a | grep <span style="color: #daa520;">"Exited"</span> | awk <span style="color: #daa520;">'{print $1 }'</span>|xargs docker rm
+docker images|grep none|awk <span style="color: #daa520;">'{print $3 }'</span>|xargs docker rmi
+</pre>
+</div>
+</div>
+
+<ul class="org-ul">
+<li><a id="org3b1085a"></a>Ref<br />
+<div class="outline-text-5" id="text-org3b1085a">
+<ul class="org-ul">
+<li><a href="https://blog.csdn.net/p656456564545/article/details/50097145">https://blog.csdn.net/p656456564545/article/details/50097145</a></li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+</body>
+</html>

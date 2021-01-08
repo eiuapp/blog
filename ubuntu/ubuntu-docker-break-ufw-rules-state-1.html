@@ -1,0 +1,279 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<!-- 2021-01-07 Thu 11:02 -->
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>&lrm;</title>
+<meta name="generator" content="Org mode" />
+<meta name="author" content="a" />
+<link rel="stylesheet" title="Standard" href="/html/style/worg.css" type="text/css" />
+<link rel="alternate stylesheet" title="Zenburn" href="/html/style/worg-zenburn.css" type="text/css" />
+<link rel="alternate stylesheet" title="Classic" href="/html/style/worg-classic.css" type="text/css" />
+<link rel="SHORTCUT ICON" href="/html/style/org-mode-unicorn.ico" type="image/x-icon" />
+<link rel="icon" href="/html/style/org-mode-unicorn.ico" type="image/ico" />
+<script type="text/javascript">
+/*
+@licstart  The following is the entire license notice for the
+JavaScript code in this tag.
+
+Copyright (C) 2012-2019 Free Software Foundation, Inc.
+
+The JavaScript code in this tag is free software: you can
+redistribute it and/or modify it under the terms of the GNU
+General Public License (GNU GPL) as published by the Free Software
+Foundation, either version 3 of the License, or (at your option)
+any later version.  The code is distributed WITHOUT ANY WARRANTY;
+without even the implied warranty of MERCHANTABILITY or FITNESS
+FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
+
+As additional permission under GNU GPL version 3 section 7, you
+may distribute non-source (e.g., minimized or compacted) forms of
+that code without the copy of the GNU GPL normally required by
+section 4, provided you include this license notice and a URL
+through which recipients can access the Corresponding Source.
+
+
+@licend  The above is the entire license notice
+for the JavaScript code in this tag.
+*/
+<!--/*--><![CDATA[/*><!--*/
+ function CodeHighlightOn(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(null != target) {
+     elem.cacheClassElem = elem.className;
+     elem.cacheClassTarget = target.className;
+     target.className = "code-highlighted";
+     elem.className   = "code-highlighted";
+   }
+ }
+ function CodeHighlightOff(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(elem.cacheClassElem)
+     elem.className = elem.cacheClassElem;
+   if(elem.cacheClassTarget)
+     target.className = elem.cacheClassTarget;
+ }
+/*]]>*///-->
+</script>
+</head>
+<body>
+<div id="preamble" class="status">
+<script type="text/javascript">
+  document.addEventListener('DOMContentLoaded',function() {
+      document.getElementById("table-of-contents").onclick = function() {
+          var elem = document.getElementById("text-table-of-contents");
+          elem.style.display = elem.style.display == "block" ? "none" : "block";
+      }
+  });
+
+  var url = document.location.href;
+  var orgsource = url.substring(0, url.lastIndexOf("."))+".org.html";
+  function show_org_source(){
+      document.location.href = orgsource;
+  }
+</script>
+
+<script>
+(function(f, a, t, h, o, m){
+	a[h]=a[h]||function(){
+		(a[h].q=a[h].q||[]).push(arguments)
+	};
+	o=f.createElement('script'),
+	m=f.getElementsByTagName('script')[0];
+	o.async=1; o.src=t; o.id='fathom-script';
+	m.parentNode.insertBefore(o,m)
+})(document, window, '//stats.orgmode.org/tracker.js', 'fathom');
+fathom('set', 'siteId', 'NWSQJ');
+fathom('trackPageview');
+</script>
+</div>
+<div id="content">
+<div id="table-of-contents">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#env">env</a></li>
+<li><a href="#step">step</a>
+<ul>
+<li><a href="#注意">注意</a></li>
+<li><a href="#docker">docker</a></li>
+<li><a href="#ufw">ufw</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+<p>
+docker break ufw's rules in ubuntu - env1
+</p>
+
+<div id="outline-container-orge1b8813" class="outline-2">
+<h2 id="env">env</h2>
+<div class="outline-text-2" id="text-env">
+<p>
+当运行docker后
+</p>
+
+<div class="org-src-container">
+<pre class="src src-sh">sudo docker run --detach <span style="color: #daa520;">\</span>
+  --restart always <span style="color: #daa520;">\</span>
+  --hostname 192.168.168.137 <span style="color: #daa520;">\</span>
+  --publish 192.168.168.137:12443:443 --publish 192.168.168.137:80:80 --publish 192.168.168.137:22:22 <span style="color: #daa520;">\</span>
+  --name gitlab-ce-11.9.1-2 <span style="color: #daa520;">\</span>
+  --volume /srv/gitlab9.1/config:/etc/gitlab <span style="color: #daa520;">\</span>
+  --volume /srv/gitlab9.1/logs:/var/log/gitlab <span style="color: #daa520;">\</span>
+  --volume /srv/gitlab9.1/data:/var/opt/gitlab <span style="color: #daa520;">\</span>
+  gitlab/gitlab-ce:11.9.1-ce.0
+</pre>
+</div>
+
+<p>
+也会导致 整个局域网能访问到 80
+</p>
+
+<div class="org-src-container">
+<pre class="src src-sh">sudo docker run --detach <span style="color: #daa520;">\</span>
+  --restart always <span style="color: #daa520;">\</span>
+  --hostname 192.168.168.137 <span style="color: #daa520;">\</span>
+  --publish 127.0.0.1:12443:443 --publish 127.0.0.1:80:80 --publish 127.0.0.1:22:22 <span style="color: #daa520;">\</span>
+  --name gitlab-ce-11.9.1-2 <span style="color: #daa520;">\</span>
+  --volume /srv/gitlab9.1/config:/etc/gitlab <span style="color: #daa520;">\</span>
+  --volume /srv/gitlab9.1/logs:/var/log/gitlab <span style="color: #daa520;">\</span>
+  --volume /srv/gitlab9.1/data:/var/opt/gitlab <span style="color: #daa520;">\</span>
+  gitlab/gitlab-ce:11.9.1-ce.0
+</pre>
+</div>
+
+<p>
+会导致 无法通过IP <code>192.168.168.137</code> 来访问 80
+</p>
+
+<div class="org-src-container">
+<pre class="src src-sh">ubuntu@utuntu:~$ telnet 127.0.0.1 80
+Trying 127.0.0.1...
+Connected to 127.0.0.1.
+Escape character is <span style="color: #daa520;">'^]'</span>.
+^]
+telnet&gt;
+^CConnection closed by foreign host.
+ubuntu@utuntu:~$ telnet 192.168.168.137 80
+Trying 192.168.168.137...
+telnet: Unable to connect to remote host: Connection refused
+ubuntu@utuntu:~$
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org89148fb" class="outline-2">
+<h2 id="step">step</h2>
+<div class="outline-text-2" id="text-step">
+<p>
+这时, 参考
+</p>
+
+<p>
+<a href="https://chaifeng.com/to-fix-ufw-and-docker-security-flaw-without-disabling-iptables/">https://chaifeng.com/to-fix-ufw-and-docker-security-flaw-without-disabling-iptables/</a>
+</p>
+
+<p>
+发现没用.
+</p>
+
+<p>
+再参考
+</p>
+
+<p>
+<a href="https://my.oschina.net/abcfy2/blog/539485">https://my.oschina.net/abcfy2/blog/539485</a> 和
+<a href="https://blog.36web.rocks/2016/07/08/docker-behind-ufw.html">https://blog.36web.rocks/2016/07/08/docker-behind-ufw.html</a>
+</p>
+
+<p>
+正确.
+</p>
+</div>
+
+<div id="outline-container-org54e1d40" class="outline-3">
+<h3 id="注意">注意</h3>
+<div class="outline-text-3" id="text-注意">
+<ul class="org-ul">
+<li>无需重启host</li>
+<li>ubuntu下还需要配置 <code>/lib/systemd/system/docker.service</code> 的 ExecStart
+   加上=&#x2013;iptables=false=, 然后, systemctl daemon-reload`</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org572bd16" class="outline-3">
+<h3 id="docker">docker</h3>
+<div class="outline-text-3" id="text-docker">
+<p>
+编辑/etc/default/docker文件，修改DOCKER\_OPTS="&#x2013;iptables=false"，等同于给docker启动参数添加&#x2013;iptables=false选项，此选项会禁用docker添加iptables规则。
+</p>
+
+<pre class="example">
+ubuntu@utuntu:~/lcnx/local/lvchuang-admin-server$ sudo cat /etc/default/docker | grep DOCKER_OPTS
+# Use DOCKER_OPTS to modify the daemon startup options.
+#DOCKER_OPTS="--dns 8.8.8.8 --dns 8.8.4.4"
+DOCKER_OPTS="--iptables=false"
+ubuntu@utuntu:~/lcnx/local/lvchuang-admin-server$
+</pre>
+
+<p>
+同时,还要修改一下 docker.service 文件
+</p>
+
+<div class="org-src-container">
+<pre class="src src-sh">ubuntu@utuntu:~/lcnx/local/lvchuang-admin-server$ sudo vi /lib/systemd/system/docker.service
+ubuntu@utuntu:~/lcnx/local/lvchuang-admin-server$ sudo cat /lib/systemd/system/docker.service | grep ExecStart
+<span style="color: #d4d4d4;">ExecStart</span>=/usr/bin/dockerd --iptables=false --containerd=/run/containerd/containerd.sock
+ubuntu@utuntu:~/lcnx/local/lvchuang-admin-server$
+</pre>
+</div>
+
+<p>
+重启docker
+</p>
+
+<div class="org-src-container">
+<pre class="src src-sh">sudo systemctl daemon-reload
+sudo systemctl restart docker
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org61848db" class="outline-3">
+<h3 id="ufw">ufw</h3>
+<div class="outline-text-3" id="text-ufw">
+<p>
+编辑/etc/ufw/before.rules这个文件，在文件末尾追加以下内容:
+</p>
+
+<pre class="example">
+*nat
+:POSTROUTING ACCEPT [0:0]
+-A POSTROUTING ! -o docker0 -s 172.17.0.0/16 -j MASQUERADE
+COMMIT
+</pre>
+
+<p>
+之后重启一下ufw规则即可:
+</p>
+
+<pre class="example">
+sudo ufw disable
+sudo ufw enable
+</pre>
+</div>
+</div>
+</div>
+</div>
+</body>
+</html>

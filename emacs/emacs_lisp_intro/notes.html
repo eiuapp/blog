@@ -1,0 +1,276 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<!-- 2021-01-07 Thu 11:12 -->
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>emacs lisp introduction note</title>
+<meta name="generator" content="Org mode" />
+<meta name="author" content="a" />
+<link rel="stylesheet" title="Standard" href="/html/style/worg.css" type="text/css" />
+<link rel="alternate stylesheet" title="Zenburn" href="/html/style/worg-zenburn.css" type="text/css" />
+<link rel="alternate stylesheet" title="Classic" href="/html/style/worg-classic.css" type="text/css" />
+<link rel="SHORTCUT ICON" href="/html/style/org-mode-unicorn.ico" type="image/x-icon" />
+<link rel="icon" href="/html/style/org-mode-unicorn.ico" type="image/ico" />
+<script type="text/javascript">
+/*
+@licstart  The following is the entire license notice for the
+JavaScript code in this tag.
+
+Copyright (C) 2012-2019 Free Software Foundation, Inc.
+
+The JavaScript code in this tag is free software: you can
+redistribute it and/or modify it under the terms of the GNU
+General Public License (GNU GPL) as published by the Free Software
+Foundation, either version 3 of the License, or (at your option)
+any later version.  The code is distributed WITHOUT ANY WARRANTY;
+without even the implied warranty of MERCHANTABILITY or FITNESS
+FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
+
+As additional permission under GNU GPL version 3 section 7, you
+may distribute non-source (e.g., minimized or compacted) forms of
+that code without the copy of the GNU GPL normally required by
+section 4, provided you include this license notice and a URL
+through which recipients can access the Corresponding Source.
+
+
+@licend  The above is the entire license notice
+for the JavaScript code in this tag.
+*/
+<!--/*--><![CDATA[/*><!--*/
+ function CodeHighlightOn(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(null != target) {
+     elem.cacheClassElem = elem.className;
+     elem.cacheClassTarget = target.className;
+     target.className = "code-highlighted";
+     elem.className   = "code-highlighted";
+   }
+ }
+ function CodeHighlightOff(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(elem.cacheClassElem)
+     elem.className = elem.cacheClassElem;
+   if(elem.cacheClassTarget)
+     target.className = elem.cacheClassTarget;
+ }
+/*]]>*///-->
+</script>
+</head>
+<body>
+<div id="preamble" class="status">
+<script type="text/javascript">
+  document.addEventListener('DOMContentLoaded',function() {
+      document.getElementById("table-of-contents").onclick = function() {
+          var elem = document.getElementById("text-table-of-contents");
+          elem.style.display = elem.style.display == "block" ? "none" : "block";
+      }
+  });
+
+  var url = document.location.href;
+  var orgsource = url.substring(0, url.lastIndexOf("."))+".org.html";
+  function show_org_source(){
+      document.location.href = orgsource;
+  }
+</script>
+
+<script>
+(function(f, a, t, h, o, m){
+	a[h]=a[h]||function(){
+		(a[h].q=a[h].q||[]).push(arguments)
+	};
+	o=f.createElement('script'),
+	m=f.getElementsByTagName('script')[0];
+	o.async=1; o.src=t; o.id='fathom-script';
+	m.parentNode.insertBefore(o,m)
+})(document, window, '//stats.orgmode.org/tracker.js', 'fathom');
+fathom('set', 'siteId', 'NWSQJ');
+fathom('trackPageview');
+</script>
+</div>
+<div id="content">
+<h1 class="title">emacs lisp introduction note</h1>
+<div id="table-of-contents">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#org09c623e">5 A Few More Complex Functions</a>
+<ul>
+<li><a href="#org5fa5fbb">append-to-buffer</a></li>
+<li><a href="#orga4a468c">copy-to-buffer</a></li>
+<li><a href="#org95d2afe">insert-buffer</a></li>
+</ul>
+</li>
+<li><a href="#org17c53bc">6</a>
+<ul>
+<li><a href="#orgcd7cc86">6.2 what-line</a></li>
+</ul>
+</li>
+<li><a href="#org41f0bff">7</a>
+<ul>
+<li><a href="#org88cf704">car and cdr</a></li>
+<li><a href="#org188d8e9">cons</a></li>
+<li><a href="#orgdabdadb">nthcdr and nth</a></li>
+<li><a href="#org1c3cc85">destructive</a></li>
+</ul>
+</li>
+<li><a href="#orga393d41">8</a>
+<ul>
+<li><a href="#org38e7f2a">8.5</a></li>
+</ul>
+</li>
+<li><a href="#org609741e">10</a></li>
+<li><a href="#org9a3d1eb">12</a></li>
+</ul>
+</div>
+</div>
+<p>
+<a href="../index.html">{Back to upper level}</a>
+</p>
+
+<p>
+An Introduction to Programming in Emacs Lisp
+</p>
+
+<div id="outline-container-org09c623e" class="outline-2">
+<h2 id="org09c623e">5 A Few More Complex Functions</h2>
+<div class="outline-text-2" id="text-org09c623e">
+</div>
+<div id="outline-container-org5fa5fbb" class="outline-3">
+<h3 id="org5fa5fbb">append-to-buffer</h3>
+<div class="outline-text-3" id="text-org5fa5fbb">
+<p>
+光标之前在 bufferB ，这里将是添加的位置。
+光标跳到 bufferA.
+在 bufferA 中, 选择区域，运行 M-x append-to-buffer ,然后，会在 bufferB 中添加。
+</p>
+</div>
+</div>
+
+<div id="outline-container-orga4a468c" class="outline-3">
+<h3 id="orga4a468c">copy-to-buffer</h3>
+<div class="outline-text-3" id="text-orga4a468c">
+<p>
+光标在 bufferA, 选择区域，运行 M-x copy-to-buffer bufferB-name RTN, 效果：在 bufferB 替换成了刚刚选中的区域内容
+</p>
+</div>
+</div>
+
+<div id="outline-container-org95d2afe" class="outline-3">
+<h3 id="org95d2afe">insert-buffer</h3>
+<div class="outline-text-3" id="text-org95d2afe">
+<p>
+光标在 bufferA, 运行 M-x insert-buffer bufferB-name RTN, 然后，会在 bufferA 处添加 bufferB 的内容
+</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org17c53bc" class="outline-2">
+<h2 id="org17c53bc">6</h2>
+<div class="outline-text-2" id="text-org17c53bc">
+<p>
+(mark-line)
+</p>
+</div>
+
+<div id="outline-container-orgcd7cc86" class="outline-3">
+<h3 id="orgcd7cc86">6.2 what-line</h3>
+<div class="outline-text-3" id="text-orgcd7cc86">
+<p>
+(1+ (count-lines 1 (point)))
+</p>
+
+<p>
+这里的 (1+ ) 是因为，如果 cursor 在 行首的话 <code>(count-lines 1 (point))</code> 就是 行数-1 .
+可以直接在 emacs 中，把 cursor 放在 行首，然后 <code>M-x eval-expression RTN (count-lines 1 (point)) RTN</code> 就知道了。
+</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org41f0bff" class="outline-2">
+<h2 id="org41f0bff">7</h2>
+<div class="outline-text-2" id="text-org41f0bff">
+</div>
+<div id="outline-container-org88cf704" class="outline-3">
+<h3 id="org88cf704">car and cdr</h3>
+<div class="outline-text-3" id="text-org88cf704">
+<p>
+car = Contents of the Address part of the Register
+cdr = Contents of the Decrement part of the Register
+</p>
+</div>
+</div>
+
+<div id="outline-container-org188d8e9" class="outline-3">
+<h3 id="org188d8e9">cons</h3>
+<div class="outline-text-3" id="text-org188d8e9">
+<p>
+The cons function constructs lists; it is the inverse of car and cdr.
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgdabdadb" class="outline-3">
+<h3 id="orgdabdadb">nthcdr and nth</h3>
+<div class="outline-text-3" id="text-orgdabdadb">
+<p>
+The nthcdr function takes the CDR of a list repeatedly. The nth function takes the CAR of the result returned by nthcdr. It returns the Nth element of the list.
+</p>
+</div>
+</div>
+
+<div id="outline-container-org1c3cc85" class="outline-3">
+<h3 id="org1c3cc85">destructive</h3>
+<div class="outline-text-3" id="text-org1c3cc85">
+<p>
+the non-destructive function: car cdr cons nthcdr nth.
+the destructive function(change the original list): setcar setcdr.
+</p>
+</div>
+</div>
+</div>
+<div id="outline-container-orga393d41" class="outline-2">
+<h2 id="orga393d41">8</h2>
+<div class="outline-text-2" id="text-orga393d41">
+</div>
+<div id="outline-container-org38e7f2a" class="outline-3">
+<h3 id="org38e7f2a">8.5</h3>
+<div class="outline-text-3" id="text-org38e7f2a">
+<p>
+For me, the major use of the set-variable command is to suggest variables that I might want to set in my .emacs file.
+</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org609741e" class="outline-2">
+<h2 id="org609741e">10</h2>
+<div class="outline-text-2" id="text-org609741e">
+<p>
+(browse-kill-ring)
+</p>
+</div>
+</div>
+
+
+<div id="outline-container-org9a3d1eb" class="outline-2">
+<h2 id="org9a3d1eb">12</h2>
+<div class="outline-text-2" id="text-org9a3d1eb">
+<p>
+(forward-sentence) M-e
+</p>
+
+<p>
+(forward-paragraph) M-}
+</p>
+</div>
+</div>
+</div>
+</body>
+</html>

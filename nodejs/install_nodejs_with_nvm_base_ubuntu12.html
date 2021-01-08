@@ -1,0 +1,599 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<!-- 2021-01-07 Thu 11:08 -->
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>&lrm;</title>
+<meta name="generator" content="Org mode" />
+<meta name="author" content="a" />
+<link rel="stylesheet" title="Standard" href="/html/style/worg.css" type="text/css" />
+<link rel="alternate stylesheet" title="Zenburn" href="/html/style/worg-zenburn.css" type="text/css" />
+<link rel="alternate stylesheet" title="Classic" href="/html/style/worg-classic.css" type="text/css" />
+<link rel="SHORTCUT ICON" href="/html/style/org-mode-unicorn.ico" type="image/x-icon" />
+<link rel="icon" href="/html/style/org-mode-unicorn.ico" type="image/ico" />
+<script type="text/javascript">
+/*
+@licstart  The following is the entire license notice for the
+JavaScript code in this tag.
+
+Copyright (C) 2012-2019 Free Software Foundation, Inc.
+
+The JavaScript code in this tag is free software: you can
+redistribute it and/or modify it under the terms of the GNU
+General Public License (GNU GPL) as published by the Free Software
+Foundation, either version 3 of the License, or (at your option)
+any later version.  The code is distributed WITHOUT ANY WARRANTY;
+without even the implied warranty of MERCHANTABILITY or FITNESS
+FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
+
+As additional permission under GNU GPL version 3 section 7, you
+may distribute non-source (e.g., minimized or compacted) forms of
+that code without the copy of the GNU GPL normally required by
+section 4, provided you include this license notice and a URL
+through which recipients can access the Corresponding Source.
+
+
+@licend  The above is the entire license notice
+for the JavaScript code in this tag.
+*/
+<!--/*--><![CDATA[/*><!--*/
+ function CodeHighlightOn(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(null != target) {
+     elem.cacheClassElem = elem.className;
+     elem.cacheClassTarget = target.className;
+     target.className = "code-highlighted";
+     elem.className   = "code-highlighted";
+   }
+ }
+ function CodeHighlightOff(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(elem.cacheClassElem)
+     elem.className = elem.cacheClassElem;
+   if(elem.cacheClassTarget)
+     target.className = elem.cacheClassTarget;
+ }
+/*]]>*///-->
+</script>
+</head>
+<body>
+<div id="preamble" class="status">
+<script type="text/javascript">
+  document.addEventListener('DOMContentLoaded',function() {
+      document.getElementById("table-of-contents").onclick = function() {
+          var elem = document.getElementById("text-table-of-contents");
+          elem.style.display = elem.style.display == "block" ? "none" : "block";
+      }
+  });
+
+  var url = document.location.href;
+  var orgsource = url.substring(0, url.lastIndexOf("."))+".org.html";
+  function show_org_source(){
+      document.location.href = orgsource;
+  }
+</script>
+
+<script>
+(function(f, a, t, h, o, m){
+	a[h]=a[h]||function(){
+		(a[h].q=a[h].q||[]).push(arguments)
+	};
+	o=f.createElement('script'),
+	m=f.getElementsByTagName('script')[0];
+	o.async=1; o.src=t; o.id='fathom-script';
+	m.parentNode.insertBefore(o,m)
+})(document, window, '//stats.orgmode.org/tracker.js', 'fathom');
+fathom('set', 'siteId', 'NWSQJ');
+fathom('trackPageview');
+</script>
+</div>
+<div id="content">
+<div id="table-of-contents">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#env">env</a></li>
+<li><a href="#nvm-install-stable">nvm install stable</a></li>
+<li><a href="#第一个报错">第一个报错</a>
+<ul>
+<li><a href="#跳过升级gcc">(跳过)升级gcc</a></li>
+<li><a href="#升级gcc">升级gcc</a>
+<ul>
+<li><a href="#找到刚刚安装的gcc的文件位置">找到刚刚安装的gcc的文件位置</a></li>
+<li><a href="#把文件放到-node-所需要的位置">把文件放到 node 所需要的位置</a></li>
+</ul>
+</li>
+<li><a href="#如果不安装gcc不做编译用-deb-的方式呢">如果不安装gcc,不做编译,用 deb 的方式呢?</a></li>
+</ul>
+</li>
+<li><a href="#第2行报错">第2行报错</a></li>
+<li><a href="#ref">ref</a></li>
+</ul>
+</div>
+</div>
+<p>
+使用nvm安装nodejs 在 ubuntu12 下
+</p>
+
+<div id="outline-container-org94ffd88" class="outline-2">
+<h2 id="env">env</h2>
+<div class="outline-text-2" id="text-env">
+<p>
+阿里云
+</p>
+
+<ul class="org-ul">
+<li>os: ubuntu12</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org54f658e" class="outline-2">
+<h2 id="nvm-install-stable">nvm install stable</h2>
+<div class="outline-text-2" id="text-nvm-install-stable">
+<p>
+安装nvm后
+</p>
+
+<div class="org-src-container">
+<pre class="src src-sh">lcnx@iZwz95dxhc92qtibd4f399Z:~/src/nginx-1.15.12$ nvm install stable
+v12.0.0 is already installed.
+node: /usr/lib/x86_64-linux-gnu/libstdc++.so.6: version <span style="color: #00cdcd; font-weight: bold;">`GLIBCXX_3.4.18' not found (required by node)</span>
+<span style="color: #00cdcd; font-weight: bold;">node: /lib/x86_64-linux-gnu/libc.so.6: version `</span>GLIBC_2.17<span style="color: #daa520;">' not found (required by node)</span>
+<span style="color: #daa520;">node: /lib/x86_64-linux-gnu/libc.so.6: version `GLIBC_2.16'</span> not found (required by node)
+nvm is not compatible with the npm config <span style="color: #daa520;">"prefix"</span> option: currently set to <span style="color: #daa520;">""</span>
+Run <span style="color: #00cdcd; font-weight: bold;">`nvm use --delete-prefix v12.0.0`</span> to unset it.
+Creating default alias: default -&gt; stable (-&gt; v12.0.0)
+lcnx@iZwz95dxhc92qtibd4f399Z:~/src/nginx-1.15.12$ nvm use stable
+node: /usr/lib/x86_64-linux-gnu/libstdc++.so.6: version <span style="color: #00cdcd; font-weight: bold;">`GLIBCXX_3.4.18' not found (required by node)</span>
+<span style="color: #00cdcd; font-weight: bold;">node: /lib/x86_64-linux-gnu/libc.so.6: version `</span>GLIBC_2.17<span style="color: #daa520;">' not found (required by node)</span>
+<span style="color: #daa520;">node: /lib/x86_64-linux-gnu/libc.so.6: version `GLIBC_2.16'</span> not found (required by node)
+nvm is not compatible with the npm config <span style="color: #daa520;">"prefix"</span> option: currently set to <span style="color: #daa520;">""</span>
+Run <span style="color: #00cdcd; font-weight: bold;">`nvm use --delete-prefix v12.0.0`</span> to unset it.
+lcnx@iZwz95dxhc92qtibd4f399Z:~/src/nginx-1.15.12$ ls
+auto  CHANGES  CHANGES.ru  conf  configure  contrib  html  LICENSE  Makefile  man  objs  README  src
+lcnx@iZwz95dxhc92qtibd4f399Z:~/src/nginx-1.15.12$
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org98dfa61" class="outline-2">
+<h2 id="第一个报错">第一个报错</h2>
+<div class="outline-text-2" id="text-第一个报错">
+<p>
+显示
+</p>
+
+<p>
+<code>strings /usr/lib/x86_64-linux-gnu/libstdc++.so.6  | grep GLIBC</code>
+可以查看到 GLIBC 相对应的版本,确实是没有 3.4.18
+</p>
+</div>
+
+<div id="outline-container-orgaa9fae3" class="outline-3">
+<h3 id="跳过升级gcc">(跳过)升级gcc</h3>
+<div class="outline-text-3" id="text-跳过升级gcc">
+<p>
+<a href="https://blog.csdn.net/jom%5C_ch/article/details/78738824">https://blog.csdn.net/jom%5C_ch/article/details/78738824</a>
+</p>
+
+<div class="org-src-container">
+<pre class="src src-sh">wget ftp://ftp.mirrorservice.org/sites/sourceware.org/pub/gcc/releases/gcc-5.5.0/gcc-5.5.0.tar.gz
+tar -zxvf gcc-5.5.0.tar.gz
+<span style="color: #d4d4d4;">cd</span> gcc-5.5.0
+sudo ./configure --enable-checking=release --enable-languages=c,c++ --disable-multilib
+</pre>
+</div>
+
+<p>
+报错
+</p>
+
+<p>
+<code>configure: error: Building GCC requires GMP 4.2+, MPFR 2.4.0+ and MPC 0.8.0+.</code>
+</p>
+
+<p>
+说明, 这个方式, 还是有问题呀.
+</p>
+</div>
+</div>
+
+<div id="outline-container-org1b89dbd" class="outline-3">
+<h3 id="升级gcc">升级gcc</h3>
+<div class="outline-text-3" id="text-升级gcc">
+<p>
+<a href="https://itbilu.com/linux/management/NymXRUieg.html">https://itbilu.com/linux/management/NymXRUieg.html</a>
+</p>
+
+<p>
+找到
+</p>
+
+<p>
+<a href="https://itbilu.com/linux/management/V1vdnt9ll.html">https://itbilu.com/linux/management/V1vdnt9ll.html</a>
+</p>
+
+<div class="org-src-container">
+<pre class="src src-sh">wget ftp://ftp.mirrorservice.org/sites/sourceware.org/pub/gcc/releases/gcc-5.5.0/gcc-5.5.0.tar.gz
+tar -zxvf gcc-5.5.0.tar.gz
+<span style="color: #d4d4d4;">cd</span> gcc-5.5.0
+./contrib/download_prerequisites
+mkdir gcc-temp
+<span style="color: #d4d4d4;">cd</span> gcc-temp/
+../configure --enable-checking=release --enable-languages=c,c++ --disable-multilib
+make
+sudo make install
+ls /usr/local/bin/ | grep gcc
+sudo /usr/sbin/update-alternatives --install  /usr/bin/gcc gcc /usr/local/bin/x86_64-unknown-linux-gnu-gcc-5.5.0 52
+</pre>
+</div>
+
+<p>
+在 make install 这一步,要加上 sudo , 因为,最后,是要在 /usr/local/bin
+下生成文件.
+</p>
+
+<p>
+我当时就是忘记加了sudo
+</p>
+
+<div class="org-src-container">
+<pre class="src src-sh">lcnx@iZwz95dxhc92qtibd4f399Z:~/src/gcc-5.5.0/gcc-temp$ sudo /usr/sbin/update-alternatives --install  /usr/bin/gcc gcc /usr/local/bin/x86_64-unknown-linux-gnu-gcc-5.5.0 52
+update-alternatives: using /usr/local/bin/x86_64-unknown-linux-gnu-gcc-5.5.0 to provide /usr/bin/gcc (gcc) <span style="color: #00bfff;">in</span> auto mode.
+lcnx@iZwz95dxhc92qtibd4f399Z:~/src/gcc-5.5.0/gcc-temp$ gcc -v
+Using built-in specs.
+<span style="color: #d4d4d4;">COLLECT_GCC</span>=gcc
+<span style="color: #d4d4d4;">COLLECT_LTO_WRAPPER</span>=/usr/local/libexec/gcc/x86_64-unknown-linux-gnu/5.5.0/lto-wrapper
+Target: x86_64-unknown-linux-gnu
+Configured with: ../configure --enable-checking=release --enable-languages=c,c++ --disable-multilib
+Thread model: posix
+gcc version 5.5.0 (GCC)
+lcnx@iZwz95dxhc92qtibd4f399Z:~/src/gcc-5.5.0/gcc-temp$
+</pre>
+</div>
+
+<p>
+好了, 升级完成.
+</p>
+
+<p>
+配置 node 需要的地方的 gcc
+</p>
+
+<p>
+node: /usr/lib/x86\_64-linux-gnu/libstdc++.so.6: version
+`GLIBCXX\_3.4.18' not found (required by node)
+</p>
+</div>
+
+<div id="outline-container-orga8c585b" class="outline-4">
+<h4 id="找到刚刚安装的gcc的文件位置">找到刚刚安装的gcc的文件位置</h4>
+<div class="outline-text-4" id="text-找到刚刚安装的gcc的文件位置">
+<div class="org-src-container">
+<pre class="src src-sh">find / -name <span style="color: #daa520;">"libstdc++.so*"</span> | grep home
+</pre>
+</div>
+
+<p>
+会发现
+<code>/home/lcnx/src/gcc-5.5.0/gcc-temp/x86_64-unknown-linux-gnu/libstdc++-v3/src/.libs/libstdc++.so.6.0.21</code>
+就是我们想要的文件.
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgcf84a47" class="outline-4">
+<h4 id="把文件放到-node-所需要的位置">把文件放到 node 所需要的位置</h4>
+<div class="outline-text-4" id="text-把文件放到-node-所需要的位置">
+<div class="org-src-container">
+<pre class="src src-sh"><span style="color: #d4d4d4;">cd</span> /usr/lib/x86_64-linux-gnu/
+sudo mv libstdc++.so.6 libstdc++.so.6.bak
+sudo mv ./libstdc++.so.6.0.21 ./libstdc++.so.6.0.21.bak
+sudo cp /home/lcnx/src/gcc-5.5.0/gcc-temp/x86_64-unknown-linux-gnu/libstdc++-v3/src/.libs/libstdc++.so.6.0.21 /usr/lib/x86_64-linux-gnu/
+sudo ln -s ./libstdc++.so.6.0.21 ./libstdc++.so.6
+</pre>
+</div>
+
+<p>
+确认一下
+</p>
+
+<div class="org-src-container">
+<pre class="src src-sh">lcnx@iZwz95dxhc92qtibd4f399Z:/usr/lib/x86_64-linux-gnu$ strings /usr/lib/x86_64-linux-gnu/libstdc++.so.6  | grep GLIB
+GLIBCXX_3.4
+GLIBCXX_3.4.1
+GLIBCXX_3.4.2
+GLIBCXX_3.4.3
+GLIBCXX_3.4.4
+GLIBCXX_3.4.5
+GLIBCXX_3.4.6
+GLIBCXX_3.4.7
+GLIBCXX_3.4.8
+GLIBCXX_3.4.9
+GLIBCXX_3.4.10
+GLIBCXX_3.4.11
+GLIBCXX_3.4.12
+GLIBCXX_3.4.13
+GLIBCXX_3.4.14
+GLIBCXX_3.4.15
+GLIBCXX_3.4.16
+GLIBCXX_3.4.17
+GLIBCXX_3.4.18
+GLIBCXX_3.4.19
+GLIBCXX_3.4.20
+GLIBCXX_3.4.21
+GLIBC_2.3
+GLIBC_2.2.5
+GLIBC_2.14
+GLIBC_2.3.2
+GLIBCXX_DEBUG_MESSAGE_LENGTH
+lcnx@iZwz95dxhc92qtibd4f399Z:/usr/lib/x86_64-linux-gnu$ nvm use stable
+node: /lib/x86_64-linux-gnu/libc.so.6: version <span style="color: #00cdcd; font-weight: bold;">`GLIBC_2.17' not found (required by node)</span>
+<span style="color: #00cdcd; font-weight: bold;">node: /lib/x86_64-linux-gnu/libc.so.6: version `</span>GLIBC_2.16<span style="color: #daa520;">' not found (required by node)</span>
+<span style="color: #daa520;">nvm is not compatible with the npm config "prefix" option: currently set to ""</span>
+<span style="color: #daa520;">Run `nvm use --delete-prefix v12.0.0` to unset it.</span>
+<span style="color: #daa520;">lcnx@iZwz95dxhc92qtibd4f399Z:/usr/lib/x86_64-linux-gnu$ </span>
+</pre>
+</div>
+
+<p>
+有显示 3.4.18 , 且, <code>nvm use stable</code> 的第一行报错消失.
+</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orge3c7feb" class="outline-3">
+<h3 id="如果不安装gcc不做编译用-deb-的方式呢">如果不安装gcc,不做编译,用 deb 的方式呢?</h3>
+<div class="outline-text-3" id="text-如果不安装gcc不做编译用-deb-的方式呢">
+<p>
+这个升级 gcc 要蛮久的，3小时左右。
+</p>
+
+<p>
+直接安装
+</p>
+
+<div class="org-src-container">
+<pre class="src src-sh">lcnx@iZwz95dxhc92qtibd4f399Z:~$ sudo apt-get install -y nodejs
+lcnx@iZwz95dxhc92qtibd4f399Z:~$ which node
+/usr/bin/node
+lcnx@iZwz95dxhc92qtibd4f399Z:~$ node -v
+v0.6.12
+</pre>
+</div>
+
+<p>
+这个版本明显太低了,不满足.
+</p>
+
+<p>
+去官网, 查到
+</p>
+
+<p>
+<a href="https://nodejs.org/en/download/package-manager/#debian-and-ubuntu-based-linux-distributions-enterprise-linux-fedora-and-snap-packages">https://nodejs.org/en/download/package-manager/#debian-and-ubuntu-based-linux-distributions-enterprise-linux-fedora-and-snap-packages</a>
+</p>
+
+<p>
+<a href="https://github.com/nodesource/distributions/blob/master/README.md#debinstall">https://github.com/nodesource/distributions/blob/master/README.md#debinstall</a>
+</p>
+
+<div class="org-src-container">
+<pre class="src src-sh">curl -sL https://deb.nodesource.com/setup_12.x | sudo -E bash -
+sudo apt-get install -y nodejs
+</pre>
+</div>
+
+<p>
+报错
+</p>
+
+<pre class="example">
+## Confirming "precise" is supported...
+
++ curl -sLf -o /dev/null 'https://deb.nodesource.com/node_12.x/dists/precise/Release'
+
+## Your distribution, identified as "precise", is not currently supported, please contact NodeSource at https://github.com/nodesource/distributions/issues if you think this is incorrect or would like your distribution to be considered for support
+</pre>
+
+<p>
+也就是说, nodejs版本与ubuntu12不匹配.
+</p>
+
+<p>
+那么 ubuntu12 的最高版本在哪里?
+</p>
+
+<p>
+如果不升级gcc , 用 deb
+方式安装，则要找到对应于ubuntu12的最高版本。这个哪里找，合适？
+</p>
+
+<p>
+在没有找到ubuntu12最高版本的情况下,我们可以用 nvm 去尝试.
+</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org94cc1c1" class="outline-2">
+<h2 id="第2行报错">第2行报错</h2>
+<div class="outline-text-2" id="text-第2行报错">
+<p>
+<a href="https://blog.csdn.net/leon1741/article/details/78205198">https://blog.csdn.net/leon1741/article/details/78205198</a>
+</p>
+
+<p>
+过程基本上与这个文章差不多.
+</p>
+
+<p>
+<a href="https://ftp.gnu.org/gnu/gawk/gawk-4.2.0.tar.gz">https://ftp.gnu.org/gnu/gawk/gawk-4.2.0.tar.gz</a>
+</p>
+
+<p>
+<a href="https://ftp.gnu.org/gnu/libc/glibc-2.21.tar.gz">https://ftp.gnu.org/gnu/libc/glibc-2.21.tar.gz</a>
+</p>
+
+<div class="org-src-container">
+<pre class="src src-sh">tar -zxvf glibc-2.21.tar.gz
+<span style="color: #d4d4d4;">cd</span> glibc-2.21/
+mkdir build
+<span style="color: #d4d4d4;">cd</span> build/
+mkdir -p /opt/glibc-2.21/
+sudo mkdir -p /opt/glibc-2.21/
+../configure --prefix=/opt/glibc-2.21
+mkdir -p /opt/gawk-4.2.0/
+sudo mkdir -p /opt/gawk-4.2.0/
+<span style="color: #d4d4d4;">cd</span> ../../
+tar -zxvf gawk-4.2.0.tar.gz
+<span style="color: #d4d4d4;">cd</span> gawk-4.2.0/
+ls
+./configure
+make
+sudo make install
+<span style="color: #d4d4d4;">cd</span> ../glibc-2.21/
+<span style="color: #d4d4d4;">cd</span> build/
+../configure --prefix=/opt/glibc-2.21
+make
+sudo make install
+</pre>
+</div>
+
+<p>
+glibc-.2.21 编译完成.
+</p>
+
+<p>
+<a href="https://my.oschina.net/zhangxu0512/blog/262275">https://my.oschina.net/zhangxu0512/blog/262275</a>
+</p>
+
+<div class="org-src-container">
+<pre class="src src-sh">lcnx@iZwz95dxhc92qtibd4f399Z:~/src/glibc-2.21/build$  export <span style="color: #d4d4d4;">LD_LIBRARY_PATH</span>=/home/lcnx/src/glibc-2.21/lib:$<span style="color: #d4d4d4;">LD_LIBRARY_PATH</span>
+lcnx@iZwz95dxhc92qtibd4f399Z:~/src/glibc-2.21/build$ nvm use stable
+tr: error while loading shared libraries: __vdso_time: invalid mode for dlopen(): Invalid argument
+tr: error while loading shared libraries: __vdso_time: invalid mode for dlopen(): Invalid argument
+tail: error while loading shared libraries: __vdso_time: invalid mode for dlopen(): Invalid argument
+sed: error while loading shared libraries: __vdso_time: invalid mode for dlopen(): Invalid argument
+ls: error while loading shared libraries: __vdso_time: invalid mode for dlopen(): Invalid argument
+grep: error while loading shared libraries: __vdso_time: invalid mode for dlopen(): Invalid argument
+ls: error while loading shared libraries: __vdso_time: invalid mode for dlopen(): Invalid argument
+grep: error while loading shared libraries: __vdso_time: invalid mode for dlopen(): Invalid argument
+N/A: version <span style="color: #daa520;">"stable -&gt; N/A"</span> is not yet installed.
+
+You need to run <span style="color: #daa520;">"nvm install stable"</span> to install it before using it.
+lcnx@iZwz95dxhc92qtibd4f399Z:~/src/glibc-2.21/build$
+</pre>
+</div>
+
+<p>
+好像报错,换了.
+</p>
+
+<p>
+换一个terminal试了一下,没有效果呀.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-sh">lcnx@iZwz95dxhc92qtibd4f399Z:~$ nvm ls
+        v12.0.0
+-&gt;       system
+default -&gt; stable (-&gt; v12.0.0)
+node -&gt; stable (-&gt; v12.0.0) (default)
+stable -&gt; 12.0 (-&gt; v12.0.0) (default)
+iojs -&gt; N/A (default)
+unstable -&gt; N/A (default)
+lts/* -&gt; lts/dubnium (-&gt; N/A)
+lts/argon -&gt; v4.9.1 (-&gt; N/A)
+lts/boron -&gt; v6.17.1 (-&gt; N/A)
+lts/carbon -&gt; v8.16.0 (-&gt; N/A)
+lts/dubnium -&gt; v10.15.3 (-&gt; N/A)
+lcnx@iZwz95dxhc92qtibd4f399Z:~$ nvm use stable
+node: /lib/x86_64-linux-gnu/libc.so.6: version <span style="color: #00cdcd; font-weight: bold;">`GLIBC_2.17' not found (required by node)</span>
+<span style="color: #00cdcd; font-weight: bold;">node: /lib/x86_64-linux-gnu/libc.so.6: version `</span>GLIBC_2.16<span style="color: #daa520;">' not found (required by node)</span>
+<span style="color: #daa520;">nvm is not compatible with the npm config "prefix" option: currently set to ""</span>
+<span style="color: #daa520;">Run `nvm use --delete-prefix v12.0.0` to unset it.</span>
+<span style="color: #daa520;">lcnx@iZwz95dxhc92qtibd4f399Z:~$ export LD_LIBRARY_PATH=/home/lcnx/src/glibc-2.21/lib:$LD_LIBRARY_PATH</span>
+<span style="color: #daa520;">lcnx@iZwz95dxhc92qtibd4f399Z:~$ nvm use stable</span>
+<span style="color: #daa520;">node: /lib/x86_64-linux-gnu/libc.so.6: version `GLIBC_2.17'</span> not found (required by node)
+node: /lib/x86_64-linux-gnu/libc.so.6: version <span style="color: #00cdcd; font-weight: bold;">`GLIBC_2.16' not found (required by node)</span>
+<span style="color: #00cdcd; font-weight: bold;">nvm is not compatible with the npm config "prefix" option: currently set to ""</span>
+<span style="color: #00cdcd; font-weight: bold;">Run `</span>nvm use --delete-prefix v12.0.0<span style="color: #00cdcd; font-weight: bold;">` to unset it.</span>
+<span style="color: #00cdcd; font-weight: bold;">lcnx@iZwz95dxhc92qtibd4f399Z:~$ </span>
+</pre>
+</div>
+
+<p>
+然后,不知道怎么加载和使用刚刚安装的 glibc-2.21
+</p>
+
+<p>
+然后,出现了一个非常不应该的错误.
+</p>
+
+<p>
+<code>sudo mv /lib/x86_64-linux-gnu/libc.so.6 /home/lcnx/backup/</code>
+</p>
+
+<p>
+这下好了.
+</p>
+
+<p>
+<a href="https://blog.51cto.com/wbwk2005/415185">https://blog.51cto.com/wbwk2005/415185</a>
+</p>
+
+<pre class="example">
+事后再总结一下这次事故的出错原因：
+libc.so.6是bash这个shell依赖的重要动态库之一，当我把这个动态库（链接）改名之后，shell找不到这个库了，所以就报找不到libc.so.6，并拒绝执行多数shell指令，也中断了ssh连接请求，而在整个过程，操作系统的kernel却还是活的，所以我原先连接的两个ssh进程还有反应（对回车、pwd等小数指令有响应），但却不能新建ssh连接。
+
+这次事故也给我一个教训：
+不要随便改Linux/Unix的系统动态库！
+
+更不要在生产机上随便改！！
+
+最不应该是还是在白天改！！！
+</pre>
+
+<p>
+如果说,我有一个root权限的连接,还在的话,那还能够,
+</p>
+
+<div class="org-src-container">
+<pre class="src src-sh"><span style="color: #d4d4d4;">LD_PRELOAD</span>=/lib/x86_64-linux-gnu/libc-2.15.so ln -s /lib/x86_64-linux-gnu/libc-2.15.so /lib64/libc.so.6
+</pre>
+</div>
+
+<p>
+补救.
+</p>
+
+<p>
+但是,我没有,一般也不会使用root用户.
+</p>
+
+<p>
+然后,在阿里云提工单了.等处理吧.哈哈.
+</p>
+</div>
+</div>
+
+<div id="outline-container-org02574fb" class="outline-2">
+<h2 id="ref">ref</h2>
+<div class="outline-text-2" id="text-ref">
+<ul class="org-ul">
+<li><a href="https://blog.csdn.net/jom%5C_ch/article/details/78738824">https://blog.csdn.net/jom%5C_ch/article/details/78738824</a></li>
+</ul>
+</div>
+</div>
+</div>
+</body>
+</html>

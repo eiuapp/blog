@@ -1,0 +1,258 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<!-- 2021-01-07 Thu 11:01 -->
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>ubuntu samba</title>
+<meta name="generator" content="Org mode" />
+<meta name="author" content="a" />
+<link rel="stylesheet" title="Standard" href="/html/style/worg.css" type="text/css" />
+<link rel="alternate stylesheet" title="Zenburn" href="/html/style/worg-zenburn.css" type="text/css" />
+<link rel="alternate stylesheet" title="Classic" href="/html/style/worg-classic.css" type="text/css" />
+<link rel="SHORTCUT ICON" href="/html/style/org-mode-unicorn.ico" type="image/x-icon" />
+<link rel="icon" href="/html/style/org-mode-unicorn.ico" type="image/ico" />
+<script type="text/javascript">
+/*
+@licstart  The following is the entire license notice for the
+JavaScript code in this tag.
+
+Copyright (C) 2012-2019 Free Software Foundation, Inc.
+
+The JavaScript code in this tag is free software: you can
+redistribute it and/or modify it under the terms of the GNU
+General Public License (GNU GPL) as published by the Free Software
+Foundation, either version 3 of the License, or (at your option)
+any later version.  The code is distributed WITHOUT ANY WARRANTY;
+without even the implied warranty of MERCHANTABILITY or FITNESS
+FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
+
+As additional permission under GNU GPL version 3 section 7, you
+may distribute non-source (e.g., minimized or compacted) forms of
+that code without the copy of the GNU GPL normally required by
+section 4, provided you include this license notice and a URL
+through which recipients can access the Corresponding Source.
+
+
+@licend  The above is the entire license notice
+for the JavaScript code in this tag.
+*/
+<!--/*--><![CDATA[/*><!--*/
+ function CodeHighlightOn(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(null != target) {
+     elem.cacheClassElem = elem.className;
+     elem.cacheClassTarget = target.className;
+     target.className = "code-highlighted";
+     elem.className   = "code-highlighted";
+   }
+ }
+ function CodeHighlightOff(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(elem.cacheClassElem)
+     elem.className = elem.cacheClassElem;
+   if(elem.cacheClassTarget)
+     target.className = elem.cacheClassTarget;
+ }
+/*]]>*///-->
+</script>
+</head>
+<body>
+<div id="preamble" class="status">
+<script type="text/javascript">
+  document.addEventListener('DOMContentLoaded',function() {
+      document.getElementById("table-of-contents").onclick = function() {
+          var elem = document.getElementById("text-table-of-contents");
+          elem.style.display = elem.style.display == "block" ? "none" : "block";
+      }
+  });
+
+  var url = document.location.href;
+  var orgsource = url.substring(0, url.lastIndexOf("."))+".org.html";
+  function show_org_source(){
+      document.location.href = orgsource;
+  }
+</script>
+
+<script>
+(function(f, a, t, h, o, m){
+	a[h]=a[h]||function(){
+		(a[h].q=a[h].q||[]).push(arguments)
+	};
+	o=f.createElement('script'),
+	m=f.getElementsByTagName('script')[0];
+	o.async=1; o.src=t; o.id='fathom-script';
+	m.parentNode.insertBefore(o,m)
+})(document, window, '//stats.orgmode.org/tracker.js', 'fathom');
+fathom('set', 'siteId', 'NWSQJ');
+fathom('trackPageview');
+</script>
+</div>
+<div id="content">
+<h1 class="title">ubuntu samba</h1>
+<div id="table-of-contents">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#org801a1ed">ubuntu share folder through samba</a>
+<ul>
+<li><a href="#orgfd8b4bb">以下是在Ubuntu 16.04中的安装和配置过程：</a></li>
+<li><a href="#org4387fe8">为samba开放特定端口</a></li>
+<li><a href="#org69f1fcd">再去 windows 中尝试打开 ubuntu共享文件夹</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+<p>
+<a href="../index.html">{Back to site's index}</a>
+</p>
+
+<div id="outline-container-org801a1ed" class="outline-2">
+<h2 id="org801a1ed">ubuntu share folder through samba</h2>
+<div class="outline-text-2" id="text-org801a1ed">
+</div>
+
+
+<div id="outline-container-orgfd8b4bb" class="outline-3">
+<h3 id="orgfd8b4bb">以下是在Ubuntu 16.04中的安装和配置过程：</h3>
+<div class="outline-text-3" id="text-orgfd8b4bb">
+<ul class="org-ul">
+<li><a href="https://blog.csdn.net/u014159143/article/details/77044864">https://blog.csdn.net/u014159143/article/details/77044864</a></li>
+<li><a href="https://www.cnblogs.com/heguoyuan/p/9902446.html">https://www.cnblogs.com/heguoyuan/p/9902446.html</a></li>
+</ul>
+
+<p>
+需要说明的是：本人是jobs用户，共享目录为/home/jobs/share/
+</p>
+
+<p>
+1、安装samba相关包：
+</p>
+
+<div class="org-src-container">
+<pre class="src src-shell">sudo apt-get install samba
+sudo apt-get install smbclient
+</pre>
+</div>
+
+<p>
+2、修改配置文件：
+</p>
+
+<div class="org-src-container">
+<pre class="src src-shell">sudo vi /etc/samba/smb.conf
+</pre>
+</div>
+
+<p>
+在文件末尾加上如下[share]  （相当于在home目录项增加了一个新用户）
+</p>
+
+<div class="org-src-container">
+<pre class="src src-example">[share]
+comment = Share Folder requirepassword
+browseable = yes
+path = /home/jobs/share
+create mask = 0777
+directory mask = 0777
+valid users = jobs
+force user = nobody
+force group = nogroup
+public = yes
+writable = yes
+available = yes
+</pre>
+</div>
+
+<p>
+特别注意：这里有一个 <code>valid users = jobs</code> 这里根据实际用户名修改 <code>jobs</code>.
+</p>
+
+<p>
+3、切换到 /home/jobs/目录下创建一个用户目录：
+</p>
+
+<div class="org-src-container">
+<pre class="src src-shell">sudo mkdir share
+</pre>
+</div>
+
+<p>
+4、设置目录的权限： （777代表最高权限，可读可写可执行）
+</p>
+
+<div class="org-src-container">
+<pre class="src src-shell">chmod 777 share
+</pre>
+</div>
+
+<p>
+5、保存退出后重启samba：
+</p>
+
+<div class="org-src-container">
+<pre class="src src-shell">sudo systemctl restart smbd.service <span style="color: #579C4C;"># </span><span style="color: #579C4C;">sudo /etc/init.d/samba restart &#25110; # service smbd restart &amp;&amp; service nmbd restart</span>
+</pre>
+</div>
+
+<p>
+6、添加账户
+</p>
+
+<p>
+把已有的账户添加到samba里并设置新密码，本人的账户是“jobs”，
+</p>
+
+<div class="org-src-container">
+<pre class="src src-shell">sudo smbpasswd -a jobs
+</pre>
+</div>
+
+<p>
+这里的用户和密码，后续客户端 连接时 要提供.
+</p>
+</div>
+</div>
+
+<div id="outline-container-org4387fe8" class="outline-3">
+<h3 id="org4387fe8">为samba开放特定端口</h3>
+<div class="outline-text-3" id="text-org4387fe8">
+<ul class="org-ul">
+<li><a href="https://www.cnblogs.com/faberbeta/p/samba002.html">https://www.cnblogs.com/faberbeta/p/samba002.html</a></li>
+</ul>
+
+
+<div class="org-src-container">
+<pre class="src src-shell">$ sudo ufw allow from 192.168.0.0/16 to any port 445 proto tcp
+Rule added
+$ sudo ufw allow from 192.168.0.0/16 to any port 139 proto tcp
+Rule added
+$ sudo ufw allow from 192.168.0.0/16 to any port 137 proto udp
+Rule added
+$ sudo ufw allow from 192.168.0.0/16 to any port 138 proto udp
+Rule added
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org69f1fcd" class="outline-3">
+<h3 id="org69f1fcd">再去 windows 中尝试打开 ubuntu共享文件夹</h3>
+<div class="outline-text-3" id="text-org69f1fcd">
+<ul class="org-ul">
+<li><a href="https://www.cnblogs.com/heguoyuan/p/9902446.html">https://www.cnblogs.com/heguoyuan/p/9902446.html</a></li>
+</ul>
+
+<p>
+如果出现失效，并提示，"安全策略", 则是windows安全策略导致，百度一下，解除就可以了。</p>
+</div>
+</div>
+</div>
+</div>
+</body>
+</html>

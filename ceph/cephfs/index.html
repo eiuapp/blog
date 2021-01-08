@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2021-01-08 Fri 18:38 -->
+<!-- 2021-01-08 Fri 18:47 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>ceph</title>
@@ -64,7 +64,7 @@ for the JavaScript code in this tag.
 <div id="org-div-home-and-up">
  <a accesskey="h" href="../index.html"> UP </a>
  |
- <a accesskey="H" href="/index.html"> HOME </a>
+ <a accesskey="H" href="https://eiu.app/"> HOME </a>
 </div><div id="preamble" class="status">
 <script type="text/javascript">
   document.addEventListener('DOMContentLoaded',function() {
@@ -101,13 +101,13 @@ fathom('trackPageview');
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#org7919448">Post</a>
+<li><a href="#org38b6ee5">Post</a>
 <ul>
-<li><a href="#org1429215">cephfs</a>
+<li><a href="#org9e95a44">cephfs</a>
 <ul>
-<li><a href="#orge20133f">cephfs intro</a></li>
-<li><a href="#org8695398">cephfs 安装</a></li>
-<li><a href="#orga5cfbe9">ceph auth</a></li>
+<li><a href="#org3b3a16a">cephfs intro</a></li>
+<li><a href="#org900afec">cephfs 安装</a></li>
+<li><a href="#org07b3c38">ceph auth</a></li>
 </ul>
 </li>
 </ul>
@@ -116,17 +116,17 @@ fathom('trackPageview');
 </div>
 </div>
 
-<div id="outline-container-org7919448" class="outline-2">
-<h2 id="org7919448">Post</h2>
-<div class="outline-text-2" id="text-org7919448">
+<div id="outline-container-org38b6ee5" class="outline-2">
+<h2 id="org38b6ee5">Post</h2>
+<div class="outline-text-2" id="text-org38b6ee5">
 </div>
-<div id="outline-container-org1429215" class="outline-3">
-<h3 id="org1429215">cephfs&#xa0;&#xa0;&#xa0;<span class="tag"><span class="_ceph">@ceph</span>&#xa0;<span class="ceph">ceph</span>&#xa0;<span class="cephfs">cephfs</span></span></h3>
-<div class="outline-text-3" id="text-org1429215">
+<div id="outline-container-org9e95a44" class="outline-3">
+<h3 id="org9e95a44">cephfs&#xa0;&#xa0;&#xa0;<span class="tag"><span class="_ceph">@ceph</span>&#xa0;<span class="ceph">ceph</span>&#xa0;<span class="cephfs">cephfs</span></span></h3>
+<div class="outline-text-3" id="text-org9e95a44">
 </div>
-<div id="outline-container-orge20133f" class="outline-4">
-<h4 id="orge20133f">cephfs intro&#xa0;&#xa0;&#xa0;<span class="tag"><span class="intro">intro</span></span></h4>
-<div class="outline-text-4" id="text-orge20133f">
+<div id="outline-container-org3b3a16a" class="outline-4">
+<h4 id="org3b3a16a">cephfs intro&#xa0;&#xa0;&#xa0;<span class="tag"><span class="intro">intro</span></span></h4>
+<div class="outline-text-4" id="text-org3b3a16a">
 <p>
 Contents:
 </p>
@@ -138,9 +138,9 @@ Contents:
 </div>
 </div>
 
-<div id="outline-container-org8695398" class="outline-4">
-<h4 id="org8695398">cephfs 安装&#xa0;&#xa0;&#xa0;<span class="tag"><span class="install">install</span></span></h4>
-<div class="outline-text-4" id="text-org8695398">
+<div id="outline-container-org900afec" class="outline-4">
+<h4 id="org900afec">cephfs 安装&#xa0;&#xa0;&#xa0;<span class="tag"><span class="install">install</span></span></h4>
+<div class="outline-text-4" id="text-org900afec">
 </div>
 
 <ul class="org-ul">
@@ -154,8 +154,8 @@ Contents:
 </div>
 </li>
 
-<li><a id="orgc98919b"></a>line1 官网, 成功安装<br />
-<div class="outline-text-5" id="text-orgc98919b">
+<li><a id="orgb3c51a9"></a>line1 官网, 成功安装<br />
+<div class="outline-text-5" id="text-orgb3c51a9">
 <p>
 我的安装设计是这样的：
 </p>
@@ -190,9 +190,9 @@ mds.1: 192.168.31.114   cephfs4
 </ul>
 </div>
 
-<div id="outline-container-orga5cfbe9" class="outline-4">
-<h4 id="orga5cfbe9">ceph auth&#xa0;&#xa0;&#xa0;<span class="tag"><span class="auth">auth</span></span></h4>
-<div class="outline-text-4" id="text-orga5cfbe9">
+<div id="outline-container-org07b3c38" class="outline-4">
+<h4 id="org07b3c38">ceph auth&#xa0;&#xa0;&#xa0;<span class="tag"><span class="auth">auth</span></span></h4>
+<div class="outline-text-4" id="text-org07b3c38">
 <pre class="example">
 cephu@cephadmin:~/my-cluster$ ceph auth ls
 installed auth entries:
